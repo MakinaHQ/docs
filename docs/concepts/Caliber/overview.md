@@ -11,6 +11,6 @@ A Caliber is always deployed on the Hub Chain. Additionally, if required, Calibe
 
 Calibers can swap tokens, harvest external rewards from claiming contracts and take flashloans for additional liquidity.  
 
-Spoke chain Calibers can receive and send assets from and to the Machine on the Hub Chain through [Mailboxes](../cross-chain/caliber-mailbox) using Makina's native [Cross-Chain Liquidity](../cross-chain/liquidity-bridging) infrastructure. 
+Spoke chain Calibers can receive and send assets from and to the Machine on the Hub Chain through [Mailboxes](../Cross-Chain/caliber-mailbox) using Makina's native [Cross-Chain Liquidity](../Cross-Chain/liquidity-bridging) infrastructure. 
 
 Each Caliber has an Accounting Token and additionally Calibers have a notion of [Base Tokens](base-tokens). The Accounting Token is required to be equivalent or 1:1 redeemable for the Accounting Token of the Machine, and Base Tokens are required to be priceable against the Accounting Token of the Caliber through locally available price oracles stored in the [Oracle Registry](../oracle-registry).

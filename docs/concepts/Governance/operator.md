@@ -31,6 +31,6 @@ The Operator restrictions are:
 - Max loss caps and cooldowns on any swap transactions
 - Max loss caps on liquidity bridge transactions
 
-This prevents Operators from willfully or accidentally causing significant losses to a strategy’s AUM over a short period, giving the [Security Council](securiotuy-council) sufficient time to intervene, activate Recovery Mode, and revoke the Operator’s ability to execute further actions in the event of deviations.
+This prevents Operators from willfully or accidentally causing significant losses to a strategy's AUM over a short period, giving the [Security Council](security-council) sufficient time to intervene, activate Recovery Mode, and revoke the Operator's ability to execute further actions in the event of deviations.
 
 Active monitoring tooling will be run by the Makina Foundation on all Strategies to detect any unusual behaviour quickly and notify the Security Council.

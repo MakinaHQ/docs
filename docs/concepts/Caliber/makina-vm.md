@@ -19,11 +19,11 @@ The goal is for Calibers to be highly adaptable while maintaining strong securit
 
 ## Instructions
 
-Instructions are a core innovation of Makina, offering a highly flexible yet controlled execution model. They define and constrain the Operator’s available actions in a given strategy, enabling seamless interaction with a wide array of external smart contracts while maintaining strict operational boundaries.
+Instructions are a core innovation of Makina, offering a highly flexible yet controlled execution model. They define and constrain the Operator's available actions in a given strategy, enabling seamless interaction with a wide array of external smart contracts while maintaining strict operational boundaries.
 
 ### Weiroll
 
-MakinaVM is built on [Enso Weiroll](https://github.com/EnsoBuild/enso-weiroll), an extended implementation of the original [Weiroll](https://github.com/weiroll/weiroll) command-chaining framework developed by [Nick Johnson](https://github.com/Arachnid), [Dean Eigenmann](https://github.com/decanus), and [other](https://github.com/weiroll/weiroll/graphs/contributors) open-source contributors. Enso’s version enhances Weiroll’s capabilities, making it more flexible and suited for advanced execution models.
+MakinaVM is built on [Enso Weiroll](https://github.com/EnsoBuild/enso-weiroll), an extended implementation of the original [Weiroll](https://github.com/weiroll/weiroll) command-chaining framework developed by [Nick Johnson](https://github.com/Arachnid), [Dean Eigenmann](https://github.com/decanus), and [other](https://github.com/weiroll/weiroll/graphs/contributors) open-source contributors. Enso's version enhances Weiroll's capabilities, making it more flexible and suited for advanced execution models.
 
 Weiroll enables stateful multicalls by allowing the output of one call to be used as input for subsequent calls. This makes it possible to chain multiple function calls together, with data passed through each execution step. Moreover, Weiroll supports the generalized execution of any set of interactions across any protocol.
 
@@ -31,9 +31,9 @@ MakinaVM refines this capability by incorporating a Merkle Tree of hashed comman
 
 ### Merkle Tree Permissioning
 
-Each Caliber stores the root of a publicly available Merkle Tree containing the full set of allowed instructions. The root can be updated in caliber storage by the Machine's [Risk Manager](../governance/risk-manager) through a timelock, giving users time to withdraw if they disagree with upcoming changes.
+Each Caliber stores the root of a publicly available Merkle Tree containing the full set of allowed instructions. The root can be updated in caliber storage by the Machine's [Risk Manager](../Governance/risk-manager) through a timelock, giving users time to withdraw if they disagree with upcoming changes.
 
-To execute an instruction, the Operator must provide the corresponding Merkle proof. The Caliber hashes data including the instruction’s commands (function signatures + target contracts addresses) and its selected parameters (function arguments), and validates the resulting leaf against the stored Merkle root.
+To execute an instruction, the Operator must provide the corresponding Merkle proof. The Caliber hashes data including the instruction's commands (function signatures + target contracts addresses) and its selected parameters (function arguments), and validates the resulting leaf against the stored Merkle root.
 
 Instructions can be validated with fine-grained control, down to specific function arguments. Dynamic arguments, like token amounts, can be excluded from the hash to preserve flexibility while retaining a strong security model.
 
@@ -43,7 +43,7 @@ Once enabled, instructions can be executed arbitrarily by the Operator, within t
 
 Instructions are categorized into four types, each serving a distinct operational role:
 
-- **Accounting**: Computes the current size of a position and updates it in the Caliber’s storage.
+- **Accounting**: Computes the current size of a position and updates it in the Caliber's storage.
 - **Management**: Modifies the size of a position. Always paired with an Accounting instruction to reflect the changes introduced.
 - **Harvesting**: Collects rewards from external protocols and transfers them to the Caliber.
 - **Flashloan-Management**: Modifies the size of a position in the context of a flash loan, as part of an outer Management instruction. A Flashloan-Management instruction is always associated with a Management instruction and can only be executed in its scope.
@@ -58,4 +58,4 @@ Instructions are reviewed by the Risk Team and approved through Governance. Over
 
 It is also expected that protocols seeking to attract capital contribute their own Instructions, promoting a model of self-integration.
 
-See [Root Update Lifecycle](root-update-lifecycle) for more details.
+See [Root Update Lifecycle](../Governance/root-update-lifecycle) for more details.
