@@ -12,6 +12,7 @@ Makina introduces a new execution model: MakinaVM, a scope-limited, generalized 
 The goal is for Calibers to be highly adaptable while maintaining strong security guarantees, enabling fast and reliable integration with a broad range of external protocols to maximize diversification and capture optimal opportunities.
 
 ### Key Benefits of MakinaVM
+
 - **Pre-approved execution:** Function selectors, target addresses, and selected parameters must be pre-approved. Only the Merkle root is stored onchain, ensuring minimal onchain storage while maintaining strict control.
 - **Efficient updates:** Adding or removing instructions requires only a single Merkle Root update.
 - **Scalability:** Proof size grows logarithmically (log₂(N)) with the number of instructions, ensuring scalability as the instruction set expands.

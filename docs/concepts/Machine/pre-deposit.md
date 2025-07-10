@@ -9,7 +9,7 @@ Pre-deposits enable strategies to build baseline liquidity prior to launch. This
 
 Makina supports a standardised flow for pre-deposits through its Core Factory, providing a secure and efficient way for Operators to gather the liquidty required to launch new strategies.
 
-The Pre-Deposit Vault contract defines a pre-deposit asset, this can be any yield-bearing token which has an oracle feed against the accounting token and which can later be enabled as a base token. 
+The Pre-Deposit Vault contract defines a pre-deposit asset, this can be any yield-bearing token which has an oracle feed against the accounting token and which can later be enabled as a base token.
 
 The Pre-Deposit Vault contract specifies a pre-deposit asset, typically a yield-bearing token, that:
 

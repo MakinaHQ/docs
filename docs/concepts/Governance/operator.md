@@ -1,5 +1,5 @@
 ---
-id: 'operator'
+id: "operator"
 title: Operator
 sidebar_position: 4
 ---
@@ -18,14 +18,14 @@ At a high level, the Operator has the following responsibilities:
 The standard operating assumptions on Operators are:
 
 - Operators are incentivised to maximise performance through performance fees
-- Operators are competent and able to use the provided tooling to effectively 
+- Operators are competent and able to use the provided tooling to effectively
 
 Operators could have their private keys compromised or turn malicious, they could also have software bugs or make operational mistakes, therefore Makina limits trust assumptions on Operators.
 
 The Operator restrictions are:
 
 - Execution limited to only pre-approved Instructions
-- Swaps allowed only into pre-approved Base Tokens 
+- Swaps allowed only into pre-approved Base Tokens
 - Liquidity Bridging allowed only to pre-approved chains through pre-approved bridges
 - Max loss caps and cooldowns on any position management action
 - Max loss caps and cooldowns on any swap transactions

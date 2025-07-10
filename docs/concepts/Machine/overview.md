@@ -1,13 +1,14 @@
 ---
-id: 'machine-overview'
-title: 'Overview'
+id: "machine-overview"
+title: "Overview"
 sidebar_position: 0
 ---
+
 # Machine
 
-Makina defines the notion of a Machine as a strategy specific vault smart contract. The Machine is the main touch point for users. It handles Deposits and Withdraws, Share Price and Fee Calculations. 
+Makina defines the notion of a Machine as a strategy specific vault smart contract. The Machine is the main touch point for users. It handles Deposits and Withdraws, Share Price and Fee Calculations.
 
-Machines are always deployed on the Hub Chain, which can be chosen by the Operator, but for most case is Ethereum Mainnet. Each Machine defines a single Accounting Token which will be the only token that can be deposited and withdrawn by users, and which denominates the share price. 
+Machines are always deployed on the Hub Chain, which can be chosen by the Operator, but for most case is Ethereum Mainnet. Each Machine defines a single Accounting Token which will be the only token that can be deposited and withdrawn by users, and which denominates the share price.
 
 Each Machine issues a Machine Share Token, an asset who's price depends on the performance of the Machine's strategy. The Operator’s goal and incentive is to always maximise the long-term price appreciation of the Machine Share.
 

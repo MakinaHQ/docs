@@ -9,7 +9,7 @@ The Machine calculates a Share Price at which it mints and redeems Machine Share
 
 The Share Price reflects the total value — denominated in the Accounting Token — of all assets held by the Machine, including those in its Calibers and deployed positions. This represents the Machine’s total assets under management (AUM).
 
-The successful execution of the strategy by the Operator leads to value accrual and increase in AUM,  either through earned yield or appreciation of asset prices relative to the Accounting Token.
+The successful execution of the strategy by the Operator leads to value accrual and increase in AUM, either through earned yield or appreciation of asset prices relative to the Accounting Token.
 
 $$
 \text{SharePrice} = \dfrac{\text{AUM}}{\text{ShareSupply}}
@@ -25,4 +25,4 @@ $$
 
 The AUM number's from the Calibers are received by the Machine through the [Cross-Chain Accounting](../Cross-Chain/cross-chain-accounting) flow.
 
-Additionally, any pending bridge transfers that are not yet held by the Machine or its Calibers but are currently in transit are included in the AUM. This ensures that no value is lost during the bridging process, which can take up to several days. 
+Additionally, any pending bridge transfers that are not yet held by the Machine or its Calibers but are currently in transit are included in the AUM. This ensures that no value is lost during the bridging process, which can take up to several days.

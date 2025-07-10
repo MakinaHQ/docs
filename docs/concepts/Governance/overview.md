@@ -1,5 +1,5 @@
 ---
-id: 'governance-overview'
+id: "governance-overview"
 title: Overview
 sidebar_position: 0
 ---
