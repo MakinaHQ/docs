@@ -1,4 +1,9 @@
 {
     "extends": ["plugin:@docusaurus/recommended"],
-    "plugins": ["@docusaurus"]
-  }
+    "overrides": [
+        {
+            "files": ["docs/**/*.{js,jsx,ts,tsx,md,mdx}"],
+            "extends": ["plugin:mdx/recommended"]
+        }
+    ]
+}
