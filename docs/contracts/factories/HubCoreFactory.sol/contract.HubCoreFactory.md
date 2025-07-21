@@ -1,11 +1,12 @@
 # HubCoreFactory
+
 [Git Source](https://github.com/MakinaHQ/makina-core/blob/cf20345b13ba2a9921736997217bda8a8ae89044/src/factories/HubCoreFactory.sol)
 
 **Inherits:**
-AccessManagedUpgradeable, [CaliberFactory](/src/factories/CaliberFactory.sol/abstract.CaliberFactory.md), [BridgeAdapterFactory](/src/factories/BridgeAdapterFactory.sol/abstract.BridgeAdapterFactory.md), [IHubCoreFactory](/src/interfaces/IHubCoreFactory.sol/interface.IHubCoreFactory.md)
-
+AccessManagedUpgradeable, [CaliberFactory](/docs/contracts/factories/CaliberFactory.sol/abstract.CaliberFactory.md), [BridgeAdapterFactory](/docs/contracts/factories/BridgeAdapterFactory.sol/abstract.BridgeAdapterFactory.md), [IHubCoreFactory](/docs/contracts/interfaces/IHubCoreFactory.sol/interface.IHubCoreFactory.md)
 
 ## State Variables
+
 ### HubCoreFactoryStorageLocation
 
 ```solidity
@@ -13,10 +14,9 @@ bytes32 private constant HubCoreFactoryStorageLocation =
     0xa73526acc519facb543e3fac63cbe361155292db6c01a81eec358613ec9ee100;
 ```
 
-
 ## Functions
-### _getHubCoreFactoryStorage
 
+### \_getHubCoreFactoryStorage
 
 ```solidity
 function _getHubCoreFactoryStorage() internal pure returns (HubCoreFactoryStorage storage $);
@@ -24,13 +24,11 @@ function _getHubCoreFactoryStorage() internal pure returns (HubCoreFactoryStorag
 
 ### constructor
 
-
 ```solidity
 constructor(address _registry) MakinaContext(_registry);
 ```
 
 ### initialize
-
 
 ```solidity
 function initialize(address _initialAuthority) external initializer;
@@ -40,7 +38,6 @@ function initialize(address _initialAuthority) external initializer;
 
 Address => Whether this is a Machine instance deployed by this factory.
 
-
 ```solidity
 function isMachine(address machine) external view override returns (bool);
 ```
@@ -49,7 +46,6 @@ function isMachine(address machine) external view override returns (bool);
 
 Address => Whether this is a PreDepositVault instance deployed by this factory.
 
-
 ```solidity
 function isPreDepositVault(address preDepositVault) external view override returns (bool);
 ```
@@ -57,7 +53,6 @@ function isPreDepositVault(address preDepositVault) external view override retur
 ### createPreDepositVault
 
 Deploys a new PreDepositVault instance.
-
 
 ```solidity
 function createPreDepositVault(
@@ -68,27 +63,26 @@ function createPreDepositVault(
     string memory tokenSymbol
 ) external override restricted returns (address);
 ```
+
 **Parameters**
 
-|Name|Type|Description|
-|----|----|-----------|
-|`params`|`IPreDepositVault.PreDepositVaultInitParams`|The initialization parameters.|
-|`depositToken`|`address`|The address of the deposit token.|
-|`accountingToken`|`address`|The address of the accounting token.|
-|`tokenName`|`string`|The name of the share token.|
-|`tokenSymbol`|`string`|The symbol of the share token.|
+| Name              | Type                                         | Description                          |
+| ----------------- | -------------------------------------------- | ------------------------------------ |
+| `params`          | `IPreDepositVault.PreDepositVaultInitParams` | The initialization parameters.       |
+| `depositToken`    | `address`                                    | The address of the deposit token.    |
+| `accountingToken` | `address`                                    | The address of the accounting token. |
+| `tokenName`       | `string`                                     | The name of the share token.         |
+| `tokenSymbol`     | `string`                                     | The symbol of the share token.       |
 
 **Returns**
 
-|Name|Type|Description|
-|----|----|-----------|
-|`<none>`|`address`|preDepositVault The address of the deployed PreDepositVault instance.|
-
+| Name     | Type      | Description                                                           |
+| -------- | --------- | --------------------------------------------------------------------- |
+| `<none>` | `address` | preDepositVault The address of the deployed PreDepositVault instance. |
 
 ### createMachineFromPreDeposit
 
 Deploys a new Machine instance and migrates an existing PreDepositVault instance to it.
-
 
 ```solidity
 function createMachineFromPreDeposit(
@@ -98,26 +92,25 @@ function createMachineFromPreDeposit(
     address preDepositVault
 ) external override restricted returns (address);
 ```
+
 **Parameters**
 
-|Name|Type|Description|
-|----|----|-----------|
-|`mParams`|`IMachine.MachineInitParams`|The machine initialization parameters.|
-|`cParams`|`ICaliber.CaliberInitParams`|The caliber initialization parameters.|
-|`mgParams`|`IMakinaGovernable.MakinaGovernableInitParams`|The makina governable initialization parameters.|
-|`preDepositVault`|`address`|The address of the PreDepositVault instance to migrate.|
+| Name              | Type                                           | Description                                             |
+| ----------------- | ---------------------------------------------- | ------------------------------------------------------- |
+| `mParams`         | `IMachine.MachineInitParams`                   | The machine initialization parameters.                  |
+| `cParams`         | `ICaliber.CaliberInitParams`                   | The caliber initialization parameters.                  |
+| `mgParams`        | `IMakinaGovernable.MakinaGovernableInitParams` | The makina governable initialization parameters.        |
+| `preDepositVault` | `address`                                      | The address of the PreDepositVault instance to migrate. |
 
 **Returns**
 
-|Name|Type|Description|
-|----|----|-----------|
-|`<none>`|`address`|machine The address of the deployed Machine instance.|
-
+| Name     | Type      | Description                                           |
+| -------- | --------- | ----------------------------------------------------- |
+| `<none>` | `address` | machine The address of the deployed Machine instance. |
 
 ### createMachine
 
 Deploys a new Machine instance.
-
 
 ```solidity
 function createMachine(
@@ -129,60 +122,59 @@ function createMachine(
     string memory tokenSymbol
 ) external override restricted returns (address);
 ```
+
 **Parameters**
 
-|Name|Type|Description|
-|----|----|-----------|
-|`mParams`|`IMachine.MachineInitParams`|The machine initialization parameters.|
-|`cParams`|`ICaliber.CaliberInitParams`|The caliber initialization parameters.|
-|`mgParams`|`IMakinaGovernable.MakinaGovernableInitParams`|The makina governable initialization parameters.|
-|`accountingToken`|`address`|The address of the accounting token.|
-|`tokenName`|`string`|The name of the share token.|
-|`tokenSymbol`|`string`|The symbol of the share token.|
+| Name              | Type                                           | Description                                      |
+| ----------------- | ---------------------------------------------- | ------------------------------------------------ |
+| `mParams`         | `IMachine.MachineInitParams`                   | The machine initialization parameters.           |
+| `cParams`         | `ICaliber.CaliberInitParams`                   | The caliber initialization parameters.           |
+| `mgParams`        | `IMakinaGovernable.MakinaGovernableInitParams` | The makina governable initialization parameters. |
+| `accountingToken` | `address`                                      | The address of the accounting token.             |
+| `tokenName`       | `string`                                       | The name of the share token.                     |
+| `tokenSymbol`     | `string`                                       | The symbol of the share token.                   |
 
 **Returns**
 
-|Name|Type|Description|
-|----|----|-----------|
-|`<none>`|`address`|machine The address of the deployed Machine instance.|
-
+| Name     | Type      | Description                                           |
+| -------- | --------- | ----------------------------------------------------- |
+| `<none>` | `address` | machine The address of the deployed Machine instance. |
 
 ### createBridgeAdapter
 
 Deploys a bridge adapter instance.
 
-
 ```solidity
 function createBridgeAdapter(uint16 bridgeId, bytes calldata initData) external returns (address adapter);
 ```
+
 **Parameters**
 
-|Name|Type|Description|
-|----|----|-----------|
-|`bridgeId`|`uint16`|The ID of the bridge for which the adapter is being created.|
-|`initData`|`bytes`|The optional initialization data for the bridge adapter.|
+| Name       | Type     | Description                                                  |
+| ---------- | -------- | ------------------------------------------------------------ |
+| `bridgeId` | `uint16` | The ID of the bridge for which the adapter is being created. |
+| `initData` | `bytes`  | The optional initialization data for the bridge adapter.     |
 
 **Returns**
 
-|Name|Type|Description|
-|----|----|-----------|
-|`adapter`|`address`|The address of the deployed bridge adapter.|
+| Name      | Type      | Description                                 |
+| --------- | --------- | ------------------------------------------- |
+| `adapter` | `address` | The address of the deployed bridge adapter. |
 
+### \_createShareToken
 
-### _createShareToken
-
-*Deploys a machine share token.*
-
+_Deploys a machine share token._
 
 ```solidity
 function _createShareToken(string memory name, string memory symbol, address initialOwner) internal returns (address);
 ```
 
 ## Structs
+
 ### HubCoreFactoryStorage
+
 **Note:**
 storage-location: erc7201:makina.storage.HubCoreFactory
-
 
 ```solidity
 struct HubCoreFactoryStorage {
@@ -190,4 +182,3 @@ struct HubCoreFactoryStorage {
     mapping(address machine => bool isMachine) _isMachine;
 }
 ```
-

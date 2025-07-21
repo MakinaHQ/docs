@@ -1,21 +1,22 @@
 # IOracleRegistry
+
 [Git Source](https://github.com/MakinaHQ/makina-core/blob/cf20345b13ba2a9921736997217bda8a8ae89044/src/interfaces/IOracleRegistry.sol)
 
 An aggregator of Chainlink price feeds that prices tokens in a reference currency (e.g., USD) using up to two feeds.
 If a direct feed between a base token and the reference currency does not exists, it combines two feeds to compute the price.
 Example:
 To price Token A in Token B:
+
 - If a feed for Token A -> Reference Currency exists, the registry uses that feed.
 - If Token B lacks a direct feed to the Reference Currency, but feeds for Token B -> Intermediate Token and
-Intermediate Token -> Reference Currency exist, the registry combines these feeds to derive the price.
+  Intermediate Token -> Reference Currency exist, the registry combines these feeds to derive the price.
 - Finally, the price Token A -> Token B is calculated using both tokens individual prices in the reference currency.
 
-
 ## Functions
+
 ### getFeedStaleThreshold
 
 Feed => Staleness threshold in seconds
-
 
 ```solidity
 function getFeedStaleThreshold(address feed) external view returns (uint256);
@@ -25,7 +26,6 @@ function getFeedStaleThreshold(address feed) external view returns (uint256);
 
 Token => Is feed route registered for the token
 
-
 ```solidity
 function isFeedRouteRegistered(address token) external view returns (bool);
 ```
@@ -34,54 +34,51 @@ function isFeedRouteRegistered(address token) external view returns (bool);
 
 Gets the price feed route for a given token.
 
-
 ```solidity
 function getFeedRoute(address token) external view returns (address, address);
 ```
+
 **Parameters**
 
-|Name|Type|Description|
-|----|----|-----------|
-|`token`|`address`|The address of the token for which the price feed route is requested.|
+| Name    | Type      | Description                                                           |
+| ------- | --------- | --------------------------------------------------------------------- |
+| `token` | `address` | The address of the token for which the price feed route is requested. |
 
 **Returns**
 
-|Name|Type|Description|
-|----|----|-----------|
-|`<none>`|`address`|feed1 The address of the first price feed.|
-|`<none>`|`address`|feed2 The address of the optional second price feed.|
-
+| Name     | Type      | Description                                          |
+| -------- | --------- | ---------------------------------------------------- |
+| `<none>` | `address` | feed1 The address of the first price feed.           |
+| `<none>` | `address` | feed2 The address of the optional second price feed. |
 
 ### getPrice
 
 Returns the price of one unit of baseToken in terms of quoteToken.
 
-
 ```solidity
 function getPrice(address baseToken, address quoteToken) external view returns (uint256);
 ```
+
 **Parameters**
 
-|Name|Type|Description|
-|----|----|-----------|
-|`baseToken`|`address`|The address of the token for which the price is requested.|
-|`quoteToken`|`address`|The address of the token in which the price is quoted.|
+| Name         | Type      | Description                                                |
+| ------------ | --------- | ---------------------------------------------------------- |
+| `baseToken`  | `address` | The address of the token for which the price is requested. |
+| `quoteToken` | `address` | The address of the token in which the price is quoted.     |
 
 **Returns**
 
-|Name|Type|Description|
-|----|----|-----------|
-|`<none>`|`uint256`|price The price of baseToken denominated in quoteToken (expressed in quoteToken decimals).|
-
+| Name     | Type      | Description                                                                                |
+| -------- | --------- | ------------------------------------------------------------------------------------------ |
+| `<none>` | `uint256` | price The price of baseToken denominated in quoteToken (expressed in quoteToken decimals). |
 
 ### setFeedRoute
 
 Sets the price feed route for a given token.
 
-*Both feeds, if set, must be Chainlink-interface-compliant.
+_Both feeds, if set, must be Chainlink-interface-compliant.
 The combination of feed1 and feed2 must be able to price the token in the reference currency.
-If feed2 is set to address(0), the token price in the reference currency is assumed to be returned by feed1.*
-
+If feed2 is set to address(0), the token price in the reference currency is assumed to be returned by feed1._
 
 ```solidity
 function setFeedRoute(
@@ -92,34 +89,34 @@ function setFeedRoute(
     uint256 stalenessThreshold2
 ) external;
 ```
+
 **Parameters**
 
-|Name|Type|Description|
-|----|----|-----------|
-|`token`|`address`|The address of the token for which the price feed route is set.|
-|`feed1`|`address`|The address of the first price feed.|
-|`stalenessThreshold1`|`uint256`|The staleness threshold for the first price feed.|
-|`feed2`|`address`|The address of the second price feed. Can be set to address(0).|
-|`stalenessThreshold2`|`uint256`|The staleness threshold for the second price feed. Ignored if feed2 is address(0).|
-
+| Name                  | Type      | Description                                                                        |
+| --------------------- | --------- | ---------------------------------------------------------------------------------- |
+| `token`               | `address` | The address of the token for which the price feed route is set.                    |
+| `feed1`               | `address` | The address of the first price feed.                                               |
+| `stalenessThreshold1` | `uint256` | The staleness threshold for the first price feed.                                  |
+| `feed2`               | `address` | The address of the second price feed. Can be set to address(0).                    |
+| `stalenessThreshold2` | `uint256` | The staleness threshold for the second price feed. Ignored if feed2 is address(0). |
 
 ### setFeedStaleThreshold
 
 Sets the price staleness threshold for a given feed.
 
-
 ```solidity
 function setFeedStaleThreshold(address feed, uint256 threshold) external;
 ```
+
 **Parameters**
 
-|Name|Type|Description|
-|----|----|-----------|
-|`feed`|`address`|The address of the price feed.|
-|`threshold`|`uint256`|The value of staleness threshold.|
-
+| Name        | Type      | Description                       |
+| ----------- | --------- | --------------------------------- |
+| `feed`      | `address` | The address of the price feed.    |
+| `threshold` | `uint256` | The value of staleness threshold. |
 
 ## Events
+
 ### FeedRouteRegistered
 
 ```solidity
@@ -133,6 +130,7 @@ event FeedStaleThresholdChanged(address indexed feed, uint256 oldThreshold, uint
 ```
 
 ## Structs
+
 ### FeedRoute
 
 ```solidity
@@ -141,4 +139,3 @@ struct FeedRoute {
     address feed2;
 }
 ```
-
