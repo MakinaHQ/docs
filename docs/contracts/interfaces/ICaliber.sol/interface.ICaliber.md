@@ -1,6 +1,6 @@
 # ICaliber
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/238e21a4556f5ac790697eda30b32c943897a6d7docs/contracts/interfaces/ICaliber.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/cf20345b13ba2a9921736997217bda8a8ae89044/src/interfaces/ICaliber.sol)
 
 ## Functions
 
@@ -259,17 +259,25 @@ function accountForPosition(Instruction calldata instruction) external returns (
 
 Accounts for a batch of positions.
 
-_Convenience function to account for multiple positions in a single transaction._
-
 ```solidity
-function accountForPositionBatch(Instruction[] calldata instructions) external;
+function accountForPositionBatch(Instruction[] calldata instructions, uint256[] calldata groupIds)
+    external
+    returns (uint256[] memory values, int256[] memory changes);
 ```
 
 **Parameters**
 
-| Name           | Type            | Description                           |
-| -------------- | --------------- | ------------------------------------- |
-| `instructions` | `Instruction[]` | The array of accounting instructions. |
+| Name           | Type            | Description                                                                                                                                                                                                                                                            |
+| -------------- | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `instructions` | `Instruction[]` | The array of accounting instructions.                                                                                                                                                                                                                                  |
+| `groupIds`     | `uint256[]`     | The array of position group IDs. An accounting instruction must be provided for every open position in each specified group. If an instruction's groupId corresponds to a group of open positions of size greater than 1, the group ID must be included in this array. |
+
+**Returns**
+
+| Name      | Type        | Description                         |
+| --------- | ----------- | ----------------------------------- |
+| `values`  | `uint256[]` | The new position values.            |
+| `changes` | `int256[]`  | The changes in the position values. |
 
 ### managePosition
 
@@ -328,7 +336,8 @@ _Convenience function to manage multiple positions in a single transaction._
 
 ```solidity
 function managePositionBatch(Instruction[] calldata mgmtInstructions, Instruction[] calldata acctInstructions)
-    external;
+    external
+    returns (uint256[] memory values, int256[] memory changes);
 ```
 
 **Parameters**
@@ -337,6 +346,13 @@ function managePositionBatch(Instruction[] calldata mgmtInstructions, Instructio
 | ------------------ | --------------- | ------------------------------------- |
 | `mgmtInstructions` | `Instruction[]` | The array of management instructions. |
 | `acctInstructions` | `Instruction[]` | The array of accounting instructions. |
+
+**Returns**
+
+| Name      | Type        | Description                         |
+| --------- | ----------- | ----------------------------------- |
+| `values`  | `uint256[]` | The new position values.            |
+| `changes` | `int256[]`  | The changes in the position values. |
 
 ### manageFlashLoan
 
@@ -398,6 +414,21 @@ function transferToHubMachine(address token, uint256 amount, bytes calldata data
 | `token`  | `address` | The address of the token to transfer.                                                                 |
 | `amount` | `uint256` | The amount of tokens to transfer.                                                                     |
 | `data`   | `bytes`   | ABI-encoded parameters required for bridge-related transfers. Ignored when called from a hub caliber. |
+
+### notifyIncomingTransfer
+
+Instructs the Caliber to pull the specified token amount from the calling hub machine endpoint.
+
+```solidity
+function notifyIncomingTransfer(address token, uint256 amount) external;
+```
+
+**Parameters**
+
+| Name     | Type      | Description                                 |
+| -------- | --------- | ------------------------------------------- |
+| `token`  | `address` | The address of the token being transferred. |
+| `amount` | `uint256` | The amount of tokens being transferred.     |
 
 ### setPositionStaleThreshold
 
@@ -558,6 +589,12 @@ event BaseTokenRemoved(address indexed token);
 event CooldownDurationChanged(uint256 indexed oldDuration, uint256 indexed newDuration);
 ```
 
+### IncomingTransfer
+
+```solidity
+event IncomingTransfer(address indexed token, uint256 amount);
+```
+
 ### InstrRootGuardianAdded
 
 ```solidity
@@ -678,6 +715,7 @@ Instruction parameters.
 struct Instruction {
     uint256 positionId;
     bool isDebt;
+    uint256 groupId;
     InstructionType instructionType;
     address[] affectedTokens;
     bytes32[] commands;
@@ -689,16 +727,17 @@ struct Instruction {
 
 **Properties**
 
-| Name              | Type              | Description                         |
-| ----------------- | ----------------- | ----------------------------------- |
-| `positionId`      | `uint256`         | The ID of the position concerned.   |
-| `isDebt`          | `bool`            | Whether the position is a debt.     |
-| `instructionType` | `InstructionType` | The type of the instruction.        |
-| `affectedTokens`  | `address[]`       | The array of affected tokens.       |
-| `commands`        | `bytes32[]`       | The array of commands.              |
-| `state`           | `bytes[]`         | The array of state.                 |
-| `stateBitmap`     | `uint128`         | The state bitmap.                   |
-| `merkleProof`     | `bytes32[]`       | The array of Merkle proof elements. |
+| Name              | Type              | Description                                                                                                                               |
+| ----------------- | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `positionId`      | `uint256`         | The ID of the involved position.                                                                                                          |
+| `isDebt`          | `bool`            | Whether the position is a debt.                                                                                                           |
+| `groupId`         | `uint256`         | The ID of the position accounting group. Set to 0 if the instruction is not of type ACCOUNTING, or if the involved position is ungrouped. |
+| `instructionType` | `InstructionType` | The type of the instruction.                                                                                                              |
+| `affectedTokens`  | `address[]`       | The array of affected tokens.                                                                                                             |
+| `commands`        | `bytes32[]`       | The array of commands.                                                                                                                    |
+| `state`           | `bytes[]`         | The array of state.                                                                                                                       |
+| `stateBitmap`     | `uint128`         | The state bitmap.                                                                                                                         |
+| `merkleProof`     | `bytes32[]`       | The array of Merkle proof elements.                                                                                                       |
 
 ### Position
 

@@ -1,9 +1,9 @@
 # CaliberMailbox
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/238e21a4556f5ac790697eda30b32c943897a6d7docs/contracts/caliber/CaliberMailbox.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/cf20345b13ba2a9921736997217bda8a8ae89044/src/caliber/CaliberMailbox.sol)
 
 **Inherits:**
-[MakinaGovernable](docs/contracts/utils/MakinaGovernable.sol/abstract.MakinaGovernable.md), ReentrancyGuardUpgradeable, [BridgeController](docs/contracts/bridge/controller/BridgeController.sol/abstract.BridgeController.md), [ICaliberMailbox](docs/contracts/interfaces/ICaliberMailbox.sol/interface.ICaliberMailbox.md)
+[MakinaGovernable](/docs/contracts/utils/MakinaGovernable.sol/abstract.MakinaGovernable.md), ReentrancyGuardUpgradeable, [BridgeController](/docs/contracts/bridge/controller/BridgeController.sol/abstract.BridgeController.md), [ICaliberMailbox](/docs/contracts/interfaces/ICaliberMailbox.sol/interface.ICaliberMailbox.md)
 
 ## State Variables
 
@@ -122,7 +122,7 @@ function sendOutBridgeTransfer(uint16 bridgeId, uint256 transferId, bytes callda
 Registers a message hash as authorized for an incoming bridge transfer.
 
 ```solidity
-function authorizeInBridgeTransfer(uint16 bridgeId, bytes32 messageHash) external notRecoveryMode onlyOperator;
+function authorizeInBridgeTransfer(uint16 bridgeId, bytes32 messageHash) external notRecoveryMode onlyMechanic;
 ```
 
 **Parameters**

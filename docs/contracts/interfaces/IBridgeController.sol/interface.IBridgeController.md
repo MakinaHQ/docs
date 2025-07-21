@@ -1,6 +1,6 @@
 # IBridgeController
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/238e21a4556f5ac790697eda30b32c943897a6d7docs/contracts/interfaces/IBridgeController.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/cf20345b13ba2a9921736997217bda8a8ae89044/src/interfaces/IBridgeController.sol)
 
 ## Functions
 
@@ -180,7 +180,7 @@ event BridgeAdapterCreated(uint16 indexed bridgeId, address indexed adapter);
 
 ```solidity
 event MaxBridgeLossBpsChanged(
-    uint16 indexed bridgeId, uint256 indexed OldMaxBridgeLossBps, uint256 indexed newMaxBridgeLossBps
+    uint16 indexed bridgeId, uint256 indexed oldMaxBridgeLossBps, uint256 indexed newMaxBridgeLossBps
 );
 ```
 

@@ -1,9 +1,9 @@
 # SwapModule
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/238e21a4556f5ac790697eda30b32c943897a6d7docs/contracts/swap/SwapModule.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/cf20345b13ba2a9921736997217bda8a8ae89044/src/swap/SwapModule.sol)
 
 **Inherits:**
-AccessManagedUpgradeable, [MakinaContext](docs/contracts/utils/MakinaContext.sol/abstract.MakinaContext.md), [ISwapModule](docs/contracts/interfaces/ISwapModule.sol/interface.ISwapModule.md)
+AccessManagedUpgradeable, [MakinaContext](/docs/contracts/utils/MakinaContext.sol/abstract.MakinaContext.md), [ISwapModule](/docs/contracts/interfaces/ISwapModule.sol/interface.ISwapModule.md)
 
 ## State Variables
 

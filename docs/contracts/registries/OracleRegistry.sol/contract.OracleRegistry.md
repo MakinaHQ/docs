@@ -1,9 +1,9 @@
 # OracleRegistry
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/238e21a4556f5ac790697eda30b32c943897a6d7docs/contracts/registries/OracleRegistry.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/cf20345b13ba2a9921736997217bda8a8ae89044/src/registries/OracleRegistry.sol)
 
 **Inherits:**
-AccessManagedUpgradeable, [IOracleRegistry](docs/contracts/interfaces/IOracleRegistry.sol/interface.IOracleRegistry.md)
+AccessManagedUpgradeable, [IOracleRegistry](/docs/contracts/interfaces/IOracleRegistry.sol/interface.IOracleRegistry.md)
 
 ## State Variables
 
@@ -11,7 +11,7 @@ AccessManagedUpgradeable, [IOracleRegistry](docs/contracts/interfaces/IOracleReg
 
 ```solidity
 bytes32 private constant OracleRegistryStorageLocation =
-    0x1fbdc0014f4c06b2b0ff2477b8b323f2857bce3cafc75fb45bc5110cee080300;
+    0x49c7e86ce354ebbf25fac336f41752d815bcb13797a06a09b85fd6c0c68ea000;
 ```
 
 ## Functions

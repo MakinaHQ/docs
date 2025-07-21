@@ -9,9 +9,9 @@ sidebar_position: 1
 
 Protocol-wide permissions are covered by roles, managed through an Access Manager contract.
 
-- **_MAKINA_ADMIN_ROLE_**: Grants permission to assign or update the entities responsible for managing strategies.
-- **_DEPLOYER_ROLE_**: Grants permission to deploy new strategies to the protocol.
-- **_MAINTAINER_ROLE_**: Grants permission to configure and maintain core contracts, including registries.
+- **_STRATEGY_DEPLOYER_ROLE_**: Grants permission to deploy new strategies to the protocol.
+- **_STRATEGY_CONFIG_ROLE_**: Grants permission to assign or update the entities responsible for managing strategies.
+- **_INFRA_CONFIG_ROLE_**: Grants permission to configure and maintain shared core contracts, such as registries.
 
 ## Per-Strategy Permissions
 

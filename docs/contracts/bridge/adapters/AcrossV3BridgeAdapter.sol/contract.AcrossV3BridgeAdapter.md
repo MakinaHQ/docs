@@ -1,9 +1,9 @@
 # AcrossV3BridgeAdapter
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/238e21a4556f5ac790697eda30b32c943897a6d7docs/contracts/bridge/adapters/AcrossV3BridgeAdapter.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/cf20345b13ba2a9921736997217bda8a8ae89044/src/bridge/adapters/AcrossV3BridgeAdapter.sol)
 
 **Inherits:**
-[BridgeAdapter](docs/contracts/bridge/adapters/BridgeAdapter.sol/abstract.BridgeAdapter.md), [IAcrossV3MessageHandler](docs/contracts/interfaces/IAcrossV3MessageHandler.sol/interface.IAcrossV3MessageHandler.md)
+[BridgeAdapter](/docs/contracts/bridge/adapters/BridgeAdapter.sol/abstract.BridgeAdapter.md), [IAcrossV3MessageHandler](/docs/contracts/interfaces/IAcrossV3MessageHandler.sol/interface.IAcrossV3MessageHandler.md)
 
 ## State Variables
 
@@ -69,7 +69,7 @@ function cancelOutBridgeTransfer(uint256 transferId) external override nonReentr
 
 Returns the default amount that must be transferred to the adapter to cancel an outgoing bridge transfer.
 
-_If the transfer has not yet been sent or if the full amount was refunded by the external bridge, returns 0._
+_If the transfer has not yet been sent, or if the full amount was refunded to this contract by the external bridge, returns 0._
 
 ```solidity
 function outBridgeTransferCancelDefault(uint256 transferId) public view returns (uint256);

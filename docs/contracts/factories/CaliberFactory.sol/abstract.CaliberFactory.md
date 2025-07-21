@@ -1,9 +1,9 @@
 # CaliberFactory
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/238e21a4556f5ac790697eda30b32c943897a6d7docs/contracts/factories/CaliberFactory.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/cf20345b13ba2a9921736997217bda8a8ae89044/src/factories/CaliberFactory.sol)
 
 **Inherits:**
-[MakinaContext](docs/contracts/utils/MakinaContext.sol/abstract.MakinaContext.md), [ICaliberFactory](docs/contracts/interfaces/ICaliberFactory.sol/interface.ICaliberFactory.md)
+[MakinaContext](/docs/contracts/utils/MakinaContext.sol/abstract.MakinaContext.md), [ICaliberFactory](/docs/contracts/interfaces/ICaliberFactory.sol/interface.ICaliberFactory.md)
 
 ## State Variables
 

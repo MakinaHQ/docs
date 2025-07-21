@@ -1,9 +1,9 @@
 # HubCoreRegistry
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/238e21a4556f5ac790697eda30b32c943897a6d7docs/contracts/registries/HubCoreRegistry.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/cf20345b13ba2a9921736997217bda8a8ae89044/src/registries/HubCoreRegistry.sol)
 
 **Inherits:**
-[CoreRegistry](docs/contracts/registries/CoreRegistry.sol/abstract.CoreRegistry.md), [IHubCoreRegistry](docs/contracts/interfaces/IHubCoreRegistry.sol/interface.IHubCoreRegistry.md)
+[CoreRegistry](/docs/contracts/registries/CoreRegistry.sol/abstract.CoreRegistry.md), [IHubCoreRegistry](/docs/contracts/interfaces/IHubCoreRegistry.sol/interface.IHubCoreRegistry.md)
 
 ## State Variables
 

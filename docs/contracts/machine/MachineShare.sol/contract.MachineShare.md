@@ -1,9 +1,9 @@
 # MachineShare
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/238e21a4556f5ac790697eda30b32c943897a6d7docs/contracts/machine/MachineShare.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/cf20345b13ba2a9921736997217bda8a8ae89044/src/machine/MachineShare.sol)
 
 **Inherits:**
-ERC20, Ownable2Step, [IMachineShare](docs/contracts/interfaces/IMachineShare.sol/interface.IMachineShare.md)
+ERC20, Ownable2Step, [IMachineShare](/docs/contracts/interfaces/IMachineShare.sol/interface.IMachineShare.md)
 
 ## Functions
 

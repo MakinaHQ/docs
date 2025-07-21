@@ -1,9 +1,9 @@
 # SpokeCoreFactory
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/238e21a4556f5ac790697eda30b32c943897a6d7docs/contracts/factories/SpokeCoreFactory.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/cf20345b13ba2a9921736997217bda8a8ae89044/src/factories/SpokeCoreFactory.sol)
 
 **Inherits:**
-AccessManagedUpgradeable, [CaliberFactory](docs/contracts/factories/CaliberFactory.sol/abstract.CaliberFactory.md), [BridgeAdapterFactory](docs/contracts/factories/BridgeAdapterFactory.sol/abstract.BridgeAdapterFactory.md), [ISpokeCoreFactory](docs/contracts/interfaces/ISpokeCoreFactory.sol/interface.ISpokeCoreFactory.md)
+AccessManagedUpgradeable, [CaliberFactory](/docs/contracts/factories/CaliberFactory.sol/abstract.CaliberFactory.md), [BridgeAdapterFactory](/docs/contracts/factories/BridgeAdapterFactory.sol/abstract.BridgeAdapterFactory.md), [ISpokeCoreFactory](/docs/contracts/interfaces/ISpokeCoreFactory.sol/interface.ISpokeCoreFactory.md)
 
 ## State Variables
 

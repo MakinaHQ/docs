@@ -1,6 +1,6 @@
 # IBridgeAdapter
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/238e21a4556f5ac790697eda30b32c943897a6d7docs/contracts/interfaces/IBridgeAdapter.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/cf20345b13ba2a9921736997217bda8a8ae89044/src/interfaces/IBridgeAdapter.sol)
 
 ## Functions
 
@@ -122,9 +122,11 @@ function sendOutBridgeTransfer(uint256 transferId, bytes calldata data) external
 
 Returns the default amount that must be transferred to the adapter to cancel an outgoing bridge transfer.
 
-_If the transfer has not yet been sent or if the full amount was refunded by the external bridge, returns 0._
+_If the transfer has not yet been sent, or if the full amount was refunded to this contract by the external bridge, returns 0._
 
-_If the bridge retains a fee upon cancellation, the returned value reflects that fee._
+_If the bridge retains a fee upon cancellation and only a partial refund was received, the returned value reflects that fee._
+
+_In all other cases (e.g. including pending refunds or successful bridge transfers), returns the full amount of the transfer._
 
 ```solidity
 function outBridgeTransferCancelDefault(uint256 transferId) external view returns (uint256);

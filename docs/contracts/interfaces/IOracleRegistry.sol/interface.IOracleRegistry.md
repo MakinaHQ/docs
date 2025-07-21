@@ -1,6 +1,6 @@
 # IOracleRegistry
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/238e21a4556f5ac790697eda30b32c943897a6d7docs/contracts/interfaces/IOracleRegistry.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/cf20345b13ba2a9921736997217bda8a8ae89044/src/interfaces/IOracleRegistry.sol)
 
 An aggregator of Chainlink price feeds that prices tokens in a reference currency (e.g., USD) using up to two feeds.
 If a direct feed between a base token and the reference currency does not exists, it combines two feeds to compute the price.

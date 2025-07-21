@@ -1,6 +1,6 @@
 # ICoreRegistry
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/238e21a4556f5ac790697eda30b32c943897a6d7docs/contracts/interfaces/ICoreRegistry.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/cf20345b13ba2a9921736997217bda8a8ae89044/src/interfaces/ICoreRegistry.sol)
 
 ## Functions
 
@@ -121,14 +121,14 @@ function setSwapModule(address _swapModule) external;
 Sets the flashLoan module address.
 
 ```solidity
-function setFlashLoanModule(address newFlashLoanModule) external;
+function setFlashLoanModule(address _flashLoanModule) external;
 ```
 
 **Parameters**
 
-| Name                 | Type      | Description                   |
-| -------------------- | --------- | ----------------------------- |
-| `newFlashLoanModule` | `address` | The flashLoan module address. |
+| Name               | Type      | Description                   |
+| ------------------ | --------- | ----------------------------- |
+| `_flashLoanModule` | `address` | The flashLoan module address. |
 
 ### setCaliberBeacon
 

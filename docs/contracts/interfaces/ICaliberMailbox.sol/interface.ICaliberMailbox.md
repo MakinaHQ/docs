@@ -1,9 +1,9 @@
 # ICaliberMailbox
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/238e21a4556f5ac790697eda30b32c943897a6d7docs/contracts/interfaces/ICaliberMailbox.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/cf20345b13ba2a9921736997217bda8a8ae89044/src/interfaces/ICaliberMailbox.sol)
 
 **Inherits:**
-[IMachineEndpoint](docs/contracts/interfaces/IMachineEndpoint.sol/interface.IMachineEndpoint.md)
+[IMachineEndpoint](/docs/contracts/interfaces/IMachineEndpoint.sol/interface.IMachineEndpoint.md)
 
 ## Functions
 
@@ -127,10 +127,10 @@ struct SpokeCaliberAccountingData {
 
 **Properties**
 
-| Name         | Type      | Description                                                                          |
-| ------------ | --------- | ------------------------------------------------------------------------------------ |
-| `netAum`     | `uint256` | The net assets under management.                                                     |
-| `positions`  | `bytes[]` | The list of positions of the caliber, each encoded as abi.encode(positionId, value). |
-| `baseTokens` | `bytes[]` | The list of base tokens of the caliber, each encoded as abi.encode(token, value).    |
-| `bridgesIn`  | `bytes[]` | The list of incoming bridge amounts, each encoded as abi.encode(token, amount).      |
-| `bridgesOut` | `bytes[]` | The list of outgoing bridge amounts, each encoded as abi.encode(token, amount).      |
+| Name         | Type      | Description                                                                                  |
+| ------------ | --------- | -------------------------------------------------------------------------------------------- |
+| `netAum`     | `uint256` | The net assets under management.                                                             |
+| `positions`  | `bytes[]` | The list of positions of the caliber, each encoded as abi.encode(positionId, value, isDebt). |
+| `baseTokens` | `bytes[]` | The list of base tokens of the caliber, each encoded as abi.encode(token, value).            |
+| `bridgesIn`  | `bytes[]` | The list of incoming bridge amounts, each encoded as abi.encode(token, amount).              |
+| `bridgesOut` | `bytes[]` | The list of outgoing bridge amounts, each encoded as abi.encode(token, amount).              |

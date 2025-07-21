@@ -1,9 +1,9 @@
 # Machine
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/238e21a4556f5ac790697eda30b32c943897a6d7docs/contracts/machine/Machine.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/cf20345b13ba2a9921736997217bda8a8ae89044/src/machine/Machine.sol)
 
 **Inherits:**
-[MakinaGovernable](docs/contracts/utils/MakinaGovernable.sol/abstract.MakinaGovernable.md), [BridgeController](docs/contracts/bridge/controller/BridgeController.sol/abstract.BridgeController.md), ReentrancyGuardUpgradeable, [IMachine](docs/contracts/interfaces/IMachine.sol/interface.IMachine.md)
+[MakinaGovernable](/docs/contracts/utils/MakinaGovernable.sol/abstract.MakinaGovernable.md), [BridgeController](/docs/contracts/bridge/controller/BridgeController.sol/abstract.BridgeController.md), ReentrancyGuardUpgradeable, [IMachine](/docs/contracts/interfaces/IMachine.sol/interface.IMachine.md)
 
 ## State Variables
 
@@ -286,7 +286,7 @@ function manageTransfer(address token, uint256 amount, bytes calldata data) exte
 Initiates a token transfers to the hub caliber.
 
 ```solidity
-function transferToHubCaliber(address token, uint256 amount) external override notRecoveryMode;
+function transferToHubCaliber(address token, uint256 amount) external override notRecoveryMode onlyMechanic;
 ```
 
 **Parameters**
@@ -307,7 +307,7 @@ function transferToSpokeCaliber(
     address token,
     uint256 amount,
     uint256 minOutputAmount
-) external override notRecoveryMode nonReentrant;
+) external override nonReentrant notRecoveryMode onlyMechanic;
 ```
 
 **Parameters**
@@ -328,7 +328,8 @@ Executes a scheduled outgoing bridge transfer.
 function sendOutBridgeTransfer(uint16 bridgeId, uint256 transferId, bytes calldata data)
     external
     override
-    notRecoveryMode;
+    notRecoveryMode
+    onlyMechanic;
 ```
 
 **Parameters**
@@ -389,7 +390,7 @@ function cancelOutBridgeTransfer(uint16 bridgeId, uint256 transferId) external o
 Updates the total AUM of the machine.
 
 ```solidity
-function updateTotalAum() public override nonReentrant notRecoveryMode returns (uint256);
+function updateTotalAum() external override nonReentrant notRecoveryMode returns (uint256);
 ```
 
 **Returns**
@@ -567,7 +568,7 @@ function setCaliberStaleThreshold(uint256 newCaliberStaleThreshold) external ove
 
 ### setMaxFeeAccrualRate
 
-Sets the maximum fee accrual rate in basis points.
+Sets the maximum fee accrual rate.
 
 ```solidity
 function setMaxFeeAccrualRate(uint256 newMaxFeeAccrualRate) external override restricted;
@@ -575,9 +576,9 @@ function setMaxFeeAccrualRate(uint256 newMaxFeeAccrualRate) external override re
 
 **Parameters**
 
-| Name                   | Type      | Description                                       |
-| ---------------------- | --------- | ------------------------------------------------- |
-| `newMaxFeeAccrualRate` | `uint256` | The new maximum fee accrual rate in basis points. |
+| Name                   | Type      | Description                                         |
+| ---------------------- | --------- | --------------------------------------------------- |
+| `newMaxFeeAccrualRate` | `uint256` | The new maximum fee accrual rate in wei per second. |
 
 ### setFeeMintCooldown
 

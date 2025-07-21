@@ -1,9 +1,9 @@
 # Caliber
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/238e21a4556f5ac790697eda30b32c943897a6d7docs/contracts/caliber/Caliber.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/cf20345b13ba2a9921736997217bda8a8ae89044/src/caliber/Caliber.sol)
 
 **Inherits:**
-[MakinaContext](docs/contracts/utils/MakinaContext.sol/abstract.MakinaContext.md), AccessManagedUpgradeable, ReentrancyGuardUpgradeable, [ICaliber](docs/contracts/interfaces/ICaliber.sol/interface.ICaliber.md)
+[MakinaContext](/docs/contracts/utils/MakinaContext.sol/abstract.MakinaContext.md), AccessManagedUpgradeable, ReentrancyGuardUpgradeable, ERC721HolderUpgradeable, ERC1155HolderUpgradeable, [ICaliber](/docs/contracts/interfaces/ICaliber.sol/interface.ICaliber.md)
 
 ## State Variables
 
@@ -300,7 +300,11 @@ Accounts for a position.
 _If the position value goes to zero, it is closed._
 
 ```solidity
-function accountForPosition(Instruction calldata instruction) external override returns (uint256, int256);
+function accountForPosition(Instruction calldata instruction)
+    external
+    override
+    nonReentrant
+    returns (uint256, int256);
 ```
 
 **Parameters**
@@ -320,17 +324,27 @@ function accountForPosition(Instruction calldata instruction) external override 
 
 Accounts for a batch of positions.
 
-_Convenience function to account for multiple positions in a single transaction._
-
 ```solidity
-function accountForPositionBatch(Instruction[] calldata instructions) external override;
+function accountForPositionBatch(Instruction[] calldata instructions, uint256[] calldata groupIds)
+    external
+    override
+    nonReentrant
+    returns (uint256[] memory, int256[] memory);
 ```
 
 **Parameters**
 
-| Name           | Type            | Description                           |
-| -------------- | --------------- | ------------------------------------- |
-| `instructions` | `Instruction[]` | The array of accounting instructions. |
+| Name           | Type            | Description                                                                                                                                                                                                                                                            |
+| -------------- | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `instructions` | `Instruction[]` | The array of accounting instructions.                                                                                                                                                                                                                                  |
+| `groupIds`     | `uint256[]`     | The array of position group IDs. An accounting instruction must be provided for every open position in each specified group. If an instruction's groupId corresponds to a group of open positions of size greater than 1, the group ID must be included in this array. |
+
+**Returns**
+
+| Name     | Type        | Description                                 |
+| -------- | ----------- | ------------------------------------------- |
+| `<none>` | `uint256[]` | values The new position values.             |
+| `<none>` | `int256[]`  | changes The changes in the position values. |
 
 ### managePosition
 
@@ -343,7 +357,7 @@ Manages a position's state through paired management and accounting instructions
 
 ```solidity
 function managePosition(Instruction calldata mgmtInstruction, Instruction calldata acctInstruction)
-    public
+    external
     override
     nonReentrant
     onlyOperator
@@ -375,7 +389,8 @@ function managePositionBatch(Instruction[] calldata mgmtInstructions, Instructio
     external
     override
     nonReentrant
-    onlyOperator;
+    onlyOperator
+    returns (uint256[] memory, int256[] memory);
 ```
 
 **Parameters**
@@ -384,6 +399,13 @@ function managePositionBatch(Instruction[] calldata mgmtInstructions, Instructio
 | ------------------ | --------------- | ------------------------------------- |
 | `mgmtInstructions` | `Instruction[]` | The array of management instructions. |
 | `acctInstructions` | `Instruction[]` | The array of accounting instructions. |
+
+**Returns**
+
+| Name     | Type        | Description                                 |
+| -------- | ----------- | ------------------------------------------- |
+| `<none>` | `uint256[]` | values The new position values.             |
+| `<none>` | `int256[]`  | changes The changes in the position values. |
 
 ### manageFlashLoan
 
@@ -449,6 +471,21 @@ function transferToHubMachine(address token, uint256 amount, bytes calldata data
 | `token`  | `address` | The address of the token to transfer.                                                                 |
 | `amount` | `uint256` | The amount of tokens to transfer.                                                                     |
 | `data`   | `bytes`   | ABI-encoded parameters required for bridge-related transfers. Ignored when called from a hub caliber. |
+
+### notifyIncomingTransfer
+
+Instructs the Caliber to pull the specified token amount from the calling hub machine endpoint.
+
+```solidity
+function notifyIncomingTransfer(address token, uint256 amount) external override nonReentrant;
+```
+
+**Parameters**
+
+| Name     | Type      | Description                                 |
+| -------- | --------- | ------------------------------------------- |
+| `token`  | `address` | The address of the token being transferred. |
+| `amount` | `uint256` | The amount of tokens being transferred.     |
 
 ### setPositionStaleThreshold
 
@@ -630,6 +667,22 @@ _Decodes the output state of an accounting instruction into an array of amounts.
 function _decodeAccountingOutputState(bytes[] memory state) internal pure returns (uint256[] memory);
 ```
 
+### \_invalidateGroupedPositions
+
+_Marks all positions in a given group as stale, except for the position currently being managed._
+
+```solidity
+function _invalidateGroupedPositions(uint256 groupId) internal;
+```
+
+### \_includesGroupId
+
+_Checks if a given group ID is included in the provided array of group IDs._
+
+```solidity
+function _includesGroupId(uint256[] calldata groupIds, uint256 groupId) internal pure returns (bool);
+```
+
 ### \_accountingValueOf
 
 _Computes the accounting value of a given token amount._
@@ -759,8 +812,9 @@ struct CaliberStorage {
     bool _isManagingFlashloan;
     uint256 _cooldownDuration;
     uint256 _lastBTSwapTimestamp;
-    mapping(bytes32 => uint256) _lastExecutionTimestamp;
+    mapping(bytes32 executionHash => uint256 timestamp) _lastExecutionTimestamp;
     mapping(uint256 posId => Position pos) _positionById;
+    mapping(uint256 groupId => EnumerableSet.UintSet positionIds) _positionIdGroups;
     EnumerableSet.UintSet _positionIds;
     EnumerableSet.AddressSet _baseTokens;
     EnumerableSet.AddressSet _instrRootGuardians;
