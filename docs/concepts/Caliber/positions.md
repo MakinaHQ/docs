@@ -5,19 +5,19 @@ sidebar_position: 3
 
 # Positions
 
-Positions represent base asset deployments made from the Calibers into external protocol. 
+Positions represent base asset deployments made from the Calibers into external protocol.
 
-Operators can open positions on multiple protocols or on the same protocol. Each Position has a unique position ID, all open positions are registered in the Caliber. 
+Operators can open positions on multiple protocols or on the same protocol. Each Position has a unique position ID, all open positions are registered in the Caliber.
 
 Positions can be increased and decreased through [Position Management Instructions](makina-vm#instruction-types) sent by the Operator. The value of each Position, needs to be accounted for through an [Accounting Instruction](makina-vm#instruction-types).
 
-Positions can only be increased by deploying [Base Tokens](base-tokens), and they can only be decreased by withdrawing them into base tokens. Accounting Instructions need to also return values denominated in base tokens. 
+Positions can only be increased by deploying [Base Tokens](base-tokens), and they can only be decreased by withdrawing them into base tokens. Accounting Instructions need to also return values denominated in base tokens.
 
 This enables all positions to be ultimately valued in Accounting Tokens, and thus have generalised slippage or loss checks whenever a position is increased or decrease.
 
-Each position has a list of risk attributes defined in the Risk Policy, and thus maximum exposure caps can be set on how large individual or groups of positions can be. 
+Each position has a list of risk attributes defined in the Risk Policy, and thus maximum exposure caps can be set on how large individual or groups of positions can be.
 
-Positions are required to have mutual exclusivity on liquidity deployments, two positions can not have overlapping accounting instructions  accounting for the same liquidity. 
+Positions are required to have mutual exclusivity on liquidity deployments, two positions can not have overlapping accounting instructions accounting for the same liquidity.
 
 ## Debt Positions
 

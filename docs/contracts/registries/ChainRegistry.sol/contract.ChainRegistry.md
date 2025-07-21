@@ -1,11 +1,12 @@
 # ChainRegistry
+
 [Git Source](https://github.com/MakinaHQ/makina-core/blob/238e21a4556f5ac790697eda30b32c943897a6d7docs/contracts/registries/ChainRegistry.sol)
 
 **Inherits:**
 AccessManagedUpgradeable, [IChainRegistry](docs/contracts/interfaces/IChainRegistry.sol/interface.IChainRegistry.md)
 
-
 ## State Variables
+
 ### ChainRegistryStorageLocation
 
 ```solidity
@@ -13,10 +14,9 @@ bytes32 private constant ChainRegistryStorageLocation =
     0x1fbdc0014f4c06b2b0ff2477b8b323f2857bce3cafc75fb45bc5110cee080300;
 ```
 
-
 ## Functions
-### _getChainRegistryStorage
 
+### \_getChainRegistryStorage
 
 ```solidity
 function _getChainRegistryStorage() private pure returns (ChainRegistryStorage storage $);
@@ -24,13 +24,11 @@ function _getChainRegistryStorage() private pure returns (ChainRegistryStorage s
 
 ### constructor
 
-
 ```solidity
 constructor();
 ```
 
 ### initialize
-
 
 ```solidity
 function initialize(address _accessManager) external initializer;
@@ -40,7 +38,6 @@ function initialize(address _accessManager) external initializer;
 
 EVM chain ID => Is the chain ID registered
 
-
 ```solidity
 function isEvmChainIdRegistered(uint256 _evmChainId) external view override returns (bool);
 ```
@@ -49,15 +46,13 @@ function isEvmChainIdRegistered(uint256 _evmChainId) external view override retu
 
 Wormhole chain ID => Is the chain ID registered
 
-
 ```solidity
 function isWhChainIdRegistered(uint16 _whChainId) external view override returns (bool);
 ```
 
 ### evmToWhChainId
 
-*EVM chain ID => Wormhole chain ID*
-
+_EVM chain ID => Wormhole chain ID_
 
 ```solidity
 function evmToWhChainId(uint256 _evmChainId) external view override returns (uint16);
@@ -65,8 +60,7 @@ function evmToWhChainId(uint256 _evmChainId) external view override returns (uin
 
 ### whToEvmChainId
 
-*Wormhole chain ID => EVM chain ID*
-
+_Wormhole chain ID => EVM chain ID_
 
 ```solidity
 function whToEvmChainId(uint16 _whChainId) external view override returns (uint256);
@@ -76,23 +70,23 @@ function whToEvmChainId(uint16 _whChainId) external view override returns (uint2
 
 Associates an EVM chain ID with a Wormhole chain ID in the contract storage.
 
-
 ```solidity
 function setChainIds(uint256 _evmChainId, uint16 _whChainId) external restricted;
 ```
+
 **Parameters**
 
-|Name|Type|Description|
-|----|----|-----------|
-|`_evmChainId`|`uint256`|The EVM chain ID.|
-|`_whChainId`|`uint16`|The Wormhole chain ID.|
-
+| Name          | Type      | Description            |
+| ------------- | --------- | ---------------------- |
+| `_evmChainId` | `uint256` | The EVM chain ID.      |
+| `_whChainId`  | `uint16`  | The Wormhole chain ID. |
 
 ## Structs
+
 ### ChainRegistryStorage
+
 **Note:**
 storage-location: erc7201:makina.storage.ChainRegistry
-
 
 ```solidity
 struct ChainRegistryStorage {
@@ -100,4 +94,3 @@ struct ChainRegistryStorage {
     mapping(uint16 whChainId => uint256 evmChainId) _whToEvmChainId;
 }
 ```
-

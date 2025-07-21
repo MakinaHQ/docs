@@ -1,8 +1,9 @@
 # Errors
+
 [Git Source](https://github.com/MakinaHQ/makina-core/blob/238e21a4556f5ac790697eda30b32c943897a6d7docs/contracts/libraries/Errors.sol)
 
-
 ## Errors
+
 ### AccountingToken
 
 ```solidity
@@ -500,4 +501,3 @@ error ZeroPositionId();
 ```solidity
 error ZeroTokenAddress();
 ```
-

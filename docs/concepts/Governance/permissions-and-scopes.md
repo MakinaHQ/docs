@@ -1,5 +1,5 @@
 ---
-id: 'permissions-and-scopes'
+id: "permissions-and-scopes"
 sidebar_position: 1
 ---
 
@@ -15,17 +15,12 @@ Protocol-wide permissions are covered by roles, managed through an Access Manage
 
 ## Per-Strategy Permissions
 
-Per-strategy permissions are covered by a set of entities, whose addresses are stored in the strategy instances. 
+Per-strategy permissions are covered by a set of entities, whose addresses are stored in the strategy instances.
 
 - **_Operator_**: Responsible for day-to-day strategy operations, including position deployments, management, reward harvesting, swaps and transfers across chains. The operator also handles permissioned deposits and redemptions.
-- **_Risk Manager_**: Can update key risk parameters such as:
-    - Merkle Root for allowed Instructions
-    - Loss thresholds
-    - Accounting staleness thresholds
-    - Fee minting frequency
-    - Share minting limits  
-Most of these updates are protected by a timelock mechanism.
+- **_Risk Manager_**: Can update key risk parameters such as: - Merkle Root for allowed Instructions - Loss thresholds - Accounting staleness thresholds - Fee minting frequency - Share minting limits  
+  Most of these updates are protected by a timelock mechanism.
 - **_Security Council_**: Monitors activities from operator and Risk Manager:
-    - Can trigger recovery mode in emergency scenarios. When activated, all operator permissions are temporarily transferred to the Security Council.
-    - Can veto updates from Risk Manager (risk parameters + Merkle Root for allowed Instructions).
+  - Can trigger recovery mode in emergency scenarios. When activated, all operator permissions are temporarily transferred to the Security Council.
+  - Can veto updates from Risk Manager (risk parameters + Merkle Root for allowed Instructions).
 - **_Root Guardians_**: Hold veto power over updates to the Merkle Root for allowed Instructions. This root defines authorized operations with external protocols (excluding swaps and bridging), and is critical to the strategy’s security model.

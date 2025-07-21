@@ -29,4 +29,4 @@ To get started with Makina:
 
 ## Next Steps
 
-Choose a section from the sidebar to dive deeper into specific aspects of the Makina ecosystem. 
+Choose a section from the sidebar to dive deeper into specific aspects of the Makina ecosystem.

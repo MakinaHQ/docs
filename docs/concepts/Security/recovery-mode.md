@@ -16,13 +16,13 @@ Recovery Mode can be triggered at the discretion of the [Security Council](../Go
 When Recovery Mode is active, all Operator permissions are temporarily transferred to the Security Council, and operator is blocked from executing any actions. Moreover, the following restrictions and permissions are enforced:
 
 - Caliber:
-    - Positions can only be decreased.
-    - Swaps are limited to conversions toward the accounting token only.
-    - Cross-chain bridge transfers are limited to Spoke → Hub direction.
+  - Positions can only be decreased.
+  - Swaps are limited to conversions toward the accounting token only.
+  - Cross-chain bridge transfers are limited to Spoke → Hub direction.
 - Machine:
-    - New deposits are disabled.
-    - AUM updates are paused.
-    - Bridge Transfers**: Outbound transfers from Hub → Spoke chains are blocked.
+  - New deposits are disabled.
+  - AUM updates are paused.
+  - Bridge Transfers\*\*: Outbound transfers from Hub → Spoke chains are blocked.
 
 ### Scope and Exit
 

@@ -1,5 +1,5 @@
 ---
-id: 'security-council'
+id: "security-council"
 title: Security Council
 sidebar_position: 6
 ---

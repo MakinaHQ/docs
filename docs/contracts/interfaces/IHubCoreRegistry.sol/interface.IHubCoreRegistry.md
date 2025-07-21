@@ -1,15 +1,15 @@
 # IHubCoreRegistry
+
 [Git Source](https://github.com/MakinaHQ/makina-core/blob/238e21a4556f5ac790697eda30b32c943897a6d7docs/contracts/interfaces/IHubCoreRegistry.sol)
 
 **Inherits:**
 [ICoreRegistry](docs/contracts/interfaces/ICoreRegistry.sol/interface.ICoreRegistry.md)
 
-
 ## Functions
+
 ### chainRegistry
 
 Address of the chain registry.
-
 
 ```solidity
 function chainRegistry() external view returns (address);
@@ -19,7 +19,6 @@ function chainRegistry() external view returns (address);
 
 Address of the machine beacon contract.
 
-
 ```solidity
 function machineBeacon() external view returns (address);
 ```
@@ -27,7 +26,6 @@ function machineBeacon() external view returns (address);
 ### preDepositVaultBeacon
 
 Address of the pre-deposit vault beacon contract.
-
 
 ```solidity
 function preDepositVaultBeacon() external view returns (address);
@@ -37,48 +35,46 @@ function preDepositVaultBeacon() external view returns (address);
 
 Sets the chain registry address.
 
-
 ```solidity
 function setChainRegistry(address _chainRegistry) external;
 ```
+
 **Parameters**
 
-|Name|Type|Description|
-|----|----|-----------|
-|`_chainRegistry`|`address`|The chain registry address.|
-
+| Name             | Type      | Description                 |
+| ---------------- | --------- | --------------------------- |
+| `_chainRegistry` | `address` | The chain registry address. |
 
 ### setMachineBeacon
 
 Sets the machine beacon address.
 
-
 ```solidity
 function setMachineBeacon(address _machineBeacon) external;
 ```
+
 **Parameters**
 
-|Name|Type|Description|
-|----|----|-----------|
-|`_machineBeacon`|`address`|The machine beacon address.|
-
+| Name             | Type      | Description                 |
+| ---------------- | --------- | --------------------------- |
+| `_machineBeacon` | `address` | The machine beacon address. |
 
 ### setPreDepositVaultBeacon
 
 Sets the pre-deposit vault beacon address.
 
-
 ```solidity
 function setPreDepositVaultBeacon(address _preDepositVaultBeacon) external;
 ```
+
 **Parameters**
 
-|Name|Type|Description|
-|----|----|-----------|
-|`_preDepositVaultBeacon`|`address`|The pre-deposit vault beacon address.|
-
+| Name                     | Type      | Description                           |
+| ------------------------ | --------- | ------------------------------------- |
+| `_preDepositVaultBeacon` | `address` | The pre-deposit vault beacon address. |
 
 ## Events
+
 ### ChainRegistryChanged
 
 ```solidity
@@ -96,4 +92,3 @@ event MachineBeaconChanged(address indexed oldMachineBeacon, address indexed new
 ```solidity
 event PreDepositVaultBeaconChanged(address indexed oldPreDepositVaultBeacon, address indexed newPreDepositVaultBeacon);
 ```
-
