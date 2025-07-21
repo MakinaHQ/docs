@@ -1,24 +1,48 @@
-# IOracleRegistry
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/cf20345b13ba2a9921736997217bda8a8ae89044/src/interfaces/IOracleRegistry.sol)
+# OracleRegistry2
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/ed704732ed392b16c194bfe42e4cee2a222b92d4/src/registries/OracleRegistry2.sol)
 
-An aggregator of Chainlink price feeds that prices tokens in a reference currency (e.g., USD) using up to two feeds.
-If a direct feed between a base token and the reference currency does not exists, it combines two feeds to compute the price.
-Example:
-To price Token A in Token B:
-- If a feed for Token A -> Reference Currency exists, the registry uses that feed.
-- If Token B lacks a direct feed to the Reference Currency, but feeds for Token B -> Intermediate Token and
-Intermediate Token -> Reference Currency exist, the registry combines these feeds to derive the price.
-- Finally, the price Token A -> Token B is calculated using both tokens individual prices in the reference currency.
+**Inherits:**
+AccessManagedUpgradeable, [IOracleRegistry](/src/interfaces/IOracleRegistry.sol/interface.IOracleRegistry.md)
+
+
+## State Variables
+### OracleRegistryStorageLocation
+
+```solidity
+bytes32 private constant OracleRegistryStorageLocation =
+    0x1fbdc0014f4c06b2b0ff2477b8b323f2857bce3cafc75fb45bc5110cee080300;
+```
 
 
 ## Functions
+### _getOracleRegistryStorage
+
+
+```solidity
+function _getOracleRegistryStorage() private pure returns (OracleRegistryStorage storage $);
+```
+
+### constructor
+
+
+```solidity
+constructor();
+```
+
+### initialize
+
+
+```solidity
+function initialize(address initialAuthority_) external initializer;
+```
+
 ### getFeedStaleThreshold
 
 Feed => Staleness threshold in seconds
 
 
 ```solidity
-function getFeedStaleThreshold(address feed) external view returns (uint256);
+function getFeedStaleThreshold(address feed) external view override returns (uint256);
 ```
 
 ### isFeedRouteRegistered
@@ -27,7 +51,7 @@ Token => Is feed route registered for the token
 
 
 ```solidity
-function isFeedRouteRegistered(address token) external view returns (bool);
+function isFeedRouteRegistered(address token) external view override returns (bool);
 ```
 
 ### getFeedRoute
@@ -36,7 +60,7 @@ Gets the price feed route for a given token.
 
 
 ```solidity
-function getFeedRoute(address token) external view returns (address, address);
+function getFeedRoute(address token) external view override returns (address, address);
 ```
 **Parameters**
 
@@ -58,7 +82,7 @@ Returns the price of one unit of baseToken in terms of quoteToken.
 
 
 ```solidity
-function getPrice(address baseToken, address quoteToken) external view returns (uint256);
+function getPrice(address baseToken, address quoteToken) external view override returns (uint256);
 ```
 **Parameters**
 
@@ -90,7 +114,7 @@ function setFeedRoute(
     uint256 stalenessThreshold1,
     address feed2,
     uint256 stalenessThreshold2
-) external;
+) external override restricted;
 ```
 **Parameters**
 
@@ -109,36 +133,55 @@ Sets the price staleness threshold for a given feed.
 
 
 ```solidity
-function setFeedStaleThreshold(address feed, uint256 threshold) external;
+function setFeedStaleThreshold(address feed, uint256 newThreshold) external restricted;
 ```
 **Parameters**
 
 |Name|Type|Description|
 |----|----|-----------|
 |`feed`|`address`|The address of the price feed.|
-|`threshold`|`uint256`|The value of staleness threshold.|
+|`newThreshold`|`uint256`||
 
 
-## Events
-### FeedRouteRegistered
+### _getFeedPrice
+
+*Returns the last price of the feed.*
+
+*Reverts if the feed is stale or the price is negative.*
+
 
 ```solidity
-event FeedRouteRegistered(address indexed token, address indexed feed1, address indexed feed2);
+function _getFeedPrice(address feed) private view returns (uint256);
 ```
 
-### FeedStaleThresholdChanged
+### _getFeedDecimals
+
+*Returns the number of decimals of the feed.*
+
+*Returns 0 if the feed is not set.*
+
 
 ```solidity
-event FeedStaleThresholdChanged(address indexed feed, uint256 oldThreshold, uint256 newThreshold);
+function _getFeedDecimals(address feed) private view returns (uint8);
+```
+
+### rescueFunds
+
+
+```solidity
+function rescueFunds(address token, address recipient) external restricted;
 ```
 
 ## Structs
-### FeedRoute
+### OracleRegistryStorage
+**Note:**
+storage-location: erc7201:makina.storage.OracleRegistry
+
 
 ```solidity
-struct FeedRoute {
-    address feed1;
-    address feed2;
+struct OracleRegistryStorage {
+    mapping(address token => FeedRoute feedRoute) _feedRoutes;
+    mapping(address feed => uint256 stalenessThreshold) _feedStaleThreshold;
 }
 ```
 
