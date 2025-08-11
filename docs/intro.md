@@ -25,7 +25,6 @@ To get started with Makina:
 
 1. Explore the [Concepts](/concepts/introduction) section to understand the system architecture
 2. Review the [Contracts](/contracts/summary) for implementation details
-3. Follow the [Guides](/guides/intro) for practical examples
 
 ## Next Steps
 
