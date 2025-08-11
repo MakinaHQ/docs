@@ -126,6 +126,7 @@ const config: Config = {
       copyright: `Copyright © ${new Date().getFullYear()} Makina.`,
     },
     prism: {
+      additionalLanguages: ["solidity", "json"],
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
     },
