@@ -3,7 +3,7 @@
 [Git Source](https://github.com/MakinaHQ/makina-core/blob/cf20345b13ba2a9921736997217bda8a8ae89044/src/bridge/adapters/AcrossV3BridgeAdapter.sol)
 
 **Inherits:**
-[BridgeAdapter](/docs/contracts/bridge/adapters/BridgeAdapter.sol/abstract.BridgeAdapter.md), [IAcrossV3MessageHandler](/docs/contracts/interfaces/IAcrossV3MessageHandler.sol/interface.IAcrossV3MessageHandler.md)
+[BridgeAdapter](/contracts/bridge/adapters/BridgeAdapter.sol/abstract.BridgeAdapter.md), [IAcrossV3MessageHandler](/contracts/interfaces/IAcrossV3MessageHandler.sol/interface.IAcrossV3MessageHandler.md)
 
 ## State Variables
 

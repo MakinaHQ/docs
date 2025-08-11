@@ -3,7 +3,7 @@
 [Git Source](https://github.com/MakinaHQ/makina-core/blob/cf20345b13ba2a9921736997217bda8a8ae89044/src/machine/Machine.sol)
 
 **Inherits:**
-[MakinaGovernable](/docs/contracts/utils/MakinaGovernable.sol/abstract.MakinaGovernable.md), [BridgeController](/docs/contracts/bridge/controller/BridgeController.sol/abstract.BridgeController.md), ReentrancyGuardUpgradeable, [IMachine](/docs/contracts/interfaces/IMachine.sol/interface.IMachine.md)
+[MakinaGovernable](/contracts/utils/MakinaGovernable.sol/abstract.MakinaGovernable.md), [BridgeController](/contracts/bridge/controller/BridgeController.sol/abstract.BridgeController.md), ReentrancyGuardUpgradeable, [IMachine](/contracts/interfaces/IMachine.sol/interface.IMachine.md)
 
 ## State Variables
 

@@ -3,7 +3,7 @@
 [Git Source](https://github.com/MakinaHQ/makina-core/blob/cf20345b13ba2a9921736997217bda8a8ae89044/src/utils/MakinaGovernable.sol)
 
 **Inherits:**
-AccessManagedUpgradeable, [IMakinaGovernable](/docs/contracts/interfaces/IMakinaGovernable.sol/interface.IMakinaGovernable.md)
+AccessManagedUpgradeable, [IMakinaGovernable](/contracts/interfaces/IMakinaGovernable.sol/interface.IMakinaGovernable.md)
 
 ## State Variables
 
