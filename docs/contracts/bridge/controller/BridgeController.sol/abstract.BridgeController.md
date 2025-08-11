@@ -3,7 +3,7 @@
 [Git Source](https://github.com/MakinaHQ/makina-core/blob/cf20345b13ba2a9921736997217bda8a8ae89044/src/bridge/controller/BridgeController.sol)
 
 **Inherits:**
-AccessManagedUpgradeable, [MakinaContext](/docs/contracts/utils/MakinaContext.sol/abstract.MakinaContext.md), [IBridgeController](/docs/contracts/interfaces/IBridgeController.sol/interface.IBridgeController.md)
+AccessManagedUpgradeable, [MakinaContext](/contracts/utils/MakinaContext.sol/abstract.MakinaContext.md), [IBridgeController](/contracts/interfaces/IBridgeController.sol/interface.IBridgeController.md)
 
 ## State Variables
 

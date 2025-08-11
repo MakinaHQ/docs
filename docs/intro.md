@@ -23,9 +23,9 @@ Makina consists of several key components:
 
 To get started with Makina:
 
-1. Explore the [Concepts](/docs/concepts/introduction) section to understand the system architecture
-2. Review the [Contracts](/docs/contracts/summary) for implementation details
-3. Follow the [Guides](/docs/guides/intro) for practical examples
+1. Explore the [Concepts](/concepts/introduction) section to understand the system architecture
+2. Review the [Contracts](/contracts/summary) for implementation details
+3. Follow the [Guides](/guides/intro) for practical examples
 
 ## Next Steps
 

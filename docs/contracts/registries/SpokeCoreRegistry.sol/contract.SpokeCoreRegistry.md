@@ -3,7 +3,7 @@
 [Git Source](https://github.com/MakinaHQ/makina-core/blob/cf20345b13ba2a9921736997217bda8a8ae89044/src/registries/SpokeCoreRegistry.sol)
 
 **Inherits:**
-[CoreRegistry](/docs/contracts/registries/CoreRegistry.sol/abstract.CoreRegistry.md), [ISpokeCoreRegistry](/docs/contracts/interfaces/ISpokeCoreRegistry.sol/interface.ISpokeCoreRegistry.md)
+[CoreRegistry](/contracts/registries/CoreRegistry.sol/abstract.CoreRegistry.md), [ISpokeCoreRegistry](/contracts/interfaces/ISpokeCoreRegistry.sol/interface.ISpokeCoreRegistry.md)
 
 ## State Variables
 

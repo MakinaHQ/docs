@@ -3,7 +3,7 @@
 [Git Source](https://github.com/MakinaHQ/makina-core/blob/cf20345b13ba2a9921736997217bda8a8ae89044/src/caliber/Caliber.sol)
 
 **Inherits:**
-[MakinaContext](/docs/contracts/utils/MakinaContext.sol/abstract.MakinaContext.md), AccessManagedUpgradeable, ReentrancyGuardUpgradeable, ERC721HolderUpgradeable, ERC1155HolderUpgradeable, [ICaliber](/docs/contracts/interfaces/ICaliber.sol/interface.ICaliber.md)
+[MakinaContext](/contracts/utils/MakinaContext.sol/abstract.MakinaContext.md), AccessManagedUpgradeable, ReentrancyGuardUpgradeable, ERC721HolderUpgradeable, ERC1155HolderUpgradeable, [ICaliber](/contracts/interfaces/ICaliber.sol/interface.ICaliber.md)
 
 ## State Variables
 

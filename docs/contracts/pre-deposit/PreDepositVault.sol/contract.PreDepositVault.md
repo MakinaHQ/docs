@@ -3,7 +3,7 @@
 [Git Source](https://github.com/MakinaHQ/makina-core/blob/cf20345b13ba2a9921736997217bda8a8ae89044/src/pre-deposit/PreDepositVault.sol)
 
 **Inherits:**
-AccessManagedUpgradeable, [MakinaContext](/docs/contracts/utils/MakinaContext.sol/abstract.MakinaContext.md), [IPreDepositVault](/docs/contracts/interfaces/IPreDepositVault.sol/interface.IPreDepositVault.md)
+AccessManagedUpgradeable, [MakinaContext](/contracts/utils/MakinaContext.sol/abstract.MakinaContext.md), [IPreDepositVault](/contracts/interfaces/IPreDepositVault.sol/interface.IPreDepositVault.md)
 
 ## State Variables
 

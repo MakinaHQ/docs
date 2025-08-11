@@ -3,7 +3,7 @@
 [Git Source](https://github.com/MakinaHQ/makina-core/blob/cf20345b13ba2a9921736997217bda8a8ae89044/src/bridge/adapters/BridgeAdapter.sol)
 
 **Inherits:**
-ReentrancyGuardUpgradeable, [IBridgeAdapter](/docs/contracts/interfaces/IBridgeAdapter.sol/interface.IBridgeAdapter.md)
+ReentrancyGuardUpgradeable, [IBridgeAdapter](/contracts/interfaces/IBridgeAdapter.sol/interface.IBridgeAdapter.md)
 
 ## State Variables
 

@@ -3,7 +3,7 @@
 [Git Source](https://github.com/MakinaHQ/makina-core/blob/cf20345b13ba2a9921736997217bda8a8ae89044/src/interfaces/ISpokeCoreRegistry.sol)
 
 **Inherits:**
-[ICoreRegistry](/docs/contracts/interfaces/ICoreRegistry.sol/interface.ICoreRegistry.md)
+[ICoreRegistry](/contracts/interfaces/ICoreRegistry.sol/interface.ICoreRegistry.md)
 
 ## Functions
 

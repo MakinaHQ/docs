@@ -3,7 +3,7 @@
 [Git Source](https://github.com/MakinaHQ/makina-core/blob/cf20345b13ba2a9921736997217bda8a8ae89044/src/caliber/CaliberMailbox.sol)
 
 **Inherits:**
-[MakinaGovernable](/docs/contracts/utils/MakinaGovernable.sol/abstract.MakinaGovernable.md), ReentrancyGuardUpgradeable, [BridgeController](/docs/contracts/bridge/controller/BridgeController.sol/abstract.BridgeController.md), [ICaliberMailbox](/docs/contracts/interfaces/ICaliberMailbox.sol/interface.ICaliberMailbox.md)
+[MakinaGovernable](/contracts/utils/MakinaGovernable.sol/abstract.MakinaGovernable.md), ReentrancyGuardUpgradeable, [BridgeController](/contracts/bridge/controller/BridgeController.sol/abstract.BridgeController.md), [ICaliberMailbox](/contracts/interfaces/ICaliberMailbox.sol/interface.ICaliberMailbox.md)
 
 ## State Variables
 

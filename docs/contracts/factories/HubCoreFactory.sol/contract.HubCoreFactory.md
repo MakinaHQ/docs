@@ -3,7 +3,7 @@
 [Git Source](https://github.com/MakinaHQ/makina-core/blob/cf20345b13ba2a9921736997217bda8a8ae89044/src/factories/HubCoreFactory.sol)
 
 **Inherits:**
-AccessManagedUpgradeable, [CaliberFactory](/docs/contracts/factories/CaliberFactory.sol/abstract.CaliberFactory.md), [BridgeAdapterFactory](/docs/contracts/factories/BridgeAdapterFactory.sol/abstract.BridgeAdapterFactory.md), [IHubCoreFactory](/docs/contracts/interfaces/IHubCoreFactory.sol/interface.IHubCoreFactory.md)
+AccessManagedUpgradeable, [CaliberFactory](/contracts/factories/CaliberFactory.sol/abstract.CaliberFactory.md), [BridgeAdapterFactory](/contracts/factories/BridgeAdapterFactory.sol/abstract.BridgeAdapterFactory.md), [IHubCoreFactory](/contracts/interfaces/IHubCoreFactory.sol/interface.IHubCoreFactory.md)
 
 ## State Variables
 
