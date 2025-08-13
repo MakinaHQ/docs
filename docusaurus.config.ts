@@ -82,6 +82,12 @@ const config: Config = {
         },
         {
           type: "docSidebar",
+          sidebarId: "operatorsSidebar",
+          position: "left",
+          label: "Operators",
+        },
+        {
+          type: "docSidebar",
           sidebarId: "contractsSidebar",
           position: "left",
           label: "Contracts",
@@ -126,13 +132,13 @@ const config: Config = {
       copyright: `Copyright © ${new Date().getFullYear()} Makina.`,
     },
     prism: {
-      additionalLanguages: ["solidity", "json"],
+      additionalLanguages: ["solidity", "json", "toml", "yaml"],
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
     },
     colorMode: {
       defaultMode: "dark",
-      disableSwitch: true, // Hides the toggle
+      disableSwitch: false, // Hides the toggle
       respectPrefersColorScheme: false, // Ignores user's system setting
     },
   } satisfies Preset.ThemeConfig,
