@@ -32,7 +32,7 @@ MakinaVM refines this capability by incorporating a Merkle Tree of hashed comman
 
 ### Merkle Tree Permissioning
 
-Each Caliber stores the root of a publicly available Merkle Tree containing the full set of allowed instructions. The root can be updated in caliber storage by the Machine's [Risk Manager](../Governance/risk-manager) through a timelock, giving users time to withdraw if they disagree with upcoming changes.
+Each Caliber stores the root of a publicly available Merkle Tree containing the full set of allowed instructions. The root can be updated in caliber storage by the Machine's [Risk Manager](../governance/risk-manager) through a timelock, giving users time to withdraw if they disagree with upcoming changes.
 
 To execute an instruction, the Operator must provide the corresponding Merkle proof. The Caliber hashes data including the instruction's commands (function signatures + target contracts addresses) and its selected parameters (function arguments), and validates the resulting leaf against the stored Merkle root.
 
@@ -59,4 +59,4 @@ Instructions are reviewed by the Risk Team and approved through Governance. Over
 
 It is also expected that protocols seeking to attract capital contribute their own Instructions, promoting a model of self-integration.
 
-See [Root Update Lifecycle](../Governance/root-update-lifecycle) for more details.
+See [Root Update Lifecycle](../governance/root-update-lifecycle) for more details.

@@ -1,11 +1,12 @@
 ---
 id: flash-loans
+sidebar_label: Flash Loans
 sidebar_position: 6
 ---
 
-# FlashLoans
+# Flash Loans
 
-Calibers can take flashloans for additional temporary liquidity during the execution of [Position Management Instructions](makina-vm#instruction-types).
+Calibers can take flashloans for additional temporary liquidity during the execution of [Position Management Instructions](./makina-vm#instruction-types).
 
 The flashloans are taken before executing the instructions to make the extra liquidity available to the Caliber and need to be repaid after the position management instruction is executed.
 
