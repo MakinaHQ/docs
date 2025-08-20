@@ -23,6 +23,6 @@ Positions are required to have mutual exclusivity on liquidity deployments, two 
 
 Positions can also be used to represent dept or borrow position in scenarios where assets are borrowed from lending markets.
 
-Debt Positions are accounted for in the negative and subtracted from the total Caliber AUM for purposes of [share price](../Machine/share-price) calculations and risk policy exposure calculations.
+Debt Positions are accounted for in the negative and subtracted from the total Caliber AUM for purposes of [share price](../machine/share-price) calculations and risk policy exposure calculations.
 
 Debt positions behave the same as normal positions and are in all matters equivalent to positive value positions excpet that they are stored in the Caliber with a flag marking them as being debt.

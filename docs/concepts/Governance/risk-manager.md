@@ -14,7 +14,7 @@ All Risk Manager actions must pass through a timelock, during which both the Sec
 
 The Risk Manager has the following responsibilities:
 
-- Review and verify any [Root Update](root-update-lifecycle) requested by the Operator, and then schedule it on the relevant Caliber.
+- Review and verify any [Root Update](./root-update-lifecycle) requested by the Operator, and then schedule it on the relevant Caliber.
 - Set and adjust all risk parameters for machine and calibers, including max loss caps and cooldowns.
-- Curate the set of [Base Tokens](../Caliber/base-tokens) in each Caliber.
+- Curate the set of [Base Tokens](../caliber/base-tokens) in each Caliber.
 - Set and adjust the Machine's Risk Policy to ensure compliance with the Mandate.

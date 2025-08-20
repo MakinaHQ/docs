@@ -5,7 +5,7 @@ sidebar_position: 3
 
 # Recovery Mode
 
-Recovery Mode can be triggered at the discretion of the [Security Council](../Governance/security-council) to protect Machine vault depositors when any of the following conditions are met:
+Recovery Mode can be triggered at the discretion of the [Security Council](../governance/security-council) to protect Machine vault depositors when any of the following conditions are met:
 
 - The Operator has been inactive for an extended period
 - The share price exhibits abnormal behavior (e.g., sudden spikes or drops).

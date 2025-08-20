@@ -15,4 +15,4 @@ Caliber accounting is permissionless and both the Operator and the Makina DAO ha
 
 Base tokens held in the calibers balance can be accounted for by just pricing the token balance against the account token using the registered oracle feed.
 
-The Caliber accounting function is a publicly exposed view function which is queried by the [Wormhole Cross-Chain Queries](https://wormhole.com/products/queries) service and published to the Machine's storage on the Hub Chain. See [Cross-Chain Accounting](../Cross-Chain/cross-chain-accounting) for more information.
+The Caliber accounting function is a publicly exposed view function which is queried by the [Wormhole Cross-Chain Queries](https://wormhole.com/products/queries) service and published to the Machine's storage on the Hub Chain. See [Cross-Chain Accounting](../cross-chain/cross-chain-accounting) for more information.
