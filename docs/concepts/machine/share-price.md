@@ -5,7 +5,7 @@ sidebar_position: 2
 
 # Share Price
 
-The Machine calculates a Share Price at which it mints and redeems Machine Shares.
+The Machine calculates a Share Price at which it mints and redeems Machine Tokens.
 
 The Share Price reflects the total value — denominated in the Accounting Token — of all assets held by the Machine, including those in its Calibers and deployed positions. This represents the Machine’s total assets under management (AUM).
 
