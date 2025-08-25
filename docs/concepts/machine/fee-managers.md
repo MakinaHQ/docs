@@ -7,7 +7,7 @@ sidebar_position: 5
 
 Each Machine can set a FeeManager contracts. Depending on the type of strategy different fee models may be appropriate. Machines can take fixed fees which is are a function of AUM and elapsed time and variable fees which is are function of change in share-price, or performance.
 
-All fees are realised by inflating the [Machine Share](machine-share) supply. The newly minted shares will lower the share price by increasing it's supply without corresponding increase in AUM. Thus all fees are equally socialised across all holders of Machine Tokens. Fees are taken every time the Machine AUM is updated.
+All fees are realised by inflating the [Machine Token](machine-share) supply. The newly minted shares will lower the share price by increasing it's supply without corresponding increase in AUM. Thus all fees are equally socialised across all holders of Machine Tokens. Fees are taken every time the Machine AUM is updated.
 
 The default fee manager takes has three types of fees:
 
