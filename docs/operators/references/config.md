@@ -5,7 +5,7 @@ sidebar_position: 1
 
 # `config.toml`
 
-Each [machine](../../concepts/Machine/overview.md) should have a `config.toml` file. This file is used to define the machine configuration.
+Each [machine](../../concepts/machine/overview.md) should have a `config.toml` file. This file is used to define the machine configuration.
 
 ```toml title="[machine-name]/config.toml - Example"
 name = "mteth"

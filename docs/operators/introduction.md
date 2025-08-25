@@ -12,7 +12,7 @@ You can find the public configurations in the [`MakinaHQ/config`](https://github
 
 ## Creating a machine
 
-The default [machine](../concepts/Machine/overview.md) configuration is the following:
+The default [machine](../concepts/machine/overview.md) configuration is the following:
 
 ```text title="Directory structure"
 machines/

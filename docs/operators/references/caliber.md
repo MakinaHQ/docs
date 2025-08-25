@@ -5,7 +5,7 @@ sidebar_position: 2
 
 # `caliber.yaml`
 
-There is one [caliber](../../concepts/Caliber/overview.md) per machine and per network. This file should be located at:
+There is one [caliber](../../concepts/caliber/overview.md) per machine and per network. This file should be located at:
 
 ```
 machines/<machine-name>/<network-name>/caliber.yaml
