@@ -13,7 +13,7 @@ The Redeem Manager are therefore always expected to be queue contracts which nee
 
 ### Permissionless Redeem Queue
 
-In the Permissionless Redeem Queue any users holding Machine Shares can request a redemption request with no additional checks. Requests are settled on a First-In First-Out basis, and once settled, users have unlimited time to claim their withdrawn funds.
+In the Permissionless Redeem Queue any users holding Machine Tokens can request a redemption request with no additional checks. Requests are settled on a First-In First-Out basis, and once settled, users have unlimited time to claim their withdrawn funds.
 
 The Queue implements a three step process.
 

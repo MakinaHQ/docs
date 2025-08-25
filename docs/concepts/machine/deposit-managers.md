@@ -9,13 +9,13 @@ Each Machine defines a Deposit Manager contract. This allows for machines implem
 
 ### Permissionless Deposit Manager
 
-The PermissionlessDepositManager atomically forwards deposited assets to the Machine without performing any checks. Machine Shares are minted instantly to the depositor.
+The PermissionlessDepositManager atomically forwards deposited assets to the Machine without performing any checks. Machine Tokens are minted instantly to the depositor.
 
 ### Permissioned Deposit Manager
 
 The Permissioned Deposit Manager restricts deposits to a predefined allowlist, enabling permissioned Machines limited to KYC-verified participants.
 
-Same as above, it acts as an atomic deposit manager, forwarding deposited assets directly to the Machine, which mints the corresponding Machine Shares to the depositor.
+Same as above, it acts as an atomic deposit manager, forwarding deposited assets directly to the Machine, which mints the corresponding Machine Tokens to the depositor.
 
 ### Queued Deposit Manager
 
