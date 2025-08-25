@@ -10,7 +10,7 @@ Makina defines the notion of a Machine as a strategy specific vault smart contra
 
 Machines are always deployed on the Hub Chain, which can be chosen by the Operator, but for most case is Ethereum Mainnet. Each Machine defines a single Accounting Token which will be the only token that can be deposited and withdrawn by users, and which denominates the share price.
 
-Each Machine issues a Machine Token Token, an asset who's price depends on the performance of the Machine's strategy. The Operator’s goal and incentive is to always maximise the long-term price appreciation of the Machine Token.
+Each Machine issues a Machine Token, an asset who's price depends on the performance of the Machine's strategy. The Operator’s goal and incentive is to always maximise the long-term price appreciation of the Machine Token.
 
 Each Machine is connected to a Caliber on the Hub Chain as well as multiple other Calibers on the Spoke Chains.
 
