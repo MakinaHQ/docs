@@ -3,7 +3,7 @@ id: "machine-share"
 sidebar_position: 1
 ---
 
-# Machine Share
+# Machine Token
 
 Machine Tokens are tokenized ERC20 representations of the strategy operating on the Machine.
 
@@ -18,4 +18,4 @@ Machine Tokens can be integrated into external protocols such as lending market,
 
 Machine Tokens leverage [Wormhole NTT](https://ntt.wormhole.com/) for fast and secure cross-chain transfer between Ethereum Mainnet, it's L2s and non-EVM chains such as Solana.
 
-For the official Makina Machine Share bridge visit TODO.
+For the official Makina Machine Token bridge visit TODO.
