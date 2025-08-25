@@ -1,5 +1,5 @@
 ---
-id: "machine-share"
+id: "machine-token"
 sidebar_position: 1
 ---
 

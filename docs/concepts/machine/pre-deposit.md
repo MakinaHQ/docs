@@ -18,6 +18,6 @@ The Pre-Deposit Vault contract specifies a pre-deposit asset, typically a yield-
 
 Users deposit this pre-deposit token into the Pre-Deposit Vault to earn baseline yield during the pre-deposit phase. The vault’s share price increases in line with the yield accrued by the pre-deposit token.
 
-Importantly, the Pre-Deposit Vault mints the [Shares](machine-share) of the future Machine it will eventually migrate into. When the Machine is deployed, there is no need to migrate user balances. Only the minting authority is transferred from the Pre-Deposit Vault to the Machine, enabling a seamless transition into the active strategy.
+Importantly, the Pre-Deposit Vault mints the [Shares](machine-token) of the future Machine it will eventually migrate into. When the Machine is deployed, there is no need to migrate user balances. Only the minting authority is transferred from the Pre-Deposit Vault to the Machine, enabling a seamless transition into the active strategy.
 
 ![makina-pre-deposit](/img/makina-pre-deposit.png)
