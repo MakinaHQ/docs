@@ -48,7 +48,8 @@ Instructions are the files that define the actions that can be executed by the m
 # repay the borrowed USDC
 - is_debt: true
   instruction_type: "MANAGEMENT"
-  affected_tokens: ["0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"]
+  affected_tokens:
+    - "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48" # USDC
   instruction:
     label: "usdc"
     path: "../../../blueprints/aave/repay.yaml:repay_asset"
@@ -70,7 +71,7 @@ Instructions are the files that define the actions that can be executed by the m
 
 Required. Boolean. Whether the instruction is a debt instruction.
 
-TODO: give examples of debt and non-debt instructions
+<!-- TODO: give examples of debt and non-debt instructions -->
 
 ### `[*].instruction_type`
 
@@ -87,9 +88,9 @@ This enum matches the [`InstructionType` enum](../../contracts/interfaces/ICalib
 
 :::
 
-### `[*].affected_tokens`
+### `[*].affected_tokens[*]`
 
-Required. List of tokens addresses affected by the instruction.
+Required. List of tokens addresses affected by the instruction (written as a sequence of addresses).
 
 ### `[*].instruction.label`
 
@@ -99,11 +100,11 @@ Required. The label of the instruction.
 
 Required. The relative path to the [blueprint file](./blueprints.md).
 
-TODO: explain how it works and how to use it.
+<!-- TODO: explain how it works and how to use it. -->
 
 ### `[*].instruction.inputs`
 
-TODO:
+This sequence allows to define the inputs of the instruction.
 
 ### `[*].instruction.inputs.<NAME>`
 
