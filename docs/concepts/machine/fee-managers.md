@@ -5,17 +5,19 @@ sidebar_position: 5
 
 # Fee Managers
 
-Each Machine can set a FeeManager contracts. Depending on the type of strategy different fee models may be appropriate. Machines can take fixed fees which is are a function of AUM and elapsed time and variable fees which is are function of change in share-price, or performance.
+The FeeManager contract defines how fees are applied to a Machine. Each Machine is linked to a dedicated FeeManager instance. Different strategies may require different fee models, and the protocol supports multiple FeeManager implementations.
 
-All fees are realised by inflating the [Machine Token](machine-token) supply. The newly minted shares will lower the share price by increasing it's supply without corresponding increase in AUM. Thus all fees are equally socialised across all holders of Machine Tokens. Fees are taken every time the Machine AUM is updated.
+Fees can be of two types:
+- Fixed fees: based on assets under management (AUM) and elapsed time.
+- Performance fees: based on changes in share price or performance.
 
-The default fee manager takes has three types of fees:
+All fees are realized by inflating the [Machine Token](machine-token) supply. Newly minted shares dilute the share price by increasing supply without a corresponding increase in AUM, thereby socializing fees equally across all Machine Share holders. Fees are collected whenever the Machine’s AUM is updated.
 
-- Fixed Security Module Fee: used to incentivised deposits to the Security Module
-- Fixed Management Fee: used to incentivise the Operator and support Makina DAO
-- Variable Performance Fee: used to incentivise the Operator and support Makina DAO
+## Watermark Fee Manager
 
-### Default Fixed Fee Calculation
+### Fixed Fee
+
+The contracts divides fixed fee into [Staking Module](staking-module) fee, which incentivizes stakes into the Staking Module, and management fee which incentivizes the Operator and supports Makina DAO.
 
 The fixed fees are calculated as follows:
 
@@ -31,20 +33,20 @@ $$
 
 The Fixed fee is then split three ways between the Security Module, the Operator and the Makina DAO.
 
-### Default Variable Fee Calculation
+### Performance Fee
 
-The variable fees are calculated as follows:
+The `WatermarkFeeManager` implementation supports a high watermark mechanism ensures performance fees are charged only when the current share price exceeds the stored watermark.
+
+When the current is above the watermark, the performance fees are calculated as follows:
 
 $$
-VariableFee = ShareSupply * (\dfrac{currentSharePrice - prevSharePrice}{prevSharePrice }) * perfFeeRatio;
+PerfFee = ShareSupply * (\dfrac{currentSharePrice - prevSharePrice}{newSharePrice}) * perfFeeRatio;
 $$
 
 For example, with a perfFeeRate of 10% annual, a share supply of 1'000'000 and share price increase from 1.00 to 1.01:
 
 $$
-VariableFee = 1'000'000 * \dfrac{1.01-1.00}{ 1.00} * 0.1 = 1000
+PerfFee = 1'000'000 * \dfrac{1.01-1.00}{ 1.01} * 0.1 = 1000
 $$
 
-A catch-up is implemented to compensate for negative performance. If a share price decreases the negative VariableFee is accrued as performance debt. No variable fees are minted as long as there is debt to be repaid. Once enough positive performance was accrued to earn enough variable fees to repay the debt fully, variable fees are minted and distributed again.
-
-The Variable Fee is then split two ways between the Operator and the Makina DAO.
+The performance fee is then split two ways between the Operator and the Makina DAO.
