@@ -1,10 +1,10 @@
 # IAcrossV3SpokePool
+
 [Git Source](https://github.com/MakinaHQ/makina-core/blob/96cabc5a8ea74d6880f72f6b2a1ea81df86856a4/src/interfaces/IAcrossV3SpokePool.sol)
 
-
 ## Functions
-### depositV3Now
 
+### depositV3Now
 
 ```solidity
 function depositV3Now(
@@ -21,4 +21,3 @@ function depositV3Now(
     bytes calldata message
 ) external payable;
 ```
-

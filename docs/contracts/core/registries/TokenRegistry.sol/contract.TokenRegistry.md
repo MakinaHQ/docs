@@ -1,11 +1,12 @@
 # TokenRegistry
+
 [Git Source](https://github.com/MakinaHQ/makina-core/blob/96cabc5a8ea74d6880f72f6b2a1ea81df86856a4/src/registries/TokenRegistry.sol)
 
 **Inherits:**
-AccessManagedUpgradeable, [ITokenRegistry](/src/interfaces/ITokenRegistry.sol/interface.ITokenRegistry.md)
-
+AccessManagedUpgradeable, [ITokenRegistry](/contracts/core/interfaces/ITokenRegistry.sol/interface.ITokenRegistry.md)
 
 ## State Variables
+
 ### TokenRegistryStorageLocation
 
 ```solidity
@@ -13,10 +14,9 @@ bytes32 private constant TokenRegistryStorageLocation =
     0x1aeafc547075d7f69f86c9a87aafb3edc5a48d01acbbe220b9a330d69702ed00;
 ```
 
-
 ## Functions
-### _getTokenRegistryStorage
 
+### \_getTokenRegistryStorage
 
 ```solidity
 function _getTokenRegistryStorage() private pure returns (TokenRegistryStorage storage $);
@@ -24,13 +24,11 @@ function _getTokenRegistryStorage() private pure returns (TokenRegistryStorage s
 
 ### constructor
 
-
 ```solidity
 constructor();
 ```
 
 ### initialize
-
 
 ```solidity
 function initialize(address _accessManager) external initializer;
@@ -40,7 +38,6 @@ function initialize(address _accessManager) external initializer;
 
 Local token address => Foreign EVM chain ID => Foreign Token address
 
-
 ```solidity
 function getForeignToken(address _localToken, uint256 _foreignEvmChainId) external view returns (address);
 ```
@@ -48,7 +45,6 @@ function getForeignToken(address _localToken, uint256 _foreignEvmChainId) extern
 ### getLocalToken
 
 Foreign token address => Foreign EVM chain ID => Local Token address
-
 
 ```solidity
 function getLocalToken(address _foreignToken, uint256 _foreignEvmChainId) external view returns (address);
@@ -58,24 +54,24 @@ function getLocalToken(address _foreignToken, uint256 _foreignEvmChainId) extern
 
 Associates a local and a foreign token addresse.
 
-
 ```solidity
 function setToken(address _localToken, uint256 _foreignEvmChainId, address _foreignToken) external restricted;
 ```
+
 **Parameters**
 
-|Name|Type|Description|
-|----|----|-----------|
-|`_localToken`|`address`|The local token address.|
-|`_foreignEvmChainId`|`uint256`|The foreign EVM chain ID.|
-|`_foreignToken`|`address`|The foreign token address.|
-
+| Name                 | Type      | Description                |
+| -------------------- | --------- | -------------------------- |
+| `_localToken`        | `address` | The local token address.   |
+| `_foreignEvmChainId` | `uint256` | The foreign EVM chain ID.  |
+| `_foreignToken`      | `address` | The foreign token address. |
 
 ## Structs
+
 ### TokenRegistryStorage
+
 **Note:**
 storage-location: erc7201:makina.storage.TokenRegistry
-
 
 ```solidity
 struct TokenRegistryStorage {
@@ -83,4 +79,3 @@ struct TokenRegistryStorage {
     mapping(address foreignToken => mapping(uint256 foreignEvmChainId => address localToken)) _foreignToLocalTokens;
 }
 ```
-

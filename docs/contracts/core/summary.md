@@ -1,66 +1,66 @@
 # Summary
 
-  - [❱ bridge]
-    - [❱ adapters]
-      - [AcrossV3BridgeAdapter](bridge/adapters/AcrossV3BridgeAdapter.sol/contract.AcrossV3BridgeAdapter.md)
-      - [BridgeAdapter](bridge/adapters/BridgeAdapter.sol/abstract.BridgeAdapter.md)
-    - [❱ controller]
-      - [BridgeController](bridge/controller/BridgeController.sol/abstract.BridgeController.md)
-  - [❱ caliber]
-    - [Caliber](caliber/Caliber.sol/contract.Caliber.md)
-    - [CaliberMailbox](caliber/CaliberMailbox.sol/contract.CaliberMailbox.md)
-  - [❱ factories]
-    - [BridgeAdapterFactory](factories/BridgeAdapterFactory.sol/abstract.BridgeAdapterFactory.md)
-    - [CaliberFactory](factories/CaliberFactory.sol/abstract.CaliberFactory.md)
-    - [HubCoreFactory](factories/HubCoreFactory.sol/contract.HubCoreFactory.md)
-    - [SpokeCoreFactory](factories/SpokeCoreFactory.sol/contract.SpokeCoreFactory.md)
-  - [❱ interfaces]
-    - [AggregatorV2V3Interface](interfaces/AggregatorV2V3Interface.sol/interface.AggregatorV2V3Interface.md)
-    - [IAcrossV3MessageHandler](interfaces/IAcrossV3MessageHandler.sol/interface.IAcrossV3MessageHandler.md)
-    - [IAcrossV3SpokePool](interfaces/IAcrossV3SpokePool.sol/interface.IAcrossV3SpokePool.md)
-    - [IBridgeAdapter](interfaces/IBridgeAdapter.sol/interface.IBridgeAdapter.md)
-    - [IBridgeAdapterFactory](interfaces/IBridgeAdapterFactory.sol/interface.IBridgeAdapterFactory.md)
-    - [IBridgeController](interfaces/IBridgeController.sol/interface.IBridgeController.md)
-    - [ICaliber](interfaces/ICaliber.sol/interface.ICaliber.md)
-    - [ICaliberFactory](interfaces/ICaliberFactory.sol/interface.ICaliberFactory.md)
-    - [ICaliberMailbox](interfaces/ICaliberMailbox.sol/interface.ICaliberMailbox.md)
-    - [IChainRegistry](interfaces/IChainRegistry.sol/interface.IChainRegistry.md)
-    - [ICoreRegistry](interfaces/ICoreRegistry.sol/interface.ICoreRegistry.md)
-    - [IFeeManager](interfaces/IFeeManager.sol/interface.IFeeManager.md)
-    - [IHubCoreFactory](interfaces/IHubCoreFactory.sol/interface.IHubCoreFactory.md)
-    - [IHubCoreRegistry](interfaces/IHubCoreRegistry.sol/interface.IHubCoreRegistry.md)
-    - [IMachine](interfaces/IMachine.sol/interface.IMachine.md)
-    - [IMachineEndpoint](interfaces/IMachineEndpoint.sol/interface.IMachineEndpoint.md)
-    - [IMachineShare](interfaces/IMachineShare.sol/interface.IMachineShare.md)
-    - [IMakinaContext](interfaces/IMakinaContext.sol/interface.IMakinaContext.md)
-    - [IMakinaGovernable](interfaces/IMakinaGovernable.sol/interface.IMakinaGovernable.md)
-    - [IOracleRegistry](interfaces/IOracleRegistry.sol/interface.IOracleRegistry.md)
-    - [IOwnable2Step](interfaces/IOwnable2Step.sol/interface.IOwnable2Step.md)
-    - [IPreDepositVault](interfaces/IPreDepositVault.sol/interface.IPreDepositVault.md)
-    - [ISpokeCoreFactory](interfaces/ISpokeCoreFactory.sol/interface.ISpokeCoreFactory.md)
-    - [ISpokeCoreRegistry](interfaces/ISpokeCoreRegistry.sol/interface.ISpokeCoreRegistry.md)
-    - [ISwapModule](interfaces/ISwapModule.sol/interface.ISwapModule.md)
-    - [ITokenRegistry](interfaces/ITokenRegistry.sol/interface.ITokenRegistry.md)
-    - [IWeirollVM](interfaces/IWeirollVM.sol/interface.IWeirollVM.md)
-  - [❱ libraries]
-    - [CaliberAccountingCCQ](libraries/CaliberAccountingCCQ.sol/library.CaliberAccountingCCQ.md)
-    - [DecimalsUtils](libraries/DecimalsUtils.sol/library.DecimalsUtils.md)
-    - [Errors](libraries/Errors.sol/library.Errors.md)
-    - [MachineUtils](libraries/MachineUtils.sol/library.MachineUtils.md)
-  - [❱ machine]
-    - [Machine](machine/Machine.sol/contract.Machine.md)
-    - [MachineShare](machine/MachineShare.sol/contract.MachineShare.md)
-  - [❱ pre-deposit]
-    - [PreDepositVault](pre-deposit/PreDepositVault.sol/contract.PreDepositVault.md)
-  - [❱ registries]
-    - [ChainRegistry](registries/ChainRegistry.sol/contract.ChainRegistry.md)
-    - [CoreRegistry](registries/CoreRegistry.sol/abstract.CoreRegistry.md)
-    - [HubCoreRegistry](registries/HubCoreRegistry.sol/contract.HubCoreRegistry.md)
-    - [OracleRegistry](registries/OracleRegistry.sol/contract.OracleRegistry.md)
-    - [SpokeCoreRegistry](registries/SpokeCoreRegistry.sol/contract.SpokeCoreRegistry.md)
-    - [TokenRegistry](registries/TokenRegistry.sol/contract.TokenRegistry.md)
-  - [❱ swap]
-    - [SwapModule](swap/SwapModule.sol/contract.SwapModule.md)
-  - [❱ utils]
-    - [MakinaContext](utils/MakinaContext.sol/abstract.MakinaContext.md)
-    - [MakinaGovernable](utils/MakinaGovernable.sol/abstract.MakinaGovernable.md)
+- [❱ bridge]
+  - [❱ adapters]
+    - [AcrossV3BridgeAdapter](bridge/adapters/AcrossV3BridgeAdapter.sol/contract.AcrossV3BridgeAdapter.md)
+    - [BridgeAdapter](bridge/adapters/BridgeAdapter.sol/abstract.BridgeAdapter.md)
+  - [❱ controller]
+    - [BridgeController](bridge/controller/BridgeController.sol/abstract.BridgeController.md)
+- [❱ caliber]
+  - [Caliber](caliber/Caliber.sol/contract.Caliber.md)
+  - [CaliberMailbox](caliber/CaliberMailbox.sol/contract.CaliberMailbox.md)
+- [❱ factories]
+  - [BridgeAdapterFactory](factories/BridgeAdapterFactory.sol/abstract.BridgeAdapterFactory.md)
+  - [CaliberFactory](factories/CaliberFactory.sol/abstract.CaliberFactory.md)
+  - [HubCoreFactory](factories/HubCoreFactory.sol/contract.HubCoreFactory.md)
+  - [SpokeCoreFactory](factories/SpokeCoreFactory.sol/contract.SpokeCoreFactory.md)
+- [❱ interfaces]
+  - [AggregatorV2V3Interface](interfaces/AggregatorV2V3Interface.sol/interface.AggregatorV2V3Interface.md)
+  - [IAcrossV3MessageHandler](interfaces/IAcrossV3MessageHandler.sol/interface.IAcrossV3MessageHandler.md)
+  - [IAcrossV3SpokePool](interfaces/IAcrossV3SpokePool.sol/interface.IAcrossV3SpokePool.md)
+  - [IBridgeAdapter](interfaces/IBridgeAdapter.sol/interface.IBridgeAdapter.md)
+  - [IBridgeAdapterFactory](interfaces/IBridgeAdapterFactory.sol/interface.IBridgeAdapterFactory.md)
+  - [IBridgeController](interfaces/IBridgeController.sol/interface.IBridgeController.md)
+  - [ICaliber](interfaces/ICaliber.sol/interface.ICaliber.md)
+  - [ICaliberFactory](interfaces/ICaliberFactory.sol/interface.ICaliberFactory.md)
+  - [ICaliberMailbox](interfaces/ICaliberMailbox.sol/interface.ICaliberMailbox.md)
+  - [IChainRegistry](interfaces/IChainRegistry.sol/interface.IChainRegistry.md)
+  - [ICoreRegistry](interfaces/ICoreRegistry.sol/interface.ICoreRegistry.md)
+  - [IFeeManager](interfaces/IFeeManager.sol/interface.IFeeManager.md)
+  - [IHubCoreFactory](interfaces/IHubCoreFactory.sol/interface.IHubCoreFactory.md)
+  - [IHubCoreRegistry](interfaces/IHubCoreRegistry.sol/interface.IHubCoreRegistry.md)
+  - [IMachine](interfaces/IMachine.sol/interface.IMachine.md)
+  - [IMachineEndpoint](interfaces/IMachineEndpoint.sol/interface.IMachineEndpoint.md)
+  - [IMachineShare](interfaces/IMachineShare.sol/interface.IMachineShare.md)
+  - [IMakinaContext](interfaces/IMakinaContext.sol/interface.IMakinaContext.md)
+  - [IMakinaGovernable](interfaces/IMakinaGovernable.sol/interface.IMakinaGovernable.md)
+  - [IOracleRegistry](interfaces/IOracleRegistry.sol/interface.IOracleRegistry.md)
+  - [IOwnable2Step](interfaces/IOwnable2Step.sol/interface.IOwnable2Step.md)
+  - [IPreDepositVault](interfaces/IPreDepositVault.sol/interface.IPreDepositVault.md)
+  - [ISpokeCoreFactory](interfaces/ISpokeCoreFactory.sol/interface.ISpokeCoreFactory.md)
+  - [ISpokeCoreRegistry](interfaces/ISpokeCoreRegistry.sol/interface.ISpokeCoreRegistry.md)
+  - [ISwapModule](interfaces/ISwapModule.sol/interface.ISwapModule.md)
+  - [ITokenRegistry](interfaces/ITokenRegistry.sol/interface.ITokenRegistry.md)
+  - [IWeirollVM](interfaces/IWeirollVM.sol/interface.IWeirollVM.md)
+- [❱ libraries]
+  - [CaliberAccountingCCQ](libraries/CaliberAccountingCCQ.sol/library.CaliberAccountingCCQ.md)
+  - [DecimalsUtils](libraries/DecimalsUtils.sol/library.DecimalsUtils.md)
+  - [Errors](libraries/Errors.sol/library.Errors.md)
+  - [MachineUtils](libraries/MachineUtils.sol/library.MachineUtils.md)
+- [❱ machine]
+  - [Machine](machine/Machine.sol/contract.Machine.md)
+  - [MachineShare](machine/MachineShare.sol/contract.MachineShare.md)
+- [❱ pre-deposit]
+  - [PreDepositVault](pre-deposit/PreDepositVault.sol/contract.PreDepositVault.md)
+- [❱ registries]
+  - [ChainRegistry](registries/ChainRegistry.sol/contract.ChainRegistry.md)
+  - [CoreRegistry](registries/CoreRegistry.sol/abstract.CoreRegistry.md)
+  - [HubCoreRegistry](registries/HubCoreRegistry.sol/contract.HubCoreRegistry.md)
+  - [OracleRegistry](registries/OracleRegistry.sol/contract.OracleRegistry.md)
+  - [SpokeCoreRegistry](registries/SpokeCoreRegistry.sol/contract.SpokeCoreRegistry.md)
+  - [TokenRegistry](registries/TokenRegistry.sol/contract.TokenRegistry.md)
+- [❱ swap]
+  - [SwapModule](swap/SwapModule.sol/contract.SwapModule.md)
+- [❱ utils]
+  - [MakinaContext](utils/MakinaContext.sol/abstract.MakinaContext.md)
+  - [MakinaGovernable](utils/MakinaGovernable.sol/abstract.MakinaGovernable.md)

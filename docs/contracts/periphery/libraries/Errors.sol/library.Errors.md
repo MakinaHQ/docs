@@ -1,8 +1,9 @@
 # Errors
+
 [Git Source](https://github.com/MakinaHQ/makina-periphery/blob/84fdbd342f970755d85ed1e44afeed01003e0e1f/src/libraries/Errors.sol)
 
-
 ## Errors
+
 ### AlreadyClaimed
 
 ```solidity
@@ -182,4 +183,3 @@ error ZeroRequestId();
 ```solidity
 error ZeroShares();
 ```
-

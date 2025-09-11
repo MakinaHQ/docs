@@ -1,34 +1,34 @@
 # Summary
 
-  - [❱ depositors]
-    - [DirectDepositor](depositors/DirectDepositor.sol/contract.DirectDepositor.md)
-  - [❱ factories]
-    - [HubPeripheryFactory](factories/HubPeripheryFactory.sol/contract.HubPeripheryFactory.md)
-  - [❱ fee-managers]
-    - [WatermarkFeeManager](fee-managers/WatermarkFeeManager.sol/contract.WatermarkFeeManager.md)
-  - [❱ flashloans]
-    - [FlashloanAggregator](flashloans/FlashloanAggregator.sol/contract.FlashloanAggregator.md)
-  - [❱ interfaces]
-    - [IAsyncRedeemer](interfaces/IAsyncRedeemer.sol/interface.IAsyncRedeemer.md)
-    - [IDirectDepositor](interfaces/IDirectDepositor.sol/interface.IDirectDepositor.md)
-    - [IFlashloanAggregator](interfaces/IFlashloanAggregator.sol/interface.IFlashloanAggregator.md)
-    - [IHubPeripheryFactory](interfaces/IHubPeripheryFactory.sol/interface.IHubPeripheryFactory.md)
-    - [IHubPeripheryRegistry](interfaces/IHubPeripheryRegistry.sol/interface.IHubPeripheryRegistry.md)
-    - [IMachinePeriphery](interfaces/IMachinePeriphery.sol/interface.IMachinePeriphery.md)
-    - [IMakinaPeripheryContext](interfaces/IMakinaPeripheryContext.sol/interface.IMakinaPeripheryContext.md)
-    - [IStakingModule](interfaces/IStakingModule.sol/interface.IStakingModule.md)
-    - [IStakingModuleReference](interfaces/IStakingModuleReference.sol/interface.IStakingModuleReference.md)
-    - [IWatermarkFeeManager](interfaces/IWatermarkFeeManager.sol/interface.IWatermarkFeeManager.md)
-    - [IWhitelist](interfaces/IWhitelist.sol/interface.IWhitelist.md)
-  - [❱ libraries]
-    - [Errors](libraries/Errors.sol/library.Errors.md)
-  - [❱ redeemers]
-    - [AsyncRedeemer](redeemers/AsyncRedeemer.sol/contract.AsyncRedeemer.md)
-  - [❱ registries]
-    - [HubPeripheryRegistry](registries/HubPeripheryRegistry.sol/contract.HubPeripheryRegistry.md)
-  - [❱ staking-module]
-    - [StakingModule](staking-module/StakingModule.sol/contract.StakingModule.md)
-  - [❱ utils]
-    - [MachinePeriphery](utils/MachinePeriphery.sol/abstract.MachinePeriphery.md)
-    - [MakinaPeripheryContext](utils/MakinaPeripheryContext.sol/abstract.MakinaPeripheryContext.md)
-    - [Whitelist](utils/Whitelist.sol/abstract.Whitelist.md)
+- [❱ depositors]
+  - [DirectDepositor](depositors/DirectDepositor.sol/contract.DirectDepositor.md)
+- [❱ factories]
+  - [HubPeripheryFactory](factories/HubPeripheryFactory.sol/contract.HubPeripheryFactory.md)
+- [❱ fee-managers]
+  - [WatermarkFeeManager](fee-managers/WatermarkFeeManager.sol/contract.WatermarkFeeManager.md)
+- [❱ flashloans]
+  - [FlashloanAggregator](flashloans/FlashloanAggregator.sol/contract.FlashloanAggregator.md)
+- [❱ interfaces]
+  - [IAsyncRedeemer](interfaces/IAsyncRedeemer.sol/interface.IAsyncRedeemer.md)
+  - [IDirectDepositor](interfaces/IDirectDepositor.sol/interface.IDirectDepositor.md)
+  - [IFlashloanAggregator](interfaces/IFlashloanAggregator.sol/interface.IFlashloanAggregator.md)
+  - [IHubPeripheryFactory](interfaces/IHubPeripheryFactory.sol/interface.IHubPeripheryFactory.md)
+  - [IHubPeripheryRegistry](interfaces/IHubPeripheryRegistry.sol/interface.IHubPeripheryRegistry.md)
+  - [IMachinePeriphery](interfaces/IMachinePeriphery.sol/interface.IMachinePeriphery.md)
+  - [IMakinaPeripheryContext](interfaces/IMakinaPeripheryContext.sol/interface.IMakinaPeripheryContext.md)
+  - [ISecurityModule](interfaces/ISecurityModule.sol/interface.ISecurityModule.md)
+  - [ISecurityModuleReference](interfaces/ISecurityModuleReference.sol/interface.ISecurityModuleReference.md)
+  - [IWatermarkFeeManager](interfaces/IWatermarkFeeManager.sol/interface.IWatermarkFeeManager.md)
+  - [IWhitelist](interfaces/IWhitelist.sol/interface.IWhitelist.md)
+- [❱ libraries]
+  - [Errors](libraries/Errors.sol/library.Errors.md)
+- [❱ redeemers]
+  - [AsyncRedeemer](redeemers/AsyncRedeemer.sol/contract.AsyncRedeemer.md)
+- [❱ registries]
+  - [HubPeripheryRegistry](registries/HubPeripheryRegistry.sol/contract.HubPeripheryRegistry.md)
+- [❱ security-module]
+  - [SecurityModule](security-module/SecurityModule.sol/contract.SecurityModule.md)
+- [❱ utils]
+  - [MachinePeriphery](utils/MachinePeriphery.sol/abstract.MachinePeriphery.md)
+  - [MakinaPeripheryContext](utils/MakinaPeripheryContext.sol/abstract.MakinaPeripheryContext.md)
+  - [Whitelist](utils/Whitelist.sol/abstract.Whitelist.md)

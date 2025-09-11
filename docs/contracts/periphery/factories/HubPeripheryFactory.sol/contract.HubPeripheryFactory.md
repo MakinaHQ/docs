@@ -1,11 +1,12 @@
 # HubPeripheryFactory
+
 [Git Source](https://github.com/MakinaHQ/makina-periphery/blob/84fdbd342f970755d85ed1e44afeed01003e0e1f/src/factories/HubPeripheryFactory.sol)
 
 **Inherits:**
-AccessManagedUpgradeable, [MakinaPeripheryContext](/src/utils/MakinaPeripheryContext.sol/abstract.MakinaPeripheryContext.md), [IHubPeripheryFactory](/src/interfaces/IHubPeripheryFactory.sol/interface.IHubPeripheryFactory.md)
-
+AccessManagedUpgradeable, [MakinaPeripheryContext](/contracts/periphery/utils/MakinaPeripheryContext.sol/abstract.MakinaPeripheryContext.md), [IHubPeripheryFactory](/contracts/periphery/interfaces/IHubPeripheryFactory.sol/interface.IHubPeripheryFactory.md)
 
 ## State Variables
+
 ### HubPeripheryFactoryStorageLocation
 
 ```solidity
@@ -13,10 +14,9 @@ bytes32 private constant HubPeripheryFactoryStorageLocation =
     0x6b50a937759edff8a6a5b23fe11eb54a74c1c4f4d159fd3622707013a01a1e00;
 ```
 
-
 ## Functions
-### _getHubPeripheryFactoryStorage
 
+### \_getHubPeripheryFactoryStorage
 
 ```solidity
 function _getHubPeripheryFactoryStorage() internal pure returns (HubPeripheryFactoryStorage storage $);
@@ -24,13 +24,11 @@ function _getHubPeripheryFactoryStorage() internal pure returns (HubPeripheryFac
 
 ### constructor
 
-
 ```solidity
 constructor(address _peripheryRegistry) MakinaPeripheryContext(_peripheryRegistry);
 ```
 
 ### initialize
-
 
 ```solidity
 function initialize(address _initialAuthority) external initializer;
@@ -40,7 +38,6 @@ function initialize(address _initialAuthority) external initializer;
 
 Address => Whether this is a depositor deployed by this factory
 
-
 ```solidity
 function isDepositor(address _depositor) external view override returns (bool);
 ```
@@ -48,7 +45,6 @@ function isDepositor(address _depositor) external view override returns (bool);
 ### isRedeemer
 
 Address => Whether this is a redeemer deployed by this factory
-
 
 ```solidity
 function isRedeemer(address _redeemer) external view override returns (bool);
@@ -58,7 +54,6 @@ function isRedeemer(address _redeemer) external view override returns (bool);
 
 Address => Whether this is a fee manager deployed by this factory
 
-
 ```solidity
 function isFeeManager(address _feeManager) external view override returns (bool);
 ```
@@ -66,7 +61,6 @@ function isFeeManager(address _feeManager) external view override returns (bool)
 ### isSecurityModule
 
 Address => Whether this is a security module deployed by this factory
-
 
 ```solidity
 function isSecurityModule(address _securityModule) external view override returns (bool);
@@ -76,7 +70,6 @@ function isSecurityModule(address _securityModule) external view override return
 
 Depositor => Implementation ID
 
-
 ```solidity
 function depositorImplemId(address _depositor) external view override returns (uint16);
 ```
@@ -84,7 +77,6 @@ function depositorImplemId(address _depositor) external view override returns (u
 ### redeemerImplemId
 
 Redeemer => Implementation ID
-
 
 ```solidity
 function redeemerImplemId(address _redeemer) external view override returns (uint16);
@@ -94,7 +86,6 @@ function redeemerImplemId(address _redeemer) external view override returns (uin
 
 Fee manager => Implementation ID
 
-
 ```solidity
 function feeManagerImplemId(address _feeManager) external view override returns (uint16);
 ```
@@ -103,38 +94,35 @@ function feeManagerImplemId(address _feeManager) external view override returns 
 
 Sets the machine address in the machine periphery contract.
 
-
 ```solidity
 function setMachine(address machinePeriphery, address machine) external override restricted;
 ```
+
 **Parameters**
 
-|Name|Type|Description|
-|----|----|-----------|
-|`machinePeriphery`|`address`|The address of the machine periphery contract.|
-|`machine`|`address`|The address of the machine to be set.|
-
+| Name               | Type      | Description                                    |
+| ------------------ | --------- | ---------------------------------------------- |
+| `machinePeriphery` | `address` | The address of the machine periphery contract. |
+| `machine`          | `address` | The address of the machine to be set.          |
 
 ### setSecurityModule
 
 Sets the security module address in the fee manager contract.
 
-
 ```solidity
 function setSecurityModule(address feeManager, address securityModule) external override restricted;
 ```
+
 **Parameters**
 
-|Name|Type|Description|
-|----|----|-----------|
-|`feeManager`|`address`|The address of the fee manager contract.|
-|`securityModule`|`address`|The address of the security module to be set.|
-
+| Name             | Type      | Description                                   |
+| ---------------- | --------- | --------------------------------------------- |
+| `feeManager`     | `address` | The address of the fee manager contract.      |
+| `securityModule` | `address` | The address of the security module to be set. |
 
 ### createDepositor
 
 Creates a new machine depositor using the specified implementation ID.
-
 
 ```solidity
 function createDepositor(uint16 _implemId, bytes calldata _initializationData)
@@ -143,24 +131,23 @@ function createDepositor(uint16 _implemId, bytes calldata _initializationData)
     restricted
     returns (address);
 ```
+
 **Parameters**
 
-|Name|Type|Description|
-|----|----|-----------|
-|`_implemId`|`uint16`||
-|`_initializationData`|`bytes`||
+| Name                  | Type     | Description |
+| --------------------- | -------- | ----------- |
+| `_implemId`           | `uint16` |             |
+| `_initializationData` | `bytes`  |             |
 
 **Returns**
 
-|Name|Type|Description|
-|----|----|-----------|
-|`<none>`|`address`|depositor The address of the newly created depositor.|
-
+| Name     | Type      | Description                                           |
+| -------- | --------- | ----------------------------------------------------- |
+| `<none>` | `address` | depositor The address of the newly created depositor. |
 
 ### createRedeemer
 
 Creates a new machine redeemer using the specified implementation ID.
-
 
 ```solidity
 function createRedeemer(uint16 _implemId, bytes calldata _initializationData)
@@ -169,24 +156,23 @@ function createRedeemer(uint16 _implemId, bytes calldata _initializationData)
     restricted
     returns (address);
 ```
+
 **Parameters**
 
-|Name|Type|Description|
-|----|----|-----------|
-|`_implemId`|`uint16`||
-|`_initializationData`|`bytes`||
+| Name                  | Type     | Description |
+| --------------------- | -------- | ----------- |
+| `_implemId`           | `uint16` |             |
+| `_initializationData` | `bytes`  |             |
 
 **Returns**
 
-|Name|Type|Description|
-|----|----|-----------|
-|`<none>`|`address`|redeemer The address of the newly created redeemer.|
-
+| Name     | Type      | Description                                         |
+| -------- | --------- | --------------------------------------------------- |
+| `<none>` | `address` | redeemer The address of the newly created redeemer. |
 
 ### createFeeManager
 
 Creates a new machine fee manager using the specified implementation ID.
-
 
 ```solidity
 function createFeeManager(uint16 _implemId, bytes calldata _initializationData)
@@ -195,24 +181,23 @@ function createFeeManager(uint16 _implemId, bytes calldata _initializationData)
     restricted
     returns (address);
 ```
+
 **Parameters**
 
-|Name|Type|Description|
-|----|----|-----------|
-|`_implemId`|`uint16`||
-|`_initializationData`|`bytes`||
+| Name                  | Type     | Description |
+| --------------------- | -------- | ----------- |
+| `_implemId`           | `uint16` |             |
+| `_initializationData` | `bytes`  |             |
 
 **Returns**
 
-|Name|Type|Description|
-|----|----|-----------|
-|`<none>`|`address`|feeManager The address of the newly created fee manager.|
-
+| Name     | Type      | Description                                              |
+| -------- | --------- | -------------------------------------------------------- |
+| `<none>` | `address` | feeManager The address of the newly created fee manager. |
 
 ### createSecurityModule
 
 Creates a new security module.
-
 
 ```solidity
 function createSecurityModule(ISecurityModule.SecurityModuleInitParams calldata smParams)
@@ -221,24 +206,25 @@ function createSecurityModule(ISecurityModule.SecurityModuleInitParams calldata 
     restricted
     returns (address);
 ```
+
 **Parameters**
 
-|Name|Type|Description|
-|----|----|-----------|
-|`smParams`|`ISecurityModule.SecurityModuleInitParams`|The security module initialization parameters.|
+| Name       | Type                                       | Description                                    |
+| ---------- | ------------------------------------------ | ---------------------------------------------- |
+| `smParams` | `ISecurityModule.SecurityModuleInitParams` | The security module initialization parameters. |
 
 **Returns**
 
-|Name|Type|Description|
-|----|----|-----------|
-|`<none>`|`address`|securityModule The address of the newly created security module.|
-
+| Name     | Type      | Description                                                      |
+| -------- | --------- | ---------------------------------------------------------------- |
+| `<none>` | `address` | securityModule The address of the newly created security module. |
 
 ## Structs
+
 ### HubPeripheryFactoryStorage
+
 **Note:**
 storage-location: erc7201:makina.storage.HubPeripheryFactory
-
 
 ```solidity
 struct HubPeripheryFactoryStorage {
@@ -251,4 +237,3 @@ struct HubPeripheryFactoryStorage {
     mapping(address feeManager => uint16 implemId) _feeManagerImplemId;
 }
 ```
-
