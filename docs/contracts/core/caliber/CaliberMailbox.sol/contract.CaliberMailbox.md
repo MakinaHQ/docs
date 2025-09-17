@@ -1,6 +1,6 @@
 # CaliberMailbox
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/96cabc5a8ea74d6880f72f6b2a1ea81df86856a4/src/caliber/CaliberMailbox.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/5c13d0f918f7a44b1f21792a780c86b350caa4b2/src/caliber/CaliberMailbox.sol)
 
 **Inherits:**
 [MakinaGovernable](/contracts/core/utils/MakinaGovernable.sol/abstract.MakinaGovernable.md), ReentrancyGuardUpgradeable, [BridgeController](/contracts/core/bridge/controller/BridgeController.sol/abstract.BridgeController.md), [ICaliberMailbox](/contracts/core/interfaces/ICaliberMailbox.sol/interface.ICaliberMailbox.md)
@@ -229,7 +229,7 @@ _This function is intended to be used by the DAO to realign bridge accounting st
 typically in response to operator deviations, external bridge discrepancies, or unbounded counter growth._
 
 ```solidity
-function resetBridgingState(address token) external override restricted;
+function resetBridgingState(address token) external override onlySecurityCouncil;
 ```
 
 **Parameters**

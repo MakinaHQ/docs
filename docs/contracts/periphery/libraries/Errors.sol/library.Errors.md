@@ -1,6 +1,6 @@
 # Errors
 
-[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/84fdbd342f970755d85ed1e44afeed01003e0e1f/src/libraries/Errors.sol)
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/3ff217c9c76d6d34e1bcbab84ac6946048ceaeb7/src/libraries/Errors.sol)
 
 ## Errors
 

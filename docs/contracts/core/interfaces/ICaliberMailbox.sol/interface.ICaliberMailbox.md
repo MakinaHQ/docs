@@ -1,6 +1,6 @@
 # ICaliberMailbox
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/96cabc5a8ea74d6880f72f6b2a1ea81df86856a4/src/interfaces/ICaliberMailbox.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/5c13d0f918f7a44b1f21792a780c86b350caa4b2/src/interfaces/ICaliberMailbox.sol)
 
 **Inherits:**
 [IMachineEndpoint](/contracts/core/interfaces/IMachineEndpoint.sol/interface.IMachineEndpoint.md)
@@ -129,7 +129,7 @@ struct SpokeCaliberAccountingData {
 
 | Name         | Type      | Description                                                                                  |
 | ------------ | --------- | -------------------------------------------------------------------------------------------- |
-| `netAum`     | `uint256` | The net assets under management.                                                             |
+| `netAum`     | `uint256` | The net AUM expresses in caliber's accounting token.                                         |
 | `positions`  | `bytes[]` | The list of positions of the caliber, each encoded as abi.encode(positionId, value, isDebt). |
 | `baseTokens` | `bytes[]` | The list of base tokens of the caliber, each encoded as abi.encode(token, value).            |
 | `bridgesIn`  | `bytes[]` | The list of incoming bridge amounts, each encoded as abi.encode(token, amount).              |

@@ -1,6 +1,6 @@
 # SecurityModule
 
-[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/84fdbd342f970755d85ed1e44afeed01003e0e1f/src/security-module/SecurityModule.sol)
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/3ff217c9c76d6d34e1bcbab84ac6946048ceaeb7/src/security-module/SecurityModule.sol)
 
 **Inherits:**
 ERC20Upgradeable, ReentrancyGuardUpgradeable, [MachinePeriphery](/contracts/periphery/utils/MachinePeriphery.sol/abstract.MachinePeriphery.md), [ISecurityModule](/contracts/periphery/interfaces/ISecurityModule.sol/interface.ISecurityModule.md)
@@ -106,11 +106,25 @@ function minBalanceAfterSlash() public view override returns (uint256);
 
 ### pendingCooldown
 
-Cooldown ID => Pending cooldown data
+Returns data of a pending cooldown.
 
 ```solidity
-function pendingCooldown(uint256 cooldownId) external view override returns (uint256 shares, uint256 maturity);
+function pendingCooldown(uint256 cooldownId) external view override returns (uint256, uint256, uint256);
 ```
+
+**Parameters**
+
+| Name         | Type      | Description                                                       |
+| ------------ | --------- | ----------------------------------------------------------------- |
+| `cooldownId` | `uint256` | ID of the cooldown receipt NFT representing the pending cooldown. |
+
+**Returns**
+
+| Name     | Type      | Description                                                                              |
+| -------- | --------- | ---------------------------------------------------------------------------------------- |
+| `<none>` | `uint256` | shares Amount of security shares to be redeemed.                                         |
+| `<none>` | `uint256` | currentExpectedAssets Current expected amount of machine shares that can be redeemed.    |
+| `<none>` | `uint256` | maturity Timestamp at which the cooldown period will end and the shares can be redeemed. |
 
 ### slashingMode
 
@@ -230,7 +244,11 @@ Shares are locked in the contract until the cooldown is cancelled or expires.
 A cooldown receipt NFT is minted to the specified receiver address.
 
 ```solidity
-function startCooldown(uint256 shares, address receiver) external override nonReentrant returns (uint256, uint256);
+function startCooldown(uint256 shares, address receiver)
+    external
+    override
+    nonReentrant
+    returns (uint256, uint256, uint256);
 ```
 
 **Parameters**
@@ -245,6 +263,7 @@ function startCooldown(uint256 shares, address receiver) external override nonRe
 | Name     | Type      | Description                                                                              |
 | -------- | --------- | ---------------------------------------------------------------------------------------- |
 | `<none>` | `uint256` | cooldownId ID of the minted cooldown receipt NFT representing the pending cooldown.      |
+| `<none>` | `uint256` | maxAssets Maximum amount of machine shares that can be redeemed.                         |
 | `<none>` | `uint256` | maturity Timestamp at which the cooldown period will end and the shares can be redeemed. |
 
 ### cancelCooldown

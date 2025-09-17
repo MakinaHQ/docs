@@ -1,6 +1,6 @@
 # IMachineEndpoint
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/96cabc5a8ea74d6880f72f6b2a1ea81df86856a4/src/interfaces/IMachineEndpoint.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/5c13d0f918f7a44b1f21792a780c86b350caa4b2/src/interfaces/IMachineEndpoint.sol)
 
 **Inherits:**
 [IBridgeController](/contracts/core/interfaces/IBridgeController.sol/interface.IBridgeController.md), [IMakinaGovernable](/contracts/core/interfaces/IMakinaGovernable.sol/interface.IMakinaGovernable.md)

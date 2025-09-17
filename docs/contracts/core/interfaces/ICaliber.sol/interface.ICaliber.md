@@ -1,6 +1,6 @@
 # ICaliber
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/96cabc5a8ea74d6880f72f6b2a1ea81df86856a4/src/interfaces/ICaliber.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/5c13d0f918f7a44b1f21792a780c86b350caa4b2/src/interfaces/ICaliber.sol)
 
 ## Functions
 
@@ -127,7 +127,7 @@ function getPositionsLength() external view returns (uint256);
 
 ### getPositionId
 
-_Position index => Position ID_
+Position index => Position ID
 
 _There are no guarantees on the ordering of values inside the Position ID list,
 and it may change when values are added or removed._
@@ -138,7 +138,7 @@ function getPositionId(uint256 idx) external view returns (uint256);
 
 ### getPosition
 
-_Position ID => Position data_
+Position ID => Position data
 
 ```solidity
 function getPosition(uint256 id) external view returns (Position memory);
@@ -146,7 +146,7 @@ function getPosition(uint256 id) external view returns (Position memory);
 
 ### isBaseToken
 
-_Token => Registered as base token in this caliber_
+Token => Registered as base token in this caliber
 
 ```solidity
 function isBaseToken(address token) external view returns (bool);
@@ -162,7 +162,7 @@ function getBaseTokensLength() external view returns (uint256);
 
 ### getBaseToken
 
-_Base token index => Base token address_
+Base token index => Base token address
 
 _There are no guarantees on the ordering of values inside the base tokens list,
 and it may change when values are added or removed._
@@ -173,8 +173,8 @@ function getBaseToken(uint256 idx) external view returns (address);
 
 ### isInstrRootGuardian
 
-_User => Whether the user is a root guardian
-Guardians have veto power over updates of the Merkle root._
+User => Whether the user is a root guardian
+Guardians have veto power over updates of the Merkle root.
 
 ```solidity
 function isInstrRootGuardian(address user) external view returns (bool);
@@ -182,7 +182,7 @@ function isInstrRootGuardian(address user) external view returns (bool);
 
 ### isAccountingFresh
 
-_Checks if the accounting age of each position is below the position staleness threshold._
+Checks if the accounting age of each position is below the position staleness threshold.
 
 ```solidity
 function isAccountingFresh() external view returns (bool);

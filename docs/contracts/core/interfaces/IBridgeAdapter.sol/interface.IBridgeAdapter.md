@@ -1,6 +1,6 @@
 # IBridgeAdapter
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/96cabc5a8ea74d6880f72f6b2a1ea81df86856a4/src/interfaces/IBridgeAdapter.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/5c13d0f918f7a44b1f21792a780c86b350caa4b2/src/interfaces/IBridgeAdapter.sol)
 
 ## Functions
 
@@ -21,7 +21,7 @@ function initialize(address controller, bytes calldata initData) external;
 
 ### controller
 
-Returns the address of the bridge controller contract.
+Address of the bridge controller contract.
 
 ```solidity
 function controller() external view returns (address);
@@ -29,7 +29,7 @@ function controller() external view returns (address);
 
 ### bridgeId
 
-Returns the ID of the adapted external bridge.
+ID of the adapted external bridge.
 
 ```solidity
 function bridgeId() external view returns (uint16);
@@ -37,7 +37,7 @@ function bridgeId() external view returns (uint16);
 
 ### approvalTarget
 
-Returns the address of the external bridge approval target contract.
+Address of the external bridge approval target contract.
 
 ```solidity
 function approvalTarget() external view returns (address);
@@ -45,7 +45,7 @@ function approvalTarget() external view returns (address);
 
 ### executionTarget
 
-Returns the address of the external bridge execution target contract.
+Address of the external bridge execution target contract.
 
 ```solidity
 function executionTarget() external view returns (address);
@@ -53,7 +53,7 @@ function executionTarget() external view returns (address);
 
 ### receiveSource
 
-Returns the address of the external bridge contract responsible for sending output funds.
+Address of the external bridge contract responsible for sending output funds.
 
 ```solidity
 function receiveSource() external view returns (address);
@@ -61,7 +61,7 @@ function receiveSource() external view returns (address);
 
 ### nextOutTransferId
 
-Returns the ID of the next outgoing transfer.
+ID of the next outgoing transfer.
 
 ```solidity
 function nextOutTransferId() external view returns (uint256);
@@ -69,7 +69,7 @@ function nextOutTransferId() external view returns (uint256);
 
 ### nextInTransferId
 
-Returns the ID of the next incoming transfer.
+ID of the next incoming transfer.
 
 ```solidity
 function nextInTransferId() external view returns (uint256);

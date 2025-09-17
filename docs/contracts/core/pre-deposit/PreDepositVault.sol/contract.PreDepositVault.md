@@ -1,6 +1,6 @@
 # PreDepositVault
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/96cabc5a8ea74d6880f72f6b2a1ea81df86856a4/src/pre-deposit/PreDepositVault.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/5c13d0f918f7a44b1f21792a780c86b350caa4b2/src/pre-deposit/PreDepositVault.sol)
 
 **Inherits:**
 AccessManagedUpgradeable, [MakinaContext](/contracts/core/utils/MakinaContext.sol/abstract.MakinaContext.md), [IPreDepositVault](/contracts/core/interfaces/IPreDepositVault.sol/interface.IPreDepositVault.md)
@@ -50,6 +50,12 @@ function initialize(
 | `_depositToken`    | `address`                   |                                |
 | `_accountingToken` | `address`                   |                                |
 
+### onlyRiskManager
+
+```solidity
+modifier onlyRiskManager();
+```
+
 ### notMigrated
 
 ```solidity
@@ -58,7 +64,7 @@ modifier notMigrated();
 
 ### migrated
 
-Whether the vault has migrated to a machine instance.
+True if the vault has migrated to a machine instance, false otherwise.
 
 ```solidity
 function migrated() external view override returns (bool);
@@ -130,7 +136,7 @@ function shareLimit() external view override returns (uint256);
 
 ### maxDeposit
 
-Maximum amount of assets that can currently be deposited in the vault.
+Maximum amount of deposit tokens that can currently be deposited in the vault.
 
 ```solidity
 function maxDeposit() public view override returns (uint256);
@@ -138,7 +144,7 @@ function maxDeposit() public view override returns (uint256);
 
 ### totalAssets
 
-Total amount of depositToken managed by the vault.
+Total amount of deposit tokens managed by the vault.
 
 ```solidity
 function totalAssets() external view override returns (uint256);
@@ -146,7 +152,7 @@ function totalAssets() external view override returns (uint256);
 
 ### previewDeposit
 
-Amount of shares minted against a given amount of assets.
+Amount of shares minted against a given amount of deposit tokens.
 
 ```solidity
 function previewDeposit(uint256 assets) public view override notMigrated returns (uint256);
@@ -154,13 +160,13 @@ function previewDeposit(uint256 assets) public view override notMigrated returns
 
 **Parameters**
 
-| Name     | Type      | Description |
-| -------- | --------- | ----------- |
-| `assets` | `uint256` |             |
+| Name     | Type      | Description                                   |
+| -------- | --------- | --------------------------------------------- |
+| `assets` | `uint256` | The amount of deposit tokens to be deposited. |
 
 ### previewRedeem
 
-Amount of assets that can be withdrawn against a given amount of shares.
+Amount of deposit tokens that can be withdrawn against a given amount of shares.
 
 ```solidity
 function previewRedeem(uint256 shares) public view override notMigrated returns (uint256);
@@ -174,7 +180,7 @@ function previewRedeem(uint256 shares) public view override notMigrated returns 
 
 ### deposit
 
-Deposits a given amount of assets and mints shares to the receiver.
+Deposits a given amount of deposit tokens and mints shares to the receiver.
 
 ```solidity
 function deposit(uint256 assets, address receiver, uint256 minShares) external override notMigrated returns (uint256);
@@ -182,11 +188,11 @@ function deposit(uint256 assets, address receiver, uint256 minShares) external o
 
 **Parameters**
 
-| Name        | Type      | Description                                |
-| ----------- | --------- | ------------------------------------------ |
-| `assets`    | `uint256` |                                            |
-| `receiver`  | `address` | The receiver of the shares.                |
-| `minShares` | `uint256` | The minimum amount of shares to be minted. |
+| Name        | Type      | Description                                   |
+| ----------- | --------- | --------------------------------------------- |
+| `assets`    | `uint256` | The amount of deposit tokens to be deposited. |
+| `receiver`  | `address` | The receiver of the shares.                   |
+| `minShares` | `uint256` | The minimum amount of shares to be minted.    |
 
 **Returns**
 
@@ -196,7 +202,7 @@ function deposit(uint256 assets, address receiver, uint256 minShares) external o
 
 ### redeem
 
-Burns exactly shares from caller and transfers the corresponding amount of assets to the receiver.
+Burns exactly shares from caller and transfers the corresponding amount of deposit tokens to the receiver.
 
 ```solidity
 function redeem(uint256 shares, address receiver, uint256 minAssets) external override notMigrated returns (uint256);
@@ -204,17 +210,17 @@ function redeem(uint256 shares, address receiver, uint256 minAssets) external ov
 
 **Parameters**
 
-| Name        | Type      | Description                                     |
-| ----------- | --------- | ----------------------------------------------- |
-| `shares`    | `uint256` |                                                 |
-| `receiver`  | `address` | The receiver of withdrawn assets.               |
-| `minAssets` | `uint256` | The minimum amount of assets to be transferred. |
+| Name        | Type      | Description                                             |
+| ----------- | --------- | ------------------------------------------------------- |
+| `shares`    | `uint256` | The amount of shares to be redeemed.                    |
+| `receiver`  | `address` | The receiver of withdrawn deposit tokens.               |
+| `minAssets` | `uint256` | The minimum amount of deposit tokens to be transferred. |
 
 **Returns**
 
-| Name     | Type      | Description                              |
-| -------- | --------- | ---------------------------------------- |
-| `<none>` | `uint256` | assets The amount of assets transferred. |
+| Name     | Type      | Description                                      |
+| -------- | --------- | ------------------------------------------------ |
+| `<none>` | `uint256` | assets The amount of deposit tokens transferred. |
 
 ### migrateToMachine
 
@@ -243,7 +249,7 @@ function setPendingMachine(address _machine) external override notMigrated;
 Sets the new share token supply limit that cannot be exceeded by new deposits.
 
 ```solidity
-function setShareLimit(uint256 newShareLimit) external override notMigrated;
+function setShareLimit(uint256 newShareLimit) external override onlyRiskManager notMigrated;
 ```
 
 **Parameters**
@@ -271,7 +277,11 @@ function setRiskManager(address _riskManager) external override restricted notMi
 Whitelist or unwhitelist a list of users.
 
 ```solidity
-function setWhitelistedUsers(address[] calldata users, bool whitelisted) external override restricted notMigrated;
+function setWhitelistedUsers(address[] calldata users, bool whitelisted)
+    external
+    override
+    onlyRiskManager
+    notMigrated;
 ```
 
 **Parameters**
@@ -288,7 +298,7 @@ Sets the whitelist mode for the vault.
 _In whitelist mode, only whitelisted users can deposit._
 
 ```solidity
-function setWhitelistMode(bool enabled) external override restricted notMigrated;
+function setWhitelistMode(bool enabled) external override onlyRiskManager notMigrated;
 ```
 
 **Parameters**

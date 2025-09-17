@@ -1,11 +1,9 @@
 # DirectDepositor
 
-[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/84fdbd342f970755d85ed1e44afeed01003e0e1f/src/depositors/DirectDepositor.sol)
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/3ff217c9c76d6d34e1bcbab84ac6946048ceaeb7/src/depositors/DirectDepositor.sol)
 
 **Inherits:**
 [MachinePeriphery](/contracts/periphery/utils/MachinePeriphery.sol/abstract.MachinePeriphery.md), [Whitelist](/contracts/periphery/utils/Whitelist.sol/abstract.Whitelist.md), [IDirectDepositor](/contracts/periphery/interfaces/IDirectDepositor.sol/interface.IDirectDepositor.md)
-
-SPDX-License-Identifier: UNLICENSED
 
 ## Functions
 
