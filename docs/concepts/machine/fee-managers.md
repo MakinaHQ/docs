@@ -5,27 +5,29 @@ sidebar_position: 5
 
 # Fee Managers
 
-The FeeManager contract defines how fees are applied to a Machine. Each Machine is linked to a dedicated FeeManager instance. Different strategies may require different fee models, and the protocol supports multiple FeeManager implementations.
+The Fee Manager contract defines how fees are applied to a Machine. Each Machine is linked to a dedicated FeeManager instance. Different strategies may require different fee models, and the protocol supports multiple FeeManager implementations.
 
 Fees can be of two types:
 - Fixed fees: based on assets under management (AUM) and elapsed time.
-- Performance fees: based on changes in share price or performance.
+- Performance fees: based on strategy performance.
 
-All fees are realized by inflating the [Machine Token](machine-token) supply. Newly minted shares dilute the share price by increasing supply without a corresponding increase in AUM, thereby socializing fees equally across all Machine Share holders. Fees are collected whenever the Machine’s AUM is updated.
+Fees take the form of newly minted [Machine Tokens](machine-token), which are distributed to the Operator, [Security Module](security-module), and Makina DAO. Since these tokens increase the overall supply without a corresponding increase in AUM, they dilute the share price, effectively socializing fees across all Machine Token holders. Fees are minted and distributed atomically along Machine AUM updates.
 
 ## Watermark Fee Manager
 
+See the [WatermarkFeeManager](/contracts/periphery/fee-managers/WatermarkFeeManager.sol/contract.WatermarkFeeManager.md) contract page for more details.
+
 ### Fixed Fee
 
-The contracts divides fixed fee into [Staking Module](staking-module) fee, which incentivizes stakes into the Staking Module, and management fee which incentivizes the Operator and supports Makina DAO.
+The contracts divides fixed fee into __Security Module fee__, which incentivizes stakes into the Security Module, and __Management fee__ which incentivizes the Operator and supports Makina DAO.
 
-The fixed fees are calculated as follows:
+The fixed fee is calculated as follows:
 
 $$
-FixedFee = ShareSupply *feeRate_{sec} * (currentTimestamp - lastTimestamp);
+FixedFee = TokenSupply *feeRate_{sec} * (currentTimestamp - lastTimestamp);
 $$
 
-For example, with a feeRate of 2% annual, a share supply of 1'000'000 Shares and 1 day elapsed:
+For example, with a feeRate of 2% annual, a token supply of 1'000'000 and 1 day elapsed:
 
 $$
 FixedFee = 1'000'000 * \dfrac{0.02}{365 * 86400} * 86400 = 54.794
@@ -35,15 +37,17 @@ The Fixed fee is then split three ways between the Security Module, the Operator
 
 ### Performance Fee
 
-The `WatermarkFeeManager` implementation supports a high watermark mechanism ensures performance fees are charged only when the current share price exceeds the stored watermark.
+Besides fixed fee, performance fee further incentivize the Operator depending on strategy performance, and provides ongoing support to Makina DAO.
 
-When the current is above the watermark, the performance fees are calculated as follows:
+The `WatermarkFeeManager` implementation supports a high watermark mechanism ensures performance fee are charged only when the new share price exceeds the stored watermark.
+
+When the new share price is above the watermark, the performance fee is calculated as follows:
 
 $$
-PerfFee = ShareSupply * (\dfrac{currentSharePrice - prevSharePrice}{newSharePrice}) * perfFeeRatio;
+PerfFee = TokenSupply * (\dfrac{newTokenPrice - prevTokenPrice}{newTokenPrice}) * perfFeeRatio;
 $$
 
-For example, with a perfFeeRate of 10% annual, a share supply of 1'000'000 and share price increase from 1.00 to 1.01:
+For example, with a perfFeeRate of 10% annual, a token supply of 1'000'000 and share price increase from 1.00 to 1.01:
 
 $$
 PerfFee = 1'000'000 * \dfrac{1.01-1.00}{ 1.01} * 0.1 = 1000

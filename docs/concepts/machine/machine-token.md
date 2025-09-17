@@ -5,7 +5,7 @@ sidebar_position: 1
 
 # Machine Token
 
-Machine Tokens are tokenized ERC20 representations of the strategy operating on the Machine.
+[Machine Tokens](/contracts/core/machine/MachineShare.sol/contract.MachineShare.md) are tokenized ERC20 representations of the strategy operating on the Machine.
 
 Shares are fully DeFi compatible, and can be acquired in two ways:
 

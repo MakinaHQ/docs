@@ -9,11 +9,11 @@ The Redeemer contract is the exit point through which users redeem Machine Share
 
 Given that assets deployed into positions are not liquid, atomic redemptions are not possible.
 
-Redeemers are therefore always expected to be queue contracts which need to be filled by the operator after closing positions to free up the capital required to meet redemption requests.
+Redeemers are therefore always expected to be queue contracts which need to be managed and filled by the operator after closing positions to free up the capital required to meet redemption requests. Makina has no control over this process.
 
-## Asynchronous ERC-721 Redeem Queue
+## AsyncRedeemer
 
-In the Permissionless Redeem Queue any users holding Machine Tokens can request a redemption request with no additional checks. Requests are settled on a First-In First-Out basis, and once settled, users have unlimited time to claim their withdrawn funds.
+[AsyncRedeemer](/contracts/periphery/redeemers/AsyncRedeemer.sol/contract.AsyncRedeemer.md) is an asynchronous ERC-721 Redeem Queue in which Machine tokenholders can request a redemption request. Requests are settled on a First-In First-Out basis, and once settled, users have unlimited time to claim their withdrawn funds.
 
 The Queue implements a three step process.
 
