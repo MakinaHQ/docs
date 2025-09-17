@@ -8,4 +8,4 @@ sidebar_position: 0
 
 To provide a comprehensive understanding of the governance system, we will outline the governable components, the entities responsible for their oversight, and the aspects that remain immutable.
 
-TODO - wallets setup
+<!-- TODO - wallets setup -->

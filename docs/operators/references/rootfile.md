@@ -52,7 +52,7 @@ type = "Uint"
 
 ### `[[instructions.<PROTOCOL>.<ACTION>.<TOKEN>]]`
 
-TODO: what is the difference between `[[instructions.<PROTOCOL>.<ACTION>.<TOKEN>]]` and `[instructions.<PROTOCOL>.<ACTION>.<TOKEN>]`?
+-
 
 ### `[instructions.<PROTOCOL>.<ACTION>.<TOKEN>]`
 

@@ -64,8 +64,6 @@ Required. The id of the position.
 
 Required. The group id of the position.
 
-TODO: explain how to get it and what it means
-
 ### `positions[*].description`
 
 Required. The description of the position.
