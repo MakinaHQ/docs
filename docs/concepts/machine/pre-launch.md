@@ -20,4 +20,4 @@ Users deposit this pre-launch token into the Pre-Launch Vault to earn baseline y
 
 Importantly, the Pre-Launch Vault mints the [Shares](machine-token) of the future Machine it will eventually migrate into. When the Machine is deployed, there is no need to migrate user balances. Only the minting authority is transferred from the Pre-Launch Vault to the Machine, enabling a seamless transition into the active strategy.
 
-![makina-pre-launch](/img/makina-pre-launch.png)
+![makina-pre-launch](/img/makina-pre-deposit.png)
