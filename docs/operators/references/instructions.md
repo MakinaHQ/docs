@@ -84,7 +84,7 @@ Required. The type of the instruction. One of:
 
 :::tip
 
-This enum matches the [`InstructionType` enum](../../contracts/interfaces/ICaliber.sol/interface.ICaliber.md#instructiontype) defined in the smart contracts.
+This enum matches the [`InstructionType` enum](../../contracts/core/interfaces/ICaliber.sol/interface.ICaliber.md#instructiontype) defined in the smart contracts.
 
 :::
 
