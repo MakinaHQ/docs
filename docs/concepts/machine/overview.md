@@ -14,6 +14,6 @@ Each Machine issues a Machine Token, an asset who's price depends on the perform
 
 Each Machine is connected to a Caliber on the Hub Chain as well as multiple other Calibers on the Spoke Chains.
 
-Each Machine is required to have [Deposit Manager](deposit-managers) and [Redeem Manager](redeem-managers) contracts as well as a [Fee Manager](fee-managers) contract. These contracts may vary in their logic depending on the type of strategy executed and its specific requirements.
+Each Machine is required to have [Depositor](depositors) and [Redeemer](redeemers) contracts as well as a [Fee Manager](fee-managers) contract. These contracts may vary in their logic depending on the type of strategy executed and its specific requirements.
 
 Machines are flexible enough to support various types of strategies, from yielding and fixed income strategies to volatile token indexes, Machines can be expanded with diverse manager contracts to best meet the strategie's needs.
