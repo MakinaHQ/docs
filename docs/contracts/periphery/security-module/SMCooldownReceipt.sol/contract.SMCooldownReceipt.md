@@ -1,6 +1,6 @@
 # SMCooldownReceipt
 
-[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/84fdbd342f970755d85ed1e44afeed01003e0e1f/src/security-module/SMCooldownReceipt.sol)
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/3ff217c9c76d6d34e1bcbab84ac6946048ceaeb7/src/security-module/SMCooldownReceipt.sol)
 
 **Inherits:**
 ERC721, Ownable2Step, [ISMCooldownReceipt](/contracts/periphery/interfaces/ISMCooldownReceipt.sol/interface.ISMCooldownReceipt.md)

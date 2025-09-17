@@ -1,6 +1,6 @@
 # ChainRegistry
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/96cabc5a8ea74d6880f72f6b2a1ea81df86856a4/src/registries/ChainRegistry.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/5c13d0f918f7a44b1f21792a780c86b350caa4b2/src/registries/ChainRegistry.sol)
 
 **Inherits:**
 AccessManagedUpgradeable, [IChainRegistry](/contracts/core/interfaces/IChainRegistry.sol/interface.IChainRegistry.md)
@@ -52,7 +52,7 @@ function isWhChainIdRegistered(uint16 _whChainId) external view override returns
 
 ### evmToWhChainId
 
-_EVM chain ID => Wormhole chain ID_
+EVM chain ID => Wormhole chain ID
 
 ```solidity
 function evmToWhChainId(uint256 _evmChainId) external view override returns (uint16);
@@ -60,7 +60,7 @@ function evmToWhChainId(uint256 _evmChainId) external view override returns (uin
 
 ### whToEvmChainId
 
-_Wormhole chain ID => EVM chain ID_
+Wormhole chain ID => EVM chain ID
 
 ```solidity
 function whToEvmChainId(uint16 _whChainId) external view override returns (uint256);

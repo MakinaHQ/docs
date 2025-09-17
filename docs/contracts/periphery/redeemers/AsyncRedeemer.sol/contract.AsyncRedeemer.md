@@ -1,11 +1,9 @@
 # AsyncRedeemer
 
-[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/84fdbd342f970755d85ed1e44afeed01003e0e1f/src/redeemers/AsyncRedeemer.sol)
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/3ff217c9c76d6d34e1bcbab84ac6946048ceaeb7/src/redeemers/AsyncRedeemer.sol)
 
 **Inherits:**
 ERC721Upgradeable, ReentrancyGuardUpgradeable, [MachinePeriphery](/contracts/periphery/utils/MachinePeriphery.sol/abstract.MachinePeriphery.md), [Whitelist](/contracts/periphery/utils/Whitelist.sol/abstract.Whitelist.md), [IAsyncRedeemer](/contracts/periphery/interfaces/IAsyncRedeemer.sol/interface.IAsyncRedeemer.md)
-
-SPDX-License-Identifier: UNLICENSED
 
 ## State Variables
 

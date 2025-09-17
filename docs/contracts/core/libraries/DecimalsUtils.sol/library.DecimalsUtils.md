@@ -1,6 +1,6 @@
 # DecimalsUtils
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/96cabc5a8ea74d6880f72f6b2a1ea81df86856a4/src/libraries/DecimalsUtils.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/5c13d0f918f7a44b1f21792a780c86b350caa4b2/src/libraries/DecimalsUtils.sol)
 
 ## State Variables
 
@@ -39,5 +39,5 @@ uint256 internal constant SHARE_TOKEN_UNIT = 10 ** SHARE_TOKEN_DECIMALS;
 ### \_getDecimals
 
 ```solidity
-function _getDecimals(address asset_) internal view returns (uint8);
+function _getDecimals(address asset) internal view returns (uint8);
 ```

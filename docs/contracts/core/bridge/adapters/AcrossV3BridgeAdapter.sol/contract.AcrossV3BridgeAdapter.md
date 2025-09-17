@@ -1,6 +1,6 @@
 # AcrossV3BridgeAdapter
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/96cabc5a8ea74d6880f72f6b2a1ea81df86856a4/src/bridge/adapters/AcrossV3BridgeAdapter.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/5c13d0f918f7a44b1f21792a780c86b350caa4b2/src/bridge/adapters/AcrossV3BridgeAdapter.sol)
 
 **Inherits:**
 [BridgeAdapter](/contracts/core/bridge/adapters/BridgeAdapter.sol/abstract.BridgeAdapter.md), [IAcrossV3MessageHandler](/contracts/core/interfaces/IAcrossV3MessageHandler.sol/interface.IAcrossV3MessageHandler.md)

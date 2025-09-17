@@ -1,6 +1,6 @@
 # Machine
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/96cabc5a8ea74d6880f72f6b2a1ea81df86856a4/src/machine/Machine.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/5c13d0f918f7a44b1f21792a780c86b350caa4b2/src/machine/Machine.sol)
 
 **Inherits:**
 [MakinaGovernable](/contracts/core/utils/MakinaGovernable.sol/abstract.MakinaGovernable.md), [BridgeController](/contracts/core/bridge/controller/BridgeController.sol/abstract.BridgeController.md), ReentrancyGuardUpgradeable, [IMachine](/contracts/core/interfaces/IMachine.sol/interface.IMachine.md)
@@ -117,12 +117,20 @@ Maximum duration a caliber can remain unaccounted for before it is considered st
 function caliberStaleThreshold() external view override returns (uint256);
 ```
 
-### maxFeeAccrualRate
+### maxFixedFeeAccrualRate
 
-Maximum fee accrual rate in basis points, used to compute an upper bound on fees amount to be minted.
+Maximum fixed fee accrual rate per second used to compute an upper bound on shares to be minted, 1e18 = 100%.
 
 ```solidity
-function maxFeeAccrualRate() external view override returns (uint256);
+function maxFixedFeeAccrualRate() external view override returns (uint256);
+```
+
+### maxPerfFeeAccrualRate
+
+Maximum performance fee accrual rate per second used to compute an upper bound on shares to be minted, 1e18 = 100%.
+
+```solidity
+function maxPerfFeeAccrualRate() external view override returns (uint256);
 ```
 
 ### feeMintCooldown
@@ -151,7 +159,7 @@ function maxMint() public view override returns (uint256);
 
 ### maxWithdraw
 
-Maximum amount of assets that can currently be withdrawn through share redemptions.
+Maximum amount of accounting tokens that can currently be withdrawn through share redemptions.
 
 ```solidity
 function maxWithdraw() public view override returns (uint256);
@@ -227,7 +235,7 @@ function isIdleToken(address token) external view override returns (bool);
 
 ### convertToShares
 
-Returns the amount of shares that the Machine would exchange for the amount of assets provided.
+Returns the amount of shares that the Machine would exchange for the amount of accounting tokens provided.
 
 ```solidity
 function convertToShares(uint256 assets) public view override returns (uint256);
@@ -235,9 +243,9 @@ function convertToShares(uint256 assets) public view override returns (uint256);
 
 **Parameters**
 
-| Name     | Type      | Description           |
-| -------- | --------- | --------------------- |
-| `assets` | `uint256` | The amount of assets. |
+| Name     | Type      | Description                      |
+| -------- | --------- | -------------------------------- |
+| `assets` | `uint256` | The amount of accounting tokens. |
 
 **Returns**
 
@@ -247,7 +255,7 @@ function convertToShares(uint256 assets) public view override returns (uint256);
 
 ### convertToAssets
 
-Returns the amount of assets that the Machine would exchange for the amount of shares provided.
+Returns the amount of accounting tokens that the Machine would exchange for the amount of shares provided.
 
 ```solidity
 function convertToAssets(uint256 shares) public view override returns (uint256);
@@ -261,9 +269,9 @@ function convertToAssets(uint256 shares) public view override returns (uint256);
 
 **Returns**
 
-| Name     | Type      | Description                  |
-| -------- | --------- | ---------------------------- |
-| `<none>` | `uint256` | assets The amount of assets. |
+| Name     | Type      | Description                             |
+| -------- | --------- | --------------------------------------- |
+| `<none>` | `uint256` | assets The amount of accounting tokens. |
 
 ### manageTransfer
 
@@ -440,11 +448,11 @@ function redeem(uint256 shares, address receiver, uint256 minAssets)
 
 **Parameters**
 
-| Name        | Type      | Description                                     |
-| ----------- | --------- | ----------------------------------------------- |
-| `shares`    | `uint256` | The amount of shares to redeem.                 |
-| `receiver`  | `address` | The receiver of the accounting tokens.          |
-| `minAssets` | `uint256` | The minimum amount of assets to be transferred. |
+| Name        | Type      | Description                                                |
+| ----------- | --------- | ---------------------------------------------------------- |
+| `shares`    | `uint256` | The amount of shares to redeem.                            |
+| `receiver`  | `address` | The receiver of the accounting tokens.                     |
+| `minAssets` | `uint256` | The minimum amount of accounting tokens to be transferred. |
 
 **Returns**
 
@@ -566,26 +574,40 @@ function setCaliberStaleThreshold(uint256 newCaliberStaleThreshold) external ove
 | -------------------------- | --------- | ----------------------------- |
 | `newCaliberStaleThreshold` | `uint256` | The new threshold in seconds. |
 
-### setMaxFeeAccrualRate
+### setMaxFixedFeeAccrualRate
 
-Sets the maximum fee accrual rate.
+Sets the maximum fixed fee accrual rate.
 
 ```solidity
-function setMaxFeeAccrualRate(uint256 newMaxFeeAccrualRate) external override restricted;
+function setMaxFixedFeeAccrualRate(uint256 newMaxAccrualRate) external override onlyRiskManagerTimelock;
 ```
 
 **Parameters**
 
-| Name                   | Type      | Description                                         |
-| ---------------------- | --------- | --------------------------------------------------- |
-| `newMaxFeeAccrualRate` | `uint256` | The new maximum fee accrual rate in wei per second. |
+| Name                | Type      | Description                                                     |
+| ------------------- | --------- | --------------------------------------------------------------- |
+| `newMaxAccrualRate` | `uint256` | The new maximum fixed fee accrual rate per second, 1e18 = 100%. |
+
+### setMaxPerfFeeAccrualRate
+
+Sets the maximum performance fee accrual rate.
+
+```solidity
+function setMaxPerfFeeAccrualRate(uint256 newMaxAccrualRate) external override onlyRiskManagerTimelock;
+```
+
+**Parameters**
+
+| Name                | Type      | Description                                                           |
+| ------------------- | --------- | --------------------------------------------------------------------- |
+| `newMaxAccrualRate` | `uint256` | The new maximum performance fee accrual rate per second, 1e18 = 100%. |
 
 ### setFeeMintCooldown
 
 Sets the minimum time to be elapsed between two fee minting events.
 
 ```solidity
-function setFeeMintCooldown(uint256 newFeeMintCooldown) external override restricted;
+function setFeeMintCooldown(uint256 newFeeMintCooldown) external override onlyRiskManagerTimelock;
 ```
 
 **Parameters**
@@ -646,7 +668,7 @@ _This function is intended to be used by the DAO to realign bridge accounting st
 typically in response to operator deviations, external bridge discrepancies, or unbounded counter growth._
 
 ```solidity
-function resetBridgingState(address token) external override restricted;
+function resetBridgingState(address token) external override onlySecurityCouncil;
 ```
 
 **Parameters**
@@ -690,7 +712,8 @@ struct MachineStorage {
     uint256 _lastGlobalAccountingTime;
     uint256 _lastMintedFeesTime;
     uint256 _lastMintedFeesSharePrice;
-    uint256 _maxFeeAccrualRate;
+    uint256 _maxFixedFeeAccrualRate;
+    uint256 _maxPerfFeeAccrualRate;
     uint256 _feeMintCooldown;
     uint256 _shareTokenDecimalsOffset;
     uint256 _shareLimit;

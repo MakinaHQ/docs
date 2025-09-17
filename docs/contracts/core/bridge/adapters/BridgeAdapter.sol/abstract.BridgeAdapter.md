@@ -1,6 +1,6 @@
 # BridgeAdapter
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/96cabc5a8ea74d6880f72f6b2a1ea81df86856a4/src/bridge/adapters/BridgeAdapter.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/5c13d0f918f7a44b1f21792a780c86b350caa4b2/src/bridge/adapters/BridgeAdapter.sol)
 
 **Inherits:**
 ReentrancyGuardUpgradeable, [IBridgeAdapter](/contracts/core/interfaces/IBridgeAdapter.sol/interface.IBridgeAdapter.md)
@@ -17,7 +17,7 @@ uint256 private constant MAX_BPS = 10_000;
 
 ### approvalTarget
 
-Returns the address of the external bridge approval target contract.
+Address of the external bridge approval target contract.
 
 ```solidity
 address public immutable override approvalTarget;
@@ -25,7 +25,7 @@ address public immutable override approvalTarget;
 
 ### executionTarget
 
-Returns the address of the external bridge execution target contract.
+Address of the external bridge execution target contract.
 
 ```solidity
 address public immutable override executionTarget;
@@ -33,7 +33,7 @@ address public immutable override executionTarget;
 
 ### receiveSource
 
-Returns the address of the external bridge contract responsible for sending output funds.
+Address of the external bridge contract responsible for sending output funds.
 
 ```solidity
 address public immutable override receiveSource;
@@ -74,7 +74,7 @@ modifier onlyController();
 
 ### controller
 
-Returns the address of the bridge controller contract.
+Address of the bridge controller contract.
 
 ```solidity
 function controller() external view override returns (address);
@@ -82,7 +82,7 @@ function controller() external view override returns (address);
 
 ### bridgeId
 
-Returns the ID of the adapted external bridge.
+ID of the adapted external bridge.
 
 ```solidity
 function bridgeId() external view override returns (uint16);
@@ -90,7 +90,7 @@ function bridgeId() external view override returns (uint16);
 
 ### nextOutTransferId
 
-Returns the ID of the next outgoing transfer.
+ID of the next outgoing transfer.
 
 ```solidity
 function nextOutTransferId() external view override returns (uint256);
@@ -98,7 +98,7 @@ function nextOutTransferId() external view override returns (uint256);
 
 ### nextInTransferId
 
-Returns the ID of the next incoming transfer.
+ID of the next incoming transfer.
 
 ```solidity
 function nextInTransferId() external view override returns (uint256);

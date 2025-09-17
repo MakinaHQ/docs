@@ -1,6 +1,6 @@
 # Create3Factory
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/96cabc5a8ea74d6880f72f6b2a1ea81df86856a4/src/factories/Create3Factory.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/5c13d0f918f7a44b1f21792a780c86b350caa4b2/src/factories/Create3Factory.sol)
 
 Forked from 0xSequence (https://github.com/0xSequence/create3/blob/master/contracts/Create3.sol)
 

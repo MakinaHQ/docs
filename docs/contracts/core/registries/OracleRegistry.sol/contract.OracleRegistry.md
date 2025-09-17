@@ -1,6 +1,6 @@
 # OracleRegistry
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/96cabc5a8ea74d6880f72f6b2a1ea81df86856a4/src/registries/OracleRegistry.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/5c13d0f918f7a44b1f21792a780c86b350caa4b2/src/registries/OracleRegistry.sol)
 
 **Inherits:**
 AccessManagedUpgradeable, [IOracleRegistry](/contracts/core/interfaces/IOracleRegistry.sol/interface.IOracleRegistry.md)
