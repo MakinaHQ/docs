@@ -212,8 +212,6 @@ parameters:
 
 ### `actions.<ACTION_NAME>.calls[*].parameters[*].value[*].type`
 
-TODO: In that case, it would make more sense to call this parameter valueS.
-
 Required if the parameter `type` is a tuple. The solidity type of the parameter. It also supports tuples and arrays.
 
 ### `actions.<ACTION_NAME>.calls[*].parameters[*].value[*].value`
