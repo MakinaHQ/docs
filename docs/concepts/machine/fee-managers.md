@@ -8,6 +8,7 @@ sidebar_position: 5
 The Fee Manager contract defines how fees are applied to a Machine. Each Machine is linked to a dedicated FeeManager instance. Different strategies may require different fee models, and the protocol supports multiple FeeManager implementations.
 
 Fees can be of two types:
+
 - Fixed fees: based on assets under management (AUM) and elapsed time.
 - Performance fees: based on strategy performance.
 
@@ -19,7 +20,7 @@ See the [WatermarkFeeManager](/contracts/periphery/fee-managers/WatermarkFeeMana
 
 ### Fixed Fee
 
-The contracts divides fixed fee into __Security Module fee__, which incentivizes stakes into the Security Module, and __Management fee__ which incentivizes the Operator and supports Makina DAO.
+The contracts divides fixed fee into **Security Module fee**, which incentivizes stakes into the Security Module, and **Management fee** which incentivizes the Operator and supports Makina DAO.
 
 The fixed fee is calculated as follows:
 
