@@ -17,6 +17,8 @@ This enables all positions to be ultimately valued in Accounting Tokens, and thu
 
 Each position has a list of risk attributes defined in the Risk Policy, and thus maximum exposure caps can be set on how large individual or groups of positions can be.
 
+Position modification is subject to [Cooldown Duration](../../contracts/core/interfaces/ICaliber.sol/interface.ICaliber.md#cooldownduration), transactions attempting to modify positions before the CooldownDuration has elapsed will revert.
+
 Positions are required to have mutual exclusivity on liquidity deployments, two positions can not have overlapping accounting instructions accounting for the same liquidity.
 
 ## Debt Positions
