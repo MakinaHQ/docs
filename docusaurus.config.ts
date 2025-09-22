@@ -41,6 +41,7 @@ const config: Config = {
           sidebarPath: "./sidebars.ts",
           routeBasePath: "/",
           showLastUpdateTime: true,
+
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl: "https://github.com/MakinaHQ/docs/tree/main/",
@@ -66,7 +67,7 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: "img/docusaurus-social-card.jpg",
+    image: "img/opengraph-image.png",
     navbar: {
       title: "Makina Docs",
       logo: {
@@ -107,7 +108,7 @@ const config: Config = {
           items: [
             {
               label: "Concepts",
-              to: "/intro",
+              to: "/concepts/introduction",
             },
           ],
         },
