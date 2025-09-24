@@ -7,22 +7,34 @@ import TabItem from "@theme/TabItem";
 
 # Deployments
 
-Find below the addresses of protocol-wide contracts.
+Find below the addresses of protocol-wide periphery contracts.
+For strategy-specific contracts, please refer to the Addresses Tab of each Machine on the [Makina App](https://app.makina.finance).
+
+{/* prettier-ignore-start */}
 
 <Tabs>
   <TabItem value="ethereum" label="Ethereum" default>
-    | Contract | Address | | ------------------------- | ------- | |
-    HubPeripheryRegistry | - | | HubPeripheryFactory | - | |
-    DirectDepositorBeacon | - | | AsyncRedeemerBeacon | - | |
-    WatermarkFeeManagerBeacon | - | | SecurityModuleBeacon | - | |
-    FlashloanAggregator | - |
+    | Contract | Address | | ------------------------- | ------- |
+    | HubPeripheryRegistry | 0xc0109106a2E119087a5739c9532ec7e1B039EE05 |
+    | HubPeripheryFactory | 0xd6aeeEBCCC245dAa4146F54B75686C33C96c30dA |
+    | DirectDepositorBeacon | 0x20C61516dA97188a3B6f3856ff91B92A22dFB776 |
+    | AsyncRedeemerBeacon | 0x1f20CDfa19b860f0dD78FeFBb052be5aa5003dD9 |
+    | WatermarkFeeManagerBeacon | 0x8Eb36d96Ef39150fB00911415C7a136106793590 |
+    | SecurityModuleBeacon | 0x49eE9b4865CBbF9ec8B142cdd4A5a65971F92542 |
+    | FlashloanAggregator | 0x9cDAA801ae1458338BF8AEc473C4B9a71f77dB29 |
+  </TabItem>
+  <TabItem value="base" label="Base">
+    | Contract | Address | | ------------------------- | ------- |
+    | FlashloanAggregator | - |
   </TabItem>
   <TabItem value="arbitrum" label="Arbitrum">
-    | Contract | Address | | ------------------------- | ------- | |
-    FlashloanAggregator | - |
+    | Contract | Address | | ------------------------- | ------- |
+    | FlashloanAggregator | - |
   </TabItem>
   <TabItem value="optimism" label="Optimism">
-    | Contract | Address | | ------------------------- | ------- | |
-    FlashloanAggregator | - |
+    | Contract | Address | | ------------------------- | ------- |
+    | FlashloanAggregator | - |
   </TabItem>
 </Tabs>
+
+{/* prettier-ignore-end */}
