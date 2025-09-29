@@ -88,6 +88,13 @@ const config: Config = {
           label: "Operators",
         },
         {
+          type: "doc",
+          sidebarId: "strategiesSidebar",
+          position: "left",
+          label: "Strategies",
+          docId: "strategies/deployments",
+        },
+        {
           type: "docSidebar",
           sidebarId: "contractsSidebar",
           position: "left",
