@@ -16,7 +16,7 @@ For protocol-wide contracts, see the [Core](../contracts/core/deployments.mdx) a
 | Deposit Token      | [`0xBEEF01735c132Ada46AA9aA4c54623cAA92A64CB`](https://etherscan.io/address/0xBEEF01735c132Ada46AA9aA4c54623cAA92A64CB) |
 | Accounting Token   | [`0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48`](https://etherscan.io/address/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48) |
 | PreDepositVault    | [`0x5df4cb0aaae0fcc9de3f41e72348609e30a49c44`](https://etherscan.io/address/0x5df4cb0aaae0fcc9de3f41e72348609e30a49c44) |
-| Share Price Oracle | [`0x53d3dc89698a4f5a4f2381bfb0d48e6e5872933e`](https://etherscan.io/address/0x53d3dc89698a4f5a4f2381bfb0d48e6e5872933e) |
+| Share Price Oracle | [`0xFFCBc7A7eEF2796C277095C66067aC749f4cA078`](https://etherscan.io/address/0xFFCBc7A7eEF2796C277095C66067aC749f4cA078) |
 
 ## DETH
 
@@ -26,7 +26,7 @@ For protocol-wide contracts, see the [Core](../contracts/core/deployments.mdx) a
 | Deposit Token      | [`0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8`](https://etherscan.io/address/0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8) |
 | Accounting Token   | [`0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2`](https://etherscan.io/address/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2) |
 | PreDepositVault    | [`0xefc8e0fce12c164eafcb588915c6f0ca7ca41a53`](https://etherscan.io/address/0xefc8e0fce12c164eafcb588915c6f0ca7ca41a53) |
-| Share Price Oracle | [`0x3011653f66791cb57b645a06215d11bb23970640`](https://etherscan.io/address/0x3011653f66791cb57b645a06215d11bb23970640) |
+| Share Price Oracle | [`0x49fba73738461835fefB19351b161Bde4BcD6b5A`](https://etherscan.io/address/0x49fba73738461835fefB19351b161Bde4BcD6b5A) |
 
 ## DBIT
 
@@ -36,4 +36,4 @@ For protocol-wide contracts, see the [Core](../contracts/core/deployments.mdx) a
 | Deposit Token      | [`0x443df5eEE3196e9b2Dd77CaBd3eA76C3dee8f9b2`](https://etherscan.io/address/0x443df5eEE3196e9b2Dd77CaBd3eA76C3dee8f9b2) |
 | Accounting Token   | [`0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599`](https://etherscan.io/address/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599) |
 | PreDepositVault    | [`0x49af2649eefbc7e3847b41100fddcf91134a549e`](https://etherscan.io/address/0x49af2649eefbc7e3847b41100fddcf91134a549e) |
-| Share Price Oracle | [`0x2130b7a1ec27ab9c78d96d997d189b7bc7170ba1`](https://etherscan.io/address/0x2130b7a1ec27ab9c78d96d997d189b7bc7170ba1) |
+| Share Price Oracle | [`0x8B04bf6A374C40887F03B1928871c96f006Bb2fc`](https://etherscan.io/address/0x8B04bf6A374C40887F03B1928871c96f006Bb2fc) |
