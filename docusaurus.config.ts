@@ -65,6 +65,20 @@ const config: Config = {
     },
   ],
 
+  plugins: [
+    [
+      "@docusaurus/plugin-client-redirects",
+      {
+        redirects: [
+          {
+            from: "/concepts/security/audits",
+            to: "/contracts/security",
+          },
+        ],
+      },
+    ],
+  ],
+
   themeConfig: {
     // Replace with your project's social card
     image: "img/opengraph-image.png",

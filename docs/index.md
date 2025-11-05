@@ -28,13 +28,11 @@ Makina smart contracts have undergone multiple rounds of audits by top auditors,
 - **ChainSecurity**: [Makina-Periphery - Sep 2025](https://www.chainsecurity.com/security-audit/makina-periphery)
 - **Cantina**: [CTF - Oct 2025](https://cantina.xyz/code/2adf7150-27ba-4cba-86a2-bd8ea175e7da/overview)
 
+Read more about the audits in the [Audits](/contracts/security) section.
+
 ## Getting Started
 
 To get started with Makina:
 
 1. Explore the [Concepts](/concepts/introduction) section to understand the system architecture
 2. Review the [Core](/contracts/core/summary) and [Periphery](/contracts/periphery/summary) contracts for implementation details
-
-## Next Steps
-
-Choose a section from the sidebar to dive deeper into specific aspects of the Makina ecosystem.
