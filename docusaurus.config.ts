@@ -74,6 +74,18 @@ const config: Config = {
             from: "/concepts/security/audits",
             to: "/contracts/security",
           },
+          {
+            from: "/concepts/machine/machine-overview",
+            to: "/concepts/machine/overview",
+          },
+          {
+            from: "/concepts/caliber/caliber-overview",
+            to: "/concepts/caliber/overview",
+          },
+          {
+            from: "/concepts/governance/governance-overview",
+            to: "/concepts/governance/overview",
+          },
         ],
       },
     ],
