@@ -12,7 +12,7 @@ Shares are fully DeFi compatible, and can be acquired in two ways:
 - Minted by depositing Accounting Tokens directly into the Machine
 - Purchased on secondary markets.
 
-The Machine mint and redeems Shares at its current [Share Price](share-price). This price is periodically updated based on the total assets the Machine controls, including funds held directly and those managed by [Calibers](../caliber/caliber-overview).
+The Machine mint and redeems Shares at its current [Share Price](share-price). This price is periodically updated based on the total assets the Machine controls, including funds held directly and those managed by [Calibers](../caliber/overview).
 
 Machine Tokens can be integrated into external protocols such as lending market, where they can provide superior collateral qualities; into DEXs where it can be paired with other assets to provide higher LP returns; or they can simply be held in treasury to benefit from the high risk adjusted return.
 

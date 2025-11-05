@@ -14,13 +14,13 @@ Makina is an innovative protocol for superior onchain execution. It redefines ho
 
 Makina consists of several key components:
 
-- **Machine**: The core abstraction that manages deposits, redemptions, and fees
-- **Caliber**: Handles cross-chain operations and accounting
-- **Governance**: Manages permissions, risk parameters, and system updates
+- [**Machine**](/concepts/machine/overview): The core abstraction that manages deposits, redemptions, and fees
+- [**Caliber**](/concepts/caliber/overview): Handles cross-chain operations and accounting
+- [**Governance**](/concepts/governance/overview): Manages permissions, risk parameters, and system updates
 
 ## Audits and Security
 
-Makina smart contracts have undergone multiple rounds of audits by top auditors, and is currently undergoing a live Capture-the-Flag ("CTF") event on Cantina.
+Makina smart contracts have undergone multiple rounds of audits by top auditors.
 
 - **Enigma Dark**: [Makina-Core Fuzz/Invariant Testing - Jul 2025](https://github.com/Enigma-Dark/security-review-reports/blob/main/2025-07_Invariant_Testing_Engagement_Makina_Finance_Makina_Core.pdf)
 - **SigmaPrime**: [Makina-Core & Makina-Periphery - Aug 2025](https://github.com/sigp/public-audits/blob/master/reports/makina/review.pdf)
