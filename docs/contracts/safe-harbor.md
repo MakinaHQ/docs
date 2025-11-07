@@ -88,9 +88,6 @@ _Designated security contacts for the protocol who whitehats will contact follow
 | Name          | Contact                  |
 | ------------- | ------------------------ |
 | Security Team | security\@makina.finance |
-|               |                          |
-
-\
 
 
 **Chains & Asset Recovery Addresses**
@@ -100,9 +97,6 @@ _Addresses controlled by the protocol which recovered protocol funds will be ret
 | Chain     | Asset Recovery Address                     |
 | --------- | ------------------------------------------ |
 | eip155:\* | 0x62244C74e1d09b3D86EF7342d354b5D7770bDE10 |
-|           |                                            |
-
-\
 
 
 **Accounts**
@@ -132,5 +126,3 @@ _List of all on-chain assets owned by the protocol protected under Safe Harbor_
 - **SEAL Whitehat Safe Harbor Agreement Legal Agreement:** [Link](https://github.com/security-alliance/safe-harbor/blob/main/documents/agreement.pdf)
 
 - **Makina** **Bug Bounty**: https\://cantina.xyz/code/4e88f4df-c483-47d3-8d78-b9d7cc67be73/overview
-
-***
