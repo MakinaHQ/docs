@@ -1,4 +1,4 @@
-# **SEAL Safe Harbor Agreement**
+# SEAL Safe Harbor Agreement
 
 **Category**: Security\
 **Authors**: Makina Foundation
