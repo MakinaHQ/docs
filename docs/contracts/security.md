@@ -21,6 +21,10 @@ There is an ongoing Bug Bounty program on Cantina.
 
 - [Makina Contracts on Cantina](https://cantina.xyz/bounties/4e88f4df-c483-47d3-8d78-b9d7cc67be73)
 
+## SEAL Safe Harbor
+
+Makina has adopted the SEAL Safe Harbor agreement, see [safe harbor agreement](safe-harbor.md)
+
 ## Contact
 
 For any non smart contract related security issues, please report to [security@makina.finance](mailto:security@makina.finance).
