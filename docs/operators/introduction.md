@@ -8,7 +8,7 @@ This section will explain you how to use the Makina tools as an operator.
 
 In order to use the `makina-cli` with your own strategies, you will need to write configuration files.
 
-You can find the public configurations in the [`MakinaHQ/config`](https://github.com/MakinaHQ/config) repository. It will allow you to get an overview of the different strategies and how they are configured.
+You can find the public configurations in the [`MakinaHQ/makina-integrations`](https://github.com/MakinaHQ/makina-integrations) repository. It will allow you to get an overview of the different strategies and how they are configured.
 
 ## Creating a machine
 
