@@ -1,6 +1,6 @@
 # Strategies
 
-The following strategies are live on the Makina Protocol (on Ethereum Mainnet):
+The following [strategies](https://app.makina.finance/explore) are live on the Makina Protocol (on Ethereum Mainnet):
 
 :::info
 

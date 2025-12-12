@@ -6,7 +6,7 @@ sidebar_position: 1
 
 Makina is an innovative protocol for superior onchain execution. It redefines how smart contract vaults operate by providing a highly agile infrastructure that is used to execute a wide variety of cross-chain strategies: from onchain yield aggregation, to index products, to long-short, delta hedged strategies or any other strategy that can be executed fully onchain.
 
-With Makina users can get access to tokenised assets issued by professionals with full DeFi composability, superior Risk Controls, risk underwriting through a Security Module.
+With Makina, users can get access to tokenised assets issued by professionals with full DeFi composability, superior Risk Controls, risk underwriting through a Security Module.
 
 Makina is designed to be fully non-custodial, transparent and trust minimised, providing a secure yet flexible platform on which [Operators](governance/operator) with different specialisation and expertise can offer their strategies to onchain users.
 
