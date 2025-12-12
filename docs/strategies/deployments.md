@@ -12,7 +12,7 @@ For protocol-wide contracts, see the [Core](../contracts/core/deployments.mdx) a
 
 | Contract                     | Address                                                                                                                 |
 | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| Share Token (DUSD)           | [`0x1e33e98af620f1d563fcd3cfd3c75ace841204ef`](https://etherscan.io/address/0x1e33e98af620f1d563fcd3cfd3c75ace841204ef) |
+| Machine Token (DUSD)         | [`0x1e33e98af620f1d563fcd3cfd3c75ace841204ef`](https://etherscan.io/address/0x1e33e98af620f1d563fcd3cfd3c75ace841204ef) |
 | Accounting Token (USDC)      | [`0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48`](https://etherscan.io/address/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48) |
 | Share Price Oracle           | [`0xFFCBc7A7eEF2796C277095C66067aC749f4cA078`](https://etherscan.io/address/0xFFCBc7A7eEF2796C277095C66067aC749f4cA078) |
 | Machine                      | [`0x6b006870c83b1cd49e766ac9209f8d68763df721`](https://etherscan.io/address/0x6b006870c83b1cd49e766ac9209f8d68763df721) |
@@ -28,7 +28,7 @@ For protocol-wide contracts, see the [Core](../contracts/core/deployments.mdx) a
 
 | Contract                     | Address                                                                                                                 |
 | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| Share Token (DETH)           | [`0x871ab8e36cae9af35c6a3488b049965233deb7ed`](https://etherscan.io/address/0x871ab8e36cae9af35c6a3488b049965233deb7ed) |
+| Machine Token (DETH)         | [`0x871ab8e36cae9af35c6a3488b049965233deb7ed`](https://etherscan.io/address/0x871ab8e36cae9af35c6a3488b049965233deb7ed) |
 | Accounting Token (WETH)      | [`0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2`](https://etherscan.io/address/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2) |
 | Share Price Oracle           | [`0x49fba73738461835fefB19351b161Bde4BcD6b5A`](https://etherscan.io/address/0x49fba73738461835fefB19351b161Bde4BcD6b5A) |
 | Machine                      | [`0x0447d0ad7fd6a3409b48ecbb9ddb075c1e11d735`](https://etherscan.io/address/0x0447d0ad7fd6a3409b48ecbb9ddb075c1e11d735) |
@@ -44,7 +44,7 @@ For protocol-wide contracts, see the [Core](../contracts/core/deployments.mdx) a
 
 | Contract                     | Address                                                                                                                 |
 | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| Share Token (DBIT)           | [`0x972966bcc17f7d818de4f27dc146ef539c231bdf`](https://etherscan.io/address/0x972966bcc17f7d818de4f27dc146ef539c231bdf) |
+| Machine Token (DBIT)         | [`0x972966bcc17f7d818de4f27dc146ef539c231bdf`](https://etherscan.io/address/0x972966bcc17f7d818de4f27dc146ef539c231bdf) |
 | Accounting Token (WBTC)      | [`0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599`](https://etherscan.io/address/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599) |
 | Share Price Oracle           | [`0x8B04bf6A374C40887F03B1928871c96f006Bb2fc`](https://etherscan.io/address/0x8B04bf6A374C40887F03B1928871c96f006Bb2fc) |
 | Machine                      | [`0xfcbe132452b6caa32addd4768db8fa02af73d841`](https://etherscan.io/address/0xfcbe132452b6caa32addd4768db8fa02af73d841) |
