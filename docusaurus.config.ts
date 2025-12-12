@@ -105,12 +105,6 @@ const config: Config = {
           label: "Concepts",
         },
         {
-          type: "docSidebar",
-          sidebarId: "operatorsSidebar",
-          position: "left",
-          label: "Operators",
-        },
-        {
           type: "doc",
           sidebarId: "strategiesSidebar",
           position: "left",
