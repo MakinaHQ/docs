@@ -8,6 +8,12 @@ sidebar_position: 3
 
 Makina smart contracts have undergone multiple rounds of audits by top auditors.
 
+### V1.1
+
+- **ChainSecurity**: [Makina-Core - Jan 2026](/audits/ChainSecurity_Makina_MakinaCore_Audit_v11.pdf)
+
+### V1
+
 - **Enigma Dark**: [Makina-Core Fuzz/Invariant Testing - Jul 2025](https://github.com/Enigma-Dark/security-review-reports/blob/main/2025-07_Invariant_Testing_Engagement_Makina_Finance_Makina_Core.pdf)
 - **SigmaPrime**: [Makina-Core & Makina-Periphery - Aug 2025](https://github.com/sigp/public-audits/blob/master/reports/makina/review.pdf)
 - **ChainSecurity**: [Makina-Core - Sep 2025](https://www.chainsecurity.com/security-audit/makina-core)
@@ -23,7 +29,7 @@ There is an ongoing Bug Bounty program on Cantina.
 
 ## SEAL Safe Harbor
 
-Makina has adopted the SEAL Safe Harbor agreement, see [safe harbor agreement](safe-harbor.md)
+Makina has adopted the SEAL Safe Harbor agreement, see [safe harbor agreement](safe-harbor.md).
 
 ## Contact
 
