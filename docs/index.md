@@ -25,7 +25,7 @@ Makina smart contracts have undergone multiple rounds of audits by top auditors.
 - **Enigma Dark**: [Makina-Core Fuzz/Invariant Testing - Jul 2025](https://github.com/Enigma-Dark/security-review-reports/blob/main/2025-07_Invariant_Testing_Engagement_Makina_Finance_Makina_Core.pdf)
 - **Enigma Dark**: [Makina-Periphery, Machine Share Oracle - Sep 2025](/audits/2025-09_Security_Review_Makina_Finance_Makina_Periphery_Machine_Share_Oracle.pdf)
 - **SigmaPrime**: [Makina-Core & Makina-Periphery - Aug 2025](https://github.com/sigp/public-audits/blob/master/reports/makina/review.pdf)
-- **ChainSecurity**: [Makina-Core - Sep 2025](https://www.chainsecurity.com/security-audit/makina-core), [Jan 2026](/audits/ChainSecurity_Makina_MakinaCore_Audit_v11.pdf)
+- **ChainSecurity**: [Makina-Core - Sep 2025](https://www.chainsecurity.com/security-audit/makina-core), [Jan 2026](/audits/ChainSecurity_Makina_MakinaCore_Audit-v11.pdf)
 - **ChainSecurity**: [Makina-Periphery - Sep 2025](https://www.chainsecurity.com/security-audit/makina-periphery)
 - **Cantina**: [CTF - Oct 2025](https://cantina.xyz/code/2adf7150-27ba-4cba-86a2-bd8ea175e7da/overview)
 - **Ottersec**: [Makina-Core & Makina-Periphery - Nov 2025](https://ottersec.notion.site/Sampled-Public-Audit-Reports-a296e98838aa4fdb8f3b192663400772?p=2a284d4e41468027b796e222fbbb8939&pm=s)

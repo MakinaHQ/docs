@@ -10,7 +10,7 @@ Makina smart contracts have undergone multiple rounds of audits by top auditors.
 
 ### V1.1
 
-- **ChainSecurity**: [Makina-Core - Jan 2026](/audits/ChainSecurity_Makina_MakinaCore_Audit_v11.pdf)
+- **ChainSecurity**: [Makina-Core - Jan 2026](/audits/ChainSecurity_Makina_MakinaCore_Audit-v11.pdf)
 
 ### V1
 
