@@ -1,6 +1,6 @@
 # IMakinaGovernable
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/5c13d0f918f7a44b1f21792a780c86b350caa4b2/src/interfaces/IMakinaGovernable.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/interfaces/IMakinaGovernable.sol)
 
 ## Functions
 
@@ -42,6 +42,39 @@ True if the contract is in recovery mode, false otherwise.
 
 ```solidity
 function recoveryMode() external view returns (bool);
+```
+
+### restrictedAccountingMode
+
+True if the contract is in restricted accounting mode, false otherwise.
+
+```solidity
+function restrictedAccountingMode() external view returns (bool);
+```
+
+### isAccountingAgent
+
+User => Whether the user is an accounting agent
+
+```solidity
+function isAccountingAgent(address agent) external view returns (bool);
+```
+
+### isOperator
+
+User => Whether the user is the current operator
+The operator is either the mechanic or the security council depending on the recovery mode.
+
+```solidity
+function isOperator(address user) external view returns (bool);
+```
+
+### isAccountingAuthorized
+
+User => Whether the user is authorized to perform accounting operations under current settings
+
+```solidity
+function isAccountingAuthorized(address user) external view returns (bool);
 ```
 
 ### setMechanic
@@ -114,7 +147,61 @@ function setRecoveryMode(bool enabled) external;
 | --------- | ------ | -------------------------------------------------- |
 | `enabled` | `bool` | True to enable recovery mode, false to disable it. |
 
+### setRestrictedAccountingMode
+
+Sets the restricted accounting mode.
+
+```solidity
+function setRestrictedAccountingMode(bool enabled) external;
+```
+
+**Parameters**
+
+| Name      | Type   | Description                                                     |
+| --------- | ------ | --------------------------------------------------------------- |
+| `enabled` | `bool` | True to enable restricted accounting mode, false to disable it. |
+
+### addAccountingAgent
+
+Adds a new accounting agent.
+
+```solidity
+function addAccountingAgent(address newAgent) external;
+```
+
+**Parameters**
+
+| Name       | Type      | Description                              |
+| ---------- | --------- | ---------------------------------------- |
+| `newAgent` | `address` | The address of the new accounting agent. |
+
+### removeAccountingAgent
+
+Removes an accounting agent.
+
+```solidity
+function removeAccountingAgent(address agent) external;
+```
+
+**Parameters**
+
+| Name    | Type      | Description                                    |
+| ------- | --------- | ---------------------------------------------- |
+| `agent` | `address` | The address of the accounting agent to remove. |
+
 ## Events
+
+### AccountingAgentAdded
+
+```solidity
+event AccountingAgentAdded(address indexed newAgent);
+```
+
+### AccountingAgentRemoved
+
+```solidity
+event AccountingAgentRemoved(address indexed agent);
+```
 
 ### MechanicChanged
 
@@ -126,6 +213,12 @@ event MechanicChanged(address indexed oldMechanic, address indexed newMechanic);
 
 ```solidity
 event RecoveryModeChanged(bool recoveryMode);
+```
+
+### RestrictedAccountingModeChanged
+
+```solidity
+event RestrictedAccountingModeChanged(bool restrictedAccountingMode);
 ```
 
 ### RiskManagerChanged
@@ -159,15 +252,17 @@ struct MakinaGovernableInitParams {
     address initialRiskManager;
     address initialRiskManagerTimelock;
     address initialAuthority;
+    bool initialRestrictedAccountingMode;
 }
 ```
 
 **Properties**
 
-| Name                         | Type      | Description                                       |
-| ---------------------------- | --------- | ------------------------------------------------- |
-| `initialMechanic`            | `address` | The address of the initial mechanic.              |
-| `initialSecurityCouncil`     | `address` | The address of the initial security council.      |
-| `initialRiskManager`         | `address` | The address of the initial risk manager.          |
-| `initialRiskManagerTimelock` | `address` | The address of the initial risk manager timelock. |
-| `initialAuthority`           | `address` | The address of the initial authority.             |
+| Name                              | Type      | Description                                           |
+| --------------------------------- | --------- | ----------------------------------------------------- |
+| `initialMechanic`                 | `address` | The address of the initial mechanic.                  |
+| `initialSecurityCouncil`          | `address` | The address of the initial security council.          |
+| `initialRiskManager`              | `address` | The address of the initial risk manager.              |
+| `initialRiskManagerTimelock`      | `address` | The address of the initial risk manager timelock.     |
+| `initialAuthority`                | `address` | The address of the initial authority.                 |
+| `initialRestrictedAccountingMode` | `bool`    | The initial value for the restricted accounting mode. |

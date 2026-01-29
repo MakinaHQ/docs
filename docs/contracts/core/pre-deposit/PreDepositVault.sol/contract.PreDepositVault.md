@@ -1,9 +1,9 @@
 # PreDepositVault
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/5c13d0f918f7a44b1f21792a780c86b350caa4b2/src/pre-deposit/PreDepositVault.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/pre-deposit/PreDepositVault.sol)
 
 **Inherits:**
-AccessManagedUpgradeable, [MakinaContext](/contracts/core/utils/MakinaContext.sol/abstract.MakinaContext.md), [IPreDepositVault](/contracts/core/interfaces/IPreDepositVault.sol/interface.IPreDepositVault.md)
+AccessManagedUpgradeable, ReentrancyGuard, [MakinaContext](/contracts/core/utils/MakinaContext.sol/abstract.MakinaContext.md), [IPreDepositVault](/contracts/core/interfaces/IPreDepositVault.sol/interface.IPreDepositVault.md)
 
 ## State Variables
 
@@ -183,16 +183,22 @@ function previewRedeem(uint256 shares) public view override notMigrated returns 
 Deposits a given amount of deposit tokens and mints shares to the receiver.
 
 ```solidity
-function deposit(uint256 assets, address receiver, uint256 minShares) external override notMigrated returns (uint256);
+function deposit(uint256 assets, address receiver, uint256 minShares, bytes32 referralKey)
+    external
+    override
+    nonReentrant
+    notMigrated
+    returns (uint256);
 ```
 
 **Parameters**
 
-| Name        | Type      | Description                                   |
-| ----------- | --------- | --------------------------------------------- |
-| `assets`    | `uint256` | The amount of deposit tokens to be deposited. |
-| `receiver`  | `address` | The receiver of the shares.                   |
-| `minShares` | `uint256` | The minimum amount of shares to be minted.    |
+| Name          | Type      | Description                                              |
+| ------------- | --------- | -------------------------------------------------------- |
+| `assets`      | `uint256` | The amount of deposit tokens to be deposited.            |
+| `receiver`    | `address` | The receiver of the shares.                              |
+| `minShares`   | `uint256` | The minimum amount of shares to be minted.               |
+| `referralKey` | `bytes32` | The optional identifier used to track a referral source. |
 
 **Returns**
 
@@ -205,7 +211,12 @@ function deposit(uint256 assets, address receiver, uint256 minShares) external o
 Burns exactly shares from caller and transfers the corresponding amount of deposit tokens to the receiver.
 
 ```solidity
-function redeem(uint256 shares, address receiver, uint256 minAssets) external override notMigrated returns (uint256);
+function redeem(uint256 shares, address receiver, uint256 minAssets)
+    external
+    override
+    nonReentrant
+    notMigrated
+    returns (uint256);
 ```
 
 **Parameters**

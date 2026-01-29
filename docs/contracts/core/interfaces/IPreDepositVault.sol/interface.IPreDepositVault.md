@@ -1,6 +1,6 @@
 # IPreDepositVault
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/5c13d0f918f7a44b1f21792a780c86b350caa4b2/src/interfaces/IPreDepositVault.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/interfaces/IPreDepositVault.sol)
 
 ## Functions
 
@@ -147,16 +147,17 @@ function previewRedeem(uint256 assets) external view returns (uint256);
 Deposits a given amount of deposit tokens and mints shares to the receiver.
 
 ```solidity
-function deposit(uint256 assets, address receiver, uint256 minShares) external returns (uint256);
+function deposit(uint256 assets, address receiver, uint256 minShares, bytes32 referralKey) external returns (uint256);
 ```
 
 **Parameters**
 
-| Name        | Type      | Description                                   |
-| ----------- | --------- | --------------------------------------------- |
-| `assets`    | `uint256` | The amount of deposit tokens to be deposited. |
-| `receiver`  | `address` | The receiver of the shares.                   |
-| `minShares` | `uint256` | The minimum amount of shares to be minted.    |
+| Name          | Type      | Description                                              |
+| ------------- | --------- | -------------------------------------------------------- |
+| `assets`      | `uint256` | The amount of deposit tokens to be deposited.            |
+| `receiver`    | `address` | The receiver of the shares.                              |
+| `minShares`   | `uint256` | The minimum amount of shares to be minted.               |
+| `referralKey` | `bytes32` | The optional identifier used to track a referral source. |
 
 **Returns**
 
@@ -272,7 +273,9 @@ function setWhitelistMode(bool enabled) external;
 ### Deposit
 
 ```solidity
-event Deposit(address indexed sender, address indexed receiver, uint256 assets, uint256 shares);
+event Deposit(
+    address indexed sender, address indexed receiver, uint256 assets, uint256 shares, bytes32 indexed referralKey
+);
 ```
 
 ### MigrateToMachine

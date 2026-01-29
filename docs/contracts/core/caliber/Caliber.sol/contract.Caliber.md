@@ -1,9 +1,9 @@
 # Caliber
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/5c13d0f918f7a44b1f21792a780c86b350caa4b2/src/caliber/Caliber.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/caliber/Caliber.sol)
 
 **Inherits:**
-[MakinaContext](/contracts/core/utils/MakinaContext.sol/abstract.MakinaContext.md), AccessManagedUpgradeable, ReentrancyGuardUpgradeable, ERC721HolderUpgradeable, ERC1155HolderUpgradeable, [ICaliber](/contracts/core/interfaces/ICaliber.sol/interface.ICaliber.md)
+[MakinaContext](/contracts/core/utils/MakinaContext.sol/abstract.MakinaContext.md), AccessManagedUpgradeable, ReentrancyGuard, ERC721Holder, ERC1155Holder, [ICaliber](/contracts/core/interfaces/ICaliber.sol/interface.ICaliber.md)
 
 ## State Variables
 
@@ -86,6 +86,12 @@ modifier onlyRiskManager();
 
 ```solidity
 modifier onlyRiskManagerTimelock();
+```
+
+### onlyAccountingAuthorized
+
+```solidity
+modifier onlyAccountingAuthorized();
 ```
 
 ### authority
@@ -181,7 +187,7 @@ function maxSwapLossBps() external view override returns (uint256);
 Duration of the cooldown period for swaps and position management.
 
 ```solidity
-function cooldownDuration() external view returns (uint256);
+function cooldownDuration() external view override returns (uint256);
 ```
 
 ### getPositionsLength
@@ -252,7 +258,7 @@ function isInstrRootGuardian(address user) external view override returns (bool)
 Checks if the accounting age of each position is below the position staleness threshold.
 
 ```solidity
-function isAccountingFresh() external view returns (bool);
+function isAccountingFresh() external view override returns (bool);
 ```
 
 ### getDetailedAum
@@ -260,7 +266,7 @@ function isAccountingFresh() external view returns (bool);
 Returns the caliber's net AUM along with detailed position and base token breakdowns.
 
 ```solidity
-function getDetailedAum() external view override returns (uint256, bytes[] memory, bytes[] memory);
+function getDetailedAum() external view override nonReentrantView returns (uint256, bytes[] memory, bytes[] memory);
 ```
 
 **Returns**
@@ -310,6 +316,7 @@ function accountForPosition(Instruction calldata instruction)
     external
     override
     nonReentrant
+    onlyAccountingAuthorized
     returns (uint256, int256);
 ```
 
@@ -335,6 +342,7 @@ function accountForPositionBatch(Instruction[] calldata instructions, uint256[] 
     external
     override
     nonReentrant
+    onlyAccountingAuthorized
     returns (uint256[] memory, int256[] memory);
 ```
 
@@ -824,5 +832,6 @@ struct CaliberStorage {
     EnumerableSet.UintSet _positionIds;
     EnumerableSet.AddressSet _baseTokens;
     EnumerableSet.AddressSet _instrRootGuardians;
+    EnumerableSet.AddressSet _positionTokens;
 }
 ```

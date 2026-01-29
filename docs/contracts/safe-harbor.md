@@ -3,13 +3,11 @@
 **Category**: Security\
 **Authors**: Makina Foundation
 
-***
-
+---
 
 ## **Introduction**
 
 This proposal outlines Makina’s adoption of the SEAL ([Security Alliance](https://www.securityalliance.org/)) Whitehat Safe Harbor Agreement (“Safe Harbor Agreement”). By adopting the Safe Harbor Agreement, Makina improves the security of its on-chain assets by allowing whitehats to intervene during active exploits to save protocol funds.
-
 
 ### **What is the Safe Harbor Agreement?**
 
@@ -31,8 +29,7 @@ Key aspects of the agreement include:
 
 Safe Harbor has already been adopted by leading protocols such as Uniswap, Zksync, Pendle, Pancakeswap, and Balancer, establishing it as a trusted industry standard for empowering whitehats during active exploits.
 
-***
-
+---
 
 ## **Rationale**
 
@@ -50,8 +47,7 @@ Benefits of adopting the Safe Harbor Agreement include:
 
 Adoption of the agreement complements audits by providing an additional layer of security, ensuring that the protocol is better prepared to respond to active threats.
 
-***
-
+---
 
 ## **Adoption Details**
 
@@ -72,11 +68,9 @@ _Predetermined rewards for successful whitehats that recover protocol funds. For
 - Aggregate Cap (USD): 1000000
 
 - Retainable: No
-
   - _When retainable is_ **_False_**_, whitehats are required to return all recovered funds to the protocol, which will then payout the bounty after verification by the protocol._
 
 - Identity: Named
-
   - _When identity is_ **_Named_** _whitehats must identify themselves to the protocol with their full legal name._
 
 - Diligence Requirements: KYC & sanctions screening only when necessary
@@ -89,7 +83,6 @@ _Designated security contacts for the protocol who whitehats will contact follow
 | ------------- | ------------------------ |
 | Security Team | security\@makina.finance |
 
-
 **Chains & Asset Recovery Addresses**
 
 _Addresses controlled by the protocol which recovered protocol funds will be returned to by the whitehat_
@@ -97,7 +90,6 @@ _Addresses controlled by the protocol which recovered protocol funds will be ret
 | Chain     | Asset Recovery Address                     |
 | --------- | ------------------------------------------ |
 | eip155:\* | 0x62244C74e1d09b3D86EF7342d354b5D7770bDE10 |
-
 
 **Accounts**
 
@@ -116,8 +108,7 @@ _List of all on-chain assets owned by the protocol protected under Safe Harbor_
 | eip155:\* | MachineBeacon               | 0x5C680EC39bafE8524F3C2fa9d5F6D65F09Bd7333 | All                  |
 | eip155:\* | AcrossV3BridgeAdapterBeacon | 0x511C3F33417275d060932458DD987bd47c9ca678 | All                  |
 
-***
-
+---
 
 ## **References**
 

@@ -1,9 +1,9 @@
 # Machine
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/5c13d0f918f7a44b1f21792a780c86b350caa4b2/src/machine/Machine.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/machine/Machine.sol)
 
 **Inherits:**
-[MakinaGovernable](/contracts/core/utils/MakinaGovernable.sol/abstract.MakinaGovernable.md), [BridgeController](/contracts/core/bridge/controller/BridgeController.sol/abstract.BridgeController.md), ReentrancyGuardUpgradeable, [IMachine](/contracts/core/interfaces/IMachine.sol/interface.IMachine.md)
+[MakinaGovernable](/contracts/core/utils/MakinaGovernable.sol/abstract.MakinaGovernable.md), [BridgeController](/contracts/core/bridge/controller/BridgeController.sol/abstract.BridgeController.md), ReentrancyGuard, [IMachine](/contracts/core/interfaces/IMachine.sol/interface.IMachine.md)
 
 ## State Variables
 
@@ -149,6 +149,14 @@ Share token supply limit that cannot be exceeded by new deposits.
 function shareLimit() external view override returns (uint256);
 ```
 
+### maxSharePriceChangeRate
+
+Maximum relative share price change rate per second during total AUM updates, 1e18 = 100%.
+
+```solidity
+function maxSharePriceChangeRate() external view override returns (uint256);
+```
+
 ### maxMint
 
 Maximum amount of shares that can currently be minted through asset deposits.
@@ -227,10 +235,29 @@ function getSpokeBridgeAdapter(uint256 chainId, uint16 bridgeId) external view r
 
 ### isIdleToken
 
-Token => Is the token an idle token.
+Token => Is the token registered as an idle token in this machine.
 
 ```solidity
 function isIdleToken(address token) external view override returns (bool);
+```
+
+### getIdleTokensLength
+
+Length of the idle tokens list.
+
+```solidity
+function getIdleTokensLength() external view override returns (uint256);
+```
+
+### getIdleToken
+
+Idle token index => Idle token address.
+
+_There are no guarantees on the ordering of values inside the idle tokens list,
+and it may change when values are added or removed._
+
+```solidity
+function getIdleToken(uint256 idx) external view override returns (address);
 ```
 
 ### convertToShares
@@ -398,7 +425,7 @@ function cancelOutBridgeTransfer(uint16 bridgeId, uint256 transferId) external o
 Updates the total AUM of the machine.
 
 ```solidity
-function updateTotalAum() external override nonReentrant notRecoveryMode returns (uint256);
+function updateTotalAum() external override nonReentrant onlyAccountingAuthorized returns (uint256);
 ```
 
 **Returns**
@@ -412,7 +439,7 @@ function updateTotalAum() external override nonReentrant notRecoveryMode returns
 Deposits accounting tokens into the machine and mints shares to the receiver.
 
 ```solidity
-function deposit(uint256 assets, address receiver, uint256 minShares)
+function deposit(uint256 assets, address receiver, uint256 minShares, bytes32 referralKey)
     external
     nonReentrant
     notRecoveryMode
@@ -421,11 +448,12 @@ function deposit(uint256 assets, address receiver, uint256 minShares)
 
 **Parameters**
 
-| Name        | Type      | Description                                 |
-| ----------- | --------- | ------------------------------------------- |
-| `assets`    | `uint256` | The amount of accounting tokens to deposit. |
-| `receiver`  | `address` | The receiver of minted shares.              |
-| `minShares` | `uint256` | The minimum amount of shares to be minted.  |
+| Name          | Type      | Description                                              |
+| ------------- | --------- | -------------------------------------------------------- |
+| `assets`      | `uint256` | The amount of accounting tokens to deposit.              |
+| `receiver`    | `address` | The receiver of minted shares.                           |
+| `minShares`   | `uint256` | The minimum amount of shares to be minted.               |
+| `referralKey` | `bytes32` | The optional identifier used to track a referral source. |
 
 **Returns**
 
@@ -626,9 +654,23 @@ function setShareLimit(uint256 newShareLimit) external override onlyRiskManager;
 
 **Parameters**
 
-| Name            | Type      | Description         |
-| --------------- | --------- | ------------------- |
-| `newShareLimit` | `uint256` | The new share limit |
+| Name            | Type      | Description          |
+| --------------- | --------- | -------------------- |
+| `newShareLimit` | `uint256` | The new share limit. |
+
+### setMaxSharePriceChangeRate
+
+Sets the new maximum relative share price change rate per second during total AUM updates, 1e18 = 100%.
+
+```solidity
+function setMaxSharePriceChangeRate(uint256 newMaxSharePriceChangeRate) external override onlyRiskManagerTimelock;
+```
+
+**Parameters**
+
+| Name                         | Type      | Description                                       |
+| ---------------------------- | --------- | ------------------------------------------------- |
+| `newMaxSharePriceChangeRate` | `uint256` | The new maximum relative share price change rate. |
 
 ### setOutTransferEnabled
 
@@ -722,5 +764,6 @@ struct MachineStorage {
     uint256[] _foreignChainIds;
     mapping(uint256 foreignChainId => SpokeCaliberData data) _spokeCalibersData;
     EnumerableSet.AddressSet _idleTokens;
+    uint256 _maxSharePriceChangeRate;
 }
 ```

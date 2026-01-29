@@ -1,9 +1,9 @@
 # AsyncRedeemer
 
-[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/3ff217c9c76d6d34e1bcbab84ac6946048ceaeb7/src/redeemers/AsyncRedeemer.sol)
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/e8b2b2411f6e534177e79953d4414e8369c7d524/src/redeemers/AsyncRedeemer.sol)
 
 **Inherits:**
-ERC721Upgradeable, ReentrancyGuardUpgradeable, [MachinePeriphery](/contracts/periphery/utils/MachinePeriphery.sol/abstract.MachinePeriphery.md), [Whitelist](/contracts/periphery/utils/Whitelist.sol/abstract.Whitelist.md), [IAsyncRedeemer](/contracts/periphery/interfaces/IAsyncRedeemer.sol/interface.IAsyncRedeemer.md)
+ERC721Upgradeable, ReentrancyGuard, [MachinePeriphery](/contracts/periphery/utils/MachinePeriphery.sol/abstract.MachinePeriphery.md), [Whitelist](/contracts/periphery/utils/Whitelist.sol/abstract.Whitelist.md), [IAsyncRedeemer](/contracts/periphery/interfaces/IAsyncRedeemer.sol/interface.IAsyncRedeemer.md)
 
 ## State Variables
 
@@ -66,6 +66,14 @@ Minimum time (in seconds) to be elapsed between request submission and finalizat
 function finalizationDelay() external view override returns (uint256);
 ```
 
+### minRedeemAmount
+
+Minimum amount of shares required to create a redeem request.
+
+```solidity
+function minRedeemAmount() external view override returns (uint256);
+```
+
 ### getShares
 
 Request ID => Shares
@@ -110,7 +118,7 @@ function previewFinalizeRequests(uint256 upToRequestId) public view override ret
 Creates a redeem request and issues an associated NFT to the receiver.
 
 ```solidity
-function requestRedeem(uint256 shares, address receiver)
+function requestRedeem(uint256 shares, address receiver, uint256 minAssets)
     public
     virtual
     override
@@ -121,10 +129,11 @@ function requestRedeem(uint256 shares, address receiver)
 
 **Parameters**
 
-| Name       | Type      | Description                      |
-| ---------- | --------- | -------------------------------- |
-| `shares`   | `uint256` | The amount of shares to redeem.  |
-| `receiver` | `address` | The receiver of the receipt NFT. |
+| Name        | Type      | Description                                                 |
+| ----------- | --------- | ----------------------------------------------------------- |
+| `shares`    | `uint256` | The amount of shares to redeem.                             |
+| `receiver`  | `address` | The receiver of the receipt NFT.                            |
+| `minAssets` | `uint256` | The minimum amount of assets for the request’s entry price. |
 
 **Returns**
 
@@ -181,6 +190,20 @@ function setFinalizationDelay(uint256 newDelay) external override onlyRiskManage
 | Name       | Type      | Description                            |
 | ---------- | --------- | -------------------------------------- |
 | `newDelay` | `uint256` | The new finalization delay in seconds. |
+
+### setMinRedeemAmount
+
+Sets the minimum redeem amount.
+
+```solidity
+function setMinRedeemAmount(uint256 newMinAmount) external override onlyRiskManagerTimelock;
+```
+
+**Parameters**
+
+| Name           | Type      | Description |
+| -------------- | --------- | ----------- |
+| `newMinAmount` | `uint256` |             |
 
 ### setWhitelistStatus
 
@@ -240,5 +263,6 @@ struct AsyncRedeemerStorage {
     uint256 _lastFinalizedRequestId;
     uint256 _finalizationDelay;
     mapping(uint256 requestId => IAsyncRedeemer.RedeemRequest request) _requests;
+    uint256 _minRedeemAmount;
 }
 ```

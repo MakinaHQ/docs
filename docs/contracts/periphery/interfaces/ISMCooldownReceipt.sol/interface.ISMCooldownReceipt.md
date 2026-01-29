@@ -1,6 +1,6 @@
 # ISMCooldownReceipt
 
-[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/3ff217c9c76d6d34e1bcbab84ac6946048ceaeb7/src/interfaces/ISMCooldownReceipt.sol)
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/e8b2b2411f6e534177e79953d4414e8369c7d524/src/interfaces/ISMCooldownReceipt.sol)
 
 **Inherits:**
 IERC721

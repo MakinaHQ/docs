@@ -4,6 +4,8 @@
   - [DirectDepositor](depositors/DirectDepositor.sol/contract.DirectDepositor.md)
 - [❱ factories]
   - [HubPeripheryFactory](factories/HubPeripheryFactory.sol/contract.HubPeripheryFactory.md)
+  - [MachineShareOracleFactory](factories/MachineShareOracleFactory.sol/contract.MachineShareOracleFactory.md)
+  - [MetaMorphoOracleFactory](factories/MetaMorphoOracleFactory.sol/contract.MetaMorphoOracleFactory.md)
 - [❱ fee-managers]
   - [WatermarkFeeManager](fee-managers/WatermarkFeeManager.sol/contract.WatermarkFeeManager.md)
 - [❱ flashloans]
@@ -15,20 +17,38 @@
   - [IHubPeripheryFactory](interfaces/IHubPeripheryFactory.sol/interface.IHubPeripheryFactory.md)
   - [IHubPeripheryRegistry](interfaces/IHubPeripheryRegistry.sol/interface.IHubPeripheryRegistry.md)
   - [IMachinePeriphery](interfaces/IMachinePeriphery.sol/interface.IMachinePeriphery.md)
+  - [IMachineShareOracle](interfaces/IMachineShareOracle.sol/interface.IMachineShareOracle.md)
+  - [IMachineShareOracleFactory](interfaces/IMachineShareOracleFactory.sol/interface.IMachineShareOracleFactory.md)
   - [IMakinaPeripheryContext](interfaces/IMakinaPeripheryContext.sol/interface.IMakinaPeripheryContext.md)
+  - [IMetaMorphoFactory](interfaces/IMetaMorphoFactory.sol/interface.IMetaMorphoFactory.md)
+  - [IMetaMorphoOracleFactory](interfaces/IMetaMorphoOracleFactory.sol/interface.IMetaMorphoOracleFactory.md)
+  - [ISMCooldownReceipt](interfaces/ISMCooldownReceipt.sol/interface.ISMCooldownReceipt.md)
   - [ISecurityModule](interfaces/ISecurityModule.sol/interface.ISecurityModule.md)
   - [ISecurityModuleReference](interfaces/ISecurityModuleReference.sol/interface.ISecurityModuleReference.md)
+  - [IShareTokenOwner](interfaces/IShareTokenOwner.sol/interface.IShareTokenOwner.md)
   - [IWatermarkFeeManager](interfaces/IWatermarkFeeManager.sol/interface.IWatermarkFeeManager.md)
   - [IWhitelist](interfaces/IWhitelist.sol/interface.IWhitelist.md)
 - [❱ libraries]
   - [Errors](libraries/Errors.sol/library.Errors.md)
+- [❱ oracles]
+  - [ERC4626Oracle](oracles/ERC4626Oracle.sol/contract.ERC4626Oracle.md)
+  - [MachineShareOracle](oracles/MachineShareOracle.sol/contract.MachineShareOracle.md)
 - [❱ redeemers]
   - [AsyncRedeemer](redeemers/AsyncRedeemer.sol/contract.AsyncRedeemer.md)
 - [❱ registries]
   - [HubPeripheryRegistry](registries/HubPeripheryRegistry.sol/contract.HubPeripheryRegistry.md)
 - [❱ security-module]
+  - [SMCooldownReceipt](security-module/SMCooldownReceipt.sol/contract.SMCooldownReceipt.md)
   - [SecurityModule](security-module/SecurityModule.sol/contract.SecurityModule.md)
 - [❱ utils]
   - [MachinePeriphery](utils/MachinePeriphery.sol/abstract.MachinePeriphery.md)
   - [MakinaPeripheryContext](utils/MakinaPeripheryContext.sol/abstract.MakinaPeripheryContext.md)
   - [Whitelist](utils/Whitelist.sol/abstract.Whitelist.md)
+- [❱ weiroll-helpers]
+  - [BooleanHelper](weiroll-helpers/BooleanHelper.sol/contract.BooleanHelper.md)
+  - [Bytes32Helper](weiroll-helpers/Bytes32Helper.sol/contract.Bytes32Helper.md)
+  - [CastHelper](weiroll-helpers/CastHelper.sol/contract.CastHelper.md)
+  - [ContextHelper](weiroll-helpers/ContextHelper.sol/contract.ContextHelper.md)
+  - [KeyValueStore](weiroll-helpers/KeyValueStore.sol/contract.KeyValueStore.md)
+  - [MathHelper](weiroll-helpers/MathHelper.sol/contract.MathHelper.md)
+  - [SignedMathHelper](weiroll-helpers/SignedMathHelper.sol/contract.SignedMathHelper.md)

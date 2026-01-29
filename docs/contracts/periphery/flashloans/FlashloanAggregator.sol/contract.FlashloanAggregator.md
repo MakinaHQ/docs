@@ -1,6 +1,6 @@
 # FlashloanAggregator
 
-[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/3ff217c9c76d6d34e1bcbab84ac6946048ceaeb7/src/flashloans/FlashloanAggregator.sol)
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/e8b2b2411f6e534177e79953d4414e8369c7d524/src/flashloans/FlashloanAggregator.sol)
 
 **Inherits:**
 [IFlashloanAggregator](/contracts/periphery/interfaces/IFlashloanAggregator.sol/interface.IFlashloanAggregator.md), BalancerV2FlashloanRecipient, IMorphoFlashLoanCallback, IERC3156FlashBorrower, IFlashLoanSimpleReceiver
