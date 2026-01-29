@@ -1,6 +1,6 @@
 # ICoreRegistry
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/5c13d0f918f7a44b1f21792a780c86b350caa4b2/src/interfaces/ICoreRegistry.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/interfaces/ICoreRegistry.sol)
 
 ## Functions
 
@@ -58,6 +58,14 @@ Bridge ID => Address of the bridge adapter beacon contract.
 
 ```solidity
 function bridgeAdapterBeacon(uint16 bridgeId) external view returns (address);
+```
+
+### bridgeConfig
+
+Bridge ID => Address of the bridge config contract.
+
+```solidity
+function bridgeConfig(uint16 bridgeId) external view returns (address);
 ```
 
 ### setCoreFactory
@@ -159,6 +167,21 @@ function setBridgeAdapterBeacon(uint16 bridgeId, address _bridgeAdapter) externa
 | `bridgeId`       | `uint16`  | The bridge ID.                     |
 | `_bridgeAdapter` | `address` | The bridge adapter beacon address. |
 
+### setBridgeConfig
+
+Sets the bridge config address.
+
+```solidity
+function setBridgeConfig(uint16 bridgeId, address _bridgeConfig) external;
+```
+
+**Parameters**
+
+| Name            | Type      | Description                |
+| --------------- | --------- | -------------------------- |
+| `bridgeId`      | `uint16`  | The bridge ID.             |
+| `_bridgeConfig` | `address` | The bridge config address. |
+
 ## Events
 
 ### BridgeAdapterBeaconChanged
@@ -167,6 +190,12 @@ function setBridgeAdapterBeacon(uint16 bridgeId, address _bridgeAdapter) externa
 event BridgeAdapterBeaconChanged(
     uint256 indexed bridgeId, address indexed oldBridgeAdapterBeacon, address indexed newBridgeAdapterBeacon
 );
+```
+
+### BridgeConfigChanged
+
+```solidity
+event BridgeConfigChanged(uint256 indexed bridgeId, address indexed oldBridgeConfig, address indexed newBridgeConfig);
 ```
 
 ### CaliberBeaconChanged

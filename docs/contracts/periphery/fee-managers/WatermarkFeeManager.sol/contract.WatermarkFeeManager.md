@@ -1,6 +1,6 @@
 # WatermarkFeeManager
 
-[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/3ff217c9c76d6d34e1bcbab84ac6946048ceaeb7/src/fee-managers/WatermarkFeeManager.sol)
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/e8b2b2411f6e534177e79953d4414e8369c7d524/src/fee-managers/WatermarkFeeManager.sol)
 
 **Inherits:**
 [MachinePeriphery](/contracts/periphery/utils/MachinePeriphery.sol/abstract.MachinePeriphery.md), AccessManagedUpgradeable, [IWatermarkFeeManager](/contracts/periphery/interfaces/IWatermarkFeeManager.sol/interface.IWatermarkFeeManager.md)
@@ -316,7 +316,7 @@ function setSecurityModule(address _securityModule) external override onlyFactor
 Checks that the provided fee split setup is valid.
 
 ```solidity
-function _checkFeeSplit(address[] calldata _feeReceivers, uint256[] calldata _feeSplitBps) internal pure;
+function _checkFeeSplit(address[] memory _feeReceivers, uint256[] memory _feeSplitBps) internal pure;
 ```
 
 ## Structs

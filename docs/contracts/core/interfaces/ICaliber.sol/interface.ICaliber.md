@@ -1,6 +1,6 @@
 # ICaliber
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/5c13d0f918f7a44b1f21792a780c86b350caa4b2/src/interfaces/ICaliber.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/interfaces/ICaliber.sol)
 
 ## Functions
 
@@ -292,21 +292,21 @@ Manages a position's state through paired management and accounting instructions
 economic inconsistencies between position changes and token flows.
 The matrix evaluates three factors to determine required validations:
 
-- Base Token Inflow - Whether the contract's base token balance increases during operation
+- Base Token flow - Whether the contract globally spent or received base tokens during operation
 - Debt Position - Whether position represents protocol liability (true) vs asset (false)
 - Position Δ direction - Direction of position value change (increase/decrease)
-  ┌───────────────────┬───────────────┬──────────────────────┬───────────────────────────┐
-  │ Base Token Inflow │ Debt Position │ Position Δ direction │ Action │
-  ├───────────────────┼───────────────┼──────────────────────┼───────────────────────────┤
-  │ No │ No │ Decrease │ Revert: Invalid direction │
-  │ No │ Yes │ Increase │ Revert: Invalid direction │
-  │ No │ No │ Increase │ Minimum Δ Check │
-  │ No │ Yes │ Decrease │ Minimum Δ Check │
-  │ Yes │ No │ Decrease │ Maximum Δ Check │
-  │ Yes │ Yes │ Increase │ Maximum Δ Check │
-  │ Yes │ No │ Increase │ No check (favorable move) │
-  │ Yes │ Yes │ Decrease │ No check (favorable move) │
-  └───────────────────┴───────────────┴──────────────────────┴───────────────────────────┘\*
+  ┌─────────────────┬───────────────┬──────────────────────┬───────────────────────────┐
+  │ Base Token flow │ Debt Position │ Position Δ direction │ Action │
+  ├─────────────────┼───────────────┼──────────────────────┼───────────────────────────┤
+  │ Outflow │ No │ Decrease │ Revert: Invalid direction │
+  │ Outflow │ Yes │ Increase │ Revert: Invalid direction │
+  │ Outflow │ No │ Increase / Null │ Minimum Δ Check │
+  │ Outflow │ Yes │ Decrease / Null │ Minimum Δ Check │
+  │ Inflow / Null │ No │ Decrease │ Maximum Δ Check │
+  │ Inflow / Null │ Yes │ Increase │ Maximum Δ Check │
+  │ Inflow / Null │ No │ Increase / Null │ No check (favorable move) │
+  │ Inflow / Null │ Yes │ Decrease / Null │ No check (favorable move) │
+  └─────────────────┴───────────────┴──────────────────────┴───────────────────────────┘\*
 
 ```solidity
 function managePosition(Instruction calldata mgmtInstruction, Instruction calldata acctInstruction)
@@ -718,6 +718,7 @@ struct Instruction {
     uint256 groupId;
     InstructionType instructionType;
     address[] affectedTokens;
+    address[] positionTokens;
     bytes32[] commands;
     bytes[] state;
     uint128 stateBitmap;
@@ -734,6 +735,7 @@ struct Instruction {
 | `groupId`         | `uint256`         | The ID of the position accounting group. Set to 0 if the instruction is not of type ACCOUNTING, or if the involved position is ungrouped. |
 | `instructionType` | `InstructionType` | The type of the instruction.                                                                                                              |
 | `affectedTokens`  | `address[]`       | The array of affected tokens.                                                                                                             |
+| `positionTokens`  | `address[]`       | The array of position tokens.                                                                                                             |
 | `commands`        | `bytes32[]`       | The array of commands.                                                                                                                    |
 | `state`           | `bytes[]`         | The array of state.                                                                                                                       |
 | `stateBitmap`     | `uint128`         | The state bitmap.                                                                                                                         |

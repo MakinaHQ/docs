@@ -1,28 +1,60 @@
 # MachineUtils
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/5c13d0f918f7a44b1f21792a780c86b350caa4b2/src/libraries/MachineUtils.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/libraries/MachineUtils.sol)
 
 ## State Variables
 
-### FEE_ACCRUAL_RATE_DIVISOR
+### RATE_SCALE
 
 ```solidity
-uint256 private constant FEE_ACCRUAL_RATE_DIVISOR = 1e18;
+uint256 private constant RATE_SCALE = 1e18;
 ```
 
 ## Functions
 
 ### updateTotalAum
 
+_Updates the total AUM of the machine and performs share price change check._
+
 ```solidity
-function updateTotalAum(Machine.MachineStorage storage $, address oracleRegistry) external returns (uint256);
+function updateTotalAum(Machine.MachineStorage storage $, address oracleRegistry, bool sharePriceChangeCheck)
+    external
+    returns (uint256);
 ```
 
+**Parameters**
+
+| Name                    | Type                     | Description                                                   |
+| ----------------------- | ------------------------ | ------------------------------------------------------------- |
+| `$`                     | `Machine.MachineStorage` | The machine storage struct.                                   |
+| `oracleRegistry`        | `address`                | The address of the oracle registry.                           |
+| `sharePriceChangeCheck` | `bool`                   | True to perform share price change check, false to bypass it. |
+
+**Returns**
+
+| Name     | Type      | Description            |
+| -------- | --------- | ---------------------- |
+| `<none>` | `uint256` | The updated total AUM. |
+
 ### manageFees
+
+_Manages the fee minting process, including calculating and minting fixed and performance fees._
 
 ```solidity
 function manageFees(Machine.MachineStorage storage $) external returns (uint256);
 ```
+
+**Parameters**
+
+| Name | Type                     | Description                 |
+| ---- | ------------------------ | --------------------------- |
+| `$`  | `Machine.MachineStorage` | The machine storage struct. |
+
+**Returns**
+
+| Name     | Type      | Description                      |
+| -------- | --------- | -------------------------------- |
+| `<none>` | `uint256` | The fees minted in share tokens. |
 
 ### updateSpokeCaliberAccountingData
 
@@ -159,4 +191,17 @@ function _accountingValueOf(address oracleRegistry, address accountingToken, add
     private
     view
     returns (uint256);
+```
+
+### \_checkMaxRelativeChange
+
+_Checks that the relative change between two values does not exceed the maximum allowed rate over elapsed time._
+
+```solidity
+function _checkMaxRelativeChange(
+    uint256 previousValue,
+    uint256 newValue,
+    uint256 maxPercentDeltaPerSecond,
+    uint256 elapsedTime
+) internal pure;
 ```

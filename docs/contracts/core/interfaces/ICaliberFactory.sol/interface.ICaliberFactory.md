@@ -1,6 +1,6 @@
 # ICaliberFactory
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/5c13d0f918f7a44b1f21792a780c86b350caa4b2/src/interfaces/ICaliberFactory.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/interfaces/ICaliberFactory.sol)
 
 ## Functions
 

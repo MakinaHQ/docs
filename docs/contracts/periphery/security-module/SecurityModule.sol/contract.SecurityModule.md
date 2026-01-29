@@ -1,9 +1,9 @@
 # SecurityModule
 
-[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/3ff217c9c76d6d34e1bcbab84ac6946048ceaeb7/src/security-module/SecurityModule.sol)
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/e8b2b2411f6e534177e79953d4414e8369c7d524/src/security-module/SecurityModule.sol)
 
 **Inherits:**
-ERC20Upgradeable, ReentrancyGuardUpgradeable, [MachinePeriphery](/contracts/periphery/utils/MachinePeriphery.sol/abstract.MachinePeriphery.md), [ISecurityModule](/contracts/periphery/interfaces/ISecurityModule.sol/interface.ISecurityModule.md)
+ERC20Upgradeable, ReentrancyGuard, [MachinePeriphery](/contracts/periphery/utils/MachinePeriphery.sol/abstract.MachinePeriphery.md), [ISecurityModule](/contracts/periphery/interfaces/ISecurityModule.sol/interface.ISecurityModule.md)
 
 ## State Variables
 

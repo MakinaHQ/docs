@@ -1,6 +1,6 @@
 # ICaliberMailbox
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/5c13d0f918f7a44b1f21792a780c86b350caa4b2/src/interfaces/ICaliberMailbox.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/interfaces/ICaliberMailbox.sol)
 
 **Inherits:**
 [IMachineEndpoint](/contracts/core/interfaces/IMachineEndpoint.sol/interface.IMachineEndpoint.md)
@@ -12,15 +12,20 @@
 Initializer of the contract.
 
 ```solidity
-function initialize(IMakinaGovernable.MakinaGovernableInitParams calldata mgParams, address hubMachine) external;
+function initialize(
+    IMakinaGovernable.MakinaGovernableInitParams calldata mgParams,
+    uint256 initialCooldownDuration,
+    address hubMachine
+) external;
 ```
 
 **Parameters**
 
-| Name         | Type                                           | Description                                      |
-| ------------ | ---------------------------------------------- | ------------------------------------------------ |
-| `mgParams`   | `IMakinaGovernable.MakinaGovernableInitParams` | The makina governable initialization parameters. |
-| `hubMachine` | `address`                                      | The foreign address of the hub machine.          |
+| Name                      | Type                                           | Description                                                        |
+| ------------------------- | ---------------------------------------------- | ------------------------------------------------------------------ |
+| `mgParams`                | `IMakinaGovernable.MakinaGovernableInitParams` | The makina governable initialization parameters.                   |
+| `initialCooldownDuration` | `uint256`                                      | The duration of the cooldown period for outgoing bridge transfers. |
+| `hubMachine`              | `address`                                      | The foreign address of the hub machine.                            |
 
 ### caliber
 
@@ -28,6 +33,14 @@ Address of the associated caliber.
 
 ```solidity
 function caliber() external view returns (address);
+```
+
+### cooldownDuration
+
+Duration of the cooldown period for outgoing bridge transfers.
+
+```solidity
+function cooldownDuration() external view returns (uint256);
 ```
 
 ### getHubBridgeAdapter
@@ -80,6 +93,20 @@ function setCaliber(address caliber) external;
 | --------- | --------- | -------------------------------------- |
 | `caliber` | `address` | The address of the associated caliber. |
 
+### setCooldownDuration
+
+Sets the duration of the cooldown period for outgoing bridge transfers.
+
+```solidity
+function setCooldownDuration(uint256 newCooldownDuration) external;
+```
+
+**Parameters**
+
+| Name                  | Type      | Description                  |
+| --------------------- | --------- | ---------------------------- |
+| `newCooldownDuration` | `uint256` | The new duration in seconds. |
+
 ### setHubBridgeAdapter
 
 Registers a hub bridge adapter.
@@ -101,6 +128,12 @@ function setHubBridgeAdapter(uint16 bridgeId, address adapter) external;
 
 ```solidity
 event CaliberSet(address indexed caliber);
+```
+
+### CooldownDurationChanged
+
+```solidity
+event CooldownDurationChanged(uint256 oldDuration, uint256 newDuration);
 ```
 
 ### HubBridgeAdapterSet

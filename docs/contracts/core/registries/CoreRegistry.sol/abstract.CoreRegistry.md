@@ -1,6 +1,6 @@
 # CoreRegistry
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/5c13d0f918f7a44b1f21792a780c86b350caa4b2/src/registries/CoreRegistry.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/registries/CoreRegistry.sol)
 
 **Inherits:**
 AccessManagedUpgradeable, [ICoreRegistry](/contracts/core/interfaces/ICoreRegistry.sol/interface.ICoreRegistry.md)
@@ -84,6 +84,14 @@ Bridge ID => Address of the bridge adapter beacon contract.
 
 ```solidity
 function bridgeAdapterBeacon(uint16 bridgeId) external view override returns (address);
+```
+
+### bridgeConfig
+
+Bridge ID => Address of the bridge config contract.
+
+```solidity
+function bridgeConfig(uint16 bridgeId) external view override returns (address);
 ```
 
 ### setCoreFactory
@@ -175,15 +183,30 @@ function setCaliberBeacon(address _caliberBeacon) external override restricted;
 Sets the bridge adapter beacon address.
 
 ```solidity
-function setBridgeAdapterBeacon(uint16 bridgeId, address _bridgeAdapter) external override restricted;
+function setBridgeAdapterBeacon(uint16 bridgeId, address _bridgeAdapterBeacon) external override restricted;
 ```
 
 **Parameters**
 
-| Name             | Type      | Description                        |
-| ---------------- | --------- | ---------------------------------- |
-| `bridgeId`       | `uint16`  | The bridge ID.                     |
-| `_bridgeAdapter` | `address` | The bridge adapter beacon address. |
+| Name                   | Type      | Description    |
+| ---------------------- | --------- | -------------- |
+| `bridgeId`             | `uint16`  | The bridge ID. |
+| `_bridgeAdapterBeacon` | `address` |                |
+
+### setBridgeConfig
+
+Sets the bridge config address.
+
+```solidity
+function setBridgeConfig(uint16 bridgeId, address _bridgeConfig) external override restricted;
+```
+
+**Parameters**
+
+| Name            | Type      | Description                |
+| --------------- | --------- | -------------------------- |
+| `bridgeId`      | `uint16`  | The bridge ID.             |
+| `_bridgeConfig` | `address` | The bridge config address. |
 
 ## Structs
 
@@ -200,6 +223,7 @@ struct CoreRegistryStorage {
     address _swapModule;
     address _flashLoanModule;
     address _caliberBeacon;
-    mapping(uint16 => address) _bridgeAdapters;
+    mapping(uint16 => address) _bridgeAdapterBeacons;
+    mapping(uint16 => address) _bridgeConfigs;
 }
 ```

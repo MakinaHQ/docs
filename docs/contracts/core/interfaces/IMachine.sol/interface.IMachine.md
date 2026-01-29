@@ -1,6 +1,6 @@
 # IMachine
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/5c13d0f918f7a44b1f21792a780c86b350caa4b2/src/interfaces/IMachine.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/interfaces/IMachine.sol)
 
 **Inherits:**
 [IMachineEndpoint](/contracts/core/interfaces/IMachineEndpoint.sol/interface.IMachineEndpoint.md)
@@ -129,6 +129,14 @@ Share token supply limit that cannot be exceeded by new deposits.
 function shareLimit() external view returns (uint256);
 ```
 
+### maxSharePriceChangeRate
+
+Maximum relative share price change rate per second during total AUM updates, 1e18 = 100%.
+
+```solidity
+function maxSharePriceChangeRate() external view returns (uint256);
+```
+
 ### maxMint
 
 Maximum amount of shares that can currently be minted through asset deposits.
@@ -163,10 +171,29 @@ function lastGlobalAccountingTime() external view returns (uint256);
 
 ### isIdleToken
 
-Token => Is the token an idle token.
+Token => Is the token registered as an idle token in this machine.
 
 ```solidity
 function isIdleToken(address token) external view returns (bool);
+```
+
+### getIdleTokensLength
+
+Length of the idle tokens list.
+
+```solidity
+function getIdleTokensLength() external view returns (uint256);
+```
+
+### getIdleToken
+
+Idle token index => Idle token address.
+
+_There are no guarantees on the ordering of values inside the idle tokens list,
+and it may change when values are added or removed._
+
+```solidity
+function getIdleToken(uint256 idx) external view returns (address);
 ```
 
 ### getSpokeCalibersLength
@@ -310,16 +337,17 @@ function updateTotalAum() external returns (uint256);
 Deposits accounting tokens into the machine and mints shares to the receiver.
 
 ```solidity
-function deposit(uint256 assets, address receiver, uint256 minShares) external returns (uint256);
+function deposit(uint256 assets, address receiver, uint256 minShares, bytes32 referralKey) external returns (uint256);
 ```
 
 **Parameters**
 
-| Name        | Type      | Description                                 |
-| ----------- | --------- | ------------------------------------------- |
-| `assets`    | `uint256` | The amount of accounting tokens to deposit. |
-| `receiver`  | `address` | The receiver of minted shares.              |
-| `minShares` | `uint256` | The minimum amount of shares to be minted.  |
+| Name          | Type      | Description                                              |
+| ------------- | --------- | -------------------------------------------------------- |
+| `assets`      | `uint256` | The amount of accounting tokens to deposit.              |
+| `receiver`    | `address` | The receiver of minted shares.                           |
+| `minShares`   | `uint256` | The minimum amount of shares to be minted.               |
+| `referralKey` | `bytes32` | The optional identifier used to track a referral source. |
 
 **Returns**
 
@@ -512,9 +540,23 @@ function setShareLimit(uint256 newShareLimit) external;
 
 **Parameters**
 
-| Name            | Type      | Description         |
-| --------------- | --------- | ------------------- |
-| `newShareLimit` | `uint256` | The new share limit |
+| Name            | Type      | Description          |
+| --------------- | --------- | -------------------- |
+| `newShareLimit` | `uint256` | The new share limit. |
+
+### setMaxSharePriceChangeRate
+
+Sets the new maximum relative share price change rate per second during total AUM updates, 1e18 = 100%.
+
+```solidity
+function setMaxSharePriceChangeRate(uint256 newMaxSharePriceChangeRate) external;
+```
+
+**Parameters**
+
+| Name                         | Type      | Description                                       |
+| ---------------------------- | --------- | ------------------------------------------------- |
+| `newMaxSharePriceChangeRate` | `uint256` | The new maximum relative share price change rate. |
 
 ## Events
 
@@ -527,7 +569,9 @@ event CaliberStaleThresholdChanged(uint256 indexed oldThreshold, uint256 indexed
 ### Deposit
 
 ```solidity
-event Deposit(address indexed sender, address indexed receiver, uint256 assets, uint256 shares);
+event Deposit(
+    address indexed sender, address indexed receiver, uint256 assets, uint256 shares, bytes32 indexed referralKey
+);
 ```
 
 ### DepositorChanged
@@ -564,6 +608,12 @@ event MaxFixedFeeAccrualRateChanged(uint256 indexed oldMaxAccrualRate, uint256 i
 
 ```solidity
 event MaxPerfFeeAccrualRateChanged(uint256 indexed oldMaxAccrualRate, uint256 indexed newMaxAccrualRate);
+```
+
+### MaxSharePriceChangeRateChanged
+
+```solidity
+event MaxSharePriceChangeRateChanged(uint256 indexed oldMaxChangeRate, uint256 indexed newMaxChangeRate);
 ```
 
 ### Redeem
@@ -624,21 +674,23 @@ struct MachineInitParams {
     uint256 initialMaxPerfFeeAccrualRate;
     uint256 initialFeeMintCooldown;
     uint256 initialShareLimit;
+    uint256 initialMaxSharePriceChangeRate;
 }
 ```
 
 **Properties**
 
-| Name                            | Type      | Description                                                               |
-| ------------------------------- | --------- | ------------------------------------------------------------------------- |
-| `initialDepositor`              | `address` | The address of the initial depositor.                                     |
-| `initialRedeemer`               | `address` | The address of the initial redeemer.                                      |
-| `initialFeeManager`             | `address` | The address of the initial fee manager.                                   |
-| `initialCaliberStaleThreshold`  | `uint256` | The caliber accounting staleness threshold in seconds.                    |
-| `initialMaxFixedFeeAccrualRate` | `uint256` | The maximum fixed fee accrual rate per second, 1e18 = 100%.               |
-| `initialMaxPerfFeeAccrualRate`  | `uint256` | The maximum performance fee accrual rate per second, 1e18 = 100%.         |
-| `initialFeeMintCooldown`        | `uint256` | The minimum time to be elapsed between two fee minting events in seconds. |
-| `initialShareLimit`             | `uint256` | The share cap value.                                                      |
+| Name                             | Type      | Description                                                                                    |
+| -------------------------------- | --------- | ---------------------------------------------------------------------------------------------- |
+| `initialDepositor`               | `address` | The address of the initial depositor.                                                          |
+| `initialRedeemer`                | `address` | The address of the initial redeemer.                                                           |
+| `initialFeeManager`              | `address` | The address of the initial fee manager.                                                        |
+| `initialCaliberStaleThreshold`   | `uint256` | The caliber accounting staleness threshold in seconds.                                         |
+| `initialMaxFixedFeeAccrualRate`  | `uint256` | The maximum fixed fee accrual rate per second, 1e18 = 100%.                                    |
+| `initialMaxPerfFeeAccrualRate`   | `uint256` | The maximum performance fee accrual rate per second, 1e18 = 100%.                              |
+| `initialFeeMintCooldown`         | `uint256` | The minimum time to be elapsed between two fee minting events in seconds.                      |
+| `initialShareLimit`              | `uint256` | The share cap value.                                                                           |
+| `initialMaxSharePriceChangeRate` | `uint256` | The maximum relative share price change rate per second during total AUM updates, 1e18 = 100%. |
 
 ### SpokeCaliberData
 

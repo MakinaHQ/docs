@@ -1,9 +1,9 @@
 # CaliberMailbox
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/5c13d0f918f7a44b1f21792a780c86b350caa4b2/src/caliber/CaliberMailbox.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/caliber/CaliberMailbox.sol)
 
 **Inherits:**
-[MakinaGovernable](/contracts/core/utils/MakinaGovernable.sol/abstract.MakinaGovernable.md), ReentrancyGuardUpgradeable, [BridgeController](/contracts/core/bridge/controller/BridgeController.sol/abstract.BridgeController.md), [ICaliberMailbox](/contracts/core/interfaces/ICaliberMailbox.sol/interface.ICaliberMailbox.md)
+[MakinaGovernable](/contracts/core/utils/MakinaGovernable.sol/abstract.MakinaGovernable.md), ReentrancyGuard, [BridgeController](/contracts/core/bridge/controller/BridgeController.sol/abstract.BridgeController.md), [ICaliberMailbox](/contracts/core/interfaces/ICaliberMailbox.sol/interface.ICaliberMailbox.md)
 
 ## State Variables
 
@@ -22,10 +22,10 @@ bytes32 private constant CaliberMailboxStorageLocation =
 
 ## Functions
 
-### \_getCaliberStorage
+### \_getCaliberMailboxStorage
 
 ```solidity
-function _getCaliberStorage() private pure returns (CaliberMailboxStorage storage $);
+function _getCaliberMailboxStorage() private pure returns (CaliberMailboxStorage storage $);
 ```
 
 ### constructor
@@ -37,10 +37,11 @@ constructor(address _registry, uint256 _hubChainId) MakinaContext(_registry);
 ### initialize
 
 ```solidity
-function initialize(IMakinaGovernable.MakinaGovernableInitParams calldata mgParams, address _hubMachine)
-    external
-    override
-    initializer;
+function initialize(
+    IMakinaGovernable.MakinaGovernableInitParams calldata mgParams,
+    uint256 _initialCooldownDuration,
+    address _hubMachine
+) external override initializer;
 ```
 
 ### onlyFactory
@@ -55,6 +56,14 @@ Address of the associated caliber.
 
 ```solidity
 function caliber() external view override returns (address);
+```
+
+### cooldownDuration
+
+Duration of the cooldown period for outgoing bridge transfers.
+
+```solidity
+function cooldownDuration() external view override returns (uint256);
 ```
 
 ### getHubBridgeAdapter
@@ -106,7 +115,10 @@ function manageTransfer(address token, uint256 amount, bytes calldata data) exte
 Executes a scheduled outgoing bridge transfer.
 
 ```solidity
-function sendOutBridgeTransfer(uint16 bridgeId, uint256 transferId, bytes calldata data) external onlyOperator;
+function sendOutBridgeTransfer(uint16 bridgeId, uint256 transferId, bytes calldata data)
+    external
+    override
+    onlyOperator;
 ```
 
 **Parameters**
@@ -122,7 +134,11 @@ function sendOutBridgeTransfer(uint16 bridgeId, uint256 transferId, bytes callda
 Registers a message hash as authorized for an incoming bridge transfer.
 
 ```solidity
-function authorizeInBridgeTransfer(uint16 bridgeId, bytes32 messageHash) external notRecoveryMode onlyMechanic;
+function authorizeInBridgeTransfer(uint16 bridgeId, bytes32 messageHash)
+    external
+    override
+    notRecoveryMode
+    onlyMechanic;
 ```
 
 **Parameters**
@@ -137,7 +153,7 @@ function authorizeInBridgeTransfer(uint16 bridgeId, bytes32 messageHash) externa
 Transfers a received bridge transfer out of the adapter.
 
 ```solidity
-function claimInBridgeTransfer(uint16 bridgeId, uint256 transferId) external onlyOperator;
+function claimInBridgeTransfer(uint16 bridgeId, uint256 transferId) external override onlyOperator;
 ```
 
 **Parameters**
@@ -152,7 +168,7 @@ function claimInBridgeTransfer(uint16 bridgeId, uint256 transferId) external onl
 Cancels an outgoing bridge transfer.
 
 ```solidity
-function cancelOutBridgeTransfer(uint16 bridgeId, uint256 transferId) external onlyOperator;
+function cancelOutBridgeTransfer(uint16 bridgeId, uint256 transferId) external override onlyOperator;
 ```
 
 **Parameters**
@@ -181,7 +197,7 @@ function setCaliber(address _caliber) external override onlyFactory;
 Registers a hub bridge adapter.
 
 ```solidity
-function setHubBridgeAdapter(uint16 bridgeId, address adapter) external restricted;
+function setHubBridgeAdapter(uint16 bridgeId, address adapter) external override restricted;
 ```
 
 **Parameters**
@@ -190,6 +206,20 @@ function setHubBridgeAdapter(uint16 bridgeId, address adapter) external restrict
 | ---------- | --------- | ------------------------------------------ |
 | `bridgeId` | `uint16`  | The ID of the bridge.                      |
 | `adapter`  | `address` | The foreign address of the bridge adapter. |
+
+### setCooldownDuration
+
+Sets the duration of the cooldown period for outgoing bridge transfers.
+
+```solidity
+function setCooldownDuration(uint256 newCooldownDuration) external override onlyRiskManagerTimelock;
+```
+
+**Parameters**
+
+| Name                  | Type      | Description                  |
+| --------------------- | --------- | ---------------------------- |
+| `newCooldownDuration` | `uint256` | The new duration in seconds. |
 
 ### setOutTransferEnabled
 
@@ -252,5 +282,7 @@ struct CaliberMailboxStorage {
     mapping(uint16 bridgeId => address adapter) _hubBridgeAdapters;
     EnumerableMap.AddressToUintMap _bridgesIn;
     EnumerableMap.AddressToUintMap _bridgesOut;
+    uint256 _cooldownDuration;
+    mapping(uint16 bridgeId => uint256 timestamp) _lastBridgeOutTimestamp;
 }
 ```

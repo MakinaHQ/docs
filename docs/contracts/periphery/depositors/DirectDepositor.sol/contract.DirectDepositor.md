@@ -1,6 +1,6 @@
 # DirectDepositor
 
-[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/3ff217c9c76d6d34e1bcbab84ac6946048ceaeb7/src/depositors/DirectDepositor.sol)
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/e8b2b2411f6e534177e79953d4414e8369c7d524/src/depositors/DirectDepositor.sol)
 
 **Inherits:**
 [MachinePeriphery](/contracts/periphery/utils/MachinePeriphery.sol/abstract.MachinePeriphery.md), [Whitelist](/contracts/periphery/utils/Whitelist.sol/abstract.Whitelist.md), [IDirectDepositor](/contracts/periphery/interfaces/IDirectDepositor.sol/interface.IDirectDepositor.md)
@@ -21,14 +21,31 @@ function initialize(bytes calldata data) external virtual override initializer;
 
 ### deposit
 
+Deposits accounting tokens into the machine and mints shares to the receiver.
+
 ```solidity
-function deposit(uint256 assets, address receiver, uint256 minShares)
+function deposit(uint256 assets, address receiver, uint256 minShares, bytes32 referralKey)
     public
     virtual
     override
     whitelistCheck
     returns (uint256);
 ```
+
+**Parameters**
+
+| Name          | Type      | Description                                              |
+| ------------- | --------- | -------------------------------------------------------- |
+| `assets`      | `uint256` | The amount of accounting tokens to deposit.              |
+| `receiver`    | `address` | The receiver of minted shares.                           |
+| `minShares`   | `uint256` | The minimum amount of shares to be minted.               |
+| `referralKey` | `bytes32` | The optional identifier used to track a referral source. |
+
+**Returns**
+
+| Name     | Type      | Description                         |
+| -------- | --------- | ----------------------------------- |
+| `<none>` | `uint256` | shares The amount of shares minted. |
 
 ### setWhitelistStatus
 

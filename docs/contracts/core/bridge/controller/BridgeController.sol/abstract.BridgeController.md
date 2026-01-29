@@ -1,6 +1,6 @@
 # BridgeController
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/5c13d0f918f7a44b1f21792a780c86b350caa4b2/src/bridge/controller/BridgeController.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/bridge/controller/BridgeController.sol)
 
 **Inherits:**
 AccessManagedUpgradeable, [MakinaContext](/contracts/core/utils/MakinaContext.sol/abstract.MakinaContext.md), [IBridgeController](/contracts/core/interfaces/IBridgeController.sol/interface.IBridgeController.md)
@@ -114,7 +114,6 @@ function _scheduleOutBridgeTransfer(
     address recipient,
     address inputToken,
     uint256 inputAmount,
-    address outputToken,
     uint256 minOutputAmount
 ) internal;
 ```

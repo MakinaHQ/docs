@@ -1,6 +1,6 @@
 # Errors
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/5c13d0f918f7a44b1f21792a780c86b350caa4b2/src/libraries/Errors.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/libraries/Errors.sol)
 
 ## Errors
 
@@ -16,10 +16,22 @@ error AccountingToken();
 error ActiveUpdatePending();
 ```
 
+### AlreadyAccountingAgent
+
+```solidity
+error AlreadyAccountingAgent();
+```
+
 ### AlreadyBaseToken
 
 ```solidity
 error AlreadyBaseToken();
+```
+
+### AlreadyPositionToken
+
+```solidity
+error AlreadyPositionToken();
 ```
 
 ### AlreadyRootGuardian
@@ -44,6 +56,12 @@ error BridgeAdapterAlreadyExists();
 
 ```solidity
 error BridgeAdapterDoesNotExist();
+```
+
+### BridgeConfigNotSet
+
+```solidity
+error BridgeConfigNotSet();
 ```
 
 ### BridgeStateMismatch
@@ -88,6 +106,12 @@ error EvmChainIdNotRegistered(uint256 chainId);
 error ExceededMaxDeposit();
 ```
 
+### ExceededMaxFee
+
+```solidity
+error ExceededMaxFee(uint256 fee, uint256 max);
+```
+
 ### ExceededMaxMint
 
 ```solidity
@@ -103,7 +127,7 @@ error ExceededMaxWithdraw(uint256 assets, uint256 max);
 ### ForeignTokenNotRegistered
 
 ```solidity
-error ForeignTokenNotRegistered(address _token, uint256 _foreignEvmChainId);
+error ForeignTokenNotRegistered(address token, uint256 foreignEvmChainId);
 ```
 
 ### HubBridgeAdapterAlreadySet
@@ -148,6 +172,12 @@ error InvalidAccounting();
 error InvalidAffectedToken();
 ```
 
+### InvalidBridgeTransferRoute
+
+```solidity
+error InvalidBridgeTransferRoute();
+```
+
 ### InvalidChainId
 
 ```solidity
@@ -178,6 +208,12 @@ error InvalidFeedRoute();
 error InvalidInputAmount();
 ```
 
+### InvalidInputToken
+
+```solidity
+error InvalidInputToken();
+```
+
 ### InvalidInstructionProof
 
 ```solidity
@@ -188,6 +224,18 @@ error InvalidInstructionProof();
 
 ```solidity
 error InvalidInstructionType();
+```
+
+### InvalidLzSentAmount
+
+```solidity
+error InvalidLzSentAmount();
+```
+
+### InvalidOft
+
+```solidity
+error InvalidOft();
 ```
 
 ### InvalidOutputToken
@@ -217,13 +265,37 @@ error InvalidTransferStatus();
 ### LocalTokenNotRegistered
 
 ```solidity
-error LocalTokenNotRegistered(address _token, uint256 _foreignEvmChainId);
+error LocalTokenNotRegistered(address token, uint256 foreignEvmChainId);
+```
+
+### LzChainIdNotRegistered
+
+```solidity
+error LzChainIdNotRegistered(uint32 chainId);
+```
+
+### LzForeignTokenNotRegistered
+
+```solidity
+error LzForeignTokenNotRegistered(address token, uint256 foreignEvmChainId);
+```
+
+### OftNotRegistered
+
+```solidity
+error OftNotRegistered(address token);
 ```
 
 ### ManageFlashLoanReentrantCall
 
 ```solidity
 error ManageFlashLoanReentrantCall();
+```
+
+### MaxAuthorizedPriceChangeExceeded
+
+```solidity
+error MaxAuthorizedPriceChangeExceeded();
 ```
 
 ### MaxValueLossExceeded
@@ -284,6 +356,12 @@ error NoPendingUpdate();
 
 ```solidity
 error NonZeroBalance();
+```
+
+### NotAccountingAgent
+
+```solidity
+error NotAccountingAgent();
 ```
 
 ### NotBaseToken
@@ -394,6 +472,18 @@ error PositionDoesNotExist();
 error PositionIsGrouped();
 ```
 
+### PositionToken
+
+```solidity
+error PositionToken();
+```
+
+### PositionTokenIsBaseToken
+
+```solidity
+error PositionTokenIsBaseToken();
+```
+
 ### PriceFeedRouteNotRegistered
 
 ```solidity
@@ -404,6 +494,12 @@ error PriceFeedRouteNotRegistered(address token);
 
 ```solidity
 error PriceFeedStale(address priceFeed, uint256 updatedAt);
+```
+
+### ProtectedAccountingAgent
+
+```solidity
+error ProtectedAccountingAgent();
 ```
 
 ### ProtectedRootGuardian
@@ -530,6 +626,12 @@ error ZeroChainId();
 
 ```solidity
 error ZeroGroupId();
+```
+
+### ZeroOftAddress
+
+```solidity
+error ZeroOftAddress();
 ```
 
 ### ZeroPositionId

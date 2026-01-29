@@ -1,6 +1,6 @@
 # IAsyncRedeemer
 
-[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/3ff217c9c76d6d34e1bcbab84ac6946048ceaeb7/src/interfaces/IAsyncRedeemer.sol)
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/e8b2b2411f6e534177e79953d4414e8369c7d524/src/interfaces/IAsyncRedeemer.sol)
 
 **Inherits:**
 [IMachinePeriphery](/contracts/periphery/interfaces/IMachinePeriphery.sol/interface.IMachinePeriphery.md)
@@ -29,6 +29,14 @@ Minimum time (in seconds) to be elapsed between request submission and finalizat
 
 ```solidity
 function finalizationDelay() external view returns (uint256);
+```
+
+### minRedeemAmount
+
+Minimum amount of shares required to create a redeem request.
+
+```solidity
+function minRedeemAmount() external view returns (uint256);
 ```
 
 ### getShares
@@ -75,15 +83,16 @@ function previewFinalizeRequests(uint256 upToRequestId) external view returns (u
 Creates a redeem request and issues an associated NFT to the receiver.
 
 ```solidity
-function requestRedeem(uint256 shares, address receiver) external returns (uint256);
+function requestRedeem(uint256 shares, address receiver, uint256 minAssets) external returns (uint256);
 ```
 
 **Parameters**
 
-| Name       | Type      | Description                      |
-| ---------- | --------- | -------------------------------- |
-| `shares`   | `uint256` | The amount of shares to redeem.  |
-| `receiver` | `address` | The receiver of the receipt NFT. |
+| Name        | Type      | Description                                                 |
+| ----------- | --------- | ----------------------------------------------------------- |
+| `shares`    | `uint256` | The amount of shares to redeem.                             |
+| `receiver`  | `address` | The receiver of the receipt NFT.                            |
+| `minAssets` | `uint256` | The minimum amount of assets for the request’s entry price. |
 
 **Returns**
 
@@ -136,12 +145,32 @@ function setFinalizationDelay(uint256 newDelay) external;
 | ---------- | --------- | -------------------------------------- |
 | `newDelay` | `uint256` | The new finalization delay in seconds. |
 
+### setMinRedeemAmount
+
+Sets the minimum redeem amount.
+
+```solidity
+function setMinRedeemAmount(uint256 newMinRedeemAmount) external;
+```
+
+**Parameters**
+
+| Name                 | Type      | Description                    |
+| -------------------- | --------- | ------------------------------ |
+| `newMinRedeemAmount` | `uint256` | The new minimum redeem amount. |
+
 ## Events
 
 ### FinalizationDelayChanged
 
 ```solidity
 event FinalizationDelayChanged(uint256 indexed oldDelay, uint256 indexed newDelay);
+```
+
+### MinRedeemAmountChanged
+
+```solidity
+event MinRedeemAmountChanged(uint256 indexed oldMinRedeemAmount, uint256 indexed newMinRedeemAmount);
 ```
 
 ### RedeemRequestCreated

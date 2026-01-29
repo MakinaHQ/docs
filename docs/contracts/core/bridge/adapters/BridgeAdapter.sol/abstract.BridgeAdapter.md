@@ -1,9 +1,9 @@
 # BridgeAdapter
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/5c13d0f918f7a44b1f21792a780c86b350caa4b2/src/bridge/adapters/BridgeAdapter.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/bridge/adapters/BridgeAdapter.sol)
 
 **Inherits:**
-ReentrancyGuardUpgradeable, [IBridgeAdapter](/contracts/core/interfaces/IBridgeAdapter.sol/interface.IBridgeAdapter.md)
+Initializable, ReentrancyGuard, [MakinaContext](/contracts/core/utils/MakinaContext.sol/abstract.MakinaContext.md), [IBridgeAdapter](/contracts/core/interfaces/IBridgeAdapter.sol/interface.IBridgeAdapter.md)
 
 ## State Variables
 
@@ -57,7 +57,8 @@ function _getBridgeAdapterStorage() internal pure returns (BridgeAdapterStorage 
 ### constructor
 
 ```solidity
-constructor(address _approvalTarget, address _executionTarget, address _receiveSource);
+constructor(address _registry, address _approvalTarget, address _executionTarget, address _receiveSource)
+    MakinaContext(_registry);
 ```
 
 ### \_\_BridgeAdapter_init
@@ -104,6 +105,28 @@ ID of the next incoming transfer.
 function nextInTransferId() external view override returns (uint256);
 ```
 
+### outBridgeTransferCancelDefault
+
+Returns the default amount that must be transferred to the adapter to cancel an outgoing bridge transfer.
+
+_If the transfer has not yet been sent, or if the full amount was refunded to this contract by the external bridge, returns 0._
+
+```solidity
+function outBridgeTransferCancelDefault(uint256 transferId) public view returns (uint256);
+```
+
+**Parameters**
+
+| Name         | Type      | Description                      |
+| ------------ | --------- | -------------------------------- |
+| `transferId` | `uint256` | The ID of the transfer to check. |
+
+**Returns**
+
+| Name     | Type      | Description                                 |
+| -------- | --------- | ------------------------------------------- |
+| `<none>` | `uint256` | The amount required to cancel the transfer. |
+
 ### scheduleOutBridgeTransfer
 
 Schedules an outgoing bridge transfer and returns the message hash.
@@ -146,19 +169,48 @@ function authorizeInBridgeTransfer(bytes32 messageHash) external override onlyCo
 | ------------- | --------- | ------------------------------------- |
 | `messageHash` | `bytes32` | The hash of the message to authorize. |
 
+### sendOutBridgeTransfer
+
+Executes a scheduled outgoing bridge transfer.
+
+```solidity
+function sendOutBridgeTransfer(uint256 transferId, bytes calldata data) external override nonReentrant onlyController;
+```
+
+**Parameters**
+
+| Name         | Type      | Description                                       |
+| ------------ | --------- | ------------------------------------------------- |
+| `transferId` | `uint256` | The ID of the transfer to execute.                |
+| `data`       | `bytes`   | The optional data needed to execute the transfer. |
+
+### cancelOutBridgeTransfer
+
+Cancels an outgoing bridge transfer.
+
+```solidity
+function cancelOutBridgeTransfer(uint256 transferId) external override nonReentrant onlyController;
+```
+
+**Parameters**
+
+| Name         | Type      | Description                       |
+| ------------ | --------- | --------------------------------- |
+| `transferId` | `uint256` | The ID of the transfer to cancel. |
+
 ### claimInBridgeTransfer
 
 Transfers a received bridge transfer out of the adapter.
 
 ```solidity
-function claimInBridgeTransfer(uint256 id) external override nonReentrant onlyController;
+function claimInBridgeTransfer(uint256 transferId) external override nonReentrant onlyController;
 ```
 
 **Parameters**
 
-| Name | Type      | Description |
-| ---- | --------- | ----------- |
-| `id` | `uint256` |             |
+| Name         | Type      | Description                      |
+| ------------ | --------- | -------------------------------- |
+| `transferId` | `uint256` | The ID of the transfer to claim. |
 
 ### withdrawPendingFunds
 
@@ -177,29 +229,14 @@ function withdrawPendingFunds(address token) external nonReentrant onlyControlle
 | ------- | --------- | ------------------------- |
 | `token` | `address` | The address of the token. |
 
-### \_beforeSendOutBridgeTransfer
-
-_Updates contract state before sending out a bridge transfer._
-
-```solidity
-function _beforeSendOutBridgeTransfer(uint256 id) internal;
-```
-
-### \_cancelOutBridgeTransfer
-
-_Cancels an outgoing bridge transfer that is either scheduled or refunded._
-
-```solidity
-function _cancelOutBridgeTransfer(uint256 id) internal;
-```
-
 ### \_receiveInBridgeTransfer
 
 _Updates contract state when receiving an incoming bridge transfer._
 
 ```solidity
 function _receiveInBridgeTransfer(bytes memory encodedMessage, address receivedToken, uint256 receivedAmount)
-    internal;
+    internal
+    virtual;
 ```
 
 ### \_getSet
@@ -218,6 +255,51 @@ Previous versions remain in storage and are not deleted._
 
 ```solidity
 function _clearSet(VersionedUintSet storage self) internal;
+```
+
+### \_checkOutBridgeTransferRouteIsSupported
+
+_Checks if an outgoing bridge transfer route is supported._
+
+```solidity
+function _checkOutBridgeTransferRouteIsSupported(
+    uint256 destinationChainId,
+    address inputToken,
+    uint256,
+    address outputToken
+) internal view virtual;
+```
+
+### \_getConfig
+
+_Returns the address of the config contract associated with this bridge adapter._
+
+```solidity
+function _getConfig() internal view returns (address);
+```
+
+### \_checkOutBridgeTransferIsCancellable
+
+_Checks if an outgoing bridge transfer is in a cancellable state._
+
+```solidity
+function _checkOutBridgeTransferIsCancellable(uint256 transferId) internal virtual;
+```
+
+### \_sendOutBridgeTransfer
+
+_Handles logic specific to the external bridge protocol for sending out a bridge transfer._
+
+```solidity
+function _sendOutBridgeTransfer(uint256 transferId, bytes calldata data) internal virtual;
+```
+
+### \_outBridgeTransferCancelDefault
+
+_Internal logic for outgoing bridge transfer cancellation default._
+
+```solidity
+function _outBridgeTransferCancelDefault(uint256 transferId) internal view virtual returns (uint256);
 ```
 
 ## Structs

@@ -1,6 +1,6 @@
 # MakinaGovernable
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/5c13d0f918f7a44b1f21792a780c86b350caa4b2/src/utils/MakinaGovernable.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/utils/MakinaGovernable.sol)
 
 **Inherits:**
 AccessManagedUpgradeable, [IMakinaGovernable](/contracts/core/interfaces/IMakinaGovernable.sol/interface.IMakinaGovernable.md)
@@ -70,12 +70,18 @@ modifier onlyRiskManagerTimelock();
 modifier notRecoveryMode();
 ```
 
+### onlyAccountingAuthorized
+
+```solidity
+modifier onlyAccountingAuthorized();
+```
+
 ### mechanic
 
 Address of the mechanic.
 
 ```solidity
-function mechanic() public view override returns (address);
+function mechanic() external view override returns (address);
 ```
 
 ### securityCouncil
@@ -91,7 +97,7 @@ function securityCouncil() public view override returns (address);
 Address of the risk manager.
 
 ```solidity
-function riskManager() public view override returns (address);
+function riskManager() external view override returns (address);
 ```
 
 ### riskManagerTimelock
@@ -99,7 +105,7 @@ function riskManager() public view override returns (address);
 Address of the risk manager timelock.
 
 ```solidity
-function riskManagerTimelock() public view override returns (address);
+function riskManagerTimelock() external view override returns (address);
 ```
 
 ### recoveryMode
@@ -107,7 +113,40 @@ function riskManagerTimelock() public view override returns (address);
 True if the contract is in recovery mode, false otherwise.
 
 ```solidity
-function recoveryMode() public view returns (bool);
+function recoveryMode() external view returns (bool);
+```
+
+### restrictedAccountingMode
+
+True if the contract is in restricted accounting mode, false otherwise.
+
+```solidity
+function restrictedAccountingMode() external view override returns (bool);
+```
+
+### isAccountingAgent
+
+User => Whether the user is an accounting agent
+
+```solidity
+function isAccountingAgent(address user) external view override returns (bool);
+```
+
+### isOperator
+
+User => Whether the user is the current operator
+The operator is either the mechanic or the security council depending on the recovery mode.
+
+```solidity
+function isOperator(address user) public view override returns (bool);
+```
+
+### isAccountingAuthorized
+
+User => Whether the user is authorized to perform accounting operations under current settings
+
+```solidity
+function isAccountingAuthorized(address user) public view override returns (bool);
 ```
 
 ### setMechanic
@@ -180,6 +219,48 @@ function setRecoveryMode(bool enabled) external onlySecurityCouncil;
 | --------- | ------ | -------------------------------------------------- |
 | `enabled` | `bool` | True to enable recovery mode, false to disable it. |
 
+### setRestrictedAccountingMode
+
+Sets the restricted accounting mode.
+
+```solidity
+function setRestrictedAccountingMode(bool enabled) external restricted;
+```
+
+**Parameters**
+
+| Name      | Type   | Description                                                     |
+| --------- | ------ | --------------------------------------------------------------- |
+| `enabled` | `bool` | True to enable restricted accounting mode, false to disable it. |
+
+### addAccountingAgent
+
+Adds a new accounting agent.
+
+```solidity
+function addAccountingAgent(address newAgent) external override restricted;
+```
+
+**Parameters**
+
+| Name       | Type      | Description                              |
+| ---------- | --------- | ---------------------------------------- |
+| `newAgent` | `address` | The address of the new accounting agent. |
+
+### removeAccountingAgent
+
+Removes an accounting agent.
+
+```solidity
+function removeAccountingAgent(address agent) external override restricted;
+```
+
+**Parameters**
+
+| Name    | Type      | Description                                    |
+| ------- | --------- | ---------------------------------------------- |
+| `agent` | `address` | The address of the accounting agent to remove. |
+
 ## Structs
 
 ### MakinaGovernableStorage
@@ -194,5 +275,7 @@ struct MakinaGovernableStorage {
     address _riskManager;
     address _riskManagerTimelock;
     bool _recoveryMode;
+    bool _restrictedAccountingMode;
+    mapping(address user => bool isAccountingAgent) _isAccountingAgent;
 }
 ```
