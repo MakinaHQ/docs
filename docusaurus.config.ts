@@ -166,6 +166,17 @@ const config: Config = {
       disableSwitch: false, // Hides the toggle
       respectPrefersColorScheme: false, // Ignores user's system setting
     },
+    algolia: {
+      // The application ID provided by Algolia
+      appId: "RB8KF1ZKIQ",
+
+      // Public API key: it is safe to commit it
+      apiKey: "7ed464da0d24279076eb6ab96efd768d",
+
+      indexName: "Makina Docs",
+
+      contextualSearch: true,
+    },
   } satisfies Preset.ThemeConfig,
 };
 
