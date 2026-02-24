@@ -12,7 +12,7 @@ Machines are always deployed on the Hub Chain, which can be chosen by the Operat
 
 Each Machine:
 
-- issues a Machine Token, an asset who's price depends on the performance of the Machine's strategy. The Operator’s goal and incentive is to always maximise the long-term price appreciation of the Machine Token.
+- issues a Machine Token, an asset whose price depends on the performance of the Machine's strategy. The Operator’s goal and incentive is to always maximise the long-term price appreciation of the Machine Token.
 
 - is connected to a Caliber on the Hub Chain as well as multiple other Calibers on the Spoke Chains.
 
