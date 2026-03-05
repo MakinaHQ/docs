@@ -31,7 +31,7 @@ $$
 For example, with a feeRate of 2% annual, a token supply of 1'000'000 and 1 day elapsed:
 
 $$
-FixedFee = 1'000'000 * \dfrac{0.02}{365 * 86400} * 86400 = 54.794
+FixedFee = 1'000'000 * \dfrac{0.02}{365 * 86400} * 86'400 = 54.794
 $$
 
 The Fixed fee is then split three ways between the Security Module, the Operator and the Makina DAO.
@@ -51,7 +51,7 @@ $$
 For example, with a perfFeeRate of 10% annual, a token supply of 1'000'000 and share price increase from 1.00 to 1.01:
 
 $$
-PerfFee = 1'000'000 * \dfrac{1.01-1.00}{ 1.01} * 0.1 = 1000
+PerfFee = 1'000'000 * \dfrac{1.01-1.00}{ 1.01} * 0.1 = 990.099
 $$
 
 The performance fee is then split two ways between the Operator and the Makina DAO.
