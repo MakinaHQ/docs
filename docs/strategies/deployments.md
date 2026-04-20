@@ -58,12 +58,12 @@ For protocol-wide contracts, see the [Core](../contracts/core/deployments.mdx) a
 
 ## [usdSHFmk](https://app.makina.finance/strategy/usdSHFmk)
 
-| Contract                     | Address                                                                                                                 |
-| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| Machine Token (usdSHFmk)     | [`0xaC499adf00A54044b988a59B19016655C3494b06`](https://etherscan.io/address/0xaC499adf00A54044b988a59B19016655C3494b06) |
-| Accounting Token (USDC)      | [`0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48`](https://etherscan.io/address/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48) |
-| Machine                      | [`0x733abb32544f4d3053a58ed747538c060f559108`](https://etherscan.io/address/0x733abb32544f4d3053a58ed747538c060f559108) |
-| Caliber                      | [`0xbeef123217647014429B7670329782e210884E89`](https://etherscan.io/address/0xbeef123217647014429B7670329782e210884E89) |
-| Deposit Contract             | [`0x45409dE1e21dFD4698bfE8769Ee3F22c60911727`](https://etherscan.io/address/0x45409dE1e21dFD4698bfE8769Ee3F22c60911727) |
-| Redeemer Contract            | [`0x28713b9102A9a6e3e557276386b450bC8adB1bE3`](https://etherscan.io/address/0x28713b9102A9a6e3e557276386b450bC8adB1bE3) |
-| Fee Manager                  | [`0x459785eAc33B1A52e4c3Da0a2f0102d94b80e14d`](https://etherscan.io/address/0x459785eAc33B1A52e4c3Da0a2f0102d94b80e14d) |
+| Contract                 | Address                                                                                                                 |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| Machine Token (usdSHFmk) | [`0xaC499adf00A54044b988a59B19016655C3494b06`](https://etherscan.io/address/0xaC499adf00A54044b988a59B19016655C3494b06) |
+| Accounting Token (USDC)  | [`0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48`](https://etherscan.io/address/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48) |
+| Machine                  | [`0x733abb32544f4d3053a58ed747538c060f559108`](https://etherscan.io/address/0x733abb32544f4d3053a58ed747538c060f559108) |
+| Caliber                  | [`0xbeef123217647014429B7670329782e210884E89`](https://etherscan.io/address/0xbeef123217647014429B7670329782e210884E89) |
+| Deposit Contract         | [`0x45409dE1e21dFD4698bfE8769Ee3F22c60911727`](https://etherscan.io/address/0x45409dE1e21dFD4698bfE8769Ee3F22c60911727) |
+| Redeemer Contract        | [`0x28713b9102A9a6e3e557276386b450bC8adB1bE3`](https://etherscan.io/address/0x28713b9102A9a6e3e557276386b450bC8adB1bE3) |
+| Fee Manager              | [`0x459785eAc33B1A52e4c3Da0a2f0102d94b80e14d`](https://etherscan.io/address/0x459785eAc33B1A52e4c3Da0a2f0102d94b80e14d) |
