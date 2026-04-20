@@ -133,17 +133,38 @@ const config: Config = {
       style: "dark",
       links: [
         {
-          title: "Docs",
+          title: "Resources",
           items: [
             {
-              label: "Concepts",
-              to: "/concepts/introduction",
+              label: "Makina App",
+              href: "https://app.makina.finance",
+            },
+          ],
+        },
+        {
+          title: "Operators",
+          items: [
+            {
+              label: "Dashboard",
+              href: "https://operator.makina.finance/dashboard",
+            },
+            {
+              label: "Docs",
+              href: "https://operator.makina.finance/docs",
+            },
+            {
+              label: "CLI",
+              href: "https://operator.makina.finance/docs/cli/overview",
             },
           ],
         },
         {
           title: "Community",
           items: [
+            {
+              label: "GitHub",
+              href: "https://github.com/MakinaHQ",
+            },
             {
               label: "X",
               href: "https://x.com/makinafi",
