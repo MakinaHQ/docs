@@ -104,27 +104,10 @@ const config: Config = {
         includeBlog: false,
         // Content cleaning options
         excludeImports: true,
+        preserveDirectoryStructure: false,
         removeDuplicateHeadings: true,
         // Generate individual markdown files following llmstxt.org specification
         generateMarkdownFiles: true,
-        // Custom LLM files for specific documentation sections
-        customLLMFiles: [
-          {
-            filename: "llms-python.txt",
-            includePatterns: ["api/python/**/*.md", "guides/python/*.md"],
-            fullContent: true,
-            title: "Python API Documentation",
-            description: "Complete reference for Python API",
-          },
-          {
-            filename: "llms-protocol.txt",
-            includePatterns: ["docs/contracts/**/*.md"],
-            fullContent: true,
-            title: "Solidity Protocol Documentation",
-            description:
-              "Complete reference documentation for Makina Finance protocol",
-          },
-        ],
       },
     ],
   ],
