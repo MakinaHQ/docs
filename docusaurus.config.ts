@@ -91,6 +91,42 @@ const config: Config = {
         ],
       },
     ],
+    [
+      "docusaurus-plugin-llms",
+      {
+        // Options here
+        generateLLMsTxt: true,
+        generateLLMsFullTxt: true,
+        docsDir: "docs",
+        title: "Makina Finance Documentation",
+        description:
+          "Complete reference documentation for Makina Finance protocol",
+        includeBlog: false,
+        // Content cleaning options
+        excludeImports: true,
+        removeDuplicateHeadings: true,
+        // Generate individual markdown files following llmstxt.org specification
+        generateMarkdownFiles: true,
+        // Custom LLM files for specific documentation sections
+        customLLMFiles: [
+          {
+            filename: "llms-python.txt",
+            includePatterns: ["api/python/**/*.md", "guides/python/*.md"],
+            fullContent: true,
+            title: "Python API Documentation",
+            description: "Complete reference for Python API",
+          },
+          {
+            filename: "llms-protocol.txt",
+            includePatterns: ["docs/contracts/**/*.md"],
+            fullContent: true,
+            title: "Solidity Protocol Documentation",
+            description:
+              "Complete reference documentation for Makina Finance protocol",
+          },
+        ],
+      },
+    ],
   ],
 
   themeConfig: {
