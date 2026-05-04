@@ -1,34 +1,113 @@
 /**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
+ * Makina Docs — Docusaurus / Infima theme overrides
+ * Colors sourced from the Makina Design System (Figma).
+ *
+ * Accent:   highlight cyan  #3DC9DE
+ * Dark bg:  #0F172A  (Dark/background)
+ * Light bg: #E3E3E3  (Light/background)
  */
 
-/* You can override the default Infima variables here. */
+/* ─── Light mode ─────────────────────────────────────────────── */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  /* Primary ramp — highlight cyan */
+  --ifm-color-primary:          #3FC9DE;
+  --ifm-color-primary-dark:     #29C3DA;
+  --ifm-color-primary-darker:   #22B6CC;
+  --ifm-color-primary-darkest:  #1D9BAE;
+  --ifm-color-primary-light:    #50CEE1;
+  --ifm-color-primary-lighter:  #62D2E4;
+  --ifm-color-primary-lightest: #77D9E8;
+
+  /* Backgrounds — Light/background · Light/card */
+  --ifm-background-color:         #E3E3E3;
+  --ifm-background-surface-color: #F1F1F1;
+
+  /* Text — Light/primary · Light/secondary */
+  --ifm-font-color-base:          #18191A;
+  --ifm-font-color-secondary:     #404040;
+
+  /* Navbar / footer */
+  --ifm-navbar-background-color:  #F1F1F1;
+  --ifm-footer-background-color:  #E3E3E3;
+  --ifm-navbar-shadow:            0 1px 0 0 #DDDDDD;
+
+  /* Sidebar — Light/primary · primary accent */
+  --ifm-menu-color:               #18191A;
+  --ifm-menu-color-active:        #3FC9DE;
+  --ifm-menu-color-background-active: rgba(63, 201, 222, 0.08);
+
+  /* Links */
+  --ifm-link-color:               #3FC9DE;
+  --ifm-link-hover-color:         #22B6CC;
+
+  /* Borders — Light/soft */
+  --ifm-toc-border-color:         #DDDDDD;
+  --ifm-hr-border-color:          #DDDDDD;
+  --ifm-color-emphasis-300:       #DDDDDD;
+
+  /* Code — Light/card surface */
+  --ifm-code-font-size:                  95%;
+  --ifm-code-background:                 #F1F1F1;
+  --docusaurus-highlighted-code-line-bg: rgba(63, 201, 222, 0.12);
+
+  /* Status */
+  --ifm-color-success:  #91CE59;
+  --ifm-color-warning:  #ECBB3E;
+  --ifm-color-danger:   #F64646;
+  --ifm-color-info:     #3FC9DE;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme="dark"] {
-  --ifm-color-primary: #fefa7f;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+/* ─── Dark mode ──────────────────────────────────────────────── */
+[data-theme='dark'] {
+  /* Primary ramp — same cyan reads well on dark */
+  --ifm-color-primary:          #3FC9DE;
+  --ifm-color-primary-dark:     #29C3DA;
+  --ifm-color-primary-darker:   #22B6CC;
+  --ifm-color-primary-darkest:  #1D9BAE;
+  --ifm-color-primary-light:    #50CEE1;
+  --ifm-color-primary-lighter:  #62D2E4;
+  --ifm-color-primary-lightest: #77D9E8;
+
+  /* Backgrounds — Dark/background · Dark/card */
+  --ifm-background-color:         #0F172A;
+  --ifm-background-surface-color: #1E293B;
+
+  /* Text — Dark/primary · Dark/secondary */
+  --ifm-font-color-base:          #ECFEFF;
+  --ifm-font-color-secondary:     #7E8B95;
+
+  /* Navbar / footer — Dark/card · Dark/background */
+  --ifm-navbar-background-color:  #1E293B;
+  --ifm-footer-background-color:  #0F172A;
+  --ifm-navbar-shadow:            0 1px 0 0 #273243;
+
+  /* Sidebar — Dark/primary · primary accent */
+  --ifm-menu-color:               #ECFEFF;
+  --ifm-menu-color-active:        #3FC9DE;
+  --ifm-menu-color-background-active: rgba(63, 201, 222, 0.08);
+
+  /* Links */
+  --ifm-link-color:               #3FC9DE;
+  --ifm-link-hover-color:         #50CEE1;
+
+  /* Borders — Dark/muted */
+  --ifm-toc-border-color:         #273243;
+  --ifm-hr-border-color:          #273243;
+  --ifm-color-emphasis-300:       #273243;
+
+  /* Code — Dark/card */
+  --ifm-code-font-size:                  95%;
+  --ifm-code-background:                 #1E293B;
+  --docusaurus-highlighted-code-line-bg: rgba(63, 201, 222, 0.15);
+
+  /* Status */
+  --ifm-color-success:  #91CE59;
+  --ifm-color-warning:  #ECBB3E;
+  --ifm-color-danger:   #F64646;
+  --ifm-color-info:     #3FC9DE;
 }
 
+/* ─── Shared utilities ───────────────────────────────────────── */
 .table-of-contents__link code {
   white-space: nowrap;
 }
