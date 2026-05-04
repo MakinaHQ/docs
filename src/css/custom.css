@@ -2,21 +2,21 @@
  * Makina Docs — Docusaurus / Infima theme overrides
  * Colors sourced from the Makina Design System (Figma).
  *
- * Accent:   highlight cyan  #3DC9DE
- * Dark bg:  #0F172A  (Dark/background)
+ * Primary: Light/primary #18191A · Dark/primary #ECFEFF
+ * Dark bg: #0F172A  (Dark/background)
  * Light bg: #E3E3E3  (Light/background)
  */
 
 /* ─── Light mode ─────────────────────────────────────────────── */
 :root {
-  /* Primary ramp — highlight cyan */
-  --ifm-color-primary:          #3FC9DE;
-  --ifm-color-primary-dark:     #29C3DA;
-  --ifm-color-primary-darker:   #22B6CC;
-  --ifm-color-primary-darkest:  #1D9BAE;
-  --ifm-color-primary-light:    #50CEE1;
-  --ifm-color-primary-lighter:  #62D2E4;
-  --ifm-color-primary-lightest: #77D9E8;
+  /* Primary ramp — Light/primary (#18191A) stepping through dark greys */
+  --ifm-color-primary:          #18191A;
+  --ifm-color-primary-dark:     #171819;
+  --ifm-color-primary-darker:   #161617;
+  --ifm-color-primary-darkest:  #131415;
+  --ifm-color-primary-light:    #2C2D2F;
+  --ifm-color-primary-lighter:  #424447;
+  --ifm-color-primary-lightest: #5D6064;
 
   /* Backgrounds — Light/background · Light/card */
   --ifm-background-color:         #E3E3E3;
@@ -26,47 +26,47 @@
   --ifm-font-color-base:          #18191A;
   --ifm-font-color-secondary:     #404040;
 
-  /* Navbar / footer */
+  /* Navbar / footer — Light/card · Light/background */
   --ifm-navbar-background-color:  #F1F1F1;
   --ifm-footer-background-color:  #E3E3E3;
   --ifm-navbar-shadow:            0 1px 0 0 #DDDDDD;
 
-  /* Sidebar — Light/primary · primary accent */
+  /* Sidebar — Light/primary */
   --ifm-menu-color:               #18191A;
-  --ifm-menu-color-active:        #3FC9DE;
-  --ifm-menu-color-background-active: rgba(63, 201, 222, 0.08);
+  --ifm-menu-color-active:        #18191A;
+  --ifm-menu-color-background-active: rgba(24, 25, 26, 0.08);
 
-  /* Links */
-  --ifm-link-color:               #3FC9DE;
-  --ifm-link-hover-color:         #22B6CC;
+  /* Links — Light/primary */
+  --ifm-link-color:               #18191A;
+  --ifm-link-hover-color:         #424447;
 
   /* Borders — Light/soft */
   --ifm-toc-border-color:         #DDDDDD;
   --ifm-hr-border-color:          #DDDDDD;
   --ifm-color-emphasis-300:       #DDDDDD;
 
-  /* Code — Light/card surface */
+  /* Code — Light/card */
   --ifm-code-font-size:                  95%;
   --ifm-code-background:                 #F1F1F1;
-  --docusaurus-highlighted-code-line-bg: rgba(63, 201, 222, 0.12);
+  --docusaurus-highlighted-code-line-bg: rgba(24, 25, 26, 0.06);
 
   /* Status */
   --ifm-color-success:  #91CE59;
   --ifm-color-warning:  #ECBB3E;
   --ifm-color-danger:   #F64646;
-  --ifm-color-info:     #3FC9DE;
+  --ifm-color-info:     #3DC9DE;
 }
 
 /* ─── Dark mode ──────────────────────────────────────────────── */
 [data-theme='dark'] {
-  /* Primary ramp — same cyan reads well on dark */
-  --ifm-color-primary:          #3FC9DE;
-  --ifm-color-primary-dark:     #29C3DA;
-  --ifm-color-primary-darker:   #22B6CC;
-  --ifm-color-primary-darkest:  #1D9BAE;
-  --ifm-color-primary-light:    #50CEE1;
-  --ifm-color-primary-lighter:  #62D2E4;
-  --ifm-color-primary-lightest: #77D9E8;
+  /* Primary ramp — Dark/primary (#ECFEFF) stepping through near-whites */
+  --ifm-color-primary:          #ECFEFF;
+  --ifm-color-primary-dark:     #DDFDFF;
+  --ifm-color-primary-darker:   #CDFCFF;
+  --ifm-color-primary-darkest:  #A5FAFF;
+  --ifm-color-primary-light:    #EEFEFF;
+  --ifm-color-primary-lighter:  #F0FEFF;
+  --ifm-color-primary-lightest: #F4FEFF;
 
   /* Backgrounds — Dark/background · Dark/card */
   --ifm-background-color:         #0F172A;
@@ -81,14 +81,14 @@
   --ifm-footer-background-color:  #0F172A;
   --ifm-navbar-shadow:            0 1px 0 0 #273243;
 
-  /* Sidebar — Dark/primary · primary accent */
+  /* Sidebar — Dark/primary */
   --ifm-menu-color:               #ECFEFF;
-  --ifm-menu-color-active:        #3FC9DE;
-  --ifm-menu-color-background-active: rgba(63, 201, 222, 0.08);
+  --ifm-menu-color-active:        #ECFEFF;
+  --ifm-menu-color-background-active: rgba(236, 254, 255, 0.06);
 
-  /* Links */
-  --ifm-link-color:               #3FC9DE;
-  --ifm-link-hover-color:         #50CEE1;
+  /* Links — Dark/primary */
+  --ifm-link-color:               #ECFEFF;
+  --ifm-link-hover-color:         #CDFCFF;
 
   /* Borders — Dark/muted */
   --ifm-toc-border-color:         #273243;
@@ -98,13 +98,13 @@
   /* Code — Dark/card */
   --ifm-code-font-size:                  95%;
   --ifm-code-background:                 #1E293B;
-  --docusaurus-highlighted-code-line-bg: rgba(63, 201, 222, 0.15);
+  --docusaurus-highlighted-code-line-bg: rgba(236, 254, 255, 0.06);
 
   /* Status */
   --ifm-color-success:  #91CE59;
   --ifm-color-warning:  #ECBB3E;
   --ifm-color-danger:   #F64646;
-  --ifm-color-info:     #3FC9DE;
+  --ifm-color-info:     #3DC9DE;
 }
 
 /* ─── Shared utilities ───────────────────────────────────────── */
