@@ -208,8 +208,8 @@ const config: Config = {
     },
     colorMode: {
       defaultMode: "dark",
-      disableSwitch: false, // Hides the toggle
-      respectPrefersColorScheme: false, // Ignores user's system setting
+      disableSwitch: false,
+      respectPrefersColorScheme: true,
     },
     algolia: {
       // The application ID provided by Algolia
