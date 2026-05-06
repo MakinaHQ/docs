@@ -28,7 +28,7 @@
 
   /* Navbar / footer — Light/card · Light/background */
   --ifm-navbar-background-color:  #F1F1F1;
-  --ifm-footer-background-color:  #E3E3E3;
+  --ifm-footer-background-color:  #F1F1F1;
   --ifm-navbar-shadow:            0 1px 0 0 #DDDDDD;
 
   /* Sidebar — Light/primary */
@@ -78,7 +78,7 @@
 
   /* Navbar / footer — Dark/card · Dark/background */
   --ifm-navbar-background-color:  #1E293B;
-  --ifm-footer-background-color:  #0F172A;
+  --ifm-footer-background-color:  #1E293B;
   --ifm-navbar-shadow:            0 1px 0 0 #273243;
 
   /* Sidebar — Dark/primary */
