@@ -10,12 +10,12 @@
 /* ─── Light mode ─────────────────────────────────────────────── */
 :root {
   /* Primary ramp — accent teal for active states / links */
-  --ifm-color-primary:          #0891b2;
-  --ifm-color-primary-dark:     #0779a0;
-  --ifm-color-primary-darker:   #06638a;
-  --ifm-color-primary-darkest:  #034d6e;
-  --ifm-color-primary-light:    #22a5c7;
-  --ifm-color-primary-lighter:  #38b9db;
+  --ifm-color-primary: #0891b2;
+  --ifm-color-primary-dark: #0779a0;
+  --ifm-color-primary-darker: #06638a;
+  --ifm-color-primary-darkest: #034d6e;
+  --ifm-color-primary-light: #22a5c7;
+  --ifm-color-primary-lighter: #38b9db;
   --ifm-color-primary-lightest: #56cce8;
 
   /* Backgrounds — Light/background · Light/card */
@@ -71,12 +71,12 @@
 /* ─── Dark mode ──────────────────────────────────────────────── */
 [data-theme="dark"] {
   /* Primary ramp — accent teal for active states / links */
-  --ifm-color-primary:          #3dc9de;
-  --ifm-color-primary-dark:     #23bdd5;
-  --ifm-color-primary-darker:   #16b0c9;
-  --ifm-color-primary-darkest:  #0d96ad;
-  --ifm-color-primary-light:    #5dd6e8;
-  --ifm-color-primary-lighter:  #7fe1ef;
+  --ifm-color-primary: #3dc9de;
+  --ifm-color-primary-dark: #23bdd5;
+  --ifm-color-primary-darker: #16b0c9;
+  --ifm-color-primary-darkest: #0d96ad;
+  --ifm-color-primary-light: #5dd6e8;
+  --ifm-color-primary-lighter: #7fe1ef;
   --ifm-color-primary-lightest: #a0ebf6;
 
   /* Backgrounds — Dark/background · Dark/card */
