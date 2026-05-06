@@ -31,6 +31,17 @@
   --ifm-footer-background-color:  #F1F1F1;
   --ifm-navbar-shadow:            0 1px 0 0 #DDDDDD;
 
+  /* Navbar text — Light/primary · Light/secondary */
+  --ifm-navbar-link-color:        #18191A;
+  --ifm-navbar-link-hover-color:  #424447;
+  --ifm-navbar-link-active-color: #18191A;
+
+  /* Footer text — override .footer--dark hardcoded whites */
+  --ifm-footer-color:             #18191A;
+  --ifm-footer-link-color:        #18191A;
+  --ifm-footer-link-hover-color:  #424447;
+  --ifm-footer-title-color:       #18191A;
+
   /* Sidebar — Light/primary */
   --ifm-menu-color:               #18191A;
   --ifm-menu-color-active:        #18191A;
@@ -81,6 +92,17 @@
   --ifm-footer-background-color:  #1E293B;
   --ifm-navbar-shadow:            0 1px 0 0 #273243;
 
+  /* Navbar text — Dark/primary · Dark/secondary */
+  --ifm-navbar-link-color:        #ECFEFF;
+  --ifm-navbar-link-hover-color:  #CDFCFF;
+  --ifm-navbar-link-active-color: #ECFEFF;
+
+  /* Footer text — override .footer--dark hardcoded whites */
+  --ifm-footer-color:             #ECFEFF;
+  --ifm-footer-link-color:        #ECFEFF;
+  --ifm-footer-link-hover-color:  #CDFCFF;
+  --ifm-footer-title-color:       #ECFEFF;
+
   /* Sidebar — Dark/primary */
   --ifm-menu-color:               #ECFEFF;
   --ifm-menu-color-active:        #ECFEFF;
@@ -113,6 +135,10 @@
 }
 
 /* ─── Navbar logo ────────────────────────────────────────────── */
+/* SVG has ~31% transparent padding top/bottom; inflate height so the
+   visible mark is ~48px, then pull in the whitespace with negative margins */
 .navbar__logo img {
-  height: 48px; /* 150% of Docusaurus default 32px */
+  height: 125px;
+  margin-block: -38px;
+  display: block;
 }
