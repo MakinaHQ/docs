@@ -120,6 +120,7 @@ const config: Config = {
       logo: {
         alt: "Makina Logo",
         src: "img/logo.svg",
+        srcDark: "img/logo-dark.svg",
       },
       items: [
         {
