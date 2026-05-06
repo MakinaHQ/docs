@@ -135,10 +135,8 @@
 }
 
 /* ─── Navbar logo ────────────────────────────────────────────── */
-/* SVG has ~31% transparent padding top/bottom; inflate height so the
-   visible mark is ~48px, then pull in the whitespace with negative margins */
 .navbar__logo img {
-  height: 125px;
-  margin-block: -38px;
+  height: 80px;
+  margin-block: -25px;
   display: block;
 }
