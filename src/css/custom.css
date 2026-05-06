@@ -9,14 +9,14 @@
 
 /* ─── Light mode ─────────────────────────────────────────────── */
 :root {
-  /* Primary ramp — Light/primary (#1E293B) stepping through navy/slate */
-  --ifm-color-primary: #1e293b; /* Light/primary */
-  --ifm-color-primary-dark: #1b253a;
-  --ifm-color-primary-darker: #15202f;
-  --ifm-color-primary-darkest: #0f172a; /* = Dark/background */
-  --ifm-color-primary-light: #354156;
-  --ifm-color-primary-lighter: #4d5870;
-  --ifm-color-primary-lightest: #6b6b7b; /* = Light/secondary */
+  /* Primary ramp — accent teal for active states / links */
+  --ifm-color-primary:          #0891b2;
+  --ifm-color-primary-dark:     #0779a0;
+  --ifm-color-primary-darker:   #06638a;
+  --ifm-color-primary-darkest:  #034d6e;
+  --ifm-color-primary-light:    #22a5c7;
+  --ifm-color-primary-lighter:  #38b9db;
+  --ifm-color-primary-lightest: #56cce8;
 
   /* Backgrounds — Light/background · Light/card */
   --ifm-background-color: #e3e3e3;
@@ -31,10 +31,10 @@
   --ifm-footer-background-color: #f1f1f1;
   --ifm-navbar-shadow: 0 1px 0 0 #dddddd;
 
-  /* Navbar text — Light/primary · Light/secondary on hover */
+  /* Navbar text — Light/primary · active teal */
   --ifm-navbar-link-color: #1e293b;
   --ifm-navbar-link-hover-color: #6b6b7b;
-  --ifm-navbar-link-active-color: #1e293b;
+  --ifm-navbar-link-active-color: #0891b2;
 
   /* Footer text — override .footer--dark hardcoded whites */
   --ifm-footer-color: #1e293b;
@@ -42,14 +42,14 @@
   --ifm-footer-link-hover-color: #6b6b7b;
   --ifm-footer-title-color: #1e293b;
 
-  /* Sidebar — Light/primary */
+  /* Sidebar — Light/primary · active teal */
   --ifm-menu-color: #1e293b;
-  --ifm-menu-color-active: #1e293b;
-  --ifm-menu-color-background-active: rgba(30, 41, 59, 0.08);
+  --ifm-menu-color-active: #0891b2;
+  --ifm-menu-color-background-active: rgba(8, 145, 178, 0.08);
 
-  /* Links — Light/primary · hover Light/secondary */
-  --ifm-link-color: #1e293b;
-  --ifm-link-hover-color: #6b6b7b;
+  /* Links — teal accent */
+  --ifm-link-color: #0891b2;
+  --ifm-link-hover-color: #0779a0;
 
   /* Borders — Light/soft */
   --ifm-toc-border-color: #dddddd;
@@ -70,14 +70,14 @@
 
 /* ─── Dark mode ──────────────────────────────────────────────── */
 [data-theme="dark"] {
-  /* Primary ramp — Dark/primary (#ECFEFF) stepping through near-whites */
-  --ifm-color-primary: #ecfeff;
-  --ifm-color-primary-dark: #ddfdff;
-  --ifm-color-primary-darker: #cdfcff;
-  --ifm-color-primary-darkest: #a5faff;
-  --ifm-color-primary-light: #eefeff;
-  --ifm-color-primary-lighter: #f0feff;
-  --ifm-color-primary-lightest: #f4feff;
+  /* Primary ramp — accent teal for active states / links */
+  --ifm-color-primary:          #3dc9de;
+  --ifm-color-primary-dark:     #23bdd5;
+  --ifm-color-primary-darker:   #16b0c9;
+  --ifm-color-primary-darkest:  #0d96ad;
+  --ifm-color-primary-light:    #5dd6e8;
+  --ifm-color-primary-lighter:  #7fe1ef;
+  --ifm-color-primary-lightest: #a0ebf6;
 
   /* Backgrounds — Dark/background · Dark/card */
   --ifm-background-color: #0f172a;
@@ -92,10 +92,10 @@
   --ifm-footer-background-color: #1e293b;
   --ifm-navbar-shadow: 0 1px 0 0 #273243;
 
-  /* Navbar text — Dark/primary · Dark/secondary on hover */
+  /* Navbar text — Dark/primary · active teal */
   --ifm-navbar-link-color: #ecfeff;
   --ifm-navbar-link-hover-color: #7e8b95;
-  --ifm-navbar-link-active-color: #ecfeff;
+  --ifm-navbar-link-active-color: #3dc9de;
 
   /* Footer text — override .footer--dark hardcoded whites */
   --ifm-footer-color: #ecfeff;
@@ -103,14 +103,14 @@
   --ifm-footer-link-hover-color: #7e8b95;
   --ifm-footer-title-color: #ecfeff;
 
-  /* Sidebar — Dark/primary */
+  /* Sidebar — Dark/primary · active teal */
   --ifm-menu-color: #ecfeff;
-  --ifm-menu-color-active: #ecfeff;
-  --ifm-menu-color-background-active: rgba(236, 254, 255, 0.06);
+  --ifm-menu-color-active: #3dc9de;
+  --ifm-menu-color-background-active: rgba(61, 201, 222, 0.08);
 
-  /* Links — Dark/primary · hover Dark/secondary */
-  --ifm-link-color: #ecfeff;
-  --ifm-link-hover-color: #7e8b95;
+  /* Links — teal accent */
+  --ifm-link-color: #3dc9de;
+  --ifm-link-hover-color: #23bdd5;
 
   /* Borders — Dark/muted */
   --ifm-toc-border-color: #273243;
