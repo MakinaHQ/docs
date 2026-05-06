@@ -2,131 +2,131 @@
  * Makina Docs — Docusaurus / Infima theme overrides
  * Colors sourced from the Makina Design System (Figma).
  *
- * Primary: Light/primary #18191A · Dark/primary #ECFEFF
+ * Primary: Light/primary #1E293B · Dark/primary #ECFEFF
  * Dark bg: #0F172A  (Dark/background)
  * Light bg: #E3E3E3  (Light/background)
  */
 
 /* ─── Light mode ─────────────────────────────────────────────── */
 :root {
-  /* Primary ramp — Light/primary (#18191A) stepping through dark greys */
-  --ifm-color-primary:          #18191A;
-  --ifm-color-primary-dark:     #171819;
-  --ifm-color-primary-darker:   #161617;
-  --ifm-color-primary-darkest:  #131415;
-  --ifm-color-primary-light:    #2C2D2F;
-  --ifm-color-primary-lighter:  #424447;
-  --ifm-color-primary-lightest: #5D6064;
+  /* Primary ramp — Light/primary (#1E293B) stepping through navy/slate */
+  --ifm-color-primary: #1e293b; /* Light/primary */
+  --ifm-color-primary-dark: #1b253a;
+  --ifm-color-primary-darker: #15202f;
+  --ifm-color-primary-darkest: #0f172a; /* = Dark/background */
+  --ifm-color-primary-light: #354156;
+  --ifm-color-primary-lighter: #4d5870;
+  --ifm-color-primary-lightest: #6b6b7b; /* = Light/secondary */
 
   /* Backgrounds — Light/background · Light/card */
-  --ifm-background-color:         #E3E3E3;
-  --ifm-background-surface-color: #F1F1F1;
+  --ifm-background-color: #e3e3e3;
+  --ifm-background-surface-color: #f1f1f1;
 
   /* Text — Light/primary · Light/secondary */
-  --ifm-font-color-base:          #18191A;
-  --ifm-font-color-secondary:     #404040;
+  --ifm-font-color-base: #1e293b;
+  --ifm-font-color-secondary: #6b6b7b;
 
   /* Navbar / footer — Light/card · Light/background */
-  --ifm-navbar-background-color:  #F1F1F1;
-  --ifm-footer-background-color:  #F1F1F1;
-  --ifm-navbar-shadow:            0 1px 0 0 #DDDDDD;
+  --ifm-navbar-background-color: #f1f1f1;
+  --ifm-footer-background-color: #f1f1f1;
+  --ifm-navbar-shadow: 0 1px 0 0 #dddddd;
 
-  /* Navbar text — Light/primary · Light/secondary */
-  --ifm-navbar-link-color:        #18191A;
-  --ifm-navbar-link-hover-color:  #424447;
-  --ifm-navbar-link-active-color: #18191A;
+  /* Navbar text — Light/primary · Light/secondary on hover */
+  --ifm-navbar-link-color: #1e293b;
+  --ifm-navbar-link-hover-color: #6b6b7b;
+  --ifm-navbar-link-active-color: #1e293b;
 
   /* Footer text — override .footer--dark hardcoded whites */
-  --ifm-footer-color:             #18191A;
-  --ifm-footer-link-color:        #18191A;
-  --ifm-footer-link-hover-color:  #424447;
-  --ifm-footer-title-color:       #18191A;
+  --ifm-footer-color: #1e293b;
+  --ifm-footer-link-color: #1e293b;
+  --ifm-footer-link-hover-color: #6b6b7b;
+  --ifm-footer-title-color: #1e293b;
 
   /* Sidebar — Light/primary */
-  --ifm-menu-color:               #18191A;
-  --ifm-menu-color-active:        #18191A;
-  --ifm-menu-color-background-active: rgba(24, 25, 26, 0.08);
+  --ifm-menu-color: #1e293b;
+  --ifm-menu-color-active: #1e293b;
+  --ifm-menu-color-background-active: rgba(30, 41, 59, 0.08);
 
-  /* Links — Light/primary */
-  --ifm-link-color:               #18191A;
-  --ifm-link-hover-color:         #424447;
+  /* Links — Light/primary · hover Light/secondary */
+  --ifm-link-color: #1e293b;
+  --ifm-link-hover-color: #6b6b7b;
 
   /* Borders — Light/soft */
-  --ifm-toc-border-color:         #DDDDDD;
-  --ifm-hr-border-color:          #DDDDDD;
-  --ifm-color-emphasis-300:       #DDDDDD;
+  --ifm-toc-border-color: #dddddd;
+  --ifm-hr-border-color: #dddddd;
+  --ifm-color-emphasis-300: #dddddd;
 
   /* Code — Light/card */
-  --ifm-code-font-size:                  95%;
-  --ifm-code-background:                 #F1F1F1;
-  --docusaurus-highlighted-code-line-bg: rgba(24, 25, 26, 0.06);
+  --ifm-code-font-size: 95%;
+  --ifm-code-background: #f1f1f1;
+  --docusaurus-highlighted-code-line-bg: rgba(30, 41, 59, 0.06);
 
   /* Status */
-  --ifm-color-success:  #91CE59;
-  --ifm-color-warning:  #ECBB3E;
-  --ifm-color-danger:   #F64646;
-  --ifm-color-info:     #3DC9DE;
+  --ifm-color-success: #91ce59;
+  --ifm-color-warning: #ecbb3e;
+  --ifm-color-danger: #f64646;
+  --ifm-color-info: #3dc9de;
 }
 
 /* ─── Dark mode ──────────────────────────────────────────────── */
-[data-theme='dark'] {
+[data-theme="dark"] {
   /* Primary ramp — Dark/primary (#ECFEFF) stepping through near-whites */
-  --ifm-color-primary:          #ECFEFF;
-  --ifm-color-primary-dark:     #DDFDFF;
-  --ifm-color-primary-darker:   #CDFCFF;
-  --ifm-color-primary-darkest:  #A5FAFF;
-  --ifm-color-primary-light:    #EEFEFF;
-  --ifm-color-primary-lighter:  #F0FEFF;
-  --ifm-color-primary-lightest: #F4FEFF;
+  --ifm-color-primary: #ecfeff;
+  --ifm-color-primary-dark: #ddfdff;
+  --ifm-color-primary-darker: #cdfcff;
+  --ifm-color-primary-darkest: #a5faff;
+  --ifm-color-primary-light: #eefeff;
+  --ifm-color-primary-lighter: #f0feff;
+  --ifm-color-primary-lightest: #f4feff;
 
   /* Backgrounds — Dark/background · Dark/card */
-  --ifm-background-color:         #0F172A;
-  --ifm-background-surface-color: #1E293B;
+  --ifm-background-color: #0f172a;
+  --ifm-background-surface-color: #1e293b;
 
   /* Text — Dark/primary · Dark/secondary */
-  --ifm-font-color-base:          #ECFEFF;
-  --ifm-font-color-secondary:     #7E8B95;
+  --ifm-font-color-base: #ecfeff;
+  --ifm-font-color-secondary: #7e8b95;
 
   /* Navbar / footer — Dark/card · Dark/background */
-  --ifm-navbar-background-color:  #1E293B;
-  --ifm-footer-background-color:  #1E293B;
-  --ifm-navbar-shadow:            0 1px 0 0 #273243;
+  --ifm-navbar-background-color: #1e293b;
+  --ifm-footer-background-color: #1e293b;
+  --ifm-navbar-shadow: 0 1px 0 0 #273243;
 
-  /* Navbar text — Dark/primary · Dark/secondary */
-  --ifm-navbar-link-color:        #ECFEFF;
-  --ifm-navbar-link-hover-color:  #CDFCFF;
-  --ifm-navbar-link-active-color: #ECFEFF;
+  /* Navbar text — Dark/primary · Dark/secondary on hover */
+  --ifm-navbar-link-color: #ecfeff;
+  --ifm-navbar-link-hover-color: #7e8b95;
+  --ifm-navbar-link-active-color: #ecfeff;
 
   /* Footer text — override .footer--dark hardcoded whites */
-  --ifm-footer-color:             #ECFEFF;
-  --ifm-footer-link-color:        #ECFEFF;
-  --ifm-footer-link-hover-color:  #CDFCFF;
-  --ifm-footer-title-color:       #ECFEFF;
+  --ifm-footer-color: #ecfeff;
+  --ifm-footer-link-color: #ecfeff;
+  --ifm-footer-link-hover-color: #7e8b95;
+  --ifm-footer-title-color: #ecfeff;
 
   /* Sidebar — Dark/primary */
-  --ifm-menu-color:               #ECFEFF;
-  --ifm-menu-color-active:        #ECFEFF;
+  --ifm-menu-color: #ecfeff;
+  --ifm-menu-color-active: #ecfeff;
   --ifm-menu-color-background-active: rgba(236, 254, 255, 0.06);
 
-  /* Links — Dark/primary */
-  --ifm-link-color:               #ECFEFF;
-  --ifm-link-hover-color:         #CDFCFF;
+  /* Links — Dark/primary · hover Dark/secondary */
+  --ifm-link-color: #ecfeff;
+  --ifm-link-hover-color: #7e8b95;
 
   /* Borders — Dark/muted */
-  --ifm-toc-border-color:         #273243;
-  --ifm-hr-border-color:          #273243;
-  --ifm-color-emphasis-300:       #273243;
+  --ifm-toc-border-color: #273243;
+  --ifm-hr-border-color: #273243;
+  --ifm-color-emphasis-300: #273243;
 
   /* Code — Dark/card */
-  --ifm-code-font-size:                  95%;
-  --ifm-code-background:                 #1E293B;
+  --ifm-code-font-size: 95%;
+  --ifm-code-background: #1e293b;
   --docusaurus-highlighted-code-line-bg: rgba(236, 254, 255, 0.06);
 
   /* Status */
-  --ifm-color-success:  #91CE59;
-  --ifm-color-warning:  #ECBB3E;
-  --ifm-color-danger:   #F64646;
-  --ifm-color-info:     #3DC9DE;
+  --ifm-color-success: #91ce59;
+  --ifm-color-warning: #ecbb3e;
+  --ifm-color-danger: #f64646;
+  --ifm-color-info: #3dc9de;
 }
 
 /* ─── Shared utilities ───────────────────────────────────────── */
@@ -134,9 +134,13 @@
   white-space: nowrap;
 }
 
-/* ─── Navbar logo ────────────────────────────────────────────── */
-.navbar__logo img {
-  height: 80px;
-  margin-block: -25px;
-  display: block;
+/* Active navbar link: full primary + underline (overrides Infima's grouped :hover/--active rule) */
+.navbar__link--active {
+  color: var(--ifm-navbar-link-active-color);
+  text-decoration: underline;
+}
+
+/* Body content links: always underlined so they're discoverable (color matches body text) */
+.markdown a {
+  text-decoration: underline;
 }

@@ -119,8 +119,8 @@ const config: Config = {
       title: "Makina Docs",
       logo: {
         alt: "Makina Logo",
-        src: "img/logo.svg",
-        srcDark: "img/logo-dark.svg",
+        src: "img/logo-dark.png",
+        srcDark: "img/logo.png",
       },
       items: [
         {
