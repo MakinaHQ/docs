@@ -111,3 +111,8 @@
 .table-of-contents__link code {
   white-space: nowrap;
 }
+
+/* ─── Navbar logo ────────────────────────────────────────────── */
+.navbar__logo img {
+  height: 48px; /* 150% of Docusaurus default 32px */
+}
