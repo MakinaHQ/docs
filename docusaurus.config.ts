@@ -119,7 +119,8 @@ const config: Config = {
       title: "Makina Docs",
       logo: {
         alt: "Makina Logo",
-        src: "img/logo.svg",
+        src: "img/logo-dark.png",
+        srcDark: "img/logo.png",
       },
       items: [
         {
@@ -208,8 +209,8 @@ const config: Config = {
     },
     colorMode: {
       defaultMode: "dark",
-      disableSwitch: false, // Hides the toggle
-      respectPrefersColorScheme: false, // Ignores user's system setting
+      disableSwitch: false,
+      respectPrefersColorScheme: true,
     },
     algolia: {
       // The application ID provided by Algolia

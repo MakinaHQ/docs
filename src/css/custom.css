@@ -1,34 +1,146 @@
 /**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
+ * Makina Docs — Docusaurus / Infima theme overrides
+ * Colors sourced from the Makina Design System (Figma).
+ *
+ * Primary: Light/primary #1E293B · Dark/primary #ECFEFF
+ * Dark bg: #0F172A  (Dark/background)
+ * Light bg: #E3E3E3  (Light/background)
  */
 
-/* You can override the default Infima variables here. */
+/* ─── Light mode ─────────────────────────────────────────────── */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  /* Primary ramp — accent teal for active states / links */
+  --ifm-color-primary: #0891b2;
+  --ifm-color-primary-dark: #0779a0;
+  --ifm-color-primary-darker: #06638a;
+  --ifm-color-primary-darkest: #034d6e;
+  --ifm-color-primary-light: #22a5c7;
+  --ifm-color-primary-lighter: #38b9db;
+  --ifm-color-primary-lightest: #56cce8;
+
+  /* Backgrounds — Light/background · Light/card */
+  --ifm-background-color: #e3e3e3;
+  --ifm-background-surface-color: #f1f1f1;
+
+  /* Text — Light/primary · Light/secondary */
+  --ifm-font-color-base: #1e293b;
+  --ifm-font-color-secondary: #6b6b7b;
+
+  /* Navbar / footer — Light/card · Light/background */
+  --ifm-navbar-background-color: #f1f1f1;
+  --ifm-footer-background-color: #f1f1f1;
+  --ifm-navbar-shadow: 0 1px 0 0 #dddddd;
+
+  /* Navbar text — Light/primary · active teal */
+  --ifm-navbar-link-color: #1e293b;
+  --ifm-navbar-link-hover-color: #6b6b7b;
+  --ifm-navbar-link-active-color: #0891b2;
+
+  /* Footer text — override .footer--dark hardcoded whites */
+  --ifm-footer-color: #1e293b;
+  --ifm-footer-link-color: #1e293b;
+  --ifm-footer-link-hover-color: #6b6b7b;
+  --ifm-footer-title-color: #1e293b;
+
+  /* Sidebar — Light/primary · active teal */
+  --ifm-menu-color: #1e293b;
+  --ifm-menu-color-active: #0891b2;
+  --ifm-menu-color-background-active: rgba(8, 145, 178, 0.08);
+
+  /* Links — teal accent */
+  --ifm-link-color: #0891b2;
+  --ifm-link-hover-color: #0779a0;
+
+  /* Borders — Light/soft */
+  --ifm-toc-border-color: #dddddd;
+  --ifm-hr-border-color: #dddddd;
+  --ifm-color-emphasis-300: #dddddd;
+
+  /* Code — Light/card */
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-code-background: #f1f1f1;
+  --docusaurus-highlighted-code-line-bg: rgba(30, 41, 59, 0.06);
+
+  /* Status */
+  --ifm-color-success: #91ce59;
+  --ifm-color-warning: #ecbb3e;
+  --ifm-color-danger: #f64646;
+  --ifm-color-info: #3dc9de;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+/* ─── Dark mode ──────────────────────────────────────────────── */
 [data-theme="dark"] {
-  --ifm-color-primary: #fefa7f;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  /* Primary ramp — accent teal for active states / links */
+  --ifm-color-primary: #3dc9de;
+  --ifm-color-primary-dark: #23bdd5;
+  --ifm-color-primary-darker: #16b0c9;
+  --ifm-color-primary-darkest: #0d96ad;
+  --ifm-color-primary-light: #5dd6e8;
+  --ifm-color-primary-lighter: #7fe1ef;
+  --ifm-color-primary-lightest: #a0ebf6;
+
+  /* Backgrounds — Dark/background · Dark/card */
+  --ifm-background-color: #0f172a;
+  --ifm-background-surface-color: #1e293b;
+
+  /* Text — Dark/primary · Dark/secondary */
+  --ifm-font-color-base: #ecfeff;
+  --ifm-font-color-secondary: #7e8b95;
+
+  /* Navbar / footer — Dark/card · Dark/background */
+  --ifm-navbar-background-color: #1e293b;
+  --ifm-footer-background-color: #1e293b;
+  --ifm-navbar-shadow: 0 1px 0 0 #273243;
+
+  /* Navbar text — Dark/primary · active teal */
+  --ifm-navbar-link-color: #ecfeff;
+  --ifm-navbar-link-hover-color: #7e8b95;
+  --ifm-navbar-link-active-color: #3dc9de;
+
+  /* Footer text — override .footer--dark hardcoded whites */
+  --ifm-footer-color: #ecfeff;
+  --ifm-footer-link-color: #ecfeff;
+  --ifm-footer-link-hover-color: #7e8b95;
+  --ifm-footer-title-color: #ecfeff;
+
+  /* Sidebar — Dark/primary · active teal */
+  --ifm-menu-color: #ecfeff;
+  --ifm-menu-color-active: #3dc9de;
+  --ifm-menu-color-background-active: rgba(61, 201, 222, 0.08);
+
+  /* Links — teal accent */
+  --ifm-link-color: #3dc9de;
+  --ifm-link-hover-color: #23bdd5;
+
+  /* Borders — Dark/muted */
+  --ifm-toc-border-color: #273243;
+  --ifm-hr-border-color: #273243;
+  --ifm-color-emphasis-300: #273243;
+
+  /* Code — Dark/card */
+  --ifm-code-font-size: 95%;
+  --ifm-code-background: #1e293b;
+  --docusaurus-highlighted-code-line-bg: rgba(236, 254, 255, 0.06);
+
+  /* Status */
+  --ifm-color-success: #91ce59;
+  --ifm-color-warning: #ecbb3e;
+  --ifm-color-danger: #f64646;
+  --ifm-color-info: #3dc9de;
 }
 
+/* ─── Shared utilities ───────────────────────────────────────── */
 .table-of-contents__link code {
   white-space: nowrap;
+}
+
+/* Active navbar link: full primary + underline (overrides Infima's grouped :hover/--active rule) */
+.navbar__link--active {
+  color: var(--ifm-navbar-link-active-color);
+  text-decoration: underline;
+}
+
+/* Body content links: always underlined so they're discoverable (color matches body text) */
+.markdown a {
+  text-decoration: underline;
 }
