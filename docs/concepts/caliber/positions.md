@@ -5,26 +5,31 @@ sidebar_position: 3
 
 # Positions
 
-Positions represent base asset deployments made from the Calibers into external protocol.
+A **Position** is a deployment of capital from a [Caliber](overview) into an external protocol: a supply on a lending market, an LP position on a DEX, a deposit into a yield vault, a borrow, and so on. Positions are how a strategy actually earns its return.
 
-Operators can open positions on multiple protocols or on the same protocol. Each Position has a unique position ID, all open positions are registered in the Caliber.
+Each position has a unique **position ID** and is registered in the Caliber. A Caliber can hold many positions, across multiple protocols or several on the same protocol. Internally a position tracks its **current value** (in accounting-token terms), the **time it was last accounted**, and whether it is a **debt**.
 
-Positions can be increased and decreased through [Position Management Instructions](makina-vm#instruction-types) sent by the Operator. The value of each Position, needs to be accounted for through an [Accounting Instruction](makina-vm#instruction-types).
+## Opening, resizing, and closing
 
-Positions can only be increased by deploying [Base Tokens](base-tokens), and they can only be decreased by withdrawing them into base tokens. Accounting Instructions need to also return values denominated in base tokens.
+Positions are changed exclusively through **Management Instructions** (see [MakinaVM](makina-vm#the-four-instruction-types)) executed by the [Operator](../governance/operator):
 
-This enables all positions to be ultimately valued in Accounting Tokens, and thus have generalised slippage or loss checks whenever a position is increased or decrease.
+- a position is **opened or increased** by spending [base tokens](base-tokens),
+- and **decreased or closed** by recovering base tokens.
 
-Each position has a list of risk attributes defined in the Risk Policy, and thus maximum exposure caps can be set on how large individual or groups of positions can be.
+Every Management instruction is paired with an **Accounting Instruction** that reports the position's value in base-token amounts. Because both the inputs/outputs (base tokens) and the position value are denominated in priceable assets, the Caliber can always express a position in accounting-token terms, which is what makes generalized loss checks possible.
 
-Position modification is subject to [Cooldown Duration](../../contracts/core/interfaces/ICaliber.sol/interface.ICaliber.md#cooldownduration), for a given position and [Command](makina-vm#instructions), transactions attempting to modify identical positions and Commands before the CooldownDuration has elapsed will revert.
+## Loss checks
 
-Positions are required to have mutual exclusivity on liquidity deployments, two positions can not have overlapping accounting instructions accounting for the same liquidity.
+Whenever a position is managed, the Caliber measures the value of the affected base tokens **before and after** the operation, alongside the change in the position's accounted value, and verifies the move stays within a configured **maximum loss** tolerance (in basis points). Separate caps apply to position _increases_ and _decreases_. If an operation would leak more value than allowed (for example, an interaction that returns far less than it should), it reverts. This bounds how much value the Operator can lose in any single action, whether through error, a bad route, or malice.
 
-## Debt Positions
+## Cooldowns
 
-Positions can also be used to represent dept or borrow position in scenarios where assets are borrowed from lending markets.
+Position management is rate-limited by a **cooldown**. Repeating the _same_ management action (the same position with the same command sequence and direction) before the cooldown has elapsed reverts. Combined with the per-action loss cap, the cooldown limits how much damage can be done over a short window, buying time for the [Security Council](../governance/security-council) to react to anomalous behavior.
 
-Debt Positions are accounted for in the negative and subtracted from the total Caliber AUM for purposes of [share price](../machine/share-price) calculations and risk policy exposure calculations.
+## Risk caps and exclusivity
 
-Debt positions behave the same as normal positions and are in all matters equivalent to positive value positions excpet that they are stored in the Caliber with a flag marking them as being debt.
+Positions carry risk attributes defined in the strategy's risk policy, so the [Risk Manager](../governance/risk-manager) can cap how large an individual position (or a group of related positions) may grow. Positions must also be **mutually exclusive** in the liquidity they account for: two positions cannot have accounting instructions that measure the same underlying liquidity, which prevents double-counting value.
+
+## Debt positions
+
+A position can also represent a **debt** (e.g. a borrow against collateral on a lending market). Debt positions are flagged as such and counted **negatively**: they are subtracted from the Caliber's total when computing [net AUM](caliber-accounting) and when evaluating risk-policy exposure. This lets a strategy express leverage and hedges correctly: the [share price](../machine/share-price) reflects assets _minus_ liabilities. In every other respect a debt position behaves like a normal one.

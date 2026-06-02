@@ -3,60 +3,91 @@ id: makina-vm
 sidebar_position: 1
 ---
 
-# MakinaVM
+# MakinaVM & Instructions
 
-Integrating with external protocols traditionally requires writing custom smart contract adapters, an approach that is time-consuming, error-prone, and difficult to maintain.
+The **MakinaVM** is Makina's central innovation and the reason a Caliber can be both flexible and safe.
 
-Makina introduces a new execution model: MakinaVM, a scope-limited, generalized onchain engine designed to execute pre-approved smart contract instructions.
-
-The goal is for Calibers to be highly adaptable while maintaining strong security guarantees, enabling fast and reliable integration with a broad range of external protocols to maximize diversification and capture optimal opportunities.
-
-### Key Benefits of MakinaVM
-
-- **Pre-approved execution:** Function selectors, target addresses, and selected parameters must be pre-approved. Only the Merkle root is stored onchain, ensuring minimal onchain storage while maintaining strict control.
-- **Efficient updates:** Adding or removing instructions requires only a single Merkle Root update.
-- **Scalability:** Proof size grows logarithmically (log₂(N)) with the number of instructions, ensuring scalability as the instruction set expands.
-- **Transparency & verification:** Anyone can verify the active instruction set by computing the Merkle root locally and comparing it to the one stored in the Caliber contract.
+Integrating a vault with an external protocol traditionally means writing, auditing, and deploying a custom adapter contract for each integration: slow, expensive, and a fresh attack surface every time. The MakinaVM replaces that model with a **scope-limited, generalized execution engine**: a single on-chain interpreter that can call almost any protocol, but only through actions that governance has reviewed and committed in advance.
 
 ## Instructions
 
-Instructions are a core innovation of Makina, offering a highly flexible yet controlled execution model. They define and constrain the Operator's available actions in a given strategy, enabling seamless interaction with a wide array of external smart contracts while maintaining strict operational boundaries.
+The unit of action is an **Instruction**: a pre-approved, parameterized sequence of contract calls the Operator is allowed to execute. Instructions define and constrain exactly what the Operator can do in a given strategy. Adding a new integration means authoring its Instructions and committing them once, not deploying new code.
 
-### Weiroll
+### Built on Weiroll
 
-MakinaVM is built on [Enso Weiroll](https://github.com/EnsoBuild/enso-weiroll), an extended implementation of the original [Weiroll](https://github.com/weiroll/weiroll) command-chaining framework developed by [Nick Johnson](https://github.com/Arachnid), [Dean Eigenmann](https://github.com/decanus), and [other](https://github.com/weiroll/weiroll/graphs/contributors) open-source contributors. Enso's version enhances Weiroll's capabilities, making it more flexible and suited for advanced execution models.
+Instructions are expressed in [Enso Weiroll](https://github.com/EnsoBuild/enso-weiroll), an extended version of the [Weiroll](https://github.com/weiroll/weiroll) command-chaining framework. Weiroll enables **stateful multicalls**: a list of commands where the output of one call can be fed as input to the next. For instance, a single Instruction could chain together an approval, a deposit, and a balance read (across multiple protocols) into one atomic, composable operation. That is a simple case, and Instructions can encode far more elaborate sequences.
 
-Weiroll enables stateful multicalls by allowing the output of one call to be used as input for subsequent calls. This makes it possible to chain multiple function calls together, with data passed through each execution step. Moreover, Weiroll supports the generalized execution of any set of interactions across any protocol.
+A Weiroll instruction has two parts:
 
-MakinaVM refines this capability by incorporating a Merkle Tree of hashed commands and selected parameters, effectively restricting the scope of executable instructions.
+- **commands**: the encoded sequence of calls (each fixing a target address, function selector, and how arguments and outputs are wired between steps);
+- **state**: the array of values (token addresses, amounts, recipients, …) the commands read from and write to.
 
-### Merkle Tree Permissioning
+### Merkle-tree permissioning
 
-Each Caliber stores the root of a publicly available Merkle Tree containing the full set of allowed instructions. The root can be updated in caliber storage by the Machine's [Risk Manager](../governance/risk-manager) through a timelock, giving users time to withdraw if they disagree with upcoming changes.
+The MakinaVM restricts _which_ instructions can run using a **Merkle tree**. Every allowed instruction is hashed into a leaf, and only the tree's **root** is stored on-chain in the Caliber.
 
-To execute an instruction, the Operator must provide the corresponding Merkle proof. The Caliber hashes data including the instruction's commands (function signatures + target contracts addresses) and its selected parameters (function arguments), and validates the resulting leaf against the stored Merkle root.
+```mermaid
+flowchart TB
+    subgraph Tree["Allowed instruction set (off-chain, public)"]
+        L1["Instr A → leaf"]:::l
+        L2["Instr B → leaf"]:::l
+        L3["Instr C → leaf"]:::l
+        L4["Instr D → leaf"]:::l
+        L1 & L2 --> H1["hash"]:::h
+        L3 & L4 --> H2["hash"]:::h
+        H1 & H2 --> Root["Merkle Root"]:::r
+    end
+    Root -->|only the root is stored| Caliber["Caliber storage"]:::c
+    Op([Operator]) -->|instruction + Merkle proof| Caliber
+    Caliber -->|recompute leaf, verify proof against root| Exec{"matches?"}:::h
+    Exec -->|yes| Run["execute via Weiroll"]:::r
+    Exec -->|no| Revert["revert"]:::x
 
-Instructions can be validated with fine-grained control, down to specific function arguments. Dynamic arguments, like token amounts, can be excluded from the hash to preserve flexibility while retaining a strong security model.
+    classDef l fill:#30363d,stroke:#6e7681,color:#fff;
+    classDef h fill:#444c56,stroke:#6e7681,color:#fff;
+    classDef r fill:#238636,stroke:#238636,color:#fff;
+    classDef c fill:#1f6feb,stroke:#1f6feb,color:#fff;
+    classDef x fill:#da3633,stroke:#da3633,color:#fff;
+```
 
-Once enabled, instructions can be executed arbitrarily by the Operator, within the bounds of the approved set.
+To execute, the Operator submits the instruction plus a **Merkle proof**. The Caliber recomputes the leaf and checks it against the stored root. If it doesn't match, the call reverts. This design is:
 
-### Instruction Types
+- **Minimal on-chain**: only one 32-byte root is stored no matter how many instructions are allowed.
+- **Cheap to update**: adding or removing instructions is a single root update.
+- **Scalable**: proof size grows only logarithmically with the number of instructions.
+- **Transparent**: anyone can rebuild the tree from the public instruction set and verify the on-chain root.
 
-Instructions are categorized into four types, each serving a distinct operational role:
+#### Fine-grained, down to the argument
 
-- **Accounting**: Computes the current size of a position and updates it in the Caliber's storage.
-- **Management**: Modifies the size of a position. Always paired with an Accounting instruction to reflect the changes introduced.
-- **Harvesting**: Collects rewards from external protocols and transfers them to the Caliber.
-- **Flashloan-Management**: Modifies the size of a position in the context of a flash loan, as part of an outer Management instruction. A Flashloan-Management instruction is always associated with a Management instruction and can only be executed in its scope.
+A leaf hashes the instruction's full shape: its commands, its type, the target position, the affected tokens, and a **bitmap that marks which state values are fixed**. Values flagged as fixed (e.g. the protocol address or recipient) must match the approved instruction exactly, while values left unflagged (e.g. a token _amount_) are free to vary at execution time. This is what lets one approved instruction handle deposits of _any size_ while still pinning down _where_ and _how_ the funds may go.
 
-### Integration Flow
+### The four instruction types
 
-Integrating a new protocol only requires creating the necessary deploy, close, and account instructions and submitting a single governance transaction to whitelist them.
+Instructions are categorized by role:
 
-This process enables fast, secure, and scalable integrations across a broad set of protocols without the need for custom adapters.
+| Type                     | Purpose                                                                                                                                                                                                             |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Accounting**           | Reads and reports a position's current value, in base-token amounts. It is not intended to move funds, only to measure them.                                                                                        |
+| **Management**           | Changes a position's size (open, increase, decrease, close). Always paired with an Accounting instruction so the Caliber can measure the position before and after and apply a [loss check](positions#loss-checks). |
+| **Harvest**              | Claims external rewards into the Caliber. Receive-only, and cannot spend the Caliber's existing holdings. See [Harvests](harvests).                                                                                 |
+| **Flashloan-Management** | A Management step executed _inside_ a flash loan, nested within an outer Management instruction and only valid in that scope. See [Flash Loans](flash-loans).                                                       |
 
-Instructions are reviewed by the Risk Team and approved through Governance. Over time, a growing repository of reusable Instructions will be available to operators, enabling them to interact with a wide range of external protocols.
+## Integrating a new protocol
 
-It is also expected that protocols seeking to attract capital contribute their own Instructions, promoting a model of self-integration.
+```mermaid
+flowchart LR
+    A["Author deploy /<br/>close / account<br/>instructions"] --> B["Review by Risk Team<br/>+ Security Council"]
+    B --> C["Risk Manager schedules<br/>root update (timelock)"]
+    C --> D["Guardians may veto<br/>during timelock"]
+    D --> E["Root takes effect:<br/>instructions executable"]
+    classDef s fill:#1f6feb,stroke:#1f6feb,color:#fff;
+    class A,B,C,D,E s;
+```
 
-See [Root Update Lifecycle](../governance/root-update-lifecycle) for more details.
+Integrating a protocol requires only authoring its instructions and committing the new Merkle root through governance. There is no new contract to deploy. Updates pass through a **timelock** during which they can be vetoed, giving users time to react. Over time a shared, reusable library of instructions grows, and protocols seeking capital are expected to contribute their own, a model of self-integration.
+
+The full update and veto process is described in [Root Update Lifecycle](../governance/root-update-lifecycle).
+
+:::info Implementation
+The instruction structures and verification live in [`Caliber.sol`](/contracts/core/caliber/Caliber.sol/contract.Caliber.md) and [`ICaliber`](/contracts/core/interfaces/ICaliber.sol/interface.ICaliber.md). The Weiroll VM interface is [`IWeirollVM`](/contracts/core/interfaces/IWeirollVM.sol/interface.IWeirollVM.md).
+:::

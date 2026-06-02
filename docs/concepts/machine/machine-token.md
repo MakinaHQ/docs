@@ -3,17 +3,31 @@ id: "machine-token"
 sidebar_position: 1
 ---
 
-# Machine Token
+# Machine Token (Shares)
 
-[Machine Tokens](/contracts/core/machine/MachineShare.sol/contract.MachineShare.md) are tokenized ERC20 representations of the strategy operating on the Machine.
+The **Machine Token** (also called the **share**) is the ERC-20 token that represents a holder's proportional claim on a strategy. Holding shares is equivalent to holding a slice of everything the strategy controls. As the strategy's [AUM](share-price) grows, the value of each share grows with it.
 
-Shares are fully DeFi compatible, and can be acquired in two ways:
+The share token is a standard, fully composable ERC-20. It always uses **18 decimals**, regardless of the strategy's [accounting token](overview#the-accounting-token), which keeps share math precise even for low-decimal accounting tokens like USDC. See [`MachineShare.sol`](/contracts/core/machine/MachineShare.sol/contract.MachineShare.md).
 
-- Minted by depositing Accounting Tokens directly into the Machine
-- Purchased on secondary markets.
+## How shares are acquired
 
-The Machine mint and redeems Shares at its current [Share Price](share-price). This price is periodically updated based on the total assets the Machine controls, including funds held directly and those managed by [Calibers](../caliber/overview).
+- **By depositing** the accounting token through the strategy's [Depositor](deposits). The Machine mints shares at the current [share price](share-price): `shares = assets / share price`.
+- **On secondary markets**, since the token is a normal ERC-20 and can be listed and traded like any other asset.
 
-Machine Tokens can be integrated into external protocols such as lending market, where they can provide superior collateral qualities; into DEXs where it can be paired with other assets to provide higher LP returns; or they can simply be held in treasury to benefit from the high risk adjusted return.
+Shares are burned when a holder [redeems](redemptions) them back into the accounting token.
 
-Machine Tokens leverage [Wormhole NTT](https://ntt.wormhole.com/) for fast and secure cross-chain transfer between Ethereum Mainnet, it's L2s and non-EVM chains such as Solana.
+## Composability
+
+Because the share token is a plain ERC-20 whose value tracks a professionally managed, diversified strategy, it is useful well beyond simply holding:
+
+- as **collateral** in lending markets;
+- as one side of a **liquidity pool** on a DEX;
+- held in **treasury** to earn the strategy's risk-adjusted return passively.
+
+## Cross-chain transfer
+
+The share token is a standard ERC-20, so moving it to another chain relies on external bridging infrastructure such as [Wormhole NTT](https://ntt.wormhole.com/) rather than anything built into the token itself.
+
+:::note
+This is a separate, optional transport layer for the share token. It is independent of the strategy's internal [cross-chain liquidity](../cross-chain/liquidity-bridging) and [accounting](../cross-chain/cross-chain-accounting) machinery, which move the _underlying_ capital between the Machine and its Spoke Calibers.
+:::

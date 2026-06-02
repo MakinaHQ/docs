@@ -1,23 +1,39 @@
 ---
 id: pre-deposit
-sidebar_position: 6
+sidebar_position: 5
 ---
 
 # Pre-Deposit
 
-Pre-deposits enable strategies to build baseline liquidity prior to launch. This is helpful for bootstrapping, as it allows strategies to start with diversified exposure and efficient allocation across multiple opportunities.
+A strategy is more effective when it launches with capital already in hand: it can start diversified and allocate efficiently from day one rather than scaling up from zero. **Pre-deposits** let a strategy gather that baseline liquidity _before_ its [Machine](overview) goes live.
 
-Makina supports a standardised flow for pre-deposits through its Core Factory, providing a secure and efficient way for Operators to gather the liquidty required to launch new strategies.
+The [`PreDepositVault`](/contracts/core/pre-deposit/PreDepositVault.sol/contract.PreDepositVault.md) is a temporary vault that accepts a single **pre-deposit asset**, typically a yield-bearing token that:
 
-The [PreDepositVault](/contracts/core/pre-deposit/PreDepositVault.sol/contract.PreDepositVault.md) contract defines a pre-deposit asset, this can be any yield-bearing token which has an oracle feed against the accounting token and which can later be enabled as a base token.
+- is **priceable** against the strategy's [accounting token](overview#the-accounting-token) through the [Oracle Registry](../oracles), and
+- will later be enabled as a [base token](../caliber/base-tokens) of the strategy.
 
-`PreDepositVault` specifies a pre-deposit asset, typically a yield-bearing token, that:
+Depositors earn the pre-deposit asset's native yield during this phase: as the asset accrues value, the vault's share price rises with it.
 
-- Is priceable against the accounting token through the [Oracle Registry](../oracle-registry).
-- Will later be enabled as a base token within the strategy.
+## Seamless transition into the Machine
 
-Users deposit this pre-deposit token into `PreDepositVault` to earn baseline yield during the pre-deposit phase. The vault’s share price increases in line with the yield accrued by the pre-deposit token.
+The key design choice is that the Pre-Deposit Vault mints the **shares of the future Machine**: the very same share token the live strategy will use. This makes the launch transition trivial:
 
-Importantly, `PreDepositVault` mints the [Shares](machine-token) of the future Machine it will eventually migrate into. When the Machine is deployed, there is no need to migrate user balances. Only the minting authority is transferred from the Pre-Deposit Vault to the Machine, enabling a seamless transition into the active strategy.
+```mermaid
+flowchart LR
+    subgraph Before["Pre-deposit phase"]
+        U1([Users]) -->|deposit asset| PDV["PreDepositVault<br/>(mints future shares)"]:::p
+    end
+    subgraph After["At launch"]
+        PDV2["PreDepositVault"]:::p -->|transfer assets +<br/>minting authority| M["Machine"]:::m
+    end
+    Before --> After
+
+    classDef p fill:#8957e5,stroke:#8957e5,color:#fff;
+    classDef m fill:#238636,stroke:#238636,color:#fff;
+```
+
+When the Machine is deployed, **no user balances need to be migrated**. The vault simply hands the accumulated assets to the Machine and transfers the share token's minting authority to it. Holders keep the exact shares they already had, now backed by the live strategy. After migration the vault is closed to further deposits and redemptions.
+
+Like the [Depositor](deposits#whitelisting), the Pre-Deposit Vault supports an optional whitelist and a share-supply cap, managed by the [Risk Manager](../governance/risk-manager).
 
 ![makina-pre-deposit](/img/makina-pre-deposit.png)

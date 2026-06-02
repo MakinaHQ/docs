@@ -1,20 +1,28 @@
 ---
 id: "risk-manager"
 title: Risk Manager
-sidebar_position: 5
+sidebar_position: 2
 ---
 
 # Risk Manager
 
-Along with the Operator, each strategy has a dedicated Risk Manager, whose primary responsibilities include reviewing and submitting new instructions and risk policies, and maintaining the Machine’s risk parameters.
+If the [Operator](operator) decides _what_ to do, the **Risk Manager** decides _within what limits_. It sets the boundaries the Operator must operate inside (the instruction set, the loss caps, the staleness thresholds), balancing enough flexibility to pursue the [mandate](../introduction#the-strategy-mandate) against tight enough control to protect user funds.
 
-The Risk Manager is responsible for ensuring that the Operator can operate effectively within a secure framework. Maintaining an appropriate balance between flexibility and risk control is key to enabling the Operator to carry out the strategy’s mandate.
+Crucially, the Risk Manager **cannot execute the strategy**. It defines rules, and the Operator acts under them. This separation means neither can do the other's job, and neither alone can both set a limit and exploit it.
 
-All Risk Manager actions must pass through a timelock, during which both the Security Council and the Machine SubDAO hold veto powers. This introduces a layer of trust minimization, ensuring that the Risk Manager cannot apply changes to the strategy atomically or unilaterally.
+## Responsibilities
 
-The Risk Manager has the following responsibilities:
+- **Curate the instruction set.** Review instructions proposed by the Operator and **schedule** the [Merkle-root update](root-update-lifecycle) that authorizes them on a Caliber.
+- **Set risk parameters** on Machines and Calibers: position loss caps, swap loss caps, cooldowns, accounting staleness thresholds, fee accrual-rate caps, share-price change-rate limits, bridge loss limits.
+- **Curate [base tokens](../caliber/base-tokens)**: register and unregister the tokens each Caliber may hold.
+- **Set the share supply cap** that limits new deposits.
+- **Manage strategy whitelists** on the [Depositor](../machine/deposits#whitelisting), [Redeemer](../machine/redemptions#whitelisting), and [Pre-Deposit Vault](../machine/pre-deposit).
 
-- Review and verify any [Root Update](./root-update-lifecycle) requested by the Operator, and then schedule it on the relevant Caliber.
-- Set and adjust all risk parameters for machine and calibers, including max loss caps and cooldowns.
-- Curate the set of [Base Tokens](../caliber/base-tokens) in each Caliber.
-- Set and adjust the Machine's Risk Policy to ensure compliance with the Mandate.
+## Two speeds: immediate vs. timelocked
+
+Not every change carries the same risk, so they don't all move at the same speed:
+
+- A small number of **lower-risk settings** can be applied **immediately** by the Risk Manager, for example the share supply cap and the deposit/redemption whitelists.
+- The **risk-sensitive parameters** are applied through a separate **Risk Manager Timelock** address. Changes routed through it are **delayed**, so they cannot be applied atomically or unilaterally, and the [instruction-root update](root-update-lifecycle) can be **vetoed** during its delay by the [Security Council](security-council) or the [Root Guardians](root-update-lifecycle#who-can-veto).
+
+The net effect is trust minimization: the Risk Manager can keep a strategy adaptive, but every consequential change is delayed and observable, giving users time to exit and the Security Council time to veto if a change is unacceptable.
