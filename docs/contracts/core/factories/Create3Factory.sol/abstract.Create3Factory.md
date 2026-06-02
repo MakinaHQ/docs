@@ -1,6 +1,6 @@
 # Create3Factory
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/factories/Create3Factory.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/factories/Create3Factory.sol)
 
 Forked from 0xSequence (https://github.com/0xSequence/create3/blob/master/contracts/Create3.sol)
 
@@ -8,7 +8,7 @@ Forked from 0xSequence (https://github.com/0xSequence/create3/blob/master/contra
 
 ### PROXY_BYTECODE
 
-\*The bytecode for a contract that proxies the creation of another contract.
+The bytecode for a contract that proxies the creation of another contract.
 If this code is deployed using CREATE2 it can be used to decouple `creationCode` from the child contract address.
 The proxy bytecode constant encodes two parts:
 
@@ -37,18 +37,18 @@ The proxy bytecode constant encodes two parts:
    │ 0x3d │ 0x3d │ RETURNDATASIZE │ 0 cds │
    │ 0x34 │ 0x34 │ CALLVALUE │ value 0 cds │
    │ 0xf0 │ 0xf0 │ CREATE │ newContract │
-   └────────────┴───────────────────────┴──────────────────┴──────────────────────┘\*
+   └────────────┴───────────────────────┴──────────────────┴──────────────────────┘
 
 ```solidity
-bytes internal constant PROXY_BYTECODE = hex"67363d3d37363d34f03d5260086018f3";
+bytes internal constant PROXY_BYTECODE = hex"67363d3d37363d34f03d5260086018f3"
 ```
 
 ### PROXY_BYTECODE_HASH
 
-_keccak256 hash of `PROXY_BYTECODE`._
+keccak256 hash of `PROXY_BYTECODE`.
 
 ```solidity
-bytes32 internal constant PROXY_BYTECODE_HASH = 0x21c35dbe1b344a2488cf3321d6ce542f8e9f305544ff09e4993a62319a497c1f;
+bytes32 internal constant PROXY_BYTECODE_HASH = 0x21c35dbe1b344a2488cf3321d6ce542f8e9f305544ff09e4993a62319a497c1f
 ```
 
 ## Functions
@@ -57,8 +57,6 @@ bytes32 internal constant PROXY_BYTECODE_HASH = 0x21c35dbe1b344a2488cf3321d6ce54
 
 Creates a new contract using CREATE3.
 
-\*\*
-
 ```solidity
 function _create3(bytes32 _saltDomain, bytes32 _salt, bytes memory _initCode) internal returns (address);
 ```
@@ -66,8 +64,7 @@ function _create3(bytes32 _saltDomain, bytes32 _salt, bytes memory _initCode) in
 ### \_computeAddress
 
 Computes the resulting address of a contract deployed via CREATE3 from this factory, using address(this) and the given salt
-
-_The address creation formula is: keccak256(rlp([keccak256(0xff ++ address(this) ++ \_salt ++ keccak256(initCode))[12:], 0x01]))_
+The address creation formula is: keccak256(rlp([keccak256(0xff ++ address(this) ++ \_salt ++ keccak256(initCode))[12:], 0x01]))
 
 ```solidity
 function _computeAddress(bytes32 _namespacedSalt) internal view returns (address);

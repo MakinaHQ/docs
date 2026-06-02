@@ -1,6 +1,6 @@
 # SMCooldownReceipt
 
-[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/e8b2b2411f6e534177e79953d4414e8369c7d524/src/security-module/SMCooldownReceipt.sol)
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/392796cfaf86d8dc0e5b51f9530f6989211426e1/src/security-module/SMCooldownReceipt.sol)
 
 **Inherits:**
 ERC721, Ownable2Step, [ISMCooldownReceipt](/contracts/periphery/interfaces/ISMCooldownReceipt.sol/interface.ISMCooldownReceipt.md)
@@ -12,7 +12,7 @@ ERC721, Ownable2Step, [ISMCooldownReceipt](/contracts/periphery/interfaces/ISMCo
 ID of the next token to be minted.
 
 ```solidity
-uint256 public nextTokenId;
+uint256 public nextTokenId
 ```
 
 ## Functions

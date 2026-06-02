@@ -1,6 +1,6 @@
 # HubCoreRegistry
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/registries/HubCoreRegistry.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/registries/HubCoreRegistry.sol)
 
 **Inherits:**
 [CoreRegistry](/contracts/core/registries/CoreRegistry.sol/abstract.CoreRegistry.md), [IHubCoreRegistry](/contracts/core/interfaces/IHubCoreRegistry.sol/interface.IHubCoreRegistry.md)
@@ -11,7 +11,7 @@
 
 ```solidity
 bytes32 private constant HubCoreRegistryStorageLocation =
-    0x662caa641f82b896df85da03edbf3b36c0e08aa64db68d7994394899aadc4700;
+    0x662caa641f82b896df85da03edbf3b36c0e08aa64db68d7994394899aadc4700
 ```
 
 ## Functions
@@ -25,15 +25,18 @@ function _getHubCoreRegistryStorage() private pure returns (HubCoreRegistryStora
 ### constructor
 
 ```solidity
-constructor();
+constructor() ;
 ```
 
 ### initialize
 
 ```solidity
-function initialize(address _oracleRegistry, address _tokenRegistry, address _chainRegistry, address _initialAuthority)
-    external
-    initializer;
+function initialize(
+    address _oracleRegistry,
+    address _tokenRegistry,
+    address _chainRegistry,
+    address initialAuthority
+) external initializer;
 ```
 
 ### chainRegistry

@@ -1,6 +1,6 @@
 # AcrossV3BridgeConfig
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/bridge/configs/AcrossV3BridgeConfig.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/bridge/configs/AcrossV3BridgeConfig.sol)
 
 **Inherits:**
 AccessManagedUpgradeable, [IAcrossV3BridgeConfig](/contracts/core/interfaces/IAcrossV3BridgeConfig.sol/interface.IAcrossV3BridgeConfig.md)
@@ -11,7 +11,7 @@ AccessManagedUpgradeable, [IAcrossV3BridgeConfig](/contracts/core/interfaces/IAc
 
 ```solidity
 bytes32 private constant AcrossV3BridgeConfigStorageLocation =
-    0x55c9f27624440face9d60f824f50119631f5ca1c165e4b047f325c445d2b2500;
+    0x55c9f27624440face9d60f824f50119631f5ca1c165e4b047f325c445d2b2500
 ```
 
 ## Functions
@@ -19,19 +19,19 @@ bytes32 private constant AcrossV3BridgeConfigStorageLocation =
 ### \_getAcrossV3BridgeConfigStorage
 
 ```solidity
-function _getAcrossV3BridgeConfigStorage() internal pure returns (AcrossV3BridgeConfigStorage storage $);
+function _getAcrossV3BridgeConfigStorage() private pure returns (AcrossV3BridgeConfigStorage storage $);
 ```
 
 ### constructor
 
 ```solidity
-constructor();
+constructor() ;
 ```
 
 ### initialize
 
 ```solidity
-function initialize(address _initialAuthority) external initializer;
+function initialize(address initialAuthority) external initializer;
 ```
 
 ### isRouteSupported

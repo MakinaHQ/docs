@@ -1,6 +1,6 @@
 # WatermarkFeeManager
 
-[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/e8b2b2411f6e534177e79953d4414e8369c7d524/src/fee-managers/WatermarkFeeManager.sol)
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/392796cfaf86d8dc0e5b51f9530f6989211426e1/src/fee-managers/WatermarkFeeManager.sol)
 
 **Inherits:**
 [MachinePeriphery](/contracts/periphery/utils/MachinePeriphery.sol/abstract.MachinePeriphery.md), AccessManagedUpgradeable, [IWatermarkFeeManager](/contracts/periphery/interfaces/IWatermarkFeeManager.sol/interface.IWatermarkFeeManager.md)
@@ -9,25 +9,25 @@
 
 ### MAX_BPS
 
-_Full scale value in basis points_
+Full scale value in basis points
 
 ```solidity
-uint256 private constant MAX_BPS = 10_000;
+uint256 private constant MAX_BPS = 10_000
 ```
 
 ### MAX_FEE_RATE
 
-_Full scale value for fee rates_
+Full scale value for fee rates
 
 ```solidity
-uint256 private constant MAX_FEE_RATE = 1e18;
+uint256 private constant MAX_FEE_RATE = 1e18
 ```
 
 ### WatermarkFeeManagerStorageLocation
 
 ```solidity
 bytes32 private constant WatermarkFeeManagerStorageLocation =
-    0xede173ec12f445c51c989a2ee4f565cf9b40f8a01bd556574a3890308cdf3900;
+    0xede173ec12f445c51c989a2ee4f565cf9b40f8a01bd556574a3890308cdf3900
 ```
 
 ## Functions
@@ -61,12 +61,12 @@ function initialize(bytes calldata data) external override initializer;
 ### onlyMachine
 
 ```solidity
-modifier onlyMachine();
+modifier onlyMachine() ;
 ```
 
 ### authority
 
-_Returns the current authority._
+Returns the current authority.
 
 ```solidity
 function authority() public view override returns (address);
@@ -98,7 +98,7 @@ function perfFeeRate() external view override returns (uint256);
 
 ### mgmtFeeReceivers
 
-Fixed fee receivers.
+Management fee receivers.
 
 ```solidity
 function mgmtFeeReceivers() external view override returns (address[] memory);
@@ -106,7 +106,7 @@ function mgmtFeeReceivers() external view override returns (address[] memory);
 
 ### mgmtFeeSplitBps
 
-Fixed fee split between receivers in basis points. Values must sum to 10_000.
+Management fee split between receivers in basis points. Values must sum to 10_000.
 
 ```solidity
 function mgmtFeeSplitBps() external view override returns (uint256[] memory);
@@ -144,14 +144,26 @@ Current share price high watermark for the associated Machine.
 function sharePriceWatermark() external view override returns (uint256);
 ```
 
+### getRestrictedFeeConfigSelectors
+
+Returns the function selectors for the restricted fee configuration functions.
+
+```solidity
+function getRestrictedFeeConfigSelectors() external pure override returns (bytes4[] memory);
+```
+
 ### calculateFixedFee
 
 Calculates the fixed fee for a given share supply and elapsed time.
 
-_May update internal state related to fee accrual or realization._
+May update internal state related to fee accrual or realization.
 
 ```solidity
-function calculateFixedFee(uint256 currentShareSupply, uint256 elapsedTime) external view override returns (uint256);
+function calculateFixedFee(uint256 currentShareSupply, uint256 elapsedTime)
+    external
+    view
+    override
+    returns (uint256);
 ```
 
 **Parameters**
@@ -171,7 +183,7 @@ function calculateFixedFee(uint256 currentShareSupply, uint256 elapsedTime) exte
 
 Calculates the performance fee based on the share supply, share price performance and elapsed time.
 
-_May update internal state related to fee accrual or realization._
+May update internal state related to fee accrual or realization.
 
 ```solidity
 function calculatePerformanceFee(uint256 currentShareSupply, uint256, uint256 newSharePrice, uint256)
@@ -263,7 +275,7 @@ function setPerfFeeRate(uint256 newPerfFeeRate) external override restricted;
 
 ### setMgmtFeeSplit
 
-Sets the fixed fee split and receivers.
+Sets the management fee split and receivers.
 
 ```solidity
 function setMgmtFeeSplit(address[] calldata newMgmtFeeReceivers, uint256[] calldata newMgmtFeeSplitBps)
@@ -274,10 +286,10 @@ function setMgmtFeeSplit(address[] calldata newMgmtFeeReceivers, uint256[] calld
 
 **Parameters**
 
-| Name                  | Type        | Description                                                                           |
-| --------------------- | ----------- | ------------------------------------------------------------------------------------- |
-| `newMgmtFeeReceivers` | `address[]` | The new fixed fee receivers.                                                          |
-| `newMgmtFeeSplitBps`  | `uint256[]` | The new fixed fee split between receivers in basis points. Values must sum to 10_000. |
+| Name                  | Type        | Description                                                                                |
+| --------------------- | ----------- | ------------------------------------------------------------------------------------------ |
+| `newMgmtFeeReceivers` | `address[]` | The new management fee receivers.                                                          |
+| `newMgmtFeeSplitBps`  | `uint256[]` | The new management fee split between receivers in basis points. Values must sum to 10_000. |
 
 ### setPerfFeeSplit
 
@@ -307,9 +319,9 @@ function setSecurityModule(address _securityModule) external override onlyFactor
 
 **Parameters**
 
-| Name              | Type      | Description |
-| ----------------- | --------- | ----------- |
-| `_securityModule` | `address` |             |
+| Name              | Type      | Description                         |
+| ----------------- | --------- | ----------------------------------- |
+| `_securityModule` | `address` | The address of the security module. |
 
 ### \_checkFeeSplit
 

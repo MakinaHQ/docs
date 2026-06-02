@@ -1,6 +1,6 @@
 # ISwapModule
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/interfaces/ISwapModule.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/interfaces/ISwapModule.sol)
 
 ## Functions
 
@@ -49,11 +49,11 @@ function setSwapperTargets(uint16 swapperId, address approvalTarget, address exe
 
 **Parameters**
 
-| Name              | Type      | Description          |
-| ----------------- | --------- | -------------------- |
-| `swapperId`       | `uint16`  | The swapper ID.      |
-| `approvalTarget`  | `address` | The approval target. |
-| `executionTarget` | `address` |                      |
+| Name              | Type      | Description           |
+| ----------------- | --------- | --------------------- |
+| `swapperId`       | `uint16`  | The swapper ID.       |
+| `approvalTarget`  | `address` | The approval target.  |
+| `executionTarget` | `address` | The execution target. |
 
 ## Events
 

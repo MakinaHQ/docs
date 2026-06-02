@@ -1,6 +1,6 @@
 # IWatermarkFeeManager
 
-[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/e8b2b2411f6e534177e79953d4414e8369c7d524/src/interfaces/IWatermarkFeeManager.sol)
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/392796cfaf86d8dc0e5b51f9530f6989211426e1/src/interfaces/IWatermarkFeeManager.sol)
 
 **Inherits:**
 IFeeManager, [ISecurityModuleReference](/contracts/periphery/interfaces/ISecurityModuleReference.sol/interface.ISecurityModuleReference.md), [IMachinePeriphery](/contracts/periphery/interfaces/IMachinePeriphery.sol/interface.IMachinePeriphery.md)
@@ -33,7 +33,7 @@ function perfFeeRate() external view returns (uint256);
 
 ### mgmtFeeReceivers
 
-Fixed fee receivers.
+Management fee receivers.
 
 ```solidity
 function mgmtFeeReceivers() external view returns (address[] memory);
@@ -41,7 +41,7 @@ function mgmtFeeReceivers() external view returns (address[] memory);
 
 ### mgmtFeeSplitBps
 
-Fixed fee split between receivers in basis points. Values must sum to 10_000.
+Management fee split between receivers in basis points. Values must sum to 10_000.
 
 ```solidity
 function mgmtFeeSplitBps() external view returns (uint256[] memory);
@@ -123,7 +123,7 @@ function setPerfFeeRate(uint256 newPerfFeeRate) external;
 
 ### setMgmtFeeSplit
 
-Sets the fixed fee split and receivers.
+Sets the management fee split and receivers.
 
 ```solidity
 function setMgmtFeeSplit(address[] calldata newMgmtFeeReceivers, uint256[] calldata newMgmtFeeSplitBps) external;
@@ -131,10 +131,10 @@ function setMgmtFeeSplit(address[] calldata newMgmtFeeReceivers, uint256[] calld
 
 **Parameters**
 
-| Name                  | Type        | Description                                                                           |
-| --------------------- | ----------- | ------------------------------------------------------------------------------------- |
-| `newMgmtFeeReceivers` | `address[]` | The new fixed fee receivers.                                                          |
-| `newMgmtFeeSplitBps`  | `uint256[]` | The new fixed fee split between receivers in basis points. Values must sum to 10_000. |
+| Name                  | Type        | Description                                                                                |
+| --------------------- | ----------- | ------------------------------------------------------------------------------------------ |
+| `newMgmtFeeReceivers` | `address[]` | The new management fee receivers.                                                          |
+| `newMgmtFeeSplitBps`  | `uint256[]` | The new management fee split between receivers in basis points. Values must sum to 10_000. |
 
 ### setPerfFeeSplit
 
@@ -206,10 +206,10 @@ struct WatermarkFeeManagerInitParams {
     uint256 initialMgmtFeeRatePerSecond;
     uint256 initialSmFeeRatePerSecond;
     uint256 initialPerfFeeRate;
-    uint256[] initialMgmtFeeSplitBps;
     address[] initialMgmtFeeReceivers;
-    uint256[] initialPerfFeeSplitBps;
+    uint256[] initialMgmtFeeSplitBps;
     address[] initialPerfFeeReceivers;
+    uint256[] initialPerfFeeSplitBps;
 }
 ```
 
@@ -220,7 +220,7 @@ struct WatermarkFeeManagerInitParams {
 | `initialMgmtFeeRatePerSecond` | `uint256`   | Management fee rate per second, in 18 decimals precision.                           |
 | `initialSmFeeRatePerSecond`   | `uint256`   | Security module fee rate per second, in 18 decimals precision.                      |
 | `initialPerfFeeRate`          | `uint256`   | Performance fee rate on profit, in 18 decimals precision.                           |
-| `initialMgmtFeeSplitBps`      | `uint256[]` | Fixed fee split between receivers in basis points. Values must sum to 10_000.       |
-| `initialMgmtFeeReceivers`     | `address[]` | Fixed fee receivers.                                                                |
-| `initialPerfFeeSplitBps`      | `uint256[]` | Performance fee split between receivers in basis points. Values must sum to 10_000. |
+| `initialMgmtFeeReceivers`     | `address[]` | Management fee receivers.                                                           |
+| `initialMgmtFeeSplitBps`      | `uint256[]` | Management fee split between receivers in basis points. Values must sum to 10_000.  |
 | `initialPerfFeeReceivers`     | `address[]` | Performance fee receivers.                                                          |
+| `initialPerfFeeSplitBps`      | `uint256[]` | Performance fee split between receivers in basis points. Values must sum to 10_000. |

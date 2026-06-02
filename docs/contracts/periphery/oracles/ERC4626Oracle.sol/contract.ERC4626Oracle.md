@@ -1,11 +1,12 @@
 # ERC4626Oracle
 
-[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/e8b2b2411f6e534177e79953d4414e8369c7d524/src/oracles/ERC4626Oracle.sol)
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/392796cfaf86d8dc0e5b51f9530f6989211426e1/src/oracles/ERC4626Oracle.sol)
 
 **Inherits:**
 AggregatorV2V3Interface
 
-SPDX-License-Identifier: MIT
+**Title:**
+ERC4626Oracle
 
 Chainlink-like price oracle wrapping ERC4626 vaults.
 This oracle exposes the price of one share of the
@@ -18,7 +19,7 @@ vault it wraps in terms of its underlying asset (the exchange rate).
 The implementation version of this contract.
 
 ```solidity
-uint256 public immutable version = 1;
+uint256 public immutable version = 1
 ```
 
 ### vault
@@ -26,7 +27,7 @@ uint256 public immutable version = 1;
 The ERC4626 vault.
 
 ```solidity
-IERC4626 public immutable vault;
+IERC4626 public immutable vault
 ```
 
 ### underlying
@@ -34,7 +35,7 @@ IERC4626 public immutable vault;
 The underlying asset of the vault.
 
 ```solidity
-IERC20Metadata public immutable underlying;
+IERC20Metadata public immutable underlying
 ```
 
 ### decimals
@@ -42,7 +43,7 @@ IERC20Metadata public immutable underlying;
 The number of decimals of the price returned by this oracle.
 
 ```solidity
-uint8 public immutable decimals;
+uint8 public immutable decimals
 ```
 
 ### description
@@ -50,7 +51,7 @@ uint8 public immutable decimals;
 The description for this oracle.
 
 ```solidity
-string public description;
+string public description
 ```
 
 ### ONE_SHARE
@@ -58,7 +59,7 @@ string public description;
 One unit of the ERC4626 vault.
 
 ```solidity
-uint256 public immutable ONE_SHARE;
+uint256 public immutable ONE_SHARE
 ```
 
 ### SCALING_NUMERATOR
@@ -66,17 +67,17 @@ uint256 public immutable ONE_SHARE;
 Scaling factor numerator used to adjust price to the desired decimals.
 
 ```solidity
-uint256 public immutable SCALING_NUMERATOR;
+uint256 public immutable SCALING_NUMERATOR
 ```
 
 ## Functions
 
 ### constructor
 
-Creates a new ERC4626Wrapper for a given ERC4626 vault.
+Constructor for the ERC4626Oracle.
 
 ```solidity
-constructor(IERC4626 _vault, uint8 _decimals);
+constructor(IERC4626 _vault, uint8 _decimals) ;
 ```
 
 **Parameters**

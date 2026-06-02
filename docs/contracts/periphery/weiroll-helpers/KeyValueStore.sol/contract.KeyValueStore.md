@@ -1,6 +1,6 @@
 # KeyValueStore
 
-[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/e8b2b2411f6e534177e79953d4414e8369c7d524/src/weiroll-helpers/KeyValueStore.sol)
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/392796cfaf86d8dc0e5b51f9530f6989211426e1/src/weiroll-helpers/KeyValueStore.sol)
 
 ## State Variables
 
@@ -9,15 +9,15 @@
 Owner of the contract.
 
 ```solidity
-address public immutable caliber;
+address public immutable caliber
 ```
 
 ### \_store
 
-_Internal key-value storage mapping._
+Internal key-value storage mapping.
 
 ```solidity
-mapping(bytes32 key => bytes32 value) private _store;
+mapping(bytes32 key => bytes32 value) private _store
 ```
 
 ## Functions
@@ -25,13 +25,13 @@ mapping(bytes32 key => bytes32 value) private _store;
 ### onlyCaliber
 
 ```solidity
-modifier onlyCaliber();
+modifier onlyCaliber() ;
 ```
 
 ### constructor
 
 ```solidity
-constructor(address _caliber);
+constructor(address _caliber) ;
 ```
 
 ### set

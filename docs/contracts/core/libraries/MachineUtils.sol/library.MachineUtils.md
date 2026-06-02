@@ -1,20 +1,20 @@
 # MachineUtils
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/libraries/MachineUtils.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/libraries/MachineUtils.sol)
 
 ## State Variables
 
 ### RATE_SCALE
 
 ```solidity
-uint256 private constant RATE_SCALE = 1e18;
+uint256 private constant RATE_SCALE = 1e18
 ```
 
 ## Functions
 
 ### updateTotalAum
 
-_Updates the total AUM of the machine and performs share price change check._
+Updates the total AUM of the machine and performs share price change check.
 
 ```solidity
 function updateTotalAum(Machine.MachineStorage storage $, address oracleRegistry, bool sharePriceChangeCheck)
@@ -38,7 +38,7 @@ function updateTotalAum(Machine.MachineStorage storage $, address oracleRegistry
 
 ### manageFees
 
-_Manages the fee minting process, including calculating and minting fixed and performance fees._
+Manages the fee minting process, including calculating and minting fixed and performance fees.
 
 ```solidity
 function manageFees(Machine.MachineStorage storage $) external returns (uint256);
@@ -58,7 +58,7 @@ function manageFees(Machine.MachineStorage storage $) external returns (uint256)
 
 ### updateSpokeCaliberAccountingData
 
-_Updates the spoke caliber accounting data in the machine storage._
+Updates the spoke caliber accounting data in the machine storage.
 
 ```solidity
 function updateSpokeCaliberAccountingData(
@@ -84,7 +84,7 @@ function updateSpokeCaliberAccountingData(
 
 ### migrateFromPreDeposit
 
-_Manages the migration from a pre-deposit vault to a machine, and initializes the machine's accounting state._
+Manages the migration from a pre-deposit vault to a machine, and initializes the machine's AUM.
 
 ```solidity
 function migrateFromPreDeposit(Machine.MachineStorage storage $, address preDepositVault, address oracleRegistry)
@@ -101,10 +101,13 @@ function migrateFromPreDeposit(Machine.MachineStorage storage $, address preDepo
 
 ### getSharePrice
 
-_Calculates the share price based on given AUM, share supply and share token decimals offset._
+Calculates the share price based on given AUM, share supply and share token decimals offset.
 
 ```solidity
-function getSharePrice(uint256 aum, uint256 supply, uint256 shareTokenDecimalsOffset) public pure returns (uint256);
+function getSharePrice(uint256 aum, uint256 supply, uint256 shareTokenDecimalsOffset)
+    public
+    pure
+    returns (uint256);
 ```
 
 **Parameters**
@@ -123,7 +126,7 @@ function getSharePrice(uint256 aum, uint256 supply, uint256 shareTokenDecimalsOf
 
 ### \_handlePerChainQueryResponse
 
-_Handles a received Wormhole CCQ PerChainQueryResponse object and updates the corresponding caliber accounting data in the machine storage._
+Handles a received Wormhole CCQ PerChainQueryResponse object and updates the corresponding caliber accounting data in the machine storage.
 
 ```solidity
 function _handlePerChainQueryResponse(
@@ -145,7 +148,7 @@ function _handlePerChainQueryResponse(
 
 ### \_decodeAndMapBridgeAmounts
 
-_Decodes (foreignToken, amount) pairs, resolves local tokens, and stores amounts in the map._
+Decodes (foreignToken, amount) pairs, resolves local tokens, and stores amounts in the map.
 
 ```solidity
 function _decodeAndMapBridgeAmounts(
@@ -158,7 +161,7 @@ function _decodeAndMapBridgeAmounts(
 
 ### \_getTotalAum
 
-_Computes the total AUM of the machine._
+Computes the total AUM of the machine.
 
 ```solidity
 function _getTotalAum(Machine.MachineStorage storage $, address oracleRegistry) private view returns (uint256);
@@ -173,7 +176,7 @@ function _getTotalAum(Machine.MachineStorage storage $, address oracleRegistry) 
 
 ### \_checkBridgeState
 
-_Checks if the bridge state is consistent between the machine and spoke caliber._
+Checks if the bridge state is consistent between the machine and spoke caliber.
 
 ```solidity
 function _checkBridgeState(
@@ -184,7 +187,7 @@ function _checkBridgeState(
 
 ### \_accountingValueOf
 
-_Computes the accounting value of a given token amount._
+Computes the accounting value of a given token amount.
 
 ```solidity
 function _accountingValueOf(address oracleRegistry, address accountingToken, address token, uint256 amount)
@@ -195,7 +198,7 @@ function _accountingValueOf(address oracleRegistry, address accountingToken, add
 
 ### \_checkMaxRelativeChange
 
-_Checks that the relative change between two values does not exceed the maximum allowed rate over elapsed time._
+Checks that the relative change between two values does not exceed the maximum allowed rate over elapsed time.
 
 ```solidity
 function _checkMaxRelativeChange(

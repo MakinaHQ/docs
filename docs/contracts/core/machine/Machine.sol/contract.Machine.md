@@ -1,6 +1,6 @@
 # Machine
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/machine/Machine.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/machine/Machine.sol)
 
 **Inherits:**
 [MakinaGovernable](/contracts/core/utils/MakinaGovernable.sol/abstract.MakinaGovernable.md), [BridgeController](/contracts/core/bridge/controller/BridgeController.sol/abstract.BridgeController.md), ReentrancyGuard, [IMachine](/contracts/core/interfaces/IMachine.sol/interface.IMachine.md)
@@ -12,13 +12,14 @@
 Address of the Wormhole Core Bridge.
 
 ```solidity
-address public immutable wormhole;
+address public immutable wormhole
 ```
 
 ### MachineStorageLocation
 
 ```solidity
-bytes32 private constant MachineStorageLocation = 0x55fe2a17e400bcd0e2125123a7fc955478e727b29a4c522f4f2bd95d961bd900;
+bytes32 private constant MachineStorageLocation =
+    0x55fe2a17e400bcd0e2125123a7fc955478e727b29a4c522f4f2bd95d961bd900
 ```
 
 ## Functions
@@ -98,7 +99,7 @@ function accountingToken() external view override returns (address);
 Address of the hub caliber.
 
 ```solidity
-function hubCaliber() external view returns (address);
+function hubCaliber() external view override returns (address);
 ```
 
 ### feeManager
@@ -135,7 +136,7 @@ function maxPerfFeeAccrualRate() external view override returns (uint256);
 
 ### feeMintCooldown
 
-Minimum time to be elapsed between two fee minting events.
+Minimum time that must elapse between two fee minting events.
 
 ```solidity
 function feeMintCooldown() external view override returns (uint256);
@@ -222,7 +223,7 @@ function getSpokeCaliberDetailedAum(uint256 chainId)
 Spoke Chain ID => Spoke Caliber Mailbox Address.
 
 ```solidity
-function getSpokeCaliberMailbox(uint256 chainId) external view returns (address);
+function getSpokeCaliberMailbox(uint256 chainId) external view override returns (address);
 ```
 
 ### getSpokeBridgeAdapter
@@ -230,7 +231,7 @@ function getSpokeCaliberMailbox(uint256 chainId) external view returns (address)
 Spoke Chain ID => Spoke Bridge ID => Spoke Bridge Adapter.
 
 ```solidity
-function getSpokeBridgeAdapter(uint256 chainId, uint16 bridgeId) external view returns (address);
+function getSpokeBridgeAdapter(uint256 chainId, uint16 bridgeId) external view override returns (address);
 ```
 
 ### isIdleToken
@@ -253,8 +254,8 @@ function getIdleTokensLength() external view override returns (uint256);
 
 Idle token index => Idle token address.
 
-_There are no guarantees on the ordering of values inside the idle tokens list,
-and it may change when values are added or removed._
+There are no guarantees on the ordering of values inside the idle tokens list,
+and it may change when values are added or removed.
 
 ```solidity
 function getIdleToken(uint256 idx) external view override returns (address);
@@ -318,7 +319,7 @@ function manageTransfer(address token, uint256 amount, bytes calldata data) exte
 
 ### transferToHubCaliber
 
-Initiates a token transfers to the hub caliber.
+Initiates a token transfer to the hub caliber.
 
 ```solidity
 function transferToHubCaliber(address token, uint256 amount) external override notRecoveryMode onlyMechanic;
@@ -333,7 +334,7 @@ function transferToHubCaliber(address token, uint256 amount) external override n
 
 ### transferToSpokeCaliber
 
-Initiates a token transfers to the spoke caliber.
+Initiates a token transfer to the spoke caliber.
 
 ```solidity
 function transferToSpokeCaliber(
@@ -392,7 +393,7 @@ function authorizeInBridgeTransfer(uint16 bridgeId, bytes32 messageHash) externa
 
 ### claimInBridgeTransfer
 
-Transfers a received bridge transfer out of the adapter.
+Transfers a received bridge transfer out of the corresponding bridge adapter.
 
 ```solidity
 function claimInBridgeTransfer(uint16 bridgeId, uint256 transferId) external override onlyOperator;
@@ -441,6 +442,7 @@ Deposits accounting tokens into the machine and mints shares to the receiver.
 ```solidity
 function deposit(uint256 assets, address receiver, uint256 minShares, bytes32 referralKey)
     external
+    override
     nonReentrant
     notRecoveryMode
     returns (uint256);
@@ -492,7 +494,7 @@ function redeem(uint256 shares, address receiver, uint256 minAssets)
 
 Updates spoke caliber accounting data using Wormhole Cross-Chain Queries (CCQ).
 
-_Validates the Wormhole CCQ response and guardian signatures before updating state._
+Validates the Wormhole CCQ response and guardian signatures before updating state.
 
 ```solidity
 function updateSpokeCaliberAccountingData(bytes calldata response, GuardianSignature[] calldata signatures)
@@ -518,14 +520,14 @@ function setSpokeCaliber(
     address spokeCaliberMailbox,
     uint16[] calldata bridges,
     address[] calldata adapters
-) external restricted;
+) external override restricted;
 ```
 
 **Parameters**
 
 | Name                  | Type        | Description                                                                               |
 | --------------------- | ----------- | ----------------------------------------------------------------------------------------- |
-| `foreignChainId`      | `uint256`   |                                                                                           |
+| `foreignChainId`      | `uint256`   | The foreign EVM chain ID of the spoke caliber.                                            |
 | `spokeCaliberMailbox` | `address`   | The address of the spoke caliber mailbox.                                                 |
 | `bridges`             | `uint16[]`  | The list of bridges supported with the spoke caliber.                                     |
 | `adapters`            | `address[]` | The list of corresponding adapters for each bridge. Must be the same length as `bridges`. |
@@ -535,14 +537,17 @@ function setSpokeCaliber(
 Registers a spoke bridge adapter.
 
 ```solidity
-function setSpokeBridgeAdapter(uint256 foreignChainId, uint16 bridgeId, address adapter) external override restricted;
+function setSpokeBridgeAdapter(uint256 foreignChainId, uint16 bridgeId, address adapter)
+    external
+    override
+    restricted;
 ```
 
 **Parameters**
 
 | Name             | Type      | Description                                |
 | ---------------- | --------- | ------------------------------------------ |
-| `foreignChainId` | `uint256` |                                            |
+| `foreignChainId` | `uint256` | The foreign EVM chain ID of the adapter.   |
 | `bridgeId`       | `uint16`  | The ID of the bridge.                      |
 | `adapter`        | `address` | The foreign address of the bridge adapter. |
 
@@ -704,10 +709,10 @@ function setMaxBridgeLossBps(uint16 bridgeId, uint256 maxBridgeLossBps) external
 
 ### resetBridgingState
 
-Resets internal bridge counters for a given token, and withdraw token balances held by all bridge adapters.
+Resets internal bridge counters for a given token, and withdraws token balances held by all bridge adapters.
 
-_This function is intended to be used by the DAO to realign bridge accounting state and maintain protocol consistency,
-typically in response to operator deviations, external bridge discrepancies, or unbounded counter growth._
+This function is intended to be used by the DAO to realign bridge accounting state and maintain protocol consistency,
+typically in response to operator deviations, external bridge discrepancies, or unbounded counter growth.
 
 ```solidity
 function resetBridgingState(address token) external override onlySecurityCouncil;
@@ -721,7 +726,7 @@ function resetBridgingState(address token) external override onlySecurityCouncil
 
 ### \_setSpokeBridgeAdapter
 
-_Sets the spoke bridge adapter for a given foreign chain ID and bridge ID._
+Sets the spoke bridge adapter for a given foreign chain ID and bridge ID.
 
 ```solidity
 function _setSpokeBridgeAdapter(uint256 foreignChainId, uint16 bridgeId, address adapter) internal;
@@ -729,7 +734,7 @@ function _setSpokeBridgeAdapter(uint256 foreignChainId, uint16 bridgeId, address
 
 ### \_notifyIdleToken
 
-_Checks token balance, and registers token if needed._
+Checks token balance, and registers token if needed.
 
 ```solidity
 function _notifyIdleToken(address token) internal;

@@ -1,6 +1,6 @@
 # TokenRegistry
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/registries/TokenRegistry.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/registries/TokenRegistry.sol)
 
 **Inherits:**
 AccessManagedUpgradeable, [ITokenRegistry](/contracts/core/interfaces/ITokenRegistry.sol/interface.ITokenRegistry.md)
@@ -11,7 +11,7 @@ AccessManagedUpgradeable, [ITokenRegistry](/contracts/core/interfaces/ITokenRegi
 
 ```solidity
 bytes32 private constant TokenRegistryStorageLocation =
-    0x1aeafc547075d7f69f86c9a87aafb3edc5a48d01acbbe220b9a330d69702ed00;
+    0x1aeafc547075d7f69f86c9a87aafb3edc5a48d01acbbe220b9a330d69702ed00
 ```
 
 ## Functions
@@ -25,13 +25,13 @@ function _getTokenRegistryStorage() private pure returns (TokenRegistryStorage s
 ### constructor
 
 ```solidity
-constructor();
+constructor() ;
 ```
 
 ### initialize
 
 ```solidity
-function initialize(address _accessManager) external initializer;
+function initialize(address initialAuthority) external initializer;
 ```
 
 ### getForeignToken
@@ -39,7 +39,7 @@ function initialize(address _accessManager) external initializer;
 Local token address => Foreign EVM chain ID => Foreign Token address
 
 ```solidity
-function getForeignToken(address _localToken, uint256 _foreignEvmChainId) external view returns (address);
+function getForeignToken(address localToken, uint256 foreignEvmChainId) external view override returns (address);
 ```
 
 ### getLocalToken
@@ -47,24 +47,27 @@ function getForeignToken(address _localToken, uint256 _foreignEvmChainId) extern
 Foreign token address => Foreign EVM chain ID => Local Token address
 
 ```solidity
-function getLocalToken(address _foreignToken, uint256 _foreignEvmChainId) external view returns (address);
+function getLocalToken(address foreignToken, uint256 foreignEvmChainId) external view override returns (address);
 ```
 
 ### setToken
 
-Associates a local and a foreign token addresse.
+Associates a local and a foreign token address.
 
 ```solidity
-function setToken(address _localToken, uint256 _foreignEvmChainId, address _foreignToken) external restricted;
+function setToken(address localToken, uint256 foreignEvmChainId, address foreignToken)
+    external
+    override
+    restricted;
 ```
 
 **Parameters**
 
-| Name                 | Type      | Description                |
-| -------------------- | --------- | -------------------------- |
-| `_localToken`        | `address` | The local token address.   |
-| `_foreignEvmChainId` | `uint256` | The foreign EVM chain ID.  |
-| `_foreignToken`      | `address` | The foreign token address. |
+| Name                | Type      | Description                |
+| ------------------- | --------- | -------------------------- |
+| `localToken`        | `address` | The local token address.   |
+| `foreignEvmChainId` | `uint256` | The foreign EVM chain ID.  |
+| `foreignToken`      | `address` | The foreign token address. |
 
 ## Structs
 

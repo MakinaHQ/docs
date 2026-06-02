@@ -1,6 +1,6 @@
 # Caliber
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/caliber/Caliber.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/caliber/Caliber.sol)
 
 **Inherits:**
 [MakinaContext](/contracts/core/utils/MakinaContext.sol/abstract.MakinaContext.md), AccessManagedUpgradeable, ReentrancyGuard, ERC721Holder, ERC1155Holder, [ICaliber](/contracts/core/interfaces/ICaliber.sol/interface.ICaliber.md)
@@ -9,18 +9,18 @@
 
 ### MAX_BPS
 
-_Full scale value in basis points._
+Full scale value in basis points.
 
 ```solidity
-uint256 private constant MAX_BPS = 10_000;
+uint256 private constant MAX_BPS = 10_000
 ```
 
 ### ACCOUNTING_OUTPUT_STATE_END
 
-_Flag to indicate end of values in the accounting output state._
+Flag to indicate end of values in the accounting output state.
 
 ```solidity
-bytes32 private constant ACCOUNTING_OUTPUT_STATE_END = bytes32(type(uint256).max);
+bytes32 private constant ACCOUNTING_OUTPUT_STATE_END = bytes32(type(uint256).max)
 ```
 
 ### weirollVm
@@ -28,13 +28,14 @@ bytes32 private constant ACCOUNTING_OUTPUT_STATE_END = bytes32(type(uint256).max
 Address of the Weiroll VM.
 
 ```solidity
-address public immutable weirollVm;
+address public immutable weirollVm
 ```
 
 ### CaliberStorageLocation
 
 ```solidity
-bytes32 private constant CaliberStorageLocation = 0x32461bf02c7aa4aa351cd04411b6c7b9348073fbccf471c7b347bdaada044b00;
+bytes32 private constant CaliberStorageLocation =
+    0x32461bf02c7aa4aa351cd04411b6c7b9348073fbccf471c7b347bdaada044b00
 ```
 
 ## Functions
@@ -64,39 +65,39 @@ function initialize(CaliberInitParams calldata cParams, address _accountingToken
 
 **Parameters**
 
-| Name                  | Type                | Description                               |
-| --------------------- | ------------------- | ----------------------------------------- |
-| `cParams`             | `CaliberInitParams` | The caliber initialization parameters.    |
-| `_accountingToken`    | `address`           | The address of the accounting token.      |
-| `_hubMachineEndpoint` | `address`           | The address of the hub machine endpoints. |
+| Name                  | Type                | Description                              |
+| --------------------- | ------------------- | ---------------------------------------- |
+| `cParams`             | `CaliberInitParams` | The caliber initialization parameters.   |
+| `_accountingToken`    | `address`           | The address of the accounting token.     |
+| `_hubMachineEndpoint` | `address`           | The address of the hub machine endpoint. |
 
 ### onlyOperator
 
 ```solidity
-modifier onlyOperator();
+modifier onlyOperator() ;
 ```
 
 ### onlyRiskManager
 
 ```solidity
-modifier onlyRiskManager();
+modifier onlyRiskManager() ;
 ```
 
 ### onlyRiskManagerTimelock
 
 ```solidity
-modifier onlyRiskManagerTimelock();
+modifier onlyRiskManagerTimelock() ;
 ```
 
 ### onlyAccountingAuthorized
 
 ```solidity
-modifier onlyAccountingAuthorized();
+modifier onlyAccountingAuthorized() ;
 ```
 
 ### authority
 
-_Returns the current authority._
+Returns the current authority.
 
 ```solidity
 function authority() public view override returns (address);
@@ -160,7 +161,7 @@ function pendingTimelockExpiry() public view override returns (uint256);
 
 ### maxPositionIncreaseLossBps
 
-Max allowed value loss (in basis point) when increasing a position.
+Max allowed value loss (in basis points) when increasing a position.
 
 ```solidity
 function maxPositionIncreaseLossBps() external view override returns (uint256);
@@ -168,7 +169,7 @@ function maxPositionIncreaseLossBps() external view override returns (uint256);
 
 ### maxPositionDecreaseLossBps
 
-Max allowed value loss (in basis point) when decreasing a position.
+Max allowed value loss (in basis points) when decreasing a position.
 
 ```solidity
 function maxPositionDecreaseLossBps() external view override returns (uint256);
@@ -176,7 +177,7 @@ function maxPositionDecreaseLossBps() external view override returns (uint256);
 
 ### maxSwapLossBps
 
-Max allowed value loss (in basis point) for base token swaps.
+Max allowed value loss (in basis points) for base token swaps.
 
 ```solidity
 function maxSwapLossBps() external view override returns (uint256);
@@ -202,8 +203,8 @@ function getPositionsLength() external view override returns (uint256);
 
 Position index => Position ID
 
-_There are no guarantees on the ordering of values inside the Position ID list,
-and it may change when values are added or removed._
+There are no guarantees on the ordering of values inside the Position ID list,
+and it may change when values are added or removed.
 
 ```solidity
 function getPositionId(uint256 idx) external view override returns (uint256);
@@ -237,8 +238,8 @@ function getBaseTokensLength() external view override returns (uint256);
 
 Base token index => Base token address
 
-_There are no guarantees on the ordering of values inside the base tokens list,
-and it may change when values are added or removed._
+There are no guarantees on the ordering of values inside the base tokens list,
+and it may change when values are added or removed.
 
 ```solidity
 function getBaseToken(uint256 idx) external view override returns (address);
@@ -266,7 +267,12 @@ function isAccountingFresh() external view override returns (bool);
 Returns the caliber's net AUM along with detailed position and base token breakdowns.
 
 ```solidity
-function getDetailedAum() external view override nonReentrantView returns (uint256, bytes[] memory, bytes[] memory);
+function getDetailedAum()
+    external
+    view
+    override
+    nonReentrantView
+    returns (uint256, bytes[] memory, bytes[] memory);
 ```
 
 **Returns**
@@ -309,7 +315,7 @@ function removeBaseToken(address token) external override onlyRiskManagerTimeloc
 
 Accounts for a position.
 
-_If the position value goes to zero, it is closed._
+If the position value goes to zero, it is closed.
 
 ```solidity
 function accountForPosition(Instruction calldata instruction)
@@ -362,12 +368,12 @@ function accountForPositionBatch(Instruction[] calldata instructions, uint256[] 
 
 ### managePosition
 
-Manages a position's state through paired management and accounting instructions
+Manages a position's state through paired management and accounting instructions.
 
-\*Performs accounting updates and modifies contract storage by:
+Performs accounting updates and modifies contract storage by:
 
 - Adding new positions to storage when created.
-- Removing positions from storage when value reaches zero.\*
+- Removing positions from storage when value reaches zero.
 
 ```solidity
 function managePosition(Instruction calldata mgmtInstruction, Instruction calldata acctInstruction)
@@ -396,7 +402,7 @@ function managePosition(Instruction calldata mgmtInstruction, Instruction callda
 
 Manages a batch of positions.
 
-_Convenience function to manage multiple positions in a single transaction._
+Convenience function to manage multiple positions in a single transaction.
 
 ```solidity
 function managePositionBatch(Instruction[] calldata mgmtInstructions, Instruction[] calldata acctInstructions)
@@ -423,7 +429,7 @@ function managePositionBatch(Instruction[] calldata mgmtInstructions, Instructio
 
 ### manageFlashLoan
 
-Manages flashLoan funds.
+Manages flash loan funds.
 
 ```solidity
 function manageFlashLoan(Instruction calldata instruction, address token, uint256 amount) external override;
@@ -431,11 +437,11 @@ function manageFlashLoan(Instruction calldata instruction, address token, uint25
 
 **Parameters**
 
-| Name          | Type          | Description                           |
-| ------------- | ------------- | ------------------------------------- |
-| `instruction` | `Instruction` | The flashLoan management instruction. |
-| `token`       | `address`     | The loan token.                       |
-| `amount`      | `uint256`     | The loan amount.                      |
+| Name          | Type          | Description                            |
+| ------------- | ------------- | -------------------------------------- |
+| `instruction` | `Instruction` | The flash loan management instruction. |
+| `token`       | `address`     | The loan token.                        |
+| `amount`      | `uint256`     | The loan amount.                       |
 
 ### harvest
 
@@ -458,7 +464,7 @@ function harvest(Instruction calldata instruction, ISwapModule.SwapOrder[] calld
 
 ### swap
 
-Performs a swap via the swapModule module.
+Performs a swap via the swap module.
 
 ```solidity
 function swap(ISwapModule.SwapOrder calldata order) external override nonReentrant onlyOperator;
@@ -533,8 +539,8 @@ function setTimelockDuration(uint256 newTimelockDuration) external override only
 
 Schedules an update of the root of the Merkle tree containing allowed instructions.
 
-_The update will take effect after the timelock duration stored in the contract
-at the time of the call._
+The update will take effect after the timelock duration stored in the contract
+at the time of the call.
 
 ```solidity
 function scheduleAllowedInstrRootUpdate(bytes32 newAllowedInstrRoot) external override onlyRiskManager;
@@ -542,15 +548,15 @@ function scheduleAllowedInstrRootUpdate(bytes32 newAllowedInstrRoot) external ov
 
 **Parameters**
 
-| Name                  | Type      | Description |
-| --------------------- | --------- | ----------- |
-| `newAllowedInstrRoot` | `bytes32` |             |
+| Name                  | Type      | Description          |
+| --------------------- | --------- | -------------------- |
+| `newAllowedInstrRoot` | `bytes32` | The new Merkle root. |
 
 ### cancelAllowedInstrRootUpdate
 
 Cancels a scheduled update of the root of the Merkle tree containing allowed instructions.
 
-_Reverts if no pending update exists or if the timelock has expired._
+Reverts if no pending update exists or if the timelock has expired.
 
 ```solidity
 function cancelAllowedInstrRootUpdate() external override;
@@ -648,7 +654,7 @@ function removeInstrRootGuardian(address guardian) external override restricted;
 
 ### \_addBaseToken
 
-_Adds a new base token to storage._
+Adds a new base token to storage.
 
 ```solidity
 function _addBaseToken(address token) internal;
@@ -656,7 +662,7 @@ function _addBaseToken(address token) internal;
 
 ### \_managePosition
 
-_Manages and accounts for a position by executing the provided instructions._
+Manages and accounts for a position by executing the provided instructions.
 
 ```solidity
 function _managePosition(Instruction calldata mgmtInstruction, Instruction calldata acctInstruction)
@@ -666,8 +672,8 @@ function _managePosition(Instruction calldata mgmtInstruction, Instruction calld
 
 ### \_accountForPosition
 
-_Computes the accounting value of a position. Depending on last and current value, the
-position is then either created, closed or simply updated in storage._
+Computes the accounting value of a position. Depending on last and current value, the
+position is then either created, closed or simply updated in storage.
 
 ```solidity
 function _accountForPosition(Instruction calldata instruction, bool checks) internal returns (uint256, int256);
@@ -675,7 +681,7 @@ function _accountForPosition(Instruction calldata instruction, bool checks) inte
 
 ### \_decodeAccountingOutputState
 
-_Decodes the output state of an accounting instruction into an array of amounts._
+Decodes the output state of an accounting instruction into an array of amounts.
 
 ```solidity
 function _decodeAccountingOutputState(bytes[] memory state) internal pure returns (uint256[] memory);
@@ -683,7 +689,7 @@ function _decodeAccountingOutputState(bytes[] memory state) internal pure return
 
 ### \_invalidateGroupedPositions
 
-_Marks all positions in a given group as stale, except for the position currently being managed._
+Marks all positions in a given group as stale, except for the position currently being managed.
 
 ```solidity
 function _invalidateGroupedPositions(uint256 groupId) internal;
@@ -691,7 +697,7 @@ function _invalidateGroupedPositions(uint256 groupId) internal;
 
 ### \_includesGroupId
 
-_Checks if a given group ID is included in the provided array of group IDs._
+Checks if a given group ID is included in the provided array of group IDs.
 
 ```solidity
 function _includesGroupId(uint256[] calldata groupIds, uint256 groupId) internal pure returns (bool);
@@ -699,7 +705,7 @@ function _includesGroupId(uint256[] calldata groupIds, uint256 groupId) internal
 
 ### \_accountingValueOf
 
-_Computes the accounting value of a given token amount._
+Computes the accounting value of a given token amount.
 
 ```solidity
 function _accountingValueOf(address token, uint256 amount) internal view returns (uint256);
@@ -707,7 +713,7 @@ function _accountingValueOf(address token, uint256 amount) internal view returns
 
 ### \_checkPositionMinDelta
 
-_Checks that absolute position value change is greater than minimum value relative to affected token balance changes and loss tolerance._
+Checks that absolute position value change is greater than minimum value relative to affected token balance changes and loss tolerance.
 
 ```solidity
 function _checkPositionMinDelta(uint256 positionValChange, uint256 affectedTokensValChange, uint256 maxLossBps)
@@ -717,7 +723,7 @@ function _checkPositionMinDelta(uint256 positionValChange, uint256 affectedToken
 
 ### \_checkPositionMaxDelta
 
-_Checks that absolute position value change is less than maximum value relative to affected token balance changes and loss tolerance._
+Checks that absolute position value change is less than maximum value relative to affected token balance changes and loss tolerance.
 
 ```solidity
 function _checkPositionMaxDelta(uint256 positionValChange, uint256 affectedTokensValChange, uint256 maxLossBps)
@@ -727,7 +733,7 @@ function _checkPositionMaxDelta(uint256 positionValChange, uint256 affectedToken
 
 ### \_checkInstructionIsAllowed
 
-_Checks if the given instruction is allowed by verifying its Merkle proof against the allowed instructions root._
+Checks if the given instruction is allowed by verifying its Merkle proof against the allowed instructions root.
 
 ```solidity
 function _checkInstructionIsAllowed(Instruction calldata instruction) internal;
@@ -741,8 +747,8 @@ function _checkInstructionIsAllowed(Instruction calldata instruction) internal;
 
 ### \_getStateHash
 
-_Computes a hash of the state array, selectively including elements as specified by a bitmap.
-This enables a weiroll script to have both fixed and variable parameters._
+Computes a hash of the state array, selectively including elements as specified by a bitmap.
+This enables a weiroll script to have both fixed and variable parameters.
 
 ```solidity
 function _getStateHash(bytes[] calldata state, uint128 bitmap) internal pure returns (bytes32);
@@ -763,7 +769,7 @@ function _getStateHash(bytes[] calldata state, uint128 bitmap) internal pure ret
 
 ### \_updateAllowedInstrRoot
 
-_Updates the allowed instructions root if a pending update is scheduled and the timelock has expired._
+Updates the allowed instructions root if a pending update is scheduled and the timelock has expired.
 
 ```solidity
 function _updateAllowedInstrRoot() internal returns (bytes32);
@@ -783,7 +789,7 @@ function _swap(ISwapModule.SwapOrder calldata order) internal;
 
 ### \_execute
 
-_Executes a set of commands on the Weiroll VM, via a delegatecall._
+Executes a set of commands on the Weiroll VM, via a delegatecall.
 
 ```solidity
 function _execute(bytes32[] calldata commands, bytes[] memory state) internal returns (bytes[] memory);
@@ -826,9 +832,9 @@ struct CaliberStorage {
     bool _isManagingFlashloan;
     uint256 _cooldownDuration;
     uint256 _lastBTSwapTimestamp;
-    mapping(bytes32 executionHash => uint256 timestamp) _lastExecutionTimestamp;
+    mapping(bytes32 executionHash => uint256 timestamp) _lastExecTimestamps;
     mapping(uint256 posId => Position pos) _positionById;
-    mapping(uint256 groupId => EnumerableSet.UintSet positionIds) _positionIdGroups;
+    mapping(uint256 groupId => EnumerableSet.UintSet positionIds) _positionIdsByGroup;
     EnumerableSet.UintSet _positionIds;
     EnumerableSet.AddressSet _baseTokens;
     EnumerableSet.AddressSet _instrRootGuardians;

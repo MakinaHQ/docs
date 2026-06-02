@@ -1,6 +1,6 @@
 # MakinaGovernable
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/utils/MakinaGovernable.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/utils/MakinaGovernable.sol)
 
 **Inherits:**
 AccessManagedUpgradeable, [IMakinaGovernable](/contracts/core/interfaces/IMakinaGovernable.sol/interface.IMakinaGovernable.md)
@@ -11,7 +11,7 @@ AccessManagedUpgradeable, [IMakinaGovernable](/contracts/core/interfaces/IMakina
 
 ```solidity
 bytes32 private constant MakinaGovernableStorageLocation =
-    0x7e702089668346e906996be6de3dfc0cb2b0c125fc09b3c0391871825913e000;
+    0x7e702089668346e906996be6de3dfc0cb2b0c125fc09b3c0391871825913e000
 ```
 
 ## Functions
@@ -25,7 +25,7 @@ function _getMakinaGovernableStorage() internal pure returns (MakinaGovernableSt
 ### constructor
 
 ```solidity
-constructor();
+constructor() ;
 ```
 
 ### \_\_MakinaGovernable_init
@@ -37,43 +37,51 @@ function __MakinaGovernable_init(MakinaGovernableInitParams calldata params) int
 ### onlyOperator
 
 ```solidity
-modifier onlyOperator();
+modifier onlyOperator() ;
 ```
 
 ### onlyMechanic
 
 ```solidity
-modifier onlyMechanic();
+modifier onlyMechanic() ;
 ```
 
 ### onlySecurityCouncil
 
 ```solidity
-modifier onlySecurityCouncil();
+modifier onlySecurityCouncil() ;
 ```
 
 ### onlyRiskManager
 
 ```solidity
-modifier onlyRiskManager();
+modifier onlyRiskManager() ;
 ```
 
 ### onlyRiskManagerTimelock
 
 ```solidity
-modifier onlyRiskManagerTimelock();
+modifier onlyRiskManagerTimelock() ;
 ```
 
 ### notRecoveryMode
 
 ```solidity
-modifier notRecoveryMode();
+modifier notRecoveryMode() ;
 ```
 
 ### onlyAccountingAuthorized
 
 ```solidity
-modifier onlyAccountingAuthorized();
+modifier onlyAccountingAuthorized() ;
+```
+
+### operator
+
+Address of the current operator (mechanic or security council).
+
+```solidity
+function operator() public view override returns (address);
 ```
 
 ### mechanic
@@ -113,7 +121,7 @@ function riskManagerTimelock() external view override returns (address);
 True if the contract is in recovery mode, false otherwise.
 
 ```solidity
-function recoveryMode() external view returns (bool);
+function recoveryMode() external view override returns (bool);
 ```
 
 ### restrictedAccountingMode
@@ -130,15 +138,6 @@ User => Whether the user is an accounting agent
 
 ```solidity
 function isAccountingAgent(address user) external view override returns (bool);
-```
-
-### isOperator
-
-User => Whether the user is the current operator
-The operator is either the mechanic or the security council depending on the recovery mode.
-
-```solidity
-function isOperator(address user) public view override returns (bool);
 ```
 
 ### isAccountingAuthorized
@@ -159,9 +158,9 @@ function setMechanic(address newMechanic) external override restricted;
 
 **Parameters**
 
-| Name          | Type      | Description                  |
-| ------------- | --------- | ---------------------------- |
-| `newMechanic` | `address` | The address of new mechanic. |
+| Name          | Type      | Description                      |
+| ------------- | --------- | -------------------------------- |
+| `newMechanic` | `address` | The address of the new mechanic. |
 
 ### setSecurityCouncil
 
@@ -210,7 +209,7 @@ function setRiskManagerTimelock(address newRiskManagerTimelock) external overrid
 Sets the recovery mode.
 
 ```solidity
-function setRecoveryMode(bool enabled) external onlySecurityCouncil;
+function setRecoveryMode(bool enabled) external override onlySecurityCouncil;
 ```
 
 **Parameters**
@@ -224,7 +223,7 @@ function setRecoveryMode(bool enabled) external onlySecurityCouncil;
 Sets the restricted accounting mode.
 
 ```solidity
-function setRestrictedAccountingMode(bool enabled) external restricted;
+function setRestrictedAccountingMode(bool enabled) external override restricted;
 ```
 
 **Parameters**
@@ -260,6 +259,22 @@ function removeAccountingAgent(address agent) external override restricted;
 | Name    | Type      | Description                                    |
 | ------- | --------- | ---------------------------------------------- |
 | `agent` | `address` | The address of the accounting agent to remove. |
+
+### \_addAccountingAgent
+
+Internal logic for adding an accounting agent.
+
+```solidity
+function _addAccountingAgent(address newAgent) internal;
+```
+
+### \_removeAccountingAgent
+
+Internal logic for removing an accounting agent.
+
+```solidity
+function _removeAccountingAgent(address agent) internal;
+```
 
 ## Structs
 

@@ -1,6 +1,6 @@
 # IBridgeAdapterFactory
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/interfaces/IBridgeAdapterFactory.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/interfaces/IBridgeAdapterFactory.sol)
 
 ## Functions
 
@@ -17,15 +17,17 @@ function isBridgeAdapter(address adapter) external view returns (bool);
 Deploys a bridge adapter instance.
 
 ```solidity
-function createBridgeAdapter(uint16 bridgeId, bytes calldata initData) external returns (address adapter);
+function createBridgeAdapter(address controller, BridgeAdapterInitParams calldata baParams)
+    external
+    returns (address adapter);
 ```
 
 **Parameters**
 
-| Name       | Type     | Description                                                  |
-| ---------- | -------- | ------------------------------------------------------------ |
-| `bridgeId` | `uint16` | The ID of the bridge for which the adapter is being created. |
-| `initData` | `bytes`  | The optional initialization data for the bridge adapter.     |
+| Name         | Type                      | Description                                                                |
+| ------------ | ------------------------- | -------------------------------------------------------------------------- |
+| `controller` | `address`                 | The address of the bridge controller for which to deploy the adapter.      |
+| `baParams`   | `BridgeAdapterInitParams` | The bridge adapter initialization parameters and controller configuration. |
 
 **Returns**
 
@@ -40,3 +42,25 @@ function createBridgeAdapter(uint16 bridgeId, bytes calldata initData) external 
 ```solidity
 event BridgeAdapterCreated(address indexed controller, uint256 indexed bridgeId, address indexed adapter);
 ```
+
+## Structs
+
+### BridgeAdapterInitParams
+
+Bridge adapter initialization parameters and controller configuration.
+
+```solidity
+struct BridgeAdapterInitParams {
+    uint16 bridgeId;
+    bytes initData;
+    uint256 initialMaxBridgeLossBps;
+}
+```
+
+**Properties**
+
+| Name                      | Type      | Description                                                                        |
+| ------------------------- | --------- | ---------------------------------------------------------------------------------- |
+| `bridgeId`                | `uint16`  | The ID of the bridge for which the adapter is being created.                       |
+| `initData`                | `bytes`   | The optional initialization data for the bridge adapter.                           |
+| `initialMaxBridgeLossBps` | `uint256` | The initial maximum bridge loss in basis points for this bridge ID and controller. |

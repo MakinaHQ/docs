@@ -1,6 +1,6 @@
 # CaliberAccountingCCQ
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/libraries/CaliberAccountingCCQ.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/libraries/CaliberAccountingCCQ.sol)
 
 ## Functions
 
@@ -11,15 +11,15 @@ function decodeAndVerifyQueryResponse(
     address wormhole,
     bytes calldata response,
     GuardianSignature[] calldata signatures
-) external view returns (QueryResponse memory ret);
+) external view returns (QueryResponse memory);
 ```
 
 ### getAccountingData
 
-_Parses the PerChainQueryResponse and retrieves the accounting data for the given caliber mailbox._
+Parses the PerChainQueryResponse and retrieves the accounting data for the given caliber mailbox.
 
 ```solidity
-function getAccountingData(PerChainQueryResponse memory pcr, address caliberMailbox)
+function getAccountingData(PerChainQueryResponse calldata pcr, address caliberMailbox)
     external
     pure
     returns (ICaliberMailbox.SpokeCaliberAccountingData memory, uint256);

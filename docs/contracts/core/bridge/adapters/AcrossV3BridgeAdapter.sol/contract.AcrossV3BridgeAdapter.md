@@ -1,6 +1,6 @@
 # AcrossV3BridgeAdapter
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/bridge/adapters/AcrossV3BridgeAdapter.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/bridge/adapters/AcrossV3BridgeAdapter.sol)
 
 **Inherits:**
 [BridgeAdapter](/contracts/core/bridge/adapters/BridgeAdapter.sol/abstract.BridgeAdapter.md), [IAcrossV3MessageHandler](/contracts/core/interfaces/IAcrossV3MessageHandler.sol/interface.IAcrossV3MessageHandler.md)
@@ -10,7 +10,7 @@
 ### ACROSS_V3_BRIDGE_ID
 
 ```solidity
-uint16 private constant ACROSS_V3_BRIDGE_ID = 1;
+uint16 private constant ACROSS_V3_BRIDGE_ID = 1
 ```
 
 ## Functions
@@ -32,10 +32,10 @@ function initialize(address _controller, bytes calldata) external override initi
 
 **Parameters**
 
-| Name          | Type      | Description |
-| ------------- | --------- | ----------- |
-| `_controller` | `address` |             |
-| `<none>`      | `bytes`   |             |
+| Name          | Type      | Description                     |
+| ------------- | --------- | ------------------------------- |
+| `_controller` | `address` | The bridge controller contract. |
+| `<none>`      | `bytes`   |                                 |
 
 ### handleV3AcrossMessage
 
@@ -47,7 +47,7 @@ function handleV3AcrossMessage(address tokenSent, uint256 amount, address, bytes
 
 ### \_outBridgeTransferCancelDefault
 
-_Internal logic for outgoing bridge transfer cancellation default._
+Internal logic for outgoing bridge transfer cancellation default.
 
 ```solidity
 function _outBridgeTransferCancelDefault(uint256 transferId) internal view override returns (uint256);
@@ -55,7 +55,7 @@ function _outBridgeTransferCancelDefault(uint256 transferId) internal view overr
 
 ### \_checkOutBridgeTransferIsCancellable
 
-_Checks if an outgoing bridge transfer is in a cancellable state._
+Checks if an outgoing bridge transfer is in a cancellable state.
 
 ```solidity
 function _checkOutBridgeTransferIsCancellable(uint256 transferId) internal override;
@@ -63,7 +63,7 @@ function _checkOutBridgeTransferIsCancellable(uint256 transferId) internal overr
 
 ### \_sendOutBridgeTransfer
 
-_Handles logic specific to the external bridge protocol for sending out a bridge transfer._
+Handles logic specific to the external bridge protocol for sending out a bridge transfer.
 
 ```solidity
 function _sendOutBridgeTransfer(uint256 transferId, bytes calldata data) internal override;

@@ -1,6 +1,6 @@
 # CoreRegistry
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/registries/CoreRegistry.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/registries/CoreRegistry.sol)
 
 **Inherits:**
 AccessManagedUpgradeable, [ICoreRegistry](/contracts/core/interfaces/ICoreRegistry.sol/interface.ICoreRegistry.md)
@@ -11,7 +11,7 @@ AccessManagedUpgradeable, [ICoreRegistry](/contracts/core/interfaces/ICoreRegist
 
 ```solidity
 bytes32 private constant CoreRegistryStorageLocation =
-    0x12dc8e8f7173ac8c2e47b3781b91f41f03f310bb59e154cde6d484a5b5f20300;
+    0x12dc8e8f7173ac8c2e47b3781b91f41f03f310bb59e154cde6d484a5b5f20300
 ```
 
 ## Functions
@@ -25,7 +25,7 @@ function _getCoreRegistryStorage() private pure returns (CoreRegistryStorage sto
 ### \_\_CoreRegistry_init
 
 ```solidity
-function __CoreRegistry_init(address _oracleRegistry, address _tokenRegistry, address _initialAuthority)
+function __CoreRegistry_init(address _oracleRegistry, address _tokenRegistry, address initialAuthority)
     internal
     onlyInitializing;
 ```
@@ -56,7 +56,7 @@ function tokenRegistry() external view override returns (address);
 
 ### swapModule
 
-Address of the swapModule module.
+Address of the swap module.
 
 ```solidity
 function swapModule() external view override returns (address);
@@ -64,7 +64,7 @@ function swapModule() external view override returns (address);
 
 ### flashLoanModule
 
-Address of the flashLoan module.
+Address of the flash loan module.
 
 ```solidity
 function flashLoanModule() external view override returns (address);
@@ -146,23 +146,23 @@ function setSwapModule(address _swapModule) external override restricted;
 
 **Parameters**
 
-| Name          | Type      | Description             |
-| ------------- | --------- | ----------------------- |
-| `_swapModule` | `address` | The swapModule address. |
+| Name          | Type      | Description              |
+| ------------- | --------- | ------------------------ |
+| `_swapModule` | `address` | The swap module address. |
 
 ### setFlashLoanModule
 
-Sets the flashLoan module address.
+Sets the flash loan module address.
 
 ```solidity
-function setFlashLoanModule(address _flashLoanModule) external restricted;
+function setFlashLoanModule(address _flashLoanModule) external override restricted;
 ```
 
 **Parameters**
 
-| Name               | Type      | Description                   |
-| ------------------ | --------- | ----------------------------- |
-| `_flashLoanModule` | `address` | The flashLoan module address. |
+| Name               | Type      | Description                    |
+| ------------------ | --------- | ------------------------------ |
+| `_flashLoanModule` | `address` | The flash loan module address. |
 
 ### setCaliberBeacon
 
@@ -188,10 +188,10 @@ function setBridgeAdapterBeacon(uint16 bridgeId, address _bridgeAdapterBeacon) e
 
 **Parameters**
 
-| Name                   | Type      | Description    |
-| ---------------------- | --------- | -------------- |
-| `bridgeId`             | `uint16`  | The bridge ID. |
-| `_bridgeAdapterBeacon` | `address` |                |
+| Name                   | Type      | Description                        |
+| ---------------------- | --------- | ---------------------------------- |
+| `bridgeId`             | `uint16`  | The bridge ID.                     |
+| `_bridgeAdapterBeacon` | `address` | The bridge adapter beacon address. |
 
 ### setBridgeConfig
 

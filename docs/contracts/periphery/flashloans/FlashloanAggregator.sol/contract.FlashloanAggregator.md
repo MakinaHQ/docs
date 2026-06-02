@@ -1,18 +1,17 @@
 # FlashloanAggregator
 
-[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/e8b2b2411f6e534177e79953d4414e8369c7d524/src/flashloans/FlashloanAggregator.sol)
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/392796cfaf86d8dc0e5b51f9530f6989211426e1/src/flashloans/FlashloanAggregator.sol)
 
 **Inherits:**
 [IFlashloanAggregator](/contracts/periphery/interfaces/IFlashloanAggregator.sol/interface.IFlashloanAggregator.md), BalancerV2FlashloanRecipient, IMorphoFlashLoanCallback, IERC3156FlashBorrower, IFlashLoanSimpleReceiver
 
 ## State Variables
 
-### \_EXPECTED_DATA_HASH_SLOT
-
-Hash of the user data we expect to receive in `onFlashLoan`.
+### EXPECTED_DATA_HASH_SLOT
 
 ```solidity
-bytes32 public constant _EXPECTED_DATA_HASH_SLOT = 0x82495b57f77c85cf8c0395fbfa4aaf855e2e402a9c6668de75d52c07a0b11300;
+bytes32 private constant EXPECTED_DATA_HASH_SLOT =
+    0x1cdc327c404943fa68ab4aca3860b62126227055e2873c38c2fe6dd350687a00
 ```
 
 ### caliberFactory
@@ -20,7 +19,7 @@ bytes32 public constant _EXPECTED_DATA_HASH_SLOT = 0x82495b57f77c85cf8c0395fbfa4
 The address of the Caliber factory.
 
 ```solidity
-address public immutable caliberFactory;
+address public immutable caliberFactory
 ```
 
 ### balancerV2Pool
@@ -28,7 +27,7 @@ address public immutable caliberFactory;
 The address of the Balancer V2 pool.
 
 ```solidity
-address public immutable balancerV2Pool;
+address public immutable balancerV2Pool
 ```
 
 ### balancerV3Pool
@@ -36,7 +35,7 @@ address public immutable balancerV2Pool;
 The address of the Balancer V3 pool.
 
 ```solidity
-address public immutable balancerV3Pool;
+address public immutable balancerV3Pool
 ```
 
 ### morphoPool
@@ -44,7 +43,7 @@ address public immutable balancerV3Pool;
 The address of the Morpho pool.
 
 ```solidity
-address public immutable morphoPool;
+address public immutable morphoPool
 ```
 
 ### dai
@@ -52,7 +51,7 @@ address public immutable morphoPool;
 The address of the DAI token.
 
 ```solidity
-address public immutable dai;
+address public immutable dai
 ```
 
 ### dssFlash
@@ -60,15 +59,15 @@ address public immutable dai;
 The address of the Maker DSS Flash.
 
 ```solidity
-address public immutable dssFlash;
+address public immutable dssFlash
 ```
 
 ### aaveV3AddressProvider
 
-The address of the Aave V3 pool.
+The address of the Aave V3 address provider.
 
 ```solidity
-address public immutable aaveV3AddressProvider;
+address public immutable aaveV3AddressProvider
 ```
 
 ## Functions
@@ -78,7 +77,7 @@ address public immutable aaveV3AddressProvider;
 Modifier to check if the caller is a Caliber.
 
 ```solidity
-modifier onlyCaliber();
+modifier onlyCaliber() ;
 ```
 
 ### constructor
@@ -94,24 +93,24 @@ constructor(
     address _dssFlash,
     address _aaveV3AddressProvider,
     address _dai
-);
+) ;
 ```
 
 **Parameters**
 
-| Name                     | Type      | Description                          |
-| ------------------------ | --------- | ------------------------------------ |
-| `_caliberFactory`        | `address` | The address of the Caliber factory.  |
-| `_balancerV2Pool`        | `address` | The address of the Balancer V2 pool. |
-| `_balancerV3Pool`        | `address` | The address of the Balancer V3 pool. |
-| `_morphoPool`            | `address` | The address of the Morpho pool.      |
-| `_dssFlash`              | `address` | The address of the Maker DSS Flash.  |
-| `_aaveV3AddressProvider` | `address` |                                      |
-| `_dai`                   | `address` |                                      |
+| Name                     | Type      | Description                                  |
+| ------------------------ | --------- | -------------------------------------------- |
+| `_caliberFactory`        | `address` | The address of the Caliber factory.          |
+| `_balancerV2Pool`        | `address` | The address of the Balancer V2 pool.         |
+| `_balancerV3Pool`        | `address` | The address of the Balancer V3 pool.         |
+| `_morphoPool`            | `address` | The address of the Morpho pool.              |
+| `_dssFlash`              | `address` | The address of the Maker DSS Flash.          |
+| `_aaveV3AddressProvider` | `address` | The address of the Aave V3 address provider. |
+| `_dai`                   | `address` | The address of the DAI token.                |
 
 ### requestFlashloan
 
-The function to request a flashloan.
+The function to request a flash loan.
 
 ```solidity
 function requestFlashloan(FlashloanRequest calldata request) external override onlyCaliber;
@@ -119,9 +118,9 @@ function requestFlashloan(FlashloanRequest calldata request) external override o
 
 **Parameters**
 
-| Name      | Type               | Description                    |
-| --------- | ------------------ | ------------------------------ |
-| `request` | `FlashloanRequest` | The request for the flashloan. |
+| Name      | Type               | Description                     |
+| --------- | ------------------ | ------------------------------- |
+| `request` | `FlashloanRequest` | The request for the flash loan. |
 
 ### \_dispatchFlashloanRequest
 
@@ -273,7 +272,7 @@ function receiveFlashLoan(
     uint256[] memory amounts,
     uint256[] memory feeAmounts,
     bytes memory userData
-) external;
+) external override;
 ```
 
 ### balancerV3FlashloanCallback
@@ -286,17 +285,26 @@ function balancerV3FlashloanCallback(
     ICaliber.Instruction calldata instruction,
     address token,
     uint256 amount
-) external;
+) external override;
 ```
+
+**Parameters**
+
+| Name          | Type                   | Description                                                       |
+| ------------- | ---------------------- | ----------------------------------------------------------------- |
+| `caliber`     | `address`              | The address of the Caliber contract that initiated the flashloan. |
+| `instruction` | `ICaliber.Instruction` | The instruction to execute.                                       |
+| `token`       | `address`              | The token borrowed.                                               |
+| `amount`      | `uint256`              | The amount borrowed.                                              |
 
 ### onMorphoFlashLoan
 
 Callback called when a flash loan occurs.
 
-_The callback is called only if data is not empty._
+The callback is called only if data is not empty.
 
 ```solidity
-function onMorphoFlashLoan(uint256 assets, bytes calldata data) external;
+function onMorphoFlashLoan(uint256 assets, bytes calldata data) external override;
 ```
 
 **Parameters**
@@ -308,11 +316,12 @@ function onMorphoFlashLoan(uint256 assets, bytes calldata data) external;
 
 ### onFlashLoan
 
-_Receive a flash loan._
+Receive a flash loan.
 
 ```solidity
 function onFlashLoan(address initiator, address token, uint256 amount, uint256 fee, bytes calldata data)
     external
+    override
     returns (bytes32);
 ```
 
@@ -336,12 +345,13 @@ function onFlashLoan(address initiator, address token, uint256 amount, uint256 f
 
 Executes an operation after receiving the flash-borrowed asset
 
-_Ensure that the contract can return the debt + premium, e.g., has
-enough funds to repay and has approved the Pool to pull the total amount_
+Ensure that the contract can return the debt + premium, e.g., has
+enough funds to repay and has approved the Pool to pull the total amount
 
 ```solidity
 function executeOperation(address asset, uint256 amount, uint256 premium, address initiator, bytes calldata params)
     external
+    override
     returns (bool);
 ```
 
@@ -364,11 +374,11 @@ function executeOperation(address asset, uint256 amount, uint256 premium, addres
 ### ADDRESSES_PROVIDER
 
 ```solidity
-function ADDRESSES_PROVIDER() external view returns (IPoolAddressesProvider);
+function ADDRESSES_PROVIDER() external view override returns (IPoolAddressesProvider);
 ```
 
 ### POOL
 
 ```solidity
-function POOL() external view returns (IPool);
+function POOL() external view override returns (IPool);
 ```

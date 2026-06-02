@@ -1,6 +1,6 @@
 # Errors
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/libraries/Errors.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/libraries/Errors.sol)
 
 ## Errors
 
@@ -82,10 +82,34 @@ error CaliberAccountingStale(uint256 caliberChainId);
 error CaliberAlreadySet();
 ```
 
+### CctpDomainNotRegistered
+
+```solidity
+error CctpDomainNotRegistered();
+```
+
+### CctpForeignTokenNotRegistered
+
+```solidity
+error CctpForeignTokenNotRegistered();
+```
+
+### CctpMessageReceptionFailed
+
+```solidity
+error CctpMessageReceptionFailed();
+```
+
 ### Create3ContractDeploymentFailed
 
 ```solidity
 error Create3ContractDeploymentFailed();
+```
+
+### Create3ProxyDeploymentFailed
+
+```solidity
+error Create3ProxyDeploymentFailed();
 ```
 
 ### DirectManageFlashLoanCall
@@ -130,6 +154,12 @@ error ExceededMaxWithdraw(uint256 assets, uint256 max);
 error ForeignTokenNotRegistered(address token, uint256 foreignEvmChainId);
 ```
 
+### GroupIdNotProvided
+
+```solidity
+error GroupIdNotProvided();
+```
+
 ### HubBridgeAdapterAlreadySet
 
 ```solidity
@@ -140,12 +170,6 @@ error HubBridgeAdapterAlreadySet();
 
 ```solidity
 error HubBridgeAdapterNotSet();
-```
-
-### GroupIdNotProvided
-
-```solidity
-error GroupIdNotProvided();
 ```
 
 ### InstructionsMismatch
@@ -172,10 +196,28 @@ error InvalidAccounting();
 error InvalidAffectedToken();
 ```
 
+### InvalidBridgeController
+
+```solidity
+error InvalidBridgeController();
+```
+
+### InvalidBridgeId
+
+```solidity
+error InvalidBridgeId();
+```
+
 ### InvalidBridgeTransferRoute
 
 ```solidity
 error InvalidBridgeTransferRoute();
+```
+
+### InvalidCctpMessage
+
+```solidity
+error InvalidCctpMessage();
 ```
 
 ### InvalidChainId
@@ -268,22 +310,16 @@ error InvalidTransferStatus();
 error LocalTokenNotRegistered(address token, uint256 foreignEvmChainId);
 ```
 
-### LzChainIdNotRegistered
+### LzEndpointIdNotRegistered
 
 ```solidity
-error LzChainIdNotRegistered(uint32 chainId);
+error LzEndpointIdNotRegistered();
 ```
 
 ### LzForeignTokenNotRegistered
 
 ```solidity
-error LzForeignTokenNotRegistered(address token, uint256 foreignEvmChainId);
-```
-
-### OftNotRegistered
-
-```solidity
-error OftNotRegistered(address token);
+error LzForeignTokenNotRegistered();
 ```
 
 ### ManageFlashLoanReentrantCall
@@ -320,12 +356,6 @@ error Migrated();
 
 ```solidity
 error MinOutputAmountExceedsInputAmount();
-```
-
-### MismatchedLength
-
-```solidity
-error MismatchedLength();
 ```
 
 ### MismatchedLengths
@@ -376,12 +406,6 @@ error NotBaseToken();
 error NotCaliber();
 ```
 
-### NotCaliberMailbox
-
-```solidity
-error NotCaliberMailbox();
-```
-
 ### NotController
 
 ```solidity
@@ -394,16 +418,16 @@ error NotController();
 error NotFactory();
 ```
 
+### NotFactoryAuthority
+
+```solidity
+error NotFactoryAuthority();
+```
+
 ### NotFlashLoanModule
 
 ```solidity
 error NotFlashLoanModule();
-```
-
-### NotMachine
-
-```solidity
-error NotMachine();
 ```
 
 ### NotMachineEndpoint
@@ -434,6 +458,12 @@ error NotPreDepositVault();
 
 ```solidity
 error NotRootGuardian();
+```
+
+### OftNotRegistered
+
+```solidity
+error OftNotRegistered();
 ```
 
 ### OngoingCooldown
@@ -502,16 +532,22 @@ error PriceFeedStale(address priceFeed, uint256 updatedAt);
 error ProtectedAccountingAgent();
 ```
 
+### ProtectedCctpDomain
+
+```solidity
+error ProtectedCctpDomain();
+```
+
+### ProtectedChainId
+
+```solidity
+error ProtectedChainId();
+```
+
 ### ProtectedRootGuardian
 
 ```solidity
 error ProtectedRootGuardian();
-```
-
-### Create3ProxyDeploymentFailed
-
-```solidity
-error Create3ProxyDeploymentFailed();
 ```
 
 ### RecoveryMode
@@ -598,12 +634,6 @@ error UnexpectedMessage();
 error UnexpectedResultLength();
 ```
 
-### InvalidBridgeId
-
-```solidity
-error InvalidBridgeId();
-```
-
 ### WhChainIdNotRegistered
 
 ```solidity
@@ -628,6 +658,12 @@ error ZeroChainId();
 error ZeroGroupId();
 ```
 
+### ZeroLzEndpointId
+
+```solidity
+error ZeroLzEndpointId();
+```
+
 ### ZeroOftAddress
 
 ```solidity
@@ -644,6 +680,12 @@ error ZeroPositionId();
 
 ```solidity
 error ZeroSalt();
+```
+
+### ZeroSpokeCaliberMailbox
+
+```solidity
+error ZeroSpokeCaliberMailbox();
 ```
 
 ### ZeroTokenAddress

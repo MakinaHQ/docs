@@ -1,6 +1,6 @@
 # LayerZeroV2BridgeConfig
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/bridge/configs/LayerZeroV2BridgeConfig.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/bridge/configs/LayerZeroV2BridgeConfig.sol)
 
 **Inherits:**
 AccessManagedUpgradeable, [ILayerZeroV2BridgeConfig](/contracts/core/interfaces/ILayerZeroV2BridgeConfig.sol/interface.ILayerZeroV2BridgeConfig.md)
@@ -11,7 +11,7 @@ AccessManagedUpgradeable, [ILayerZeroV2BridgeConfig](/contracts/core/interfaces/
 
 ```solidity
 bytes32 private constant LayerZeroV2BridgeConfigStorageLocation =
-    0x9968c8893e7d72567bf0ce47e55989cd61e749404314ded743fba239bde60b00;
+    0x9968c8893e7d72567bf0ce47e55989cd61e749404314ded743fba239bde60b00
 ```
 
 ## Functions
@@ -25,13 +25,13 @@ function _getLayerZeroV2BridgeConfigStorage() private pure returns (LayerZeroV2B
 ### constructor
 
 ```solidity
-constructor();
+constructor() ;
 ```
 
 ### initialize
 
 ```solidity
-function initialize(address _initialAuthority) external initializer;
+function initialize(address initialAuthority) external initializer;
 ```
 
 ### isRouteSupported
@@ -60,28 +60,20 @@ function isRouteSupported(address inputToken, uint256 foreignChainId, address ou
 | -------- | ------ | ------------------------------------------------ |
 | `<none>` | `bool` | True if the route is supported, false otherwise. |
 
-### evmToLzChainId
+### getLzEndpointId
 
 EVM chain ID => LayerZero endpoint ID
 
 ```solidity
-function evmToLzChainId(uint256 evmChainId) external view override returns (uint32);
+function getLzEndpointId(uint256 evmChainId) external view override returns (uint32);
 ```
 
-### lzToEvmChainId
+### getOft
 
-LayerZero endpoint ID => EVM chain ID
-
-```solidity
-function lzToEvmChainId(uint32 lzChainId) external view override returns (uint256);
-```
-
-### tokenToOft
-
-Token address => LayerZero OFT address
+Local token address => LayerZero OFT address
 
 ```solidity
-function tokenToOft(address token) external view override returns (address);
+function getOft(address localToken) external view override returns (address);
 ```
 
 ### getForeignToken
@@ -89,29 +81,29 @@ function tokenToOft(address token) external view override returns (address);
 Local token address => Foreign EVM chain ID => Foreign Token address
 
 ```solidity
-function getForeignToken(address localToken, uint256 foreignEvmChainId) external view returns (address);
+function getForeignToken(address localToken, uint256 foreignEvmChainId) external view override returns (address);
 ```
 
-### setLzChainId
+### setLzEndpointId
 
 Associates an EVM chain ID with a LayerZero endpoint ID in the contract storage.
 
 ```solidity
-function setLzChainId(uint256 evmChainId, uint32 lzChainId) external override restricted;
+function setLzEndpointId(uint256 evmChainId, uint32 lzEndpointId) external override restricted;
 ```
 
 **Parameters**
 
-| Name         | Type      | Description            |
-| ------------ | --------- | ---------------------- |
-| `evmChainId` | `uint256` | The EVM chain ID.      |
-| `lzChainId`  | `uint32`  | The Wormhole chain ID. |
+| Name           | Type      | Description                |
+| -------------- | --------- | -------------------------- |
+| `evmChainId`   | `uint256` | The EVM chain ID.          |
+| `lzEndpointId` | `uint32`  | The LayerZero endpoint ID. |
 
 ### setOft
 
 Registers a LayerZero OFT for its associated token.
 
-_Assumes that an OFT's associated token is immutable._
+Assumes that an OFT's associated token is immutable.
 
 ```solidity
 function setOft(address oft) external override restricted;
@@ -128,7 +120,10 @@ function setOft(address oft) external override restricted;
 Associates a local token with its foreign counterpart used in LayerZero bridging.
 
 ```solidity
-function setForeignToken(address localToken, uint256 foreignEvmChainId, address foreignToken) external restricted;
+function setForeignToken(address localToken, uint256 foreignEvmChainId, address foreignToken)
+    external
+    override
+    restricted;
 ```
 
 **Parameters**
@@ -148,10 +143,10 @@ storage-location: erc7201:makina.storage.LayerZeroV2BridgeConfig
 
 ```solidity
 struct LayerZeroV2BridgeConfigStorage {
-    mapping(uint256 evmChainId => uint32 lzChainId) _evmToLzChainId;
-    mapping(uint32 lzChainId => uint256 evmChainId) _lzToEvmChainId;
-    mapping(address localToken => address oft) _tokenToOft;
-    mapping(address localToken => mapping(uint256 foreignEvmChainId => address foreignToken)) _localToForeignTokens;
-    mapping(address foreignToken => mapping(uint256 foreignEvmChainId => address localToken)) _foreignToLocalTokens;
+    mapping(uint256 evmChainId => uint32 lzEndpointId) _evmToLzId;
+    mapping(uint32 lzEndpointId => uint256 evmChainId) _lzToEvmId;
+    mapping(address localToken => address oft) _localTokenToOft;
+    mapping(address localToken => mapping(uint256 foreignEvmChainId => address foreignToken)) _localToForeignToken;
+    mapping(address foreignToken => mapping(uint256 foreignEvmChainId => address localToken)) _foreignToLocalToken;
 }
 ```

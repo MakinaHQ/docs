@@ -1,6 +1,6 @@
 # HubCoreFactory
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/factories/HubCoreFactory.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/factories/HubCoreFactory.sol)
 
 **Inherits:**
 AccessManagedUpgradeable, [CaliberFactory](/contracts/core/factories/CaliberFactory.sol/abstract.CaliberFactory.md), [BridgeAdapterFactory](/contracts/core/factories/BridgeAdapterFactory.sol/abstract.BridgeAdapterFactory.md), [IHubCoreFactory](/contracts/core/interfaces/IHubCoreFactory.sol/interface.IHubCoreFactory.md)
@@ -11,7 +11,7 @@ AccessManagedUpgradeable, [CaliberFactory](/contracts/core/factories/CaliberFact
 
 ```solidity
 bytes32 private constant HubCoreFactoryStorageLocation =
-    0xa73526acc519facb543e3fac63cbe361155292db6c01a81eec358613ec9ee100;
+    0xa73526acc519facb543e3fac63cbe361155292db6c01a81eec358613ec9ee100
 ```
 
 ## Functions
@@ -31,7 +31,7 @@ constructor(address _registry) MakinaContext(_registry);
 ### initialize
 
 ```solidity
-function initialize(address _initialAuthority) external initializer;
+function initialize(address initialAuthority) external initializer;
 ```
 
 ### isMachine
@@ -60,19 +60,21 @@ function createPreDepositVault(
     address depositToken,
     address accountingToken,
     string memory tokenName,
-    string memory tokenSymbol
+    string memory tokenSymbol,
+    bool setupAMFunctionRoles
 ) external override restricted returns (address);
 ```
 
 **Parameters**
 
-| Name              | Type                                         | Description                          |
-| ----------------- | -------------------------------------------- | ------------------------------------ |
-| `params`          | `IPreDepositVault.PreDepositVaultInitParams` | The initialization parameters.       |
-| `depositToken`    | `address`                                    | The address of the deposit token.    |
-| `accountingToken` | `address`                                    | The address of the accounting token. |
-| `tokenName`       | `string`                                     | The name of the share token.         |
-| `tokenSymbol`     | `string`                                     | The symbol of the share token.       |
+| Name                   | Type                                         | Description                                                             |
+| ---------------------- | -------------------------------------------- | ----------------------------------------------------------------------- |
+| `params`               | `IPreDepositVault.PreDepositVaultInitParams` | The initialization parameters.                                          |
+| `depositToken`         | `address`                                    | The address of the deposit token.                                       |
+| `accountingToken`      | `address`                                    | The address of the accounting token.                                    |
+| `tokenName`            | `string`                                     | The name of the share token.                                            |
+| `tokenSymbol`          | `string`                                     | The symbol of the share token.                                          |
+| `setupAMFunctionRoles` | `bool`                                       | Whether to set roles for restricted functions on the deployed instance. |
 
 **Returns**
 
@@ -89,20 +91,24 @@ function createMachineFromPreDeposit(
     IMachine.MachineInitParams calldata mParams,
     ICaliber.CaliberInitParams calldata cParams,
     IMakinaGovernable.MakinaGovernableInitParams calldata mgParams,
+    BridgeAdapterInitParams[] calldata baParams,
     address preDepositVault,
-    bytes32 salt
+    bytes32 salt,
+    bool setupAMFunctionRoles
 ) external override restricted returns (address);
 ```
 
 **Parameters**
 
-| Name              | Type                                           | Description                                                |
-| ----------------- | ---------------------------------------------- | ---------------------------------------------------------- |
-| `mParams`         | `IMachine.MachineInitParams`                   | The machine initialization parameters.                     |
-| `cParams`         | `ICaliber.CaliberInitParams`                   | The caliber initialization parameters.                     |
-| `mgParams`        | `IMakinaGovernable.MakinaGovernableInitParams` | The makina governable initialization parameters.           |
-| `preDepositVault` | `address`                                      | The address of the PreDepositVault instance to migrate.    |
-| `salt`            | `bytes32`                                      | The salt used to deploy the Hub Caliber deterministically. |
+| Name                   | Type                                           | Description                                                                        |
+| ---------------------- | ---------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `mParams`              | `IMachine.MachineInitParams`                   | The machine initialization parameters.                                             |
+| `cParams`              | `ICaliber.CaliberInitParams`                   | The caliber initialization parameters.                                             |
+| `mgParams`             | `IMakinaGovernable.MakinaGovernableInitParams` | The makina governable initialization parameters.                                   |
+| `baParams`             | `BridgeAdapterInitParams[]`                    | The list of bridge adapter initialization parameters and controller configuration. |
+| `preDepositVault`      | `address`                                      | The address of the PreDepositVault instance to migrate.                            |
+| `salt`                 | `bytes32`                                      | The salt used to deploy the Hub Caliber deterministically.                         |
+| `setupAMFunctionRoles` | `bool`                                         | Whether to set roles for restricted functions on the deployed instance.            |
 
 **Returns**
 
@@ -119,24 +125,28 @@ function createMachine(
     IMachine.MachineInitParams calldata mParams,
     ICaliber.CaliberInitParams calldata cParams,
     IMakinaGovernable.MakinaGovernableInitParams calldata mgParams,
+    BridgeAdapterInitParams[] calldata baParams,
     address accountingToken,
     string memory tokenName,
     string memory tokenSymbol,
-    bytes32 salt
+    bytes32 salt,
+    bool setupAMFunctionRoles
 ) external override restricted returns (address);
 ```
 
 **Parameters**
 
-| Name              | Type                                           | Description                                                |
-| ----------------- | ---------------------------------------------- | ---------------------------------------------------------- |
-| `mParams`         | `IMachine.MachineInitParams`                   | The machine initialization parameters.                     |
-| `cParams`         | `ICaliber.CaliberInitParams`                   | The caliber initialization parameters.                     |
-| `mgParams`        | `IMakinaGovernable.MakinaGovernableInitParams` | The makina governable initialization parameters.           |
-| `accountingToken` | `address`                                      | The address of the accounting token.                       |
-| `tokenName`       | `string`                                       | The name of the share token.                               |
-| `tokenSymbol`     | `string`                                       | The symbol of the share token.                             |
-| `salt`            | `bytes32`                                      | The salt used to deploy the Hub Caliber deterministically. |
+| Name                   | Type                                           | Description                                                                        |
+| ---------------------- | ---------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `mParams`              | `IMachine.MachineInitParams`                   | The machine initialization parameters.                                             |
+| `cParams`              | `ICaliber.CaliberInitParams`                   | The caliber initialization parameters.                                             |
+| `mgParams`             | `IMakinaGovernable.MakinaGovernableInitParams` | The makina governable initialization parameters.                                   |
+| `baParams`             | `BridgeAdapterInitParams[]`                    | The list of bridge adapter initialization parameters and controller configuration. |
+| `accountingToken`      | `address`                                      | The address of the accounting token.                                               |
+| `tokenName`            | `string`                                       | The name of the share token.                                                       |
+| `tokenSymbol`          | `string`                                       | The symbol of the share token.                                                     |
+| `salt`                 | `bytes32`                                      | The salt used to deploy the Hub Caliber deterministically.                         |
+| `setupAMFunctionRoles` | `bool`                                         | Whether to set roles for restricted functions on the deployed instance.            |
 
 **Returns**
 
@@ -149,15 +159,19 @@ function createMachine(
 Deploys a bridge adapter instance.
 
 ```solidity
-function createBridgeAdapter(uint16 bridgeId, bytes calldata initData) external returns (address);
+function createBridgeAdapter(address controller, BridgeAdapterInitParams calldata baParams)
+    external
+    override
+    restricted
+    returns (address);
 ```
 
 **Parameters**
 
-| Name       | Type     | Description                                                  |
-| ---------- | -------- | ------------------------------------------------------------ |
-| `bridgeId` | `uint16` | The ID of the bridge for which the adapter is being created. |
-| `initData` | `bytes`  | The optional initialization data for the bridge adapter.     |
+| Name         | Type                      | Description                                                                |
+| ------------ | ------------------------- | -------------------------------------------------------------------------- |
+| `controller` | `address`                 | The address of the bridge controller for which to deploy the adapter.      |
+| `baParams`   | `BridgeAdapterInitParams` | The bridge adapter initialization parameters and controller configuration. |
 
 **Returns**
 
@@ -167,10 +181,57 @@ function createBridgeAdapter(uint16 bridgeId, bytes calldata initData) external 
 
 ### \_createShareToken
 
-_Deploys a machine share token._
+Deploys a machine share token.
 
 ```solidity
-function _createShareToken(string memory name, string memory symbol, address initialOwner) internal returns (address);
+function _createShareToken(string memory name, string memory symbol, address initialOwner)
+    internal
+    returns (address);
+```
+
+### \_setupPreDepositVaultAMFunctionRoles
+
+Sets function roles for a deployed pre-deposit vault instance in the provided authority.
+
+```solidity
+function _setupPreDepositVaultAMFunctionRoles(address _authority, address _preDepositVault) internal;
+```
+
+### \_setupMachineBundleAMFunctionRoles
+
+Sets function roles for a deployed machine instance, its hub caliber, and its initial fee manager if applicable, in the provided authority.
+
+```solidity
+function _setupMachineBundleAMFunctionRoles(
+    address _authority,
+    address _machine,
+    address _caliber,
+    address _initialFeeManager
+) internal;
+```
+
+### \_setupMachineAMFunctionRoles
+
+Sets function roles for a deployed machine instance.
+
+```solidity
+function _setupMachineAMFunctionRoles(address _authority, address _machine) internal;
+```
+
+### \_setupInitialFeeManagerAMFunctionRoles
+
+Sets function roles for the initial fee manager of a deployed machine instance if applicable.
+
+```solidity
+function _setupInitialFeeManagerAMFunctionRoles(address _authority, address _feeManager) internal;
+```
+
+### \_checkAuthority
+
+Checks that the provided authority matches the current authority.
+
+```solidity
+function _checkAuthority(address _authority) internal view;
 ```
 
 ## Structs

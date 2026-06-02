@@ -1,6 +1,6 @@
 # IBridgeController
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/interfaces/IBridgeController.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/interfaces/IBridgeController.sol)
 
 ## Functions
 
@@ -36,14 +36,12 @@ Bridge ID => Max allowed value loss in basis points for transfers via this bridg
 function getMaxBridgeLossBps(uint16 bridgeId) external view returns (uint256);
 ```
 
-### createBridgeAdapter
+### setBridgeAdapter
 
-Deploys a new BridgeAdapter instance.
+Sets a bridge adapter instance for a given bridge ID.
 
 ```solidity
-function createBridgeAdapter(uint16 bridgeId, uint256 initialMaxBridgeLossBps, bytes calldata initData)
-    external
-    returns (address);
+function setBridgeAdapter(uint16 bridgeId, address bridgeAdapter, uint256 initialMaxBridgeLossBps) external;
 ```
 
 **Parameters**
@@ -51,14 +49,8 @@ function createBridgeAdapter(uint16 bridgeId, uint256 initialMaxBridgeLossBps, b
 | Name                      | Type      | Description                                                                           |
 | ------------------------- | --------- | ------------------------------------------------------------------------------------- |
 | `bridgeId`                | `uint16`  | The ID of the bridge.                                                                 |
+| `bridgeAdapter`           | `address` | The address of the new bridge adapter instance.                                       |
 | `initialMaxBridgeLossBps` | `uint256` | The initial maximum allowed value loss in basis points for transfers via this bridge. |
-| `initData`                | `bytes`   | The optional initialization data for the bridge adapter.                              |
-
-**Returns**
-
-| Name     | Type      | Description                                |
-| -------- | --------- | ------------------------------------------ |
-| `<none>` | `address` | The address of the deployed BridgeAdapter. |
 
 ### setMaxBridgeLossBps
 
@@ -123,7 +115,7 @@ function authorizeInBridgeTransfer(uint16 bridgeId, bytes32 messageHash) externa
 
 ### claimInBridgeTransfer
 
-Transfers a received bridge transfer out of the adapter.
+Transfers a received bridge transfer out of the corresponding bridge adapter.
 
 ```solidity
 function claimInBridgeTransfer(uint16 bridgeId, uint256 transferId) external;
@@ -153,10 +145,10 @@ function cancelOutBridgeTransfer(uint16 bridgeId, uint256 transferId) external;
 
 ### resetBridgingState
 
-Resets internal bridge counters for a given token, and withdraw token balances held by all bridge adapters.
+Resets internal bridge counters for a given token, and withdraws token balances held by all bridge adapters.
 
-_This function is intended to be used by the DAO to realign bridge accounting state and maintain protocol consistency,
-typically in response to operator deviations, external bridge discrepancies, or unbounded counter growth._
+This function is intended to be used by the DAO to realign bridge accounting state and maintain protocol consistency,
+typically in response to operator deviations, external bridge discrepancies, or unbounded counter growth.
 
 ```solidity
 function resetBridgingState(address token) external;
@@ -170,10 +162,10 @@ function resetBridgingState(address token) external;
 
 ## Events
 
-### BridgeAdapterCreated
+### BridgeAdapterSet
 
 ```solidity
-event BridgeAdapterCreated(uint16 indexed bridgeId, address indexed adapter);
+event BridgeAdapterSet(uint16 indexed bridgeId, address indexed adapter);
 ```
 
 ### MaxBridgeLossBpsChanged

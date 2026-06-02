@@ -1,6 +1,6 @@
 # PreDepositVault
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/pre-deposit/PreDepositVault.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/pre-deposit/PreDepositVault.sol)
 
 **Inherits:**
 AccessManagedUpgradeable, ReentrancyGuard, [MakinaContext](/contracts/core/utils/MakinaContext.sol/abstract.MakinaContext.md), [IPreDepositVault](/contracts/core/interfaces/IPreDepositVault.sol/interface.IPreDepositVault.md)
@@ -11,7 +11,7 @@ AccessManagedUpgradeable, ReentrancyGuard, [MakinaContext](/contracts/core/utils
 
 ```solidity
 bytes32 private constant PreDepositVaultStorageLocation =
-    0x88ccda4670a9221204e56c6b7ced9d52994799751a70ced770588fb180e5dd00;
+    0x88ccda4670a9221204e56c6b7ced9d52994799751a70ced770588fb180e5dd00
 ```
 
 ## Functions
@@ -43,23 +43,23 @@ function initialize(
 
 **Parameters**
 
-| Name               | Type                        | Description                    |
-| ------------------ | --------------------------- | ------------------------------ |
-| `params`           | `PreDepositVaultInitParams` | The initialization parameters. |
-| `_shareToken`      | `address`                   |                                |
-| `_depositToken`    | `address`                   |                                |
-| `_accountingToken` | `address`                   |                                |
+| Name               | Type                        | Description                          |
+| ------------------ | --------------------------- | ------------------------------------ |
+| `params`           | `PreDepositVaultInitParams` | The initialization parameters.       |
+| `_shareToken`      | `address`                   | The address of the share token.      |
+| `_depositToken`    | `address`                   | The address of the deposit token.    |
+| `_accountingToken` | `address`                   | The address of the accounting token. |
 
 ### onlyRiskManager
 
 ```solidity
-modifier onlyRiskManager();
+modifier onlyRiskManager() ;
 ```
 
 ### notMigrated
 
 ```solidity
-modifier notMigrated();
+modifier notMigrated() ;
 ```
 
 ### migrated
@@ -174,9 +174,9 @@ function previewRedeem(uint256 shares) public view override notMigrated returns 
 
 **Parameters**
 
-| Name     | Type      | Description |
-| -------- | --------- | ----------- |
-| `shares` | `uint256` |             |
+| Name     | Type      | Description                          |
+| -------- | --------- | ------------------------------------ |
+| `shares` | `uint256` | The amount of shares to be redeemed. |
 
 ### deposit
 
@@ -265,23 +265,23 @@ function setShareLimit(uint256 newShareLimit) external override onlyRiskManager 
 
 **Parameters**
 
-| Name            | Type      | Description         |
-| --------------- | --------- | ------------------- |
-| `newShareLimit` | `uint256` | The new share limit |
+| Name            | Type      | Description          |
+| --------------- | --------- | -------------------- |
+| `newShareLimit` | `uint256` | The new share limit. |
 
 ### setRiskManager
 
 Sets the risk manager address.
 
 ```solidity
-function setRiskManager(address _riskManager) external override restricted notMigrated;
+function setRiskManager(address newRiskManager) external override restricted notMigrated;
 ```
 
 **Parameters**
 
-| Name           | Type      | Description |
-| -------------- | --------- | ----------- |
-| `_riskManager` | `address` |             |
+| Name             | Type      | Description                          |
+| ---------------- | --------- | ------------------------------------ |
+| `newRiskManager` | `address` | The address of the new risk manager. |
 
 ### setWhitelistedUsers
 
@@ -306,7 +306,7 @@ function setWhitelistedUsers(address[] calldata users, bool whitelisted)
 
 Sets the whitelist mode for the vault.
 
-_In whitelist mode, only whitelisted users can deposit._
+In whitelist mode, only whitelisted users can deposit.
 
 ```solidity
 function setWhitelistMode(bool enabled) external override onlyRiskManager notMigrated;

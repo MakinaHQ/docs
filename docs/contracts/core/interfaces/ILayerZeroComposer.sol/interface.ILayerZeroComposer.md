@@ -1,6 +1,6 @@
 # ILayerZeroComposer
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/interfaces/ILayerZeroComposer.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/interfaces/ILayerZeroComposer.sol)
 
 ## Functions
 
@@ -9,9 +9,13 @@
 Composes a LayerZero message from an OApp.
 
 ```solidity
-function lzCompose(address _from, bytes32 _guid, bytes calldata _message, address _executor, bytes calldata _extraData)
-    external
-    payable;
+function lzCompose(
+    address _from,
+    bytes32 _guid,
+    bytes calldata _message,
+    address _executor,
+    bytes calldata _extraData
+) external payable;
 ```
 
 **Parameters**

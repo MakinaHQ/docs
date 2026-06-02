@@ -1,34 +1,26 @@
 # ILayerZeroV2BridgeConfig
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/interfaces/ILayerZeroV2BridgeConfig.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/interfaces/ILayerZeroV2BridgeConfig.sol)
 
 **Inherits:**
 [IBridgeConfig](/contracts/core/interfaces/IBridgeConfig.sol/interface.IBridgeConfig.md)
 
 ## Functions
 
-### evmToLzChainId
+### getLzEndpointId
 
 EVM chain ID => LayerZero endpoint ID
 
 ```solidity
-function evmToLzChainId(uint256 evmChainId) external view returns (uint32);
+function getLzEndpointId(uint256 evmChainId) external view returns (uint32);
 ```
 
-### lzToEvmChainId
+### getOft
 
-LayerZero endpoint ID => EVM chain ID
-
-```solidity
-function lzToEvmChainId(uint32 lzChainId) external view returns (uint256);
-```
-
-### tokenToOft
-
-Token address => LayerZero OFT address
+Local token address => LayerZero OFT address
 
 ```solidity
-function tokenToOft(address token) external view returns (address);
+function getOft(address localToken) external view returns (address);
 ```
 
 ### getForeignToken
@@ -39,28 +31,28 @@ Local token address => Foreign EVM chain ID => Foreign Token address
 function getForeignToken(address localToken, uint256 foreignEvmChainId) external view returns (address);
 ```
 
-### setLzChainId
+### setLzEndpointId
 
 Associates an EVM chain ID with a LayerZero endpoint ID in the contract storage.
 
 ```solidity
-function setLzChainId(uint256 evmChainId, uint32 lzChainId) external;
+function setLzEndpointId(uint256 evmChainId, uint32 lzEndpointId) external;
 ```
 
 **Parameters**
 
-| Name         | Type      | Description            |
-| ------------ | --------- | ---------------------- |
-| `evmChainId` | `uint256` | The EVM chain ID.      |
-| `lzChainId`  | `uint32`  | The Wormhole chain ID. |
+| Name           | Type      | Description                |
+| -------------- | --------- | -------------------------- |
+| `evmChainId`   | `uint256` | The EVM chain ID.          |
+| `lzEndpointId` | `uint32`  | The LayerZero endpoint ID. |
 
 ### setOft
 
 Registers a LayerZero OFT for its associated token.
 
-_Assumes that an OFT's associated token is immutable._
+Assumes that an OFT's associated token is immutable.
 
-_Overwrites any previously registered OFT for the provided OFT's associated token._
+Overwrites any previously registered OFT for the provided OFT's associated token.
 
 ```solidity
 function setOft(address oft) external;
@@ -96,10 +88,10 @@ function setForeignToken(address localToken, uint256 foreignEvmChainId, address 
 event ForeignTokenRegistered(address indexed localToken, uint256 indexed evmChainId, address indexed foreignToken);
 ```
 
-### LzChainIdRegistered
+### LzEndpointIdRegistered
 
 ```solidity
-event LzChainIdRegistered(uint256 indexed evmChainId, uint32 indexed lzChainId);
+event LzEndpointIdRegistered(uint256 indexed evmChainId, uint32 indexed lzEndpointId);
 ```
 
 ### OftRegistered

@@ -1,6 +1,6 @@
 # IAcrossV3BridgeConfig
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/interfaces/IAcrossV3BridgeConfig.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/interfaces/IAcrossV3BridgeConfig.sol)
 
 **Inherits:**
 [IBridgeConfig](/contracts/core/interfaces/IBridgeConfig.sol/interface.IBridgeConfig.md)
@@ -29,3 +29,11 @@ function setForeignChainSupported(uint256 foreignChainId, bool supported) extern
 | ---------------- | --------- | ------------------------------------------------ |
 | `foreignChainId` | `uint256` | The foreign chain ID.                            |
 | `supported`      | `bool`    | True if the chain is supported, false otherwise. |
+
+## Events
+
+### ForeignChainSupportUpdated
+
+```solidity
+event ForeignChainSupportUpdated(uint256 indexed foreignChainId, bool indexed supported);
+```

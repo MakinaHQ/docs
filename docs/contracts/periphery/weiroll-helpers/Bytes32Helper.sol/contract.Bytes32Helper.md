@@ -1,13 +1,13 @@
 # Bytes32Helper
 
-[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/e8b2b2411f6e534177e79953d4414e8369c7d524/src/weiroll-helpers/Bytes32Helper.sol)
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/392796cfaf86d8dc0e5b51f9530f6989211426e1/src/weiroll-helpers/Bytes32Helper.sol)
 
 ## State Variables
 
 ### \_INDEX_OUT_OF_BOUNDS_SELECTOR
 
 ```solidity
-bytes4 private constant _INDEX_OUT_OF_BOUNDS_SELECTOR = 0x4e23d035;
+bytes4 private constant _INDEX_OUT_OF_BOUNDS_SELECTOR = 0x4e23d035
 ```
 
 ## Functions

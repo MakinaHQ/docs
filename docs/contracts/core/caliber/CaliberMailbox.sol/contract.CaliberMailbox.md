@@ -1,6 +1,6 @@
 # CaliberMailbox
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/caliber/CaliberMailbox.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/caliber/CaliberMailbox.sol)
 
 **Inherits:**
 [MakinaGovernable](/contracts/core/utils/MakinaGovernable.sol/abstract.MakinaGovernable.md), ReentrancyGuard, [BridgeController](/contracts/core/bridge/controller/BridgeController.sol/abstract.BridgeController.md), [ICaliberMailbox](/contracts/core/interfaces/ICaliberMailbox.sol/interface.ICaliberMailbox.md)
@@ -10,14 +10,14 @@
 ### hubChainId
 
 ```solidity
-uint256 public immutable hubChainId;
+uint256 public immutable hubChainId
 ```
 
 ### CaliberMailboxStorageLocation
 
 ```solidity
 bytes32 private constant CaliberMailboxStorageLocation =
-    0xc8f2c10c9147366283b13eb82b7eca93d88636f13eec15d81ed4c6aa5006aa00;
+    0xc8f2c10c9147366283b13eb82b7eca93d88636f13eec15d81ed4c6aa5006aa00
 ```
 
 ## Functions
@@ -37,17 +37,10 @@ constructor(address _registry, uint256 _hubChainId) MakinaContext(_registry);
 ### initialize
 
 ```solidity
-function initialize(
-    IMakinaGovernable.MakinaGovernableInitParams calldata mgParams,
-    uint256 _initialCooldownDuration,
-    address _hubMachine
-) external override initializer;
-```
-
-### onlyFactory
-
-```solidity
-modifier onlyFactory();
+function initialize(IMakinaGovernable.MakinaGovernableInitParams calldata mgParams, uint256 initialCooldownDuration)
+    external
+    override
+    initializer;
 ```
 
 ### caliber
@@ -150,7 +143,7 @@ function authorizeInBridgeTransfer(uint16 bridgeId, bytes32 messageHash)
 
 ### claimInBridgeTransfer
 
-Transfers a received bridge transfer out of the adapter.
+Transfers a received bridge transfer out of the corresponding bridge adapter.
 
 ```solidity
 function claimInBridgeTransfer(uint16 bridgeId, uint256 transferId) external override onlyOperator;
@@ -188,9 +181,9 @@ function setCaliber(address _caliber) external override onlyFactory;
 
 **Parameters**
 
-| Name       | Type      | Description |
-| ---------- | --------- | ----------- |
-| `_caliber` | `address` |             |
+| Name       | Type      | Description                            |
+| ---------- | --------- | -------------------------------------- |
+| `_caliber` | `address` | The address of the associated caliber. |
 
 ### setHubBridgeAdapter
 
@@ -253,10 +246,10 @@ function setMaxBridgeLossBps(uint16 bridgeId, uint256 maxBridgeLossBps) external
 
 ### resetBridgingState
 
-Resets internal bridge counters for a given token, and withdraw token balances held by all bridge adapters.
+Resets internal bridge counters for a given token, and withdraws token balances held by all bridge adapters.
 
-_This function is intended to be used by the DAO to realign bridge accounting state and maintain protocol consistency,
-typically in response to operator deviations, external bridge discrepancies, or unbounded counter growth._
+This function is intended to be used by the DAO to realign bridge accounting state and maintain protocol consistency,
+typically in response to operator deviations, external bridge discrepancies, or unbounded counter growth.
 
 ```solidity
 function resetBridgingState(address token) external override onlySecurityCouncil;
@@ -277,7 +270,7 @@ storage-location: erc7201:makina.storage.CaliberMailbox
 
 ```solidity
 struct CaliberMailboxStorage {
-    address _hubMachine;
+    address _deprecated_0;
     address _caliber;
     mapping(uint16 bridgeId => address adapter) _hubBridgeAdapters;
     EnumerableMap.AddressToUintMap _bridgesIn;

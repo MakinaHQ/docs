@@ -1,6 +1,6 @@
 # MachinePeriphery
 
-[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/e8b2b2411f6e534177e79953d4414e8369c7d524/src/utils/MachinePeriphery.sol)
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/392796cfaf86d8dc0e5b51f9530f6989211426e1/src/utils/MachinePeriphery.sol)
 
 **Inherits:**
 Initializable, [MakinaPeripheryContext](/contracts/periphery/utils/MakinaPeripheryContext.sol/abstract.MakinaPeripheryContext.md), [IMachinePeriphery](/contracts/periphery/interfaces/IMachinePeriphery.sol/interface.IMachinePeriphery.md)
@@ -11,7 +11,7 @@ Initializable, [MakinaPeripheryContext](/contracts/periphery/utils/MakinaPeriphe
 
 ```solidity
 bytes32 private constant MachinePeripheryStorageLocation =
-    0xf8e170f38959918ab7e583dba012d1b8610047e073c7ca874900b1e0c133c900;
+    0xf8e170f38959918ab7e583dba012d1b8610047e073c7ca874900b1e0c133c900
 ```
 
 ## Functions
@@ -31,31 +31,31 @@ constructor(address _peripheryRegistry) MakinaPeripheryContext(_peripheryRegistr
 ### onlyFactory
 
 ```solidity
-modifier onlyFactory();
+modifier onlyFactory() ;
 ```
 
 ### onlyMechanic
 
 ```solidity
-modifier onlyMechanic();
+modifier onlyMechanic() ;
 ```
 
 ### onlySecurityCouncil
 
 ```solidity
-modifier onlySecurityCouncil();
+modifier onlySecurityCouncil() ;
 ```
 
 ### onlyRiskManager
 
 ```solidity
-modifier onlyRiskManager();
+modifier onlyRiskManager() ;
 ```
 
 ### onlyRiskManagerTimelock
 
 ```solidity
-modifier onlyRiskManagerTimelock();
+modifier onlyRiskManagerTimelock() ;
 ```
 
 ### machine
@@ -76,7 +76,7 @@ function setMachine(address _machine) external onlyFactory;
 
 ### \_setMachine
 
-_Sets the machine this contract is associated with._
+Sets the machine this contract is associated with.
 
 ```solidity
 function _setMachine(address _machine) internal virtual;
