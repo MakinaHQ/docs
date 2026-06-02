@@ -1,6 +1,6 @@
 # HubPeripheryRegistry
 
-[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/e8b2b2411f6e534177e79953d4414e8369c7d524/src/registries/HubPeripheryRegistry.sol)
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/392796cfaf86d8dc0e5b51f9530f6989211426e1/src/registries/HubPeripheryRegistry.sol)
 
 **Inherits:**
 AccessManagedUpgradeable, [IHubPeripheryRegistry](/contracts/periphery/interfaces/IHubPeripheryRegistry.sol/interface.IHubPeripheryRegistry.md)
@@ -11,7 +11,7 @@ AccessManagedUpgradeable, [IHubPeripheryRegistry](/contracts/periphery/interface
 
 ```solidity
 bytes32 private constant HubPeripheryRegistryStorageLocation =
-    0x60c7a8b9d2c96eeaf12a26c5fbe46f192e4cb2019fd3c31562f5d2011364b000;
+    0x60c7a8b9d2c96eeaf12a26c5fbe46f192e4cb2019fd3c31562f5d2011364b000
 ```
 
 ## Functions
@@ -25,7 +25,7 @@ function _getHubPeripheryRegistryStorage() internal pure returns (HubPeripheryRe
 ### constructor
 
 ```solidity
-constructor();
+constructor() ;
 ```
 
 ### initialize

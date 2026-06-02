@@ -1,6 +1,6 @@
 # ISecurityModule
 
-[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/e8b2b2411f6e534177e79953d4414e8369c7d524/src/interfaces/ISecurityModule.sol)
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/392796cfaf86d8dc0e5b51f9530f6989211426e1/src/interfaces/ISecurityModule.sol)
 
 **Inherits:**
 IERC20Metadata, [IMachinePeriphery](/contracts/periphery/interfaces/IMachinePeriphery.sol/interface.IMachinePeriphery.md)
@@ -60,17 +60,17 @@ function pendingCooldown(uint256 cooldownId)
 
 **Parameters**
 
-| Name         | Type      | Description                                                       |
-| ------------ | --------- | ----------------------------------------------------------------- |
-| `cooldownId` | `uint256` | ID of the cooldown receipt NFT representing the pending cooldown. |
+| Name         | Type      | Description                                                           |
+| ------------ | --------- | --------------------------------------------------------------------- |
+| `cooldownId` | `uint256` | The ID of the cooldown receipt NFT representing the pending cooldown. |
 
 **Returns**
 
-| Name                    | Type      | Description                                                                     |
-| ----------------------- | --------- | ------------------------------------------------------------------------------- |
-| `shares`                | `uint256` | Amount of security shares to be redeemed.                                       |
-| `currentExpectedAssets` | `uint256` | Current expected amount of machine shares that can be redeemed.                 |
-| `maturity`              | `uint256` | Timestamp at which the cooldown period will end and the shares can be redeemed. |
+| Name                    | Type      | Description                                                                         |
+| ----------------------- | --------- | ----------------------------------------------------------------------------------- |
+| `shares`                | `uint256` | The amount of security shares to be redeemed.                                       |
+| `currentExpectedAssets` | `uint256` | The current expected amount of machine shares that can be redeemed.                 |
+| `maturity`              | `uint256` | The timestamp at which the cooldown period will end and the shares can be redeemed. |
 
 ### slashingMode
 
@@ -106,15 +106,15 @@ function convertToShares(uint256 assets) external view returns (uint256 shares);
 
 **Parameters**
 
-| Name     | Type      | Description                          |
-| -------- | --------- | ------------------------------------ |
-| `assets` | `uint256` | Amount of machine shares to convert. |
+| Name     | Type      | Description                              |
+| -------- | --------- | ---------------------------------------- |
+| `assets` | `uint256` | The amount of machine shares to convert. |
 
 **Returns**
 
-| Name     | Type      | Description                                                          |
-| -------- | --------- | -------------------------------------------------------------------- |
-| `shares` | `uint256` | Amount of security shares corresponding to the input machine shares. |
+| Name     | Type      | Description                                                              |
+| -------- | --------- | ------------------------------------------------------------------------ |
+| `shares` | `uint256` | The amount of security shares corresponding to the input machine shares. |
 
 ### convertToAssets
 
@@ -126,15 +126,15 @@ function convertToAssets(uint256 shares) external view returns (uint256 assets);
 
 **Parameters**
 
-| Name     | Type      | Description                           |
-| -------- | --------- | ------------------------------------- |
-| `shares` | `uint256` | Amount of security shares to convert. |
+| Name     | Type      | Description                               |
+| -------- | --------- | ----------------------------------------- |
+| `shares` | `uint256` | The amount of security shares to convert. |
 
 **Returns**
 
-| Name     | Type      | Description                                                          |
-| -------- | --------- | -------------------------------------------------------------------- |
-| `assets` | `uint256` | Amount of machine shares corresponding to the input security shares. |
+| Name     | Type      | Description                                                              |
+| -------- | --------- | ------------------------------------------------------------------------ |
+| `assets` | `uint256` | The amount of machine shares corresponding to the input security shares. |
 
 ### previewLock
 
@@ -146,15 +146,15 @@ function previewLock(uint256 assets) external view returns (uint256 shares);
 
 **Parameters**
 
-| Name     | Type      | Description                          |
-| -------- | --------- | ------------------------------------ |
-| `assets` | `uint256` | Amount of machine shares to convert. |
+| Name     | Type      | Description                              |
+| -------- | --------- | ---------------------------------------- |
+| `assets` | `uint256` | The amount of machine shares to convert. |
 
 **Returns**
 
-| Name     | Type      | Description                                                                    |
-| -------- | --------- | ------------------------------------------------------------------------------ |
-| `shares` | `uint256` | Estimated amount of security shares corresponding to the input machine shares. |
+| Name     | Type      | Description                                                                        |
+| -------- | --------- | ---------------------------------------------------------------------------------- |
+| `shares` | `uint256` | The estimated amount of security shares corresponding to the input machine shares. |
 
 ### lock
 
@@ -166,17 +166,17 @@ function lock(uint256 assets, address receiver, uint256 minShares) external retu
 
 **Parameters**
 
-| Name        | Type      | Description                                    |
-| ----------- | --------- | ---------------------------------------------- |
-| `assets`    | `uint256` | Amount of machine shares to lock.              |
-| `receiver`  | `address` | Address that will receive the security shares. |
-| `minShares` | `uint256` | Minimum amount of security shares to receive.  |
+| Name        | Type      | Description                                        |
+| ----------- | --------- | -------------------------------------------------- |
+| `assets`    | `uint256` | The amount of machine shares to lock.              |
+| `receiver`  | `address` | The address that will receive the security shares. |
+| `minShares` | `uint256` | The minimum amount of security shares to receive.  |
 
 **Returns**
 
-| Name     | Type      | Description                       |
-| -------- | --------- | --------------------------------- |
-| `shares` | `uint256` | Amount of security shares minted. |
+| Name     | Type      | Description                           |
+| -------- | --------- | ------------------------------------- |
+| `shares` | `uint256` | The amount of security shares minted. |
 
 ### startCooldown
 
@@ -192,18 +192,18 @@ function startCooldown(uint256 shares, address receiver)
 
 **Parameters**
 
-| Name       | Type      | Description                                     |
-| ---------- | --------- | ----------------------------------------------- |
-| `shares`   | `uint256` | Amount of security shares to redeem.            |
-| `receiver` | `address` | Address that will receive the cooldown receipt. |
+| Name       | Type      | Description                                         |
+| ---------- | --------- | --------------------------------------------------- |
+| `shares`   | `uint256` | The amount of security shares to redeem.            |
+| `receiver` | `address` | The address that will receive the cooldown receipt. |
 
 **Returns**
 
-| Name         | Type      | Description                                                                     |
-| ------------ | --------- | ------------------------------------------------------------------------------- |
-| `cooldownId` | `uint256` | ID of the minted cooldown receipt NFT representing the pending cooldown.        |
-| `maxAssets`  | `uint256` | Maximum amount of machine shares that can be redeemed.                          |
-| `maturity`   | `uint256` | Timestamp at which the cooldown period will end and the shares can be redeemed. |
+| Name         | Type      | Description                                                                         |
+| ------------ | --------- | ----------------------------------------------------------------------------------- |
+| `cooldownId` | `uint256` | The ID of the minted cooldown receipt NFT representing the pending cooldown.        |
+| `maxAssets`  | `uint256` | The maximum amount of machine shares that can be redeemed.                          |
+| `maturity`   | `uint256` | The timestamp at which the cooldown period will end and the shares can be redeemed. |
 
 ### cancelCooldown
 
@@ -217,15 +217,15 @@ function cancelCooldown(uint256 cooldownId) external returns (uint256 shares);
 
 **Parameters**
 
-| Name         | Type      | Description                                                       |
-| ------------ | --------- | ----------------------------------------------------------------- |
-| `cooldownId` | `uint256` | ID of the cooldown receipt NFT representing the pending cooldown. |
+| Name         | Type      | Description                                                           |
+| ------------ | --------- | --------------------------------------------------------------------- |
+| `cooldownId` | `uint256` | The ID of the cooldown receipt NFT representing the pending cooldown. |
 
 **Returns**
 
-| Name     | Type      | Description                                                     |
-| -------- | --------- | --------------------------------------------------------------- |
-| `shares` | `uint256` | Amount of security shares for which the cooldown was cancelled. |
+| Name     | Type      | Description                                                         |
+| -------- | --------- | ------------------------------------------------------------------- |
+| `shares` | `uint256` | The amount of security shares for which the cooldown was cancelled. |
 
 ### redeem
 
@@ -237,16 +237,16 @@ function redeem(uint256 cooldownId, uint256 minAssets) external returns (uint256
 
 **Parameters**
 
-| Name         | Type      | Description                                                       |
-| ------------ | --------- | ----------------------------------------------------------------- |
-| `cooldownId` | `uint256` | ID of the cooldown receipt NFT representing the pending cooldown. |
-| `minAssets`  | `uint256` | Minimum amount of machine shares to receive.                      |
+| Name         | Type      | Description                                                           |
+| ------------ | --------- | --------------------------------------------------------------------- |
+| `cooldownId` | `uint256` | The ID of the cooldown receipt NFT representing the pending cooldown. |
+| `minAssets`  | `uint256` | The minimum amount of machine shares to receive.                      |
 
 **Returns**
 
-| Name     | Type      | Description                                           |
-| -------- | --------- | ----------------------------------------------------- |
-| `assets` | `uint256` | Amount of machine shares transferred to the receiver. |
+| Name     | Type      | Description                                               |
+| -------- | --------- | --------------------------------------------------------- |
+| `assets` | `uint256` | The amount of machine shares transferred to the receiver. |
 
 ### slash
 
@@ -258,9 +258,9 @@ function slash(uint256 amount) external;
 
 **Parameters**
 
-| Name     | Type      | Description                                   |
-| -------- | --------- | --------------------------------------------- |
-| `amount` | `uint256` | Amount to slash from the total locked amount. |
+| Name     | Type      | Description                                       |
+| -------- | --------- | ------------------------------------------------- |
+| `amount` | `uint256` | The amount to slash from the total locked amount. |
 
 ### settleSlashing
 
@@ -275,42 +275,42 @@ function settleSlashing() external;
 Sets the cooldown duration for unlocking.
 
 ```solidity
-function setCooldownDuration(uint256 cooldownDuration) external;
+function setCooldownDuration(uint256 newCooldownDuration) external;
 ```
 
 **Parameters**
 
-| Name               | Type      | Description                       |
-| ------------------ | --------- | --------------------------------- |
-| `cooldownDuration` | `uint256` | New cooldown duration in seconds. |
+| Name                  | Type      | Description                           |
+| --------------------- | --------- | ------------------------------------- |
+| `newCooldownDuration` | `uint256` | The new cooldown duration in seconds. |
 
 ### setMaxSlashableBps
 
 Sets the maximum slashable proportion of the vault balance in basis points.
 
 ```solidity
-function setMaxSlashableBps(uint256 maxSlashableBps) external;
+function setMaxSlashableBps(uint256 newMaxSlashableBps) external;
 ```
 
 **Parameters**
 
-| Name              | Type      | Description                                       |
-| ----------------- | --------- | ------------------------------------------------- |
-| `maxSlashableBps` | `uint256` | New maximum slashable proportion in basis points. |
+| Name                 | Type      | Description                                           |
+| -------------------- | --------- | ----------------------------------------------------- |
+| `newMaxSlashableBps` | `uint256` | The new maximum slashable proportion in basis points. |
 
 ### setMinBalanceAfterSlash
 
 Sets the minimum balance that must remain in the vault after a slash.
 
 ```solidity
-function setMinBalanceAfterSlash(uint256 minBalanceAfterSlash) external;
+function setMinBalanceAfterSlash(uint256 newMinBalanceAfterSlash) external;
 ```
 
 **Parameters**
 
-| Name                   | Type      | Description                      |
-| ---------------------- | --------- | -------------------------------- |
-| `minBalanceAfterSlash` | `uint256` | New minimum balance after slash. |
+| Name                      | Type      | Description                          |
+| ------------------------- | --------- | ------------------------------------ |
+| `newMinBalanceAfterSlash` | `uint256` | The new minimum balance after slash. |
 
 ## Events
 
@@ -387,12 +387,12 @@ struct SecurityModuleInitParams {
 
 **Properties**
 
-| Name                          | Type      | Description                                                        |
-| ----------------------------- | --------- | ------------------------------------------------------------------ |
-| `machineShare`                | `address` | Address of the machine share token locked in this contract.        |
-| `initialCooldownDuration`     | `uint256` | Cooldown duration in seconds for unlocking.                        |
-| `initialMaxSlashableBps`      | `uint256` | Maximum slashable proportion of the vault balance in basis points. |
-| `initialMinBalanceAfterSlash` | `uint256` |                                                                    |
+| Name                          | Type      | Description                                                            |
+| ----------------------------- | --------- | ---------------------------------------------------------------------- |
+| `machineShare`                | `address` | The address of the machine share token locked in this contract.        |
+| `initialCooldownDuration`     | `uint256` | The cooldown duration in seconds for unlocking.                        |
+| `initialMaxSlashableBps`      | `uint256` | The maximum slashable proportion of the vault balance in basis points. |
+| `initialMinBalanceAfterSlash` | `uint256` | The minimum balance that must remain in the vault after a slash.       |
 
 ### PendingCooldown
 
@@ -408,8 +408,8 @@ struct PendingCooldown {
 
 **Properties**
 
-| Name        | Type      | Description                                                                     |
-| ----------- | --------- | ------------------------------------------------------------------------------- |
-| `shares`    | `uint256` | Amount of security shares to be redeemed.                                       |
-| `maxAssets` | `uint256` | Maximum amount of machine shares that can be redeemed.                          |
-| `maturity`  | `uint256` | Timestamp at which the cooldown period will end and the shares can be redeemed. |
+| Name        | Type      | Description                                                                         |
+| ----------- | --------- | ----------------------------------------------------------------------------------- |
+| `shares`    | `uint256` | The amount of security shares to be redeemed.                                       |
+| `maxAssets` | `uint256` | The maximum amount of machine shares that can be redeemed.                          |
+| `maturity`  | `uint256` | The timestamp at which the cooldown period will end and the shares can be redeemed. |

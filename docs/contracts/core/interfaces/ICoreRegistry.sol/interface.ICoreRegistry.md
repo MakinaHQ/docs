@@ -1,6 +1,6 @@
 # ICoreRegistry
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/interfaces/ICoreRegistry.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/interfaces/ICoreRegistry.sol)
 
 ## Functions
 
@@ -30,7 +30,7 @@ function tokenRegistry() external view returns (address);
 
 ### swapModule
 
-Address of the swapModule module.
+Address of the swap module.
 
 ```solidity
 function swapModule() external view returns (address);
@@ -38,7 +38,7 @@ function swapModule() external view returns (address);
 
 ### flashLoanModule
 
-Address of the flashLoan module.
+Address of the flash loan module.
 
 ```solidity
 function flashLoanModule() external view returns (address);
@@ -120,13 +120,13 @@ function setSwapModule(address _swapModule) external;
 
 **Parameters**
 
-| Name          | Type      | Description             |
-| ------------- | --------- | ----------------------- |
-| `_swapModule` | `address` | The swapModule address. |
+| Name          | Type      | Description              |
+| ------------- | --------- | ------------------------ |
+| `_swapModule` | `address` | The swap module address. |
 
 ### setFlashLoanModule
 
-Sets the flashLoan module address.
+Sets the flash loan module address.
 
 ```solidity
 function setFlashLoanModule(address _flashLoanModule) external;
@@ -134,9 +134,9 @@ function setFlashLoanModule(address _flashLoanModule) external;
 
 **Parameters**
 
-| Name               | Type      | Description                   |
-| ------------------ | --------- | ----------------------------- |
-| `_flashLoanModule` | `address` | The flashLoan module address. |
+| Name               | Type      | Description                    |
+| ------------------ | --------- | ------------------------------ |
+| `_flashLoanModule` | `address` | The flash loan module address. |
 
 ### setCaliberBeacon
 
@@ -157,15 +157,15 @@ function setCaliberBeacon(address _caliberBeacon) external;
 Sets the bridge adapter beacon address.
 
 ```solidity
-function setBridgeAdapterBeacon(uint16 bridgeId, address _bridgeAdapter) external;
+function setBridgeAdapterBeacon(uint16 bridgeId, address _bridgeAdapterBeacon) external;
 ```
 
 **Parameters**
 
-| Name             | Type      | Description                        |
-| ---------------- | --------- | ---------------------------------- |
-| `bridgeId`       | `uint16`  | The bridge ID.                     |
-| `_bridgeAdapter` | `address` | The bridge adapter beacon address. |
+| Name                   | Type      | Description                        |
+| ---------------------- | --------- | ---------------------------------- |
+| `bridgeId`             | `uint16`  | The bridge ID.                     |
+| `_bridgeAdapterBeacon` | `address` | The bridge adapter beacon address. |
 
 ### setBridgeConfig
 
@@ -195,7 +195,9 @@ event BridgeAdapterBeaconChanged(
 ### BridgeConfigChanged
 
 ```solidity
-event BridgeConfigChanged(uint256 indexed bridgeId, address indexed oldBridgeConfig, address indexed newBridgeConfig);
+event BridgeConfigChanged(
+    uint256 indexed bridgeId, address indexed oldBridgeConfig, address indexed newBridgeConfig
+);
 ```
 
 ### CaliberBeaconChanged

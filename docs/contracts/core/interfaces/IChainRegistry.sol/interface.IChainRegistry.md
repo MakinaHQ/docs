@@ -1,6 +1,6 @@
 # IChainRegistry
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/interfaces/IChainRegistry.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/interfaces/IChainRegistry.sol)
 
 This interface is used to map EVM chain IDs to Wormhole chain IDs and vice versa.
 
@@ -11,7 +11,7 @@ This interface is used to map EVM chain IDs to Wormhole chain IDs and vice versa
 EVM chain ID => Is the chain ID registered
 
 ```solidity
-function isEvmChainIdRegistered(uint256 _evmChainId) external view returns (bool);
+function isEvmChainIdRegistered(uint256 evmChainId) external view returns (bool);
 ```
 
 ### isWhChainIdRegistered
@@ -19,7 +19,7 @@ function isEvmChainIdRegistered(uint256 _evmChainId) external view returns (bool
 Wormhole chain ID => Is the chain ID registered
 
 ```solidity
-function isWhChainIdRegistered(uint16 _whChainId) external view returns (bool);
+function isWhChainIdRegistered(uint16 whChainId) external view returns (bool);
 ```
 
 ### evmToWhChainId
@@ -27,7 +27,7 @@ function isWhChainIdRegistered(uint16 _whChainId) external view returns (bool);
 EVM chain ID => Wormhole chain ID
 
 ```solidity
-function evmToWhChainId(uint256 _evmChainId) external view returns (uint16);
+function evmToWhChainId(uint256 evmChainId) external view returns (uint16);
 ```
 
 ### whToEvmChainId
@@ -35,7 +35,7 @@ function evmToWhChainId(uint256 _evmChainId) external view returns (uint16);
 Wormhole chain ID => EVM chain ID
 
 ```solidity
-function whToEvmChainId(uint16 _whChainId) external view returns (uint256);
+function whToEvmChainId(uint16 whChainId) external view returns (uint256);
 ```
 
 ### setChainIds
@@ -43,15 +43,15 @@ function whToEvmChainId(uint16 _whChainId) external view returns (uint256);
 Associates an EVM chain ID with a Wormhole chain ID in the contract storage.
 
 ```solidity
-function setChainIds(uint256 _evmChainId, uint16 _whChainId) external;
+function setChainIds(uint256 evmChainId, uint16 whChainId) external;
 ```
 
 **Parameters**
 
-| Name          | Type      | Description            |
-| ------------- | --------- | ---------------------- |
-| `_evmChainId` | `uint256` | The EVM chain ID.      |
-| `_whChainId`  | `uint16`  | The Wormhole chain ID. |
+| Name         | Type      | Description            |
+| ------------ | --------- | ---------------------- |
+| `evmChainId` | `uint256` | The EVM chain ID.      |
+| `whChainId`  | `uint16`  | The Wormhole chain ID. |
 
 ## Events
 

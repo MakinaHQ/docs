@@ -1,6 +1,6 @@
 # MetaMorphoOracleFactory
 
-[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/e8b2b2411f6e534177e79953d4414e8369c7d524/src/factories/MetaMorphoOracleFactory.sol)
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/392796cfaf86d8dc0e5b51f9530f6989211426e1/src/factories/MetaMorphoOracleFactory.sol)
 
 **Inherits:**
 AccessManagedUpgradeable, [IMetaMorphoOracleFactory](/contracts/periphery/interfaces/IMetaMorphoOracleFactory.sol/interface.IMetaMorphoOracleFactory.md)
@@ -11,7 +11,7 @@ AccessManagedUpgradeable, [IMetaMorphoOracleFactory](/contracts/periphery/interf
 
 ```solidity
 bytes32 private constant MetaMorphoOracleFactoryStorageLocation =
-    0x8b272443f96f44d511b8bb6ad6efe08c8771f99b7e57f25c3f699349a99dca00;
+    0x8b272443f96f44d511b8bb6ad6efe08c8771f99b7e57f25c3f699349a99dca00
 ```
 
 ## Functions
@@ -25,7 +25,7 @@ function _getMetaMorphoOracleFactoryStorage() internal pure returns (MetaMorphoO
 ### constructor
 
 ```solidity
-constructor();
+constructor() ;
 ```
 
 ### initialize
@@ -36,41 +36,23 @@ function initialize(address _initialAuthority) external initializer;
 
 ### isMorphoFactory
 
-Address => Whether this is a trusted Morpho factory.
+Factory => Whether this is a whitelisted Morpho factory.
 
 ```solidity
-function isMorphoFactory(address morphoFactory) external view returns (bool);
+function isMorphoFactory(address morphoFactory) external view override returns (bool);
 ```
-
-**Parameters**
-
-| Name            | Type      | Description                          |
-| --------------- | --------- | ------------------------------------ |
-| `morphoFactory` | `address` | The Morpho factory address to check. |
-
-**Returns**
-
-| Name     | Type   | Description                                                |
-| -------- | ------ | ---------------------------------------------------------- |
-| `<none>` | `bool` | isFactory True if the factory is trusted, false otherwise. |
 
 ### isOracle
 
-Address => Whether this is an oracle deployed by this factory.
+Oracle => Whether this is an oracle instance deployed by this factory.
 
 ```solidity
-function isOracle(address oracle) external view returns (bool);
+function isOracle(address oracle) external view override returns (bool);
 ```
-
-**Parameters**
-
-| Name     | Type      | Description                  |
-| -------- | --------- | ---------------------------- |
-| `oracle` | `address` | The oracle address to check. |
 
 ### setMorphoFactory
 
-Sets the Morpho Registry in the factory contract.
+Whitelist or unwhitelist a Morpho factory.
 
 ```solidity
 function setMorphoFactory(address morphoFactory, bool isFactory) external override restricted;
@@ -78,10 +60,10 @@ function setMorphoFactory(address morphoFactory, bool isFactory) external overri
 
 **Parameters**
 
-| Name            | Type      | Description                          |
-| --------------- | --------- | ------------------------------------ |
-| `morphoFactory` | `address` | The address of the Morpho Registry.  |
-| `isFactory`     | `bool`    | Flags the factory as trusted or not. |
+| Name            | Type      | Description                                          |
+| --------------- | --------- | ---------------------------------------------------- |
+| `morphoFactory` | `address` | The address of the Morpho factory.                   |
+| `isFactory`     | `bool`    | True to whitelist the factory, false to unwhitelist. |
 
 ### createMetaMorphoOracle
 
@@ -106,6 +88,9 @@ function createMetaMorphoOracle(address factory, address metaMorphoVault, uint8 
 ## Structs
 
 ### MetaMorphoOracleFactoryStorage
+
+**Note:**
+storage-location: erc7201:makina.storage.MetaMorphoOracleFactory
 
 ```solidity
 struct MetaMorphoOracleFactoryStorage {

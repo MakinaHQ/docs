@@ -1,6 +1,6 @@
 # IDirectDepositor
 
-[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/e8b2b2411f6e534177e79953d4414e8369c7d524/src/interfaces/IDirectDepositor.sol)
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/392796cfaf86d8dc0e5b51f9530f6989211426e1/src/interfaces/IDirectDepositor.sol)
 
 **Inherits:**
 [IMachinePeriphery](/contracts/periphery/interfaces/IMachinePeriphery.sol/interface.IMachinePeriphery.md)
@@ -12,7 +12,9 @@
 Deposits accounting tokens into the machine and mints shares to the receiver.
 
 ```solidity
-function deposit(uint256 assets, address receiver, uint256 minShares, bytes32 referralKey) external returns (uint256);
+function deposit(uint256 assets, address receiver, uint256 minShares, bytes32 referralKey)
+    external
+    returns (uint256);
 ```
 
 **Parameters**

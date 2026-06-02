@@ -1,14 +1,22 @@
 # IFeeManager
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/interfaces/IFeeManager.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/interfaces/IFeeManager.sol)
 
 ## Functions
+
+### getRestrictedFeeConfigSelectors
+
+Returns the function selectors for the restricted fee configuration functions.
+
+```solidity
+function getRestrictedFeeConfigSelectors() external view returns (bytes4[] memory);
+```
 
 ### calculateFixedFee
 
 Calculates the fixed fee for a given share supply and elapsed time.
 
-_May update internal state related to fee accrual or realization._
+May update internal state related to fee accrual or realization.
 
 ```solidity
 function calculateFixedFee(uint256 shareSupply, uint256 elapsedTime) external returns (uint256);
@@ -31,7 +39,7 @@ function calculateFixedFee(uint256 shareSupply, uint256 elapsedTime) external re
 
 Calculates the performance fee based on the share supply, share price performance and elapsed time.
 
-_May update internal state related to fee accrual or realization._
+May update internal state related to fee accrual or realization.
 
 ```solidity
 function calculatePerformanceFee(

@@ -1,8 +1,8 @@
 # ITokenRegistry
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/interfaces/ITokenRegistry.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/interfaces/ITokenRegistry.sol)
 
-This interface is used to map token addresses from one evm chain to another.
+This interface is used to map token addresses from one EVM chain to another.
 
 ## Functions
 
@@ -11,7 +11,7 @@ This interface is used to map token addresses from one evm chain to another.
 Local token address => Foreign EVM chain ID => Foreign Token address
 
 ```solidity
-function getForeignToken(address _localToken, uint256 _foreignEvmChainId) external view returns (address);
+function getForeignToken(address localToken, uint256 foreignEvmChainId) external view returns (address);
 ```
 
 ### getLocalToken
@@ -19,24 +19,24 @@ function getForeignToken(address _localToken, uint256 _foreignEvmChainId) extern
 Foreign token address => Foreign EVM chain ID => Local Token address
 
 ```solidity
-function getLocalToken(address _foreignToken, uint256 _foreignEvmChainId) external view returns (address);
+function getLocalToken(address foreignToken, uint256 foreignEvmChainId) external view returns (address);
 ```
 
 ### setToken
 
-Associates a local and a foreign token addresse.
+Associates a local and a foreign token address.
 
 ```solidity
-function setToken(address _localToken, uint256 _foreignEvmChainId, address _foreignToken) external;
+function setToken(address localToken, uint256 foreignEvmChainId, address foreignToken) external;
 ```
 
 **Parameters**
 
-| Name                 | Type      | Description                |
-| -------------------- | --------- | -------------------------- |
-| `_localToken`        | `address` | The local token address.   |
-| `_foreignEvmChainId` | `uint256` | The foreign EVM chain ID.  |
-| `_foreignToken`      | `address` | The foreign token address. |
+| Name                | Type      | Description                |
+| ------------------- | --------- | -------------------------- |
+| `localToken`        | `address` | The local token address.   |
+| `foreignEvmChainId` | `uint256` | The foreign EVM chain ID.  |
+| `foreignToken`      | `address` | The foreign token address. |
 
 ## Events
 

@@ -1,6 +1,6 @@
 # IMachine
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/interfaces/IMachine.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/interfaces/IMachine.sol)
 
 **Inherits:**
 [IMachineEndpoint](/contracts/core/interfaces/IMachineEndpoint.sol/interface.IMachineEndpoint.md)
@@ -115,7 +115,7 @@ function maxPerfFeeAccrualRate() external view returns (uint256);
 
 ### feeMintCooldown
 
-Minimum time to be elapsed between two fee minting events.
+Minimum time that must elapse between two fee minting events.
 
 ```solidity
 function feeMintCooldown() external view returns (uint256);
@@ -189,8 +189,8 @@ function getIdleTokensLength() external view returns (uint256);
 
 Idle token index => Idle token address.
 
-_There are no guarantees on the ordering of values inside the idle tokens list,
-and it may change when values are added or removed._
+There are no guarantees on the ordering of values inside the idle tokens list,
+and it may change when values are added or removed.
 
 ```solidity
 function getIdleToken(uint256 idx) external view returns (address);
@@ -281,7 +281,7 @@ function convertToAssets(uint256 shares) external view returns (uint256);
 
 ### transferToHubCaliber
 
-Initiates a token transfers to the hub caliber.
+Initiates a token transfer to the hub caliber.
 
 ```solidity
 function transferToHubCaliber(address token, uint256 amount) external;
@@ -296,7 +296,7 @@ function transferToHubCaliber(address token, uint256 amount) external;
 
 ### transferToSpokeCaliber
 
-Initiates a token transfers to the spoke caliber.
+Initiates a token transfer to the spoke caliber.
 
 ```solidity
 function transferToSpokeCaliber(
@@ -337,7 +337,9 @@ function updateTotalAum() external returns (uint256);
 Deposits accounting tokens into the machine and mints shares to the receiver.
 
 ```solidity
-function deposit(uint256 assets, address receiver, uint256 minShares, bytes32 referralKey) external returns (uint256);
+function deposit(uint256 assets, address receiver, uint256 minShares, bytes32 referralKey)
+    external
+    returns (uint256);
 ```
 
 **Parameters**
@@ -381,10 +383,10 @@ function redeem(uint256 shares, address receiver, uint256 minAssets) external re
 
 Updates spoke caliber accounting data using Wormhole Cross-Chain Queries (CCQ).
 
-_Validates the Wormhole CCQ response and guardian signatures before updating state._
+Validates the Wormhole CCQ response and guardian signatures before updating state.
 
 ```solidity
-function updateSpokeCaliberAccountingData(bytes memory response, GuardianSignature[] memory signatures) external;
+function updateSpokeCaliberAccountingData(bytes calldata response, GuardianSignature[] calldata signatures) external;
 ```
 
 **Parameters**
@@ -400,7 +402,7 @@ Registers a spoke caliber mailbox and related bridge adapters.
 
 ```solidity
 function setSpokeCaliber(
-    uint256 chainId,
+    uint256 foreignChainId,
     address spokeCaliberMailbox,
     uint16[] calldata bridges,
     address[] calldata adapters
@@ -411,7 +413,7 @@ function setSpokeCaliber(
 
 | Name                  | Type        | Description                                                                               |
 | --------------------- | ----------- | ----------------------------------------------------------------------------------------- |
-| `chainId`             | `uint256`   | The foreign EVM chain ID of the spoke caliber.                                            |
+| `foreignChainId`      | `uint256`   | The foreign EVM chain ID of the spoke caliber.                                            |
 | `spokeCaliberMailbox` | `address`   | The address of the spoke caliber mailbox.                                                 |
 | `bridges`             | `uint16[]`  | The list of bridges supported with the spoke caliber.                                     |
 | `adapters`            | `address[]` | The list of corresponding adapters for each bridge. Must be the same length as `bridges`. |
@@ -421,16 +423,16 @@ function setSpokeCaliber(
 Registers a spoke bridge adapter.
 
 ```solidity
-function setSpokeBridgeAdapter(uint256 chainId, uint16 bridgeId, address adapter) external;
+function setSpokeBridgeAdapter(uint256 foreignChainId, uint16 bridgeId, address adapter) external;
 ```
 
 **Parameters**
 
-| Name       | Type      | Description                                |
-| ---------- | --------- | ------------------------------------------ |
-| `chainId`  | `uint256` | The foreign EVM chain ID of the adapter.   |
-| `bridgeId` | `uint16`  | The ID of the bridge.                      |
-| `adapter`  | `address` | The foreign address of the bridge adapter. |
+| Name             | Type      | Description                                |
+| ---------------- | --------- | ------------------------------------------ |
+| `foreignChainId` | `uint256` | The foreign EVM chain ID of the adapter.   |
+| `bridgeId`       | `uint16`  | The ID of the bridge.                      |
+| `adapter`        | `address` | The foreign address of the bridge adapter. |
 
 ### setDepositor
 
@@ -688,13 +690,13 @@ struct MachineInitParams {
 | `initialCaliberStaleThreshold`   | `uint256` | The caliber accounting staleness threshold in seconds.                                         |
 | `initialMaxFixedFeeAccrualRate`  | `uint256` | The maximum fixed fee accrual rate per second, 1e18 = 100%.                                    |
 | `initialMaxPerfFeeAccrualRate`   | `uint256` | The maximum performance fee accrual rate per second, 1e18 = 100%.                              |
-| `initialFeeMintCooldown`         | `uint256` | The minimum time to be elapsed between two fee minting events in seconds.                      |
+| `initialFeeMintCooldown`         | `uint256` | The minimum time that must elapse between two fee minting events in seconds.                   |
 | `initialShareLimit`              | `uint256` | The share cap value.                                                                           |
 | `initialMaxSharePriceChangeRate` | `uint256` | The maximum relative share price change rate per second during total AUM updates, 1e18 = 100%. |
 
 ### SpokeCaliberData
 
-_Internal state structure for a spoke caliber data._
+State data for each spoke caliber.
 
 ```solidity
 struct SpokeCaliberData {
@@ -713,15 +715,15 @@ struct SpokeCaliberData {
 
 **Properties**
 
-| Name                | Type                                          | Description                                                                                |
-| ------------------- | --------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| `mailbox`           | `address`                                     | The foreign address of the spoke caliber mailbox.                                          |
-| `bridgeAdapters`    | `mapping(uint16 bridgeId => address adapter)` | The mapping of bridge IDs to their corresponding adapters.                                 |
-| `timestamp`         | `uint256`                                     | The timestamp of the last accounting.                                                      |
-| `netAum`            | `uint256`                                     | The net AUM of the spoke caliber.                                                          |
-| `positions`         | `bytes[]`                                     | The list of positions of the spoke caliber, each encoded as abi.encode(positionId, value). |
-| `baseTokens`        | `bytes[]`                                     | The list of base tokens of the spoke caliber, each encoded as abi.encode(token, value).    |
-| `caliberBridgesIn`  | `EnumerableMap.AddressToUintMap`              | The mapping of spoke caliber incoming bridge amounts.                                      |
-| `caliberBridgesOut` | `EnumerableMap.AddressToUintMap`              | The mapping of spoke caliber outgoing bridge amounts.                                      |
-| `machineBridgesIn`  | `EnumerableMap.AddressToUintMap`              | The mapping of machine incoming bridge amounts.                                            |
-| `machineBridgesOut` | `EnumerableMap.AddressToUintMap`              | The mapping of machine outgoing bridge amounts.                                            |
+| Name                | Type                                          | Description                                                                                        |
+| ------------------- | --------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `mailbox`           | `address`                                     | The foreign address of the spoke caliber mailbox.                                                  |
+| `bridgeAdapters`    | `mapping(uint16 bridgeId => address adapter)` | The mapping of bridge IDs to their corresponding adapters.                                         |
+| `timestamp`         | `uint256`                                     | The timestamp of the last accounting.                                                              |
+| `netAum`            | `uint256`                                     | The net AUM of the spoke caliber.                                                                  |
+| `positions`         | `bytes[]`                                     | The list of positions of the spoke caliber, each encoded as abi.encode(positionId, value, isDebt). |
+| `baseTokens`        | `bytes[]`                                     | The list of base tokens of the spoke caliber, each encoded as abi.encode(token, value).            |
+| `caliberBridgesIn`  | `EnumerableMap.AddressToUintMap`              | The mapping of spoke caliber incoming bridge amounts.                                              |
+| `caliberBridgesOut` | `EnumerableMap.AddressToUintMap`              | The mapping of spoke caliber outgoing bridge amounts.                                              |
+| `machineBridgesIn`  | `EnumerableMap.AddressToUintMap`              | The mapping of machine incoming bridge amounts.                                                    |
+| `machineBridgesOut` | `EnumerableMap.AddressToUintMap`              | The mapping of machine outgoing bridge amounts.                                                    |

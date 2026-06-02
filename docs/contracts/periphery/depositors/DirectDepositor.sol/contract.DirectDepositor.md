@@ -1,6 +1,6 @@
 # DirectDepositor
 
-[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/e8b2b2411f6e534177e79953d4414e8369c7d524/src/depositors/DirectDepositor.sol)
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/392796cfaf86d8dc0e5b51f9530f6989211426e1/src/depositors/DirectDepositor.sol)
 
 **Inherits:**
 [MachinePeriphery](/contracts/periphery/utils/MachinePeriphery.sol/abstract.MachinePeriphery.md), [Whitelist](/contracts/periphery/utils/Whitelist.sol/abstract.Whitelist.md), [IDirectDepositor](/contracts/periphery/interfaces/IDirectDepositor.sol/interface.IDirectDepositor.md)

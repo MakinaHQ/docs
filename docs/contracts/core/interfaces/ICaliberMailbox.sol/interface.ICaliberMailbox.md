@@ -1,6 +1,6 @@
 # ICaliberMailbox
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/interfaces/ICaliberMailbox.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/interfaces/ICaliberMailbox.sol)
 
 **Inherits:**
 [IMachineEndpoint](/contracts/core/interfaces/IMachineEndpoint.sol/interface.IMachineEndpoint.md)
@@ -12,11 +12,8 @@
 Initializer of the contract.
 
 ```solidity
-function initialize(
-    IMakinaGovernable.MakinaGovernableInitParams calldata mgParams,
-    uint256 initialCooldownDuration,
-    address hubMachine
-) external;
+function initialize(IMakinaGovernable.MakinaGovernableInitParams calldata mgParams, uint256 initialCooldownDuration)
+    external;
 ```
 
 **Parameters**
@@ -25,7 +22,6 @@ function initialize(
 | ------------------------- | ---------------------------------------------- | ------------------------------------------------------------------ |
 | `mgParams`                | `IMakinaGovernable.MakinaGovernableInitParams` | The makina governable initialization parameters.                   |
 | `initialCooldownDuration` | `uint256`                                      | The duration of the cooldown period for outgoing bridge transfers. |
-| `hubMachine`              | `address`                                      | The foreign address of the hub machine.                            |
 
 ### caliber
 
@@ -84,14 +80,14 @@ function getSpokeCaliberAccountingData() external view returns (SpokeCaliberAcco
 Sets the associated caliber address.
 
 ```solidity
-function setCaliber(address caliber) external;
+function setCaliber(address _caliber) external;
 ```
 
 **Parameters**
 
-| Name      | Type      | Description                            |
-| --------- | --------- | -------------------------------------- |
-| `caliber` | `address` | The address of the associated caliber. |
+| Name       | Type      | Description                            |
+| ---------- | --------- | -------------------------------------- |
+| `_caliber` | `address` | The address of the associated caliber. |
 
 ### setCooldownDuration
 
@@ -162,7 +158,7 @@ struct SpokeCaliberAccountingData {
 
 | Name         | Type      | Description                                                                                  |
 | ------------ | --------- | -------------------------------------------------------------------------------------------- |
-| `netAum`     | `uint256` | The net AUM expresses in caliber's accounting token.                                         |
+| `netAum`     | `uint256` | The net AUM expressed in caliber's accounting token.                                         |
 | `positions`  | `bytes[]` | The list of positions of the caliber, each encoded as abi.encode(positionId, value, isDebt). |
 | `baseTokens` | `bytes[]` | The list of base tokens of the caliber, each encoded as abi.encode(token, value).            |
 | `bridgesIn`  | `bytes[]` | The list of incoming bridge amounts, each encoded as abi.encode(token, amount).              |

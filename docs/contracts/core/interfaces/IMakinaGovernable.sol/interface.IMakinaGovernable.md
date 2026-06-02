@@ -1,8 +1,16 @@
 # IMakinaGovernable
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/interfaces/IMakinaGovernable.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/interfaces/IMakinaGovernable.sol)
 
 ## Functions
+
+### operator
+
+Address of the current operator (mechanic or security council).
+
+```solidity
+function operator() external view returns (address);
+```
 
 ### mechanic
 
@@ -57,16 +65,7 @@ function restrictedAccountingMode() external view returns (bool);
 User => Whether the user is an accounting agent
 
 ```solidity
-function isAccountingAgent(address agent) external view returns (bool);
-```
-
-### isOperator
-
-User => Whether the user is the current operator
-The operator is either the mechanic or the security council depending on the recovery mode.
-
-```solidity
-function isOperator(address user) external view returns (bool);
+function isAccountingAgent(address user) external view returns (bool);
 ```
 
 ### isAccountingAuthorized
@@ -87,9 +86,9 @@ function setMechanic(address newMechanic) external;
 
 **Parameters**
 
-| Name          | Type      | Description                  |
-| ------------- | --------- | ---------------------------- |
-| `newMechanic` | `address` | The address of new mechanic. |
+| Name          | Type      | Description                      |
+| ------------- | --------- | -------------------------------- |
+| `newMechanic` | `address` | The address of the new mechanic. |
 
 ### setSecurityCouncil
 
@@ -253,16 +252,18 @@ struct MakinaGovernableInitParams {
     address initialRiskManagerTimelock;
     address initialAuthority;
     bool initialRestrictedAccountingMode;
+    address[] initialAccountingAgents;
 }
 ```
 
 **Properties**
 
-| Name                              | Type      | Description                                           |
-| --------------------------------- | --------- | ----------------------------------------------------- |
-| `initialMechanic`                 | `address` | The address of the initial mechanic.                  |
-| `initialSecurityCouncil`          | `address` | The address of the initial security council.          |
-| `initialRiskManager`              | `address` | The address of the initial risk manager.              |
-| `initialRiskManagerTimelock`      | `address` | The address of the initial risk manager timelock.     |
-| `initialAuthority`                | `address` | The address of the initial authority.                 |
-| `initialRestrictedAccountingMode` | `bool`    | The initial value for the restricted accounting mode. |
+| Name                              | Type        | Description                                           |
+| --------------------------------- | ----------- | ----------------------------------------------------- |
+| `initialMechanic`                 | `address`   | The address of the initial mechanic.                  |
+| `initialSecurityCouncil`          | `address`   | The address of the initial security council.          |
+| `initialRiskManager`              | `address`   | The address of the initial risk manager.              |
+| `initialRiskManagerTimelock`      | `address`   | The address of the initial risk manager timelock.     |
+| `initialAuthority`                | `address`   | The address of the initial authority.                 |
+| `initialRestrictedAccountingMode` | `bool`      | The initial value for the restricted accounting mode. |
+| `initialAccountingAgents`         | `address[]` | The addresses of the initial accounting agents.       |

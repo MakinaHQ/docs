@@ -1,43 +1,43 @@
 # DecimalsUtils
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/libraries/DecimalsUtils.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/libraries/DecimalsUtils.sol)
 
 ## State Variables
 
-### DEFAULT_DECIMALS
-
-```solidity
-uint8 internal constant DEFAULT_DECIMALS = 18;
-```
-
 ### MIN_DECIMALS
 
+Supported decimals range for assets
+
 ```solidity
-uint8 internal constant MIN_DECIMALS = 6;
+uint8 private constant MIN_DECIMALS = 6
 ```
 
 ### MAX_DECIMALS
 
 ```solidity
-uint8 internal constant MAX_DECIMALS = DEFAULT_DECIMALS;
+uint8 private constant MAX_DECIMALS = 18
 ```
 
 ### SHARE_TOKEN_DECIMALS
 
+Decimals and unit for machine share token.
+
 ```solidity
-uint8 internal constant SHARE_TOKEN_DECIMALS = DEFAULT_DECIMALS;
+uint8 internal constant SHARE_TOKEN_DECIMALS = 18
 ```
 
 ### SHARE_TOKEN_UNIT
 
 ```solidity
-uint256 internal constant SHARE_TOKEN_UNIT = 10 ** SHARE_TOKEN_DECIMALS;
+uint256 internal constant SHARE_TOKEN_UNIT = 10 ** SHARE_TOKEN_DECIMALS
 ```
 
 ## Functions
 
-### \_getDecimals
+### \_checkDecimals
+
+Checks that asset exposes decimals() and that it is within the supported range.
 
 ```solidity
-function _getDecimals(address asset) internal view returns (uint8);
+function _checkDecimals(address asset) internal view;
 ```

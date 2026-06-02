@@ -1,6 +1,6 @@
 # MachineShare
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/machine/MachineShare.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/machine/MachineShare.sol)
 
 **Inherits:**
 ERC20, Ownable2Step, [IMachineShare](/contracts/core/interfaces/IMachineShare.sol/interface.IMachineShare.md)
@@ -16,6 +16,8 @@ constructor(string memory _name, string memory _symbol, address _initialMinter)
 ```
 
 ### decimals
+
+Returns the decimals places of the token.
 
 ```solidity
 function decimals() public pure override(ERC20, IERC20Metadata) returns (uint8);
@@ -34,7 +36,7 @@ function minter() external view override returns (address);
 Mints new shares to the specified address.
 
 ```solidity
-function mint(address to, uint256 amount) external onlyOwner;
+function mint(address to, uint256 amount) external override onlyOwner;
 ```
 
 **Parameters**
@@ -49,7 +51,7 @@ function mint(address to, uint256 amount) external onlyOwner;
 Burns shares from the specified address.
 
 ```solidity
-function burn(address from, uint256 amount) external;
+function burn(address from, uint256 amount) external override;
 ```
 
 **Parameters**

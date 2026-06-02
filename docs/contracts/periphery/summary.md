@@ -12,6 +12,7 @@
   - [FlashloanAggregator](flashloans/FlashloanAggregator.sol/contract.FlashloanAggregator.md)
 - [❱ interfaces]
   - [IAsyncRedeemer](interfaces/IAsyncRedeemer.sol/interface.IAsyncRedeemer.md)
+  - [IAsyncRedeemerFee](interfaces/IAsyncRedeemerFee.sol/interface.IAsyncRedeemerFee.md)
   - [IDirectDepositor](interfaces/IDirectDepositor.sol/interface.IDirectDepositor.md)
   - [IFlashloanAggregator](interfaces/IFlashloanAggregator.sol/interface.IFlashloanAggregator.md)
   - [IHubPeripheryFactory](interfaces/IHubPeripheryFactory.sol/interface.IHubPeripheryFactory.md)
@@ -35,6 +36,7 @@
   - [MachineShareOracle](oracles/MachineShareOracle.sol/contract.MachineShareOracle.md)
 - [❱ redeemers]
   - [AsyncRedeemer](redeemers/AsyncRedeemer.sol/contract.AsyncRedeemer.md)
+  - [AsyncRedeemerFee](redeemers/AsyncRedeemerFee.sol/contract.AsyncRedeemerFee.md)
 - [❱ registries]
   - [HubPeripheryRegistry](registries/HubPeripheryRegistry.sol/contract.HubPeripheryRegistry.md)
 - [❱ security-module]

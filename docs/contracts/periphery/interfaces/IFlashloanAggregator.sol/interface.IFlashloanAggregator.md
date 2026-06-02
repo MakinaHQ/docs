@@ -1,14 +1,12 @@
 # IFlashloanAggregator
 
-[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/e8b2b2411f6e534177e79953d4414e8369c7d524/src/interfaces/IFlashloanAggregator.sol)
-
-The interface for the flashloan aggregator.
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/392796cfaf86d8dc0e5b51f9530f6989211426e1/src/interfaces/IFlashloanAggregator.sol)
 
 ## Functions
 
 ### requestFlashloan
 
-The function to request a flashloan.
+The function to request a flash loan.
 
 ```solidity
 function requestFlashloan(FlashloanRequest calldata request) external;
@@ -16,9 +14,31 @@ function requestFlashloan(FlashloanRequest calldata request) external;
 
 **Parameters**
 
-| Name      | Type               | Description                    |
-| --------- | ------------------ | ------------------------------ |
-| `request` | `FlashloanRequest` | The request for the flashloan. |
+| Name      | Type               | Description                     |
+| --------- | ------------------ | ------------------------------- |
+| `request` | `FlashloanRequest` | The request for the flash loan. |
+
+### balancerV3FlashloanCallback
+
+Callback handler for Balancer V3 flashloan.
+
+```solidity
+function balancerV3FlashloanCallback(
+    address caliber,
+    ICaliber.Instruction calldata instruction,
+    address token,
+    uint256 amount
+) external;
+```
+
+**Parameters**
+
+| Name          | Type                   | Description                                                       |
+| ------------- | ---------------------- | ----------------------------------------------------------------- |
+| `caliber`     | `address`              | The address of the Caliber contract that initiated the flashloan. |
+| `instruction` | `ICaliber.Instruction` | The instruction to execute.                                       |
+| `token`       | `address`              | The token borrowed.                                               |
+| `amount`      | `uint256`              | The amount borrowed.                                              |
 
 ## Errors
 
@@ -126,6 +146,14 @@ Error thrown when the Morpho pool is not set.
 error MorphoPoolNotSet();
 ```
 
+### DaiNotSet
+
+Error thrown when the DAI token is not set.
+
+```solidity
+error DaiNotSet();
+```
+
 ### DssFlashNotSet
 
 Error thrown when the Maker DSS Flash is not set.
@@ -154,7 +182,7 @@ error InvalidUserDataHash();
 
 ### FlashloanRequest
 
-The struct for requesting a flashloan.
+The struct for requesting a flash loan.
 
 ```solidity
 struct FlashloanRequest {
@@ -167,25 +195,30 @@ struct FlashloanRequest {
 
 **Properties**
 
-| Name          | Type                   | Description                    |
-| ------------- | ---------------------- | ------------------------------ |
-| `provider`    | `FlashloanProvider`    | The provider of the flashloan. |
-| `instruction` | `ICaliber.Instruction` | The instruction to execute.    |
-| `token`       | `address`              | The token to borrow.           |
-| `amount`      | `uint256`              | The amount to borrow.          |
+| Name          | Type                   | Description                     |
+| ------------- | ---------------------- | ------------------------------- |
+| `provider`    | `FlashloanProvider`    | The provider of the flash loan. |
+| `instruction` | `ICaliber.Instruction` | The instruction to execute.     |
+| `token`       | `address`              | The token to borrow.            |
+| `amount`      | `uint256`              | The amount to borrow.           |
 
 ## Enums
 
 ### FlashloanProvider
 
-The enum for the flashloan providers.
+The enum for the flash loan providers.
 
 ```solidity
 enum FlashloanProvider {
+    /// Aave V3
     AAVE_V3,
+    /// Balancer V2
     BALANCER_V2,
+    /// Balancer V3
     BALANCER_V3,
+    /// Morpho
     MORPHO,
+    /// Maker DSS Flash
     DSS_FLASH
 }
 ```

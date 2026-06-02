@@ -1,6 +1,6 @@
 # Whitelist
 
-[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/e8b2b2411f6e534177e79953d4414e8369c7d524/src/utils/Whitelist.sol)
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/392796cfaf86d8dc0e5b51f9530f6989211426e1/src/utils/Whitelist.sol)
 
 **Inherits:**
 Initializable, [IWhitelist](/contracts/periphery/interfaces/IWhitelist.sol/interface.IWhitelist.md)
@@ -10,7 +10,8 @@ Initializable, [IWhitelist](/contracts/periphery/interfaces/IWhitelist.sol/inter
 ### WhitelistStorageLocation
 
 ```solidity
-bytes32 private constant WhitelistStorageLocation = 0x8ecd71e87c506d6932770ce52ba8e8dc85963cc6e1a5097e1b32e68fbabfcb00;
+bytes32 private constant WhitelistStorageLocation =
+    0x8ecd71e87c506d6932770ce52ba8e8dc85963cc6e1a5097e1b32e68fbabfcb00
 ```
 
 ## Functions
@@ -30,7 +31,7 @@ function __Whitelist_init(bool _initialWhitelistStatus) internal onlyInitializin
 ### whitelistCheck
 
 ```solidity
-modifier whitelistCheck();
+modifier whitelistCheck() ;
 ```
 
 ### isWhitelistEnabled
@@ -38,7 +39,7 @@ modifier whitelistCheck();
 True if whitelist is enabled, false otherwise.
 
 ```solidity
-function isWhitelistEnabled() public view returns (bool);
+function isWhitelistEnabled() public view override returns (bool);
 ```
 
 ### isWhitelistedUser
@@ -51,7 +52,7 @@ function isWhitelistedUser(address user) public view override returns (bool);
 
 ### \_setWhitelistStatus
 
-_Internal function to set the whitelist status._
+Internal function to set the whitelist status.
 
 ```solidity
 function _setWhitelistStatus(bool enabled) internal;
@@ -59,7 +60,7 @@ function _setWhitelistStatus(bool enabled) internal;
 
 ### \_setWhitelistedUsers
 
-_Internal function to set the whitelisted users._
+Internal function to set the whitelisted users.
 
 ```solidity
 function _setWhitelistedUsers(address[] calldata users, bool whitelisted) internal;

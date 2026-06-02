@@ -1,6 +1,6 @@
 # LayerZeroV2BridgeAdapter
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/bridge/adapters/LayerZeroV2BridgeAdapter.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/bridge/adapters/LayerZeroV2BridgeAdapter.sol)
 
 **Inherits:**
 [BridgeAdapter](/contracts/core/bridge/adapters/BridgeAdapter.sol/abstract.BridgeAdapter.md), [ILayerZeroComposer](/contracts/core/interfaces/ILayerZeroComposer.sol/interface.ILayerZeroComposer.md)
@@ -10,7 +10,7 @@
 ### LAYER_ZERO_V2_BRIDGE_ID
 
 ```solidity
-uint16 private constant LAYER_ZERO_V2_BRIDGE_ID = 2;
+uint16 private constant LAYER_ZERO_V2_BRIDGE_ID = 2
 ```
 
 ## Functions
@@ -32,14 +32,14 @@ function initialize(address _controller, bytes calldata) external override initi
 
 **Parameters**
 
-| Name          | Type      | Description |
-| ------------- | --------- | ----------- |
-| `_controller` | `address` |             |
-| `<none>`      | `bytes`   |             |
+| Name          | Type      | Description                     |
+| ------------- | --------- | ------------------------------- |
+| `_controller` | `address` | The bridge controller contract. |
+| `<none>`      | `bytes`   |                                 |
 
 ### receive
 
-_Allows the contract to receive Ether._
+Allows the contract to receive Ether.
 
 ```solidity
 receive() external payable;
@@ -50,7 +50,16 @@ receive() external payable;
 Composes a LayerZero message from an OApp.
 
 ```solidity
-function lzCompose(address _from, bytes32, bytes calldata _message, address, bytes calldata) external payable;
+function lzCompose(
+    address _from,
+    bytes32, /*_guid*/
+    bytes calldata _message,
+    address, /*_executor*/
+    bytes calldata /*_extraData*/
+)
+    external
+    payable
+    override;
 ```
 
 **Parameters**
@@ -65,7 +74,7 @@ function lzCompose(address _from, bytes32, bytes calldata _message, address, byt
 
 ### \_outBridgeTransferCancelDefault
 
-_Internal logic for outgoing bridge transfer cancellation default._
+Internal logic for outgoing bridge transfer cancellation default.
 
 ```solidity
 function _outBridgeTransferCancelDefault(uint256 transferId) internal view override returns (uint256);
@@ -73,7 +82,7 @@ function _outBridgeTransferCancelDefault(uint256 transferId) internal view overr
 
 ### \_checkOutBridgeTransferIsCancellable
 
-_Checks if an outgoing bridge transfer is in a cancellable state._
+Checks if an outgoing bridge transfer is in a cancellable state.
 
 ```solidity
 function _checkOutBridgeTransferIsCancellable(uint256 transferId) internal override;
@@ -81,7 +90,7 @@ function _checkOutBridgeTransferIsCancellable(uint256 transferId) internal overr
 
 ### \_sendOutBridgeTransfer
 
-_Handles logic specific to the external bridge protocol for sending out a bridge transfer._
+Handles logic specific to the external bridge protocol for sending out a bridge transfer.
 
 ```solidity
 function _sendOutBridgeTransfer(uint256 transferId, bytes calldata data) internal override;

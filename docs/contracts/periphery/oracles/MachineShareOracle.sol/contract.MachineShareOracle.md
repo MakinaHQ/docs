@@ -1,6 +1,6 @@
 # MachineShareOracle
 
-[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/e8b2b2411f6e534177e79953d4414e8369c7d524/src/oracles/MachineShareOracle.sol)
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/392796cfaf86d8dc0e5b51f9530f6989211426e1/src/oracles/MachineShareOracle.sol)
 
 **Inherits:**
 MakinaContext, Initializable, [IMachineShareOracle](/contracts/periphery/interfaces/IMachineShareOracle.sol/interface.IMachineShareOracle.md)
@@ -11,7 +11,7 @@ MakinaContext, Initializable, [IMachineShareOracle](/contracts/periphery/interfa
 
 ```solidity
 bytes32 private constant MachineShareOracleStorageLocation =
-    0x4f70fa92dc3700b8f04f54ea7fbeb33f50a8cec0cd9f676fee937dccebe28100;
+    0x4f70fa92dc3700b8f04f54ea7fbeb33f50a8cec0cd9f676fee937dccebe28100
 ```
 
 ## Functions
@@ -69,9 +69,9 @@ function shareOwner() public view override returns (address);
 
 ### getSharePrice
 
-Returns the price of one machine share token expressed in machine accounting tokens
+Returns the price of one machine share token expressed in machine accounting tokens.
 
-_The price is expressed with `decimals` precision._
+The price is expressed with `decimals` precision.
 
 ```solidity
 function getSharePrice() external view override returns (uint256);
@@ -87,7 +87,7 @@ function getSharePrice() external view override returns (uint256);
 
 Notifies the migration of the original share owner from a pre-deposit vault to a machine.
 
-_Can only be called once and only if the share owner was initially a pre-deposit vault._
+Can only be called once and only if the share owner was initially a pre-deposit vault.
 
 ```solidity
 function notifyPdvMigration() external override;
@@ -96,6 +96,9 @@ function notifyPdvMigration() external override;
 ## Structs
 
 ### MachineShareOracleStorage
+
+**Note:**
+storage-location: erc7201:makina.storage.MachineShareOracle
 
 ```solidity
 struct MachineShareOracleStorage {

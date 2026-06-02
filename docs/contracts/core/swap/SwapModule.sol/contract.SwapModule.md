@@ -1,6 +1,6 @@
 # SwapModule
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/swap/SwapModule.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/swap/SwapModule.sol)
 
 **Inherits:**
 AccessManagedUpgradeable, [MakinaContext](/contracts/core/utils/MakinaContext.sol/abstract.MakinaContext.md), [ISwapModule](/contracts/core/interfaces/ISwapModule.sol/interface.ISwapModule.md)
@@ -10,7 +10,8 @@ AccessManagedUpgradeable, [MakinaContext](/contracts/core/utils/MakinaContext.so
 ### SwapModuleStorageLocation
 
 ```solidity
-bytes32 private constant SwapModuleStorageLocation = 0x2964c0594a3da0414db90b8d5f6c112accd22109f0399a98ea4b239ff3f7a200;
+bytes32 private constant SwapModuleStorageLocation =
+    0x2964c0594a3da0414db90b8d5f6c112accd22109f0399a98ea4b239ff3f7a200
 ```
 
 ## Functions
@@ -30,7 +31,7 @@ constructor(address _registry) MakinaContext(_registry);
 ### initialize
 
 ```solidity
-function initialize(address _initialAuthority) external initializer;
+function initialize(address initialAuthority) external initializer;
 ```
 
 ### getSwapperTargets
@@ -38,7 +39,11 @@ function initialize(address _initialAuthority) external initializer;
 Returns approval and execution targets for a given swapper ID.
 
 ```solidity
-function getSwapperTargets(uint16 swapperId) external view returns (address approvalTarget, address executionTarget);
+function getSwapperTargets(uint16 swapperId)
+    external
+    view
+    override
+    returns (address approvalTarget, address executionTarget);
 ```
 
 **Parameters**
@@ -81,11 +86,11 @@ function setSwapperTargets(uint16 swapperId, address approvalTarget, address exe
 
 **Parameters**
 
-| Name              | Type      | Description          |
-| ----------------- | --------- | -------------------- |
-| `swapperId`       | `uint16`  | The swapper ID.      |
-| `approvalTarget`  | `address` | The approval target. |
-| `executionTarget` | `address` |                      |
+| Name              | Type      | Description           |
+| ----------------- | --------- | --------------------- |
+| `swapperId`       | `uint16`  | The swapper ID.       |
+| `approvalTarget`  | `address` | The approval target.  |
+| `executionTarget` | `address` | The execution target. |
 
 ## Structs
 

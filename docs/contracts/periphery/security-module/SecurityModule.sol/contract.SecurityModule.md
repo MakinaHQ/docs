@@ -1,6 +1,6 @@
 # SecurityModule
 
-[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/e8b2b2411f6e534177e79953d4414e8369c7d524/src/security-module/SecurityModule.sol)
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/392796cfaf86d8dc0e5b51f9530f6989211426e1/src/security-module/SecurityModule.sol)
 
 **Inherits:**
 ERC20Upgradeable, ReentrancyGuard, [MachinePeriphery](/contracts/periphery/utils/MachinePeriphery.sol/abstract.MachinePeriphery.md), [ISecurityModule](/contracts/periphery/interfaces/ISecurityModule.sol/interface.ISecurityModule.md)
@@ -9,17 +9,17 @@ ERC20Upgradeable, ReentrancyGuard, [MachinePeriphery](/contracts/periphery/utils
 
 ### MAX_BPS
 
-_Full scale value in basis points_
+Full scale value in basis points
 
 ```solidity
-uint256 private constant MAX_BPS = 10_000;
+uint256 private constant MAX_BPS = 10_000
 ```
 
 ### SecurityModuleStorageLocation
 
 ```solidity
 bytes32 private constant SecurityModuleStorageLocation =
-    0x008282b5c1b058474ce5feb89ba7468762b87f27435b2f525bf76e3e0c3af500;
+    0x008282b5c1b058474ce5feb89ba7468762b87f27435b2f525bf76e3e0c3af500
 ```
 
 ## Functions
@@ -42,15 +42,15 @@ constructor(address _peripheryRegistry) MachinePeriphery(_peripheryRegistry);
 function initialize(bytes calldata _data) external virtual initializer;
 ```
 
-### NotSlashingMode
+### notSlashingMode
 
 ```solidity
-modifier NotSlashingMode();
+modifier notSlashingMode() ;
 ```
 
 ### decimals
 
-_Returns the decimals places of the token._
+Returns the decimals places of the token.
 
 ```solidity
 function decimals() public pure override(ERC20Upgradeable, IERC20Metadata) returns (uint8);
@@ -114,17 +114,17 @@ function pendingCooldown(uint256 cooldownId) external view override returns (uin
 
 **Parameters**
 
-| Name         | Type      | Description                                                       |
-| ------------ | --------- | ----------------------------------------------------------------- |
-| `cooldownId` | `uint256` | ID of the cooldown receipt NFT representing the pending cooldown. |
+| Name         | Type      | Description                                                           |
+| ------------ | --------- | --------------------------------------------------------------------- |
+| `cooldownId` | `uint256` | The ID of the cooldown receipt NFT representing the pending cooldown. |
 
 **Returns**
 
-| Name     | Type      | Description                                                                              |
-| -------- | --------- | ---------------------------------------------------------------------------------------- |
-| `<none>` | `uint256` | shares Amount of security shares to be redeemed.                                         |
-| `<none>` | `uint256` | currentExpectedAssets Current expected amount of machine shares that can be redeemed.    |
-| `<none>` | `uint256` | maturity Timestamp at which the cooldown period will end and the shares can be redeemed. |
+| Name     | Type      | Description                                                                                  |
+| -------- | --------- | -------------------------------------------------------------------------------------------- |
+| `<none>` | `uint256` | shares The amount of security shares to be redeemed.                                         |
+| `<none>` | `uint256` | currentExpectedAssets The current expected amount of machine shares that can be redeemed.    |
+| `<none>` | `uint256` | maturity The timestamp at which the cooldown period will end and the shares can be redeemed. |
 
 ### slashingMode
 
@@ -160,15 +160,15 @@ function convertToShares(uint256 assets) public view override returns (uint256);
 
 **Parameters**
 
-| Name     | Type      | Description                          |
-| -------- | --------- | ------------------------------------ |
-| `assets` | `uint256` | Amount of machine shares to convert. |
+| Name     | Type      | Description                              |
+| -------- | --------- | ---------------------------------------- |
+| `assets` | `uint256` | The amount of machine shares to convert. |
 
 **Returns**
 
-| Name     | Type      | Description                                                                 |
-| -------- | --------- | --------------------------------------------------------------------------- |
-| `<none>` | `uint256` | shares Amount of security shares corresponding to the input machine shares. |
+| Name     | Type      | Description                                                                     |
+| -------- | --------- | ------------------------------------------------------------------------------- |
+| `<none>` | `uint256` | shares The amount of security shares corresponding to the input machine shares. |
 
 ### convertToAssets
 
@@ -180,35 +180,35 @@ function convertToAssets(uint256 shares) public view override returns (uint256);
 
 **Parameters**
 
-| Name     | Type      | Description                           |
-| -------- | --------- | ------------------------------------- |
-| `shares` | `uint256` | Amount of security shares to convert. |
+| Name     | Type      | Description                               |
+| -------- | --------- | ----------------------------------------- |
+| `shares` | `uint256` | The amount of security shares to convert. |
 
 **Returns**
 
-| Name     | Type      | Description                                                                 |
-| -------- | --------- | --------------------------------------------------------------------------- |
-| `<none>` | `uint256` | assets Amount of machine shares corresponding to the input security shares. |
+| Name     | Type      | Description                                                                     |
+| -------- | --------- | ------------------------------------------------------------------------------- |
+| `<none>` | `uint256` | assets The amount of machine shares corresponding to the input security shares. |
 
 ### previewLock
 
 Estimates the amount of security shares that would be received for a given amount of machine shares.
 
 ```solidity
-function previewLock(uint256 assets) public view override NotSlashingMode returns (uint256);
+function previewLock(uint256 assets) public view override notSlashingMode returns (uint256);
 ```
 
 **Parameters**
 
-| Name     | Type      | Description                          |
-| -------- | --------- | ------------------------------------ |
-| `assets` | `uint256` | Amount of machine shares to convert. |
+| Name     | Type      | Description                              |
+| -------- | --------- | ---------------------------------------- |
+| `assets` | `uint256` | The amount of machine shares to convert. |
 
 **Returns**
 
-| Name     | Type      | Description                                                                           |
-| -------- | --------- | ------------------------------------------------------------------------------------- |
-| `<none>` | `uint256` | shares Estimated amount of security shares corresponding to the input machine shares. |
+| Name     | Type      | Description                                                                               |
+| -------- | --------- | ----------------------------------------------------------------------------------------- |
+| `<none>` | `uint256` | shares The estimated amount of security shares corresponding to the input machine shares. |
 
 ### lock
 
@@ -219,23 +219,23 @@ function lock(uint256 assets, address receiver, uint256 minShares)
     external
     override
     nonReentrant
-    NotSlashingMode
+    notSlashingMode
     returns (uint256);
 ```
 
 **Parameters**
 
-| Name        | Type      | Description                                    |
-| ----------- | --------- | ---------------------------------------------- |
-| `assets`    | `uint256` | Amount of machine shares to lock.              |
-| `receiver`  | `address` | Address that will receive the security shares. |
-| `minShares` | `uint256` | Minimum amount of security shares to receive.  |
+| Name        | Type      | Description                                        |
+| ----------- | --------- | -------------------------------------------------- |
+| `assets`    | `uint256` | The amount of machine shares to lock.              |
+| `receiver`  | `address` | The address that will receive the security shares. |
+| `minShares` | `uint256` | The minimum amount of security shares to receive.  |
 
 **Returns**
 
-| Name     | Type      | Description                              |
-| -------- | --------- | ---------------------------------------- |
-| `<none>` | `uint256` | shares Amount of security shares minted. |
+| Name     | Type      | Description                                  |
+| -------- | --------- | -------------------------------------------- |
+| `<none>` | `uint256` | shares The amount of security shares minted. |
 
 ### startCooldown
 
@@ -253,18 +253,18 @@ function startCooldown(uint256 shares, address receiver)
 
 **Parameters**
 
-| Name       | Type      | Description                                     |
-| ---------- | --------- | ----------------------------------------------- |
-| `shares`   | `uint256` | Amount of security shares to redeem.            |
-| `receiver` | `address` | Address that will receive the cooldown receipt. |
+| Name       | Type      | Description                                         |
+| ---------- | --------- | --------------------------------------------------- |
+| `shares`   | `uint256` | The amount of security shares to redeem.            |
+| `receiver` | `address` | The address that will receive the cooldown receipt. |
 
 **Returns**
 
-| Name     | Type      | Description                                                                              |
-| -------- | --------- | ---------------------------------------------------------------------------------------- |
-| `<none>` | `uint256` | cooldownId ID of the minted cooldown receipt NFT representing the pending cooldown.      |
-| `<none>` | `uint256` | maxAssets Maximum amount of machine shares that can be redeemed.                         |
-| `<none>` | `uint256` | maturity Timestamp at which the cooldown period will end and the shares can be redeemed. |
+| Name     | Type      | Description                                                                                  |
+| -------- | --------- | -------------------------------------------------------------------------------------------- |
+| `<none>` | `uint256` | cooldownId The ID of the minted cooldown receipt NFT representing the pending cooldown.      |
+| `<none>` | `uint256` | maxAssets The maximum amount of machine shares that can be redeemed.                         |
+| `<none>` | `uint256` | maturity The timestamp at which the cooldown period will end and the shares can be redeemed. |
 
 ### cancelCooldown
 
@@ -278,15 +278,15 @@ function cancelCooldown(uint256 cooldownId) external override nonReentrant retur
 
 **Parameters**
 
-| Name         | Type      | Description                                                       |
-| ------------ | --------- | ----------------------------------------------------------------- |
-| `cooldownId` | `uint256` | ID of the cooldown receipt NFT representing the pending cooldown. |
+| Name         | Type      | Description                                                           |
+| ------------ | --------- | --------------------------------------------------------------------- |
+| `cooldownId` | `uint256` | The ID of the cooldown receipt NFT representing the pending cooldown. |
 
 **Returns**
 
-| Name     | Type      | Description                                                            |
-| -------- | --------- | ---------------------------------------------------------------------- |
-| `<none>` | `uint256` | shares Amount of security shares for which the cooldown was cancelled. |
+| Name     | Type      | Description                                                                |
+| -------- | --------- | -------------------------------------------------------------------------- |
+| `<none>` | `uint256` | shares The amount of security shares for which the cooldown was cancelled. |
 
 ### redeem
 
@@ -298,16 +298,16 @@ function redeem(uint256 cooldownId, uint256 minAssets) external override nonReen
 
 **Parameters**
 
-| Name         | Type      | Description                                                       |
-| ------------ | --------- | ----------------------------------------------------------------- |
-| `cooldownId` | `uint256` | ID of the cooldown receipt NFT representing the pending cooldown. |
-| `minAssets`  | `uint256` | Minimum amount of machine shares to receive.                      |
+| Name         | Type      | Description                                                           |
+| ------------ | --------- | --------------------------------------------------------------------- |
+| `cooldownId` | `uint256` | The ID of the cooldown receipt NFT representing the pending cooldown. |
+| `minAssets`  | `uint256` | The minimum amount of machine shares to receive.                      |
 
 **Returns**
 
-| Name     | Type      | Description                                                  |
-| -------- | --------- | ------------------------------------------------------------ |
-| `<none>` | `uint256` | assets Amount of machine shares transferred to the receiver. |
+| Name     | Type      | Description                                                      |
+| -------- | --------- | ---------------------------------------------------------------- |
+| `<none>` | `uint256` | assets The amount of machine shares transferred to the receiver. |
 
 ### slash
 
@@ -319,9 +319,9 @@ function slash(uint256 amount) external override nonReentrant onlySecurityCounci
 
 **Parameters**
 
-| Name     | Type      | Description                                   |
-| -------- | --------- | --------------------------------------------- |
-| `amount` | `uint256` | Amount to slash from the total locked amount. |
+| Name     | Type      | Description                                       |
+| -------- | --------- | ------------------------------------------------- |
+| `amount` | `uint256` | The amount to slash from the total locked amount. |
 
 ### settleSlashing
 
@@ -341,9 +341,9 @@ function setCooldownDuration(uint256 newCooldownDuration) external override only
 
 **Parameters**
 
-| Name                  | Type      | Description |
-| --------------------- | --------- | ----------- |
-| `newCooldownDuration` | `uint256` |             |
+| Name                  | Type      | Description                           |
+| --------------------- | --------- | ------------------------------------- |
+| `newCooldownDuration` | `uint256` | The new cooldown duration in seconds. |
 
 ### setMaxSlashableBps
 
@@ -355,9 +355,9 @@ function setMaxSlashableBps(uint256 newMaxSlashableBps) external override onlyRi
 
 **Parameters**
 
-| Name                 | Type      | Description |
-| -------------------- | --------- | ----------- |
-| `newMaxSlashableBps` | `uint256` |             |
+| Name                 | Type      | Description                                           |
+| -------------------- | --------- | ----------------------------------------------------- |
+| `newMaxSlashableBps` | `uint256` | The new maximum slashable proportion in basis points. |
 
 ### setMinBalanceAfterSlash
 
@@ -369,13 +369,13 @@ function setMinBalanceAfterSlash(uint256 newMinBalanceAfterSlash) external overr
 
 **Parameters**
 
-| Name                      | Type      | Description |
-| ------------------------- | --------- | ----------- |
-| `newMinBalanceAfterSlash` | `uint256` |             |
+| Name                      | Type      | Description                          |
+| ------------------------- | --------- | ------------------------------------ |
+| `newMinBalanceAfterSlash` | `uint256` | The new minimum balance after slash. |
 
 ### \_setMachine
 
-_Disables machine setter from parent MachinePeriphery contract._
+Disables machine setter from parent MachinePeriphery contract.
 
 ```solidity
 function _setMachine(address) internal pure override;
@@ -383,7 +383,7 @@ function _setMachine(address) internal pure override;
 
 ### \_checkReceiptOwner
 
-_Checks that caller is the owner of the cooldown receipt NFT._
+Checks that caller is the owner of the cooldown receipt NFT.
 
 ```solidity
 function _checkReceiptOwner(uint256 cooldownId) internal view returns (address);

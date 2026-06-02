@@ -1,6 +1,6 @@
 # IBridgeAdapter
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/interfaces/IBridgeAdapter.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/interfaces/IBridgeAdapter.sol)
 
 ## Functions
 
@@ -9,15 +9,15 @@
 Initializer of the contract.
 
 ```solidity
-function initialize(address controller, bytes calldata initData) external;
+function initialize(address _controller, bytes calldata initData) external;
 ```
 
 **Parameters**
 
-| Name         | Type      | Description                       |
-| ------------ | --------- | --------------------------------- |
-| `controller` | `address` | The bridge controller contract.   |
-| `initData`   | `bytes`   | The optional initialization data. |
+| Name          | Type      | Description                       |
+| ------------- | --------- | --------------------------------- |
+| `_controller` | `address` | The bridge controller contract.   |
+| `initData`    | `bytes`   | The optional initialization data. |
 
 ### controller
 
@@ -79,7 +79,7 @@ function nextInTransferId() external view returns (uint256);
 
 Schedules an outgoing bridge transfer and returns the message hash.
 
-_Emits an event containing the id of the transfer and the hash of the bridge transfer message._
+Emits an event containing the id of the transfer and the hash of the bridge transfer message.
 
 ```solidity
 function scheduleOutBridgeTransfer(
@@ -122,11 +122,11 @@ function sendOutBridgeTransfer(uint256 transferId, bytes calldata data) external
 
 Returns the default amount that must be transferred to the adapter to cancel an outgoing bridge transfer.
 
-_If the transfer has not yet been sent, or if the full amount was refunded to this contract by the external bridge, returns 0._
+If the transfer has not yet been sent, or if the full amount was refunded to this contract by the external bridge, returns 0.
 
-_If the bridge retains a fee upon cancellation and only a partial refund was received, the returned value reflects that fee._
+If the bridge retains a fee upon cancellation and only a partial refund was received, the returned value reflects that fee.
 
-_In all other cases (e.g. including pending refunds or successful bridge transfers), returns the full amount of the transfer._
+In all other cases (e.g. including pending refunds or successful bridge transfers), returns the full amount of the transfer.
 
 ```solidity
 function outBridgeTransferCancelDefault(uint256 transferId) external view returns (uint256);
@@ -190,8 +190,8 @@ function claimInBridgeTransfer(uint256 transferId) external;
 
 Resets internal state for a given token address, and transfers token balance to associated controller.
 
-_This function is intended to be used by the DAO to unlock funds stuck in the adapter, typically
-in response to operator deviations or external bridge discrepancies._
+This function is intended to be used by the DAO to unlock funds stuck in the adapter, typically
+in response to operator deviations or external bridge discrepancies.
 
 ```solidity
 function withdrawPendingFunds(address token) external;

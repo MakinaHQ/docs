@@ -1,6 +1,6 @@
 # OracleRegistry
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/registries/OracleRegistry.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/registries/OracleRegistry.sol)
 
 **Inherits:**
 AccessManagedUpgradeable, [IOracleRegistry](/contracts/core/interfaces/IOracleRegistry.sol/interface.IOracleRegistry.md)
@@ -11,7 +11,7 @@ AccessManagedUpgradeable, [IOracleRegistry](/contracts/core/interfaces/IOracleRe
 
 ```solidity
 bytes32 private constant OracleRegistryStorageLocation =
-    0x49c7e86ce354ebbf25fac336f41752d815bcb13797a06a09b85fd6c0c68ea000;
+    0x49c7e86ce354ebbf25fac336f41752d815bcb13797a06a09b85fd6c0c68ea000
 ```
 
 ## Functions
@@ -25,13 +25,13 @@ function _getOracleRegistryStorage() private pure returns (OracleRegistryStorage
 ### constructor
 
 ```solidity
-constructor();
+constructor() ;
 ```
 
 ### initialize
 
 ```solidity
-function initialize(address initialAuthority_) external initializer;
+function initialize(address initialAuthority) external initializer;
 ```
 
 ### getFeedStaleThreshold
@@ -96,9 +96,9 @@ function getPrice(address baseToken, address quoteToken) external view override 
 
 Sets the price feed route for a given token.
 
-_Both feeds, if set, must be Chainlink-interface-compliant.
+Both feeds, if set, must be Chainlink-interface-compliant.
 The combination of feed1 and feed2 must be able to price the token in the reference currency.
-If feed2 is set to address(0), the token price in the reference currency is assumed to be returned by feed1._
+If feed2 is set to address(0), the token price in the reference currency is assumed to be returned by feed1.
 
 ```solidity
 function setFeedRoute(
@@ -120,26 +120,42 @@ function setFeedRoute(
 | `feed2`               | `address` | The address of the second price feed. Can be set to address(0).                    |
 | `stalenessThreshold2` | `uint256` | The staleness threshold for the second price feed. Ignored if feed2 is address(0). |
 
+### clearFeedRoute
+
+Clears the price feed route for a given token.
+
+Staleness thresholds for the route's feeds are preserved, as the feeds may be used by other routes.
+
+```solidity
+function clearFeedRoute(address token) external override restricted;
+```
+
+**Parameters**
+
+| Name    | Type      | Description                                                         |
+| ------- | --------- | ------------------------------------------------------------------- |
+| `token` | `address` | The address of the token for which the price feed route is cleared. |
+
 ### setFeedStaleThreshold
 
 Sets the price staleness threshold for a given feed.
 
 ```solidity
-function setFeedStaleThreshold(address feed, uint256 newThreshold) external restricted;
+function setFeedStaleThreshold(address feed, uint256 newThreshold) external override restricted;
 ```
 
 **Parameters**
 
-| Name           | Type      | Description                    |
-| -------------- | --------- | ------------------------------ |
-| `feed`         | `address` | The address of the price feed. |
-| `newThreshold` | `uint256` |                                |
+| Name           | Type      | Description                             |
+| -------------- | --------- | --------------------------------------- |
+| `feed`         | `address` | The address of the price feed.          |
+| `newThreshold` | `uint256` | The new staleness threshold in seconds. |
 
 ### \_getFeedPrice
 
-_Returns the last price of the feed._
+Returns the last price of the feed.
 
-_Reverts if the feed is stale or the price is negative._
+Reverts if the feed is stale or the price is negative.
 
 ```solidity
 function _getFeedPrice(address feed) private view returns (uint256);
@@ -147,9 +163,9 @@ function _getFeedPrice(address feed) private view returns (uint256);
 
 ### \_getFeedDecimals
 
-_Returns the number of decimals of the feed._
+Returns the number of decimals of the feed.
 
-_Returns 0 if the feed is not set._
+Returns 0 if the feed is not set.
 
 ```solidity
 function _getFeedDecimals(address feed) private view returns (uint8);
@@ -165,6 +181,6 @@ storage-location: erc7201:makina.storage.OracleRegistry
 ```solidity
 struct OracleRegistryStorage {
     mapping(address token => FeedRoute feedRoute) _feedRoutes;
-    mapping(address feed => uint256 stalenessThreshold) _feedStaleThreshold;
+    mapping(address feed => uint256 stalenessThreshold) _feedStaleThresholds;
 }
 ```

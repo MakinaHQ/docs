@@ -1,6 +1,6 @@
 # MathHelper
 
-[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/e8b2b2411f6e534177e79953d4414e8369c7d524/src/weiroll-helpers/MathHelper.sol)
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/392796cfaf86d8dc0e5b51f9530f6989211426e1/src/weiroll-helpers/MathHelper.sol)
 
 ## Functions
 
@@ -38,7 +38,7 @@ function div(uint256 a, uint256 b) external pure returns (uint256);
 
 ### ceilDiv
 
-See [Math-ceilDiv](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/a1a0a67a2050f5b0edac2bb64ba679cb07a88943/contracts/utils/math/Math.sol#L183).
+See [Math-ceilDiv](https://github.com/OpenZeppelin/openzeppelin-contracts-upgradeable/blob/v5.6.1/lib/openzeppelin-contracts/contracts/utils/math/Math.sol/library.Math.md#ceildiv).
 
 ```solidity
 function ceilDiv(uint256 a, uint256 b) external pure returns (uint256);
@@ -46,7 +46,7 @@ function ceilDiv(uint256 a, uint256 b) external pure returns (uint256);
 
 ### mulDiv
 
-See [Math-mulDiv](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/a1a0a67a2050f5b0edac2bb64ba679cb07a88943/contracts/utils/math/Math.sol#L206).
+See [Math-mulDiv](https://github.com/OpenZeppelin/openzeppelin-contracts-upgradeable/blob/v5.6.1/lib/openzeppelin-contracts/contracts/utils/math/Math.sol/library.Math.md#muldiv).
 
 ```solidity
 function mulDiv(uint256 x, uint256 y, uint256 denominator) external pure returns (uint256);
@@ -54,7 +54,7 @@ function mulDiv(uint256 x, uint256 y, uint256 denominator) external pure returns
 
 ### ceilMulDiv
 
-See [Math-mulDiv](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/a1a0a67a2050f5b0edac2bb64ba679cb07a88943/contracts/utils/math/Math.sol#L206).
+See [Math-mulDiv](https://github.com/OpenZeppelin/openzeppelin-contracts-upgradeable/blob/v5.6.1/lib/openzeppelin-contracts/contracts/utils/math/Math.sol/library.Math.md#muldiv).
 
 ```solidity
 function ceilMulDiv(uint256 x, uint256 y, uint256 denominator) external pure returns (uint256);
@@ -62,7 +62,7 @@ function ceilMulDiv(uint256 x, uint256 y, uint256 denominator) external pure ret
 
 ### sqrt
 
-See [Math-sqrt](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/a1a0a67a2050f5b0edac2bb64ba679cb07a88943/contracts/utils/math/Math.sol#L499).
+See [Math-sqrt](https://github.com/OpenZeppelin/openzeppelin-contracts-upgradeable/blob/v5.6.1/lib/openzeppelin-contracts/contracts/utils/math/Math.sol/library.Math.md#sqrt).
 
 ```solidity
 function sqrt(uint256 a) external pure returns (uint256);
@@ -70,7 +70,7 @@ function sqrt(uint256 a) external pure returns (uint256);
 
 ### average
 
-See [Math-average](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/a1a0a67a2050f5b0edac2bb64ba679cb07a88943/contracts/utils/math/Math.sol#L170).
+See [Math-average](https://github.com/OpenZeppelin/openzeppelin-contracts-upgradeable/blob/v5.6.1/lib/openzeppelin-contracts/contracts/utils/math/SignedMath.sol/library.SignedMath.md#average).
 
 ```solidity
 function average(uint256 a, uint256 b) external pure returns (uint256);
@@ -78,7 +78,7 @@ function average(uint256 a, uint256 b) external pure returns (uint256);
 
 ### ternary
 
-See [Math-ternary](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/a1a0a67a2050f5b0edac2bb64ba679cb07a88943/contracts/utils/math/Math.sol#L143).
+See [Math-ternary](/contracts/periphery/weiroll-helpers/Bytes32Helper.sol/contract.Bytes32Helper.md#ternary).
 
 ```solidity
 function ternary(bool condition, uint256 a, uint256 b) external pure returns (uint256);
@@ -86,7 +86,7 @@ function ternary(bool condition, uint256 a, uint256 b) external pure returns (ui
 
 ### max
 
-See [Math-max](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/a1a0a67a2050f5b0edac2bb64ba679cb07a88943/contracts/utils/math/Math.sol#L155).
+See [Math-max](https://github.com/OpenZeppelin/openzeppelin-contracts-upgradeable/blob/v5.6.1/lib/openzeppelin-contracts/contracts/utils/math/SignedMath.sol/library.SignedMath.md#max).
 
 ```solidity
 function max(uint256 a, uint256 b) external pure returns (uint256);
@@ -94,7 +94,7 @@ function max(uint256 a, uint256 b) external pure returns (uint256);
 
 ### min
 
-See [Math-min](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/a1a0a67a2050f5b0edac2bb64ba679cb07a88943/contracts/utils/math/Math.sol#L162).
+See [Math-min](https://github.com/OpenZeppelin/openzeppelin-contracts-upgradeable/blob/v5.6.1/lib/openzeppelin-contracts/contracts/utils/math/SignedMath.sol/library.SignedMath.md#min).
 
 ```solidity
 function min(uint256 a, uint256 b) external pure returns (uint256);
@@ -102,7 +102,7 @@ function min(uint256 a, uint256 b) external pure returns (uint256);
 
 ### log2
 
-See [Math-log2](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/a1a0a67a2050f5b0edac2bb64ba679cb07a88943/contracts/utils/math/Math.sol#L619).
+See [Math-log2](https://github.com/OpenZeppelin/openzeppelin-contracts-upgradeable/blob/v5.6.1/lib/openzeppelin-contracts/contracts/utils/math/Math.sol/library.Math.md#log2).
 
 ```solidity
 function log2(uint256 x) external pure returns (uint256 r);
@@ -110,7 +110,7 @@ function log2(uint256 x) external pure returns (uint256 r);
 
 ### log10
 
-See [Math-log10](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/a1a0a67a2050f5b0edac2bb64ba679cb07a88943/contracts/utils/math/Math.sol#L675).
+See [Math-log10](https://github.com/OpenZeppelin/openzeppelin-contracts-upgradeable/blob/v5.6.1/lib/openzeppelin-contracts/contracts/utils/math/Math.sol/library.Math.md#log10).
 
 ```solidity
 function log10(uint256 x) external pure returns (uint256 r);
@@ -118,7 +118,7 @@ function log10(uint256 x) external pure returns (uint256 r);
 
 ### log256
 
-See [Math-log256](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/a1a0a67a2050f5b0edac2bb64ba679cb07a88943/contracts/utils/math/Math.sol#L726).
+See [Math-log256](https://github.com/OpenZeppelin/openzeppelin-contracts-upgradeable/blob/v5.6.1/lib/openzeppelin-contracts/contracts/utils/math/Math.sol/library.Math.md#log256).
 
 ```solidity
 function log256(uint256 x) external pure returns (uint256 r);
@@ -184,7 +184,7 @@ function uint256Max() external pure returns (uint256);
 
 Scales `amount` from `fromDecimals` to `toDecimals`.
 
-_Converts token amounts between different decimal precisions._
+Converts token amounts between different decimal precisions.
 
 **Note:**
 warning: Scaling down reduces precision due to integer division truncation.

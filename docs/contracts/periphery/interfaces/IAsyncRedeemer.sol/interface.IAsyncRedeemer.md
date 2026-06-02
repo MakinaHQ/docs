@@ -1,6 +1,6 @@
 # IAsyncRedeemer
 
-[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/e8b2b2411f6e534177e79953d4414e8369c7d524/src/interfaces/IAsyncRedeemer.sol)
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/392796cfaf86d8dc0e5b51f9530f6989211426e1/src/interfaces/IAsyncRedeemer.sol)
 
 **Inherits:**
 [IMachinePeriphery](/contracts/periphery/interfaces/IMachinePeriphery.sol/interface.IMachinePeriphery.md)
@@ -25,7 +25,7 @@ function lastFinalizedRequestId() external view returns (uint256);
 
 ### finalizationDelay
 
-Minimum time (in seconds) to be elapsed between request submission and finalization.
+Minimum time (in seconds) that must elapse between request submission and finalization.
 
 ```solidity
 function finalizationDelay() external view returns (uint256);
@@ -51,7 +51,7 @@ function getShares(uint256 requestId) external view returns (uint256);
 
 Request ID => Claimable Assets
 
-_Reverts if the request is not finalized._
+Reverts if the request is not finalized.
 
 ```solidity
 function getClaimableAssets(uint256 requestId) external view returns (uint256);
@@ -59,7 +59,7 @@ function getClaimableAssets(uint256 requestId) external view returns (uint256);
 
 ### previewFinalizeRequests
 
-Returns the total shares and curreent expected assets for a batch of unfinalized requests up to given request ID.
+Returns the total shares and current expected assets for a batch of unfinalized requests up to the given request ID.
 
 ```solidity
 function previewFinalizeRequests(uint256 upToRequestId) external view returns (uint256, uint256);
@@ -92,7 +92,7 @@ function requestRedeem(uint256 shares, address receiver, uint256 minAssets) exte
 | ----------- | --------- | ----------------------------------------------------------- |
 | `shares`    | `uint256` | The amount of shares to redeem.                             |
 | `receiver`  | `address` | The receiver of the receipt NFT.                            |
-| `minAssets` | `uint256` | The minimum amount of assets for the request’s entry price. |
+| `minAssets` | `uint256` | The minimum amount of assets for the request's entry price. |
 
 **Returns**
 
@@ -104,7 +104,7 @@ function requestRedeem(uint256 shares, address receiver, uint256 minAssets) exte
 
 Finalizes redeem requests up to a given request ID.
 
-_Can only be called by the operator of the associated machine._
+Can only be called by the operator of the associated machine.
 
 ```solidity
 function finalizeRequests(uint256 upToRequestId, uint256 minAssets) external returns (uint256, uint256);
@@ -129,7 +129,7 @@ function claimAssets(uint256 requestId) external returns (uint256);
 
 | Name        | Type      | Description                                      |
 | ----------- | --------- | ------------------------------------------------ |
-| `requestId` | `uint256` | the ID of the redeem request and associated NFT. |
+| `requestId` | `uint256` | The ID of the redeem request and associated NFT. |
 
 ### setFinalizationDelay
 

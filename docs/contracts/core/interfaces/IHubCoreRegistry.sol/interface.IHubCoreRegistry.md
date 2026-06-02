@@ -1,6 +1,6 @@
 # IHubCoreRegistry
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/interfaces/IHubCoreRegistry.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/interfaces/IHubCoreRegistry.sol)
 
 **Inherits:**
 [ICoreRegistry](/contracts/core/interfaces/ICoreRegistry.sol/interface.ICoreRegistry.md)
@@ -90,5 +90,7 @@ event MachineBeaconChanged(address indexed oldMachineBeacon, address indexed new
 ### PreDepositVaultBeaconChanged
 
 ```solidity
-event PreDepositVaultBeaconChanged(address indexed oldPreDepositVaultBeacon, address indexed newPreDepositVaultBeacon);
+event PreDepositVaultBeaconChanged(
+    address indexed oldPreDepositVaultBeacon, address indexed newPreDepositVaultBeacon
+);
 ```

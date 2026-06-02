@@ -1,6 +1,6 @@
 # BridgeAdapter
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/bridge/adapters/BridgeAdapter.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/bridge/adapters/BridgeAdapter.sol)
 
 **Inherits:**
 Initializable, ReentrancyGuard, [MakinaContext](/contracts/core/utils/MakinaContext.sol/abstract.MakinaContext.md), [IBridgeAdapter](/contracts/core/interfaces/IBridgeAdapter.sol/interface.IBridgeAdapter.md)
@@ -9,10 +9,10 @@ Initializable, ReentrancyGuard, [MakinaContext](/contracts/core/utils/MakinaCont
 
 ### MAX_BPS
 
-_Full scale value in basis points_
+Full scale value in basis points
 
 ```solidity
-uint256 private constant MAX_BPS = 10_000;
+uint256 private constant MAX_BPS = 10_000
 ```
 
 ### approvalTarget
@@ -20,7 +20,7 @@ uint256 private constant MAX_BPS = 10_000;
 Address of the external bridge approval target contract.
 
 ```solidity
-address public immutable override approvalTarget;
+address public immutable override approvalTarget
 ```
 
 ### executionTarget
@@ -28,7 +28,7 @@ address public immutable override approvalTarget;
 Address of the external bridge execution target contract.
 
 ```solidity
-address public immutable override executionTarget;
+address public immutable override executionTarget
 ```
 
 ### receiveSource
@@ -36,14 +36,14 @@ address public immutable override executionTarget;
 Address of the external bridge contract responsible for sending output funds.
 
 ```solidity
-address public immutable override receiveSource;
+address public immutable override receiveSource
 ```
 
 ### BridgeAdapterStorageLocation
 
 ```solidity
 bytes32 private constant BridgeAdapterStorageLocation =
-    0xe24ea70efbf545f0256b406d064fa196624401f48d56c665b3e8bc995282c700;
+    0xe24ea70efbf545f0256b406d064fa196624401f48d56c665b3e8bc995282c700
 ```
 
 ## Functions
@@ -70,7 +70,7 @@ function __BridgeAdapter_init(address _controller, uint16 _bridgeId) internal on
 ### onlyController
 
 ```solidity
-modifier onlyController();
+modifier onlyController() ;
 ```
 
 ### controller
@@ -109,10 +109,10 @@ function nextInTransferId() external view override returns (uint256);
 
 Returns the default amount that must be transferred to the adapter to cancel an outgoing bridge transfer.
 
-_If the transfer has not yet been sent, or if the full amount was refunded to this contract by the external bridge, returns 0._
+If the transfer has not yet been sent, or if the full amount was refunded to this contract by the external bridge, returns 0.
 
 ```solidity
-function outBridgeTransferCancelDefault(uint256 transferId) public view returns (uint256);
+function outBridgeTransferCancelDefault(uint256 transferId) external view override returns (uint256);
 ```
 
 **Parameters**
@@ -131,7 +131,7 @@ function outBridgeTransferCancelDefault(uint256 transferId) public view returns 
 
 Schedules an outgoing bridge transfer and returns the message hash.
 
-_Emits an event containing the id of the transfer and the hash of the bridge transfer message._
+Emits an event containing the id of the transfer and the hash of the bridge transfer message.
 
 ```solidity
 function scheduleOutBridgeTransfer(
@@ -174,7 +174,11 @@ function authorizeInBridgeTransfer(bytes32 messageHash) external override onlyCo
 Executes a scheduled outgoing bridge transfer.
 
 ```solidity
-function sendOutBridgeTransfer(uint256 transferId, bytes calldata data) external override nonReentrant onlyController;
+function sendOutBridgeTransfer(uint256 transferId, bytes calldata data)
+    external
+    override
+    nonReentrant
+    onlyController;
 ```
 
 **Parameters**
@@ -216,11 +220,11 @@ function claimInBridgeTransfer(uint256 transferId) external override nonReentran
 
 Resets internal state for a given token address, and transfers token balance to associated controller.
 
-_This function is intended to be used by the DAO to unlock funds stuck in the adapter, typically
-in response to operator deviations or external bridge discrepancies._
+This function is intended to be used by the DAO to unlock funds stuck in the adapter, typically
+in response to operator deviations or external bridge discrepancies.
 
 ```solidity
-function withdrawPendingFunds(address token) external nonReentrant onlyController;
+function withdrawPendingFunds(address token) external override nonReentrant onlyController;
 ```
 
 **Parameters**
@@ -231,7 +235,7 @@ function withdrawPendingFunds(address token) external nonReentrant onlyControlle
 
 ### \_receiveInBridgeTransfer
 
-_Updates contract state when receiving an incoming bridge transfer._
+Updates contract state when receiving an incoming bridge transfer.
 
 ```solidity
 function _receiveInBridgeTransfer(bytes memory encodedMessage, address receivedToken, uint256 receivedAmount)
@@ -241,7 +245,7 @@ function _receiveInBridgeTransfer(bytes memory encodedMessage, address receivedT
 
 ### \_getSet
 
-_Returns a reference to the current active set for this versioned set._
+Returns a reference to the current active set for this versioned set.
 
 ```solidity
 function _getSet(VersionedUintSet storage self) internal view returns (EnumerableSet.UintSet storage);
@@ -249,9 +253,9 @@ function _getSet(VersionedUintSet storage self) internal view returns (Enumerabl
 
 ### \_clearSet
 
-_Virtually clears the set by incrementing the version.
+Virtually clears the set by incrementing the version.
 All future operations will apply to a fresh, empty set.
-Previous versions remain in storage and are not deleted._
+Previous versions remain in storage and are not deleted.
 
 ```solidity
 function _clearSet(VersionedUintSet storage self) internal;
@@ -259,20 +263,20 @@ function _clearSet(VersionedUintSet storage self) internal;
 
 ### \_checkOutBridgeTransferRouteIsSupported
 
-_Checks if an outgoing bridge transfer route is supported._
+Checks if an outgoing bridge transfer route is supported.
 
 ```solidity
 function _checkOutBridgeTransferRouteIsSupported(
     uint256 destinationChainId,
     address inputToken,
-    uint256,
+    uint256, /*inputAmount*/
     address outputToken
 ) internal view virtual;
 ```
 
 ### \_getConfig
 
-_Returns the address of the config contract associated with this bridge adapter._
+Returns the address of the config contract associated with this bridge adapter.
 
 ```solidity
 function _getConfig() internal view returns (address);
@@ -280,7 +284,7 @@ function _getConfig() internal view returns (address);
 
 ### \_checkOutBridgeTransferIsCancellable
 
-_Checks if an outgoing bridge transfer is in a cancellable state._
+Checks if an outgoing bridge transfer is in a cancellable state.
 
 ```solidity
 function _checkOutBridgeTransferIsCancellable(uint256 transferId) internal virtual;
@@ -288,7 +292,7 @@ function _checkOutBridgeTransferIsCancellable(uint256 transferId) internal virtu
 
 ### \_sendOutBridgeTransfer
 
-_Handles logic specific to the external bridge protocol for sending out a bridge transfer._
+Handles logic specific to the external bridge protocol for sending out a bridge transfer.
 
 ```solidity
 function _sendOutBridgeTransfer(uint256 transferId, bytes calldata data) internal virtual;
@@ -296,7 +300,7 @@ function _sendOutBridgeTransfer(uint256 transferId, bytes calldata data) interna
 
 ### \_outBridgeTransferCancelDefault
 
-_Internal logic for outgoing bridge transfer cancellation default._
+Internal logic for outgoing bridge transfer cancellation default.
 
 ```solidity
 function _outBridgeTransferCancelDefault(uint256 transferId) internal view virtual returns (uint256);
@@ -306,7 +310,7 @@ function _outBridgeTransferCancelDefault(uint256 transferId) internal view virtu
 
 ### VersionedUintSet
 
-_EnumerableSet wrapper supporting efficient clearing by switching to a new version._
+EnumerableSet wrapper supporting efficient clearing by switching to a new version.
 
 ```solidity
 struct VersionedUintSet {

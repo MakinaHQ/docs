@@ -1,6 +1,6 @@
 # SpokeCoreRegistry
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/registries/SpokeCoreRegistry.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/registries/SpokeCoreRegistry.sol)
 
 **Inherits:**
 [CoreRegistry](/contracts/core/registries/CoreRegistry.sol/abstract.CoreRegistry.md), [ISpokeCoreRegistry](/contracts/core/interfaces/ISpokeCoreRegistry.sol/interface.ISpokeCoreRegistry.md)
@@ -11,7 +11,7 @@
 
 ```solidity
 bytes32 private constant SpokeCoreRegistryStorageLocation =
-    0xbb04d69665b59d5499b254d643357a8f35f2bcb1c74ee39b02b1345680315500;
+    0xbb04d69665b59d5499b254d643357a8f35f2bcb1c74ee39b02b1345680315500
 ```
 
 ## Functions
@@ -25,13 +25,15 @@ function _getSpokeCoreRegistryStorage() private pure returns (SpokeCoreRegistryS
 ### constructor
 
 ```solidity
-constructor();
+constructor() ;
 ```
 
 ### initialize
 
 ```solidity
-function initialize(address _oracleRegistry, address _tokenRegistry, address _initialAuthority) external initializer;
+function initialize(address _oracleRegistry, address _tokenRegistry, address initialAuthority)
+    external
+    initializer;
 ```
 
 ### caliberMailboxBeacon

@@ -1,6 +1,6 @@
 # MachineShareOracleFactory
 
-[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/e8b2b2411f6e534177e79953d4414e8369c7d524/src/factories/MachineShareOracleFactory.sol)
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/392796cfaf86d8dc0e5b51f9530f6989211426e1/src/factories/MachineShareOracleFactory.sol)
 
 **Inherits:**
 AccessManagedUpgradeable, [IMachineShareOracleFactory](/contracts/periphery/interfaces/IMachineShareOracleFactory.sol/interface.IMachineShareOracleFactory.md)
@@ -11,7 +11,7 @@ AccessManagedUpgradeable, [IMachineShareOracleFactory](/contracts/periphery/inte
 
 ```solidity
 bytes32 private constant MachineShareOracleFactoryStorageLocation =
-    0x566402f20de4969fde1c09f6ddbae1c0f5590a4d61e4a12b6deb88f69bf7c700;
+    0x566402f20de4969fde1c09f6ddbae1c0f5590a4d61e4a12b6deb88f69bf7c700
 ```
 
 ## Functions
@@ -25,7 +25,7 @@ function _getMachineShareOracleFactoryStorage() internal pure returns (MachineSh
 ### constructor
 
 ```solidity
-constructor();
+constructor() ;
 ```
 
 ### initialize
@@ -39,7 +39,7 @@ function initialize(address _machineShareOracleBeacon, address _initialAuthority
 Address of the machine share oracle beacon.
 
 ```solidity
-function machineShareOracleBeacon() external view returns (address);
+function machineShareOracleBeacon() external view override returns (address);
 ```
 
 ### isMachineShareOracle
@@ -47,7 +47,7 @@ function machineShareOracleBeacon() external view returns (address);
 Address => Whether this is an oracle deployed by this factory.
 
 ```solidity
-function isMachineShareOracle(address oracle) external view returns (bool);
+function isMachineShareOracle(address oracle) external view override returns (bool);
 ```
 
 **Parameters**
@@ -61,7 +61,11 @@ function isMachineShareOracle(address oracle) external view returns (bool);
 Creates an oracle for the given machine share.
 
 ```solidity
-function createMachineShareOracle(address shareOwner, uint8 decimals) external restricted returns (address);
+function createMachineShareOracle(address shareOwner, uint8 decimals)
+    external
+    override
+    restricted
+    returns (address);
 ```
 
 **Parameters**
@@ -76,7 +80,7 @@ function createMachineShareOracle(address shareOwner, uint8 decimals) external r
 Sets the machine share oracle beacon address.
 
 ```solidity
-function setMachineShareOracleBeacon(address _machineShareOracleBeacon) external restricted;
+function setMachineShareOracleBeacon(address _machineShareOracleBeacon) external override restricted;
 ```
 
 **Parameters**
@@ -88,6 +92,9 @@ function setMachineShareOracleBeacon(address _machineShareOracleBeacon) external
 ## Structs
 
 ### MachineShareOracleFactoryStorage
+
+**Note:**
+storage-location: erc7201:makina.storage.MachineShareOracleFactory
 
 ```solidity
 struct MachineShareOracleFactoryStorage {

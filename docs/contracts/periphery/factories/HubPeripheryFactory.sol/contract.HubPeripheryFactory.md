@@ -1,6 +1,6 @@
 # HubPeripheryFactory
 
-[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/e8b2b2411f6e534177e79953d4414e8369c7d524/src/factories/HubPeripheryFactory.sol)
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/392796cfaf86d8dc0e5b51f9530f6989211426e1/src/factories/HubPeripheryFactory.sol)
 
 **Inherits:**
 AccessManagedUpgradeable, [MakinaPeripheryContext](/contracts/periphery/utils/MakinaPeripheryContext.sol/abstract.MakinaPeripheryContext.md), [IHubPeripheryFactory](/contracts/periphery/interfaces/IHubPeripheryFactory.sol/interface.IHubPeripheryFactory.md)
@@ -11,7 +11,7 @@ AccessManagedUpgradeable, [MakinaPeripheryContext](/contracts/periphery/utils/Ma
 
 ```solidity
 bytes32 private constant HubPeripheryFactoryStorageLocation =
-    0x6b50a937759edff8a6a5b23fe11eb54a74c1c4f4d159fd3622707013a01a1e00;
+    0x6b50a937759edff8a6a5b23fe11eb54a74c1c4f4d159fd3622707013a01a1e00
 ```
 
 ## Functions

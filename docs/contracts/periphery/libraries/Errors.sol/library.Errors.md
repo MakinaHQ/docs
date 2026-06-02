@@ -1,14 +1,8 @@
 # Errors
 
-[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/e8b2b2411f6e534177e79953d4414e8369c7d524/src/libraries/Errors.sol)
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/392796cfaf86d8dc0e5b51f9530f6989211426e1/src/libraries/Errors.sol)
 
 ## Errors
-
-### AlreadyClaimed
-
-```solidity
-error AlreadyClaimed();
-```
 
 ### AlreadyFinalized
 
@@ -16,10 +10,10 @@ error AlreadyClaimed();
 error AlreadyFinalized();
 ```
 
-### AmountToolow
+### AmountTooLow
 
 ```solidity
-error AmountToolow();
+error AmountTooLow();
 ```
 
 ### CooldownExpired
@@ -38,12 +32,6 @@ error CooldownOngoing();
 
 ```solidity
 error FinalizationDelayPending();
-```
-
-### FutureRequest
-
-```solidity
-error FutureRequest();
 ```
 
 ### GreaterThanCurrentWatermark
@@ -124,12 +112,6 @@ error MaxSlashableExceeded();
 error NotDepositor();
 ```
 
-### NotEnoughAssets
-
-```solidity
-error NotEnoughAssets();
-```
-
 ### NotFeeManager
 
 ```solidity
@@ -146,6 +128,12 @@ error NotFinalized();
 
 ```solidity
 error NotImplemented();
+```
+
+### NotMachine
+
+```solidity
+error NotMachine();
 ```
 
 ### NotRedeemer
@@ -176,12 +164,6 @@ error SlashingSettlementOngoing();
 
 ```solidity
 error ZeroMachineAddress();
-```
-
-### ZeroRequestId
-
-```solidity
-error ZeroRequestId();
 ```
 
 ### ZeroShares

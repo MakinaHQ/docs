@@ -1,6 +1,6 @@
 # MakinaContext
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/utils/MakinaContext.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/utils/MakinaContext.sol)
 
 **Inherits:**
 [IMakinaContext](/contracts/core/interfaces/IMakinaContext.sol/interface.IMakinaContext.md)
@@ -12,7 +12,7 @@
 Address of the registry.
 
 ```solidity
-address public immutable override registry;
+address public immutable override registry
 ```
 
 ## Functions
@@ -20,5 +20,5 @@ address public immutable override registry;
 ### constructor
 
 ```solidity
-constructor(address _registry);
+constructor(address _registry) ;
 ```

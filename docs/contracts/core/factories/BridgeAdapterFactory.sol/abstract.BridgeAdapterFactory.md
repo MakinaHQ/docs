@@ -1,6 +1,6 @@
 # BridgeAdapterFactory
 
-[Git Source](https://github.com/MakinaHQ/makina-core/blob/ff6f03628cb41a65b3551e1decac61d49e6eb0ba/src/factories/BridgeAdapterFactory.sol)
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/fe2d7e28c60829f2585cd683b56c6c9a185eb0ea/src/factories/BridgeAdapterFactory.sol)
 
 **Inherits:**
 [Create3Factory](/contracts/core/factories/Create3Factory.sol/abstract.Create3Factory.md), [MakinaContext](/contracts/core/utils/MakinaContext.sol/abstract.MakinaContext.md), [IBridgeAdapterFactory](/contracts/core/interfaces/IBridgeAdapterFactory.sol/interface.IBridgeAdapterFactory.md)
@@ -10,14 +10,15 @@
 ### BridgeAdapterSaltDomain
 
 ```solidity
-bytes32 private constant BridgeAdapterSaltDomain = 0xabde28237b51fa1256b2a1c49d990c305c6556881cd721a86b97a8ef9073992c;
+bytes32 private constant BridgeAdapterSaltDomain =
+    0xabde28237b51fa1256b2a1c49d990c305c6556881cd721a86b97a8ef9073992c
 ```
 
 ### BridgeAdapterFactoryStorageLocation
 
 ```solidity
 bytes32 private constant BridgeAdapterFactoryStorageLocation =
-    0xe2760819b7b5a09214c04233e2d29582188ee1a80d8fe8c82676ab96abf81c00;
+    0xe2760819b7b5a09214c04233e2d29582188ee1a80d8fe8c82676ab96abf81c00
 ```
 
 ## Functions
@@ -33,15 +34,15 @@ function _getBridgeAdapterFactoryStorage() internal pure returns (BridgeAdapterF
 Address => Whether this is a BridgeAdapter instance deployed by this factory.
 
 ```solidity
-function isBridgeAdapter(address adapter) external view returns (bool);
+function isBridgeAdapter(address adapter) external view override returns (bool);
 ```
 
 ### \_createBridgeAdapter
 
-_Internal logic for bridge adapter deployment via create3._
+Internal logic for bridge adapter deployment via create3 and assignment to a bridge controller.
 
 ```solidity
-function _createBridgeAdapter(address controller, uint16 bridgeId, bytes calldata initData, bytes32 salt)
+function _createBridgeAdapter(address controller, BridgeAdapterInitParams calldata baParams, bytes32 salt)
     internal
     returns (address);
 ```

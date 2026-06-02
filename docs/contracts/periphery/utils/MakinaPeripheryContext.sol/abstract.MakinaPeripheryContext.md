@@ -1,6 +1,6 @@
 # MakinaPeripheryContext
 
-[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/e8b2b2411f6e534177e79953d4414e8369c7d524/src/utils/MakinaPeripheryContext.sol)
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/392796cfaf86d8dc0e5b51f9530f6989211426e1/src/utils/MakinaPeripheryContext.sol)
 
 **Inherits:**
 [IMakinaPeripheryContext](/contracts/periphery/interfaces/IMakinaPeripheryContext.sol/interface.IMakinaPeripheryContext.md)
@@ -12,7 +12,7 @@
 Address of the periphery registry.
 
 ```solidity
-address public immutable override peripheryRegistry;
+address public immutable override peripheryRegistry
 ```
 
 ## Functions
@@ -20,5 +20,5 @@ address public immutable override peripheryRegistry;
 ### constructor
 
 ```solidity
-constructor(address _peripheryRegistry);
+constructor(address _peripheryRegistry) ;
 ```
