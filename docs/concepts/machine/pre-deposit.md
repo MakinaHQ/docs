@@ -16,7 +16,7 @@ Depositors earn the pre-deposit asset's native yield during this phase: as the a
 
 ## Seamless transition into the Machine
 
-The key design choice is that the Pre-Deposit Vault mints the **shares of the future Machine**: the very same share token the live strategy will use. This makes the launch transition trivial:
+The key design choice is that the Pre-Deposit Vault mints the **shares of the future Machine**: the very same machine token the live strategy will use. This makes the launch transition trivial:
 
 ```mermaid
 flowchart LR
@@ -32,7 +32,7 @@ flowchart LR
     classDef m fill:#238636,stroke:#238636,color:#fff;
 ```
 
-When the Machine is deployed, **no user balances need to be migrated**. The vault simply hands the accumulated assets to the Machine and transfers the share token's minting authority to it. Holders keep the exact shares they already had, now backed by the live strategy. After migration the vault is closed to further deposits and redemptions.
+When the Machine is deployed, **no user balances need to be migrated**. The vault simply hands the accumulated assets to the Machine and transfers the machine token's minting authority to it. Holders keep the exact shares they already had, now backed by the live strategy. After migration the vault is closed to further deposits and redemptions.
 
 Like the [Depositor](deposits#whitelisting), the Pre-Deposit Vault supports an optional whitelist and a share-supply cap, managed by the [Risk Manager](../governance/risk-manager).
 

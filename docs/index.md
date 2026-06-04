@@ -8,7 +8,7 @@ Welcome to the Makina documentation. This guide will help you understand the cor
 
 ## What is Makina?
 
-Makina is a protocol for professionally managed, tokenized, cross-chain investment strategies. Users deposit a single asset and receive a share token representing their claim on the strategy, which a professional Operator manages across DeFi, within strict, governance-defined onchain limits.
+Makina is a protocol for professionally managed, tokenized, cross-chain investment strategies. Users deposit a single asset and receive a machine token representing their claim on the strategy, which a professional Operator manages across DeFi, within strict, governance-defined onchain limits.
 
 See the [Introduction](/concepts/introduction) for the full overview.
 

@@ -5,7 +5,7 @@ sidebar_position: 1
 
 # Hub-and-Spoke Model
 
-Makina strategies are **cross-chain by design**. A single strategy can hold capital and run positions on many chains at once, while presenting users with one share token, one share price, and one place to deposit and redeem. The architecture that makes this possible is **hub-and-spoke**.
+Makina strategies are **cross-chain by design**. A single strategy can hold capital and run positions on many chains at once, while presenting users with one machine token, one share price, and one place to deposit and redeem. The architecture that makes this possible is **hub-and-spoke**.
 
 ## The topology
 

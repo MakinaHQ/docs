@@ -10,7 +10,7 @@ The **Machine** is a strategy's vault and accounting layer, the main touch point
 
 The Machine has four jobs:
 
-- **Custody the strategy's reserves and issue shares.** It holds idle capital, mints the [share token](machine-token) to depositors, and burns it on redemption.
+- **Custody the strategy's reserves and issue shares.** It holds idle capital, mints the [machine token](machine-token) to depositors, and burns it on redemption.
 - **Account for the whole strategy.** It aggregates the value of its idle balance, the Hub [Caliber](../caliber/overview), and every Spoke Caliber into a single total AUM, and derives the [share price](share-price) from it.
 - **Charge fees.** When AUM is updated, it mints and distributes [fees](fees) according to its [Fee Manager](fees).
 - **Coordinate cross-chain liquidity.** It is the hub endpoint for [bridging](../cross-chain/liquidity-bridging) capital to and from Spoke Calibers.

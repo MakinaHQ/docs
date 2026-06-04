@@ -8,7 +8,7 @@ sidebar_position: 1
 
 Makina is a protocol for **professionally managed, tokenized, cross-chain investment strategies**.
 
-A strategy on Makina behaves like an onchain fund: users deposit a single asset and receive a fungible token (a _share_) that represents their proportional claim on everything the strategy holds. Behind that share token, a professional manager, the **Operator**, puts the capital to work across DeFi: lending markets, liquidity pools, yield vaults, derivatives, and other protocols, on Ethereum and on other chains.
+A strategy on Makina behaves like an onchain fund: users deposit a single asset and receive a fungible token (a _share_) that represents their proportional claim on everything the strategy holds. Behind that machine token, a professional manager, the **Operator**, puts the capital to work across DeFi: lending markets, liquidity pools, yield vaults, derivatives, and other protocols, on Ethereum and on other chains.
 
 What makes Makina different from a traditional smart-contract vault is the **execution model**. Instead of hard-coding each integration into the vault, Makina gives the Operator a generalized, permissioned execution engine ([the MakinaVM](caliber/makina-vm)) that can interact with almost any external protocol, but only through actions that governance has reviewed and explicitly approved in advance. This combines the flexibility of an actively managed fund with the safety of a tightly scoped vault.
 
@@ -29,7 +29,7 @@ A Makina strategy creates value the way any fund does, by generating returns on 
 - **Price appreciation** of the assets it holds relative to the strategy's reference asset.
 - **Active management**: the Operator continuously rebalances toward the best risk-adjusted opportunities, across chains, within the limits set by governance.
 
-As the strategy's total value grows, so does the value of each share. Holders capture returns through the appreciation of their [share token](machine/machine-token), which is fully composable and can itself be used as collateral, paired in liquidity pools, or held in treasury. Operators and the protocol are compensated through [fees](machine/fees), aligning their incentive with long-term share-price growth.
+As the strategy's total value grows, so does the value of each share. Holders capture returns through the appreciation of their [machine token](machine/machine-token), which is fully composable and can itself be used as collateral, paired in liquidity pools, or held in treasury. Operators and the protocol are compensated through [fees](machine/fees), aligning their incentive with long-term share-price growth.
 
 ## Design principles
 
