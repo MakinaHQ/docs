@@ -5,10 +5,17 @@ sidebar_position: 5
 
 # Harvests
 
-Some [Positions](positions) may issue reward tokens through various claim contracts. These can be harvested by the Caliber with [Harvest Instructions](makina-vm#instruction-types) and transferred onto the Caliber's balance.
+Many [positions](positions) earn **reward tokens**: emissions, incentives, or fees distributed by the underlying protocol through claim contracts. A [Caliber](overview) collects these with **Harvest Instructions** (see [MakinaVM](makina-vm#the-four-instruction-types)), which claim rewards and pull them onto the Caliber's balance. A Harvest instruction is receive-only: it can bring rewards _in_, but cannot spend the Caliber's existing holdings.
 
-Harvesting tokens that are not registered on the Caliber as [Base Tokens](base-tokens) will not increase the Caliber's AUM, as these tokens may not be priceable through oracles. To realise the value as AUM the harvested tokens need to be swapped to base tokens, or registered as base tokens by providing a corresponding oracle price feed.
+## Realizing harvested value
 
-Harvested tokens can be swapped instantly after being received by passing a swap order to the harvest function on the Caliber, allowing for instant realisation of the value of the harvested tokens.
+Claiming a reward token does **not** by itself increase the Caliber's [AUM](caliber-accounting). Only [base tokens](base-tokens) (which are priceable through the [Oracle Registry](../oracles)) count toward AUM, and a freshly claimed reward token usually isn't one. To turn rewards into measurable value, they must either be:
 
-Operators are incentivised to harvest positions frequently and realise their value quickly to avoid a gap building between the theoretical AUM of the caliber and the realise value. Such gaps can potentially lead to free-riding issues which results in lower performance on the Caliber and thus less fees for the operator.
+- **swapped** into a base token, or
+- **registered** as a base token, provided an oracle price feed route is registered for them.
+
+To make this efficient, harvested rewards can be **swapped immediately** within the same harvest call by attaching swap orders, claiming and realizing in one atomic operation.
+
+## Why prompt harvesting matters
+
+There is an incentive to harvest and realize rewards **frequently**. If unrealized rewards pile up, a gap opens between the strategy's _theoretical_ value and its _accounted_ AUM. Such gaps create free-riding opportunities (depositors and redeemers transacting at a stale price that doesn't yet reflect pending rewards), which ultimately degrades the strategy's performance, and therefore the [Operator's](../governance/operator) [fees](../machine/fees). Keeping harvested value current keeps the [share price](../machine/share-price) honest for everyone.

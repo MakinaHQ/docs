@@ -4,15 +4,58 @@ sidebar_position: 1
 
 # Introduction
 
-Makina is an innovative protocol for superior onchain execution. It redefines how smart contract vaults operate by providing a highly agile infrastructure that is used to execute a wide variety of cross-chain strategies: from onchain yield aggregation, to index products, to long-short, delta hedged strategies or any other strategy that can be executed fully onchain.
+## What is Makina?
 
-With Makina, users can get access to tokenised assets issued by professionals with full DeFi composability, superior Risk Controls, risk underwriting through a Security Module.
+Makina is a protocol for **professionally managed, tokenized, cross-chain investment strategies**.
 
-Makina is designed to be fully non-custodial, transparent and trust minimised, providing a secure yet flexible platform on which [Operators](governance/operator) with different specialisation and expertise can offer their strategies to onchain users.
+A strategy on Makina behaves like an onchain fund: users deposit a single asset and receive a fungible token (a _share_) that represents their proportional claim on everything the strategy holds. Behind that machine token, a professional manager, the **Operator**, puts the capital to work across DeFi: lending markets, liquidity pools, yield vaults, derivatives, and other protocols, on Ethereum and on other chains.
 
-Each Strategy is composed of a [Machine](machine/overview) deployed on the Hub Chain, and one [Caliber](caliber/overview) per supported chain (including the Hub and each Spoke Chain).
+What makes Makina different from a traditional smart-contract vault is the **execution model**. Instead of hard-coding each integration into the vault, Makina gives the Operator a generalized, permissioned execution engine ([the MakinaVM](caliber/makina-vm)) that can interact with almost any external protocol, but only through actions that governance has reviewed and explicitly approved in advance. This combines the flexibility of an actively managed fund with the safety of a tightly scoped vault.
 
-- The Machine manages strategy-wide logic such as handling deposits and withdrawals, calculating share prices, and coordinating cross-chain liquidity bridging.
-- Calibers serve as the execution layer for each chain, enabling operators to perform local actions such as opening and closing positions, harvesting rewards, and swapping tokens.
+## What problem does it solve?
 
-Upon deployment of a Machine, a mandate for the strategy should be published. The mandate is a high level description of the strategy type and goal, its risk profile, return expectation, opportunity segment and other attributes and charachteristics of the strategy. The mandate will act as a guideline for strategy [Risk Managers](governance/risk-manager) and [Operators](governance/operator).
+Onchain asset management today forces a hard trade-off:
+
+- **Rigid vaults** are safe but inflexible. Every new protocol integration requires writing, auditing, and deploying a custom adapter, which is slow, expensive, and error-prone. The strategy can only ever do what was anticipated at deployment time.
+- **Discretionary, manually managed strategies** are flexible but require users to fully trust a manager who can move funds anywhere, at any time, with no onchain guardrails.
+
+Makina removes the trade-off. The Operator can pursue opportunities across the entire DeFi landscape and adapt as markets change, **without unilateral control over user funds**. Every action the Operator can take is bounded by an onchain risk policy and a pre-approved instruction set, and a separate **Security Council** can intervene if something goes wrong. Adding a new integration is a single governance-reviewed update, not a new contract deployment.
+
+## How does it create value?
+
+A Makina strategy creates value the way any fund does, by generating returns on the capital it manages:
+
+- **Yield** from lending, staking, liquidity provision, and yield-bearing assets.
+- **Price appreciation** of the assets it holds relative to the strategy's reference asset.
+- **Active management**: the Operator continuously rebalances toward the best risk-adjusted opportunities, across chains, within the limits set by governance.
+
+As the strategy's total value grows, so does the value of each share. Holders capture returns through the appreciation of their [machine token](machine/machine-token), which is fully composable and can itself be used as collateral, paired in liquidity pools, or held in treasury. Operators and the protocol are compensated through [fees](machine/fees), aligning their incentive with long-term share-price growth.
+
+## Design principles
+
+Makina is built to be **non-custodial, transparent, and trust-minimized**:
+
+- **No unilateral control.** The Operator executes the strategy but cannot withdraw user funds, send assets to arbitrary destinations, or exceed the risk limits encoded onchain.
+- **Pre-approved actions only.** Every protocol interaction must match an instruction that governance has reviewed and committed to onchain, subject to a timelock.
+- **Defense in depth.** Loss caps, cooldowns, staleness checks, timelocks, a veto-holding Security Council, an emergency [Recovery Mode](security/recovery-mode), and an insurance [Security Module](security/security-module) each catch what the others miss.
+- **Verifiable accounting.** [Share price](machine/share-price) is derived from the strategy's full, oracle-priced assets under management (including capital deployed on other chains), and is auditable by anyone at any time.
+
+## The strategy mandate
+
+When a strategy launches, its team publishes a **mandate**: a high-level description of the strategy's type, goal, risk profile, return expectations, and the opportunity segment it targets. The mandate is the human-readable charter that guides the [Risk Manager](governance/risk-manager) (who sets the onchain limits) and the [Operator](governance/operator) (who executes within them). It is the reference point against which a strategy's behavior can be judged.
+
+## Who is this documentation for?
+
+This Concepts section is the primary onboarding path for everyone encountering Makina:
+
+- **Users** who want to understand how their deposits are managed and what protects them.
+- **Operators** running strategies, who need to understand the system's limits and logic.
+- **Partners, investors, and ecosystem participants** evaluating the protocol.
+- **Integrators** building on top of Makina shares or strategies.
+- **Solidity developers and auditors** who want a conceptual map before reading the contracts.
+
+Operators can also refer to the [Operator docs](https://operator.makina.finance/docs) for guidance specific to running strategies.
+
+:::tip Where to go next
+New to Makina? Read [Architecture](architecture) and [Asset Lifecycle](lifecycle) in order. Together they give you a complete mental model in a few minutes.
+:::

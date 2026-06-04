@@ -5,14 +5,14 @@ sidebar_position: 2
 
 # Base Tokens
 
-Base Tokens are ERC20 tokens that can be held directly on the balance of a Caliber.
+**Base Tokens** are the curated set of ERC-20 tokens a [Caliber](overview) is allowed to hold directly. They are the raw materials of a strategy: positions are built by spending base tokens and unwound back into them, and swaps can only output base tokens.
 
-Each Caliber maintains a set of registered base tokens. In order to be marked as a base token, a valid pricing path must be configured in the [Oracle Registry](../oracle-registry) so that the token is priceable against the strategy's Accounting Token.
+## Pricing and valuation
 
-Base tokens should generally be very liquid against the Accounting Token of the Caliber, and relatively low risk. Some Base tokens can be bridged from the Hub Chain, or swapped into locally, on the Caliber's chain.
+Every base token must be **priceable against the [accounting token](overview#accounting-token-and-base-tokens)** through the [Oracle Registry](../oracles). A token cannot be registered as a base token without a valid pricing path. Its value is then read directly, by pricing the Caliber's balance against the accounting token, with no instruction required.
 
-Base Tokens are accounted for as part of the Caliber AUM through simple balanceOf calls, and pricing against the Accounting Token.
+This pricing guarantee is the linchpin of the Caliber's safety model. Because every token the Caliber can hold is priceable, it can always value its entire balance, which is what makes [accounting](caliber-accounting) and the [loss checks](positions#loss-checks) on positions and swaps possible.
 
-Positions can only be deployed by spending base tokens and closed by withdrawing base tokens. Additionally, swaps can only be made into base tokens and the accounting token. Thus all undeployed assets on the Caliber will always be a combination of base tokens and accounting token.
+## Curation
 
-Calibers perform slippage or loss checks whenever a position is managed or a swap is executed. For positions, the associated accounting instruction returns a list of base token amounts representing the position’s value. The Caliber compares the total value of these tokens before and after execution to ensure that no significant loss is incurred during the operation.
+Base tokens are added and removed by the [Risk Manager](../governance/risk-manager) (through the timelocked path). A token can only be removed when the Caliber's balance of it is zero. In practice base tokens should be **liquid against the accounting token and relatively low risk**, since they are the assets the strategy parks value in between deployments. Some base tokens are bridged in from another chain, while others are obtained by swapping locally.

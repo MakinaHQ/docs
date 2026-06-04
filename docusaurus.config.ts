@@ -33,10 +33,13 @@ const config: Config = {
   },
 
   markdown: {
+    mermaid: true,
     hooks: {
       onBrokenMarkdownLinks: "warn",
     },
   },
+
+  themes: ["@docusaurus/theme-mermaid"],
 
   presets: [
     [
@@ -87,6 +90,26 @@ const config: Config = {
           {
             from: "/concepts/governance/governance-overview",
             to: "/concepts/governance/overview",
+          },
+          {
+            from: "/concepts/oracle-registry",
+            to: "/concepts/oracles",
+          },
+          {
+            from: "/concepts/machine/depositors",
+            to: "/concepts/machine/deposits",
+          },
+          {
+            from: "/concepts/machine/redeemers",
+            to: "/concepts/machine/redemptions",
+          },
+          {
+            from: "/concepts/machine/fee-managers",
+            to: "/concepts/machine/fees",
+          },
+          {
+            from: "/concepts/machine/security-module",
+            to: "/concepts/security/security-module",
           },
         ],
       },

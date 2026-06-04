@@ -8,15 +8,18 @@ Welcome to the Makina documentation. This guide will help you understand the cor
 
 ## What is Makina?
 
-Makina is an innovative protocol for superior onchain execution. It redefines how smart contract vaults operate by providing a highly agile infrastructure that is used to execute a wide variety of cross-chain strategies.
+Makina is a protocol for professionally managed, tokenized, cross-chain investment strategies. Users deposit a single asset and receive a machine token representing their claim on the strategy, which a professional Operator manages across DeFi, within strict, governance-defined onchain limits.
+
+See the [Introduction](/concepts/introduction) for the full overview.
 
 ## Core Components
 
-Makina consists of several key components:
+- [**Machine**](/concepts/machine/overview): the per-strategy vault on the Hub Chain that handles deposits, redemptions, shares, fees, and total AUM.
+- [**Caliber**](/concepts/caliber/overview): the per-chain execution engine that deploys assets into external protocols.
+- [**Cross-Chain**](/concepts/cross-chain/hub-and-spoke): the hub-and-spoke model that lets one strategy span multiple chains.
+- [**Governance**](/concepts/governance/overview): the roles, permissions, and timelocks that bound what each actor can do.
 
-- [**Machine**](/concepts/machine/overview): The core abstraction that manages deposits, redemptions, and fees
-- [**Caliber**](/concepts/caliber/overview): Handles cross-chain operations and accounting
-- [**Governance**](/concepts/governance/overview): Manages permissions, risk parameters, and system updates
+New here? Start with [Architecture](/concepts/architecture) and [Asset Lifecycle](/concepts/lifecycle).
 
 ## Audits and Security
 

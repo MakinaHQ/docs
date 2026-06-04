@@ -1,15 +1,18 @@
 ---
 id: "safe-security-structure"
-sidebar_position: 2
+title: Multisig Security
+sidebar_position: 7
 ---
 
-# Safe Security Structure
+# Multisig Security
+
+The per-strategy roles ([Operator](operator), [Risk Manager](risk-manager), [Security Council](security-council)) and the protocol-wide governance roles are ultimately held by multisig wallets. Those wallets are themselves a part of the security model, and are protected by standardized safeguards.
 
 All Multisigs within the protocol will adhere to standardized security safeguards:
 
 - Timelock in owner changes (min: 24h)
 - As a precautionary measure, the Safe implementation will be non-upgradable. This means that once deployed with a specific version (e.g., 1.4.1), it will remain on that version indefinitely.
-- Transactions will not be permissionless; execution will be strictly enforced and limited to the Safe owners leveraging Safe's [Guard](https://github.com/safe-global/safe-smart-account/blob/main/contracts/examples/guards/OnlyOwnersGuard.sol).
+- Transactions will not be permissionless. Execution will be strictly enforced and limited to the Safe owners.
 
 In addition to these checks and balances, each owner can utilize an independent simulation engine to simulate transaction payloads in a separate communication channel of their choice (e.g., Telegram, Discord). This ensures independent validation and also enables verification of any root updates, which are critical at the protocol level.
 
