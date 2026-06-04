@@ -13,7 +13,7 @@ Every Makina strategy is built from two kinds of contract:
 - **The [Machine](machine/overview)** is the _vault and accounting layer_. It lives on a single chain (the **Hub Chain**) and is the strategy's front door: it accepts deposits, issues the [share token](machine/machine-token), computes the [share price](machine/share-price), charges [fees](machine/fees), and aggregates the value of everything the strategy holds (including capital on other chains) into one number, the **AUM** (assets under management).
 - **The [Caliber](caliber/overview)** is the _execution layer_. A Caliber is where assets are actually deployed into external protocols. It opens and manages [positions](caliber/positions), [swaps](caliber/swaps) tokens, [harvests](caliber/harvests) rewards, and reports the value of everything it holds back to the Machine.
 
-A strategy always has **one Machine** and **one Caliber per chain** it operates on. The Caliber on the Hub Chain sits next to the Machine. Additional Calibers on other chains (**Spoke Chains**) extend the strategy across the multi-chain landscape.
+A strategy always has **one Machine**, and **one Caliber per chain** it operates on. The Caliber on the Hub Chain sits next to the Machine. Additional Calibers on other chains (**Spoke Chains**) extend the strategy across the multi-chain landscape.
 
 ```mermaid
 flowchart TB
@@ -56,7 +56,8 @@ The split matters because it is _how Makina stays flexible_. Different strategie
 Alongside the per-strategy contracts, a set of **protocol-wide infrastructure** contracts are deployed once per chain and shared by every strategy:
 
 - The **[Oracle Registry](oracles)** prices any token against the strategy's reference asset using Chainlink-compatible price feeds, the foundation of all accounting.
-- The **Token Registry** and **Chain Registry** map assets and chain identifiers across chains, so the protocol can reason about "the same token, on another chain."
+- The **[Token Registry](/contracts/core/registries/TokenRegistry.sol/contract.TokenRegistry.md)** maps a token to its equivalent address on each foreign chain, so the protocol can reason about "the same token, on another chain."
+- The **[Chain Registry](/contracts/core/registries/ChainRegistry.sol/contract.ChainRegistry.md)** maps EVM chain IDs to the chain identifiers used by Wormhole CCQ, the cross-chain queries that carry [spoke accounting](cross-chain/cross-chain-accounting) back to the Hub.
 - The **Swap Module** routes [swaps](caliber/swaps) through approved external aggregators.
 - **Registries and factories** deploy new strategies and let the protocol resolve and upgrade shared dependencies. See [Protocol Upgrades](governance/protocol-upgrades).
 

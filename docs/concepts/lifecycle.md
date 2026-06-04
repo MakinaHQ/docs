@@ -43,7 +43,7 @@ sequenceDiagram
 The number of shares minted is `assets / share price`, so a deposit never changes the share price. It only scales the strategy up proportionally. Depending on the strategy, the Depositor may enforce a [whitelist](machine/deposits#whitelisting) (e.g. for KYC-gated strategies). See [Deposits](machine/deposits).
 
 :::note Example implementation
-The atomic "forward and mint instantly" flow shown here is the **DirectDepositor**, one common depositor implementation. The Depositor is a swappable [periphery](architecture#core-vs-periphery) contract: some deployed strategies use the DirectDepositor, while others run custom logic built for a particular integrator's needs. The constant is that the Machine accepts deposits only from its designated Depositor.
+The atomic "forward and mint instantly" flow shown here is the **[DirectDepositor](/contracts/periphery/depositors/DirectDepositor.sol/contract.DirectDepositor.md)**, one common depositor implementation. The Depositor is a swappable [periphery](architecture#core-vs-periphery) contract: some deployed strategies use the DirectDepositor, while others run custom logic built for a particular integrator's needs. The constant is that the Machine accepts deposits only from its designated Depositor.
 :::
 
 _Before a strategy launches, deposits can be gathered through a [Pre-Deposit Vault](machine/pre-deposit), which lets a strategy bootstrap liquidity and seamlessly transition into the live Machine._
@@ -61,7 +61,7 @@ The Operator decides how much to keep idle as a withdrawal buffer and how much t
 
 Within a Caliber, the Operator deploys [base tokens](caliber/base-tokens) into external protocols by executing [Instructions](caliber/makina-vm) on the [MakinaVM](caliber/makina-vm). Each deployment becomes a tracked [position](caliber/positions): a supply on a lending market, an LP position on a DEX, a deposit into a yield vault, and so on. Positions can also represent **debt** (e.g. a borrow), which counts negatively toward AUM.
 
-Crucially, the Operator can only execute Instructions that governance has **pre-approved** and committed onchain. The Caliber verifies every action against a Merkle root of the allowed instruction set before running it, and applies a [loss check](caliber/positions#loss-checks) comparing value before and after to ensure the deployment didn't leak value beyond a configured tolerance.
+Crucially, the Operator can only execute Instructions that governance has **pre-approved** and committed onchain. The Caliber verifies every action against a Merkle root of the allowed instruction set before running it (see [`allowedInstrRoot`](/contracts/core/caliber/Caliber.sol/contract.Caliber#allowedinstrroot)), and applies a [loss check](caliber/positions#loss-checks) comparing value before and after to ensure the deployment didn't leak value beyond a configured tolerance.
 
 ## 4. Rebalance & harvest: the strategy is actively managed
 
@@ -110,14 +110,16 @@ Positions are generally not instantly liquid, so Makina does not promise atomic 
 sequenceDiagram
     actor User
     participant R as Redeemer (queue)
-    participant O as Operator
+    actor O as Operator
     participant M as Machine
-    User->>R: requestRedeem(shares) → receive NFT
+    User->>R: requestRedeem(shares)
+    R-->>User: NFT
     Note over O: frees up liquidity<br/>(closes positions, bridges back)
     O->>R: finalize requests (FIFO)
     R->>M: redeem shares → accounting token
     M-->>R: assets
-    User->>R: claim(NFT) → assets
+    User->>R: claim(NFT)
+    R-->>User: assets
 ```
 
 1. The user locks their shares in the [Redeemer](machine/redemptions) and receives an NFT representing the request.
@@ -127,7 +129,7 @@ sequenceDiagram
 This asynchronous design is what lets a strategy stay fully invested while still honoring exits in an orderly, fair sequence. See [Redemptions](machine/redemptions).
 
 :::note Example implementation
-The FIFO, NFT-based queue shown here is the **AsyncRedeemer**, one common redeemer implementation. The Redeemer is a swappable [periphery](architecture#core-vs-periphery) contract: some deployed strategies use the AsyncRedeemer, while others run custom logic built for a particular integrator's needs. What is fundamental is that the Machine can only pay out from its idle balance. A Redeemer could settle atomically when that idle balance is sufficient, but because most of the capital is usually deployed, redemptions are generally handled asynchronously.
+The FIFO, NFT-based queue shown here is the **[AsyncRedeemer](/contracts/periphery/redeemers/AsyncRedeemer.sol/contract.AsyncRedeemer.md)**, one common redeemer implementation. The Redeemer is a swappable [periphery](architecture#core-vs-periphery) contract: some deployed strategies use the AsyncRedeemer, while others run custom logic built for a particular integrator's needs. What is fundamental is that the Machine can only pay out from its idle balance. A Redeemer could settle atomically when that idle balance is sufficient, but because most of the capital is usually deployed, redemptions are generally handled asynchronously.
 :::
 
 ## When something goes wrong

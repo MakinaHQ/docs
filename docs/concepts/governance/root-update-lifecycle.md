@@ -40,3 +40,7 @@ During the timelock window, the scheduled update can be cancelled by:
 - the **Risk Manager** itself (withdrawing its own proposal).
 
 This veto applies specifically to the instruction root, the heart of the Operator's permissions. The Operator's powers cannot be expanded if any of these parties objects.
+
+:::info Implementation
+The on-chain entry points for scheduling, vetoing, and activating a root update live in [`Caliber.sol`](/contracts/core/caliber/Caliber.sol/contract.Caliber.md).
+:::

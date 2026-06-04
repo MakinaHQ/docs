@@ -42,10 +42,12 @@ A Caliber's "net" AUM already nets out [debt positions](../caliber/positions#deb
 
 ## Keeping AUM fresh
 
-AUM is not recomputed on every block. It is updated on demand, in a single operation that re-reads every source and then mints any due [fees](fees). The update can be set either permissionless, or restricted to the [Operator](../governance/operator) and designated accounting agents (see [restricted accounting mode](../governance/permissions-and-scopes#restricted-accounting-mode)). For the update to succeed, the inputs must be **fresh**:
+AUM is not recomputed on every block. It is updated on demand, in a single operation that re-reads every source and then mints any due [fees](fees). The update can be set either permissionless, or restricted to the [Operator](../governance/operator) and designated accounting agents (see [restricted accounting mode](../governance/permissions-and-scopes#restricted-accounting-mode)). For the update to succeed, the inputs must be **fresh**.
 
-- Each Caliber's [position values must be up to date](../caliber/caliber-accounting) (not stale).
-- Spoke Caliber data delivered by cross-chain queries must be recent enough.
+Freshness is not a fixed value. It is measured against two configurable staleness thresholds:
+
+- **Position staleness** (per-Caliber `positionStaleThreshold`). Every position records the time it was last accounted. A position is considered stale once the elapsed time since that accounting reaches the threshold, so all of a Caliber's positions must have been refreshed within that window for the Caliber's value to count.
+- **Caliber staleness** (per-Machine `caliberStaleThreshold`). Spoke Caliber data arrives through [Cross-Chain Accounting](../cross-chain/cross-chain-accounting) carrying the timestamp of the chain it was read on. That data is stale once the elapsed time since its timestamp reaches the threshold. An incoming cross-chain response must also be strictly newer than the one already stored, so an older snapshot can never overwrite a more recent one.
 
 If any input is stale, the update reverts rather than producing a wrong price. An update is also rejected if it would move the share price faster than a governance-set **maximum change rate** over the elapsed time, a guard against a sudden, suspicious jump. (The [Security Council](../governance/security-council) can update AUM bypassing that guard when legitimately needed.)
 

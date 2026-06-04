@@ -88,6 +88,10 @@ Integrating a protocol requires only authoring its instructions and committing t
 
 The full update and veto process is described in [Root Update Lifecycle](../governance/root-update-lifecycle).
 
+:::info Instruction sets
+The instruction sets live in the public [`makina-integrations`](https://github.com/MakinaHQ/makina-integrations) repository, where anyone can review them and contributors add new integrations.
+:::
+
 :::info Implementation
 The instruction structures and verification live in [`Caliber.sol`](/contracts/core/caliber/Caliber.sol/contract.Caliber.md) and [`ICaliber`](/contracts/core/interfaces/ICaliber.sol/interface.ICaliber.md). The Weiroll VM interface is [`IWeirollVM`](/contracts/core/interfaces/IWeirollVM.sol/interface.IWeirollVM.md).
 :::

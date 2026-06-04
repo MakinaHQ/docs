@@ -49,11 +49,12 @@ When a strategy launches, its team publishes a **mandate**: a high-level descrip
 This Concepts section is the primary onboarding path for everyone encountering Makina:
 
 - **Users** who want to understand how their deposits are managed and what protects them.
+- **Operators** running strategies, who need to understand the system's limits and logic.
 - **Partners, investors, and ecosystem participants** evaluating the protocol.
 - **Integrators** building on top of Makina shares or strategies.
 - **Solidity developers and auditors** who want a conceptual map before reading the contracts.
 
-It is organized as a learning journey. Each section goes deeper into one part of the system, and links into the [Contracts](/contracts/core/summary) reference for implementation detail.
+Operators can also refer to the [Operator docs](https://operator.makina.finance/docs) for guidance specific to running strategies.
 
 :::tip Where to go next
 New to Makina? Read [Architecture](architecture) and [Asset Lifecycle](lifecycle) in order. Together they give you a complete mental model in a few minutes.
