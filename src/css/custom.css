@@ -8,7 +8,12 @@
  */
 
 /* ─── Light mode ─────────────────────────────────────────────── */
-:root {
+/* `html:root` (specificity 0,1,1) intentionally out-specifies Infima's `:root`
+   (0,1,0) so these overrides win regardless of CSS source order. The prod build
+   (mini-css-extract-plugin) can reorder CSS modules — e.g. when an extra theme
+   like @docusaurus/theme-mermaid perturbs the webpack graph — so we must not
+   rely on source order to resolve the cascade. */
+html:root {
   /* Primary ramp — accent teal for active states / links */
   --ifm-color-primary: #0891b2;
   --ifm-color-primary-dark: #0779a0;
@@ -69,7 +74,11 @@
 }
 
 /* ─── Dark mode ──────────────────────────────────────────────── */
-html[data-theme="dark"] {
+/* `html[data-theme="dark"]:root` (specificity 0,2,1) out-specifies both the
+   light `html:root` block above (0,1,1) and Infima's own dark block
+   `html[data-theme='dark']` (0,1,1), so dark values always win in dark mode no
+   matter how the prod CSS bundle is ordered. See the light-mode note above. */
+html[data-theme="dark"]:root {
   /* Primary ramp — accent teal for active states / links */
   --ifm-color-primary: #3dc9de;
   --ifm-color-primary-dark: #23bdd5;
