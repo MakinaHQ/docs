@@ -69,7 +69,7 @@
 }
 
 /* ─── Dark mode ──────────────────────────────────────────────── */
-[data-theme="dark"] {
+html[data-theme="dark"] {
   /* Primary ramp — accent teal for active states / links */
   --ifm-color-primary: #3dc9de;
   --ifm-color-primary-dark: #23bdd5;
