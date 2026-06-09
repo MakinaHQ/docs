@@ -1,0 +1,23 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "bun run build",
+  "installCommand": "bun install",
+  "outputDirectory": "dist/public",
+  "redirects": [
+    { "source": "/concepts/security/audits", "destination": "/contracts/security", "permanent": true },
+    { "source": "/concepts/governance/governance-overview", "destination": "/concepts/governance/overview", "permanent": true },
+    { "source": "/concepts/machine/machine-overview", "destination": "/concepts/architecture/machine/overview", "permanent": true },
+    { "source": "/concepts/machine/depositors", "destination": "/concepts/architecture/machine/deposits", "permanent": true },
+    { "source": "/concepts/machine/redeemers", "destination": "/concepts/architecture/machine/redemptions", "permanent": true },
+    { "source": "/concepts/machine/fee-managers", "destination": "/concepts/architecture/machine/fees", "permanent": true },
+    { "source": "/concepts/machine/security-module", "destination": "/concepts/security/security-module", "permanent": true },
+    { "source": "/concepts/caliber/caliber-overview", "destination": "/concepts/architecture/caliber/overview", "permanent": true },
+    { "source": "/concepts/oracle-registry", "destination": "/concepts/architecture/pricing-oracles", "permanent": true },
+    { "source": "/concepts/architecture", "destination": "/concepts/architecture/overview", "permanent": true },
+    { "source": "/concepts/lifecycle", "destination": "/concepts/architecture/lifecycle", "permanent": true },
+    { "source": "/concepts/oracles", "destination": "/concepts/architecture/pricing-oracles", "permanent": true },
+    { "source": "/concepts/machine/:path*", "destination": "/concepts/architecture/machine/:path*", "permanent": true },
+    { "source": "/concepts/caliber/:path*", "destination": "/concepts/architecture/caliber/:path*", "permanent": true },
+    { "source": "/concepts/cross-chain/:path*", "destination": "/concepts/architecture/cross-chain/:path*", "permanent": true }
+  ]
+}

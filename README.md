@@ -1,17 +1,17 @@
 # Makina Docs
 
-Welcome to the [Makina Docs](https://docs.makina.finance/), built with [Docusaurus](https://docusaurus.io/).
+Welcome to the [Makina Docs](https://docs.makina.finance/), built with [Vocs](https://vocs.dev/).
 
 ### Installation
 
 ```sh
-npm install
+bun install
 ```
 
 ### Local Development
 
 ```sh
-npm run start
+bun run dev
 ```
 
 This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
@@ -19,11 +19,11 @@ This command starts a local development server and opens up a browser window. Mo
 ### Build
 
 ```sh
-npm run build
+bun run build
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+This command generates static content into the `dist` directory and can be served using any static contents hosting service.
 
 ### Deployment
 
-Every commits merged into the `main` branch will be automatically deployed to the [Makina Docs](https://docs.makina.finance) via Vercel.
+Every commit merged into the `main` branch is automatically deployed to the [Makina Docs](https://docs.makina.finance) via Vercel (build command `bun run build`, output directory `dist`).
