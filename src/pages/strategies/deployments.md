@@ -1,6 +1,6 @@
 # Strategies
 
-The following [strategies](https://app.makina.finance/explore) are live on the Makina Protocol (on Ethereum Mainnet):
+The following [strategies](https://makina.finance/explore) are live on the Makina Protocol (on Ethereum Mainnet):
 
 :::info
 
@@ -8,7 +8,7 @@ For protocol-wide contracts, see the [Core](../contracts/core/deployments.mdx) a
 
 :::
 
-## [DUSD](https://app.makina.finance/strategy/DUSD)
+## [DUSD](https://makina.finance/strategy/DUSD)
 
 | Contract                     | Address                                                                                                                 |
 | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
@@ -24,7 +24,7 @@ For protocol-wide contracts, see the [Core](../contracts/core/deployments.mdx) a
 | PreDepositVault (PreDeposit) | [`0x5df4cb0aaae0fcc9de3f41e72348609e30a49c44`](https://etherscan.io/address/0x5df4cb0aaae0fcc9de3f41e72348609e30a49c44) |
 | Deposit Token (PreDeposit)   | [`0xBEEF01735c132Ada46AA9aA4c54623cAA92A64CB`](https://etherscan.io/address/0xBEEF01735c132Ada46AA9aA4c54623cAA92A64CB) |
 
-## [DETH](https://app.makina.finance/strategy/DETH)
+## [DETH](https://makina.finance/strategy/DETH)
 
 | Contract                     | Address                                                                                                                 |
 | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
@@ -40,7 +40,7 @@ For protocol-wide contracts, see the [Core](../contracts/core/deployments.mdx) a
 | Deposit Token (PreDeposit)   | [`0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8`](https://etherscan.io/address/0x9a8bC3B04b7f3D87cfC09ba407dCED575f2d61D8) |
 | PreDepositVault (PreDeposit) | [`0xefc8e0fce12c164eafcb588915c6f0ca7ca41a53`](https://etherscan.io/address/0xefc8e0fce12c164eafcb588915c6f0ca7ca41a53) |
 
-## [DBIT](https://app.makina.finance/strategy/DBIT)
+## [DBIT](https://makina.finance/strategy/DBIT)
 
 | Contract                     | Address                                                                                                                 |
 | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
@@ -56,7 +56,7 @@ For protocol-wide contracts, see the [Core](../contracts/core/deployments.mdx) a
 | Deposit Token (PreDeposit)   | [`0x443df5eEE3196e9b2Dd77CaBd3eA76C3dee8f9b2`](https://etherscan.io/address/0x443df5eEE3196e9b2Dd77CaBd3eA76C3dee8f9b2) |
 | PreDepositVault (PreDeposit) | [`0x49af2649eefbc7e3847b41100fddcf91134a549e`](https://etherscan.io/address/0x49af2649eefbc7e3847b41100fddcf91134a549e) |
 
-## [usdSHFmk](https://app.makina.finance/strategy/usdSHFmk)
+## [usdSHFmk](https://makina.finance/strategy/usdSHFmk)
 
 | Contract                 | Address                                                                                                                 |
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------- |

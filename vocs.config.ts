@@ -31,7 +31,7 @@ export default defineConfig({
     {
       text: "Resources",
       items: [
-        { text: "Makina App", link: "https://app.makina.finance" },
+        { text: "Makina App", link: "https://makina.finance" },
         { text: "Operator Dashboard", link: "https://operator.makina.finance/dashboard" },
         { text: "Operator Docs", link: "https://operator.makina.finance/docs" },
         { text: "Operator CLI", link: "https://operator.makina.finance/docs/cli/overview" },

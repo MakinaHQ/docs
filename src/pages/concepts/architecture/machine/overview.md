@@ -23,7 +23,7 @@ Each Machine defines a single **accounting token**, for example USDC, WETH, or W
 - It is the **unit of account**: AUM and share price are denominated in it.
 - Every other asset the strategy holds is valued _relative to_ the accounting token, through the [Oracle Registry](../pricing-oracles).
 
-You can see the accounting token (and all other contracts) for each live strategy on the [Strategies](../../../strategies/deployments.md) page or in the [Makina app](https://app.makina.finance/explore).
+You can see the accounting token (and all other contracts) for each live strategy on the [Strategies](../../../strategies/deployments.md) page or in the [Makina app](https://makina.finance/explore).
 
 ## What a Machine is connected to
 
