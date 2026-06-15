@@ -24,7 +24,12 @@ export default defineConfig(async () => {
   const resolved = await resolvePlugins(await vocs({}));
   const plugins = resolved.filter(
     (plugin) =>
-      !(plugin && typeof plugin === "object" && "name" in plugin && plugin.name === "vocs:llms"),
+      !(
+        plugin &&
+        typeof plugin === "object" &&
+        "name" in plugin &&
+        plugin.name === "vocs:llms"
+      ),
   );
   return {
     plugins: [react(), ...plugins],

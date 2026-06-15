@@ -9,30 +9,65 @@ import { HomePage, Cards, Card } from "vocs";
 <HomePage.Root>
   <div className="home-hero-head">
     <HomePage.Logo className="home-logo" />
-    <HomePage.Tagline className="home-title">Makina<br />Documentation</HomePage.Tagline>
+    <HomePage.Tagline className="home-title">
+      Makina
+      <br />
+      Documentation
+    </HomePage.Tagline>
   </div>
   <HomePage.Description className="home-subtitle">
-    Deploy, manage and distribute onchain strategies with unparalleled efficiency and risk controls.
+    Deploy, manage and distribute onchain strategies with unparalleled
+    efficiency and risk controls.
   </HomePage.Description>
   <HomePage.Buttons>
-    <HomePage.Button href="/concepts/introduction" variant="accent">Get started</HomePage.Button>
+    <HomePage.Button href="/concepts/introduction" variant="accent">
+      Get started
+    </HomePage.Button>
   </HomePage.Buttons>
 </HomePage.Root>
 
 ## Explore the protocol
 
 <Cards>
-  <Card title="Introduction" icon="book-open" to="/concepts/introduction" description="What Makina is, the problem it solves, and how it creates value." />
-  <Card title="Architecture" icon="blocks" to="/concepts/architecture/overview" description="How the pieces fit together, from deposits to cross-chain execution." />
-  <Card title="Governance" icon="scale" to="/concepts/governance/overview" description="The roles, permissions, and timelocks that bound what each actor can do." />
-  <Card title="Security" icon="shield" to="/concepts/security/trust-and-risk" description="The layered guardrails, recovery mode, and insurance security module." />
+  <Card
+    title="Introduction"
+    icon="book-open"
+    to="/concepts/introduction"
+    description="What Makina is, the problem it solves, and how it creates value."
+  />
+  <Card
+    title="Architecture"
+    icon="blocks"
+    to="/concepts/architecture/overview"
+    description="How the pieces fit together, from deposits to cross-chain execution."
+  />
+  <Card
+    title="Governance"
+    icon="scale"
+    to="/concepts/governance/overview"
+    description="The roles, permissions, and timelocks that bound what each actor can do."
+  />
+  <Card
+    title="Security"
+    icon="shield"
+    to="/concepts/security/trust-and-risk"
+    description="The layered guardrails, recovery mode, and insurance security module."
+  />
 </Cards>
 
 ## Contracts and deployments
 
 <Cards>
-  <Card title="Core contracts" icon="file-code" to="/contracts/core/architecture-overview" />
-  <Card title="Periphery contracts" icon="puzzle" to="/contracts/periphery/architecture-overview" />
+  <Card
+    title="Core contracts"
+    icon="file-code"
+    to="/contracts/core/architecture-overview"
+  />
+  <Card
+    title="Periphery contracts"
+    icon="puzzle"
+    to="/contracts/periphery/architecture-overview"
+  />
   <Card title="Live strategies" icon="route" to="/strategies/deployments" />
 </Cards>
 

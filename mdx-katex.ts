@@ -17,21 +17,30 @@ import { visit } from "unist-util-visit";
  */
 export function remarkKatexRender() {
   return (tree: unknown) => {
-    visit(tree as never, (node: { type: string; value: string; data?: Record<string, unknown> }) => {
-      const displayMode = node.type === "math";
-      if (!displayMode && node.type !== "inlineMath") return;
-      const html = katex.renderToString(node.value, {
-        displayMode,
-        throwOnError: false,
-        output: "htmlAndMathml",
-      });
-      const fragment = fromHtml(html, { fragment: true });
-      node.data ??= {};
-      node.data.hName = displayMode ? "div" : "span";
-      node.data.hProperties = {
-        className: displayMode ? ["math", "math-display"] : ["math", "math-inline"],
-      };
-      node.data.hChildren = fragment.children;
-    });
+    visit(
+      tree as never,
+      (node: {
+        type: string;
+        value: string;
+        data?: Record<string, unknown>;
+      }) => {
+        const displayMode = node.type === "math";
+        if (!displayMode && node.type !== "inlineMath") return;
+        const html = katex.renderToString(node.value, {
+          displayMode,
+          throwOnError: false,
+          output: "htmlAndMathml",
+        });
+        const fragment = fromHtml(html, { fragment: true });
+        node.data ??= {};
+        node.data.hName = displayMode ? "div" : "span";
+        node.data.hProperties = {
+          className: displayMode
+            ? ["math", "math-display"]
+            : ["math", "math-inline"],
+        };
+        node.data.hChildren = fragment.children;
+      },
+    );
   };
 }

@@ -26,15 +26,29 @@ export default defineConfig({
 
   topNav: [
     { text: "Concepts", link: "/concepts/introduction", match: "/concepts" },
-    { text: "Strategies", link: "/strategies/deployments", match: "/strategies" },
-    { text: "Contracts", link: "/contracts/core/architecture-overview", match: "/contracts" },
+    {
+      text: "Strategies",
+      link: "/strategies/deployments",
+      match: "/strategies",
+    },
+    {
+      text: "Contracts",
+      link: "/contracts/core/architecture-overview",
+      match: "/contracts",
+    },
     {
       text: "Resources",
       items: [
         { text: "Makina App", link: "https://makina.finance" },
-        { text: "Operator Dashboard", link: "https://operator.makina.finance/dashboard" },
+        {
+          text: "Operator Dashboard",
+          link: "https://operator.makina.finance/dashboard",
+        },
         { text: "Operator Docs", link: "https://operator.makina.finance/docs" },
-        { text: "Operator CLI", link: "https://operator.makina.finance/docs/cli/overview" },
+        {
+          text: "Operator CLI",
+          link: "https://operator.makina.finance/docs/cli/overview",
+        },
       ],
     },
   ],
@@ -62,22 +76,64 @@ export default defineConfig({
   // catch-all wildcards for the moved folders.
   redirects: [
     { source: "/concepts/security/audits", destination: "/contracts/security" },
-    { source: "/concepts/governance/governance-overview", destination: "/concepts/governance/overview" },
+    {
+      source: "/concepts/governance/governance-overview",
+      destination: "/concepts/governance/overview",
+    },
     // Legacy Docusaurus slugs → new nested locations.
-    { source: "/concepts/machine/machine-overview", destination: "/concepts/architecture/machine/overview" },
-    { source: "/concepts/machine/depositors", destination: "/concepts/architecture/machine/deposits" },
-    { source: "/concepts/machine/redeemers", destination: "/concepts/architecture/machine/redemptions" },
-    { source: "/concepts/machine/fee-managers", destination: "/concepts/architecture/machine/fees" },
-    { source: "/concepts/machine/security-module", destination: "/concepts/security/security-module" },
-    { source: "/concepts/caliber/caliber-overview", destination: "/concepts/architecture/caliber/overview" },
-    { source: "/concepts/oracle-registry", destination: "/concepts/architecture/pricing-oracles" },
+    {
+      source: "/concepts/machine/machine-overview",
+      destination: "/concepts/architecture/machine/overview",
+    },
+    {
+      source: "/concepts/machine/depositors",
+      destination: "/concepts/architecture/machine/deposits",
+    },
+    {
+      source: "/concepts/machine/redeemers",
+      destination: "/concepts/architecture/machine/redemptions",
+    },
+    {
+      source: "/concepts/machine/fee-managers",
+      destination: "/concepts/architecture/machine/fees",
+    },
+    {
+      source: "/concepts/machine/security-module",
+      destination: "/concepts/security/security-module",
+    },
+    {
+      source: "/concepts/caliber/caliber-overview",
+      destination: "/concepts/architecture/caliber/overview",
+    },
+    {
+      source: "/concepts/oracle-registry",
+      destination: "/concepts/architecture/pricing-oracles",
+    },
     // Architecture reorg: old flat URLs → new nested URLs.
-    { source: "/concepts/architecture", destination: "/concepts/architecture/overview" },
-    { source: "/concepts/lifecycle", destination: "/concepts/architecture/lifecycle" },
-    { source: "/concepts/oracles", destination: "/concepts/architecture/pricing-oracles" },
-    { source: "/concepts/machine/:path*", destination: "/concepts/architecture/machine/:path*" },
-    { source: "/concepts/caliber/:path*", destination: "/concepts/architecture/caliber/:path*" },
-    { source: "/concepts/cross-chain/:path*", destination: "/concepts/architecture/cross-chain/:path*" },
+    {
+      source: "/concepts/architecture",
+      destination: "/concepts/architecture/overview",
+    },
+    {
+      source: "/concepts/lifecycle",
+      destination: "/concepts/architecture/lifecycle",
+    },
+    {
+      source: "/concepts/oracles",
+      destination: "/concepts/architecture/pricing-oracles",
+    },
+    {
+      source: "/concepts/machine/:path*",
+      destination: "/concepts/architecture/machine/:path*",
+    },
+    {
+      source: "/concepts/caliber/:path*",
+      destination: "/concepts/architecture/caliber/:path*",
+    },
+    {
+      source: "/concepts/cross-chain/:path*",
+      destination: "/concepts/architecture/cross-chain/:path*",
+    },
   ],
 
   // Shiki themes closest to the Docusaurus Prism setup (github light / dracula dark).
