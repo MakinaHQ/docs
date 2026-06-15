@@ -65,25 +65,29 @@
   display: none;
 }
 
-/* Home page hero: a larger logo and a bigger, two-line title centered on the
-   same axis as the logo, with a wider subtitle. The `home-*` classes are passed
-   to the Vocs HomePage components and override their default Tailwind sizing. */
+/* Home page hero: a larger logo stacked above a bigger, single-line title, both
+   centered on the same axis, with a wider subtitle. The `home-*` classes are
+   passed to the Vocs HomePage components and override their default Tailwind
+   sizing. */
 .home-logo {
   height: 5rem;
 }
 
-/* Logo sits to the left of the two-line title, vertically centered with it. */
+/* Logo sits above the title, centered with it. */
 .home-hero-head {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 1.5rem;
 }
 
 .home-title {
   max-width: none;
-  /* Left-aligned so the "M" of Makina lines up above the "D" of Documentation. */
-  text-align: left;
-  font-size: 3rem;
+  /* Single line, centered under the logo. Fluid size keeps "Makina
+     Documentation" on one line down to narrow mobile widths without clipping. */
+  text-align: center;
+  white-space: nowrap;
+  font-size: clamp(1.5rem, 7vw, 4.5rem);
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.02em;
@@ -96,10 +100,6 @@
 @media (min-width: 768px) {
   .home-logo {
     height: 7rem;
-  }
-
-  .home-title {
-    font-size: 4.5rem;
   }
 }
 
