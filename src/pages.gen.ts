@@ -1,0 +1,173 @@
+// deno-fmt-ignore-file
+// biome-ignore format: generated types do not need formatting
+// prettier-ignore
+import type { PathsForPages } from 'waku/router'
+
+// prettier-ignore
+type Page =
+  | { path: '/concepts/architecture/caliber/base-tokens'; render: 'static' }
+  | { path: '/concepts/architecture/caliber/caliber-accounting'; render: 'static' }
+  | { path: '/concepts/architecture/caliber/flash-loans'; render: 'static' }
+  | { path: '/concepts/architecture/caliber/harvests'; render: 'static' }
+  | { path: '/concepts/architecture/caliber/makina-vm'; render: 'static' }
+  | { path: '/concepts/architecture/caliber/overview'; render: 'static' }
+  | { path: '/concepts/architecture/caliber/positions'; render: 'static' }
+  | { path: '/concepts/architecture/caliber/swaps'; render: 'static' }
+  | { path: '/concepts/architecture/cross-chain/caliber-mailbox'; render: 'static' }
+  | { path: '/concepts/architecture/cross-chain/cross-chain-accounting'; render: 'static' }
+  | { path: '/concepts/architecture/cross-chain/hub-and-spoke'; render: 'static' }
+  | { path: '/concepts/architecture/cross-chain/liquidity-bridging'; render: 'static' }
+  | { path: '/concepts/architecture/lifecycle'; render: 'static' }
+  | { path: '/concepts/architecture/machine/deposits'; render: 'static' }
+  | { path: '/concepts/architecture/machine/fees'; render: 'static' }
+  | { path: '/concepts/architecture/machine/machine-token'; render: 'static' }
+  | { path: '/concepts/architecture/machine/overview'; render: 'static' }
+  | { path: '/concepts/architecture/machine/pre-deposit'; render: 'static' }
+  | { path: '/concepts/architecture/machine/redemptions'; render: 'static' }
+  | { path: '/concepts/architecture/machine/share-price'; render: 'static' }
+  | { path: '/concepts/architecture/overview'; render: 'static' }
+  | { path: '/concepts/architecture/pricing-oracles'; render: 'static' }
+  | { path: '/concepts/governance/operator'; render: 'static' }
+  | { path: '/concepts/governance/overview'; render: 'static' }
+  | { path: '/concepts/governance/permissions-and-scopes'; render: 'static' }
+  | { path: '/concepts/governance/protocol-upgrades'; render: 'static' }
+  | { path: '/concepts/governance/risk-manager'; render: 'static' }
+  | { path: '/concepts/governance/root-update-lifecycle'; render: 'static' }
+  | { path: '/concepts/governance/safe-security-structure'; render: 'static' }
+  | { path: '/concepts/governance/security-council'; render: 'static' }
+  | { path: '/concepts/introduction'; render: 'static' }
+  | { path: '/concepts/security/recovery-mode'; render: 'static' }
+  | { path: '/concepts/security/security-module'; render: 'static' }
+  | { path: '/concepts/security/trust-and-risk'; render: 'static' }
+  | { path: '/contracts/core/architecture-overview'; render: 'static' }
+  | { path: '/contracts/core/bridge/adapters/AcrossV3BridgeAdapter.sol/contract.AcrossV3BridgeAdapter'; render: 'static' }
+  | { path: '/contracts/core/bridge/adapters/BridgeAdapter.sol/abstract.BridgeAdapter'; render: 'static' }
+  | { path: '/contracts/core/bridge/adapters/CctpV2BridgeAdapter.sol/contract.CctpV2BridgeAdapter'; render: 'static' }
+  | { path: '/contracts/core/bridge/adapters/LayerZeroV2BridgeAdapter.sol/contract.LayerZeroV2BridgeAdapter'; render: 'static' }
+  | { path: '/contracts/core/bridge/configs/AcrossV3BridgeConfig.sol/contract.AcrossV3BridgeConfig'; render: 'static' }
+  | { path: '/contracts/core/bridge/configs/CctpV2BridgeConfig.sol/contract.CctpV2BridgeConfig'; render: 'static' }
+  | { path: '/contracts/core/bridge/configs/LayerZeroV2BridgeConfig.sol/contract.LayerZeroV2BridgeConfig'; render: 'static' }
+  | { path: '/contracts/core/bridge/controller/BridgeController.sol/abstract.BridgeController'; render: 'static' }
+  | { path: '/contracts/core/caliber/Caliber.sol/contract.Caliber'; render: 'static' }
+  | { path: '/contracts/core/caliber/CaliberMailbox.sol/contract.CaliberMailbox'; render: 'static' }
+  | { path: '/contracts/core/deployments'; render: 'static' }
+  | { path: '/contracts/core/factories/BridgeAdapterFactory.sol/abstract.BridgeAdapterFactory'; render: 'static' }
+  | { path: '/contracts/core/factories/CaliberFactory.sol/abstract.CaliberFactory'; render: 'static' }
+  | { path: '/contracts/core/factories/Create3Factory.sol/abstract.Create3Factory'; render: 'static' }
+  | { path: '/contracts/core/factories/HubCoreFactory.sol/contract.HubCoreFactory'; render: 'static' }
+  | { path: '/contracts/core/factories/SpokeCoreFactory.sol/contract.SpokeCoreFactory'; render: 'static' }
+  | { path: '/contracts/core/interfaces/AggregatorV2V3Interface.sol/interface.AggregatorV2V3Interface'; render: 'static' }
+  | { path: '/contracts/core/interfaces/IAcrossV3BridgeConfig.sol/interface.IAcrossV3BridgeConfig'; render: 'static' }
+  | { path: '/contracts/core/interfaces/IAcrossV3MessageHandler.sol/interface.IAcrossV3MessageHandler'; render: 'static' }
+  | { path: '/contracts/core/interfaces/IAcrossV3SpokePool.sol/interface.IAcrossV3SpokePool'; render: 'static' }
+  | { path: '/contracts/core/interfaces/IBridgeAdapter.sol/interface.IBridgeAdapter'; render: 'static' }
+  | { path: '/contracts/core/interfaces/IBridgeAdapterFactory.sol/interface.IBridgeAdapterFactory'; render: 'static' }
+  | { path: '/contracts/core/interfaces/IBridgeConfig.sol/interface.IBridgeConfig'; render: 'static' }
+  | { path: '/contracts/core/interfaces/IBridgeController.sol/interface.IBridgeController'; render: 'static' }
+  | { path: '/contracts/core/interfaces/ICaliber.sol/interface.ICaliber'; render: 'static' }
+  | { path: '/contracts/core/interfaces/ICaliberFactory.sol/interface.ICaliberFactory'; render: 'static' }
+  | { path: '/contracts/core/interfaces/ICaliberMailbox.sol/interface.ICaliberMailbox'; render: 'static' }
+  | { path: '/contracts/core/interfaces/ICctpV2BridgeConfig.sol/interface.ICctpV2BridgeConfig'; render: 'static' }
+  | { path: '/contracts/core/interfaces/ICctpV2DestinationCaller.sol/interface.ICctpV2DestinationCaller'; render: 'static' }
+  | { path: '/contracts/core/interfaces/ICctpV2MessageTransmitter.sol/interface.ICctpV2MessageTransmitter'; render: 'static' }
+  | { path: '/contracts/core/interfaces/ICctpV2TokenMessenger.sol/interface.ICctpV2TokenMessenger'; render: 'static' }
+  | { path: '/contracts/core/interfaces/ICctpV2TokenMinter.sol/interface.ICctpV2TokenMinter'; render: 'static' }
+  | { path: '/contracts/core/interfaces/IChainRegistry.sol/interface.IChainRegistry'; render: 'static' }
+  | { path: '/contracts/core/interfaces/ICoreRegistry.sol/interface.ICoreRegistry'; render: 'static' }
+  | { path: '/contracts/core/interfaces/IFeeManager.sol/interface.IFeeManager'; render: 'static' }
+  | { path: '/contracts/core/interfaces/IHubCoreFactory.sol/interface.IHubCoreFactory'; render: 'static' }
+  | { path: '/contracts/core/interfaces/IHubCoreRegistry.sol/interface.IHubCoreRegistry'; render: 'static' }
+  | { path: '/contracts/core/interfaces/ILayerZeroComposer.sol/interface.ILayerZeroComposer'; render: 'static' }
+  | { path: '/contracts/core/interfaces/ILayerZeroV2BridgeConfig.sol/interface.ILayerZeroV2BridgeConfig'; render: 'static' }
+  | { path: '/contracts/core/interfaces/IMachine.sol/interface.IMachine'; render: 'static' }
+  | { path: '/contracts/core/interfaces/IMachineEndpoint.sol/interface.IMachineEndpoint'; render: 'static' }
+  | { path: '/contracts/core/interfaces/IMachineShare.sol/interface.IMachineShare'; render: 'static' }
+  | { path: '/contracts/core/interfaces/IMakinaContext.sol/interface.IMakinaContext'; render: 'static' }
+  | { path: '/contracts/core/interfaces/IMakinaGovernable.sol/interface.IMakinaGovernable'; render: 'static' }
+  | { path: '/contracts/core/interfaces/IOracleRegistry.sol/interface.IOracleRegistry'; render: 'static' }
+  | { path: '/contracts/core/interfaces/IOwnable2Step.sol/interface.IOwnable2Step'; render: 'static' }
+  | { path: '/contracts/core/interfaces/IPreDepositVault.sol/interface.IPreDepositVault'; render: 'static' }
+  | { path: '/contracts/core/interfaces/ISpokeCoreFactory.sol/interface.ISpokeCoreFactory'; render: 'static' }
+  | { path: '/contracts/core/interfaces/ISpokeCoreRegistry.sol/interface.ISpokeCoreRegistry'; render: 'static' }
+  | { path: '/contracts/core/interfaces/ISwapModule.sol/interface.ISwapModule'; render: 'static' }
+  | { path: '/contracts/core/interfaces/ITokenRegistry.sol/interface.ITokenRegistry'; render: 'static' }
+  | { path: '/contracts/core/interfaces/IWeirollVM.sol/interface.IWeirollVM'; render: 'static' }
+  | { path: '/contracts/core/libraries/CaliberAccountingCCQ.sol/library.CaliberAccountingCCQ'; render: 'static' }
+  | { path: '/contracts/core/libraries/CctpV2Message.sol/library.CctpV2Message'; render: 'static' }
+  | { path: '/contracts/core/libraries/DecimalsUtils.sol/library.DecimalsUtils'; render: 'static' }
+  | { path: '/contracts/core/libraries/Errors.sol/library.Errors'; render: 'static' }
+  | { path: '/contracts/core/libraries/LzOptionsBuilder.sol/library.LzOptionsBuilder'; render: 'static' }
+  | { path: '/contracts/core/libraries/MachineUtils.sol/library.MachineUtils'; render: 'static' }
+  | { path: '/contracts/core/libraries/Roles.sol/library.Roles'; render: 'static' }
+  | { path: '/contracts/core/machine/Machine.sol/contract.Machine'; render: 'static' }
+  | { path: '/contracts/core/machine/MachineShare.sol/contract.MachineShare'; render: 'static' }
+  | { path: '/contracts/core/pre-deposit/PreDepositVault.sol/contract.PreDepositVault'; render: 'static' }
+  | { path: '/contracts/core/registries/ChainRegistry.sol/contract.ChainRegistry'; render: 'static' }
+  | { path: '/contracts/core/registries/CoreRegistry.sol/abstract.CoreRegistry'; render: 'static' }
+  | { path: '/contracts/core/registries/HubCoreRegistry.sol/contract.HubCoreRegistry'; render: 'static' }
+  | { path: '/contracts/core/registries/OracleRegistry.sol/contract.OracleRegistry'; render: 'static' }
+  | { path: '/contracts/core/registries/SpokeCoreRegistry.sol/contract.SpokeCoreRegistry'; render: 'static' }
+  | { path: '/contracts/core/registries/TokenRegistry.sol/contract.TokenRegistry'; render: 'static' }
+  | { path: '/contracts/core/summary'; render: 'static' }
+  | { path: '/contracts/core/swap/SwapModule.sol/contract.SwapModule'; render: 'static' }
+  | { path: '/contracts/core/utils/MakinaContext.sol/abstract.MakinaContext'; render: 'static' }
+  | { path: '/contracts/core/utils/MakinaGovernable.sol/abstract.MakinaGovernable'; render: 'static' }
+  | { path: '/contracts/periphery/architecture-overview'; render: 'static' }
+  | { path: '/contracts/periphery/deployments'; render: 'static' }
+  | { path: '/contracts/periphery/depositors/DirectDepositor.sol/contract.DirectDepositor'; render: 'static' }
+  | { path: '/contracts/periphery/factories/HubPeripheryFactory.sol/contract.HubPeripheryFactory'; render: 'static' }
+  | { path: '/contracts/periphery/factories/MachineShareOracleFactory.sol/contract.MachineShareOracleFactory'; render: 'static' }
+  | { path: '/contracts/periphery/factories/MetaMorphoOracleFactory.sol/contract.MetaMorphoOracleFactory'; render: 'static' }
+  | { path: '/contracts/periphery/fee-managers/WatermarkFeeManager.sol/contract.WatermarkFeeManager'; render: 'static' }
+  | { path: '/contracts/periphery/flashloans/FlashloanAggregator.sol/contract.FlashloanAggregator'; render: 'static' }
+  | { path: '/contracts/periphery/interfaces/IAsyncRedeemer.sol/interface.IAsyncRedeemer'; render: 'static' }
+  | { path: '/contracts/periphery/interfaces/IAsyncRedeemerFee.sol/interface.IAsyncRedeemerFee'; render: 'static' }
+  | { path: '/contracts/periphery/interfaces/IDirectDepositor.sol/interface.IDirectDepositor'; render: 'static' }
+  | { path: '/contracts/periphery/interfaces/IFlashloanAggregator.sol/interface.IFlashloanAggregator'; render: 'static' }
+  | { path: '/contracts/periphery/interfaces/IHubPeripheryFactory.sol/interface.IHubPeripheryFactory'; render: 'static' }
+  | { path: '/contracts/periphery/interfaces/IHubPeripheryRegistry.sol/interface.IHubPeripheryRegistry'; render: 'static' }
+  | { path: '/contracts/periphery/interfaces/IMachinePeriphery.sol/interface.IMachinePeriphery'; render: 'static' }
+  | { path: '/contracts/periphery/interfaces/IMachineShareOracle.sol/interface.IMachineShareOracle'; render: 'static' }
+  | { path: '/contracts/periphery/interfaces/IMachineShareOracleFactory.sol/interface.IMachineShareOracleFactory'; render: 'static' }
+  | { path: '/contracts/periphery/interfaces/IMakinaPeripheryContext.sol/interface.IMakinaPeripheryContext'; render: 'static' }
+  | { path: '/contracts/periphery/interfaces/IMetaMorphoFactory.sol/interface.IMetaMorphoFactory'; render: 'static' }
+  | { path: '/contracts/periphery/interfaces/IMetaMorphoOracleFactory.sol/interface.IMetaMorphoOracleFactory'; render: 'static' }
+  | { path: '/contracts/periphery/interfaces/ISMCooldownReceipt.sol/interface.ISMCooldownReceipt'; render: 'static' }
+  | { path: '/contracts/periphery/interfaces/ISecurityModule.sol/interface.ISecurityModule'; render: 'static' }
+  | { path: '/contracts/periphery/interfaces/ISecurityModuleReference.sol/interface.ISecurityModuleReference'; render: 'static' }
+  | { path: '/contracts/periphery/interfaces/IShareTokenOwner.sol/interface.IShareTokenOwner'; render: 'static' }
+  | { path: '/contracts/periphery/interfaces/IWatermarkFeeManager.sol/interface.IWatermarkFeeManager'; render: 'static' }
+  | { path: '/contracts/periphery/interfaces/IWhitelist.sol/interface.IWhitelist'; render: 'static' }
+  | { path: '/contracts/periphery/libraries/Errors.sol/library.Errors'; render: 'static' }
+  | { path: '/contracts/periphery/oracles/ERC4626Oracle.sol/contract.ERC4626Oracle'; render: 'static' }
+  | { path: '/contracts/periphery/oracles/MachineShareOracle.sol/contract.MachineShareOracle'; render: 'static' }
+  | { path: '/contracts/periphery/redeemers/AsyncRedeemer.sol/contract.AsyncRedeemer'; render: 'static' }
+  | { path: '/contracts/periphery/redeemers/AsyncRedeemerFee.sol/contract.AsyncRedeemerFee'; render: 'static' }
+  | { path: '/contracts/periphery/registries/HubPeripheryRegistry.sol/contract.HubPeripheryRegistry'; render: 'static' }
+  | { path: '/contracts/periphery/security-module/SMCooldownReceipt.sol/contract.SMCooldownReceipt'; render: 'static' }
+  | { path: '/contracts/periphery/security-module/SecurityModule.sol/contract.SecurityModule'; render: 'static' }
+  | { path: '/contracts/periphery/summary'; render: 'static' }
+  | { path: '/contracts/periphery/utils/MachinePeriphery.sol/abstract.MachinePeriphery'; render: 'static' }
+  | { path: '/contracts/periphery/utils/MakinaPeripheryContext.sol/abstract.MakinaPeripheryContext'; render: 'static' }
+  | { path: '/contracts/periphery/utils/Whitelist.sol/abstract.Whitelist'; render: 'static' }
+  | { path: '/contracts/periphery/weiroll-helpers/BooleanHelper.sol/contract.BooleanHelper'; render: 'static' }
+  | { path: '/contracts/periphery/weiroll-helpers/Bytes32Helper.sol/contract.Bytes32Helper'; render: 'static' }
+  | { path: '/contracts/periphery/weiroll-helpers/CastHelper.sol/contract.CastHelper'; render: 'static' }
+  | { path: '/contracts/periphery/weiroll-helpers/ContextHelper.sol/contract.ContextHelper'; render: 'static' }
+  | { path: '/contracts/periphery/weiroll-helpers/KeyValueStore.sol/contract.KeyValueStore'; render: 'static' }
+  | { path: '/contracts/periphery/weiroll-helpers/MathHelper.sol/contract.MathHelper'; render: 'static' }
+  | { path: '/contracts/periphery/weiroll-helpers/SignedMathHelper.sol/contract.SignedMathHelper'; render: 'static' }
+  | { path: '/contracts/safe-harbor'; render: 'static' }
+  | { path: '/contracts/security'; render: 'static' }
+  | { path: '/'; render: 'static' }
+  | { path: '/strategies/deployments'; render: 'static' }
+
+// prettier-ignore
+declare module 'waku/router' {
+  interface RouteConfig {
+    paths: PathsForPages<Page>
+  }
+  interface CreatePagesConfig {
+    pages: Page
+  }
+}

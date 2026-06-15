@@ -1,0 +1,90 @@
+---
+layout: minimal
+outline: false
+showSidebar: true
+---
+
+import { HomePage, Cards, Card } from "vocs";
+
+<HomePage.Root>
+  <div className="home-hero-head">
+    <HomePage.Logo className="home-logo" />
+    <HomePage.Tagline className="home-title">
+      Makina
+      <br />
+      Documentation
+    </HomePage.Tagline>
+  </div>
+  <HomePage.Description className="home-subtitle">
+    Deploy, manage and distribute onchain strategies with unparalleled
+    efficiency and risk controls.
+  </HomePage.Description>
+  <HomePage.Buttons>
+    <HomePage.Button href="/concepts/introduction" variant="accent">
+      Get started
+    </HomePage.Button>
+  </HomePage.Buttons>
+</HomePage.Root>
+
+## Explore the protocol
+
+<Cards>
+  <Card
+    title="Introduction"
+    icon="book-open"
+    to="/concepts/introduction"
+    description="What Makina is, the problem it solves, and how it creates value."
+  />
+  <Card
+    title="Architecture"
+    icon="blocks"
+    to="/concepts/architecture/overview"
+    description="How the pieces fit together, from deposits to cross-chain execution."
+  />
+  <Card
+    title="Governance"
+    icon="scale"
+    to="/concepts/governance/overview"
+    description="The roles, permissions, and timelocks that bound what each actor can do."
+  />
+  <Card
+    title="Security"
+    icon="shield"
+    to="/concepts/security/trust-and-risk"
+    description="The layered guardrails, recovery mode, and insurance security module."
+  />
+</Cards>
+
+## Contracts and deployments
+
+<Cards>
+  <Card
+    title="Core contracts"
+    icon="file-code"
+    to="/contracts/core/architecture-overview"
+  />
+  <Card
+    title="Periphery contracts"
+    icon="puzzle"
+    to="/contracts/periphery/architecture-overview"
+  />
+  <Card title="Live strategies" icon="route" to="/strategies/deployments" />
+</Cards>
+
+## Audits and security
+
+Makina smart contracts have undergone multiple rounds of audits by top auditors.
+
+- **ChainSecurity**: [Makina-Core - May 2026](https://www.chainsecurity.com/security-audit/makina-core)
+- **ChainSecurity**: [Makina-Periphery - May 2026](https://www.chainsecurity.com/security-audit/makina-periphery)
+- **Ottersec**: [Makina-Core & Makina-Periphery - Nov 2025](https://ottersec.notion.site/Sampled-Public-Audit-Reports-a296e98838aa4fdb8f3b192663400772?p=2a284d4e41468027b796e222fbbb8939&pm=s)
+- **Cantina**: [CTF - Oct 2025](https://cantina.xyz/code/2adf7150-27ba-4cba-86a2-bd8ea175e7da/overview)
+- **Enigma Dark**: [Makina-Core Fuzz/Invariant Testing - Jul 2025](https://github.com/Enigma-Dark/security-review-reports/blob/main/2025-07_Invariant_Testing_Engagement_Makina_Finance_Makina_Core.pdf)
+- **Enigma Dark**: [Makina-Periphery, Machine Share Oracle - Sep 2025](https://docs.makina.finance/audits/2025-09_Security_Review_Makina_Finance_Makina_Periphery_Machine_Share_Oracle.pdf)
+- **SigmaPrime**: [Makina-Core & Makina-Periphery - Aug 2025](https://github.com/sigp/public-audits/blob/master/reports/makina/review.pdf)
+
+Read more in the [Audits](/contracts/security) section.
+
+Bug bounty program: [Makina Contracts on Cantina](https://cantina.xyz/code/4e88f4df-c483-47d3-8d78-b9d7cc67be73/overview)
+
+All other security inquiries: [security@makina.finance](mailto:security@makina.finance)

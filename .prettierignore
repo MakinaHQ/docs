@@ -1,5 +1,6 @@
-.docusaurus/
-build/
+dist/
 node_modules/
 .github/
 .history/
+.vocs/
+bun.lock
