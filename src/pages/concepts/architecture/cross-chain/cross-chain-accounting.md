@@ -36,9 +36,7 @@ Because the data is guardian-signed and freshness-checked, submission is permiss
 
 Once the Machine holds fresh accounting for every spoke, it can compute total AUM (see [Share Price](../machine/share-price)):
 
-$$
-\text{AUM} = \text{idle} + \text{Hub Caliber} + \sum \text{Spoke Calibers} + \text{in-flight bridges}
-$$
+$\text{AUM} = \text{idle} + \text{Hub Caliber} + \sum \text{Spoke Calibers} + \text{in-flight bridges}$
 
 If any spoke's stored data is stale when an [AUM update](../machine/share-price#keeping-aum-fresh) is attempted, the update **reverts** rather than using outdated values, so the share price is never computed from stale cross-chain data.
 

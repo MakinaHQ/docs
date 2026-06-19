@@ -30,9 +30,7 @@ The standard implementation is the [`WatermarkFeeManager`](/contracts/periphery/
 
 The fixed fee grows with the share supply and the time elapsed since the last minting:
 
-$$
-\text{FixedFee} \approx \text{ShareSupply} \times \text{rate}_{\text{per second}} \times \Delta t
-$$
+$\text{FixedFee} \approx \text{ShareSupply} \times \text{rate}_{\text{per second}} \times \Delta t$
 
 It is split into two purposes: a **management** portion (supporting the Operator and the DAO) and a **Security Module** portion (rewarding [stakers](../../security/security-module) who provide the insurance backstop). If the strategy has a Security Module, its portion is carved out first and sent to it directly, and the remaining management portion is then divided among its recipients.
 
@@ -42,9 +40,7 @@ _Example: at a 2% annualized fixed rate, a 1,000,000-share supply accrues ≈ 54
 
 The performance fee uses a **high-water mark**: it is charged only when the share price rises above the highest price previously recorded. This ensures holders are never charged twice for the same gains: if the price falls and recovers, no performance fee is taken until it exceeds the prior peak.
 
-$$
-\text{PerfFee} \approx \text{ShareSupply} \times \dfrac{\text{newPrice} - \text{watermark}}{\text{newPrice}} \times \text{rate}_{\text{perf}}
-$$
+$\text{PerfFee} \approx \text{ShareSupply} \times \dfrac{\text{newPrice} - \text{watermark}}{\text{newPrice}} \times \text{rate}_{\text{perf}}$
 
 After the fee is computed, the watermark is raised to the new price.
 

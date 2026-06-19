@@ -1,7 +1,8 @@
 import { defineConfig } from "vocs/config";
 import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+
 import { generateSidebar } from "./sidebar.js";
-import { remarkKatexRender } from "./mdx-katex.js";
 
 export default defineConfig({
   title: "Makina Docs",
@@ -136,18 +137,15 @@ export default defineConfig({
     },
   ],
 
-  // Shiki themes closest to the Docusaurus Prism setup (github light / dracula dark).
   codeHighlight: {
     themes: { light: "github-light", dark: "dracula" },
   },
 
-  // KaTeX math support. remark-math parses `$`/`$$`; remarkKatexRender renders it
-  // to KaTeX markup in the remark stage (see mdx-katex.ts for why not rehype-katex).
   markdown: {
-    remarkPlugins: [remarkMath, remarkKatexRender],
+    remarkPlugins: [remarkMath],
+    rehypePlugins: [rehypeKatex],
   },
 
-  // Match Docusaurus `onBrokenLinks: "throw"`.
   checkDeadlinks: true,
 
   // Static output for Vercel.

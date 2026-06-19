@@ -8,9 +8,7 @@ sidebar_position: 2
 
 The **share price** is the value of one [share](machine-token) in [accounting-token](overview#the-accounting-token) terms. It is the single most important number a strategy produces: the Machine mints and redeems shares at it, and it is how holders measure their returns.
 
-$$
-\text{Share Price} = \dfrac{\text{AUM}}{\text{Share Supply}}
-$$
+$\text{Share Price} = \dfrac{\text{AUM}}{\text{Share Supply}}$
 
 Where **AUM** (assets under management) is the total value of everything the strategy controls. Successful execution by the [Operator](../../governance/operator), through earned yield or appreciation of held assets relative to the accounting token, raises AUM, and because the share supply doesn't change when value accrues, the share price rises. Deposits and redemptions, by contrast, change AUM and supply _proportionally_, so they leave the share price unchanged.
 
@@ -18,9 +16,7 @@ Where **AUM** (assets under management) is the total value of everything the str
 
 AUM is assembled from four sources:
 
-$$
-\text{AUM} = \text{Idle balance} + \text{Hub Caliber} + \sum \text{Spoke Calibers} + \text{In-flight bridges}
-$$
+$\text{AUM} = \text{Idle balance} + \text{Hub Caliber} + \sum \text{Spoke Calibers} + \text{In-flight bridges}$
 
 ```mermaid
 flowchart LR
