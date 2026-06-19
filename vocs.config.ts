@@ -148,6 +148,5 @@ export default defineConfig({
 
   checkDeadlinks: true,
 
-  // Static output for Vercel.
-  renderStrategy: "full-static",
+  renderStrategy: "dynamic",
 });
