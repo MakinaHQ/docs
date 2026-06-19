@@ -10,9 +10,7 @@ Each [Caliber](overview) independently computes the value of everything it holds
 
 ## What a Caliber's AUM contains
 
-$$
-\text{net AUM} = \big(\text{base-token balances} + \text{asset positions}\big) - \text{debt positions}
-$$
+$\text{net AUM} = \big(\text{base-token balances} + \text{asset positions}\big) - \text{debt positions}$
 
 - **Base-token balances** are valued directly: the Caliber reads each balance and prices it against the accounting token via the [Oracle Registry](../pricing-oracles). No instruction needed.
 - **Positions** contribute their last accounted value ([asset positions](positions) add, [debt positions](positions#debt-positions) subtract), yielding a _net_ figure that correctly reflects leverage and hedges.

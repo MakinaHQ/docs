@@ -11,11 +11,5 @@
     "resolveJsonModule": true,
     "isolatedModules": true
   },
-  "include": [
-    "src",
-    "vocs.config.ts",
-    "vite.config.ts",
-    "sidebar.ts",
-    "mdx-katex.ts"
-  ]
+  "include": ["src", "vocs.config.ts", "vite.config.ts", "sidebar.ts"]
 }

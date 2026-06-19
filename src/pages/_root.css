@@ -12,7 +12,7 @@
  * The accent ramp is configured via `accentColor` in vocs.config.ts.
  */
 
-/* KaTeX styles for math rendering (Docusaurus loaded these from a CDN). */
+/* KaTeX styles for math rendered via remark-math + rehype-katex (vocs.config.ts). */
 @import "katex/dist/katex.min.css";
 
 :root {
