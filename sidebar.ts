@@ -99,14 +99,18 @@ function buildItems(
       const categoryPath = join(childAbs, "_category_.json");
       let label = titleCase(name.name);
       let position = NO_POSITION;
+      let collapsedOverride: boolean | undefined;
       if (existsSync(categoryPath)) {
         const meta = JSON.parse(readFileSync(categoryPath, "utf8"));
         if (typeof meta.label === "string") label = meta.label;
         if (typeof meta.position === "number") position = meta.position;
+        if (typeof meta.collapsed === "boolean")
+          collapsedOverride = meta.collapsed;
       }
       // Top-level sections can be expanded by default (per-sidebar opt-in);
-      // nested sub-sections stay collapsed to keep the tree scannable.
-      const collapsed = !(expandTop && depth === 0);
+      // nested sub-sections stay collapsed to keep the tree scannable. A
+      // `_category_.json` may set `collapsed` to override this per section.
+      const collapsed = collapsedOverride ?? !(expandTop && depth === 0);
       entries.push({
         position,
         label,
