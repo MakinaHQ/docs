@@ -2,7 +2,7 @@ import { defineConfig } from "vocs/config";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 
-import { generateSidebar } from "./sidebar.js";
+import { contractsSidebar, conceptsSidebar } from "./sidebar.generated.js";
 
 export default defineConfig({
   title: "Makina Docs",
@@ -67,8 +67,9 @@ export default defineConfig({
   },
 
   sidebar: {
-    "/concepts": generateSidebar("concepts", { expandTopLevel: true }),
-    "/contracts": generateSidebar("contracts"),
+    "/concepts": conceptsSidebar,
+    "/strategies": [{ text: "Deployments", link: "/strategies/deployments" }],
+    "/contracts": contractsSidebar,
   },
 
   // Preserve the Docusaurus client-redirects, plus redirects for the concepts
@@ -76,7 +77,10 @@ export default defineConfig({
   // Redirects are first-match, so the specific legacy slugs must come before the
   // catch-all wildcards for the moved folders.
   redirects: [
-    { source: "/concepts/security/audits", destination: "/contracts/security" },
+    {
+      source: "/concepts/security/audits",
+      destination: "/contracts/security",
+    },
     {
       source: "/concepts/governance/governance-overview",
       destination: "/concepts/governance/overview",
@@ -110,7 +114,7 @@ export default defineConfig({
       source: "/concepts/oracle-registry",
       destination: "/concepts/architecture/pricing-oracles",
     },
-    // Architecture reorg: old flat URLs → new nested URLs.
+    // Architecture reorganization: old flat URLs → new nested URLs.
     {
       source: "/concepts/architecture",
       destination: "/concepts/architecture/overview",
@@ -123,6 +127,7 @@ export default defineConfig({
       source: "/concepts/oracles",
       destination: "/concepts/architecture/pricing-oracles",
     },
+    // Preserve nested paths under the reorganized sections.
     {
       source: "/concepts/machine/:path*",
       destination: "/concepts/architecture/machine/:path*",
@@ -147,7 +152,4 @@ export default defineConfig({
   },
 
   checkDeadlinks: true,
-
-  // Static output for Vercel.
-  renderStrategy: "full-static",
 });
