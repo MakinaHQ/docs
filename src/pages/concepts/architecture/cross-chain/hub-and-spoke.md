@@ -11,7 +11,7 @@ Makina strategies are **cross-chain by design**. A single strategy can hold capi
 
 ```mermaid
 flowchart TB
-    subgraph Hub["Hub Chain (Ethereum Mainnet)"]
+    subgraph Hub["Hub Chain"]
         M["Machine<br/>vault, shares, total AUM"]:::m
         HC["Hub Caliber"]:::c
     end
@@ -35,7 +35,7 @@ flowchart TB
 - The **Hub Chain** is the single home of the [Machine](../machine/overview). It is where users deposit and redeem, where shares are minted, and where the strategy's total AUM and share price are computed. It also hosts the strategy's **Hub Caliber**.
 - Each **Spoke Chain** hosts a [Caliber](../caliber/overview) plus a [Caliber Mailbox](caliber-mailbox). The Caliber executes the strategy locally, and the Mailbox is its connection back to the Machine.
 
-Ethereum Mainnet acts as the Hub Chain.
+Any supported chain can serve as a hub. A hub together with its spoke chains forms a Makina **instance**, with its own core factory, registries and beacons, and several instances can run side by side. See the [Deployments](/contracts/core/deployments) page for the live instances and the chains they span.
 
 ## Why a Mailbox on each spoke
 

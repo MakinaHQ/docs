@@ -142,3 +142,71 @@
   padding-top: 0;
   padding-bottom: 0;
 }
+
+/*
+ * Strategy cards on /strategies/deployments: plain <details> elements (Vocs only
+ * styles the ones produced by its :::details directive) rendered as compact,
+ * expandable cards with a one-line summary.
+ */
+.strategy-card {
+  margin: 0.75rem 0;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--vocs-border-color-primary);
+  border-radius: 8px;
+  background: var(--vocs-background-color-surface);
+}
+
+.strategy-card > summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 0.75rem;
+  cursor: pointer;
+  list-style: none;
+  font-weight: 500;
+}
+
+.strategy-card > summary::-webkit-details-marker {
+  display: none;
+}
+
+.strategy-card > summary::before {
+  content: "▸";
+  color: var(--vocs-text-color-secondary);
+  transition: transform 0.15s ease;
+}
+
+.strategy-card[open] > summary::before {
+  transform: rotate(90deg);
+}
+
+.strategy-card[open] > summary {
+  margin-bottom: 0.75rem;
+}
+
+.strategy-card .strategy-name {
+  color: var(--vocs-text-color-heading);
+}
+
+.strategy-card .strategy-name a {
+  text-decoration: none;
+}
+
+.strategy-card .strategy-name a:hover {
+  text-decoration: underline;
+}
+
+.strategy-card .strategy-symbol {
+  padding: 0.05rem 0.45rem;
+  border-radius: 4px;
+  font-family: var(--vocs-font-family-mono);
+  font-size: 0.8em;
+  color: var(--vocs-text-color-link);
+  background: var(--vocs-background-color-surfaceMuted);
+}
+
+.strategy-card .strategy-meta {
+  margin-left: auto;
+  font-size: 0.9em;
+  color: var(--vocs-text-color-secondary);
+}

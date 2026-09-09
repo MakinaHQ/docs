@@ -101,7 +101,6 @@ _List of all on-chain assets owned by the protocol protected under Safe Harbor_
 | eip155:\* | CoreRegistry                | 0x0FAEeCEab0BCb63bE2Fe984Ea8c77778989d53eA | All                  |
 | eip155:\* | OracleRegistry              | 0xC388B72AB90Be82B230D919F9C05c87F9397f485 | All                  |
 | eip155:\* | TokenRegistry               | 0xd9310A41d085c0DC1E40F691e8647080862A5fd4 | All                  |
-| eip155:\* | ChainRegistry               | 0x45681FCf26EF1dCa89ae2B8B97c6447ea68771Df | All                  |
 | eip155:\* | CoreFactory                 | 0x8d28A69328561eF9F171c58996fEcB9F494e070c | All                  |
 | eip155:\* | SwapModule                  | 0x923c98b22F9c367A109E93f7dfBaCa28b20C17C3 | All                  |
 | eip155:\* | CaliberBeacon               | 0x3f5A881DB86D6f495823028A1e892E7b2CD7e162 | All                  |
