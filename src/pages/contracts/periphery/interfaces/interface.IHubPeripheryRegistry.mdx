@@ -1,0 +1,266 @@
+---
+title: "IHubPeripheryRegistry"
+---
+
+# IHubPeripheryRegistry
+
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/72aab70ea8dcedba4658cd339dd07022e28ca1b2/src/interfaces/IHubPeripheryRegistry.sol)
+
+## Functions
+
+<a id="peripheryfactory"></a>
+
+### peripheryFactory
+
+Address of the periphery factory.
+
+```solidity
+function peripheryFactory() external view returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="depositorbeacon-uint16"></a>
+
+### depositorBeacon
+
+Implementation ID => Address of the depositor beacon
+
+```solidity
+function depositorBeacon(uint16 implemId) external view returns (address);
+```
+
+**Parameters**
+
+| Name     | Type     | Description |
+| -------- | -------- | ----------- |
+| implemId | `uint16` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="redeemerbeacon-uint16"></a>
+
+### redeemerBeacon
+
+Implementation ID => Address of the redeemer beacon
+
+```solidity
+function redeemerBeacon(uint16 implemId) external view returns (address);
+```
+
+**Parameters**
+
+| Name     | Type     | Description |
+| -------- | -------- | ----------- |
+| implemId | `uint16` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="feemanagerbeacon-uint16"></a>
+
+### feeManagerBeacon
+
+Implementation ID => Address of the fee manager beacon
+
+```solidity
+function feeManagerBeacon(uint16 implemId) external view returns (address);
+```
+
+**Parameters**
+
+| Name     | Type     | Description |
+| -------- | -------- | ----------- |
+| implemId | `uint16` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="securitymodulebeacon"></a>
+
+### securityModuleBeacon
+
+Address of the security module beacon.
+
+```solidity
+function securityModuleBeacon() external view returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="setperipheryfactory-address"></a>
+
+### setPeripheryFactory
+
+Sets the address of the periphery factory.
+
+```solidity
+function setPeripheryFactory(address _peripheryFactory) external;
+```
+
+**Parameters**
+
+| Name               | Type      | Description                    |
+| ------------------ | --------- | ------------------------------ |
+| \_peripheryFactory | `address` | The periphery factory address. |
+
+<a id="setdepositorbeacon-uint16-address"></a>
+
+### setDepositorBeacon
+
+Sets the beacon address for the depositor implementation.
+
+```solidity
+function setDepositorBeacon(uint16 implemId, address _depositorBeacon) external;
+```
+
+**Parameters**
+
+| Name              | Type      | Description                                     |
+| ----------------- | --------- | ----------------------------------------------- |
+| implemId          | `uint16`  | The ID of the machine depositor implementation. |
+| \_depositorBeacon | `address` | The machine depositor beacon address.           |
+
+<a id="setredeemerbeacon-uint16-address"></a>
+
+### setRedeemerBeacon
+
+Sets the beacon address for the redeemer implementation.
+
+```solidity
+function setRedeemerBeacon(uint16 implemId, address _redeemerBeacon) external;
+```
+
+**Parameters**
+
+| Name             | Type      | Description                            |
+| ---------------- | --------- | -------------------------------------- |
+| implemId         | `uint16`  | The ID of the redeemer implementation. |
+| \_redeemerBeacon | `address` | The machine redeemer beacon address.   |
+
+<a id="setfeemanagerbeacon-uint16-address"></a>
+
+### setFeeManagerBeacon
+
+Sets the beacon address for the fee manager implementation.
+
+```solidity
+function setFeeManagerBeacon(uint16 implemId, address _feeManagerBeacon) external;
+```
+
+**Parameters**
+
+| Name               | Type      | Description                               |
+| ------------------ | --------- | ----------------------------------------- |
+| implemId           | `uint16`  | The ID of the fee manager implementation. |
+| \_feeManagerBeacon | `address` | The fee manager beacon address.           |
+
+<a id="setsecuritymodulebeacon-address"></a>
+
+### setSecurityModuleBeacon
+
+Sets the security module beacon address.
+
+```solidity
+function setSecurityModuleBeacon(address _securityModuleBeacon) external;
+```
+
+**Parameters**
+
+| Name                   | Type      | Description                         |
+| ---------------------- | --------- | ----------------------------------- |
+| \_securityModuleBeacon | `address` | The security module beacon address. |
+
+## Events
+
+### DepositorBeaconChanged
+
+```solidity
+event DepositorBeaconChanged(
+        uint16 indexed implemId, address indexed oldDepositorBeacon, address indexed newDepositorBeacon
+    );
+```
+
+**Parameters**
+
+| Name               | Type      | Description |
+| ------------------ | --------- | ----------- |
+| implemId           | `uint16`  |             |
+| oldDepositorBeacon | `address` |             |
+| newDepositorBeacon | `address` |             |
+
+### FeeManagerBeaconChanged
+
+```solidity
+event FeeManagerBeaconChanged(
+        uint16 indexed implemId, address indexed oldFeeManagerBeacon, address indexed newFeeManagerBeacon
+    );
+```
+
+**Parameters**
+
+| Name                | Type      | Description |
+| ------------------- | --------- | ----------- |
+| implemId            | `uint16`  |             |
+| oldFeeManagerBeacon | `address` |             |
+| newFeeManagerBeacon | `address` |             |
+
+### PeripheryFactoryChanged
+
+```solidity
+event PeripheryFactoryChanged(address indexed oldPeripheryFactory, address indexed newPeripheryFactory);
+```
+
+**Parameters**
+
+| Name                | Type      | Description |
+| ------------------- | --------- | ----------- |
+| oldPeripheryFactory | `address` |             |
+| newPeripheryFactory | `address` |             |
+
+### RedeemerBeaconChanged
+
+```solidity
+event RedeemerBeaconChanged(
+        uint16 indexed implemId, address indexed oldRedeemerBeacon, address indexed newRedeemerBeacon
+    );
+```
+
+**Parameters**
+
+| Name              | Type      | Description |
+| ----------------- | --------- | ----------- |
+| implemId          | `uint16`  |             |
+| oldRedeemerBeacon | `address` |             |
+| newRedeemerBeacon | `address` |             |
+
+### SecurityModuleBeaconChanged
+
+```solidity
+event SecurityModuleBeaconChanged(address indexed oldSecurityModuleBeacon, address indexed newSecurityModuleBeacon);
+```
+
+**Parameters**
+
+| Name                    | Type      | Description |
+| ----------------------- | --------- | ----------- |
+| oldSecurityModuleBeacon | `address` |             |
+| newSecurityModuleBeacon | `address` |             |

@@ -1,0 +1,141 @@
+---
+title: "Bytes32Helper"
+---
+
+# Bytes32Helper
+
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/72aab70ea8dcedba4658cd339dd07022e28ca1b2/src/weiroll-helpers/Bytes32Helper.sol)
+
+## Constants
+
+### \_INDEX_OUT_OF_BOUNDS_SELECTOR
+
+```solidity
+bytes4 private constant _INDEX_OUT_OF_BOUNDS_SELECTOR = 0x4e23d035;
+```
+
+## Functions
+
+<a id="eq-bytes32-bytes32"></a>
+
+### eq
+
+Returns whether two values are equal.
+
+```solidity
+function eq(bytes32 a, bytes32 b) external pure returns (bool);
+```
+
+**Parameters**
+
+| Name | Type      | Description |
+| ---- | --------- | ----------- |
+| a    | `bytes32` |             |
+| b    | `bytes32` |             |
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="ternary-bool-bytes32-bytes32"></a>
+
+### ternary
+
+Ternary evaluation for bytes32 type.
+
+```solidity
+function ternary(bool condition, bytes32 a, bytes32 b) external pure returns (bytes32);
+```
+
+**Parameters**
+
+| Name      | Type      | Description |
+| --------- | --------- | ----------- |
+| condition | `bool`    |             |
+| a         | `bytes32` |             |
+| b         | `bytes32` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `bytes32` |             |
+
+<a id="arrayof-bytes32-bytes32"></a>
+
+### arrayOf
+
+Returns an array from the two given values.
+
+```solidity
+function arrayOf(bytes32 a, bytes32 b) external pure returns (bytes32[] memory);
+```
+
+**Parameters**
+
+| Name | Type      | Description |
+| ---- | --------- | ----------- |
+| a    | `bytes32` |             |
+| b    | `bytes32` |             |
+
+**Returns**
+
+| Name         | Type        | Description |
+| ------------ | ----------- | ----------- |
+| &lt;none&gt; | `bytes32[]` |             |
+
+<a id="gettupleword-bytes-uint256"></a>
+
+### getTupleWord
+
+Returns the 32-byte word at a given index from a bytes-encoded tuple of consecutive 32-byte static values.
+
+```solidity
+function getTupleWord(bytes memory tuple, uint256 index) public pure returns (bytes32);
+```
+
+**Parameters**
+
+| Name  | Type      | Description |
+| ----- | --------- | ----------- |
+| tuple | `bytes`   |             |
+| index | `uint256` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `bytes32` |             |
+
+<a id="getarrayword-bytes32-uint256"></a>
+
+### getArrayWord
+
+Returns the 32-byte word at a given index from a dynamic array.
+
+```solidity
+function getArrayWord(bytes32[] memory arr, uint256 index) public pure returns (bytes32);
+```
+
+**Parameters**
+
+| Name  | Type        | Description |
+| ----- | ----------- | ----------- |
+| arr   | `bytes32[]` |             |
+| index | `uint256`   |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `bytes32` |             |
+
+## Errors
+
+### IndexOutOfBounds
+
+```solidity
+error IndexOutOfBounds();
+```

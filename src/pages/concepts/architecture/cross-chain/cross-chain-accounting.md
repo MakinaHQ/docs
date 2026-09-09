@@ -45,5 +45,5 @@ If any spoke's stored data is stale when an [AUM update](../machine/share-price#
 The accounting data each Mailbox reports includes **pending bridge amounts**: capital that has left one side but not yet arrived on the other. The Machine tracks bridge transfers in both directions on both sides, and counts the in-flight difference toward AUM. This is what guarantees value isn't double-counted _or_ dropped while a [bridge transfer](liquidity-bridging) is in progress, which can take anywhere from minutes to days.
 
 :::info[Implementation]
-The CCQ decoding and verification logic lives in [`CaliberAccountingCCQ`](/contracts/core/libraries/CaliberAccountingCCQ.sol/library.CaliberAccountingCCQ.md). The spoke-side view is on [`CaliberMailbox`](/contracts/core/caliber/CaliberMailbox.sol/contract.CaliberMailbox.md).
+The CCQ decoding and verification logic lives in `CaliberAccountingCCQ`. The spoke-side view is on [`CaliberMailbox`](/contracts/core/caliber/contract.CaliberMailbox).
 :::

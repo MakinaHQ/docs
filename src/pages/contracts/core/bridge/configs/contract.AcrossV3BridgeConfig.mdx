@@ -1,0 +1,139 @@
+---
+title: "AcrossV3BridgeConfig"
+---
+
+# AcrossV3BridgeConfig
+
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/eb9a2fea6cac9f88783f9c769927ed7e5c2b7fd5/src/bridge/configs/AcrossV3BridgeConfig.sol)
+
+**Inherits:** AccessManagedUpgradeable, [IAcrossV3BridgeConfig](/contracts/core/interfaces/interface.IAcrossV3BridgeConfig)
+
+## Constants
+
+### AcrossV3BridgeConfigStorageLocation
+
+```solidity
+bytes32 private constant AcrossV3BridgeConfigStorageLocation =
+        0x55c9f27624440face9d60f824f50119631f5ca1c165e4b047f325c445d2b2500;
+```
+
+## Functions
+
+<a id="_getacrossv3bridgeconfigstorage"></a>
+
+### \_getAcrossV3BridgeConfigStorage
+
+```solidity
+function _getAcrossV3BridgeConfigStorage() private pure returns (AcrossV3BridgeConfigStorage storage $);
+```
+
+**Returns**
+
+| Name | Type                          | Description |
+| ---- | ----------------------------- | ----------- |
+| $    | `AcrossV3BridgeConfigStorage` |             |
+
+<a id="constructor"></a>
+
+### constructor
+
+```solidity
+constructor();
+```
+
+<a id="initialize-address"></a>
+
+### initialize
+
+```solidity
+function initialize(address initialAuthority) external initializer;
+```
+
+**Parameters**
+
+| Name             | Type      | Description |
+| ---------------- | --------- | ----------- |
+| initialAuthority | `address` |             |
+
+<a id="isroutesupported-address-uint256-address"></a>
+
+### isRouteSupported
+
+Returns whether a bridge transfer route is supported for the associated bridge.
+
+```solidity
+function isRouteSupported(address, uint256 foreignChainId, address) external view override returns (bool);
+```
+
+**Parameters**
+
+| Name           | Type      | Description                                        |
+| -------------- | --------- | -------------------------------------------------- |
+| \_             | `address` | The token being sent from the source chain.        |
+| foreignChainId | `uint256` | The destination chain ID.                          |
+| \_             | `address` | The token being received on the destination chain. |
+
+**Returns**
+
+| Name         | Type   | Description                                      |
+| ------------ | ------ | ------------------------------------------------ |
+| &lt;none&gt; | `bool` | True if the route is supported, false otherwise. |
+
+<a id="isforeignchainsupported-uint256"></a>
+
+### isForeignChainSupported
+
+Foreign Chain ID => Whether the chain is supported.
+
+```solidity
+function isForeignChainSupported(uint256 foreignChainId) public view override returns (bool);
+```
+
+**Parameters**
+
+| Name           | Type      | Description |
+| -------------- | --------- | ----------- |
+| foreignChainId | `uint256` |             |
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="setforeignchainsupported-uint256-bool"></a>
+
+### setForeignChainSupported
+
+Sets whether a foreign chain is supported.
+
+```solidity
+function setForeignChainSupported(uint256 foreignChainId, bool supported) external override restricted;
+```
+
+**Parameters**
+
+| Name           | Type      | Description                                      |
+| -------------- | --------- | ------------------------------------------------ |
+| foreignChainId | `uint256` | The foreign chain ID.                            |
+| supported      | `bool`    | True if the chain is supported, false otherwise. |
+
+## Structs
+
+### AcrossV3BridgeConfigStorage
+
+**Note:**
+
+- **storage-location:** erc7201:makina.storage.AcrossV3BridgeConfig
+
+```solidity
+struct AcrossV3BridgeConfigStorage {
+        mapping(uint256 evmChainId => bool isSupported) _isForeignChainSupported;
+    }
+```
+
+**Properties**
+
+| Name                      | Type                                              | Description |
+| ------------------------- | ------------------------------------------------- | ----------- |
+| \_isForeignChainSupported | `mapping(uint256 evmChainId => bool isSupported)` |             |

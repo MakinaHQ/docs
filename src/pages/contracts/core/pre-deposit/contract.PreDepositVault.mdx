@@ -1,0 +1,512 @@
+---
+title: "PreDepositVault"
+---
+
+# PreDepositVault
+
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/eb9a2fea6cac9f88783f9c769927ed7e5c2b7fd5/src/pre-deposit/PreDepositVault.sol)
+
+**Inherits:** AccessManagedUpgradeable, ReentrancyGuard, [MakinaContext](/contracts/core/utils/abstract.MakinaContext), [IPreDepositVault](/contracts/core/interfaces/interface.IPreDepositVault)
+
+## Constants
+
+### PreDepositVaultStorageLocation
+
+```solidity
+bytes32 private constant PreDepositVaultStorageLocation =
+        0x88ccda4670a9221204e56c6b7ced9d52994799751a70ced770588fb180e5dd00;
+```
+
+## Functions
+
+<a id="_getpredepositvaultstorage"></a>
+
+### \_getPreDepositVaultStorage
+
+```solidity
+function _getPreDepositVaultStorage() private pure returns (PreDepositVaultStorage storage $);
+```
+
+**Returns**
+
+| Name | Type                     | Description |
+| ---- | ------------------------ | ----------- |
+| $    | `PreDepositVaultStorage` |             |
+
+<a id="constructor-address"></a>
+
+### constructor
+
+```solidity
+constructor(address _registry) MakinaContext(_registry);
+```
+
+**Parameters**
+
+| Name       | Type      | Description |
+| ---------- | --------- | ----------- |
+| \_registry | `address` |             |
+
+<a id="initialize-predepositvaultinitparams-address-address-address"></a>
+
+### initialize
+
+Initializer of the contract.
+
+```solidity
+function initialize(
+        PreDepositVaultInitParams calldata params,
+        address _shareToken,
+        address _depositToken,
+        address _accountingToken
+    ) external override initializer;
+```
+
+**Parameters**
+
+| Name              | Type                        | Description                          |
+| ----------------- | --------------------------- | ------------------------------------ |
+| params            | `PreDepositVaultInitParams` | The initialization parameters.       |
+| \_shareToken      | `address`                   | The address of the share token.      |
+| \_depositToken    | `address`                   | The address of the deposit token.    |
+| \_accountingToken | `address`                   | The address of the accounting token. |
+
+<a id="onlyriskmanager"></a>
+
+### onlyRiskManager
+
+```solidity
+modifier onlyRiskManager();
+```
+
+<a id="notmigrated"></a>
+
+### notMigrated
+
+```solidity
+modifier notMigrated();
+```
+
+<a id="migrated"></a>
+
+### migrated
+
+True if the vault has migrated to a machine instance, false otherwise.
+
+```solidity
+function migrated() external view override returns (bool);
+```
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="machine"></a>
+
+### machine
+
+Address of the machine, set during migration.
+
+```solidity
+function machine() external view override returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="riskmanager"></a>
+
+### riskManager
+
+Address of the risk manager.
+
+```solidity
+function riskManager() external view override returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="whitelistmode"></a>
+
+### whitelistMode
+
+True if the vault is in whitelist mode, false otherwise.
+
+```solidity
+function whitelistMode() external view override returns (bool);
+```
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="iswhitelisteduser-address"></a>
+
+### isWhitelistedUser
+
+User => Whitelisting status.
+
+```solidity
+function isWhitelistedUser(address user) external view override returns (bool);
+```
+
+**Parameters**
+
+| Name | Type      | Description |
+| ---- | --------- | ----------- |
+| user | `address` |             |
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="deposittoken"></a>
+
+### depositToken
+
+Address of the deposit token.
+
+```solidity
+function depositToken() external view override returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="accountingtoken"></a>
+
+### accountingToken
+
+Address of the accounting token.
+
+```solidity
+function accountingToken() external view override returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="sharetoken"></a>
+
+### shareToken
+
+Address of the share token.
+
+```solidity
+function shareToken() external view override returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="sharelimit"></a>
+
+### shareLimit
+
+Share token supply limit that cannot be exceeded by new deposits.
+
+```solidity
+function shareLimit() external view override returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="maxdeposit"></a>
+
+### maxDeposit
+
+Maximum amount of deposit tokens that can currently be deposited in the vault.
+
+```solidity
+function maxDeposit() public view override returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="totalassets"></a>
+
+### totalAssets
+
+Total amount of deposit tokens managed by the vault.
+
+```solidity
+function totalAssets() external view override returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="previewdeposit-uint256"></a>
+
+### previewDeposit
+
+Amount of shares minted against a given amount of deposit tokens.
+
+```solidity
+function previewDeposit(uint256 assets) public view override notMigrated returns (uint256);
+```
+
+**Parameters**
+
+| Name   | Type      | Description                                   |
+| ------ | --------- | --------------------------------------------- |
+| assets | `uint256` | The amount of deposit tokens to be deposited. |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="previewredeem-uint256"></a>
+
+### previewRedeem
+
+Amount of deposit tokens that can be withdrawn against a given amount of shares.
+
+```solidity
+function previewRedeem(uint256 shares) public view override notMigrated returns (uint256);
+```
+
+**Parameters**
+
+| Name   | Type      | Description                          |
+| ------ | --------- | ------------------------------------ |
+| shares | `uint256` | The amount of shares to be redeemed. |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="deposit-uint256-address-uint256-bytes32"></a>
+
+### deposit
+
+Deposits a given amount of deposit tokens and mints shares to the receiver.
+
+```solidity
+function deposit(uint256 assets, address receiver, uint256 minShares, bytes32 referralKey)
+        external
+        override
+        nonReentrant
+        notMigrated
+        returns (uint256);
+```
+
+**Parameters**
+
+| Name        | Type      | Description                                              |
+| ----------- | --------- | -------------------------------------------------------- |
+| assets      | `uint256` | The amount of deposit tokens to be deposited.            |
+| receiver    | `address` | The receiver of the shares.                              |
+| minShares   | `uint256` | The minimum amount of shares to be minted.               |
+| referralKey | `bytes32` | The optional identifier used to track a referral source. |
+
+**Returns**
+
+| Name         | Type      | Description                         |
+| ------------ | --------- | ----------------------------------- |
+| &lt;none&gt; | `uint256` | shares The amount of shares minted. |
+
+<a id="redeem-uint256-address-uint256"></a>
+
+### redeem
+
+Burns exactly shares from caller and transfers the corresponding amount of deposit tokens to the receiver.
+
+```solidity
+function redeem(uint256 shares, address receiver, uint256 minAssets)
+        external
+        override
+        nonReentrant
+        notMigrated
+        returns (uint256);
+```
+
+**Parameters**
+
+| Name      | Type      | Description                                             |
+| --------- | --------- | ------------------------------------------------------- |
+| shares    | `uint256` | The amount of shares to be redeemed.                    |
+| receiver  | `address` | The receiver of withdrawn deposit tokens.               |
+| minAssets | `uint256` | The minimum amount of deposit tokens to be transferred. |
+
+**Returns**
+
+| Name         | Type      | Description                                      |
+| ------------ | --------- | ------------------------------------------------ |
+| &lt;none&gt; | `uint256` | assets The amount of deposit tokens transferred. |
+
+<a id="migratetomachine"></a>
+
+### migrateToMachine
+
+Migrates the pre-deposit vault to the machine.
+
+```solidity
+function migrateToMachine() external override notMigrated;
+```
+
+<a id="setpendingmachine-address"></a>
+
+### setPendingMachine
+
+Sets the machine address to migrate to.
+
+```solidity
+function setPendingMachine(address _machine) external override notMigrated;
+```
+
+**Parameters**
+
+| Name      | Type      | Description                 |
+| --------- | --------- | --------------------------- |
+| \_machine | `address` | The address of the machine. |
+
+<a id="setsharelimit-uint256"></a>
+
+### setShareLimit
+
+Sets the new share token supply limit that cannot be exceeded by new deposits.
+
+```solidity
+function setShareLimit(uint256 newShareLimit) external override onlyRiskManager notMigrated;
+```
+
+**Parameters**
+
+| Name          | Type      | Description          |
+| ------------- | --------- | -------------------- |
+| newShareLimit | `uint256` | The new share limit. |
+
+<a id="setriskmanager-address"></a>
+
+### setRiskManager
+
+Sets the risk manager address.
+
+```solidity
+function setRiskManager(address newRiskManager) external override restricted notMigrated;
+```
+
+**Parameters**
+
+| Name           | Type      | Description                          |
+| -------------- | --------- | ------------------------------------ |
+| newRiskManager | `address` | The address of the new risk manager. |
+
+<a id="setwhitelistedusers-address-bool"></a>
+
+### setWhitelistedUsers
+
+Whitelist or unwhitelist a list of users.
+
+```solidity
+function setWhitelistedUsers(address[] calldata users, bool whitelisted)
+        external
+        override
+        onlyRiskManager
+        notMigrated;
+```
+
+**Parameters**
+
+| Name        | Type        | Description                                        |
+| ----------- | ----------- | -------------------------------------------------- |
+| users       | `address[]` | The addresses of the users to update.              |
+| whitelisted | `bool`      | True to whitelist the users, false to unwhitelist. |
+
+<a id="setwhitelistmode-bool"></a>
+
+### setWhitelistMode
+
+Sets the whitelist mode for the vault.
+
+<i>
+
+In whitelist mode, only whitelisted users can deposit.
+
+</i>
+
+```solidity
+function setWhitelistMode(bool enabled) external override onlyRiskManager notMigrated;
+```
+
+**Parameters**
+
+| Name    | Type   | Description                                      |
+| ------- | ------ | ------------------------------------------------ |
+| enabled | `bool` | True to enable whitelist mode, false to disable. |
+
+## Structs
+
+### PreDepositVaultStorage
+
+**Note:**
+
+- **storage-location:** erc7201:makina.storage.PreDepositVault
+
+```solidity
+struct PreDepositVaultStorage {
+        address _depositToken;
+        address _accountingToken;
+        address _shareToken;
+        uint256 _shareTokenDecimalsOffset;
+        uint256 _shareLimit;
+        address _riskManager;
+        address _machine;
+        bool _migrated;
+        bool _whitelistMode;
+        mapping(address => bool) _isWhitelistedUser;
+    }
+```
+
+**Properties**
+
+| Name                       | Type                       | Description |
+| -------------------------- | -------------------------- | ----------- |
+| \_depositToken             | `address`                  |             |
+| \_accountingToken          | `address`                  |             |
+| \_shareToken               | `address`                  |             |
+| \_shareTokenDecimalsOffset | `uint256`                  |             |
+| \_shareLimit               | `uint256`                  |             |
+| \_riskManager              | `address`                  |             |
+| \_machine                  | `address`                  |             |
+| \_migrated                 | `bool`                     |             |
+| \_whitelistMode            | `bool`                     |             |
+| \_isWhitelistedUser        | `mapping(address => bool)` |             |

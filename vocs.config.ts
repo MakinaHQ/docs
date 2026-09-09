@@ -140,6 +140,12 @@ export default defineConfig({
       source: "/concepts/cross-chain/:path*",
       destination: "/concepts/architecture/cross-chain/:path*",
     },
+    // forge doc >= 1.8 emits flat `<kind>.<Name>` contract pages; the previous
+    // layout nested them under a `<File>.sol/` directory. Keep old URLs alive.
+    {
+      source: "/contracts/:repo/:dir*/:file.sol/:page",
+      destination: "/contracts/:repo/:dir*/:page",
+    },
   ],
 
   codeHighlight: {

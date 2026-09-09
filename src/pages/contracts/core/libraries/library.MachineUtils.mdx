@@ -1,0 +1,350 @@
+---
+title: "MachineUtils"
+---
+
+# MachineUtils
+
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/eb9a2fea6cac9f88783f9c769927ed7e5c2b7fd5/src/libraries/MachineUtils.sol)
+
+## Constants
+
+### RATE_SCALE
+
+```solidity
+uint256 private constant RATE_SCALE = 1e18;
+```
+
+### MAX_SNAPSHOT_FUTURE_TOLERANCE
+
+<i>
+
+Max seconds a snapshot timestamp may be ahead of the current hub block timestamp and still be accepted, to absorb cross-chain clock skew.
+
+</i>
+
+```solidity
+uint256 private constant MAX_SNAPSHOT_FUTURE_TOLERANCE = 60;
+```
+
+## Functions
+
+<a id="updatetotalaum-machine-machinestorage-address-bool"></a>
+
+### updateTotalAum
+
+<i>
+
+Updates the total AUM of the machine and performs share price change check.
+
+</i>
+
+```solidity
+function updateTotalAum(Machine.MachineStorage storage $, address oracleRegistry, bool sharePriceChangeCheck)
+        external
+        returns (uint256);
+```
+
+**Parameters**
+
+| Name                  | Type                     | Description                                                   |
+| --------------------- | ------------------------ | ------------------------------------------------------------- |
+| $                     | `Machine.MachineStorage` | The machine storage struct.                                   |
+| oracleRegistry        | `address`                | The address of the oracle registry.                           |
+| sharePriceChangeCheck | `bool`                   | True to perform share price change check, false to bypass it. |
+
+**Returns**
+
+| Name         | Type      | Description            |
+| ------------ | --------- | ---------------------- |
+| &lt;none&gt; | `uint256` | The updated total AUM. |
+
+<a id="managefees-machine-machinestorage"></a>
+
+### manageFees
+
+<i>
+
+Manages the fee minting process, including calculating and minting fixed and performance fees.
+
+</i>
+
+```solidity
+function manageFees(Machine.MachineStorage storage $) external returns (uint256);
+```
+
+**Parameters**
+
+| Name | Type                     | Description                 |
+| ---- | ------------------------ | --------------------------- |
+| $    | `Machine.MachineStorage` | The machine storage struct. |
+
+**Returns**
+
+| Name         | Type      | Description                      |
+| ------------ | --------- | -------------------------------- |
+| &lt;none&gt; | `uint256` | The fees minted in share tokens. |
+
+<a id="reportspokeaccountingsnapshots-machine-machinestorage-address-bytes"></a>
+
+### reportSpokeAccountingSnapshots
+
+<i>
+
+Reports spoke caliber accounting snapshots by decoding the report payload and updating the machine storage accordingly.
+
+</i>
+
+```solidity
+function reportSpokeAccountingSnapshots(
+        Machine.MachineStorage storage $,
+        address tokenRegistry,
+        bytes calldata report
+    ) external;
+```
+
+**Parameters**
+
+| Name          | Type                     | Description                                        |
+| ------------- | ------------------------ | -------------------------------------------------- |
+| $             | `Machine.MachineStorage` | The machine storage struct.                        |
+| tokenRegistry | `address`                | The address of the token registry.                 |
+| report        | `bytes`                  | The report payload containing the accounting data. |
+
+<a id="migratefrompredeposit-machine-machinestorage-address-address"></a>
+
+### migrateFromPreDeposit
+
+<i>
+
+Manages the migration from a pre-deposit vault to a machine, and initializes the machine's AUM.
+
+</i>
+
+```solidity
+function migrateFromPreDeposit(Machine.MachineStorage storage $, address preDepositVault, address oracleRegistry)
+        external;
+```
+
+**Parameters**
+
+| Name            | Type                     | Description                           |
+| --------------- | ------------------------ | ------------------------------------- |
+| $               | `Machine.MachineStorage` | The machine storage struct.           |
+| preDepositVault | `address`                | The address of the pre-deposit vault. |
+| oracleRegistry  | `address`                | The address of the oracle registry.   |
+
+<a id="checkbridgetransferssettled-imachine-spokecaliberdata"></a>
+
+### checkBridgeTransfersSettled
+
+<i>
+
+Checks that there are no pending bridge transfers between the machine and a spoke caliber.
+
+</i>
+
+```solidity
+function checkBridgeTransfersSettled(IMachine.SpokeCaliberData storage spokeCaliberData) external view;
+```
+
+**Parameters**
+
+| Name             | Type                        | Description                                                           |
+| ---------------- | --------------------------- | --------------------------------------------------------------------- |
+| spokeCaliberData | `IMachine.SpokeCaliberData` | The spoke caliber data struct containing the bridge transfer records. |
+
+<a id="getshareprice-uint256-uint256-uint256"></a>
+
+### getSharePrice
+
+<i>
+
+Calculates the share price based on given AUM, share supply and share token decimals offset.
+
+</i>
+
+```solidity
+function getSharePrice(uint256 aum, uint256 supply, uint256 shareTokenDecimalsOffset)
+        public
+        pure
+        returns (uint256);
+```
+
+**Parameters**
+
+| Name                     | Type      | Description                                                   |
+| ------------------------ | --------- | ------------------------------------------------------------- |
+| aum                      | `uint256` | The AUM of the machine.                                       |
+| supply                   | `uint256` | The supply of the share token.                                |
+| shareTokenDecimalsOffset | `uint256` | The decimals offset between share token and accounting token. |
+
+**Returns**
+
+| Name         | Type      | Description                 |
+| ------------ | --------- | --------------------------- |
+| &lt;none&gt; | `uint256` | The calculated share price. |
+
+<a id="_handleperchainsnapshot-machine-machinestorage-address-icalibermailbox-spokecaliberaccountingdata"></a>
+
+### \_handlePerChainSnapshot
+
+<i>
+
+Handles an accounting snapshot received from a spoke chain and updates the corresponding accounting state stored in the machine.
+
+</i>
+
+```solidity
+function _handlePerChainSnapshot(
+        Machine.MachineStorage storage $,
+        address tokenRegistry,
+        ICaliberMailbox.SpokeCaliberAccountingData memory snapshot
+    ) private;
+```
+
+**Parameters**
+
+| Name          | Type                                         | Description                        |
+| ------------- | -------------------------------------------- | ---------------------------------- |
+| $             | `Machine.MachineStorage`                     | The machine storage struct.        |
+| tokenRegistry | `address`                                    | The address of the token registry. |
+| snapshot      | `ICaliberMailbox.SpokeCaliberAccountingData` | The accounting snapshot data.      |
+
+<a id="_decodeandmapbridgeamounts-uint256-bytes-enumerablemap-addresstouint256map-address"></a>
+
+### \_decodeAndMapBridgeAmounts
+
+<i>
+
+Decodes (foreignToken, amount) pairs, resolves local tokens, and stores amounts in the map.
+
+</i>
+
+```solidity
+function _decodeAndMapBridgeAmounts(
+        uint256 chainId,
+        bytes[] memory data,
+        EnumerableMap.AddressToUintMap storage map,
+        address tokenRegistry
+    ) private;
+```
+
+**Parameters**
+
+| Name          | Type                             | Description |
+| ------------- | -------------------------------- | ----------- |
+| chainId       | `uint256`                        |             |
+| data          | `bytes[]`                        |             |
+| map           | `EnumerableMap.AddressToUintMap` |             |
+| tokenRegistry | `address`                        |             |
+
+<a id="_gettotalaum-machine-machinestorage-address"></a>
+
+### \_getTotalAum
+
+<i>
+
+Computes the total AUM of the machine.
+
+</i>
+
+```solidity
+function _getTotalAum(Machine.MachineStorage storage $, address oracleRegistry) private view returns (uint256);
+```
+
+**Parameters**
+
+| Name           | Type                     | Description                         |
+| -------------- | ------------------------ | ----------------------------------- |
+| $              | `Machine.MachineStorage` | The machine storage struct.         |
+| oracleRegistry | `address`                | The address of the oracle registry. |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="_checkbridgestate-enumerablemap-addresstouint256map-enumerablemap-addresstouint256map"></a>
+
+### \_checkBridgeState
+
+<i>
+
+Checks if the bridge state is consistent between the machine and spoke caliber.
+
+</i>
+
+```solidity
+function _checkBridgeState(
+        EnumerableMap.AddressToUintMap storage insMap,
+        EnumerableMap.AddressToUintMap storage outsMap
+    ) private view;
+```
+
+**Parameters**
+
+| Name    | Type                             | Description |
+| ------- | -------------------------------- | ----------- |
+| insMap  | `EnumerableMap.AddressToUintMap` |             |
+| outsMap | `EnumerableMap.AddressToUintMap` |             |
+
+<a id="_accountingvalueof-address-address-address-uint256"></a>
+
+### \_accountingValueOf
+
+<i>
+
+Computes the accounting value of a given token amount.
+
+</i>
+
+```solidity
+function _accountingValueOf(address oracleRegistry, address accountingToken, address token, uint256 amount)
+        private
+        view
+        returns (uint256);
+```
+
+**Parameters**
+
+| Name            | Type      | Description |
+| --------------- | --------- | ----------- |
+| oracleRegistry  | `address` |             |
+| accountingToken | `address` |             |
+| token           | `address` |             |
+| amount          | `uint256` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="_checkmaxrelativechange-uint256-uint256-uint256-uint256"></a>
+
+### \_checkMaxRelativeChange
+
+<i>
+
+Checks that the relative change between two values does not exceed the maximum allowed rate over elapsed time.
+
+</i>
+
+```solidity
+function _checkMaxRelativeChange(
+        uint256 previousValue,
+        uint256 newValue,
+        uint256 maxPercentDeltaPerSecond,
+        uint256 elapsedTime
+    ) private pure;
+```
+
+**Parameters**
+
+| Name                     | Type      | Description |
+| ------------------------ | --------- | ----------- |
+| previousValue            | `uint256` |             |
+| newValue                 | `uint256` |             |
+| maxPercentDeltaPerSecond | `uint256` |             |
+| elapsedTime              | `uint256` |             |

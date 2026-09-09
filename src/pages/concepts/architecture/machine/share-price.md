@@ -53,5 +53,5 @@ If any input is stale, the update reverts rather than producing a wrong price. A
 To prevent the classic "first depositor" share-inflation attack on empty or near-empty vaults, share-price and conversion math use **virtual offsets** (a virtual share supply and a virtual unit of AUM) rather than dividing by raw zero-or-tiny values. In normal operation, with a meaningful supply and AUM, this has no observable effect on the price. It simply makes the math safe at the boundaries.
 
 :::info[Implementation]
-See [`Machine.sol`](/contracts/core/machine/Machine.sol/contract.Machine.md) and the [`MachineUtils`](/contracts/core/libraries/MachineUtils.sol/library.MachineUtils.md) library.
+See [`Machine.sol`](/contracts/core/machine/contract.Machine) and the [`MachineUtils`](/contracts/core/libraries/library.MachineUtils) library.
 :::

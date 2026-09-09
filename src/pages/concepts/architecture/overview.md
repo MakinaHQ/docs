@@ -57,8 +57,8 @@ The split matters because it is _how Makina stays flexible_. Different strategie
 Alongside the per-strategy contracts, a set of **protocol-wide infrastructure** contracts are deployed once per chain and shared by every strategy:
 
 - The **[Oracle Registry](pricing-oracles)** prices any token against the strategy's reference asset using Chainlink-compatible price feeds, the foundation of all accounting.
-- The **[Token Registry](/contracts/core/registries/TokenRegistry.sol/contract.TokenRegistry.md)** maps a token to its equivalent address on each foreign chain, so the protocol can reason about "the same token, on another chain."
-- The **[Chain Registry](/contracts/core/registries/ChainRegistry.sol/contract.ChainRegistry.md)** maps EVM chain IDs to the chain identifiers used by Wormhole CCQ, the cross-chain queries that carry [spoke accounting](cross-chain/cross-chain-accounting) back to the Hub.
+- The **[Token Registry](/contracts/core/registries/contract.TokenRegistry)** maps a token to its equivalent address on each foreign chain, so the protocol can reason about "the same token, on another chain."
+- The **Chain Registry** maps EVM chain IDs to the chain identifiers used by Wormhole CCQ, the cross-chain queries that carry [spoke accounting](cross-chain/cross-chain-accounting) back to the Hub.
 - The **Swap Module** routes [swaps](caliber/swaps) through approved external aggregators.
 - **Registries and factories** deploy new strategies and let the protocol resolve and upgrade shared dependencies. See [Protocol Upgrades](../governance/protocol-upgrades).
 

@@ -7,7 +7,7 @@ sidebar_position: 1
 
 The **Machine Token** (also called the **share**) is the ERC-20 token that represents a holder's proportional claim on a strategy. Holding shares is equivalent to holding a slice of everything the strategy controls. As the strategy's [AUM](share-price) grows, the value of each share grows with it.
 
-The machine token is a standard, fully composable ERC-20. It always uses **18 decimals**, regardless of the strategy's [accounting token](overview#the-accounting-token), which keeps share math precise even for low-decimal accounting tokens like USDC. See [`MachineShare.sol`](/contracts/core/machine/MachineShare.sol/contract.MachineShare.md).
+The machine token is a standard, fully composable ERC-20. It always uses **18 decimals**, regardless of the strategy's [accounting token](overview#the-accounting-token), which keeps share math precise even for low-decimal accounting tokens like USDC. See [`MachineShare.sol`](/contracts/core/machine/contract.MachineShare).
 
 ## How shares are acquired
 

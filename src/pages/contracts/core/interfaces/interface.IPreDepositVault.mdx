@@ -1,0 +1,527 @@
+---
+title: "IPreDepositVault"
+---
+
+# IPreDepositVault
+
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/eb9a2fea6cac9f88783f9c769927ed7e5c2b7fd5/src/interfaces/IPreDepositVault.sol)
+
+## Functions
+
+<a id="initialize-predepositvaultinitparams-address-address-address"></a>
+
+### initialize
+
+Initializer of the contract.
+
+```solidity
+function initialize(
+        PreDepositVaultInitParams calldata params,
+        address _shareToken,
+        address _depositToken,
+        address _accountingToken
+    ) external;
+```
+
+**Parameters**
+
+| Name              | Type                        | Description                          |
+| ----------------- | --------------------------- | ------------------------------------ |
+| params            | `PreDepositVaultInitParams` | The initialization parameters.       |
+| \_shareToken      | `address`                   | The address of the share token.      |
+| \_depositToken    | `address`                   | The address of the deposit token.    |
+| \_accountingToken | `address`                   | The address of the accounting token. |
+
+<a id="migrated"></a>
+
+### migrated
+
+True if the vault has migrated to a machine instance, false otherwise.
+
+```solidity
+function migrated() external view returns (bool);
+```
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="machine"></a>
+
+### machine
+
+Address of the machine, set during migration.
+
+```solidity
+function machine() external view returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="riskmanager"></a>
+
+### riskManager
+
+Address of the risk manager.
+
+```solidity
+function riskManager() external view returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="whitelistmode"></a>
+
+### whitelistMode
+
+True if the vault is in whitelist mode, false otherwise.
+
+```solidity
+function whitelistMode() external view returns (bool);
+```
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="iswhitelisteduser-address"></a>
+
+### isWhitelistedUser
+
+User => Whitelisting status.
+
+```solidity
+function isWhitelistedUser(address user) external view returns (bool);
+```
+
+**Parameters**
+
+| Name | Type      | Description |
+| ---- | --------- | ----------- |
+| user | `address` |             |
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="deposittoken"></a>
+
+### depositToken
+
+Address of the deposit token.
+
+```solidity
+function depositToken() external view returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="accountingtoken"></a>
+
+### accountingToken
+
+Address of the accounting token.
+
+```solidity
+function accountingToken() external view returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="sharetoken"></a>
+
+### shareToken
+
+Address of the share token.
+
+```solidity
+function shareToken() external view returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="sharelimit"></a>
+
+### shareLimit
+
+Share token supply limit that cannot be exceeded by new deposits.
+
+```solidity
+function shareLimit() external view returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="maxdeposit"></a>
+
+### maxDeposit
+
+Maximum amount of deposit tokens that can currently be deposited in the vault.
+
+```solidity
+function maxDeposit() external view returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="totalassets"></a>
+
+### totalAssets
+
+Total amount of deposit tokens managed by the vault.
+
+```solidity
+function totalAssets() external view returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="previewdeposit-uint256"></a>
+
+### previewDeposit
+
+Amount of shares minted against a given amount of deposit tokens.
+
+```solidity
+function previewDeposit(uint256 assets) external view returns (uint256);
+```
+
+**Parameters**
+
+| Name   | Type      | Description                                   |
+| ------ | --------- | --------------------------------------------- |
+| assets | `uint256` | The amount of deposit tokens to be deposited. |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="previewredeem-uint256"></a>
+
+### previewRedeem
+
+Amount of deposit tokens that can be withdrawn against a given amount of shares.
+
+```solidity
+function previewRedeem(uint256 shares) external view returns (uint256);
+```
+
+**Parameters**
+
+| Name   | Type      | Description                          |
+| ------ | --------- | ------------------------------------ |
+| shares | `uint256` | The amount of shares to be redeemed. |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="deposit-uint256-address-uint256-bytes32"></a>
+
+### deposit
+
+Deposits a given amount of deposit tokens and mints shares to the receiver.
+
+```solidity
+function deposit(uint256 assets, address receiver, uint256 minShares, bytes32 referralKey)
+        external
+        returns (uint256);
+```
+
+**Parameters**
+
+| Name        | Type      | Description                                              |
+| ----------- | --------- | -------------------------------------------------------- |
+| assets      | `uint256` | The amount of deposit tokens to be deposited.            |
+| receiver    | `address` | The receiver of the shares.                              |
+| minShares   | `uint256` | The minimum amount of shares to be minted.               |
+| referralKey | `bytes32` | The optional identifier used to track a referral source. |
+
+**Returns**
+
+| Name         | Type      | Description                         |
+| ------------ | --------- | ----------------------------------- |
+| &lt;none&gt; | `uint256` | shares The amount of shares minted. |
+
+<a id="redeem-uint256-address-uint256"></a>
+
+### redeem
+
+Burns exactly shares from caller and transfers the corresponding amount of deposit tokens to the receiver.
+
+```solidity
+function redeem(uint256 shares, address receiver, uint256 minAssets) external returns (uint256);
+```
+
+**Parameters**
+
+| Name      | Type      | Description                                             |
+| --------- | --------- | ------------------------------------------------------- |
+| shares    | `uint256` | The amount of shares to be redeemed.                    |
+| receiver  | `address` | The receiver of withdrawn deposit tokens.               |
+| minAssets | `uint256` | The minimum amount of deposit tokens to be transferred. |
+
+**Returns**
+
+| Name         | Type      | Description                                      |
+| ------------ | --------- | ------------------------------------------------ |
+| &lt;none&gt; | `uint256` | assets The amount of deposit tokens transferred. |
+
+<a id="migratetomachine"></a>
+
+### migrateToMachine
+
+Migrates the pre-deposit vault to the machine.
+
+```solidity
+function migrateToMachine() external;
+```
+
+<a id="setpendingmachine-address"></a>
+
+### setPendingMachine
+
+Sets the machine address to migrate to.
+
+```solidity
+function setPendingMachine(address machine) external;
+```
+
+**Parameters**
+
+| Name    | Type      | Description                 |
+| ------- | --------- | --------------------------- |
+| machine | `address` | The address of the machine. |
+
+<a id="setsharelimit-uint256"></a>
+
+### setShareLimit
+
+Sets the new share token supply limit that cannot be exceeded by new deposits.
+
+```solidity
+function setShareLimit(uint256 newShareLimit) external;
+```
+
+**Parameters**
+
+| Name          | Type      | Description          |
+| ------------- | --------- | -------------------- |
+| newShareLimit | `uint256` | The new share limit. |
+
+<a id="setriskmanager-address"></a>
+
+### setRiskManager
+
+Sets the risk manager address.
+
+```solidity
+function setRiskManager(address newRiskManager) external;
+```
+
+**Parameters**
+
+| Name           | Type      | Description                          |
+| -------------- | --------- | ------------------------------------ |
+| newRiskManager | `address` | The address of the new risk manager. |
+
+<a id="setwhitelistedusers-address-bool"></a>
+
+### setWhitelistedUsers
+
+Whitelist or unwhitelist a list of users.
+
+```solidity
+function setWhitelistedUsers(address[] calldata users, bool whitelisted) external;
+```
+
+**Parameters**
+
+| Name        | Type        | Description                                        |
+| ----------- | ----------- | -------------------------------------------------- |
+| users       | `address[]` | The addresses of the users to update.              |
+| whitelisted | `bool`      | True to whitelist the users, false to unwhitelist. |
+
+<a id="setwhitelistmode-bool"></a>
+
+### setWhitelistMode
+
+Sets the whitelist mode for the vault.
+
+<i>
+
+In whitelist mode, only whitelisted users can deposit.
+
+</i>
+
+```solidity
+function setWhitelistMode(bool enabled) external;
+```
+
+**Parameters**
+
+| Name    | Type   | Description                                      |
+| ------- | ------ | ------------------------------------------------ |
+| enabled | `bool` | True to enable whitelist mode, false to disable. |
+
+## Events
+
+### Deposit
+
+```solidity
+event Deposit(
+        address indexed sender, address indexed receiver, uint256 assets, uint256 shares, bytes32 indexed referralKey
+    );
+```
+
+**Parameters**
+
+| Name        | Type      | Description |
+| ----------- | --------- | ----------- |
+| sender      | `address` |             |
+| receiver    | `address` |             |
+| assets      | `uint256` |             |
+| shares      | `uint256` |             |
+| referralKey | `bytes32` |             |
+
+### MigrateToMachine
+
+```solidity
+event MigrateToMachine(address indexed machine);
+```
+
+**Parameters**
+
+| Name    | Type      | Description |
+| ------- | --------- | ----------- |
+| machine | `address` |             |
+
+### Redeem
+
+```solidity
+event Redeem(address indexed owner, address indexed receiver, uint256 assets, uint256 shares);
+```
+
+**Parameters**
+
+| Name     | Type      | Description |
+| -------- | --------- | ----------- |
+| owner    | `address` |             |
+| receiver | `address` |             |
+| assets   | `uint256` |             |
+| shares   | `uint256` |             |
+
+### RiskManagerChanged
+
+```solidity
+event RiskManagerChanged(address indexed oldRiskManager, address indexed newRiskManager);
+```
+
+**Parameters**
+
+| Name           | Type      | Description |
+| -------------- | --------- | ----------- |
+| oldRiskManager | `address` |             |
+| newRiskManager | `address` |             |
+
+### ShareLimitChanged
+
+```solidity
+event ShareLimitChanged(uint256 indexed oldShareLimit, uint256 indexed newShareLimit);
+```
+
+**Parameters**
+
+| Name          | Type      | Description |
+| ------------- | --------- | ----------- |
+| oldShareLimit | `uint256` |             |
+| newShareLimit | `uint256` |             |
+
+### UserWhitelistingChanged
+
+```solidity
+event UserWhitelistingChanged(address indexed user, bool indexed whitelisted);
+```
+
+**Parameters**
+
+| Name        | Type      | Description |
+| ----------- | --------- | ----------- |
+| user        | `address` |             |
+| whitelisted | `bool`    |             |
+
+### WhitelistModeChanged
+
+```solidity
+event WhitelistModeChanged(bool indexed enabled);
+```
+
+**Parameters**
+
+| Name    | Type   | Description |
+| ------- | ------ | ----------- |
+| enabled | `bool` |             |
+
+## Structs
+
+### PreDepositVaultInitParams
+
+```solidity
+struct PreDepositVaultInitParams {
+        uint256 initialShareLimit;
+        bool initialWhitelistMode;
+        address initialRiskManager;
+        address initialAuthority;
+    }
+```
+
+**Properties**
+
+| Name                 | Type      | Description |
+| -------------------- | --------- | ----------- |
+| initialShareLimit    | `uint256` |             |
+| initialWhitelistMode | `bool`    |             |
+| initialRiskManager   | `address` |             |
+| initialAuthority     | `address` |             |

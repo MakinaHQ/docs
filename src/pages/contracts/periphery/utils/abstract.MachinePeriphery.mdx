@@ -1,0 +1,160 @@
+---
+title: "MachinePeriphery"
+---
+
+# MachinePeriphery
+
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/72aab70ea8dcedba4658cd339dd07022e28ca1b2/src/utils/MachinePeriphery.sol)
+
+**Inherits:** Initializable, [MakinaPeripheryContext](/contracts/periphery/utils/abstract.MakinaPeripheryContext), [IMachinePeriphery](/contracts/periphery/interfaces/interface.IMachinePeriphery)
+
+## Constants
+
+### MachinePeripheryStorageLocation
+
+```solidity
+bytes32 private constant MachinePeripheryStorageLocation =
+        0xf8e170f38959918ab7e583dba012d1b8610047e073c7ca874900b1e0c133c900;
+```
+
+## Functions
+
+<a id="_getmachineperipherystorage"></a>
+
+### \_getMachinePeripheryStorage
+
+```solidity
+function _getMachinePeripheryStorage() internal pure returns (MachinePeripheryStorage storage $);
+```
+
+**Returns**
+
+| Name | Type                      | Description |
+| ---- | ------------------------- | ----------- |
+| $    | `MachinePeripheryStorage` |             |
+
+<a id="constructor-address"></a>
+
+### constructor
+
+```solidity
+constructor(address _peripheryRegistry) MakinaPeripheryContext(_peripheryRegistry);
+```
+
+**Parameters**
+
+| Name                | Type      | Description |
+| ------------------- | --------- | ----------- |
+| \_peripheryRegistry | `address` |             |
+
+<a id="onlyfactory"></a>
+
+### onlyFactory
+
+```solidity
+modifier onlyFactory();
+```
+
+<a id="onlymechanic"></a>
+
+### onlyMechanic
+
+```solidity
+modifier onlyMechanic();
+```
+
+<a id="onlysecuritycouncil"></a>
+
+### onlySecurityCouncil
+
+```solidity
+modifier onlySecurityCouncil();
+```
+
+<a id="onlyriskmanager"></a>
+
+### onlyRiskManager
+
+```solidity
+modifier onlyRiskManager();
+```
+
+<a id="onlyriskmanagertimelock"></a>
+
+### onlyRiskManagerTimelock
+
+```solidity
+modifier onlyRiskManagerTimelock();
+```
+
+<a id="machine"></a>
+
+### machine
+
+Address of the associated machine.
+
+```solidity
+function machine() public view virtual returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="setmachine-address"></a>
+
+### setMachine
+
+Sets the machine address.
+
+```solidity
+function setMachine(address _machine) external onlyFactory;
+```
+
+**Parameters**
+
+| Name      | Type      | Description |
+| --------- | --------- | ----------- |
+| \_machine | `address` |             |
+
+<a id="_setmachine-address"></a>
+
+### \_setMachine
+
+<i>
+
+Sets the machine this contract is associated with.
+
+</i>
+
+```solidity
+function _setMachine(address _machine) internal virtual;
+```
+
+**Parameters**
+
+| Name      | Type      | Description |
+| --------- | --------- | ----------- |
+| \_machine | `address` |             |
+
+## Structs
+
+### MachinePeripheryStorage
+
+**Note:**
+
+- **storage-location:** erc7201:makina.storage.MachinePeriphery
+
+```solidity
+struct MachinePeripheryStorage {
+        address _machine;
+    }
+```
+
+**Properties**
+
+| Name      | Type      | Description |
+| --------- | --------- | ----------- |
+| \_machine | `address` |             |

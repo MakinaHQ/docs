@@ -1,0 +1,107 @@
+---
+title: "IWhitelist"
+---
+
+# IWhitelist
+
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/72aab70ea8dcedba4658cd339dd07022e28ca1b2/src/interfaces/IWhitelist.sol)
+
+## Functions
+
+<a id="iswhitelistenabled"></a>
+
+### isWhitelistEnabled
+
+True if whitelist is enabled, false otherwise.
+
+```solidity
+function isWhitelistEnabled() external view returns (bool);
+```
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="iswhitelisteduser-address"></a>
+
+### isWhitelistedUser
+
+User => Whitelisting status.
+
+```solidity
+function isWhitelistedUser(address user) external view returns (bool);
+```
+
+**Parameters**
+
+| Name | Type      | Description |
+| ---- | --------- | ----------- |
+| user | `address` |             |
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="setwhiteliststatus-bool"></a>
+
+### setWhitelistStatus
+
+Enables or disables the whitelist.
+
+```solidity
+function setWhitelistStatus(bool enabled) external;
+```
+
+**Parameters**
+
+| Name    | Type   | Description                                     |
+| ------- | ------ | ----------------------------------------------- |
+| enabled | `bool` | True to enable the whitelist, false to disable. |
+
+<a id="setwhitelistedusers-address-bool"></a>
+
+### setWhitelistedUsers
+
+Whitelists or unwhitelists a list of users.
+
+```solidity
+function setWhitelistedUsers(address[] calldata users, bool whitelisted) external;
+```
+
+**Parameters**
+
+| Name        | Type        | Description                                        |
+| ----------- | ----------- | -------------------------------------------------- |
+| users       | `address[]` | The addresses of the users to update.              |
+| whitelisted | `bool`      | True to whitelist the users, false to unwhitelist. |
+
+## Events
+
+### UserWhitelistingChanged
+
+```solidity
+event UserWhitelistingChanged(address indexed user, bool indexed whitelisted);
+```
+
+**Parameters**
+
+| Name        | Type      | Description |
+| ----------- | --------- | ----------- |
+| user        | `address` |             |
+| whitelisted | `bool`    |             |
+
+### WhitelistStatusChanged
+
+```solidity
+event WhitelistStatusChanged(bool indexed enabled);
+```
+
+**Parameters**
+
+| Name    | Type   | Description |
+| ------- | ------ | ----------- |
+| enabled | `bool` |             |

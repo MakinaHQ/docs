@@ -93,5 +93,5 @@ The instruction sets live in the public [`makina-integrations`](https://github.c
 :::
 
 :::info[Implementation]
-The instruction structures and verification live in [`Caliber.sol`](/contracts/core/caliber/Caliber.sol/contract.Caliber.md) and [`ICaliber`](/contracts/core/interfaces/ICaliber.sol/interface.ICaliber.md). The Weiroll VM interface is [`IWeirollVM`](/contracts/core/interfaces/IWeirollVM.sol/interface.IWeirollVM.md).
+The instruction structures and verification live in [`Caliber.sol`](/contracts/core/caliber/contract.Caliber) and [`ICaliber`](/contracts/core/interfaces/interface.ICaliber). The Weiroll VM interface is [`IWeirollVM`](/contracts/core/interfaces/interface.IWeirollVM).
 :::

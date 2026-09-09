@@ -1,0 +1,99 @@
+---
+title: "MachineShare"
+---
+
+# MachineShare
+
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/eb9a2fea6cac9f88783f9c769927ed7e5c2b7fd5/src/machine/MachineShare.sol)
+
+**Inherits:** ERC20, Ownable2Step, [IMachineShare](/contracts/core/interfaces/interface.IMachineShare)
+
+## Functions
+
+<a id="constructor-string-string-address"></a>
+
+### constructor
+
+```solidity
+constructor(string memory _name, string memory _symbol, address _initialMinter)
+        ERC20(_name, _symbol)
+        Ownable(_initialMinter);
+```
+
+**Parameters**
+
+| Name            | Type      | Description |
+| --------------- | --------- | ----------- |
+| \_name          | `string`  |             |
+| \_symbol        | `string`  |             |
+| \_initialMinter | `address` |             |
+
+<a id="decimals"></a>
+
+### decimals
+
+<i>
+
+Returns the decimals places of the token.
+
+</i>
+
+```solidity
+function decimals() public pure override(ERC20, IERC20Metadata) returns (uint8);
+```
+
+**Returns**
+
+| Name         | Type    | Description |
+| ------------ | ------- | ----------- |
+| &lt;none&gt; | `uint8` |             |
+
+<a id="minter"></a>
+
+### minter
+
+Address of the authorized minter and burner.
+
+```solidity
+function minter() external view override returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="mint-address-uint256"></a>
+
+### mint
+
+Mints new shares to the specified address.
+
+```solidity
+function mint(address to, uint256 amount) external override onlyOwner;
+```
+
+**Parameters**
+
+| Name   | Type      | Description                         |
+| ------ | --------- | ----------------------------------- |
+| to     | `address` | The recipient of the minted shares. |
+| amount | `uint256` | The amount of shares to mint.       |
+
+<a id="burn-address-uint256"></a>
+
+### burn
+
+Burns shares from the specified address.
+
+```solidity
+function burn(address from, uint256 amount) external override;
+```
+
+**Parameters**
+
+| Name   | Type      | Description                      |
+| ------ | --------- | -------------------------------- |
+| from   | `address` | The owner of the shares to burn. |
+| amount | `uint256` | The amount of shares to burn.    |

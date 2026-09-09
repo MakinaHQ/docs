@@ -1,0 +1,113 @@
+---
+title: "BridgeAdapterFactory"
+---
+
+# BridgeAdapterFactory
+
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/eb9a2fea6cac9f88783f9c769927ed7e5c2b7fd5/src/factories/BridgeAdapterFactory.sol)
+
+**Inherits:** [Create3Factory](/contracts/core/factories/abstract.Create3Factory), [MakinaContext](/contracts/core/utils/abstract.MakinaContext), [IBridgeAdapterFactory](/contracts/core/interfaces/interface.IBridgeAdapterFactory)
+
+## Constants
+
+### BridgeAdapterSaltDomain
+
+```solidity
+bytes32 private constant BridgeAdapterSaltDomain =
+        0xabde28237b51fa1256b2a1c49d990c305c6556881cd721a86b97a8ef9073992c;
+```
+
+### BridgeAdapterFactoryStorageLocation
+
+```solidity
+bytes32 private constant BridgeAdapterFactoryStorageLocation =
+        0xe2760819b7b5a09214c04233e2d29582188ee1a80d8fe8c82676ab96abf81c00;
+```
+
+## Functions
+
+<a id="_getbridgeadapterfactorystorage"></a>
+
+### \_getBridgeAdapterFactoryStorage
+
+```solidity
+function _getBridgeAdapterFactoryStorage() internal pure returns (BridgeAdapterFactoryStorage storage $);
+```
+
+**Returns**
+
+| Name | Type                          | Description |
+| ---- | ----------------------------- | ----------- |
+| $    | `BridgeAdapterFactoryStorage` |             |
+
+<a id="isbridgeadapter-address"></a>
+
+### isBridgeAdapter
+
+Address => Whether this is a BridgeAdapter instance deployed by this factory.
+
+```solidity
+function isBridgeAdapter(address adapter) external view override returns (bool);
+```
+
+**Parameters**
+
+| Name    | Type      | Description |
+| ------- | --------- | ----------- |
+| adapter | `address` |             |
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="_createbridgeadapter-address-bridgeadapterinitparams-bytes32"></a>
+
+### \_createBridgeAdapter
+
+<i>
+
+Internal logic for bridge adapter deployment via create3 and assignment to a bridge controller.
+
+</i>
+
+```solidity
+function _createBridgeAdapter(address controller, BridgeAdapterInitParams calldata baParams, bytes32 salt)
+        internal
+        returns (address);
+```
+
+**Parameters**
+
+| Name       | Type                      | Description |
+| ---------- | ------------------------- | ----------- |
+| controller | `address`                 |             |
+| baParams   | `BridgeAdapterInitParams` |             |
+| salt       | `bytes32`                 |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+## Structs
+
+### BridgeAdapterFactoryStorage
+
+**Note:**
+
+- **storage-location:** erc7201:makina.storage.BridgeAdapterFactory
+
+```solidity
+struct BridgeAdapterFactoryStorage {
+        mapping(address adapter => bool isBridgeAdapter) _isBridgeAdapter;
+    }
+```
+
+**Properties**
+
+| Name              | Type                                               | Description |
+| ----------------- | -------------------------------------------------- | ----------- |
+| \_isBridgeAdapter | `mapping(address adapter => bool isBridgeAdapter)` |             |

@@ -1,0 +1,235 @@
+---
+title: "IHubCoreFactory"
+---
+
+# IHubCoreFactory
+
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/eb9a2fea6cac9f88783f9c769927ed7e5c2b7fd5/src/interfaces/IHubCoreFactory.sol)
+
+**Inherits:** [IBridgeAdapterFactory](/contracts/core/interfaces/interface.IBridgeAdapterFactory)
+
+## Functions
+
+<a id="ispredepositvault-address"></a>
+
+### isPreDepositVault
+
+Address => Whether this is a PreDepositVault instance deployed by this factory.
+
+```solidity
+function isPreDepositVault(address preDepositVault) external view returns (bool);
+```
+
+**Parameters**
+
+| Name            | Type      | Description |
+| --------------- | --------- | ----------- |
+| preDepositVault | `address` |             |
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="ismachine-address"></a>
+
+### isMachine
+
+Address => Whether this is a Machine instance deployed by this factory.
+
+```solidity
+function isMachine(address machine) external view returns (bool);
+```
+
+**Parameters**
+
+| Name    | Type      | Description |
+| ------- | --------- | ----------- |
+| machine | `address` |             |
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="createpredepositvault-ipredepositvault-predepositvaultinitparams-address-address-string-string-bool"></a>
+
+### createPreDepositVault
+
+Deploys a new PreDepositVault instance.
+
+```solidity
+function createPreDepositVault(
+        IPreDepositVault.PreDepositVaultInitParams calldata params,
+        address depositToken,
+        address accountingToken,
+        string memory tokenName,
+        string memory tokenSymbol,
+        bool setupAMFunctionRoles
+    ) external returns (address preDepositVault);
+```
+
+**Parameters**
+
+| Name                 | Type                                         | Description                                                             |
+| -------------------- | -------------------------------------------- | ----------------------------------------------------------------------- |
+| params               | `IPreDepositVault.PreDepositVaultInitParams` | The initialization parameters.                                          |
+| depositToken         | `address`                                    | The address of the deposit token.                                       |
+| accountingToken      | `address`                                    | The address of the accounting token.                                    |
+| tokenName            | `string`                                     | The name of the share token.                                            |
+| tokenSymbol          | `string`                                     | The symbol of the share token.                                          |
+| setupAMFunctionRoles | `bool`                                       | Whether to set roles for restricted functions on the deployed instance. |
+
+**Returns**
+
+| Name            | Type      | Description                                           |
+| --------------- | --------- | ----------------------------------------------------- |
+| preDepositVault | `address` | The address of the deployed PreDepositVault instance. |
+
+<a id="createmachinefrompredeposit-imachine-machineinitparams-icaliber-caliberinitparams-imakinagovernable-makinagovernableinitparams-ispokesnapshotconsumer-spokesnapshotconsumerinitparams-bridgeadapterinitparams-address-bytes32-bool"></a>
+
+### createMachineFromPreDeposit
+
+Deploys a new Machine instance and migrates an existing PreDepositVault instance to it.
+
+```solidity
+function createMachineFromPreDeposit(
+        IMachine.MachineInitParams calldata mParams,
+        ICaliber.CaliberInitParams calldata cParams,
+        IMakinaGovernable.MakinaGovernableInitParams calldata mgParams,
+        ISpokeSnapshotConsumer.SpokeSnapshotConsumerInitParams calldata sscParams,
+        BridgeAdapterInitParams[] calldata baParams,
+        address preDepositVault,
+        bytes32 salt,
+        bool setupAMFunctionRoles
+    ) external returns (address machine);
+```
+
+**Parameters**
+
+| Name                 | Type                                                     | Description                                                                        |
+| -------------------- | -------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| mParams              | `IMachine.MachineInitParams`                             | The machine initialization parameters.                                             |
+| cParams              | `ICaliber.CaliberInitParams`                             | The caliber initialization parameters.                                             |
+| mgParams             | `IMakinaGovernable.MakinaGovernableInitParams`           | The makina governable initialization parameters.                                   |
+| sscParams            | `ISpokeSnapshotConsumer.SpokeSnapshotConsumerInitParams` | The spoke snapshot consumer initialization parameters.                             |
+| baParams             | `BridgeAdapterInitParams[]`                              | The list of bridge adapter initialization parameters and controller configuration. |
+| preDepositVault      | `address`                                                | The address of the PreDepositVault instance to migrate.                            |
+| salt                 | `bytes32`                                                | The salt used to deploy the hub caliber deterministically.                         |
+| setupAMFunctionRoles | `bool`                                                   | Whether to set roles for restricted functions on the deployed instance.            |
+
+**Returns**
+
+| Name    | Type      | Description                                   |
+| ------- | --------- | --------------------------------------------- |
+| machine | `address` | The address of the deployed Machine instance. |
+
+<a id="createmachine-imachine-machineinitparams-icaliber-caliberinitparams-imakinagovernable-makinagovernableinitparams-ispokesnapshotconsumer-spokesnapshotconsumerinitparams-bridgeadapterinitparams-address-string-string-bytes32-bool"></a>
+
+### createMachine
+
+Deploys a new Machine instance.
+
+```solidity
+function createMachine(
+        IMachine.MachineInitParams calldata mParams,
+        ICaliber.CaliberInitParams calldata cParams,
+        IMakinaGovernable.MakinaGovernableInitParams calldata mgParams,
+        ISpokeSnapshotConsumer.SpokeSnapshotConsumerInitParams calldata sscParams,
+        BridgeAdapterInitParams[] calldata baParams,
+        address accountingToken,
+        string memory tokenName,
+        string memory tokenSymbol,
+        bytes32 salt,
+        bool setupAMFunctionRoles
+    ) external returns (address machine);
+```
+
+**Parameters**
+
+| Name                 | Type                                                     | Description                                                                        |
+| -------------------- | -------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| mParams              | `IMachine.MachineInitParams`                             | The machine initialization parameters.                                             |
+| cParams              | `ICaliber.CaliberInitParams`                             | The caliber initialization parameters.                                             |
+| mgParams             | `IMakinaGovernable.MakinaGovernableInitParams`           | The makina governable initialization parameters.                                   |
+| sscParams            | `ISpokeSnapshotConsumer.SpokeSnapshotConsumerInitParams` | The spoke snapshot consumer initialization parameters.                             |
+| baParams             | `BridgeAdapterInitParams[]`                              | The list of bridge adapter initialization parameters and controller configuration. |
+| accountingToken      | `address`                                                | The address of the accounting token.                                               |
+| tokenName            | `string`                                                 | The name of the share token.                                                       |
+| tokenSymbol          | `string`                                                 | The symbol of the share token.                                                     |
+| salt                 | `bytes32`                                                | The salt used to deploy the hub caliber deterministically.                         |
+| setupAMFunctionRoles | `bool`                                                   | Whether to set roles for restricted functions on the deployed instance.            |
+
+**Returns**
+
+| Name    | Type      | Description                                   |
+| ------- | --------- | --------------------------------------------- |
+| machine | `address` | The address of the deployed Machine instance. |
+
+## Events
+
+### MachineCreated
+
+```solidity
+event MachineCreated(address indexed machine, address indexed shareToken);
+```
+
+**Parameters**
+
+| Name       | Type      | Description |
+| ---------- | --------- | ----------- |
+| machine    | `address` |             |
+| shareToken | `address` |             |
+
+### PreDepositVaultCreated
+
+```solidity
+event PreDepositVaultCreated(address indexed preDepositVault, address indexed shareToken);
+```
+
+**Parameters**
+
+| Name            | Type      | Description |
+| --------------- | --------- | ----------- |
+| preDepositVault | `address` |             |
+| shareToken      | `address` |             |
+
+### ShareTokenCreated
+
+```solidity
+event ShareTokenCreated(address indexed shareToken);
+```
+
+**Parameters**
+
+| Name       | Type      | Description |
+| ---------- | --------- | ----------- |
+| shareToken | `address` |             |
+
+## Structs
+
+### MachineBundle
+
+<i>
+
+The core components of a new machine instance.
+
+</i>
+
+```solidity
+struct MachineBundle {
+        address machine;
+        address shareToken;
+        address caliber;
+    }
+```
+
+**Properties**
+
+| Name       | Type      | Description |
+| ---------- | --------- | ----------- |
+| machine    | `address` |             |
+| shareToken | `address` |             |
+| caliber    | `address` |             |

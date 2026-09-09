@@ -23,7 +23,7 @@ A deposit is **atomic**: assets in, shares out, in a single transaction at the c
 
 ## Direct Depositor
 
-The standard implementation, [`DirectDepositor`](/contracts/periphery/depositors/DirectDepositor.sol/contract.DirectDepositor.md), does exactly the flow above: it pulls the accounting token from the user, forwards it to the Machine, and the Machine mints shares to the user immediately.
+The standard implementation, [`DirectDepositor`](/contracts/periphery/depositors/contract.DirectDepositor), does exactly the flow above: it pulls the accounting token from the user, forwards it to the Machine, and the Machine mints shares to the user immediately.
 
 ### Whitelisting
 

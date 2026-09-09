@@ -1,0 +1,92 @@
+---
+title: "ITokenRegistry"
+description: "This interface is used to map token addresses from one EVM chain to another."
+---
+
+# ITokenRegistry
+
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/eb9a2fea6cac9f88783f9c769927ed7e5c2b7fd5/src/interfaces/ITokenRegistry.sol)
+
+This interface is used to map token addresses from one EVM chain to another.
+
+## Functions
+
+<a id="getforeigntoken-address-uint256"></a>
+
+### getForeignToken
+
+Local token address => Foreign EVM chain ID => Foreign Token address
+
+```solidity
+function getForeignToken(address localToken, uint256 foreignEvmChainId) external view returns (address);
+```
+
+**Parameters**
+
+| Name              | Type      | Description |
+| ----------------- | --------- | ----------- |
+| localToken        | `address` |             |
+| foreignEvmChainId | `uint256` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="getlocaltoken-address-uint256"></a>
+
+### getLocalToken
+
+Foreign token address => Foreign EVM chain ID => Local Token address
+
+```solidity
+function getLocalToken(address foreignToken, uint256 foreignEvmChainId) external view returns (address);
+```
+
+**Parameters**
+
+| Name              | Type      | Description |
+| ----------------- | --------- | ----------- |
+| foreignToken      | `address` |             |
+| foreignEvmChainId | `uint256` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="settoken-address-uint256-address"></a>
+
+### setToken
+
+Associates a local and a foreign token address.
+
+```solidity
+function setToken(address localToken, uint256 foreignEvmChainId, address foreignToken) external;
+```
+
+**Parameters**
+
+| Name              | Type      | Description                |
+| ----------------- | --------- | -------------------------- |
+| localToken        | `address` | The local token address.   |
+| foreignEvmChainId | `uint256` | The foreign EVM chain ID.  |
+| foreignToken      | `address` | The foreign token address. |
+
+## Events
+
+### TokenRegistered
+
+```solidity
+event TokenRegistered(address indexed localToken, uint256 indexed evmChainId, address indexed foreignToken);
+```
+
+**Parameters**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| localToken   | `address` |             |
+| evmChainId   | `uint256` |             |
+| foreignToken | `address` |             |

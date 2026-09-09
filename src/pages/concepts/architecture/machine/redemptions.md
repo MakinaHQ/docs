@@ -15,7 +15,7 @@ Redeemers are instead **queues**: the [Operator](../../governance/operator) must
 
 ## Async Redeemer
 
-The standard implementation, [`AsyncRedeemer`](/contracts/periphery/redeemers/AsyncRedeemer.sol/contract.AsyncRedeemer.md), is a first-in-first-out queue built around an **ERC-721 receipt NFT**.
+The standard implementation, [`AsyncRedeemer`](/contracts/periphery/redeemers/contract.AsyncRedeemer), is a first-in-first-out queue built around an **ERC-721 receipt NFT**.
 
 ```mermaid
 sequenceDiagram
@@ -41,7 +41,7 @@ The NFT representation means a pending redemption is itself transferable.
 
 ### Redemption fees
 
-A variant, [`AsyncRedeemerFee`](/contracts/periphery/redeemers/AsyncRedeemerFee.sol/contract.AsyncRedeemerFee.md), applies a **redemption fee**: the assets a user receives are reduced by a configured rate. The withheld value remains in the strategy, accruing to the remaining share holders rather than going to a separate recipient. This can discourage churn or compensate the strategy for the cost of unwinding positions to honor exits.
+A variant, [`AsyncRedeemerFee`](/contracts/periphery/redeemers/contract.AsyncRedeemerFee), applies a **redemption fee**: the assets a user receives are reduced by a configured rate. The withheld value remains in the strategy, accruing to the remaining share holders rather than going to a separate recipient. This can discourage churn or compensate the strategy for the cost of unwinding positions to honor exits.
 
 ### Whitelisting
 

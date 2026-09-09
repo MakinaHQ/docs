@@ -1,0 +1,323 @@
+---
+title: "IBridgeController"
+---
+
+# IBridgeController
+
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/eb9a2fea6cac9f88783f9c769927ed7e5c2b7fd5/src/interfaces/IBridgeController.sol)
+
+## Functions
+
+<a id="isbridgesupported-uint16"></a>
+
+### isBridgeSupported
+
+Bridge ID => Is bridge adapter deployed.
+
+```solidity
+function isBridgeSupported(uint16 bridgeId) external view returns (bool);
+```
+
+**Parameters**
+
+| Name     | Type     | Description |
+| -------- | -------- | ----------- |
+| bridgeId | `uint16` |             |
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="isouttransferenabled-uint16"></a>
+
+### isOutTransferEnabled
+
+Bridge ID => Is outgoing transfer enabled.
+
+```solidity
+function isOutTransferEnabled(uint16 bridgeId) external view returns (bool);
+```
+
+**Parameters**
+
+| Name     | Type     | Description |
+| -------- | -------- | ----------- |
+| bridgeId | `uint16` |             |
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="getbridgeadapter-uint16"></a>
+
+### getBridgeAdapter
+
+Bridge ID => Address of the associated bridge adapter.
+
+```solidity
+function getBridgeAdapter(uint16 bridgeId) external view returns (address);
+```
+
+**Parameters**
+
+| Name     | Type     | Description |
+| -------- | -------- | ----------- |
+| bridgeId | `uint16` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="getmaxbridgelossbps-uint16"></a>
+
+### getMaxBridgeLossBps
+
+Bridge ID => Max allowed value loss in basis points for transfers via this bridge.
+
+```solidity
+function getMaxBridgeLossBps(uint16 bridgeId) external view returns (uint256);
+```
+
+**Parameters**
+
+| Name     | Type     | Description |
+| -------- | -------- | ----------- |
+| bridgeId | `uint16` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="setbridgeadapter-uint16-address-uint256"></a>
+
+### setBridgeAdapter
+
+Sets a bridge adapter instance for a given bridge ID.
+
+```solidity
+function setBridgeAdapter(uint16 bridgeId, address bridgeAdapter, uint256 initialMaxBridgeLossBps) external;
+```
+
+**Parameters**
+
+| Name                    | Type      | Description                                                                           |
+| ----------------------- | --------- | ------------------------------------------------------------------------------------- |
+| bridgeId                | `uint16`  | The ID of the bridge.                                                                 |
+| bridgeAdapter           | `address` | The address of the new bridge adapter instance.                                       |
+| initialMaxBridgeLossBps | `uint256` | The initial maximum allowed value loss in basis points for transfers via this bridge. |
+
+<a id="setmaxbridgelossbps-uint16-uint256"></a>
+
+### setMaxBridgeLossBps
+
+Sets the maximum allowed value loss in basis points for transfers via this bridge.
+
+```solidity
+function setMaxBridgeLossBps(uint16 bridgeId, uint256 maxBridgeLossBps) external;
+```
+
+**Parameters**
+
+| Name             | Type      | Description                                     |
+| ---------------- | --------- | ----------------------------------------------- |
+| bridgeId         | `uint16`  | The ID of the bridge.                           |
+| maxBridgeLossBps | `uint256` | The maximum allowed value loss in basis points. |
+
+<a id="disableouttransfer-uint16"></a>
+
+### disableOutTransfer
+
+Disables outgoing transfers for a bridge.
+
+```solidity
+function disableOutTransfer(uint16 bridgeId) external;
+```
+
+**Parameters**
+
+| Name     | Type     | Description           |
+| -------- | -------- | --------------------- |
+| bridgeId | `uint16` | The ID of the bridge. |
+
+<a id="enableouttransfer-uint16"></a>
+
+### enableOutTransfer
+
+Enables outgoing transfers for a bridge.
+
+```solidity
+function enableOutTransfer(uint16 bridgeId) external;
+```
+
+**Parameters**
+
+| Name     | Type     | Description           |
+| -------- | -------- | --------------------- |
+| bridgeId | `uint16` | The ID of the bridge. |
+
+<a id="sendoutbridgetransfer-uint16-uint256-bytes"></a>
+
+### sendOutBridgeTransfer
+
+Executes a scheduled outgoing bridge transfer.
+
+```solidity
+function sendOutBridgeTransfer(uint16 bridgeId, uint256 transferId, bytes calldata data) external;
+```
+
+**Parameters**
+
+| Name       | Type      | Description                                       |
+| ---------- | --------- | ------------------------------------------------- |
+| bridgeId   | `uint16`  | The ID of the bridge.                             |
+| transferId | `uint256` | The ID of the transfer to execute.                |
+| data       | `bytes`   | The optional data needed to execute the transfer. |
+
+<a id="authorizeinbridgetransfer-uint16-bytes32"></a>
+
+### authorizeInBridgeTransfer
+
+Registers a message hash as authorized for an incoming bridge transfer.
+
+```solidity
+function authorizeInBridgeTransfer(uint16 bridgeId, bytes32 messageHash) external;
+```
+
+**Parameters**
+
+| Name        | Type      | Description                           |
+| ----------- | --------- | ------------------------------------- |
+| bridgeId    | `uint16`  | The ID of the bridge.                 |
+| messageHash | `bytes32` | The hash of the message to authorize. |
+
+<a id="claiminbridgetransfer-uint16-uint256"></a>
+
+### claimInBridgeTransfer
+
+Transfers a received bridge transfer out of the corresponding bridge adapter.
+
+```solidity
+function claimInBridgeTransfer(uint16 bridgeId, uint256 transferId) external;
+```
+
+**Parameters**
+
+| Name       | Type      | Description                      |
+| ---------- | --------- | -------------------------------- |
+| bridgeId   | `uint16`  | The ID of the bridge.            |
+| transferId | `uint256` | The ID of the transfer to claim. |
+
+<a id="canceloutbridgetransfer-uint16-uint256"></a>
+
+### cancelOutBridgeTransfer
+
+Cancels an outgoing bridge transfer.
+
+```solidity
+function cancelOutBridgeTransfer(uint16 bridgeId, uint256 transferId) external;
+```
+
+**Parameters**
+
+| Name       | Type      | Description                       |
+| ---------- | --------- | --------------------------------- |
+| bridgeId   | `uint16`  | The ID of the bridge.             |
+| transferId | `uint256` | The ID of the transfer to cancel. |
+
+<a id="resetbridgingstate-address"></a>
+
+### resetBridgingState
+
+Resets internal bridge counters for a given token, and withdraws token balances held by all bridge adapters.
+
+<i>
+
+This function is intended to be used by the DAO to realign bridge accounting state and maintain protocol consistency,
+typically in response to operator deviations, external bridge discrepancies, or unbounded counter growth.
+
+</i>
+
+```solidity
+function resetBridgingState(address token) external;
+```
+
+**Parameters**
+
+| Name  | Type      | Description               |
+| ----- | --------- | ------------------------- |
+| token | `address` | The address of the token. |
+
+## Events
+
+### BridgeAdapterSet
+
+```solidity
+event BridgeAdapterSet(uint16 indexed bridgeId, address indexed adapter);
+```
+
+**Parameters**
+
+| Name     | Type      | Description |
+| -------- | --------- | ----------- |
+| bridgeId | `uint16`  |             |
+| adapter  | `address` |             |
+
+### MaxBridgeLossBpsChanged
+
+```solidity
+event MaxBridgeLossBpsChanged(
+        uint16 indexed bridgeId, uint256 indexed oldMaxBridgeLossBps, uint256 indexed newMaxBridgeLossBps
+    );
+```
+
+**Parameters**
+
+| Name                | Type      | Description |
+| ------------------- | --------- | ----------- |
+| bridgeId            | `uint16`  |             |
+| oldMaxBridgeLossBps | `uint256` |             |
+| newMaxBridgeLossBps | `uint256` |             |
+
+### BridgingStateReset
+
+```solidity
+event BridgingStateReset(address indexed token);
+```
+
+**Parameters**
+
+| Name  | Type      | Description |
+| ----- | --------- | ----------- |
+| token | `address` |             |
+
+### OutTransferDisabled
+
+```solidity
+event OutTransferDisabled(uint16 indexed bridgeId);
+```
+
+**Parameters**
+
+| Name     | Type     | Description |
+| -------- | -------- | ----------- |
+| bridgeId | `uint16` |             |
+
+### OutTransferEnabled
+
+```solidity
+event OutTransferEnabled(uint16 indexed bridgeId);
+```
+
+**Parameters**
+
+| Name     | Type     | Description |
+| -------- | -------- | ----------- |
+| bridgeId | `uint16` |             |

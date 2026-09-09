@@ -1,0 +1,38 @@
+---
+title: "IDirectDepositor"
+---
+
+# IDirectDepositor
+
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/72aab70ea8dcedba4658cd339dd07022e28ca1b2/src/interfaces/IDirectDepositor.sol)
+
+**Inherits:** [IMachinePeriphery](/contracts/periphery/interfaces/interface.IMachinePeriphery)
+
+## Functions
+
+<a id="deposit-uint256-address-uint256-bytes32"></a>
+
+### deposit
+
+Deposits accounting tokens into the machine and mints shares to the receiver.
+
+```solidity
+function deposit(uint256 assets, address receiver, uint256 minShares, bytes32 referralKey)
+        external
+        returns (uint256);
+```
+
+**Parameters**
+
+| Name        | Type      | Description                                              |
+| ----------- | --------- | -------------------------------------------------------- |
+| assets      | `uint256` | The amount of accounting tokens to deposit.              |
+| receiver    | `address` | The receiver of minted shares.                           |
+| minShares   | `uint256` | The minimum amount of shares to be minted.               |
+| referralKey | `bytes32` | The optional identifier used to track a referral source. |
+
+**Returns**
+
+| Name         | Type      | Description                         |
+| ------------ | --------- | ----------------------------------- |
+| &lt;none&gt; | `uint256` | shares The amount of shares minted. |

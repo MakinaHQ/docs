@@ -1,0 +1,157 @@
+---
+title: "Whitelist"
+---
+
+# Whitelist
+
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/72aab70ea8dcedba4658cd339dd07022e28ca1b2/src/utils/Whitelist.sol)
+
+**Inherits:** Initializable, [IWhitelist](/contracts/periphery/interfaces/interface.IWhitelist)
+
+## Constants
+
+### WhitelistStorageLocation
+
+```solidity
+bytes32 private constant WhitelistStorageLocation =
+        0x8ecd71e87c506d6932770ce52ba8e8dc85963cc6e1a5097e1b32e68fbabfcb00;
+```
+
+## Functions
+
+<a id="_getwhiteliststorage"></a>
+
+### \_getWhitelistStorage
+
+```solidity
+function _getWhitelistStorage() private pure returns (WhitelistStorage storage $);
+```
+
+**Returns**
+
+| Name | Type               | Description |
+| ---- | ------------------ | ----------- |
+| $    | `WhitelistStorage` |             |
+
+<a id="__whitelist_init-bool"></a>
+
+### \_\_Whitelist_init
+
+```solidity
+function __Whitelist_init(bool _initialWhitelistStatus) internal onlyInitializing;
+```
+
+**Parameters**
+
+| Name                     | Type   | Description |
+| ------------------------ | ------ | ----------- |
+| \_initialWhitelistStatus | `bool` |             |
+
+<a id="whitelistcheck"></a>
+
+### whitelistCheck
+
+```solidity
+modifier whitelistCheck();
+```
+
+<a id="iswhitelistenabled"></a>
+
+### isWhitelistEnabled
+
+True if whitelist is enabled, false otherwise.
+
+```solidity
+function isWhitelistEnabled() public view override returns (bool);
+```
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="iswhitelisteduser-address"></a>
+
+### isWhitelistedUser
+
+User => Whitelisting status.
+
+```solidity
+function isWhitelistedUser(address user) public view override returns (bool);
+```
+
+**Parameters**
+
+| Name | Type      | Description |
+| ---- | --------- | ----------- |
+| user | `address` |             |
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="_setwhiteliststatus-bool"></a>
+
+### \_setWhitelistStatus
+
+<i>
+
+Internal function to set the whitelist status.
+
+</i>
+
+```solidity
+function _setWhitelistStatus(bool enabled) internal;
+```
+
+**Parameters**
+
+| Name    | Type   | Description |
+| ------- | ------ | ----------- |
+| enabled | `bool` |             |
+
+<a id="_setwhitelistedusers-address-bool"></a>
+
+### \_setWhitelistedUsers
+
+<i>
+
+Internal function to set the whitelisted users.
+
+</i>
+
+```solidity
+function _setWhitelistedUsers(address[] calldata users, bool whitelisted) internal;
+```
+
+**Parameters**
+
+| Name        | Type        | Description |
+| ----------- | ----------- | ----------- |
+| users       | `address[]` |             |
+| whitelisted | `bool`      |             |
+
+## Structs
+
+### WhitelistStorage
+
+**Note:**
+
+- **storage-location:** erc7201:makina.storage.Whitelist
+
+```solidity
+struct WhitelistStorage {
+        mapping(address user => bool isWhitelisted) _isWhitelistedUser;
+        bool _isWhitelistEnabled;
+    }
+```
+
+**Properties**
+
+| Name                 | Type                                          | Description |
+| -------------------- | --------------------------------------------- | ----------- |
+| \_isWhitelistedUser  | `mapping(address user => bool isWhitelisted)` |             |
+| \_isWhitelistEnabled | `bool`                                        |             |

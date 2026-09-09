@@ -1,0 +1,249 @@
+---
+title: "SpokeSnapshotConsumer"
+---
+
+# SpokeSnapshotConsumer
+
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/eb9a2fea6cac9f88783f9c769927ed7e5c2b7fd5/src/utils/SpokeSnapshotConsumer.sol)
+
+**Inherits:** AccessManagedUpgradeable, ERC165, [ISpokeSnapshotConsumer](/contracts/core/interfaces/interface.ISpokeSnapshotConsumer)
+
+## Constants
+
+### creForwarder
+
+Address of the Chainlink CRE forwarder.
+
+```solidity
+address public immutable override creForwarder;
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+### CRE_METADATA_LENGTH
+
+```solidity
+uint256 private constant CRE_METADATA_LENGTH = 64;
+```
+
+### SpokeSnapshotConsumerStorageLocation
+
+```solidity
+bytes32 private constant SpokeSnapshotConsumerStorageLocation =
+        0xb63b6c1855ef12c3ce1467dc59d74e167a3a4f63f2ecef0203e34e2727af1300;
+```
+
+## Functions
+
+<a id="_getspokesnapshotconsumerstorage"></a>
+
+### \_getSpokeSnapshotConsumerStorage
+
+```solidity
+function _getSpokeSnapshotConsumerStorage() private pure returns (SpokeSnapshotConsumerStorage storage $);
+```
+
+**Returns**
+
+| Name | Type                           | Description |
+| ---- | ------------------------------ | ----------- |
+| $    | `SpokeSnapshotConsumerStorage` |             |
+
+<a id="constructor-address"></a>
+
+### constructor
+
+```solidity
+constructor(address _creForwarder);
+```
+
+**Parameters**
+
+| Name           | Type      | Description |
+| -------------- | --------- | ----------- |
+| \_creForwarder | `address` |             |
+
+<a id="__spokesnapshotconsumer_init-spokesnapshotconsumerinitparams"></a>
+
+### \_\_SpokeSnapshotConsumer_init
+
+```solidity
+function __SpokeSnapshotConsumer_init(SpokeSnapshotConsumerInitParams calldata sscParams)
+        internal
+        onlyInitializing;
+```
+
+**Parameters**
+
+| Name      | Type                              | Description |
+| --------- | --------------------------------- | ----------- |
+| sscParams | `SpokeSnapshotConsumerInitParams` |             |
+
+<a id="iscreworkflowidauthorized-bytes32"></a>
+
+### isCreWorkflowIdAuthorized
+
+CRE workflow ID => Whether the ID is authorized.
+
+```solidity
+function isCreWorkflowIdAuthorized(bytes32 creWorkflowId) external view override returns (bool);
+```
+
+**Parameters**
+
+| Name          | Type      | Description |
+| ------------- | --------- | ----------- |
+| creWorkflowId | `bytes32` |             |
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="supportsinterface-bytes4"></a>
+
+### supportsInterface
+
+<i>
+
+Returns true if this contract implements the interface defined by
+`interfaceId`. See the corresponding
+https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified[ERC section]
+to learn more about how these ids are created.
+
+This function call must use less than 30 000 gas.
+
+</i>
+
+```solidity
+function supportsInterface(bytes4 interfaceId) public view override(ERC165, IERC165) returns (bool);
+```
+
+**Parameters**
+
+| Name        | Type     | Description |
+| ----------- | -------- | ----------- |
+| interfaceId | `bytes4` |             |
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="addcreworkflowid-bytes32"></a>
+
+### addCreWorkflowId
+
+Authorizes a CRE workflow ID.
+
+```solidity
+function addCreWorkflowId(bytes32 newCreWorkflowId) external override restricted;
+```
+
+**Parameters**
+
+| Name             | Type      | Description                       |
+| ---------------- | --------- | --------------------------------- |
+| newCreWorkflowId | `bytes32` | The CRE workflow ID to authorize. |
+
+<a id="removecreworkflowid-bytes32"></a>
+
+### removeCreWorkflowId
+
+Deauthorizes a CRE workflow ID.
+
+```solidity
+function removeCreWorkflowId(bytes32 creWorkflowId) external override restricted;
+```
+
+**Parameters**
+
+| Name          | Type      | Description                         |
+| ------------- | --------- | ----------------------------------- |
+| creWorkflowId | `bytes32` | The CRE workflow ID to deauthorize. |
+
+<a id="_addcreworkflowid-bytes32"></a>
+
+### \_addCreWorkflowId
+
+<i>
+
+Internal logic for adding a CRE workflow ID.
+
+</i>
+
+```solidity
+function _addCreWorkflowId(bytes32 newCreWorkflowId) internal;
+```
+
+**Parameters**
+
+| Name             | Type      | Description |
+| ---------------- | --------- | ----------- |
+| newCreWorkflowId | `bytes32` |             |
+
+<a id="_removecreworkflowid-bytes32"></a>
+
+### \_removeCreWorkflowId
+
+<i>
+
+Internal logic for removing a CRE workflow ID.
+
+</i>
+
+```solidity
+function _removeCreWorkflowId(bytes32 creWorkflowId) internal;
+```
+
+**Parameters**
+
+| Name          | Type      | Description |
+| ------------- | --------- | ----------- |
+| creWorkflowId | `bytes32` |             |
+
+<a id="_validatemetadata-bytes"></a>
+
+### \_validateMetadata
+
+<i>
+
+Extracts fields from a CRE report metadata and validates them against stored values if any are set.
+
+</i>
+
+```solidity
+function _validateMetadata(bytes calldata metadata) internal view;
+```
+
+**Parameters**
+
+| Name     | Type    | Description |
+| -------- | ------- | ----------- |
+| metadata | `bytes` |             |
+
+## Structs
+
+### SpokeSnapshotConsumerStorage
+
+**Note:**
+
+- **storage-location:** erc7201:makina.storage.SpokeSnapshotConsumer
+
+```solidity
+struct SpokeSnapshotConsumerStorage {
+        EnumerableSet.Bytes32Set _creWorkflowIds;
+    }
+```
+
+**Properties**
+
+| Name             | Type                       | Description |
+| ---------------- | -------------------------- | ----------- |
+| \_creWorkflowIds | `EnumerableSet.Bytes32Set` |             |

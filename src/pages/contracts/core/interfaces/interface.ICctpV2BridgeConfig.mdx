@@ -1,0 +1,120 @@
+---
+title: "ICctpV2BridgeConfig"
+---
+
+# ICctpV2BridgeConfig
+
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/eb9a2fea6cac9f88783f9c769927ed7e5c2b7fd5/src/interfaces/ICctpV2BridgeConfig.sol)
+
+**Inherits:** [IBridgeConfig](/contracts/core/interfaces/interface.IBridgeConfig)
+
+## Functions
+
+<a id="getcctpdomain-uint256"></a>
+
+### getCctpDomain
+
+EVM chain ID => CCTP domain
+
+```solidity
+function getCctpDomain(uint256 evmChainId) external view returns (uint32);
+```
+
+**Parameters**
+
+| Name       | Type      | Description |
+| ---------- | --------- | ----------- |
+| evmChainId | `uint256` |             |
+
+**Returns**
+
+| Name         | Type     | Description |
+| ------------ | -------- | ----------- |
+| &lt;none&gt; | `uint32` |             |
+
+<a id="getforeigntoken-address-uint256"></a>
+
+### getForeignToken
+
+Local token address => Foreign EVM chain ID => Foreign Token address
+
+```solidity
+function getForeignToken(address localToken, uint256 foreignEvmChainId) external view returns (address);
+```
+
+**Parameters**
+
+| Name              | Type      | Description |
+| ----------------- | --------- | ----------- |
+| localToken        | `address` |             |
+| foreignEvmChainId | `uint256` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="setcctpdomain-uint256-uint32"></a>
+
+### setCctpDomain
+
+Associates an EVM chain ID with a CCTP domain in the contract storage.
+
+```solidity
+function setCctpDomain(uint256 evmChainId, uint32 cctpDomain) external;
+```
+
+**Parameters**
+
+| Name       | Type      | Description       |
+| ---------- | --------- | ----------------- |
+| evmChainId | `uint256` | The EVM chain ID. |
+| cctpDomain | `uint32`  | The CCTP domain.  |
+
+<a id="setforeigntoken-address-uint256-address"></a>
+
+### setForeignToken
+
+Associates a local token with its foreign counterpart used in CCTP bridging.
+
+```solidity
+function setForeignToken(address localToken, uint256 foreignEvmChainId, address foreignToken) external;
+```
+
+**Parameters**
+
+| Name              | Type      | Description                |
+| ----------------- | --------- | -------------------------- |
+| localToken        | `address` | The local token address.   |
+| foreignEvmChainId | `uint256` | The foreign EVM chain ID.  |
+| foreignToken      | `address` | The foreign token address. |
+
+## Events
+
+### ForeignTokenRegistered
+
+```solidity
+event ForeignTokenRegistered(address indexed localToken, uint256 indexed evmChainId, address indexed foreignToken);
+```
+
+**Parameters**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| localToken   | `address` |             |
+| evmChainId   | `uint256` |             |
+| foreignToken | `address` |             |
+
+### CctpDomainRegistered
+
+```solidity
+event CctpDomainRegistered(uint256 indexed evmChainId, uint32 indexed cctpDomain);
+```
+
+**Parameters**
+
+| Name       | Type      | Description |
+| ---------- | --------- | ----------- |
+| evmChainId | `uint256` |             |
+| cctpDomain | `uint32`  |             |

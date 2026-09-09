@@ -1,0 +1,495 @@
+---
+title: "AsyncRedeemer"
+---
+
+# AsyncRedeemer
+
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/72aab70ea8dcedba4658cd339dd07022e28ca1b2/src/redeemers/AsyncRedeemer.sol)
+
+**Inherits:** ERC721Upgradeable, ReentrancyGuard, [MachinePeriphery](/contracts/periphery/utils/abstract.MachinePeriphery), [SanctionsList](/contracts/periphery/utils/abstract.SanctionsList), [Whitelist](/contracts/periphery/utils/abstract.Whitelist), [IAsyncRedeemer](/contracts/periphery/interfaces/interface.IAsyncRedeemer)
+
+## Constants
+
+### AsyncRedeemerStorageLocation
+
+```solidity
+bytes32 private constant AsyncRedeemerStorageLocation =
+        0x187c268ec5d498b5b6e4945b27f62abf37217cdbd80e6429181b3e4c2c378900;
+```
+
+## Functions
+
+<a id="_getasyncredeemerstorage"></a>
+
+### \_getAsyncRedeemerStorage
+
+```solidity
+function _getAsyncRedeemerStorage() private pure returns (AsyncRedeemerStorage storage $);
+```
+
+**Returns**
+
+| Name | Type                   | Description |
+| ---- | ---------------------- | ----------- |
+| $    | `AsyncRedeemerStorage` |             |
+
+<a id="constructor-address-address"></a>
+
+### constructor
+
+```solidity
+constructor(address _registry, address _sanctionsOracle)
+        MachinePeriphery(_registry)
+        SanctionsList(_sanctionsOracle);
+```
+
+**Parameters**
+
+| Name              | Type      | Description |
+| ----------------- | --------- | ----------- |
+| \_registry        | `address` |             |
+| \_sanctionsOracle | `address` |             |
+
+<a id="initialize-bytes"></a>
+
+### initialize
+
+Initializer of the contract.
+
+```solidity
+function initialize(bytes calldata data) external virtual override initializer;
+```
+
+**Parameters**
+
+| Name | Type    | Description                      |
+| ---- | ------- | -------------------------------- |
+| data | `bytes` | The initialization data, if any. |
+
+<a id="__asyncredeemer_init-uint256-uint256-bool-bool"></a>
+
+### \_\_AsyncRedeemer_init
+
+```solidity
+function __AsyncRedeemer_init(
+        uint256 _finalizationDelay,
+        uint256 _minRedeemAmount,
+        bool _whitelistStatus,
+        bool _sanctionsCheckStatus
+    ) internal onlyInitializing;
+```
+
+**Parameters**
+
+| Name                   | Type      | Description |
+| ---------------------- | --------- | ----------- |
+| \_finalizationDelay    | `uint256` |             |
+| \_minRedeemAmount      | `uint256` |             |
+| \_whitelistStatus      | `bool`    |             |
+| \_sanctionsCheckStatus | `bool`    |             |
+
+<a id="nextrequestid"></a>
+
+### nextRequestId
+
+ID of the next redeem request to be created.
+
+```solidity
+function nextRequestId() external view override returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="lastfinalizedrequestid"></a>
+
+### lastFinalizedRequestId
+
+ID of the last finalized redeem request.
+
+```solidity
+function lastFinalizedRequestId() external view override returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="finalizationdelay"></a>
+
+### finalizationDelay
+
+Minimum time (in seconds) that must elapse between request submission and finalization.
+
+```solidity
+function finalizationDelay() external view override returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="minredeemamount"></a>
+
+### minRedeemAmount
+
+Minimum amount of shares required to create a redeem request.
+
+```solidity
+function minRedeemAmount() external view override returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="getshares-uint256"></a>
+
+### getShares
+
+Request ID => Shares
+
+```solidity
+function getShares(uint256 requestId) external view override returns (uint256);
+```
+
+**Parameters**
+
+| Name      | Type      | Description |
+| --------- | --------- | ----------- |
+| requestId | `uint256` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="getclaimableassets-uint256"></a>
+
+### getClaimableAssets
+
+Request ID => Claimable Assets
+
+<i>
+
+Reverts if the request is not finalized.
+
+</i>
+
+```solidity
+function getClaimableAssets(uint256 requestId) public view override returns (uint256);
+```
+
+**Parameters**
+
+| Name      | Type      | Description |
+| --------- | --------- | ----------- |
+| requestId | `uint256` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="previewfinalizerequests-uint256"></a>
+
+### previewFinalizeRequests
+
+Returns the total shares and current expected assets for a batch of unfinalized requests up to the given request ID.
+
+```solidity
+function previewFinalizeRequests(uint256 upToRequestId) public view override returns (uint256, uint256);
+```
+
+**Parameters**
+
+| Name          | Type      | Description                                                          |
+| ------------- | --------- | -------------------------------------------------------------------- |
+| upToRequestId | `uint256` | The request ID up to which to calculate the total shares and assets. |
+
+**Returns**
+
+| Name         | Type      | Description                                                     |
+| ------------ | --------- | --------------------------------------------------------------- |
+| &lt;none&gt; | `uint256` | totalShares The total shares for the batch of requests.         |
+| &lt;none&gt; | `uint256` | totalAssets The current total assets for the batch of requests. |
+
+<a id="requestredeem-uint256-address-uint256"></a>
+
+### requestRedeem
+
+Creates a redeem request and issues an associated NFT to the receiver.
+
+```solidity
+function requestRedeem(uint256 shares, address receiver, uint256 minAssets)
+        public
+        virtual
+        override
+        nonReentrant
+        sanctionsCheck
+        whitelistCheck
+        returns (uint256);
+```
+
+**Parameters**
+
+| Name      | Type      | Description                                                 |
+| --------- | --------- | ----------------------------------------------------------- |
+| shares    | `uint256` | The amount of shares to redeem.                             |
+| receiver  | `address` | The receiver of the receipt NFT.                            |
+| minAssets | `uint256` | The minimum amount of assets for the request's entry price. |
+
+**Returns**
+
+| Name         | Type      | Description                             |
+| ------------ | --------- | --------------------------------------- |
+| &lt;none&gt; | `uint256` | requestId The ID of the redeem request. |
+
+<a id="finalizerequests-uint256-uint256"></a>
+
+### finalizeRequests
+
+Finalizes redeem requests up to a given request ID.
+
+<i>
+
+Can only be called by the operator of the associated machine.
+
+</i>
+
+```solidity
+function finalizeRequests(uint256 upToRequestId, uint256 minAssets)
+        external
+        override
+        onlyMechanic
+        nonReentrant
+        returns (uint256, uint256);
+```
+
+**Parameters**
+
+| Name          | Type      | Description                                                                           |
+| ------------- | --------- | ------------------------------------------------------------------------------------- |
+| upToRequestId | `uint256` | The request ID up to which to finalize requests.                                      |
+| minAssets     | `uint256` | The minimum amount of assets that must be available for the requests to be finalized. |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="claimassets-uint256"></a>
+
+### claimAssets
+
+Claims the assets associated with a finalized redeem request and burns the associated NFT.
+
+```solidity
+function claimAssets(uint256 requestId)
+        external
+        override
+        nonReentrant
+        sanctionsCheck
+        whitelistCheck
+        returns (uint256);
+```
+
+**Parameters**
+
+| Name      | Type      | Description                                      |
+| --------- | --------- | ------------------------------------------------ |
+| requestId | `uint256` | The ID of the redeem request and associated NFT. |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="setfinalizationdelay-uint256"></a>
+
+### setFinalizationDelay
+
+Sets the finalization delay for redeem requests.
+
+```solidity
+function setFinalizationDelay(uint256 newDelay) external override onlyRiskManagerTimelock;
+```
+
+**Parameters**
+
+| Name     | Type      | Description                            |
+| -------- | --------- | -------------------------------------- |
+| newDelay | `uint256` | The new finalization delay in seconds. |
+
+<a id="setminredeemamount-uint256"></a>
+
+### setMinRedeemAmount
+
+Sets the minimum redeem amount.
+
+```solidity
+function setMinRedeemAmount(uint256 newMinRedeemAmount) external override onlyRiskManagerTimelock;
+```
+
+**Parameters**
+
+| Name               | Type      | Description                    |
+| ------------------ | --------- | ------------------------------ |
+| newMinRedeemAmount | `uint256` | The new minimum redeem amount. |
+
+<a id="setwhiteliststatus-bool"></a>
+
+### setWhitelistStatus
+
+Enables or disables the whitelist.
+
+```solidity
+function setWhitelistStatus(bool enabled) external override onlyRiskManager;
+```
+
+**Parameters**
+
+| Name    | Type   | Description                                     |
+| ------- | ------ | ----------------------------------------------- |
+| enabled | `bool` | True to enable the whitelist, false to disable. |
+
+<a id="setwhitelistedusers-address-bool"></a>
+
+### setWhitelistedUsers
+
+Whitelists or unwhitelists a list of users.
+
+```solidity
+function setWhitelistedUsers(address[] calldata users, bool whitelisted) external override onlyRiskManager;
+```
+
+**Parameters**
+
+| Name        | Type        | Description                                        |
+| ----------- | ----------- | -------------------------------------------------- |
+| users       | `address[]` | The addresses of the users to update.              |
+| whitelisted | `bool`      | True to whitelist the users, false to unwhitelist. |
+
+<a id="setsanctionscheckstatus-bool"></a>
+
+### setSanctionsCheckStatus
+
+Enables or disables sanctions screening.
+
+```solidity
+function setSanctionsCheckStatus(bool enabled) external override onlyRiskManager;
+```
+
+**Parameters**
+
+| Name    | Type   | Description                                 |
+| ------- | ------ | ------------------------------------------- |
+| enabled | `bool` | True to enable screening, false to disable. |
+
+<a id="_validatefinalizedrequest-uint256"></a>
+
+### \_validateFinalizedRequest
+
+<i>
+
+Checks that the request exists, is finalized, and has not yet been claimed.
+
+</i>
+
+```solidity
+function _validateFinalizedRequest(uint256 requestId) internal view;
+```
+
+**Parameters**
+
+| Name      | Type      | Description |
+| --------- | --------- | ----------- |
+| requestId | `uint256` |             |
+
+<a id="_validatefinalizablerequest-uint256"></a>
+
+### \_validateFinalizableRequest
+
+<i>
+
+Checks that the request exists and is eligible for finalization.
+
+</i>
+
+```solidity
+function _validateFinalizableRequest(uint256 requestId) internal view;
+```
+
+**Parameters**
+
+| Name      | Type      | Description |
+| --------- | --------- | ----------- |
+| requestId | `uint256` |             |
+
+<a id="_previewredeem-uint256"></a>
+
+### \_previewRedeem
+
+<i>
+
+Returns the amount of assets that can be obtained against a given amount of shares, under current market conditions.
+
+</i>
+
+```solidity
+function _previewRedeem(uint256 shares) internal view virtual returns (uint256);
+```
+
+**Parameters**
+
+| Name   | Type      | Description |
+| ------ | --------- | ----------- |
+| shares | `uint256` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+## Structs
+
+### AsyncRedeemerStorage
+
+**Note:**
+
+- **storage-location:** erc7201:makina.storage.AsyncRedeemer
+
+```solidity
+struct AsyncRedeemerStorage {
+        uint256 _nextRequestId;
+        uint256 _lastFinalizedRequestId;
+        uint256 _finalizationDelay;
+        mapping(uint256 requestId => IAsyncRedeemer.RedeemRequest request) _requests;
+        uint256 _minRedeemAmount;
+    }
+```
+
+**Properties**
+
+| Name                     | Type                                                                 | Description |
+| ------------------------ | -------------------------------------------------------------------- | ----------- |
+| \_nextRequestId          | `uint256`                                                            |             |
+| \_lastFinalizedRequestId | `uint256`                                                            |             |
+| \_finalizationDelay      | `uint256`                                                            |             |
+| \_requests               | `mapping(uint256 requestId => IAsyncRedeemer.RedeemRequest request)` |             |
+| \_minRedeemAmount        | `uint256`                                                            |             |

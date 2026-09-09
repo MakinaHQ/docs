@@ -1,0 +1,356 @@
+---
+title: "CoreRegistry"
+---
+
+# CoreRegistry
+
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/eb9a2fea6cac9f88783f9c769927ed7e5c2b7fd5/src/registries/CoreRegistry.sol)
+
+**Inherits:** AccessManagedUpgradeable, [ICoreRegistry](/contracts/core/interfaces/interface.ICoreRegistry)
+
+## Constants
+
+### CoreRegistryStorageLocation
+
+```solidity
+bytes32 private constant CoreRegistryStorageLocation =
+        0x12dc8e8f7173ac8c2e47b3781b91f41f03f310bb59e154cde6d484a5b5f20300;
+```
+
+## Functions
+
+<a id="_getcoreregistrystorage"></a>
+
+### \_getCoreRegistryStorage
+
+```solidity
+function _getCoreRegistryStorage() private pure returns (CoreRegistryStorage storage $);
+```
+
+**Returns**
+
+| Name | Type                  | Description |
+| ---- | --------------------- | ----------- |
+| $    | `CoreRegistryStorage` |             |
+
+<a id="__coreregistry_init-address-address-address"></a>
+
+### \_\_CoreRegistry_init
+
+```solidity
+function __CoreRegistry_init(address _oracleRegistry, address _tokenRegistry, address initialAuthority)
+        internal
+        onlyInitializing;
+```
+
+**Parameters**
+
+| Name             | Type      | Description |
+| ---------------- | --------- | ----------- |
+| \_oracleRegistry | `address` |             |
+| \_tokenRegistry  | `address` |             |
+| initialAuthority | `address` |             |
+
+<a id="corefactory"></a>
+
+### coreFactory
+
+Address of the core factory.
+
+```solidity
+function coreFactory() external view override returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="oracleregistry"></a>
+
+### oracleRegistry
+
+Address of the oracle registry.
+
+```solidity
+function oracleRegistry() external view override returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="tokenregistry"></a>
+
+### tokenRegistry
+
+Address of the token registry.
+
+```solidity
+function tokenRegistry() external view override returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="swapmodule"></a>
+
+### swapModule
+
+Address of the swap module.
+
+```solidity
+function swapModule() external view override returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="flashloanmodule"></a>
+
+### flashLoanModule
+
+Address of the flash loan module.
+
+```solidity
+function flashLoanModule() external view override returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="caliberbeacon"></a>
+
+### caliberBeacon
+
+Address of the caliber beacon contract.
+
+```solidity
+function caliberBeacon() external view override returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="bridgeadapterbeacon-uint16"></a>
+
+### bridgeAdapterBeacon
+
+Bridge ID => Address of the bridge adapter beacon contract.
+
+```solidity
+function bridgeAdapterBeacon(uint16 bridgeId) external view override returns (address);
+```
+
+**Parameters**
+
+| Name     | Type     | Description |
+| -------- | -------- | ----------- |
+| bridgeId | `uint16` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="bridgeconfig-uint16"></a>
+
+### bridgeConfig
+
+Bridge ID => Address of the bridge config contract.
+
+```solidity
+function bridgeConfig(uint16 bridgeId) external view override returns (address);
+```
+
+**Parameters**
+
+| Name     | Type     | Description |
+| -------- | -------- | ----------- |
+| bridgeId | `uint16` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="setcorefactory-address"></a>
+
+### setCoreFactory
+
+Sets the core factory address.
+
+```solidity
+function setCoreFactory(address _coreFactory) external override restricted;
+```
+
+**Parameters**
+
+| Name          | Type      | Description               |
+| ------------- | --------- | ------------------------- |
+| \_coreFactory | `address` | The core factory address. |
+
+<a id="setoracleregistry-address"></a>
+
+### setOracleRegistry
+
+Sets the oracle registry address.
+
+```solidity
+function setOracleRegistry(address _oracleRegistry) external override restricted;
+```
+
+**Parameters**
+
+| Name             | Type      | Description                  |
+| ---------------- | --------- | ---------------------------- |
+| \_oracleRegistry | `address` | The oracle registry address. |
+
+<a id="settokenregistry-address"></a>
+
+### setTokenRegistry
+
+Sets the token registry address.
+
+```solidity
+function setTokenRegistry(address _tokenRegistry) external override restricted;
+```
+
+**Parameters**
+
+| Name            | Type      | Description                 |
+| --------------- | --------- | --------------------------- |
+| \_tokenRegistry | `address` | The token registry address. |
+
+<a id="setswapmodule-address"></a>
+
+### setSwapModule
+
+Sets the swap module address.
+
+```solidity
+function setSwapModule(address _swapModule) external override restricted;
+```
+
+**Parameters**
+
+| Name         | Type      | Description              |
+| ------------ | --------- | ------------------------ |
+| \_swapModule | `address` | The swap module address. |
+
+<a id="setflashloanmodule-address"></a>
+
+### setFlashLoanModule
+
+Sets the flash loan module address.
+
+```solidity
+function setFlashLoanModule(address _flashLoanModule) external override restricted;
+```
+
+**Parameters**
+
+| Name              | Type      | Description                    |
+| ----------------- | --------- | ------------------------------ |
+| \_flashLoanModule | `address` | The flash loan module address. |
+
+<a id="setcaliberbeacon-address"></a>
+
+### setCaliberBeacon
+
+Sets the caliber beacon address.
+
+```solidity
+function setCaliberBeacon(address _caliberBeacon) external override restricted;
+```
+
+**Parameters**
+
+| Name            | Type      | Description                 |
+| --------------- | --------- | --------------------------- |
+| \_caliberBeacon | `address` | The caliber beacon address. |
+
+<a id="setbridgeadapterbeacon-uint16-address"></a>
+
+### setBridgeAdapterBeacon
+
+Sets the bridge adapter beacon address.
+
+```solidity
+function setBridgeAdapterBeacon(uint16 bridgeId, address _bridgeAdapterBeacon) external override restricted;
+```
+
+**Parameters**
+
+| Name                  | Type      | Description                        |
+| --------------------- | --------- | ---------------------------------- |
+| bridgeId              | `uint16`  | The bridge ID.                     |
+| \_bridgeAdapterBeacon | `address` | The bridge adapter beacon address. |
+
+<a id="setbridgeconfig-uint16-address"></a>
+
+### setBridgeConfig
+
+Sets the bridge config address.
+
+```solidity
+function setBridgeConfig(uint16 bridgeId, address _bridgeConfig) external override restricted;
+```
+
+**Parameters**
+
+| Name           | Type      | Description                |
+| -------------- | --------- | -------------------------- |
+| bridgeId       | `uint16`  | The bridge ID.             |
+| \_bridgeConfig | `address` | The bridge config address. |
+
+## Structs
+
+### CoreRegistryStorage
+
+**Note:**
+
+- **storage-location:** erc7201:makina.storage.CoreRegistry
+
+```solidity
+struct CoreRegistryStorage {
+        address _coreFactory;
+        address _oracleRegistry;
+        address _tokenRegistry;
+        address _swapModule;
+        address _flashLoanModule;
+        address _caliberBeacon;
+        mapping(uint16 => address) _bridgeAdapterBeacons;
+        mapping(uint16 => address) _bridgeConfigs;
+    }
+```
+
+**Properties**
+
+| Name                   | Type                         | Description |
+| ---------------------- | ---------------------------- | ----------- |
+| \_coreFactory          | `address`                    |             |
+| \_oracleRegistry       | `address`                    |             |
+| \_tokenRegistry        | `address`                    |             |
+| \_swapModule           | `address`                    |             |
+| \_flashLoanModule      | `address`                    |             |
+| \_caliberBeacon        | `address`                    |             |
+| \_bridgeAdapterBeacons | `mapping(uint16 => address)` |             |
+| \_bridgeConfigs        | `mapping(uint16 => address)` |             |

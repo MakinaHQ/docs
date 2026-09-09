@@ -1,0 +1,123 @@
+---
+title: "BooleanHelper"
+---
+
+# BooleanHelper
+
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/72aab70ea8dcedba4658cd339dd07022e28ca1b2/src/weiroll-helpers/BooleanHelper.sol)
+
+## Functions
+
+<a id="not-bool"></a>
+
+### not
+
+logical NOT operation
+
+```solidity
+function not(bool x) external pure returns (bool);
+```
+
+**Parameters**
+
+| Name | Type   | Description |
+| ---- | ------ | ----------- |
+| x    | `bool` |             |
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="and-bool-bool"></a>
+
+### and
+
+logical AND operation
+
+```solidity
+function and(bool x, bool y) external pure returns (bool);
+```
+
+**Parameters**
+
+| Name | Type   | Description |
+| ---- | ------ | ----------- |
+| x    | `bool` |             |
+| y    | `bool` |             |
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="or-bool-bool"></a>
+
+### or
+
+logical OR operation
+
+```solidity
+function or(bool x, bool y) external pure returns (bool);
+```
+
+**Parameters**
+
+| Name | Type   | Description |
+| ---- | ------ | ----------- |
+| x    | `bool` |             |
+| y    | `bool` |             |
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="revertiftrue-bool"></a>
+
+### revertIfTrue
+
+Reverts if the condition is true.
+
+```solidity
+function revertIfTrue(bool x) external pure;
+```
+
+**Parameters**
+
+| Name | Type   | Description |
+| ---- | ------ | ----------- |
+| x    | `bool` |             |
+
+<a id="revertiffalse-bool"></a>
+
+### revertIfFalse
+
+Reverts if the condition is false.
+
+```solidity
+function revertIfFalse(bool x) external pure;
+```
+
+**Parameters**
+
+| Name | Type   | Description |
+| ---- | ------ | ----------- |
+| x    | `bool` |             |
+
+## Errors
+
+### ConditionIsTrue
+
+```solidity
+error ConditionIsTrue();
+```
+
+### ConditionIsFalse
+
+```solidity
+error ConditionIsFalse();
+```

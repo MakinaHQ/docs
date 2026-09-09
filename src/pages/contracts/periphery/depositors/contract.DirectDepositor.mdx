@@ -1,0 +1,122 @@
+---
+title: "DirectDepositor"
+---
+
+# DirectDepositor
+
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/72aab70ea8dcedba4658cd339dd07022e28ca1b2/src/depositors/DirectDepositor.sol)
+
+**Inherits:** [MachinePeriphery](/contracts/periphery/utils/abstract.MachinePeriphery), [SanctionsList](/contracts/periphery/utils/abstract.SanctionsList), [Whitelist](/contracts/periphery/utils/abstract.Whitelist), [IDirectDepositor](/contracts/periphery/interfaces/interface.IDirectDepositor)
+
+## Functions
+
+<a id="constructor-address-address"></a>
+
+### constructor
+
+```solidity
+constructor(address _registry, address _sanctionsOracle)
+        MachinePeriphery(_registry)
+        SanctionsList(_sanctionsOracle);
+```
+
+**Parameters**
+
+| Name              | Type      | Description |
+| ----------------- | --------- | ----------- |
+| \_registry        | `address` |             |
+| \_sanctionsOracle | `address` |             |
+
+<a id="initialize-bytes"></a>
+
+### initialize
+
+```solidity
+function initialize(bytes calldata data) external virtual override initializer;
+```
+
+**Parameters**
+
+| Name | Type    | Description |
+| ---- | ------- | ----------- |
+| data | `bytes` |             |
+
+<a id="deposit-uint256-address-uint256-bytes32"></a>
+
+### deposit
+
+Deposits accounting tokens into the machine and mints shares to the receiver.
+
+```solidity
+function deposit(uint256 assets, address receiver, uint256 minShares, bytes32 referralKey)
+        public
+        virtual
+        override
+        sanctionsCheck
+        whitelistCheck
+        returns (uint256);
+```
+
+**Parameters**
+
+| Name        | Type      | Description                                              |
+| ----------- | --------- | -------------------------------------------------------- |
+| assets      | `uint256` | The amount of accounting tokens to deposit.              |
+| receiver    | `address` | The receiver of minted shares.                           |
+| minShares   | `uint256` | The minimum amount of shares to be minted.               |
+| referralKey | `bytes32` | The optional identifier used to track a referral source. |
+
+**Returns**
+
+| Name         | Type      | Description                         |
+| ------------ | --------- | ----------------------------------- |
+| &lt;none&gt; | `uint256` | shares The amount of shares minted. |
+
+<a id="setwhiteliststatus-bool"></a>
+
+### setWhitelistStatus
+
+Enables or disables the whitelist.
+
+```solidity
+function setWhitelistStatus(bool enabled) external override onlyRiskManager;
+```
+
+**Parameters**
+
+| Name    | Type   | Description                                     |
+| ------- | ------ | ----------------------------------------------- |
+| enabled | `bool` | True to enable the whitelist, false to disable. |
+
+<a id="setwhitelistedusers-address-bool"></a>
+
+### setWhitelistedUsers
+
+Whitelists or unwhitelists a list of users.
+
+```solidity
+function setWhitelistedUsers(address[] calldata users, bool whitelisted) external override onlyRiskManager;
+```
+
+**Parameters**
+
+| Name        | Type        | Description                                        |
+| ----------- | ----------- | -------------------------------------------------- |
+| users       | `address[]` | The addresses of the users to update.              |
+| whitelisted | `bool`      | True to whitelist the users, false to unwhitelist. |
+
+<a id="setsanctionscheckstatus-bool"></a>
+
+### setSanctionsCheckStatus
+
+Enables or disables sanctions screening.
+
+```solidity
+function setSanctionsCheckStatus(bool enabled) external override onlyRiskManager;
+```
+
+**Parameters**
+
+| Name    | Type   | Description                                 |
+| ------- | ------ | ------------------------------------------- |
+| enabled | `bool` | True to enable screening, false to disable. |

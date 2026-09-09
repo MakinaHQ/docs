@@ -51,5 +51,5 @@ The protocol assumes the input and output tokens of a transfer are **homologous 
 During [Recovery Mode](../../security/recovery-mode), bridging is restricted to the **Spoke → Hub** direction. The Hub can no longer send transfers out to spokes, and spokes can no longer authorize incoming transfers from the Hub, so an emergency can only pull capital to Hub, never push it out to a spoke.
 
 :::info[Implementation]
-See the [bridge adapters](/contracts/core/summary) and [`BridgeController`](/contracts/core/bridge/controller/BridgeController.sol/abstract.BridgeController.md).
+See the [bridge adapters](/contracts/core/summary) and [`BridgeController`](/contracts/core/bridge/controller/abstract.BridgeController).
 :::

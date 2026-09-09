@@ -1,0 +1,1457 @@
+---
+title: "Caliber"
+---
+
+# Caliber
+
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/eb9a2fea6cac9f88783f9c769927ed7e5c2b7fd5/src/caliber/Caliber.sol)
+
+**Inherits:** [MakinaContext](/contracts/core/utils/abstract.MakinaContext), AccessManagedUpgradeable, ReentrancyGuard, ERC721Holder, ERC1155Holder, [ICaliber](/contracts/core/interfaces/interface.ICaliber)
+
+## Constants
+
+### MAX_BPS
+
+<i>
+
+Full scale value in basis points.
+
+</i>
+
+```solidity
+uint256 private constant MAX_BPS = 10_000;
+```
+
+### ACCOUNTING_OUTPUT_STATE_END
+
+<i>
+
+Flag to indicate end of values in the accounting output state.
+
+</i>
+
+```solidity
+bytes32 private constant ACCOUNTING_OUTPUT_STATE_END = bytes32(type(uint256).max);
+```
+
+### weirollVm
+
+Address of the Weiroll VM.
+
+```solidity
+address public immutable weirollVm;
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+### CaliberStorageLocation
+
+```solidity
+bytes32 private constant CaliberStorageLocation =
+        0x32461bf02c7aa4aa351cd04411b6c7b9348073fbccf471c7b347bdaada044b00;
+```
+
+## Functions
+
+<a id="_getcaliberstorage"></a>
+
+### \_getCaliberStorage
+
+```solidity
+function _getCaliberStorage() private pure returns (CaliberStorage storage $);
+```
+
+**Returns**
+
+| Name | Type             | Description |
+| ---- | ---------------- | ----------- |
+| $    | `CaliberStorage` |             |
+
+<a id="constructor-address-address"></a>
+
+### constructor
+
+```solidity
+constructor(address _registry, address _weirollVm) MakinaContext(_registry);
+```
+
+**Parameters**
+
+| Name        | Type      | Description |
+| ----------- | --------- | ----------- |
+| \_registry  | `address` |             |
+| \_weirollVm | `address` |             |
+
+<a id="initialize-caliberinitparams-address-address"></a>
+
+### initialize
+
+Initializer of the contract.
+
+```solidity
+function initialize(CaliberInitParams calldata cParams, address _accountingToken, address _hubMachineEndpoint)
+        external
+        override
+        initializer;
+```
+
+**Parameters**
+
+| Name                 | Type                | Description                              |
+| -------------------- | ------------------- | ---------------------------------------- |
+| cParams              | `CaliberInitParams` | The caliber initialization parameters.   |
+| \_accountingToken    | `address`           | The address of the accounting token.     |
+| \_hubMachineEndpoint | `address`           | The address of the hub machine endpoint. |
+
+<a id="onlyoperator"></a>
+
+### onlyOperator
+
+```solidity
+modifier onlyOperator();
+```
+
+<a id="onlyriskmanager"></a>
+
+### onlyRiskManager
+
+```solidity
+modifier onlyRiskManager();
+```
+
+<a id="onlyriskmanagertimelock"></a>
+
+### onlyRiskManagerTimelock
+
+```solidity
+modifier onlyRiskManagerTimelock();
+```
+
+<a id="onlyaccountingauthorized"></a>
+
+### onlyAccountingAuthorized
+
+```solidity
+modifier onlyAccountingAuthorized();
+```
+
+<a id="authority"></a>
+
+### authority
+
+<i>
+
+Returns the current authority.
+
+</i>
+
+```solidity
+function authority() public view override returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="hubmachineendpoint"></a>
+
+### hubMachineEndpoint
+
+Address of the hub machine endpoint.
+
+```solidity
+function hubMachineEndpoint() external view override returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="accountingtoken"></a>
+
+### accountingToken
+
+Address of the accounting token.
+
+```solidity
+function accountingToken() external view override returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="positionstalethreshold"></a>
+
+### positionStaleThreshold
+
+Maximum duration a position can remain unaccounted for before it is considered stale.
+
+```solidity
+function positionStaleThreshold() external view override returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="allowedinstrroot"></a>
+
+### allowedInstrRoot
+
+Root of the Merkle tree containing allowed instructions.
+
+```solidity
+function allowedInstrRoot() public view override returns (bytes32);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `bytes32` |             |
+
+<a id="timelockduration"></a>
+
+### timelockDuration
+
+Duration of the allowedInstrRoot update timelock.
+
+```solidity
+function timelockDuration() external view override returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="pendingallowedinstrroot"></a>
+
+### pendingAllowedInstrRoot
+
+Value of the pending allowedInstrRoot, if any.
+
+```solidity
+function pendingAllowedInstrRoot() public view override returns (bytes32);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `bytes32` |             |
+
+<a id="pendingtimelockexpiry"></a>
+
+### pendingTimelockExpiry
+
+Effective time of the last scheduled allowedInstrRoot update.
+
+```solidity
+function pendingTimelockExpiry() public view override returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="maxpositionincreaselossbps"></a>
+
+### maxPositionIncreaseLossBps
+
+Max allowed value loss (in basis points) when increasing a position.
+
+```solidity
+function maxPositionIncreaseLossBps() external view override returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="maxpositiondecreaselossbps"></a>
+
+### maxPositionDecreaseLossBps
+
+Max allowed value loss (in basis points) when decreasing a position.
+
+```solidity
+function maxPositionDecreaseLossBps() external view override returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="maxswaplossbps"></a>
+
+### maxSwapLossBps
+
+Max allowed value loss (in basis points) for base token swaps.
+
+```solidity
+function maxSwapLossBps() external view override returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="cooldownduration"></a>
+
+### cooldownDuration
+
+Duration of the cooldown period for swaps and position management.
+
+```solidity
+function cooldownDuration() external view override returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="getpositionslength"></a>
+
+### getPositionsLength
+
+Length of the position IDs list.
+
+```solidity
+function getPositionsLength() external view override returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="getpositionid-uint256"></a>
+
+### getPositionId
+
+Position index => Position ID
+
+<i>
+
+There are no guarantees on the ordering of values inside the Position ID list,
+and it may change when values are added or removed.
+
+</i>
+
+```solidity
+function getPositionId(uint256 idx) external view override returns (uint256);
+```
+
+**Parameters**
+
+| Name | Type      | Description |
+| ---- | --------- | ----------- |
+| idx  | `uint256` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="getposition-uint256"></a>
+
+### getPosition
+
+Position ID => Position data
+
+```solidity
+function getPosition(uint256 posId) external view override returns (Position memory);
+```
+
+**Parameters**
+
+| Name  | Type      | Description |
+| ----- | --------- | ----------- |
+| posId | `uint256` |             |
+
+**Returns**
+
+| Name         | Type       | Description |
+| ------------ | ---------- | ----------- |
+| &lt;none&gt; | `Position` |             |
+
+<a id="isbasetoken-address"></a>
+
+### isBaseToken
+
+Token => Registered as base token in this caliber
+
+```solidity
+function isBaseToken(address token) external view override returns (bool);
+```
+
+**Parameters**
+
+| Name  | Type      | Description |
+| ----- | --------- | ----------- |
+| token | `address` |             |
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="getbasetokenslength"></a>
+
+### getBaseTokensLength
+
+Length of the base tokens list.
+
+```solidity
+function getBaseTokensLength() external view override returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="getbasetoken-uint256"></a>
+
+### getBaseToken
+
+Base token index => Base token address
+
+<i>
+
+There are no guarantees on the ordering of values inside the base tokens list,
+and it may change when values are added or removed.
+
+</i>
+
+```solidity
+function getBaseToken(uint256 idx) external view override returns (address);
+```
+
+**Parameters**
+
+| Name | Type      | Description |
+| ---- | --------- | ----------- |
+| idx  | `uint256` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="isinstrrootguardian-address"></a>
+
+### isInstrRootGuardian
+
+User => Whether the user is a root guardian
+Guardians have veto power over updates of the Merkle root.
+
+```solidity
+function isInstrRootGuardian(address user) external view override returns (bool);
+```
+
+**Parameters**
+
+| Name | Type      | Description |
+| ---- | --------- | ----------- |
+| user | `address` |             |
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="isaccountingfresh"></a>
+
+### isAccountingFresh
+
+Checks if the accounting age of each position is below the position staleness threshold.
+
+```solidity
+function isAccountingFresh() external view override returns (bool);
+```
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="getnetaum"></a>
+
+### getNetAum
+
+Returns the caliber's net AUM denominated in the accounting token.
+
+<i>
+
+Reverts if any position's accounting is stale.
+
+</i>
+
+```solidity
+function getNetAum() external view override nonReentrantView returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="getdetailedaum"></a>
+
+### getDetailedAum
+
+Returns the caliber's net AUM along with detailed position and base token breakdowns.
+
+<i>
+
+Does not revert on stale positions. Staleness is surfaced per position via the isStale flag instead.
+
+</i>
+
+```solidity
+function getDetailedAum()
+        external
+        view
+        override
+        nonReentrantView
+        returns (uint256, bytes[] memory, bytes[] memory);
+```
+
+**Returns**
+
+| Name         | Type      | Description                                                                           |
+| ------------ | --------- | ------------------------------------------------------------------------------------- |
+| &lt;none&gt; | `uint256` | The total value of all base token balances and positive positions, minus total debts. |
+| &lt;none&gt; | `bytes[]` | The array of encoded tuples of the form (positionId, value, isDebt, isStale).         |
+| &lt;none&gt; | `bytes[]` | The array of encoded tuples of the form (token, value).                               |
+
+<a id="addbasetoken-address"></a>
+
+### addBaseToken
+
+Adds a new base token.
+
+```solidity
+function addBaseToken(address token) external override onlyRiskManagerTimelock;
+```
+
+**Parameters**
+
+| Name  | Type      | Description                    |
+| ----- | --------- | ------------------------------ |
+| token | `address` | The address of the base token. |
+
+<a id="removebasetoken-address"></a>
+
+### removeBaseToken
+
+Removes a base token.
+
+```solidity
+function removeBaseToken(address token) external override onlyRiskManagerTimelock;
+```
+
+**Parameters**
+
+| Name  | Type      | Description                    |
+| ----- | --------- | ------------------------------ |
+| token | `address` | The address of the base token. |
+
+<a id="accountforposition-instruction"></a>
+
+### accountForPosition
+
+Accounts for a position.
+
+<i>
+
+If the position value goes to zero, it is closed.
+
+</i>
+
+```solidity
+function accountForPosition(Instruction calldata instruction)
+        external
+        override
+        nonReentrant
+        onlyAccountingAuthorized
+        returns (uint256, int256);
+```
+
+**Parameters**
+
+| Name        | Type          | Description                 |
+| ----------- | ------------- | --------------------------- |
+| instruction | `Instruction` | The accounting instruction. |
+
+**Returns**
+
+| Name         | Type      | Description                       |
+| ------------ | --------- | --------------------------------- |
+| &lt;none&gt; | `uint256` | The new position value.           |
+| &lt;none&gt; | `int256`  | The change in the position value. |
+
+<a id="accountforpositionbatch-instruction-uint256"></a>
+
+### accountForPositionBatch
+
+Accounts for a batch of positions.
+
+```solidity
+function accountForPositionBatch(Instruction[] calldata instructions, uint256[] calldata groupIds)
+        external
+        override
+        nonReentrant
+        onlyAccountingAuthorized
+        returns (uint256[] memory, int256[] memory);
+```
+
+**Parameters**
+
+| Name         | Type            | Description                                                                                                                                                                                                                                                                        |
+| ------------ | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| instructions | `Instruction[]` | The array of accounting instructions.                                                                                                                                                                                                                                              |
+| groupIds     | `uint256[]`     | The array of position group IDs.<br/>An accounting instruction must be provided for every open position in each specified group.<br/>If an instruction's groupId corresponds to a group of open positions of size greater than 1,<br/>the group ID must be included in this array. |
+
+**Returns**
+
+| Name         | Type        | Description                         |
+| ------------ | ----------- | ----------------------------------- |
+| &lt;none&gt; | `uint256[]` | The new position values.            |
+| &lt;none&gt; | `int256[]`  | The changes in the position values. |
+
+<a id="manageposition-instruction-instruction"></a>
+
+### managePosition
+
+Manages a position's state through paired management and accounting instructions.
+
+The matrix evaluates three factors to determine required validations:
+
+- Base Tokens flow - Whether the contract globally spent or received base tokens during operation
+
+- Debt Position - Whether position represents protocol liability (true) vs asset (false)
+
+- Position Δ direction - Direction of position value change (increase/decrease/null)
+
+┌──────────────────┬───────────────┬──────────────────────┬───────────────────────────┐
+
+│ Base Tokens flow │ Debt Position │ Position Δ direction │ Action │
+
+├──────────────────┼───────────────┼──────────────────────┼───────────────────────────┤
+
+│ Outflow │ No │ Decrease │ Revert: Invalid direction │
+
+│ Outflow │ Yes │ Increase │ Revert: Invalid direction │
+
+│ Outflow │ No │ Increase / Null │ Minimum Δ Check │
+
+│ Outflow │ Yes │ Decrease / Null │ Minimum Δ Check │
+
+│ Inflow / Null │ No │ Decrease │ Maximum Δ Check │
+
+│ Inflow / Null │ Yes │ Increase │ Maximum Δ Check │
+
+│ Inflow / Null │ No │ Increase / Null │ No check (favorable move) │
+
+│ Inflow / Null │ Yes │ Decrease / Null │ No check (favorable move) │
+
+└──────────────────┴───────────────┴──────────────────────┴───────────────────────────┘
+
+<i>
+
+Performs accounting updates and modifies contract storage by:
+
+- Adding new positions to storage when created.
+- Removing positions from storage when value reaches zero.
+
+</i>
+
+<i>
+
+Applies value preservation checks using a validation matrix to prevent
+economic inconsistencies between position changes and token flows.
+
+</i>
+
+```solidity
+function managePosition(Instruction calldata mgmtInstruction, Instruction calldata acctInstruction)
+        external
+        override
+        nonReentrant
+        onlyOperator
+        returns (uint256, int256);
+```
+
+**Parameters**
+
+| Name            | Type          | Description                 |
+| --------------- | ------------- | --------------------------- |
+| mgmtInstruction | `Instruction` | The management instruction. |
+| acctInstruction | `Instruction` | The accounting instruction. |
+
+**Returns**
+
+| Name         | Type      | Description                      |
+| ------------ | --------- | -------------------------------- |
+| &lt;none&gt; | `uint256` | The new position value.          |
+| &lt;none&gt; | `int256`  | The signed position value delta. |
+
+<a id="managepositionbatch-instruction-instruction"></a>
+
+### managePositionBatch
+
+Manages a batch of positions.
+
+<i>
+
+Convenience function to manage multiple positions in a single transaction.
+
+</i>
+
+```solidity
+function managePositionBatch(Instruction[] calldata mgmtInstructions, Instruction[] calldata acctInstructions)
+        external
+        override
+        nonReentrant
+        onlyOperator
+        returns (uint256[] memory, int256[] memory);
+```
+
+**Parameters**
+
+| Name             | Type            | Description                           |
+| ---------------- | --------------- | ------------------------------------- |
+| mgmtInstructions | `Instruction[]` | The array of management instructions. |
+| acctInstructions | `Instruction[]` | The array of accounting instructions. |
+
+**Returns**
+
+| Name         | Type        | Description                         |
+| ------------ | ----------- | ----------------------------------- |
+| &lt;none&gt; | `uint256[]` | The new position values.            |
+| &lt;none&gt; | `int256[]`  | The changes in the position values. |
+
+<a id="manageflashloan-instruction-address-uint256"></a>
+
+### manageFlashLoan
+
+Manages flash loan funds.
+
+```solidity
+function manageFlashLoan(Instruction calldata instruction, address token, uint256 amount) external override;
+```
+
+**Parameters**
+
+| Name        | Type          | Description                            |
+| ----------- | ------------- | -------------------------------------- |
+| instruction | `Instruction` | The flash loan management instruction. |
+| token       | `address`     | The loan token.                        |
+| amount      | `uint256`     | The loan amount.                       |
+
+<a id="harvest-instruction-iswapmodule-swaporder"></a>
+
+### harvest
+
+Harvests one or multiple positions.
+
+```solidity
+function harvest(Instruction calldata instruction, ISwapModule.SwapOrder[] calldata swapOrders)
+        external
+        override
+        nonReentrant
+        onlyOperator;
+```
+
+**Parameters**
+
+| Name        | Type                      | Description                                                |
+| ----------- | ------------------------- | ---------------------------------------------------------- |
+| instruction | `Instruction`             | The harvest instruction.                                   |
+| swapOrders  | `ISwapModule.SwapOrder[]` | The array of swap orders to be executed after the harvest. |
+
+<a id="swap-iswapmodule-swaporder"></a>
+
+### swap
+
+Performs a swap via the swap module.
+
+```solidity
+function swap(ISwapModule.SwapOrder calldata order) external override nonReentrant onlyOperator;
+```
+
+**Parameters**
+
+| Name  | Type                    | Description                |
+| ----- | ----------------------- | -------------------------- |
+| order | `ISwapModule.SwapOrder` | The swap order parameters. |
+
+<a id="transfertohubmachine-address-uint256-bytes"></a>
+
+### transferToHubMachine
+
+Initiates a token transfer to the hub machine.
+
+```solidity
+function transferToHubMachine(address token, uint256 amount, bytes calldata data) external override onlyOperator;
+```
+
+**Parameters**
+
+| Name   | Type      | Description                                                                                           |
+| ------ | --------- | ----------------------------------------------------------------------------------------------------- |
+| token  | `address` | The address of the token to transfer.                                                                 |
+| amount | `uint256` | The amount of tokens to transfer.                                                                     |
+| data   | `bytes`   | ABI-encoded parameters required for bridge-related transfers. Ignored when called from a hub caliber. |
+
+<a id="notifyincomingtransfer-address-uint256"></a>
+
+### notifyIncomingTransfer
+
+Instructs the Caliber to pull the specified token amount from the calling hub machine endpoint.
+
+```solidity
+function notifyIncomingTransfer(address token, uint256 amount) external override nonReentrant;
+```
+
+**Parameters**
+
+| Name   | Type      | Description                                 |
+| ------ | --------- | ------------------------------------------- |
+| token  | `address` | The address of the token being transferred. |
+| amount | `uint256` | The amount of tokens being transferred.     |
+
+<a id="setpositionstalethreshold-uint256"></a>
+
+### setPositionStaleThreshold
+
+Sets the position accounting staleness threshold.
+
+```solidity
+function setPositionStaleThreshold(uint256 newPositionStaleThreshold) external override onlyRiskManagerTimelock;
+```
+
+**Parameters**
+
+| Name                      | Type      | Description                   |
+| ------------------------- | --------- | ----------------------------- |
+| newPositionStaleThreshold | `uint256` | The new threshold in seconds. |
+
+<a id="settimelockduration-uint256"></a>
+
+### setTimelockDuration
+
+Sets the duration of the allowedInstrRoot update timelock.
+
+```solidity
+function setTimelockDuration(uint256 newTimelockDuration) external override onlyRiskManagerTimelock;
+```
+
+**Parameters**
+
+| Name                | Type      | Description                  |
+| ------------------- | --------- | ---------------------------- |
+| newTimelockDuration | `uint256` | The new duration in seconds. |
+
+<a id="scheduleallowedinstrrootupdate-bytes32"></a>
+
+### scheduleAllowedInstrRootUpdate
+
+Schedules an update of the root of the Merkle tree containing allowed instructions.
+
+<i>
+
+The update will take effect after the timelock duration stored in the contract
+at the time of the call.
+
+</i>
+
+```solidity
+function scheduleAllowedInstrRootUpdate(bytes32 newAllowedInstrRoot) external override onlyRiskManager;
+```
+
+**Parameters**
+
+| Name                | Type      | Description          |
+| ------------------- | --------- | -------------------- |
+| newAllowedInstrRoot | `bytes32` | The new Merkle root. |
+
+<a id="cancelallowedinstrrootupdate"></a>
+
+### cancelAllowedInstrRootUpdate
+
+Cancels a scheduled update of the root of the Merkle tree containing allowed instructions.
+
+<i>
+
+Reverts if no pending update exists or if the timelock has expired.
+
+</i>
+
+```solidity
+function cancelAllowedInstrRootUpdate() external override;
+```
+
+<a id="setmaxpositionincreaselossbps-uint256"></a>
+
+### setMaxPositionIncreaseLossBps
+
+Sets the max allowed value loss for position increases.
+
+```solidity
+function setMaxPositionIncreaseLossBps(uint256 newMaxPositionIncreaseLossBps)
+        external
+        override
+        onlyRiskManagerTimelock;
+```
+
+**Parameters**
+
+| Name                          | Type      | Description                             |
+| ----------------------------- | --------- | --------------------------------------- |
+| newMaxPositionIncreaseLossBps | `uint256` | The new max value loss in basis points. |
+
+<a id="setmaxpositiondecreaselossbps-uint256"></a>
+
+### setMaxPositionDecreaseLossBps
+
+Sets the max allowed value loss for position decreases.
+
+```solidity
+function setMaxPositionDecreaseLossBps(uint256 newMaxPositionDecreaseLossBps)
+        external
+        override
+        onlyRiskManagerTimelock;
+```
+
+**Parameters**
+
+| Name                          | Type      | Description                             |
+| ----------------------------- | --------- | --------------------------------------- |
+| newMaxPositionDecreaseLossBps | `uint256` | The new max value loss in basis points. |
+
+<a id="setmaxswaplossbps-uint256"></a>
+
+### setMaxSwapLossBps
+
+Sets the max allowed value loss for base token swaps.
+
+```solidity
+function setMaxSwapLossBps(uint256 newMaxSwapLossBps) external override onlyRiskManagerTimelock;
+```
+
+**Parameters**
+
+| Name              | Type      | Description                             |
+| ----------------- | --------- | --------------------------------------- |
+| newMaxSwapLossBps | `uint256` | The new max value loss in basis points. |
+
+<a id="setcooldownduration-uint256"></a>
+
+### setCooldownDuration
+
+Sets the duration of the cooldown period for swaps and position management.
+
+```solidity
+function setCooldownDuration(uint256 newCooldownDuration) external override onlyRiskManagerTimelock;
+```
+
+**Parameters**
+
+| Name                | Type      | Description                  |
+| ------------------- | --------- | ---------------------------- |
+| newCooldownDuration | `uint256` | The new duration in seconds. |
+
+<a id="addinstrrootguardian-address"></a>
+
+### addInstrRootGuardian
+
+Adds a new guardian for the Merkle tree containing allowed instructions.
+
+```solidity
+function addInstrRootGuardian(address newGuardian) external override restricted;
+```
+
+**Parameters**
+
+| Name        | Type      | Description                      |
+| ----------- | --------- | -------------------------------- |
+| newGuardian | `address` | The address of the new guardian. |
+
+<a id="removeinstrrootguardian-address"></a>
+
+### removeInstrRootGuardian
+
+Removes a guardian for the Merkle tree containing allowed instructions.
+
+```solidity
+function removeInstrRootGuardian(address guardian) external override restricted;
+```
+
+**Parameters**
+
+| Name     | Type      | Description                            |
+| -------- | --------- | -------------------------------------- |
+| guardian | `address` | The address of the guardian to remove. |
+
+<a id="_getaum-bool"></a>
+
+### \_getAum
+
+<i>
+
+Computes the net AUM by summing the value of all positions and base token balances, and subtracting total debt.
+Optionally returns the detail of each position and base token values.
+
+</i>
+
+```solidity
+function _getAum(bool posDetails) internal view returns (uint256, bytes[] memory, bytes[] memory);
+```
+
+**Parameters**
+
+| Name       | Type   | Description |
+| ---------- | ------ | ----------- |
+| posDetails | `bool` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+| &lt;none&gt; | `bytes[]` |             |
+| &lt;none&gt; | `bytes[]` |             |
+
+<a id="_addbasetoken-address"></a>
+
+### \_addBaseToken
+
+<i>
+
+Adds a new base token to storage.
+
+</i>
+
+```solidity
+function _addBaseToken(address token) internal;
+```
+
+**Parameters**
+
+| Name  | Type      | Description |
+| ----- | --------- | ----------- |
+| token | `address` |             |
+
+<a id="_manageposition-instruction-instruction"></a>
+
+### \_managePosition
+
+<i>
+
+Manages and accounts for a position by executing the provided instructions.
+
+</i>
+
+```solidity
+function _managePosition(Instruction calldata mgmtInstruction, Instruction calldata acctInstruction)
+        internal
+        returns (uint256, int256);
+```
+
+**Parameters**
+
+| Name            | Type          | Description |
+| --------------- | ------------- | ----------- |
+| mgmtInstruction | `Instruction` |             |
+| acctInstruction | `Instruction` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+| &lt;none&gt; | `int256`  |             |
+
+<a id="_accountforposition-instruction-bool"></a>
+
+### \_accountForPosition
+
+<i>
+
+Computes the accounting value of a position. Depending on last and current value, the
+position is then either created, closed or simply updated in storage.
+
+</i>
+
+```solidity
+function _accountForPosition(Instruction calldata instruction, bool checks) internal returns (uint256, int256);
+```
+
+**Parameters**
+
+| Name        | Type          | Description |
+| ----------- | ------------- | ----------- |
+| instruction | `Instruction` |             |
+| checks      | `bool`        |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+| &lt;none&gt; | `int256`  |             |
+
+<a id="_decodeaccountingoutputstate-bytes"></a>
+
+### \_decodeAccountingOutputState
+
+<i>
+
+Decodes the output state of an accounting instruction into an array of amounts.
+
+</i>
+
+```solidity
+function _decodeAccountingOutputState(bytes[] memory state) internal pure returns (uint256[] memory);
+```
+
+**Parameters**
+
+| Name  | Type      | Description |
+| ----- | --------- | ----------- |
+| state | `bytes[]` |             |
+
+**Returns**
+
+| Name         | Type        | Description |
+| ------------ | ----------- | ----------- |
+| &lt;none&gt; | `uint256[]` |             |
+
+<a id="_invalidategroupedpositions-uint256"></a>
+
+### \_invalidateGroupedPositions
+
+<i>
+
+Marks all positions in a given group as stale, except for the position currently being managed.
+
+</i>
+
+```solidity
+function _invalidateGroupedPositions(uint256 groupId) internal;
+```
+
+**Parameters**
+
+| Name    | Type      | Description |
+| ------- | --------- | ----------- |
+| groupId | `uint256` |             |
+
+<a id="_includesgroupid-uint256-uint256"></a>
+
+### \_includesGroupId
+
+<i>
+
+Checks if a given group ID is included in the provided array of group IDs.
+
+</i>
+
+```solidity
+function _includesGroupId(uint256[] calldata groupIds, uint256 groupId) internal pure returns (bool);
+```
+
+**Parameters**
+
+| Name     | Type        | Description |
+| -------- | ----------- | ----------- |
+| groupIds | `uint256[]` |             |
+| groupId  | `uint256`   |             |
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="_accountingvalueof-address-uint256"></a>
+
+### \_accountingValueOf
+
+<i>
+
+Computes the accounting value of a given token amount.
+
+</i>
+
+```solidity
+function _accountingValueOf(address token, uint256 amount) internal view returns (uint256);
+```
+
+**Parameters**
+
+| Name   | Type      | Description |
+| ------ | --------- | ----------- |
+| token  | `address` |             |
+| amount | `uint256` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="_checkpositionmindelta-uint256-uint256-uint256"></a>
+
+### \_checkPositionMinDelta
+
+<i>
+
+Checks that absolute position value change is greater than minimum value relative to affected token balance changes and loss tolerance.
+
+</i>
+
+```solidity
+function _checkPositionMinDelta(uint256 positionValChange, uint256 affectedTokensValChange, uint256 maxLossBps)
+        internal
+        pure;
+```
+
+**Parameters**
+
+| Name                    | Type      | Description |
+| ----------------------- | --------- | ----------- |
+| positionValChange       | `uint256` |             |
+| affectedTokensValChange | `uint256` |             |
+| maxLossBps              | `uint256` |             |
+
+<a id="_checkpositionmaxdelta-uint256-uint256-uint256"></a>
+
+### \_checkPositionMaxDelta
+
+<i>
+
+Checks that absolute position value change is less than maximum value relative to affected token balance changes and loss tolerance.
+
+</i>
+
+```solidity
+function _checkPositionMaxDelta(uint256 positionValChange, uint256 affectedTokensValChange, uint256 maxLossBps)
+        internal
+        pure;
+```
+
+**Parameters**
+
+| Name                    | Type      | Description |
+| ----------------------- | --------- | ----------- |
+| positionValChange       | `uint256` |             |
+| affectedTokensValChange | `uint256` |             |
+| maxLossBps              | `uint256` |             |
+
+<a id="_checkinstructionisallowed-instruction"></a>
+
+### \_checkInstructionIsAllowed
+
+<i>
+
+Checks if the given instruction is allowed by verifying its Merkle proof against the allowed instructions root.
+
+</i>
+
+```solidity
+function _checkInstructionIsAllowed(Instruction calldata instruction) internal;
+```
+
+**Parameters**
+
+| Name        | Type          | Description               |
+| ----------- | ------------- | ------------------------- |
+| instruction | `Instruction` | The instruction to check. |
+
+<a id="_getstatehash-bytes-uint128"></a>
+
+### \_getStateHash
+
+<i>
+
+Computes a hash of the state array, selectively including elements as specified by a bitmap.
+This enables a weiroll script to have both fixed and variable parameters.
+
+</i>
+
+```solidity
+function _getStateHash(bytes[] calldata state, uint128 bitmap) internal pure returns (bytes32);
+```
+
+**Parameters**
+
+| Name   | Type      | Description                                                                                                                     |
+| ------ | --------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| state  | `bytes[]` | The state array to hash.                                                                                                        |
+| bitmap | `uint128` | The bitmap where each bit determines whether the corresponding element in state is included or ignored in the hash computation. |
+
+**Returns**
+
+| Name         | Type      | Description                       |
+| ------------ | --------- | --------------------------------- |
+| &lt;none&gt; | `bytes32` | hash The hash of the state array. |
+
+<a id="_updateallowedinstrroot"></a>
+
+### \_updateAllowedInstrRoot
+
+<i>
+
+Updates the allowed instructions root if a pending update is scheduled and the timelock has expired.
+
+</i>
+
+```solidity
+function _updateAllowedInstrRoot() internal returns (bytes32);
+```
+
+**Returns**
+
+| Name         | Type      | Description                                        |
+| ------------ | --------- | -------------------------------------------------- |
+| &lt;none&gt; | `bytes32` | currentRoot The current allowed instructions root. |
+
+<a id="_swap-iswapmodule-swaporder"></a>
+
+### \_swap
+
+```solidity
+function _swap(ISwapModule.SwapOrder calldata order) internal;
+```
+
+**Parameters**
+
+| Name  | Type                    | Description |
+| ----- | ----------------------- | ----------- |
+| order | `ISwapModule.SwapOrder` |             |
+
+<a id="_execute-bytes32-bytes"></a>
+
+### \_execute
+
+<i>
+
+Executes a set of commands on the Weiroll VM, via a delegatecall.
+
+</i>
+
+```solidity
+function _execute(bytes32[] calldata commands, bytes[] memory state) internal returns (bytes[] memory);
+```
+
+**Parameters**
+
+| Name     | Type        | Description                  |
+| -------- | ----------- | ---------------------------- |
+| commands | `bytes32[]` | The commands to execute.     |
+| state    | `bytes[]`   | The state to pass to the VM. |
+
+**Returns**
+
+| Name         | Type      | Description                                          |
+| ------------ | --------- | ---------------------------------------------------- |
+| &lt;none&gt; | `bytes[]` | outState The new state after executing the commands. |
+
+## Structs
+
+### CaliberStorage
+
+**Note:**
+
+- **storage-location:** erc7201:makina.storage.Caliber
+
+```solidity
+struct CaliberStorage {
+        address _hubMachineEndpoint;
+        address _accountingToken;
+        uint256 _positionStaleThreshold;
+        bytes32 _allowedInstrRoot;
+        uint256 _timelockDuration;
+        bytes32 _pendingAllowedInstrRoot;
+        uint256 _pendingTimelockExpiry;
+        uint256 _maxPositionIncreaseLossBps;
+        uint256 _maxPositionDecreaseLossBps;
+        uint256 _maxSwapLossBps;
+        uint256 _managedPositionId;
+        bool _isManagedPositionDebt;
+        bool _isManagingFlashLoan;
+        uint256 _cooldownDuration;
+        uint256 _lastBTSwapTimestamp;
+        mapping(bytes32 executionHash => uint256 timestamp) _lastExecTimestamps;
+        mapping(uint256 posId => Position pos) _positionById;
+        mapping(uint256 groupId => EnumerableSet.UintSet positionIds) _positionIdsByGroup;
+        EnumerableSet.UintSet _positionIds;
+        EnumerableSet.AddressSet _baseTokens;
+        EnumerableSet.AddressSet _instrRootGuardians;
+        EnumerableSet.AddressSet _positionTokens;
+    }
+```
+
+**Properties**
+
+| Name                         | Type                                                            | Description |
+| ---------------------------- | --------------------------------------------------------------- | ----------- |
+| \_hubMachineEndpoint         | `address`                                                       |             |
+| \_accountingToken            | `address`                                                       |             |
+| \_positionStaleThreshold     | `uint256`                                                       |             |
+| \_allowedInstrRoot           | `bytes32`                                                       |             |
+| \_timelockDuration           | `uint256`                                                       |             |
+| \_pendingAllowedInstrRoot    | `bytes32`                                                       |             |
+| \_pendingTimelockExpiry      | `uint256`                                                       |             |
+| \_maxPositionIncreaseLossBps | `uint256`                                                       |             |
+| \_maxPositionDecreaseLossBps | `uint256`                                                       |             |
+| \_maxSwapLossBps             | `uint256`                                                       |             |
+| \_managedPositionId          | `uint256`                                                       |             |
+| \_isManagedPositionDebt      | `bool`                                                          |             |
+| \_isManagingFlashLoan        | `bool`                                                          |             |
+| \_cooldownDuration           | `uint256`                                                       |             |
+| \_lastBTSwapTimestamp        | `uint256`                                                       |             |
+| \_lastExecTimestamps         | `mapping(bytes32 executionHash => uint256 timestamp)`           |             |
+| \_positionById               | `mapping(uint256 posId => Position pos)`                        |             |
+| \_positionIdsByGroup         | `mapping(uint256 groupId => EnumerableSet.UintSet positionIds)` |             |
+| \_positionIds                | `EnumerableSet.UintSet`                                         |             |
+| \_baseTokens                 | `EnumerableSet.AddressSet`                                      |             |
+| \_instrRootGuardians         | `EnumerableSet.AddressSet`                                      |             |
+| \_positionTokens             | `EnumerableSet.AddressSet`                                      |             |

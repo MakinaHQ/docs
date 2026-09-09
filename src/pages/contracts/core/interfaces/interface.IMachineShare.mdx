@@ -1,0 +1,61 @@
+---
+title: "IMachineShare"
+---
+
+# IMachineShare
+
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/eb9a2fea6cac9f88783f9c769927ed7e5c2b7fd5/src/interfaces/IMachineShare.sol)
+
+**Inherits:** IERC20Metadata
+
+## Functions
+
+<a id="minter"></a>
+
+### minter
+
+Address of the authorized minter and burner.
+
+```solidity
+function minter() external view returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="mint-address-uint256"></a>
+
+### mint
+
+Mints new shares to the specified address.
+
+```solidity
+function mint(address to, uint256 amount) external;
+```
+
+**Parameters**
+
+| Name   | Type      | Description                         |
+| ------ | --------- | ----------------------------------- |
+| to     | `address` | The recipient of the minted shares. |
+| amount | `uint256` | The amount of shares to mint.       |
+
+<a id="burn-address-uint256"></a>
+
+### burn
+
+Burns shares from the specified address.
+
+```solidity
+function burn(address from, uint256 amount) external;
+```
+
+**Parameters**
+
+| Name   | Type      | Description                      |
+| ------ | --------- | -------------------------------- |
+| from   | `address` | The owner of the shares to burn. |
+| amount | `uint256` | The amount of shares to burn.    |

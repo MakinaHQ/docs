@@ -1,0 +1,26 @@
+---
+title: "ICctpV2DestinationCaller"
+---
+
+# ICctpV2DestinationCaller
+
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/eb9a2fea6cac9f88783f9c769927ed7e5c2b7fd5/src/interfaces/ICctpV2DestinationCaller.sol)
+
+## Functions
+
+<a id="receivecctpv2message-bytes-bytes"></a>
+
+### receiveCctpV2Message
+
+Handles reception of a CCTP V2 message and signature.
+
+```solidity
+function receiveCctpV2Message(bytes calldata message, bytes calldata attestation) external;
+```
+
+**Parameters**
+
+| Name        | Type    | Description                    |
+| ----------- | ------- | ------------------------------ |
+| message     | `bytes` | The CCTP V2 message raw bytes. |
+| attestation | `bytes` | The message signature.         |
