@@ -29,7 +29,6 @@ Infrastructure contracts present on **both hub and spokes**:
 Infrastructure contracts present **only on the hub** (Mainnet):
 
 - `HubCoreRegistry`, `HubCoreFactory`
-- `ChainRegistry`
 - `HubPeripheryRegistry`, `HubPeripheryFactory`
 - `MachineShareOracleFactory`, `MetaMorphoOracleFactory`
 

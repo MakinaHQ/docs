@@ -45,7 +45,7 @@ A variant, [`AsyncRedeemerFee`](/contracts/periphery/redeemers/contract.AsyncRed
 
 ### Whitelisting
 
-Like the [DirectDepositor](deposits#whitelisting), the AsyncRedeemer supports an optional whitelist gating both _requesting_ a redemption and _claiming_ assets, used by strategies that restrict participation to approved addresses.
+Like the [DirectDepositor](deposits#whitelisting), the AsyncRedeemer supports an optional whitelist gating both _requesting_ a redemption and _claiming_ assets, used by strategies that restrict participation to approved addresses. It also supports the same optional [sanctions screening](deposits#sanctions-screening) as the DirectDepositor, applied to both requesting and claiming.
 
 :::note
 Settlement timing depends on the Operator freeing liquidity, and Makina does not force or guarantee a settlement schedule. The finalization delay and FIFO ordering ensure requests are handled fairly and in sequence.

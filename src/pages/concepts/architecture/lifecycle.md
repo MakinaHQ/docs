@@ -86,7 +86,7 @@ flowchart TB
         HC["Hub Caliber<br/>values its positions"]:::core
         M["Machine"]:::core
     end
-    SC -- "Wormhole CCQ<br/>(signed accounting data)" --> M
+    SC -- "Chainlink CRE<br/>(accounting snapshot)" --> M
     HC -- "direct call" --> M
     M -- "idle + hub + spokes<br/>+ in-flight bridges" --> AUM["Total AUM"]:::out
     AUM --> SP["Share Price = AUM ÷ Shares"]:::out
@@ -96,7 +96,7 @@ flowchart TB
 ```
 
 - Each Caliber values its [positions](caliber/positions) and base-token balances in the accounting token. Position values must be kept fresh: stale positions cause accounting to fail, so they are re-accounted regularly, by anyone when accounting is open or by the Operator and designated agents when the strategy restricts it (a common configuration). See [Caliber Accounting](caliber/caliber-accounting).
-- Spoke Caliber values are carried to the Machine through [Wormhole Cross-Chain Queries](cross-chain/cross-chain-accounting), a pull-based, guardian-signed mechanism.
+- Spoke Caliber values are carried to the Machine through [Chainlink CRE](cross-chain/cross-chain-accounting), which relays each spoke's accounting snapshot to the Hub.
 - The Machine sums **idle balance + Hub Caliber + all Spoke Calibers + in-flight bridge transfers** into total AUM, then derives the [share price](machine/share-price). In-flight bridges are counted so that value is never "lost" while crossing chains.
 - When AUM is updated, [fees](machine/fees) are minted as new shares and distributed to the Operator, the protocol, and the [Security Module](../security/security-module), subject to per-strategy rate caps and a minimum interval.
 

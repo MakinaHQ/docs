@@ -13,7 +13,7 @@ sequenceDiagram
     participant D as Depositor
     participant M as Machine
     User->>D: deposit(assets, minShares)
-    Note over D: whitelist check (if enabled)
+    Note over D: sanctions and whitelist checks (if enabled)
     D->>M: forward accounting token
     M->>M: shares = assets ÷ share price
     M-->>User: mint shares (≥ minShares, else revert)
@@ -28,6 +28,10 @@ The standard implementation, [`DirectDepositor`](/contracts/periphery/depositors
 ### Whitelisting
 
 The DirectDepositor supports an optional **whitelist**. When enabled, only approved addresses may deposit, the mechanism strategies use to restrict participation to, e.g., KYC-verified users. When disabled, deposits are open to anyone. The whitelist is toggled and managed by the [Risk Manager](../../governance/risk-manager). The same whitelist primitive gates [redemptions](redemptions#whitelisting) and the [Pre-Deposit Vault](pre-deposit).
+
+### Sanctions screening
+
+Independently of the whitelist, the DirectDepositor can screen the caller of every deposit against the [Chainalysis sanctions oracle](https://go.chainalysis.com/chainalysis-oracle-docs.html) and reject sanctioned addresses. The check is optional and toggled by the [Risk Manager](../../governance/risk-manager). It is complementary to whitelisting: a strategy can enable either, both, or neither. The same screening is available on the [AsyncRedeemer](redemptions#whitelisting).
 
 ## Deposit limits
 

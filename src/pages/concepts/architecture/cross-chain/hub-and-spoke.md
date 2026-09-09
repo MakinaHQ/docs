@@ -46,15 +46,10 @@ A Spoke Caliber works exactly like the Hub Caliber, except it can't talk to the 
 Spanning chains creates two distinct challenges, each with its own mechanism:
 
 1. **Moving value across chains.** Capital must travel between the Hub and the Spokes, and value must never appear lost while it's in transit. This is handled by [Liquidity Bridging](liquidity-bridging), a deliberate, multi-step process over approved bridge adapters, with in-flight transfers explicitly tracked in AUM.
-2. **Knowing value across chains.** The Machine must learn what each Spoke Caliber is worth in order to compute total AUM, without trusting a single reporter. This is handled by [Cross-Chain Accounting](cross-chain-accounting), which uses Wormhole's guardian-signed Cross-Chain Queries to pull each Spoke's accounting to the Hub.
+2. **Knowing value across chains.** The Machine must learn what each Spoke Caliber is worth in order to compute total AUM, without trusting a single reporter. This is handled by [Cross-Chain Accounting](cross-chain-accounting), which relies on Chainlink CRE to relay each Spoke's accounting snapshot to the Hub.
 
 The next pages cover each in turn.
 
 ## Shared cross-chain infrastructure
 
-Reasoning about "the same token on another chain" and "which chain is which" requires shared maps, deployed once per chain:
-
-- the **Token Registry** maps a local token to its equivalent address on each foreign chain;
-- the **Chain Registry** maps EVM chain IDs to the identifiers used by Wormhole CCQ.
-
-These are what let bridging and accounting refer unambiguously to assets and chains across the whole deployment.
+Reasoning about "the same token on another chain" requires a shared map, deployed once per chain: the **Token Registry** maps a local token to its equivalent address on each foreign chain. It is what lets bridging and accounting refer unambiguously to assets across the whole deployment.

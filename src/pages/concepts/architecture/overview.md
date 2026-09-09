@@ -58,7 +58,6 @@ Alongside the per-strategy contracts, a set of **protocol-wide infrastructure** 
 
 - The **[Oracle Registry](pricing-oracles)** prices any token against the strategy's reference asset using Chainlink-compatible price feeds, the foundation of all accounting.
 - The **[Token Registry](/contracts/core/registries/contract.TokenRegistry)** maps a token to its equivalent address on each foreign chain, so the protocol can reason about "the same token, on another chain."
-- The **Chain Registry** maps EVM chain IDs to the chain identifiers used by Wormhole CCQ, the cross-chain queries that carry [spoke accounting](cross-chain/cross-chain-accounting) back to the Hub.
 - The **Swap Module** routes [swaps](caliber/swaps) through approved external aggregators.
 - **Registries and factories** deploy new strategies and let the protocol resolve and upgrade shared dependencies. See [Protocol Upgrades](../governance/protocol-upgrades).
 
@@ -70,7 +69,7 @@ Three flows tie the system together. Each has its own section, summarized in one
 
 **Capital flow.** Users deposit the [accounting token](#glossary) through the [Depositor](machine/deposits) and receive shares. The [Operator](../governance/operator) moves idle capital from the Machine into Calibers (and across chains via [bridging](cross-chain/liquidity-bridging)), where it is deployed into [positions](caliber/positions). To exit, users request a redemption through the [Redeemer](machine/redemptions). The Operator frees up liquidity and the redemption is settled. See [Asset Lifecycle](lifecycle).
 
-**Accounting flow.** Each Caliber values everything it holds in the accounting token. The Machine sums the value of its idle balance, the Hub Caliber, and every Spoke Caliber to produce the strategy's total AUM, from which the share price is derived. Because Spoke Calibers live on other chains, their values are brought to the Machine through [Wormhole Cross-Chain Queries](cross-chain/cross-chain-accounting). See [Share Price](machine/share-price).
+**Accounting flow.** Each Caliber values everything it holds in the accounting token. The Machine sums the value of its idle balance, the Hub Caliber, and every Spoke Caliber to produce the strategy's total AUM, from which the share price is derived. Because Spoke Calibers live on other chains, their values are relayed to the Machine through [Chainlink CRE](cross-chain/cross-chain-accounting). See [Share Price](machine/share-price).
 
 **Control flow.** The Operator executes the strategy but only within bounds: a pre-approved [instruction set](caliber/makina-vm), per-position [risk caps](../governance/risk-manager), loss limits, and cooldowns. The [Risk Manager](../governance/risk-manager) sets those bounds (most changes pass through a timelock), and the [Security Council](../governance/security-council) can veto changes and trigger [Recovery Mode](../security/recovery-mode). See [Roles & Governance](../governance/overview).
 
