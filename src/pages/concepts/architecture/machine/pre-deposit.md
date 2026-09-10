@@ -7,7 +7,7 @@ sidebar_position: 5
 
 A strategy is more effective when it launches with capital already in hand: it can start diversified and allocate efficiently from day one rather than scaling up from zero. **Pre-deposits** let a strategy gather that baseline liquidity _before_ its [Machine](overview) goes live.
 
-The [`PreDepositVault`](/contracts/core/pre-deposit/PreDepositVault.sol/contract.PreDepositVault.md) is a temporary vault that accepts a single **pre-deposit asset**, typically a yield-bearing token that:
+The [`PreDepositVault`](/contracts/core/pre-deposit/contract.PreDepositVault) is a temporary vault that accepts a single **pre-deposit asset**, typically a yield-bearing token that:
 
 - is **priceable** against the strategy's [accounting token](overview#the-accounting-token) through the [Oracle Registry](../pricing-oracles), and
 - will later be enabled as a [base token](../caliber/base-tokens) of the strategy.

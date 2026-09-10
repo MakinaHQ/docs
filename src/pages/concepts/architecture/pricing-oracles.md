@@ -40,5 +40,5 @@ The Oracle Registry is consulted whenever value must be measured:
 Which feeds and routes are registered for which tokens is governed configuration, managed by the protocol's infrastructure-configuration role behind a [timelock](../governance/permissions-and-scopes). A token cannot become a [base token](caliber/base-tokens) until a valid route exists for it here.
 
 :::info[Implementation]
-Oracle Registry reference: [`OracleRegistry.sol`](/contracts/core/registries/OracleRegistry.sol/contract.OracleRegistry.md).
+Oracle Registry reference: [`OracleRegistry.sol`](/contracts/core/registries/contract.OracleRegistry).
 :::

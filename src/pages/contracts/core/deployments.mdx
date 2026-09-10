@@ -6,123 +6,192 @@ import { Tabs, Tab } from "vocs";
 
 # Deployments
 
-Below are the addresses of protocol-wide core contracts.
+Makina runs as **instances**: a hub chain that hosts Machines, plus the spoke chains its Calibers can expand to. Each instance has its own core registry, factory, beacons and swap module. Chain-scoped infrastructure (AccessManager, OracleRegistry, TokenRegistry and the bridge configs) is deployed once per chain and shared by every instance present on that chain.
 
 :::info
 
-For strategy-specific contracts, see the [Strategies](../../strategies/deployments.mdx) page.
+For strategy-specific contracts, see the [Strategies](../../strategies/deployments) page.
 
 :::
 
 {/* prettier-ignore-start */}
 
+## Shared infrastructure
+
+Deployed once per chain and used by every instance on that chain. Addresses are identical on all chains.
+
 <Tabs>
   <Tab title="Ethereum">
-    | Contract                       | Address                                                                                                                 |
-    | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
-    | AccessManager                  | [`0x0fCEfa3f1047F35521A49cD8B06faBd588665d7F`](https://etherscan.io/address/0x0fCEfa3f1047F35521A49cD8B06faBd588665d7F) |
-    | HubCoreRegistry                | [`0x0FAEeCEab0BCb63bE2Fe984Ea8c77778989d53eA`](https://etherscan.io/address/0x0FAEeCEab0BCb63bE2Fe984Ea8c77778989d53eA) |
-    | OracleRegistry                 | [`0xC388B72AB90Be82B230D919F9C05c87F9397f485`](https://etherscan.io/address/0xC388B72AB90Be82B230D919F9C05c87F9397f485) |
-    | TokenRegistry                  | [`0xd9310A41d085c0DC1E40F691e8647080862A5fd4`](https://etherscan.io/address/0xd9310A41d085c0DC1E40F691e8647080862A5fd4) |
-    | ChainRegistry                  | [`0x45681FCf26EF1dCa89ae2B8B97c6447ea68771Df`](https://etherscan.io/address/0x45681FCf26EF1dCa89ae2B8B97c6447ea68771Df) |
-    | HubCoreFactory                 | [`0x8d28A69328561eF9F171c58996fEcB9F494e070c`](https://etherscan.io/address/0x8d28A69328561eF9F171c58996fEcB9F494e070c) |
-    | SwapModule                     | [`0x923c98b22F9c367A109E93f7dfBaCa28b20C17C3`](https://etherscan.io/address/0x923c98b22F9c367A109E93f7dfBaCa28b20C17C3) |
-    | CaliberBeacon                  | [`0x3f5A881DB86D6f495823028A1e892E7b2CD7e162`](https://etherscan.io/address/0x3f5A881DB86D6f495823028A1e892E7b2CD7e162) |
-    | MachineBeacon                  | [`0x5C680EC39bafE8524F3C2fa9d5F6D65F09Bd7333`](https://etherscan.io/address/0x5C680EC39bafE8524F3C2fa9d5F6D65F09Bd7333) |
-    | AcrossV3BridgeAdapterBeacon    | [`0x511C3F33417275d060932458DD987bd47c9ca678`](https://etherscan.io/address/0x511C3F33417275d060932458DD987bd47c9ca678) |
-    | AcrossV3BridgeConfig           | [`0xDdE7FD6f25c9a58c5ec3E278d31e8584f236da86`](https://etherscan.io/address/0xDdE7FD6f25c9a58c5ec3E278d31e8584f236da86) |
-    | LayerZeroV2BridgeAdapterBeacon | [`0x1108204c18FCB5e0b2b38Cbd3B783b2A56B42467`](https://etherscan.io/address/0x1108204c18FCB5e0b2b38Cbd3B783b2A56B42467) |
-    | LayerZeroV2BridgeConfig        | [`0x1B064336D9C4999C942Ecc36e36d48a411343771`](https://etherscan.io/address/0x1B064336D9C4999C942Ecc36e36d48a411343771) |
-    | CctpV2BridgeAdapterBeacon      | [`0xFD58f8e3569197677CEEB6AaFEb8147b715513CC`](https://etherscan.io/address/0xFD58f8e3569197677CEEB6AaFEb8147b715513CC) |
-    | CctpV2BridgeConfig             | [`0x1be75B412cc8bE1bf64A84D40322dD889cfD6134`](https://etherscan.io/address/0x1be75B412cc8bE1bf64A84D40322dD889cfD6134) |
+    | Contract                | Address |
+    | ----------------------- | ------- |
+    | AccessManager           | [`0x0fCEfa3f1047F35521A49cD8B06faBd588665d7F`](https://etherscan.io/address/0x0fCEfa3f1047F35521A49cD8B06faBd588665d7F) |
+    | OracleRegistry          | [`0xC388B72AB90Be82B230D919F9C05c87F9397f485`](https://etherscan.io/address/0xC388B72AB90Be82B230D919F9C05c87F9397f485) |
+    | TokenRegistry           | [`0xd9310A41d085c0DC1E40F691e8647080862A5fd4`](https://etherscan.io/address/0xd9310A41d085c0DC1E40F691e8647080862A5fd4) |
+    | AcrossV3BridgeConfig    | [`0xDdE7FD6f25c9a58c5ec3E278d31e8584f236da86`](https://etherscan.io/address/0xDdE7FD6f25c9a58c5ec3E278d31e8584f236da86) |
+    | LayerZeroV2BridgeConfig | [`0x1B064336D9C4999C942Ecc36e36d48a411343771`](https://etherscan.io/address/0x1B064336D9C4999C942Ecc36e36d48a411343771) |
+    | CctpV2BridgeConfig      | [`0x09baC7B5a8e5CEeEe21A33642Bc817cF41e80E3D`](https://etherscan.io/address/0x09baC7B5a8e5CEeEe21A33642Bc817cF41e80E3D) |
   </Tab>
   <Tab title="Base">
-    | Contract                       | Address                                                                                                                 |
-    | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
-    | AccessManager                  | [`0x0fCEfa3f1047F35521A49cD8B06faBd588665d7F`](https://basescan.org/address/0x0fCEfa3f1047F35521A49cD8B06faBd588665d7F) |
+    | Contract                | Address |
+    | ----------------------- | ------- |
+    | AccessManager           | [`0x0fCEfa3f1047F35521A49cD8B06faBd588665d7F`](https://basescan.org/address/0x0fCEfa3f1047F35521A49cD8B06faBd588665d7F) |
+    | OracleRegistry          | [`0xC388B72AB90Be82B230D919F9C05c87F9397f485`](https://basescan.org/address/0xC388B72AB90Be82B230D919F9C05c87F9397f485) |
+    | TokenRegistry           | [`0xd9310A41d085c0DC1E40F691e8647080862A5fd4`](https://basescan.org/address/0xd9310A41d085c0DC1E40F691e8647080862A5fd4) |
+    | AcrossV3BridgeConfig    | [`0xDdE7FD6f25c9a58c5ec3E278d31e8584f236da86`](https://basescan.org/address/0xDdE7FD6f25c9a58c5ec3E278d31e8584f236da86) |
+    | LayerZeroV2BridgeConfig | [`0x1B064336D9C4999C942Ecc36e36d48a411343771`](https://basescan.org/address/0x1B064336D9C4999C942Ecc36e36d48a411343771) |
+    | CctpV2BridgeConfig      | [`0x09baC7B5a8e5CEeEe21A33642Bc817cF41e80E3D`](https://basescan.org/address/0x09baC7B5a8e5CEeEe21A33642Bc817cF41e80E3D) |
+  </Tab>
+  <Tab title="Arbitrum">
+    | Contract                | Address |
+    | ----------------------- | ------- |
+    | AccessManager           | [`0x0fCEfa3f1047F35521A49cD8B06faBd588665d7F`](https://arbiscan.io/address/0x0fCEfa3f1047F35521A49cD8B06faBd588665d7F) |
+    | OracleRegistry          | [`0xC388B72AB90Be82B230D919F9C05c87F9397f485`](https://arbiscan.io/address/0xC388B72AB90Be82B230D919F9C05c87F9397f485) |
+    | TokenRegistry           | [`0xd9310A41d085c0DC1E40F691e8647080862A5fd4`](https://arbiscan.io/address/0xd9310A41d085c0DC1E40F691e8647080862A5fd4) |
+    | AcrossV3BridgeConfig    | [`0xDdE7FD6f25c9a58c5ec3E278d31e8584f236da86`](https://arbiscan.io/address/0xDdE7FD6f25c9a58c5ec3E278d31e8584f236da86) |
+    | LayerZeroV2BridgeConfig | [`0x1B064336D9C4999C942Ecc36e36d48a411343771`](https://arbiscan.io/address/0x1B064336D9C4999C942Ecc36e36d48a411343771) |
+    | CctpV2BridgeConfig      | [`0x09baC7B5a8e5CEeEe21A33642Bc817cF41e80E3D`](https://arbiscan.io/address/0x09baC7B5a8e5CEeEe21A33642Bc817cF41e80E3D) |
+  </Tab>
+  <Tab title="Optimism">
+    | Contract                | Address |
+    | ----------------------- | ------- |
+    | AccessManager           | [`0x0fCEfa3f1047F35521A49cD8B06faBd588665d7F`](https://optimistic.etherscan.io/address/0x0fCEfa3f1047F35521A49cD8B06faBd588665d7F) |
+    | OracleRegistry          | [`0xC388B72AB90Be82B230D919F9C05c87F9397f485`](https://optimistic.etherscan.io/address/0xC388B72AB90Be82B230D919F9C05c87F9397f485) |
+    | TokenRegistry           | [`0xd9310A41d085c0DC1E40F691e8647080862A5fd4`](https://optimistic.etherscan.io/address/0xd9310A41d085c0DC1E40F691e8647080862A5fd4) |
+    | AcrossV3BridgeConfig    | [`0xDdE7FD6f25c9a58c5ec3E278d31e8584f236da86`](https://optimistic.etherscan.io/address/0xDdE7FD6f25c9a58c5ec3E278d31e8584f236da86) |
+    | LayerZeroV2BridgeConfig | [`0x1B064336D9C4999C942Ecc36e36d48a411343771`](https://optimistic.etherscan.io/address/0x1B064336D9C4999C942Ecc36e36d48a411343771) |
+    | CctpV2BridgeConfig      | [`0x09baC7B5a8e5CEeEe21A33642Bc817cF41e80E3D`](https://optimistic.etherscan.io/address/0x09baC7B5a8e5CEeEe21A33642Bc817cF41e80E3D) |
+  </Tab>
+  <Tab title="Ink">
+    | Contract                | Address |
+    | ----------------------- | ------- |
+    | AccessManager           | [`0x0fCEfa3f1047F35521A49cD8B06faBd588665d7F`](https://explorer.inkonchain.com/address/0x0fCEfa3f1047F35521A49cD8B06faBd588665d7F) |
+    | OracleRegistry          | [`0xC388B72AB90Be82B230D919F9C05c87F9397f485`](https://explorer.inkonchain.com/address/0xC388B72AB90Be82B230D919F9C05c87F9397f485) |
+    | TokenRegistry           | [`0xd9310A41d085c0DC1E40F691e8647080862A5fd4`](https://explorer.inkonchain.com/address/0xd9310A41d085c0DC1E40F691e8647080862A5fd4) |
+    | AcrossV3BridgeConfig    | [`0xDdE7FD6f25c9a58c5ec3E278d31e8584f236da86`](https://explorer.inkonchain.com/address/0xDdE7FD6f25c9a58c5ec3E278d31e8584f236da86) |
+    | LayerZeroV2BridgeConfig | [`0x1B064336D9C4999C942Ecc36e36d48a411343771`](https://explorer.inkonchain.com/address/0x1B064336D9C4999C942Ecc36e36d48a411343771) |
+    | CctpV2BridgeConfig      | [`0x09baC7B5a8e5CEeEe21A33642Bc817cF41e80E3D`](https://explorer.inkonchain.com/address/0x09baC7B5a8e5CEeEe21A33642Bc817cF41e80E3D) |
+  </Tab>
+  <Tab title="Monad">
+    | Contract                | Address |
+    | ----------------------- | ------- |
+    | AccessManager           | [`0x0fCEfa3f1047F35521A49cD8B06faBd588665d7F`](https://monadscan.com/address/0x0fCEfa3f1047F35521A49cD8B06faBd588665d7F) |
+    | OracleRegistry          | [`0xC388B72AB90Be82B230D919F9C05c87F9397f485`](https://monadscan.com/address/0xC388B72AB90Be82B230D919F9C05c87F9397f485) |
+    | TokenRegistry           | [`0xd9310A41d085c0DC1E40F691e8647080862A5fd4`](https://monadscan.com/address/0xd9310A41d085c0DC1E40F691e8647080862A5fd4) |
+    | AcrossV3BridgeConfig    | [`0xDdE7FD6f25c9a58c5ec3E278d31e8584f236da86`](https://monadscan.com/address/0xDdE7FD6f25c9a58c5ec3E278d31e8584f236da86) |
+    | LayerZeroV2BridgeConfig | [`0x1B064336D9C4999C942Ecc36e36d48a411343771`](https://monadscan.com/address/0x1B064336D9C4999C942Ecc36e36d48a411343771) |
+    | CctpV2BridgeConfig      | [`0x09baC7B5a8e5CEeEe21A33642Bc817cF41e80E3D`](https://monadscan.com/address/0x09baC7B5a8e5CEeEe21A33642Bc817cF41e80E3D) |
+  </Tab>
+</Tabs>
+
+## Ethereum hub instance
+
+Hub on Ethereum, spokes on Base, Arbitrum, Optimism, Ink, Monad.
+
+<Tabs>
+  <Tab title="Ethereum (hub)">
+    | Contract                       | Address |
+    | ------------------------------ | ------- |
+    | HubCoreRegistry                | [`0x0FAEeCEab0BCb63bE2Fe984Ea8c77778989d53eA`](https://etherscan.io/address/0x0FAEeCEab0BCb63bE2Fe984Ea8c77778989d53eA) |
+    | HubCoreFactory                 | [`0x8d28A69328561eF9F171c58996fEcB9F494e070c`](https://etherscan.io/address/0x8d28A69328561eF9F171c58996fEcB9F494e070c) |
+    | SwapModule                     | [`0x923c98b22F9c367A109E93f7dfBaCa28b20C17C3`](https://etherscan.io/address/0x923c98b22F9c367A109E93f7dfBaCa28b20C17C3) |
+    | MachineBeacon                  | [`0x5C680EC39bafE8524F3C2fa9d5F6D65F09Bd7333`](https://etherscan.io/address/0x5C680EC39bafE8524F3C2fa9d5F6D65F09Bd7333) |
+    | CaliberBeacon                  | [`0x3f5A881DB86D6f495823028A1e892E7b2CD7e162`](https://etherscan.io/address/0x3f5A881DB86D6f495823028A1e892E7b2CD7e162) |
+    | PreDepositVaultBeacon          | [`0x3793c81F3e0BA4BCf66C88baf266C039f14A54c1`](https://etherscan.io/address/0x3793c81F3e0BA4BCf66C88baf266C039f14A54c1) |
+    | AcrossV3BridgeAdapterBeacon    | [`0x511C3F33417275d060932458DD987bd47c9ca678`](https://etherscan.io/address/0x511C3F33417275d060932458DD987bd47c9ca678) |
+    | LayerZeroV2BridgeAdapterBeacon | [`0x1108204c18FCB5e0b2b38Cbd3B783b2A56B42467`](https://etherscan.io/address/0x1108204c18FCB5e0b2b38Cbd3B783b2A56B42467) |
+    | CctpV2BridgeAdapterBeacon      | [`0xFD58f8e3569197677CEEB6AaFEb8147b715513CC`](https://etherscan.io/address/0xFD58f8e3569197677CEEB6AaFEb8147b715513CC) |
+  </Tab>
+  <Tab title="Base">
+    | Contract                       | Address |
+    | ------------------------------ | ------- |
     | SpokeCoreRegistry              | [`0x0FAEeCEab0BCb63bE2Fe984Ea8c77778989d53eA`](https://basescan.org/address/0x0FAEeCEab0BCb63bE2Fe984Ea8c77778989d53eA) |
-    | OracleRegistry                 | [`0xC388B72AB90Be82B230D919F9C05c87F9397f485`](https://basescan.org/address/0xC388B72AB90Be82B230D919F9C05c87F9397f485) |
-    | TokenRegistry                  | [`0xd9310A41d085c0DC1E40F691e8647080862A5fd4`](https://basescan.org/address/0xd9310A41d085c0DC1E40F691e8647080862A5fd4) |
     | SpokeCoreFactory               | [`0x8d28A69328561eF9F171c58996fEcB9F494e070c`](https://basescan.org/address/0x8d28A69328561eF9F171c58996fEcB9F494e070c) |
     | SwapModule                     | [`0x923c98b22F9c367A109E93f7dfBaCa28b20C17C3`](https://basescan.org/address/0x923c98b22F9c367A109E93f7dfBaCa28b20C17C3) |
     | CaliberBeacon                  | [`0x3f5A881DB86D6f495823028A1e892E7b2CD7e162`](https://basescan.org/address/0x3f5A881DB86D6f495823028A1e892E7b2CD7e162) |
     | CaliberMailboxBeacon           | [`0x2f7101C2EFfa4a2d48A95958F594e3306717a0A0`](https://basescan.org/address/0x2f7101C2EFfa4a2d48A95958F594e3306717a0A0) |
     | AcrossV3BridgeAdapterBeacon    | [`0x511C3F33417275d060932458DD987bd47c9ca678`](https://basescan.org/address/0x511C3F33417275d060932458DD987bd47c9ca678) |
-    | AcrossV3BridgeConfig           | [`0xDdE7FD6f25c9a58c5ec3E278d31e8584f236da86`](https://basescan.org/address/0xDdE7FD6f25c9a58c5ec3E278d31e8584f236da86) |
     | LayerZeroV2BridgeAdapterBeacon | [`0x1108204c18FCB5e0b2b38Cbd3B783b2A56B42467`](https://basescan.org/address/0x1108204c18FCB5e0b2b38Cbd3B783b2A56B42467) |
-    | LayerZeroV2BridgeConfig        | [`0x1B064336D9C4999C942Ecc36e36d48a411343771`](https://basescan.org/address/0x1B064336D9C4999C942Ecc36e36d48a411343771) |
     | CctpV2BridgeAdapterBeacon      | [`0xFD58f8e3569197677CEEB6AaFEb8147b715513CC`](https://basescan.org/address/0xFD58f8e3569197677CEEB6AaFEb8147b715513CC) |
-    | CctpV2BridgeConfig             | [`0x1be75B412cc8bE1bf64A84D40322dD889cfD6134`](https://basescan.org/address/0x1be75B412cc8bE1bf64A84D40322dD889cfD6134) |
   </Tab>
   <Tab title="Arbitrum">
-    | Contract                       | Address                                                                                                                |
-    | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
-    | AccessManager                  | [`0x0fCEfa3f1047F35521A49cD8B06faBd588665d7F`](https://arbiscan.io/address/0x0fCEfa3f1047F35521A49cD8B06faBd588665d7F) |
+    | Contract                       | Address |
+    | ------------------------------ | ------- |
     | SpokeCoreRegistry              | [`0x0FAEeCEab0BCb63bE2Fe984Ea8c77778989d53eA`](https://arbiscan.io/address/0x0FAEeCEab0BCb63bE2Fe984Ea8c77778989d53eA) |
-    | OracleRegistry                 | [`0xC388B72AB90Be82B230D919F9C05c87F9397f485`](https://arbiscan.io/address/0xC388B72AB90Be82B230D919F9C05c87F9397f485) |
-    | TokenRegistry                  | [`0xd9310A41d085c0DC1E40F691e8647080862A5fd4`](https://arbiscan.io/address/0xd9310A41d085c0DC1E40F691e8647080862A5fd4) |
     | SpokeCoreFactory               | [`0x8d28A69328561eF9F171c58996fEcB9F494e070c`](https://arbiscan.io/address/0x8d28A69328561eF9F171c58996fEcB9F494e070c) |
     | SwapModule                     | [`0x923c98b22F9c367A109E93f7dfBaCa28b20C17C3`](https://arbiscan.io/address/0x923c98b22F9c367A109E93f7dfBaCa28b20C17C3) |
     | CaliberBeacon                  | [`0x3f5A881DB86D6f495823028A1e892E7b2CD7e162`](https://arbiscan.io/address/0x3f5A881DB86D6f495823028A1e892E7b2CD7e162) |
     | CaliberMailboxBeacon           | [`0x2f7101C2EFfa4a2d48A95958F594e3306717a0A0`](https://arbiscan.io/address/0x2f7101C2EFfa4a2d48A95958F594e3306717a0A0) |
     | AcrossV3BridgeAdapterBeacon    | [`0x511C3F33417275d060932458DD987bd47c9ca678`](https://arbiscan.io/address/0x511C3F33417275d060932458DD987bd47c9ca678) |
-    | AcrossV3BridgeConfig           | [`0xDdE7FD6f25c9a58c5ec3E278d31e8584f236da86`](https://arbiscan.io/address/0xDdE7FD6f25c9a58c5ec3E278d31e8584f236da86) |
     | LayerZeroV2BridgeAdapterBeacon | [`0x1108204c18FCB5e0b2b38Cbd3B783b2A56B42467`](https://arbiscan.io/address/0x1108204c18FCB5e0b2b38Cbd3B783b2A56B42467) |
-    | LayerZeroV2BridgeConfig        | [`0x1B064336D9C4999C942Ecc36e36d48a411343771`](https://arbiscan.io/address/0x1B064336D9C4999C942Ecc36e36d48a411343771) |
     | CctpV2BridgeAdapterBeacon      | [`0xFD58f8e3569197677CEEB6AaFEb8147b715513CC`](https://arbiscan.io/address/0xFD58f8e3569197677CEEB6AaFEb8147b715513CC) |
-    | CctpV2BridgeConfig             | [`0x1be75B412cc8bE1bf64A84D40322dD889cfD6134`](https://arbiscan.io/address/0x1be75B412cc8bE1bf64A84D40322dD889cfD6134) |
   </Tab>
   <Tab title="Optimism">
-    | Contract                       | Address                                                                                                                            |
-    | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
-    | AccessManager                  | [`0x0fCEfa3f1047F35521A49cD8B06faBd588665d7F`](https://optimistic.etherscan.io/address/0x0fCEfa3f1047F35521A49cD8B06faBd588665d7F) |
+    | Contract                       | Address |
+    | ------------------------------ | ------- |
     | SpokeCoreRegistry              | [`0x0FAEeCEab0BCb63bE2Fe984Ea8c77778989d53eA`](https://optimistic.etherscan.io/address/0x0FAEeCEab0BCb63bE2Fe984Ea8c77778989d53eA) |
-    | OracleRegistry                 | [`0xC388B72AB90Be82B230D919F9C05c87F9397f485`](https://optimistic.etherscan.io/address/0xC388B72AB90Be82B230D919F9C05c87F9397f485) |
-    | TokenRegistry                  | [`0xd9310A41d085c0DC1E40F691e8647080862A5fd4`](https://optimistic.etherscan.io/address/0xd9310A41d085c0DC1E40F691e8647080862A5fd4) |
     | SpokeCoreFactory               | [`0x8d28A69328561eF9F171c58996fEcB9F494e070c`](https://optimistic.etherscan.io/address/0x8d28A69328561eF9F171c58996fEcB9F494e070c) |
     | SwapModule                     | [`0x923c98b22F9c367A109E93f7dfBaCa28b20C17C3`](https://optimistic.etherscan.io/address/0x923c98b22F9c367A109E93f7dfBaCa28b20C17C3) |
     | CaliberBeacon                  | [`0x3f5A881DB86D6f495823028A1e892E7b2CD7e162`](https://optimistic.etherscan.io/address/0x3f5A881DB86D6f495823028A1e892E7b2CD7e162) |
     | CaliberMailboxBeacon           | [`0x2f7101C2EFfa4a2d48A95958F594e3306717a0A0`](https://optimistic.etherscan.io/address/0x2f7101C2EFfa4a2d48A95958F594e3306717a0A0) |
     | AcrossV3BridgeAdapterBeacon    | [`0x511C3F33417275d060932458DD987bd47c9ca678`](https://optimistic.etherscan.io/address/0x511C3F33417275d060932458DD987bd47c9ca678) |
-    | AcrossV3BridgeConfig           | [`0xDdE7FD6f25c9a58c5ec3E278d31e8584f236da86`](https://optimistic.etherscan.io/address/0xDdE7FD6f25c9a58c5ec3E278d31e8584f236da86) |
     | LayerZeroV2BridgeAdapterBeacon | [`0x1108204c18FCB5e0b2b38Cbd3B783b2A56B42467`](https://optimistic.etherscan.io/address/0x1108204c18FCB5e0b2b38Cbd3B783b2A56B42467) |
-    | LayerZeroV2BridgeConfig        | [`0x1B064336D9C4999C942Ecc36e36d48a411343771`](https://optimistic.etherscan.io/address/0x1B064336D9C4999C942Ecc36e36d48a411343771) |
     | CctpV2BridgeAdapterBeacon      | [`0xFD58f8e3569197677CEEB6AaFEb8147b715513CC`](https://optimistic.etherscan.io/address/0xFD58f8e3569197677CEEB6AaFEb8147b715513CC) |
-    | CctpV2BridgeConfig             | [`0x1be75B412cc8bE1bf64A84D40322dD889cfD6134`](https://optimistic.etherscan.io/address/0x1be75B412cc8bE1bf64A84D40322dD889cfD6134) |
   </Tab>
   <Tab title="Ink">
-    | Contract                       | Address                                                                                                                            |
-    | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
-    | AccessManager                  | [`0x0fCEfa3f1047F35521A49cD8B06faBd588665d7F`](https://explorer.inkonchain.com/address/0x0fCEfa3f1047F35521A49cD8B06faBd588665d7F) |
+    | Contract                       | Address |
+    | ------------------------------ | ------- |
     | SpokeCoreRegistry              | [`0x0FAEeCEab0BCb63bE2Fe984Ea8c77778989d53eA`](https://explorer.inkonchain.com/address/0x0FAEeCEab0BCb63bE2Fe984Ea8c77778989d53eA) |
-    | OracleRegistry                 | [`0xC388B72AB90Be82B230D919F9C05c87F9397f485`](https://explorer.inkonchain.com/address/0xC388B72AB90Be82B230D919F9C05c87F9397f485) |
-    | TokenRegistry                  | [`0xd9310A41d085c0DC1E40F691e8647080862A5fd4`](https://explorer.inkonchain.com/address/0xd9310A41d085c0DC1E40F691e8647080862A5fd4) |
     | SpokeCoreFactory               | [`0x8d28A69328561eF9F171c58996fEcB9F494e070c`](https://explorer.inkonchain.com/address/0x8d28A69328561eF9F171c58996fEcB9F494e070c) |
     | SwapModule                     | [`0x923c98b22F9c367A109E93f7dfBaCa28b20C17C3`](https://explorer.inkonchain.com/address/0x923c98b22F9c367A109E93f7dfBaCa28b20C17C3) |
     | CaliberBeacon                  | [`0x3f5A881DB86D6f495823028A1e892E7b2CD7e162`](https://explorer.inkonchain.com/address/0x3f5A881DB86D6f495823028A1e892E7b2CD7e162) |
     | CaliberMailboxBeacon           | [`0x2f7101C2EFfa4a2d48A95958F594e3306717a0A0`](https://explorer.inkonchain.com/address/0x2f7101C2EFfa4a2d48A95958F594e3306717a0A0) |
     | AcrossV3BridgeAdapterBeacon    | [`0x511C3F33417275d060932458DD987bd47c9ca678`](https://explorer.inkonchain.com/address/0x511C3F33417275d060932458DD987bd47c9ca678) |
-    | AcrossV3BridgeConfig           | [`0xDdE7FD6f25c9a58c5ec3E278d31e8584f236da86`](https://explorer.inkonchain.com/address/0xDdE7FD6f25c9a58c5ec3E278d31e8584f236da86) |
     | LayerZeroV2BridgeAdapterBeacon | [`0x1108204c18FCB5e0b2b38Cbd3B783b2A56B42467`](https://explorer.inkonchain.com/address/0x1108204c18FCB5e0b2b38Cbd3B783b2A56B42467) |
-    | LayerZeroV2BridgeConfig        | [`0x1B064336D9C4999C942Ecc36e36d48a411343771`](https://explorer.inkonchain.com/address/0x1B064336D9C4999C942Ecc36e36d48a411343771) |
     | CctpV2BridgeAdapterBeacon      | [`0xFD58f8e3569197677CEEB6AaFEb8147b715513CC`](https://explorer.inkonchain.com/address/0xFD58f8e3569197677CEEB6AaFEb8147b715513CC) |
-    | CctpV2BridgeConfig             | [`0x1be75B412cc8bE1bf64A84D40322dD889cfD6134`](https://explorer.inkonchain.com/address/0x1be75B412cc8bE1bf64A84D40322dD889cfD6134) |
   </Tab>
   <Tab title="Monad">
-    | Contract                       | Address                                                                                                                  |
-    | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-    | AccessManager                  | [`0x0fCEfa3f1047F35521A49cD8B06faBd588665d7F`](https://monadscan.com/address/0x0fCEfa3f1047F35521A49cD8B06faBd588665d7F) |
+    | Contract                       | Address |
+    | ------------------------------ | ------- |
     | SpokeCoreRegistry              | [`0x0FAEeCEab0BCb63bE2Fe984Ea8c77778989d53eA`](https://monadscan.com/address/0x0FAEeCEab0BCb63bE2Fe984Ea8c77778989d53eA) |
-    | OracleRegistry                 | [`0xC388B72AB90Be82B230D919F9C05c87F9397f485`](https://monadscan.com/address/0xC388B72AB90Be82B230D919F9C05c87F9397f485) |
-    | TokenRegistry                  | [`0xd9310A41d085c0DC1E40F691e8647080862A5fd4`](https://monadscan.com/address/0xd9310A41d085c0DC1E40F691e8647080862A5fd4) |
     | SpokeCoreFactory               | [`0x8d28A69328561eF9F171c58996fEcB9F494e070c`](https://monadscan.com/address/0x8d28A69328561eF9F171c58996fEcB9F494e070c) |
     | SwapModule                     | [`0x923c98b22F9c367A109E93f7dfBaCa28b20C17C3`](https://monadscan.com/address/0x923c98b22F9c367A109E93f7dfBaCa28b20C17C3) |
     | CaliberBeacon                  | [`0x3f5A881DB86D6f495823028A1e892E7b2CD7e162`](https://monadscan.com/address/0x3f5A881DB86D6f495823028A1e892E7b2CD7e162) |
     | CaliberMailboxBeacon           | [`0x2f7101C2EFfa4a2d48A95958F594e3306717a0A0`](https://monadscan.com/address/0x2f7101C2EFfa4a2d48A95958F594e3306717a0A0) |
+    | AcrossV3BridgeAdapterBeacon    | [`0x511C3F33417275d060932458DD987bd47c9ca678`](https://monadscan.com/address/0x511C3F33417275d060932458DD987bd47c9ca678) |
     | LayerZeroV2BridgeAdapterBeacon | [`0x1108204c18FCB5e0b2b38Cbd3B783b2A56B42467`](https://monadscan.com/address/0x1108204c18FCB5e0b2b38Cbd3B783b2A56B42467) |
-    | LayerZeroV2BridgeConfig        | [`0x1B064336D9C4999C942Ecc36e36d48a411343771`](https://monadscan.com/address/0x1B064336D9C4999C942Ecc36e36d48a411343771) |
     | CctpV2BridgeAdapterBeacon      | [`0xFD58f8e3569197677CEEB6AaFEb8147b715513CC`](https://monadscan.com/address/0xFD58f8e3569197677CEEB6AaFEb8147b715513CC) |
-    | CctpV2BridgeConfig             | [`0x1be75B412cc8bE1bf64A84D40322dD889cfD6134`](https://monadscan.com/address/0x1be75B412cc8bE1bf64A84D40322dD889cfD6134) |
+  </Tab>
+</Tabs>
+
+## Base hub instance
+
+Hub on Base, spokes on Ethereum.
+
+<Tabs>
+  <Tab title="Base (hub)">
+    | Contract                       | Address |
+    | ------------------------------ | ------- |
+    | HubCoreRegistry                | [`0xCFd878e9A9E17D79f04B4176E624e82fFF78b2cf`](https://basescan.org/address/0xCFd878e9A9E17D79f04B4176E624e82fFF78b2cf) |
+    | HubCoreFactory                 | [`0x1E1fa6F5f258b744881634216bDBc612B09C3C30`](https://basescan.org/address/0x1E1fa6F5f258b744881634216bDBc612B09C3C30) |
+    | SwapModule                     | [`0xE87596d490f1118DFE64a75498C82B997e539d4b`](https://basescan.org/address/0xE87596d490f1118DFE64a75498C82B997e539d4b) |
+    | MachineBeacon                  | [`0x27637175E624938ADbA174c1d88F10B880938382`](https://basescan.org/address/0x27637175E624938ADbA174c1d88F10B880938382) |
+    | CaliberBeacon                  | [`0x298158181f0D5B7843C0890F441e7E83a011F582`](https://basescan.org/address/0x298158181f0D5B7843C0890F441e7E83a011F582) |
+    | PreDepositVaultBeacon          | [`0x68df92eCf39758281f36B02806e27Fe6DDeea060`](https://basescan.org/address/0x68df92eCf39758281f36B02806e27Fe6DDeea060) |
+    | AcrossV3BridgeAdapterBeacon    | [`0xD24BD1A6C088e7Ae829A19e9A027A3cdDeb09049`](https://basescan.org/address/0xD24BD1A6C088e7Ae829A19e9A027A3cdDeb09049) |
+    | LayerZeroV2BridgeAdapterBeacon | [`0x8A07f5cB8185c317314d398a8cC6Ebf497aA5b9b`](https://basescan.org/address/0x8A07f5cB8185c317314d398a8cC6Ebf497aA5b9b) |
+    | CctpV2BridgeAdapterBeacon      | [`0x8d1DcF812cCEDE1B41dfB1e4C25696988F458b8E`](https://basescan.org/address/0x8d1DcF812cCEDE1B41dfB1e4C25696988F458b8E) |
+  </Tab>
+  <Tab title="Ethereum">
+    | Contract                       | Address |
+    | ------------------------------ | ------- |
+    | SpokeCoreRegistry              | [`0xCFd878e9A9E17D79f04B4176E624e82fFF78b2cf`](https://etherscan.io/address/0xCFd878e9A9E17D79f04B4176E624e82fFF78b2cf) |
+    | SpokeCoreFactory               | [`0x1E1fa6F5f258b744881634216bDBc612B09C3C30`](https://etherscan.io/address/0x1E1fa6F5f258b744881634216bDBc612B09C3C30) |
+    | SwapModule                     | [`0xE87596d490f1118DFE64a75498C82B997e539d4b`](https://etherscan.io/address/0xE87596d490f1118DFE64a75498C82B997e539d4b) |
+    | CaliberBeacon                  | [`0x298158181f0D5B7843C0890F441e7E83a011F582`](https://etherscan.io/address/0x298158181f0D5B7843C0890F441e7E83a011F582) |
+    | CaliberMailboxBeacon           | [`0x6EB4117d22b7DbD18C97D264bc1B0Ec918c83998`](https://etherscan.io/address/0x6EB4117d22b7DbD18C97D264bc1B0Ec918c83998) |
+    | AcrossV3BridgeAdapterBeacon    | [`0xD24BD1A6C088e7Ae829A19e9A027A3cdDeb09049`](https://etherscan.io/address/0xD24BD1A6C088e7Ae829A19e9A027A3cdDeb09049) |
+    | LayerZeroV2BridgeAdapterBeacon | [`0x8A07f5cB8185c317314d398a8cC6Ebf497aA5b9b`](https://etherscan.io/address/0x8A07f5cB8185c317314d398a8cC6Ebf497aA5b9b) |
+    | CctpV2BridgeAdapterBeacon      | [`0x8d1DcF812cCEDE1B41dfB1e4C25696988F458b8E`](https://etherscan.io/address/0x8d1DcF812cCEDE1B41dfB1e4C25696988F458b8E) |
   </Tab>
 </Tabs>
 

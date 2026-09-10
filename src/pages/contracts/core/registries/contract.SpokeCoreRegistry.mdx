@@ -1,0 +1,112 @@
+---
+title: "SpokeCoreRegistry"
+---
+
+# SpokeCoreRegistry
+
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/eb9a2fea6cac9f88783f9c769927ed7e5c2b7fd5/src/registries/SpokeCoreRegistry.sol)
+
+**Inherits:** [CoreRegistry](/contracts/core/registries/abstract.CoreRegistry), [ISpokeCoreRegistry](/contracts/core/interfaces/interface.ISpokeCoreRegistry)
+
+## Constants
+
+### SpokeCoreRegistryStorageLocation
+
+```solidity
+bytes32 private constant SpokeCoreRegistryStorageLocation =
+        0xbb04d69665b59d5499b254d643357a8f35f2bcb1c74ee39b02b1345680315500;
+```
+
+## Functions
+
+<a id="_getspokecoreregistrystorage"></a>
+
+### \_getSpokeCoreRegistryStorage
+
+```solidity
+function _getSpokeCoreRegistryStorage() private pure returns (SpokeCoreRegistryStorage storage $);
+```
+
+**Returns**
+
+| Name | Type                       | Description |
+| ---- | -------------------------- | ----------- |
+| $    | `SpokeCoreRegistryStorage` |             |
+
+<a id="constructor"></a>
+
+### constructor
+
+```solidity
+constructor();
+```
+
+<a id="initialize-address-address-address"></a>
+
+### initialize
+
+```solidity
+function initialize(address _oracleRegistry, address _tokenRegistry, address initialAuthority)
+        external
+        initializer;
+```
+
+**Parameters**
+
+| Name             | Type      | Description |
+| ---------------- | --------- | ----------- |
+| \_oracleRegistry | `address` |             |
+| \_tokenRegistry  | `address` |             |
+| initialAuthority | `address` |             |
+
+<a id="calibermailboxbeacon"></a>
+
+### caliberMailboxBeacon
+
+Address of the caliber mailbox beacon.
+
+```solidity
+function caliberMailboxBeacon() external view override returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="setcalibermailboxbeacon-address"></a>
+
+### setCaliberMailboxBeacon
+
+Sets the caliber mailbox beacon address.
+
+```solidity
+function setCaliberMailboxBeacon(address _caliberMailboxBeacon) external override restricted;
+```
+
+**Parameters**
+
+| Name                   | Type      | Description                         |
+| ---------------------- | --------- | ----------------------------------- |
+| \_caliberMailboxBeacon | `address` | The caliber mailbox beacon address. |
+
+## Structs
+
+### SpokeCoreRegistryStorage
+
+**Note:**
+
+- **storage-location:** erc7201:makina.storage.SpokeCoreRegistry
+
+```solidity
+struct SpokeCoreRegistryStorage {
+        address _caliberMailboxBeacon;
+    }
+```
+
+**Properties**
+
+| Name                   | Type      | Description |
+| ---------------------- | --------- | ----------- |
+| \_caliberMailboxBeacon | `address` |             |

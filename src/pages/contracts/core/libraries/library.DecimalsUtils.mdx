@@ -1,0 +1,67 @@
+---
+title: "DecimalsUtils"
+---
+
+# DecimalsUtils
+
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/eb9a2fea6cac9f88783f9c769927ed7e5c2b7fd5/src/libraries/DecimalsUtils.sol)
+
+## Constants
+
+### MIN_DECIMALS
+
+<i>
+
+Supported decimals range for assets
+
+</i>
+
+```solidity
+uint8 private constant MIN_DECIMALS = 6;
+```
+
+### MAX_DECIMALS
+
+```solidity
+uint8 private constant MAX_DECIMALS = 18;
+```
+
+### SHARE_TOKEN_DECIMALS
+
+<i>
+
+Decimals and unit for machine share token.
+
+</i>
+
+```solidity
+uint8 internal constant SHARE_TOKEN_DECIMALS = 18;
+```
+
+### SHARE_TOKEN_UNIT
+
+```solidity
+uint256 internal constant SHARE_TOKEN_UNIT = 10 ** SHARE_TOKEN_DECIMALS;
+```
+
+## Functions
+
+<a id="_checkdecimals-address"></a>
+
+### \_checkDecimals
+
+<i>
+
+Checks that asset exposes decimals() and that it is within the supported range.
+
+</i>
+
+```solidity
+function _checkDecimals(address asset) internal view;
+```
+
+**Parameters**
+
+| Name  | Type      | Description |
+| ----- | --------- | ----------- |
+| asset | `address` |             |

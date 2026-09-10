@@ -15,7 +15,7 @@ Redeemers are instead **queues**: the [Operator](../../governance/operator) must
 
 ## Async Redeemer
 
-The standard implementation, [`AsyncRedeemer`](/contracts/periphery/redeemers/AsyncRedeemer.sol/contract.AsyncRedeemer.md), is a first-in-first-out queue built around an **ERC-721 receipt NFT**.
+The standard implementation, [`AsyncRedeemer`](/contracts/periphery/redeemers/contract.AsyncRedeemer), is a first-in-first-out queue built around an **ERC-721 receipt NFT**.
 
 ```mermaid
 sequenceDiagram
@@ -41,11 +41,11 @@ The NFT representation means a pending redemption is itself transferable.
 
 ### Redemption fees
 
-A variant, [`AsyncRedeemerFee`](/contracts/periphery/redeemers/AsyncRedeemerFee.sol/contract.AsyncRedeemerFee.md), applies a **redemption fee**: the assets a user receives are reduced by a configured rate. The withheld value remains in the strategy, accruing to the remaining share holders rather than going to a separate recipient. This can discourage churn or compensate the strategy for the cost of unwinding positions to honor exits.
+A variant, [`AsyncRedeemerFee`](/contracts/periphery/redeemers/contract.AsyncRedeemerFee), applies a **redemption fee**: the assets a user receives are reduced by a configured rate. The withheld value remains in the strategy, accruing to the remaining share holders rather than going to a separate recipient. This can discourage churn or compensate the strategy for the cost of unwinding positions to honor exits.
 
 ### Whitelisting
 
-Like the [DirectDepositor](deposits#whitelisting), the AsyncRedeemer supports an optional whitelist gating both _requesting_ a redemption and _claiming_ assets, used by strategies that restrict participation to approved addresses.
+Like the [DirectDepositor](deposits#whitelisting), the AsyncRedeemer supports an optional whitelist gating both _requesting_ a redemption and _claiming_ assets, used by strategies that restrict participation to approved addresses. It also supports the same optional [sanctions screening](deposits#sanctions-screening) as the DirectDepositor, applied to both requesting and claiming.
 
 :::note
 Settlement timing depends on the Operator freeing liquidity, and Makina does not force or guarantee a settlement schedule. The finalization delay and FIFO ordering ensure requests are handled fairly and in sequence.

@@ -21,8 +21,8 @@ Mirroring the Machine on the Hub Chain, the Mailbox exposes the per-strategy [ro
 
 ## 3. Accounting source
 
-The Mailbox exposes the **view function** that the [Wormhole CCQ](cross-chain-accounting) network reads and signs, returning the spoke Caliber's detailed accounting (net AUM, positions, base tokens, and pending bridge amounts). This is how the spoke's value reaches the Machine for total-AUM computation.
+The Mailbox exposes the **view function** that the [Chainlink CRE workflow](cross-chain-accounting) reads to build the spoke's accounting snapshot: the Caliber's net AUM, pending bridge amounts, and the block context used for freshness checks. This is how the spoke's value reaches the Machine for total-AUM computation.
 
 :::info[Implementation]
-Caliber Mailbox reference: [`CaliberMailbox.sol`](/contracts/core/caliber/CaliberMailbox.sol/contract.CaliberMailbox.md).
+Caliber Mailbox reference: [`CaliberMailbox.sol`](/contracts/core/caliber/contract.CaliberMailbox).
 :::

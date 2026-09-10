@@ -43,7 +43,7 @@ sequenceDiagram
 The number of shares minted is `assets / share price`, so a deposit never changes the share price. It only scales the strategy up proportionally. Depending on the strategy, the Depositor may enforce a [whitelist](machine/deposits#whitelisting) (e.g. for KYC-gated strategies). See [Deposits](machine/deposits).
 
 :::note[Example implementation]
-The atomic "forward and mint instantly" flow shown here is the **[DirectDepositor](/contracts/periphery/depositors/DirectDepositor.sol/contract.DirectDepositor.md)**, one common depositor implementation. The Depositor is a swappable [periphery](overview#core-vs-periphery) contract: some deployed strategies use the DirectDepositor, while others run custom logic built for a particular integrator's needs. The constant is that the Machine accepts deposits only from its designated Depositor.
+The atomic "forward and mint instantly" flow shown here is the **[DirectDepositor](/contracts/periphery/depositors/contract.DirectDepositor)**, one common depositor implementation. The Depositor is a swappable [periphery](overview#core-vs-periphery) contract: some deployed strategies use the DirectDepositor, while others run custom logic built for a particular integrator's needs. The constant is that the Machine accepts deposits only from its designated Depositor.
 :::
 
 _Before a strategy launches, deposits can be gathered through a [Pre-Deposit Vault](machine/pre-deposit), which lets a strategy bootstrap liquidity and seamlessly transition into the live Machine._
@@ -61,7 +61,7 @@ The Operator decides how much to keep idle as a withdrawal buffer and how much t
 
 Within a Caliber, the Operator deploys [base tokens](caliber/base-tokens) into external protocols by executing [Instructions](caliber/makina-vm) on the [MakinaVM](caliber/makina-vm). Each deployment becomes a tracked [position](caliber/positions): a supply on a lending market, an LP position on a DEX, a deposit into a yield vault, and so on. Positions can also represent **debt** (e.g. a borrow), which counts negatively toward AUM.
 
-Crucially, the Operator can only execute Instructions that governance has **pre-approved** and committed onchain. The Caliber verifies every action against a Merkle root of the allowed instruction set before running it (see [`allowedInstrRoot`](/contracts/core/caliber/Caliber.sol/contract.Caliber#allowedinstrroot)), and applies a [loss check](caliber/positions#loss-checks) comparing value before and after to ensure the deployment didn't leak value beyond a configured tolerance.
+Crucially, the Operator can only execute Instructions that governance has **pre-approved** and committed onchain. The Caliber verifies every action against a Merkle root of the allowed instruction set before running it (see [`allowedInstrRoot`](/contracts/core/caliber/contract.Caliber#allowedinstrroot)), and applies a [loss check](caliber/positions#loss-checks) comparing value before and after to ensure the deployment didn't leak value beyond a configured tolerance.
 
 ## 4. Rebalance & harvest: the strategy is actively managed
 
@@ -86,7 +86,7 @@ flowchart TB
         HC["Hub Caliber<br/>values its positions"]:::core
         M["Machine"]:::core
     end
-    SC -- "Wormhole CCQ<br/>(signed accounting data)" --> M
+    SC -- "Chainlink CRE<br/>(accounting snapshot)" --> M
     HC -- "direct call" --> M
     M -- "idle + hub + spokes<br/>+ in-flight bridges" --> AUM["Total AUM"]:::out
     AUM --> SP["Share Price = AUM ÷ Shares"]:::out
@@ -96,7 +96,7 @@ flowchart TB
 ```
 
 - Each Caliber values its [positions](caliber/positions) and base-token balances in the accounting token. Position values must be kept fresh: stale positions cause accounting to fail, so they are re-accounted regularly, by anyone when accounting is open or by the Operator and designated agents when the strategy restricts it (a common configuration). See [Caliber Accounting](caliber/caliber-accounting).
-- Spoke Caliber values are carried to the Machine through [Wormhole Cross-Chain Queries](cross-chain/cross-chain-accounting), a pull-based, guardian-signed mechanism.
+- Spoke Caliber values are carried to the Machine through [Chainlink CRE](cross-chain/cross-chain-accounting), which relays each spoke's accounting snapshot to the Hub.
 - The Machine sums **idle balance + Hub Caliber + all Spoke Calibers + in-flight bridge transfers** into total AUM, then derives the [share price](machine/share-price). In-flight bridges are counted so that value is never "lost" while crossing chains.
 - When AUM is updated, [fees](machine/fees) are minted as new shares and distributed to the Operator, the protocol, and the [Security Module](../security/security-module), subject to per-strategy rate caps and a minimum interval.
 
@@ -129,7 +129,7 @@ sequenceDiagram
 This asynchronous design is what lets a strategy stay fully invested while still honoring exits in an orderly, fair sequence. See [Redemptions](machine/redemptions).
 
 :::note[Example implementation]
-The FIFO, NFT-based queue shown here is the **[AsyncRedeemer](/contracts/periphery/redeemers/AsyncRedeemer.sol/contract.AsyncRedeemer.md)**, one common redeemer implementation. The Redeemer is a swappable [periphery](overview#core-vs-periphery) contract: some deployed strategies use the AsyncRedeemer, while others run custom logic built for a particular integrator's needs. What is fundamental is that the Machine can only pay out from its idle balance. A Redeemer could settle atomically when that idle balance is sufficient, but because most of the capital is usually deployed, redemptions are generally handled asynchronously.
+The FIFO, NFT-based queue shown here is the **[AsyncRedeemer](/contracts/periphery/redeemers/contract.AsyncRedeemer)**, one common redeemer implementation. The Redeemer is a swappable [periphery](overview#core-vs-periphery) contract: some deployed strategies use the AsyncRedeemer, while others run custom logic built for a particular integrator's needs. What is fundamental is that the Machine can only pay out from its idle balance. A Redeemer could settle atomically when that idle balance is sufficient, but because most of the capital is usually deployed, redemptions are generally handled asynchronously.
 :::
 
 ## When something goes wrong

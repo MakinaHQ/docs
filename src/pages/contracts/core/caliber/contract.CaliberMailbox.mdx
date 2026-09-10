@@ -1,0 +1,441 @@
+---
+title: "CaliberMailbox"
+---
+
+# CaliberMailbox
+
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/eb9a2fea6cac9f88783f9c769927ed7e5c2b7fd5/src/caliber/CaliberMailbox.sol)
+
+**Inherits:** [MakinaGovernable](/contracts/core/utils/abstract.MakinaGovernable), ReentrancyGuard, [BridgeController](/contracts/core/bridge/controller/abstract.BridgeController), [ICaliberMailbox](/contracts/core/interfaces/interface.ICaliberMailbox)
+
+## Constants
+
+### hubChainId
+
+Chain ID of the hub.
+
+```solidity
+uint256 public immutable hubChainId;
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+### CaliberMailboxStorageLocation
+
+```solidity
+bytes32 private constant CaliberMailboxStorageLocation =
+        0xc8f2c10c9147366283b13eb82b7eca93d88636f13eec15d81ed4c6aa5006aa00;
+```
+
+## Functions
+
+<a id="_getcalibermailboxstorage"></a>
+
+### \_getCaliberMailboxStorage
+
+```solidity
+function _getCaliberMailboxStorage() private pure returns (CaliberMailboxStorage storage $);
+```
+
+**Returns**
+
+| Name | Type                    | Description |
+| ---- | ----------------------- | ----------- |
+| $    | `CaliberMailboxStorage` |             |
+
+<a id="constructor-address-uint256"></a>
+
+### constructor
+
+```solidity
+constructor(address _registry, uint256 _hubChainId) MakinaContext(_registry);
+```
+
+**Parameters**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| \_registry   | `address` |             |
+| \_hubChainId | `uint256` |             |
+
+<a id="initialize-imakinagovernable-makinagovernableinitparams-uint256"></a>
+
+### initialize
+
+Initializer of the contract.
+
+```solidity
+function initialize(IMakinaGovernable.MakinaGovernableInitParams calldata mgParams, uint256 initialCooldownDuration)
+        external
+        override
+        initializer;
+```
+
+**Parameters**
+
+| Name                    | Type                                           | Description                                                        |
+| ----------------------- | ---------------------------------------------- | ------------------------------------------------------------------ |
+| mgParams                | `IMakinaGovernable.MakinaGovernableInitParams` | The makina governable initialization parameters.                   |
+| initialCooldownDuration | `uint256`                                      | The duration of the cooldown period for outgoing bridge transfers. |
+
+<a id="caliber"></a>
+
+### caliber
+
+Address of the associated caliber.
+
+```solidity
+function caliber() external view override returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="cooldownduration"></a>
+
+### cooldownDuration
+
+Duration of the cooldown period for outgoing bridge transfers.
+
+```solidity
+function cooldownDuration() external view override returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="gethubbridgeadapter-uint16"></a>
+
+### getHubBridgeAdapter
+
+Returns the address of the hub bridge adapter for a given bridge ID.
+
+```solidity
+function getHubBridgeAdapter(uint16 bridgeId) external view override returns (address);
+```
+
+**Parameters**
+
+| Name     | Type     | Description           |
+| -------- | -------- | --------------------- |
+| bridgeId | `uint16` | The ID of the bridge. |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="getspokecaliberaccountingdata"></a>
+
+### getSpokeCaliberAccountingData
+
+Returns the accounting data of the associated caliber.
+
+```solidity
+function getSpokeCaliberAccountingData() external view override returns (SpokeCaliberAccountingData memory data);
+```
+
+**Returns**
+
+| Name | Type                         | Description               |
+| ---- | ---------------------------- | ------------------------- |
+| data | `SpokeCaliberAccountingData` | data The accounting data. |
+
+<a id="managetransfer-address-uint256-bytes"></a>
+
+### manageTransfer
+
+Manages the transfer of tokens between a machine and a caliber. The transfer direction depends on the caller.
+
+```solidity
+function manageTransfer(address token, uint256 amount, bytes calldata data) external override nonReentrant;
+```
+
+**Parameters**
+
+| Name   | Type      | Description                                                                                                                |
+| ------ | --------- | -------------------------------------------------------------------------------------------------------------------------- |
+| token  | `address` | The address of the token.                                                                                                  |
+| amount | `uint256` | The amount of tokens to transfer.                                                                                          |
+| data   | `bytes`   | ABI-encoded parameters required for bridge-related transfers. Ignored for transfers between a machine and its hub caliber. |
+
+<a id="sendoutbridgetransfer-uint16-uint256-bytes"></a>
+
+### sendOutBridgeTransfer
+
+Executes a scheduled outgoing bridge transfer.
+
+```solidity
+function sendOutBridgeTransfer(uint16 bridgeId, uint256 transferId, bytes calldata data)
+        external
+        override
+        onlyOperator;
+```
+
+**Parameters**
+
+| Name       | Type      | Description                                       |
+| ---------- | --------- | ------------------------------------------------- |
+| bridgeId   | `uint16`  | The ID of the bridge.                             |
+| transferId | `uint256` | The ID of the transfer to execute.                |
+| data       | `bytes`   | The optional data needed to execute the transfer. |
+
+<a id="authorizeinbridgetransfer-uint16-bytes32"></a>
+
+### authorizeInBridgeTransfer
+
+Registers a message hash as authorized for an incoming bridge transfer.
+
+```solidity
+function authorizeInBridgeTransfer(uint16 bridgeId, bytes32 messageHash)
+        external
+        override
+        notRecoveryMode
+        onlyMechanic;
+```
+
+**Parameters**
+
+| Name        | Type      | Description                           |
+| ----------- | --------- | ------------------------------------- |
+| bridgeId    | `uint16`  | The ID of the bridge.                 |
+| messageHash | `bytes32` | The hash of the message to authorize. |
+
+<a id="claiminbridgetransfer-uint16-uint256"></a>
+
+### claimInBridgeTransfer
+
+Transfers a received bridge transfer out of the corresponding bridge adapter.
+
+```solidity
+function claimInBridgeTransfer(uint16 bridgeId, uint256 transferId) external override onlyOperator;
+```
+
+**Parameters**
+
+| Name       | Type      | Description                      |
+| ---------- | --------- | -------------------------------- |
+| bridgeId   | `uint16`  | The ID of the bridge.            |
+| transferId | `uint256` | The ID of the transfer to claim. |
+
+<a id="canceloutbridgetransfer-uint16-uint256"></a>
+
+### cancelOutBridgeTransfer
+
+Cancels an outgoing bridge transfer.
+
+```solidity
+function cancelOutBridgeTransfer(uint16 bridgeId, uint256 transferId) external override onlyOperator;
+```
+
+**Parameters**
+
+| Name       | Type      | Description                       |
+| ---------- | --------- | --------------------------------- |
+| bridgeId   | `uint16`  | The ID of the bridge.             |
+| transferId | `uint256` | The ID of the transfer to cancel. |
+
+<a id="setcaliber-address"></a>
+
+### setCaliber
+
+Sets the associated caliber address.
+
+```solidity
+function setCaliber(address _caliber) external override onlyFactory;
+```
+
+**Parameters**
+
+| Name      | Type      | Description                            |
+| --------- | --------- | -------------------------------------- |
+| \_caliber | `address` | The address of the associated caliber. |
+
+<a id="sethubbridgeadapter-uint16-address"></a>
+
+### setHubBridgeAdapter
+
+Registers a hub bridge adapter.
+
+```solidity
+function setHubBridgeAdapter(uint16 bridgeId, address adapter) external override restricted;
+```
+
+**Parameters**
+
+| Name     | Type      | Description                            |
+| -------- | --------- | -------------------------------------- |
+| bridgeId | `uint16`  | The ID of the bridge.                  |
+| adapter  | `address` | The address of the hub bridge adapter. |
+
+<a id="setcooldownduration-uint256"></a>
+
+### setCooldownDuration
+
+Sets the duration of the cooldown period for outgoing bridge transfers.
+
+```solidity
+function setCooldownDuration(uint256 newCooldownDuration) external override onlyRiskManagerTimelock;
+```
+
+**Parameters**
+
+| Name                | Type      | Description                  |
+| ------------------- | --------- | ---------------------------- |
+| newCooldownDuration | `uint256` | The new duration in seconds. |
+
+<a id="disableouttransfer-uint16"></a>
+
+### disableOutTransfer
+
+Disables outgoing transfers for a bridge.
+
+```solidity
+function disableOutTransfer(uint16 bridgeId) external override onlyRiskManagerTimelock;
+```
+
+**Parameters**
+
+| Name     | Type     | Description           |
+| -------- | -------- | --------------------- |
+| bridgeId | `uint16` | The ID of the bridge. |
+
+<a id="enableouttransfer-uint16"></a>
+
+### enableOutTransfer
+
+Enables outgoing transfers for a bridge.
+
+```solidity
+function enableOutTransfer(uint16 bridgeId) external override onlyRiskManagerTimelock;
+```
+
+**Parameters**
+
+| Name     | Type     | Description           |
+| -------- | -------- | --------------------- |
+| bridgeId | `uint16` | The ID of the bridge. |
+
+<a id="setmaxbridgelossbps-uint16-uint256"></a>
+
+### setMaxBridgeLossBps
+
+Sets the maximum allowed value loss in basis points for transfers via this bridge.
+
+```solidity
+function setMaxBridgeLossBps(uint16 bridgeId, uint256 maxBridgeLossBps) external override onlyRiskManagerTimelock;
+```
+
+**Parameters**
+
+| Name             | Type      | Description                                     |
+| ---------------- | --------- | ----------------------------------------------- |
+| bridgeId         | `uint16`  | The ID of the bridge.                           |
+| maxBridgeLossBps | `uint256` | The maximum allowed value loss in basis points. |
+
+<a id="resetbridgingstate-address"></a>
+
+### resetBridgingState
+
+Resets internal bridge counters for a given token, and withdraws token balances held by all bridge adapters.
+
+<i>
+
+This function is intended to be used by the DAO to realign bridge accounting state and maintain protocol consistency,
+typically in response to operator deviations, external bridge discrepancies, or unbounded counter growth.
+
+</i>
+
+```solidity
+function resetBridgingState(address token) external override onlySecurityCouncil;
+```
+
+**Parameters**
+
+| Name  | Type      | Description               |
+| ----- | --------- | ------------------------- |
+| token | `address` | The address of the token. |
+
+<a id="_getbridgecounters"></a>
+
+### \_getBridgeCounters
+
+<i>
+
+Returns the current bridge counters for both incoming and outgoing transfers.
+
+</i>
+
+```solidity
+function _getBridgeCounters() internal view returns (bytes[] memory bridgesIn, bytes[] memory bridgesOut);
+```
+
+**Returns**
+
+| Name       | Type      | Description |
+| ---------- | --------- | ----------- |
+| bridgesIn  | `bytes[]` |             |
+| bridgesOut | `bytes[]` |             |
+
+<a id="_getsnapshotcontext"></a>
+
+### \_getSnapshotContext
+
+<i>
+
+Constructs the snapshot context for the current state.
+
+</i>
+
+```solidity
+function _getSnapshotContext() internal view returns (SpokeSnapshotContext memory);
+```
+
+**Returns**
+
+| Name         | Type                   | Description |
+| ------------ | ---------------------- | ----------- |
+| &lt;none&gt; | `SpokeSnapshotContext` |             |
+
+## Structs
+
+### CaliberMailboxStorage
+
+**Note:**
+
+- **storage-location:** erc7201:makina.storage.CaliberMailbox
+
+```solidity
+struct CaliberMailboxStorage {
+        address _deprecated_0;
+        address _caliber;
+        mapping(uint16 bridgeId => address adapter) _hubBridgeAdapters;
+        EnumerableMap.AddressToUintMap _bridgesIn;
+        EnumerableMap.AddressToUintMap _bridgesOut;
+        uint256 _cooldownDuration;
+        mapping(uint16 bridgeId => uint256 timestamp) _lastBridgeOutTimestamp;
+    }
+```
+
+**Properties**
+
+| Name                     | Type                                            | Description |
+| ------------------------ | ----------------------------------------------- | ----------- |
+| \_deprecated_0           | `address`                                       |             |
+| \_caliber                | `address`                                       |             |
+| \_hubBridgeAdapters      | `mapping(uint16 bridgeId => address adapter)`   |             |
+| \_bridgesIn              | `EnumerableMap.AddressToUintMap`                |             |
+| \_bridgesOut             | `EnumerableMap.AddressToUintMap`                |             |
+| \_cooldownDuration       | `uint256`                                       |             |
+| \_lastBridgeOutTimestamp | `mapping(uint16 bridgeId => uint256 timestamp)` |             |

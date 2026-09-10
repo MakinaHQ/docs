@@ -1,0 +1,74 @@
+---
+title: "IAsyncRedeemerFee"
+---
+
+# IAsyncRedeemerFee
+
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/72aab70ea8dcedba4658cd339dd07022e28ca1b2/src/interfaces/IAsyncRedeemerFee.sol)
+
+**Inherits:** [IAsyncRedeemer](/contracts/periphery/interfaces/interface.IAsyncRedeemer)
+
+## Functions
+
+<a id="redeemfeerate"></a>
+
+### redeemFeeRate
+
+Redeem fee rate. 1e18 = 100%.
+
+```solidity
+function redeemFeeRate() external view returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="maxredeemfeerate"></a>
+
+### maxRedeemFeeRate
+
+Maximum redeem fee rate that can be set. 1e18 = 100%.
+
+```solidity
+function maxRedeemFeeRate() external view returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="setredeemfeerate-uint256"></a>
+
+### setRedeemFeeRate
+
+Sets the redeem fee rate.
+
+```solidity
+function setRedeemFeeRate(uint256 newRedeemFeeRate) external;
+```
+
+**Parameters**
+
+| Name             | Type      | Description                           |
+| ---------------- | --------- | ------------------------------------- |
+| newRedeemFeeRate | `uint256` | The new redeem fee rate. 1e18 = 100%. |
+
+## Events
+
+### RedeemFeeRateChanged
+
+```solidity
+event RedeemFeeRateChanged(uint256 oldRate, uint256 newRate);
+```
+
+**Parameters**
+
+| Name    | Type      | Description |
+| ------- | --------- | ----------- |
+| oldRate | `uint256` |             |
+| newRate | `uint256` |             |

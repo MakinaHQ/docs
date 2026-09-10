@@ -1,0 +1,534 @@
+---
+title: "WatermarkFeeManager"
+---
+
+# WatermarkFeeManager
+
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/72aab70ea8dcedba4658cd339dd07022e28ca1b2/src/fee-managers/WatermarkFeeManager.sol)
+
+**Inherits:** [MachinePeriphery](/contracts/periphery/utils/abstract.MachinePeriphery), AccessManagedUpgradeable, [IWatermarkFeeManager](/contracts/periphery/interfaces/interface.IWatermarkFeeManager)
+
+## Constants
+
+### MAX_BPS
+
+<i>
+
+Full scale value in basis points
+
+</i>
+
+```solidity
+uint256 private constant MAX_BPS = 10_000;
+```
+
+### MAX_FEE_RATE
+
+<i>
+
+Full scale value for fee rates
+
+</i>
+
+```solidity
+uint256 private constant MAX_FEE_RATE = 1e18;
+```
+
+### WatermarkFeeManagerStorageLocation
+
+```solidity
+bytes32 private constant WatermarkFeeManagerStorageLocation =
+        0xede173ec12f445c51c989a2ee4f565cf9b40f8a01bd556574a3890308cdf3900;
+```
+
+## Functions
+
+<a id="_getwatermarkfeemanagerstorage"></a>
+
+### \_getWatermarkFeeManagerStorage
+
+```solidity
+function _getWatermarkFeeManagerStorage() private pure returns (WatermarkFeeManagerStorage storage $);
+```
+
+**Returns**
+
+| Name | Type                         | Description |
+| ---- | ---------------------------- | ----------- |
+| $    | `WatermarkFeeManagerStorage` |             |
+
+<a id="constructor-address"></a>
+
+### constructor
+
+```solidity
+constructor(address _registry) MachinePeriphery(_registry);
+```
+
+**Parameters**
+
+| Name       | Type      | Description |
+| ---------- | --------- | ----------- |
+| \_registry | `address` |             |
+
+<a id="initialize-bytes"></a>
+
+### initialize
+
+Initializer of the contract.
+
+```solidity
+function initialize(bytes calldata data) external override initializer;
+```
+
+**Parameters**
+
+| Name | Type    | Description                      |
+| ---- | ------- | -------------------------------- |
+| data | `bytes` | The initialization data, if any. |
+
+<a id="onlymachine"></a>
+
+### onlyMachine
+
+```solidity
+modifier onlyMachine();
+```
+
+<a id="authority"></a>
+
+### authority
+
+<i>
+
+Returns the current authority.
+
+</i>
+
+```solidity
+function authority() public view override returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="mgmtfeeratepersecond"></a>
+
+### mgmtFeeRatePerSecond
+
+Management fee rate per second, 1e18 = 100%.
+
+```solidity
+function mgmtFeeRatePerSecond() external view override returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="smfeeratepersecond"></a>
+
+### smFeeRatePerSecond
+
+Security module fee rate per second, 1e18 = 100%.
+
+```solidity
+function smFeeRatePerSecond() external view override returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="perffeerate"></a>
+
+### perfFeeRate
+
+Performance fee rate on profit, 1e18 = 100%.
+
+```solidity
+function perfFeeRate() external view override returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="mgmtfeereceivers"></a>
+
+### mgmtFeeReceivers
+
+Management fee receivers.
+
+```solidity
+function mgmtFeeReceivers() external view override returns (address[] memory);
+```
+
+**Returns**
+
+| Name         | Type        | Description |
+| ------------ | ----------- | ----------- |
+| &lt;none&gt; | `address[]` |             |
+
+<a id="mgmtfeesplitbps"></a>
+
+### mgmtFeeSplitBps
+
+Management fee split between receivers in basis points. Values must sum to 10_000.
+
+```solidity
+function mgmtFeeSplitBps() external view override returns (uint256[] memory);
+```
+
+**Returns**
+
+| Name         | Type        | Description |
+| ------------ | ----------- | ----------- |
+| &lt;none&gt; | `uint256[]` |             |
+
+<a id="perffeereceivers"></a>
+
+### perfFeeReceivers
+
+Performance fee receivers.
+
+```solidity
+function perfFeeReceivers() external view override returns (address[] memory);
+```
+
+**Returns**
+
+| Name         | Type        | Description |
+| ------------ | ----------- | ----------- |
+| &lt;none&gt; | `address[]` |             |
+
+<a id="perffeesplitbps"></a>
+
+### perfFeeSplitBps
+
+Performance fee split between receivers in basis points. Values must sum to 10_000.
+
+```solidity
+function perfFeeSplitBps() external view override returns (uint256[] memory);
+```
+
+**Returns**
+
+| Name         | Type        | Description |
+| ------------ | ----------- | ----------- |
+| &lt;none&gt; | `uint256[]` |             |
+
+<a id="securitymodule"></a>
+
+### securityModule
+
+Security module address.
+
+```solidity
+function securityModule() external view override returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="sharepricewatermark"></a>
+
+### sharePriceWatermark
+
+Current share price high watermark for the associated Machine.
+
+```solidity
+function sharePriceWatermark() external view override returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="getrestrictedfeeconfigselectors"></a>
+
+### getRestrictedFeeConfigSelectors
+
+Returns the function selectors for the restricted fee configuration functions.
+
+```solidity
+function getRestrictedFeeConfigSelectors() external pure override returns (bytes4[] memory);
+```
+
+**Returns**
+
+| Name         | Type       | Description |
+| ------------ | ---------- | ----------- |
+| &lt;none&gt; | `bytes4[]` |             |
+
+<a id="calculatefixedfee-uint256-uint256"></a>
+
+### calculateFixedFee
+
+Calculates the fixed fee for a given share supply and elapsed time.
+
+<i>
+
+May update internal state related to fee accrual or realization.
+
+</i>
+
+```solidity
+function calculateFixedFee(uint256 currentShareSupply, uint256 elapsedTime)
+        external
+        view
+        override
+        returns (uint256);
+```
+
+**Parameters**
+
+| Name               | Type      | Description                                      |
+| ------------------ | --------- | ------------------------------------------------ |
+| currentShareSupply | `uint256` | The total supply of shares.                      |
+| elapsedTime        | `uint256` | The elapsed time since the last fee realization. |
+
+**Returns**
+
+| Name         | Type      | Description                   |
+| ------------ | --------- | ----------------------------- |
+| &lt;none&gt; | `uint256` | fee The calculated fixed fee. |
+
+<a id="calculateperformancefee-uint256-uint256-uint256-uint256"></a>
+
+### calculatePerformanceFee
+
+Calculates the performance fee based on the share supply, share price performance and elapsed time.
+
+<i>
+
+May update internal state related to fee accrual or realization.
+
+</i>
+
+```solidity
+function calculatePerformanceFee(uint256 currentShareSupply, uint256, uint256 newSharePrice, uint256)
+        external
+        override
+        onlyMachine
+        returns (uint256);
+```
+
+**Parameters**
+
+| Name               | Type      | Description                                      |
+| ------------------ | --------- | ------------------------------------------------ |
+| currentShareSupply | `uint256` | The current total supply of shares.              |
+| \_                 | `uint256` | The previous share price of reference.           |
+| newSharePrice      | `uint256` | The new share price of reference.                |
+| \_                 | `uint256` | The elapsed time since the last fee realization. |
+
+**Returns**
+
+| Name         | Type      | Description                         |
+| ------------ | --------- | ----------------------------------- |
+| &lt;none&gt; | `uint256` | fee The calculated performance fee. |
+
+<a id="distributefees-uint256-uint256"></a>
+
+### distributeFees
+
+Distributes the fees to relevant recipients.
+
+```solidity
+function distributeFees(uint256 fixedFee, uint256 perfFee) external override onlyMachine;
+```
+
+**Parameters**
+
+| Name     | Type      | Description                                   |
+| -------- | --------- | --------------------------------------------- |
+| fixedFee | `uint256` | The fixed fee amount to be distributed.       |
+| perfFee  | `uint256` | The performance fee amount to be distributed. |
+
+<a id="resetsharepricewatermark-uint256"></a>
+
+### resetSharePriceWatermark
+
+Resets the share price high watermark.
+
+```solidity
+function resetSharePriceWatermark(uint256 sharePrice) external override restricted;
+```
+
+**Parameters**
+
+| Name       | Type      | Description |
+| ---------- | --------- | ----------- |
+| sharePrice | `uint256` |             |
+
+<a id="setmgmtfeeratepersecond-uint256"></a>
+
+### setMgmtFeeRatePerSecond
+
+Sets the management fee rate per second.
+
+```solidity
+function setMgmtFeeRatePerSecond(uint256 newMgmtFeeRatePerSecond) external override restricted;
+```
+
+**Parameters**
+
+| Name                    | Type      | Description                                          |
+| ----------------------- | --------- | ---------------------------------------------------- |
+| newMgmtFeeRatePerSecond | `uint256` | The new management fee rate per second. 1e18 = 100%. |
+
+<a id="setsmfeeratepersecond-uint256"></a>
+
+### setSmFeeRatePerSecond
+
+Sets the security module fee rate per second.
+
+```solidity
+function setSmFeeRatePerSecond(uint256 newSmFeeRatePerSecond) external override restricted;
+```
+
+**Parameters**
+
+| Name                  | Type      | Description                                               |
+| --------------------- | --------- | --------------------------------------------------------- |
+| newSmFeeRatePerSecond | `uint256` | The new security module fee rate per second. 1e18 = 100%. |
+
+<a id="setperffeerate-uint256"></a>
+
+### setPerfFeeRate
+
+Sets the performance fee rate.
+
+```solidity
+function setPerfFeeRate(uint256 newPerfFeeRate) external override restricted;
+```
+
+**Parameters**
+
+| Name           | Type      | Description                                          |
+| -------------- | --------- | ---------------------------------------------------- |
+| newPerfFeeRate | `uint256` | The new performance fee rate on profit. 1e18 = 100%. |
+
+<a id="setmgmtfeesplit-address-uint256"></a>
+
+### setMgmtFeeSplit
+
+Sets the management fee split and receivers.
+
+```solidity
+function setMgmtFeeSplit(address[] calldata newMgmtFeeReceivers, uint256[] calldata newMgmtFeeSplitBps)
+        external
+        override
+        restricted;
+```
+
+**Parameters**
+
+| Name                | Type        | Description                                                                                |
+| ------------------- | ----------- | ------------------------------------------------------------------------------------------ |
+| newMgmtFeeReceivers | `address[]` | The new management fee receivers.                                                          |
+| newMgmtFeeSplitBps  | `uint256[]` | The new management fee split between receivers in basis points. Values must sum to 10_000. |
+
+<a id="setperffeesplit-address-uint256"></a>
+
+### setPerfFeeSplit
+
+Sets the performance fee split and receivers.
+
+```solidity
+function setPerfFeeSplit(address[] calldata newPerfFeeReceivers, uint256[] calldata newPerfFeeSplitBps)
+        external
+        override
+        restricted;
+```
+
+**Parameters**
+
+| Name                | Type        | Description                                                                                 |
+| ------------------- | ----------- | ------------------------------------------------------------------------------------------- |
+| newPerfFeeReceivers | `address[]` | The new performance fee receivers.                                                          |
+| newPerfFeeSplitBps  | `uint256[]` | The new performance fee split between receivers in basis points. Values must sum to 10_000. |
+
+<a id="setsecuritymodule-address"></a>
+
+### setSecurityModule
+
+Sets the security module address.
+
+```solidity
+function setSecurityModule(address _securityModule) external override onlyFactory;
+```
+
+**Parameters**
+
+| Name             | Type      | Description                         |
+| ---------------- | --------- | ----------------------------------- |
+| \_securityModule | `address` | The address of the security module. |
+
+<a id="_checkfeesplit-address-uint256"></a>
+
+### \_checkFeeSplit
+
+Checks that the provided fee split setup is valid.
+
+```solidity
+function _checkFeeSplit(address[] memory _feeReceivers, uint256[] memory _feeSplitBps) internal pure;
+```
+
+**Parameters**
+
+| Name           | Type        | Description |
+| -------------- | ----------- | ----------- |
+| \_feeReceivers | `address[]` |             |
+| \_feeSplitBps  | `uint256[]` |             |
+
+## Structs
+
+### WatermarkFeeManagerStorage
+
+**Note:**
+
+- **storage-location:** erc7201:makina.storage.WatermarkFeeManager
+
+```solidity
+struct WatermarkFeeManagerStorage {
+        uint256 _mgmtFeeRatePerSecond;
+        uint256 _smFeeRatePerSecond;
+        uint256 _perfFeeRate;
+        uint256 _sharePriceWatermark;
+        address[] _mgmtFeeReceivers;
+        uint256[] _mgmtFeeSplitBps;
+        address[] _perfFeeReceivers;
+        uint256[] _perfFeeSplitBps;
+        address _securityModule;
+    }
+```
+
+**Properties**
+
+| Name                   | Type        | Description |
+| ---------------------- | ----------- | ----------- |
+| \_mgmtFeeRatePerSecond | `uint256`   |             |
+| \_smFeeRatePerSecond   | `uint256`   |             |
+| \_perfFeeRate          | `uint256`   |             |
+| \_sharePriceWatermark  | `uint256`   |             |
+| \_mgmtFeeReceivers     | `address[]` |             |
+| \_mgmtFeeSplitBps      | `uint256[]` |             |
+| \_perfFeeReceivers     | `address[]` |             |
+| \_perfFeeSplitBps      | `uint256[]` |             |
+| \_securityModule       | `address`   |             |

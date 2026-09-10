@@ -1,0 +1,137 @@
+---
+title: "CctpV2BridgeAdapter"
+---
+
+# CctpV2BridgeAdapter
+
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/eb9a2fea6cac9f88783f9c769927ed7e5c2b7fd5/src/bridge/adapters/CctpV2BridgeAdapter.sol)
+
+**Inherits:** [BridgeAdapter](/contracts/core/bridge/adapters/abstract.BridgeAdapter), [ICctpV2DestinationCaller](/contracts/core/interfaces/interface.ICctpV2DestinationCaller)
+
+## Constants
+
+### CCTP_V2_BRIDGE_ID
+
+```solidity
+uint16 private constant CCTP_V2_BRIDGE_ID = 3;
+```
+
+## Functions
+
+<a id="constructor-address-address-address"></a>
+
+### constructor
+
+```solidity
+constructor(address _registry, address _tokenMessenger, address _messageTransmitter)
+        BridgeAdapter(_registry, _tokenMessenger, _tokenMessenger, _messageTransmitter);
+```
+
+**Parameters**
+
+| Name                 | Type      | Description |
+| -------------------- | --------- | ----------- |
+| \_registry           | `address` |             |
+| \_tokenMessenger     | `address` |             |
+| \_messageTransmitter | `address` |             |
+
+<a id="initialize-address-bytes"></a>
+
+### initialize
+
+Initializer of the contract.
+
+```solidity
+function initialize(address _controller, bytes calldata) external override initializer;
+```
+
+**Parameters**
+
+| Name         | Type      | Description                       |
+| ------------ | --------- | --------------------------------- |
+| \_controller | `address` | The bridge controller contract.   |
+| \_           | `bytes`   | The optional initialization data. |
+
+<a id="receivecctpv2message-bytes-bytes"></a>
+
+### receiveCctpV2Message
+
+Handles reception of a CCTP V2 message and signature.
+
+```solidity
+function receiveCctpV2Message(bytes calldata message, bytes calldata attestation) external override nonReentrant;
+```
+
+**Parameters**
+
+| Name        | Type    | Description                    |
+| ----------- | ------- | ------------------------------ |
+| message     | `bytes` | The CCTP V2 message raw bytes. |
+| attestation | `bytes` | The message signature.         |
+
+<a id="_outbridgetransfercanceldefault-uint256"></a>
+
+### \_outBridgeTransferCancelDefault
+
+<i>
+
+Internal logic for outgoing bridge transfer cancellation default.
+
+</i>
+
+```solidity
+function _outBridgeTransferCancelDefault(uint256 transferId) internal view override returns (uint256);
+```
+
+**Parameters**
+
+| Name       | Type      | Description |
+| ---------- | --------- | ----------- |
+| transferId | `uint256` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="_checkoutbridgetransferiscancellable-uint256"></a>
+
+### \_checkOutBridgeTransferIsCancellable
+
+<i>
+
+Checks if an outgoing bridge transfer is in a cancellable state.
+
+</i>
+
+```solidity
+function _checkOutBridgeTransferIsCancellable(uint256 transferId) internal override;
+```
+
+**Parameters**
+
+| Name       | Type      | Description |
+| ---------- | --------- | ----------- |
+| transferId | `uint256` |             |
+
+<a id="_sendoutbridgetransfer-uint256-bytes"></a>
+
+### \_sendOutBridgeTransfer
+
+<i>
+
+Handles logic specific to the external bridge protocol for sending out a bridge transfer.
+
+</i>
+
+```solidity
+function _sendOutBridgeTransfer(uint256 transferId, bytes calldata data) internal override;
+```
+
+**Parameters**
+
+| Name       | Type      | Description |
+| ---------- | --------- | ----------- |
+| transferId | `uint256` |             |
+| data       | `bytes`   |             |

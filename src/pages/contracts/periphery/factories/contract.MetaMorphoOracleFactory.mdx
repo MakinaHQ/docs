@@ -1,0 +1,167 @@
+---
+title: "MetaMorphoOracleFactory"
+---
+
+# MetaMorphoOracleFactory
+
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/72aab70ea8dcedba4658cd339dd07022e28ca1b2/src/factories/MetaMorphoOracleFactory.sol)
+
+**Inherits:** AccessManagedUpgradeable, [IMetaMorphoOracleFactory](/contracts/periphery/interfaces/interface.IMetaMorphoOracleFactory)
+
+## Constants
+
+### MetaMorphoOracleFactoryStorageLocation
+
+```solidity
+bytes32 private constant MetaMorphoOracleFactoryStorageLocation =
+        0x8b272443f96f44d511b8bb6ad6efe08c8771f99b7e57f25c3f699349a99dca00;
+```
+
+## Functions
+
+<a id="_getmetamorphooraclefactorystorage"></a>
+
+### \_getMetaMorphoOracleFactoryStorage
+
+```solidity
+function _getMetaMorphoOracleFactoryStorage() internal pure returns (MetaMorphoOracleFactoryStorage storage $);
+```
+
+**Returns**
+
+| Name | Type                             | Description |
+| ---- | -------------------------------- | ----------- |
+| $    | `MetaMorphoOracleFactoryStorage` |             |
+
+<a id="constructor"></a>
+
+### constructor
+
+```solidity
+constructor();
+```
+
+<a id="initialize-address"></a>
+
+### initialize
+
+```solidity
+function initialize(address _initialAuthority) external initializer;
+```
+
+**Parameters**
+
+| Name               | Type      | Description |
+| ------------------ | --------- | ----------- |
+| \_initialAuthority | `address` |             |
+
+<a id="ismorphofactory-address"></a>
+
+### isMorphoFactory
+
+Factory => Whether this is a whitelisted Morpho factory.
+
+```solidity
+function isMorphoFactory(address morphoFactory) external view override returns (bool);
+```
+
+**Parameters**
+
+| Name          | Type      | Description |
+| ------------- | --------- | ----------- |
+| morphoFactory | `address` |             |
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="isoracle-address"></a>
+
+### isOracle
+
+Oracle => Whether this is an oracle instance deployed by this factory.
+
+```solidity
+function isOracle(address oracle) external view override returns (bool);
+```
+
+**Parameters**
+
+| Name   | Type      | Description |
+| ------ | --------- | ----------- |
+| oracle | `address` |             |
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="setmorphofactory-address-bool"></a>
+
+### setMorphoFactory
+
+Whitelist or unwhitelist a Morpho factory.
+
+```solidity
+function setMorphoFactory(address morphoFactory, bool isFactory) external override restricted;
+```
+
+**Parameters**
+
+| Name          | Type      | Description                                          |
+| ------------- | --------- | ---------------------------------------------------- |
+| morphoFactory | `address` | The address of the Morpho factory.                   |
+| isFactory     | `bool`    | True to whitelist the factory, false to unwhitelist. |
+
+<a id="createmetamorphooracle-address-address-uint8"></a>
+
+### createMetaMorphoOracle
+
+Creates an oracle for the given MetaMorpho Vault.
+
+```solidity
+function createMetaMorphoOracle(address factory, address metaMorphoVault, uint8 decimals)
+        external
+        override
+        restricted
+        returns (address);
+```
+
+**Parameters**
+
+| Name            | Type      | Description                                      |
+| --------------- | --------- | ------------------------------------------------ |
+| factory         | `address` | The factory used to create the MetaMorpho Vault. |
+| metaMorphoVault | `address` | The Vault for which to create a wrapper oracle.  |
+| decimals        | `uint8`   | Decimals to use for the oracle price.            |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+## Structs
+
+### MetaMorphoOracleFactoryStorage
+
+**Note:**
+
+- **storage-location:** erc7201:makina.storage.MetaMorphoOracleFactory
+
+```solidity
+struct MetaMorphoOracleFactoryStorage {
+        mapping(address oracle => bool isOracle) _isOracle;
+        mapping(address factory => bool isFactory) _isMorphoFactory;
+    }
+```
+
+**Properties**
+
+| Name              | Type                                         | Description |
+| ----------------- | -------------------------------------------- | ----------- |
+| \_isOracle        | `mapping(address oracle => bool isOracle)`   |             |
+| \_isMorphoFactory | `mapping(address factory => bool isFactory)` |             |

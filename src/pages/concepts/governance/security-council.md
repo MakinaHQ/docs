@@ -14,12 +14,14 @@ The **Security Council** is the strategy's emergency oversight body and its fina
 - **Trigger [Recovery Mode](../security/recovery-mode).** In response to a hack, Operator or Risk Manager misbehavior, abnormal share-price movement, or funds otherwise at risk, the Council can put the strategy into Recovery Mode. While active, the Council **assumes the Operator's role** and the strategy is restricted to unwinding only.
 - **Initiate Security Module slashing.** When a genuine shortfall occurs, and where the strategy has a [Security Module](../security/security-module) configured, the Council can trigger its slashing to cover losses for share holders.
 - **Bypass the share-price guard when legitimate.** The Council can force an [AUM update](../architecture/machine/share-price#keeping-aum-fresh) even when the share-price change exceeds the normal rate limit, useful when a large, legitimate move must be reflected.
+- **Relay spoke accounting as a fallback.** If the Chainlink CRE path that normally delivers [spoke accounting snapshots](../architecture/cross-chain/cross-chain-accounting) is unavailable, the Council can publish them to the Machine directly.
 
 Unlike the [Operator](operator) and [Risk Manager](risk-manager), whose powers are bounded by limits they cannot exceed, the Security Council is a **fully trusted** actor. Several of its powers are immediate, unilateral, and destructive if misused:
 
 - During [Recovery Mode](../security/recovery-mode) it assumes the Operator's role (itself still bounded by the instruction set and loss caps).
 - It can reset a token's [bridging state](../architecture/cross-chain/liquidity-bridging), force-withdrawing pending funds from the bridge adapters and clearing that token's in-flight accounting.
 - As an always-authorized accounting source, it can force an [AUM update](../architecture/machine/share-price#keeping-aum-fresh) even when the change exceeds the share-price rate limit.
+- It can publish spoke accounting snapshots directly, bypassing the CRE forwarder and workflow authorization (the mailbox and freshness checks still apply).
 - Where a [Security Module](../security/security-module) is configured, it can trigger slashing, seizing staked funds (up to a configured cap) to cover a shortfall.
 
 ```mermaid

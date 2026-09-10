@@ -1,0 +1,75 @@
+---
+title: "CastHelper"
+---
+
+# CastHelper
+
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/72aab70ea8dcedba4658cd339dd07022e28ca1b2/src/weiroll-helpers/CastHelper.sol)
+
+## Functions
+
+<a id="int256touint256-int256"></a>
+
+### int256ToUint256
+
+See `SafeCast`.
+
+```solidity
+function int256ToUint256(int256 value) external pure returns (uint256);
+```
+
+**Parameters**
+
+| Name  | Type     | Description |
+| ----- | -------- | ----------- |
+| value | `int256` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="uint256toint256-uint256"></a>
+
+### uint256ToInt256
+
+See `SafeCast`.
+
+```solidity
+function uint256ToInt256(uint256 value) external pure returns (int256);
+```
+
+**Parameters**
+
+| Name  | Type      | Description |
+| ----- | --------- | ----------- |
+| value | `uint256` |             |
+
+**Returns**
+
+| Name         | Type     | Description |
+| ------------ | -------- | ----------- |
+| &lt;none&gt; | `int256` |             |
+
+<a id="bytestostring-bytes"></a>
+
+### bytesToString
+
+Cast a bytes value to its string representation.
+
+```solidity
+function bytesToString(bytes calldata b) external pure returns (string memory);
+```
+
+**Parameters**
+
+| Name | Type    | Description |
+| ---- | ------- | ----------- |
+| b    | `bytes` |             |
+
+**Returns**
+
+| Name         | Type     | Description |
+| ------------ | -------- | ----------- |
+| &lt;none&gt; | `string` |             |

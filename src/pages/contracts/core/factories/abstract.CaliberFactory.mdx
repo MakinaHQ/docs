@@ -1,0 +1,137 @@
+---
+title: "CaliberFactory"
+---
+
+# CaliberFactory
+
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/eb9a2fea6cac9f88783f9c769927ed7e5c2b7fd5/src/factories/CaliberFactory.sol)
+
+**Inherits:** [Create3Factory](/contracts/core/factories/abstract.Create3Factory), [MakinaContext](/contracts/core/utils/abstract.MakinaContext), [ICaliberFactory](/contracts/core/interfaces/interface.ICaliberFactory)
+
+## Constants
+
+### CaliberSaltDomain
+
+```solidity
+bytes32 private constant CaliberSaltDomain = 0x53f0f8ad4fe517b9d8040b0fb31dfde7b5d276d4ebc6abb801ed7f52ea0563a8;
+```
+
+### CaliberFactoryStorageLocation
+
+```solidity
+bytes32 private constant CaliberFactoryStorageLocation =
+        0x092f83b0a9c245bf0116fc4aaf5564ab048ff47d6596f1c61801f18d9dfbea00;
+```
+
+## Functions
+
+<a id="_getcaliberfactorystorage"></a>
+
+### \_getCaliberFactoryStorage
+
+```solidity
+function _getCaliberFactoryStorage() internal pure returns (CaliberFactoryStorage storage $);
+```
+
+**Returns**
+
+| Name | Type                    | Description |
+| ---- | ----------------------- | ----------- |
+| $    | `CaliberFactoryStorage` |             |
+
+<a id="iscaliber-address"></a>
+
+### isCaliber
+
+Address => Whether this is a Caliber instance deployed by this factory.
+
+```solidity
+function isCaliber(address caliber) external view override returns (bool);
+```
+
+**Parameters**
+
+| Name    | Type      | Description |
+| ------- | --------- | ----------- |
+| caliber | `address` |             |
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="_createcaliber-icaliber-caliberinitparams-address-address-bytes32"></a>
+
+### \_createCaliber
+
+<i>
+
+Internal logic for caliber deployment via create3.
+
+</i>
+
+```solidity
+function _createCaliber(
+        ICaliber.CaliberInitParams calldata cParams,
+        address accountingToken,
+        address machineEndpoint,
+        bytes32 salt
+    ) internal returns (address);
+```
+
+**Parameters**
+
+| Name            | Type                         | Description |
+| --------------- | ---------------------------- | ----------- |
+| cParams         | `ICaliber.CaliberInitParams` |             |
+| accountingToken | `address`                    |             |
+| machineEndpoint | `address`                    |             |
+| salt            | `bytes32`                    |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="_setupcaliberamfunctionroles-address-address"></a>
+
+### \_setupCaliberAMFunctionRoles
+
+<i>
+
+Sets function roles in associated access manager for a deployed caliber instance.
+
+</i>
+
+```solidity
+function _setupCaliberAMFunctionRoles(address _authority, address _caliber) internal;
+```
+
+**Parameters**
+
+| Name        | Type      | Description |
+| ----------- | --------- | ----------- |
+| \_authority | `address` |             |
+| \_caliber   | `address` |             |
+
+## Structs
+
+### CaliberFactoryStorage
+
+**Note:**
+
+- **storage-location:** erc7201:makina.storage.CaliberFactory
+
+```solidity
+struct CaliberFactoryStorage {
+        mapping(address caliber => bool isCaliber) _isCaliber;
+    }
+```
+
+**Properties**
+
+| Name        | Type                                         | Description |
+| ----------- | -------------------------------------------- | ----------- |
+| \_isCaliber | `mapping(address caliber => bool isCaliber)` |             |

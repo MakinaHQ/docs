@@ -1,0 +1,41 @@
+---
+title: "ISecurityModuleReference"
+---
+
+# ISecurityModuleReference
+
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/72aab70ea8dcedba4658cd339dd07022e28ca1b2/src/interfaces/ISecurityModuleReference.sol)
+
+## Functions
+
+<a id="securitymodule"></a>
+
+### securityModule
+
+Security module address.
+
+```solidity
+function securityModule() external view returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="setsecuritymodule-address"></a>
+
+### setSecurityModule
+
+Sets the security module address.
+
+```solidity
+function setSecurityModule(address _securityModule) external;
+```
+
+**Parameters**
+
+| Name             | Type      | Description                         |
+| ---------------- | --------- | ----------------------------------- |
+| \_securityModule | `address` | The address of the security module. |

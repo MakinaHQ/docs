@@ -1,0 +1,59 @@
+---
+title: "IOwnable2Step"
+---
+
+# IOwnable2Step
+
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/eb9a2fea6cac9f88783f9c769927ed7e5c2b7fd5/src/interfaces/IOwnable2Step.sol)
+
+## Functions
+
+<a id="owner"></a>
+
+### owner
+
+```solidity
+function owner() external view returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="pendingowner"></a>
+
+### pendingOwner
+
+```solidity
+function pendingOwner() external view returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="transferownership-address"></a>
+
+### transferOwnership
+
+```solidity
+function transferOwnership(address newOwner) external;
+```
+
+**Parameters**
+
+| Name     | Type      | Description |
+| -------- | --------- | ----------- |
+| newOwner | `address` |             |
+
+<a id="acceptownership"></a>
+
+### acceptOwnership
+
+```solidity
+function acceptOwnership() external;
+```

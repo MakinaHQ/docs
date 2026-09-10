@@ -1,0 +1,122 @@
+---
+title: "IMetaMorphoOracleFactory"
+---
+
+# IMetaMorphoOracleFactory
+
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/72aab70ea8dcedba4658cd339dd07022e28ca1b2/src/interfaces/IMetaMorphoOracleFactory.sol)
+
+## Functions
+
+<a id="ismorphofactory-address"></a>
+
+### isMorphoFactory
+
+Factory => Whether this is a whitelisted Morpho factory.
+
+```solidity
+function isMorphoFactory(address morphoFactory) external view returns (bool isFactory);
+```
+
+**Parameters**
+
+| Name          | Type      | Description |
+| ------------- | --------- | ----------- |
+| morphoFactory | `address` |             |
+
+**Returns**
+
+| Name      | Type   | Description |
+| --------- | ------ | ----------- |
+| isFactory | `bool` |             |
+
+<a id="isoracle-address"></a>
+
+### isOracle
+
+Oracle => Whether this is an oracle instance deployed by this factory.
+
+```solidity
+function isOracle(address oracle) external view returns (bool);
+```
+
+**Parameters**
+
+| Name   | Type      | Description |
+| ------ | --------- | ----------- |
+| oracle | `address` |             |
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="setmorphofactory-address-bool"></a>
+
+### setMorphoFactory
+
+Whitelist or unwhitelist a Morpho factory.
+
+```solidity
+function setMorphoFactory(address morphoFactory, bool isFactory) external;
+```
+
+**Parameters**
+
+| Name          | Type      | Description                                          |
+| ------------- | --------- | ---------------------------------------------------- |
+| morphoFactory | `address` | The address of the Morpho factory.                   |
+| isFactory     | `bool`    | True to whitelist the factory, false to unwhitelist. |
+
+<a id="createmetamorphooracle-address-address-uint8"></a>
+
+### createMetaMorphoOracle
+
+Creates an oracle for the given MetaMorpho Vault.
+
+```solidity
+function createMetaMorphoOracle(address factory, address metaMorphoVault, uint8 decimals) external returns (address);
+```
+
+**Parameters**
+
+| Name            | Type      | Description                                      |
+| --------------- | --------- | ------------------------------------------------ |
+| factory         | `address` | The factory used to create the MetaMorpho Vault. |
+| metaMorphoVault | `address` | The Vault for which to create a wrapper oracle.  |
+| decimals        | `uint8`   | Decimals to use for the oracle price.            |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+## Events
+
+### MetaMorphoOracleCreated
+
+```solidity
+event MetaMorphoOracleCreated(address indexed oracle);
+```
+
+**Parameters**
+
+| Name   | Type      | Description |
+| ------ | --------- | ----------- |
+| oracle | `address` |             |
+
+## Errors
+
+### NotMetaMorphoVault
+
+```solidity
+error NotMetaMorphoVault();
+```
+
+### NotFactory
+
+```solidity
+error NotFactory();
+```

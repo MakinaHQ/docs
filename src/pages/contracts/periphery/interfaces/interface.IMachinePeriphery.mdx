@@ -1,0 +1,71 @@
+---
+title: "IMachinePeriphery"
+---
+
+# IMachinePeriphery
+
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/72aab70ea8dcedba4658cd339dd07022e28ca1b2/src/interfaces/IMachinePeriphery.sol)
+
+## Functions
+
+<a id="initialize-bytes"></a>
+
+### initialize
+
+Initializer of the contract.
+
+```solidity
+function initialize(bytes calldata _data) external;
+```
+
+**Parameters**
+
+| Name   | Type    | Description                      |
+| ------ | ------- | -------------------------------- |
+| \_data | `bytes` | The initialization data, if any. |
+
+<a id="machine"></a>
+
+### machine
+
+Address of the associated machine.
+
+```solidity
+function machine() external view returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="setmachine-address"></a>
+
+### setMachine
+
+Sets the machine address.
+
+```solidity
+function setMachine(address _machine) external;
+```
+
+**Parameters**
+
+| Name      | Type      | Description |
+| --------- | --------- | ----------- |
+| \_machine | `address` |             |
+
+## Events
+
+### MachineSet
+
+```solidity
+event MachineSet(address indexed machine);
+```
+
+**Parameters**
+
+| Name    | Type      | Description |
+| ------- | --------- | ----------- |
+| machine | `address` |             |

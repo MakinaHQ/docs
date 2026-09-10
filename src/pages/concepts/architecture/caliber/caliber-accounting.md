@@ -32,4 +32,4 @@ Whoever is allowed to do it, the [Operator](../../governance/operator) and the M
 
 ## Feeding the Machine
 
-The Caliber exposes its accounting as a **public view function**. On the Hub Chain the Machine reads it directly. On Spoke Chains the same data is queried by the [Wormhole Cross-Chain Queries](https://wormhole.com/products/queries) network, signed, and delivered to the Machine. See [Cross-Chain Accounting](../cross-chain/cross-chain-accounting).
+The Caliber exposes its accounting as a **public view function**. On the Hub Chain the Machine reads it directly. On Spoke Chains the same data is read by a [Chainlink CRE](https://docs.chain.link/cre) workflow and delivered to the Machine as an accounting snapshot. See [Cross-Chain Accounting](../cross-chain/cross-chain-accounting).

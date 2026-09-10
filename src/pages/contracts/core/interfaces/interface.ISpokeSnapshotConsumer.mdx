@@ -1,0 +1,123 @@
+---
+title: "ISpokeSnapshotConsumer"
+---
+
+# ISpokeSnapshotConsumer
+
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/eb9a2fea6cac9f88783f9c769927ed7e5c2b7fd5/src/interfaces/ISpokeSnapshotConsumer.sol)
+
+**Inherits:** [ICreReceiver](/contracts/core/interfaces/interface.ICreReceiver)
+
+## Functions
+
+<a id="creforwarder"></a>
+
+### creForwarder
+
+Address of the Chainlink CRE forwarder.
+
+```solidity
+function creForwarder() external view returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="iscreworkflowidauthorized-bytes32"></a>
+
+### isCreWorkflowIdAuthorized
+
+CRE workflow ID => Whether the ID is authorized.
+
+```solidity
+function isCreWorkflowIdAuthorized(bytes32 creWorkflowId) external view returns (bool);
+```
+
+**Parameters**
+
+| Name          | Type      | Description |
+| ------------- | --------- | ----------- |
+| creWorkflowId | `bytes32` |             |
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="addcreworkflowid-bytes32"></a>
+
+### addCreWorkflowId
+
+Authorizes a CRE workflow ID.
+
+```solidity
+function addCreWorkflowId(bytes32 newCreWorkflowId) external;
+```
+
+**Parameters**
+
+| Name             | Type      | Description                       |
+| ---------------- | --------- | --------------------------------- |
+| newCreWorkflowId | `bytes32` | The CRE workflow ID to authorize. |
+
+<a id="removecreworkflowid-bytes32"></a>
+
+### removeCreWorkflowId
+
+Deauthorizes a CRE workflow ID.
+
+```solidity
+function removeCreWorkflowId(bytes32 creWorkflowId) external;
+```
+
+**Parameters**
+
+| Name          | Type      | Description                         |
+| ------------- | --------- | ----------------------------------- |
+| creWorkflowId | `bytes32` | The CRE workflow ID to deauthorize. |
+
+## Events
+
+### CreWorkflowIdAdded
+
+```solidity
+event CreWorkflowIdAdded(bytes32 indexed newCreWorkflowId);
+```
+
+**Parameters**
+
+| Name             | Type      | Description |
+| ---------------- | --------- | ----------- |
+| newCreWorkflowId | `bytes32` |             |
+
+### CreWorkflowIdRemoved
+
+```solidity
+event CreWorkflowIdRemoved(bytes32 indexed creWorkflowId);
+```
+
+**Parameters**
+
+| Name          | Type      | Description |
+| ------------- | --------- | ----------- |
+| creWorkflowId | `bytes32` |             |
+
+## Structs
+
+### SpokeSnapshotConsumerInitParams
+
+```solidity
+struct SpokeSnapshotConsumerInitParams {
+        bytes32[] initialCreWorkflowIds;
+    }
+```
+
+**Properties**
+
+| Name                  | Type        | Description |
+| --------------------- | ----------- | ----------- |
+| initialCreWorkflowIds | `bytes32[]` |             |

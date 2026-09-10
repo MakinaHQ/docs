@@ -1,0 +1,262 @@
+---
+title: "CctpV2Message"
+---
+
+# CctpV2Message
+
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/eb9a2fea6cac9f88783f9c769927ed7e5c2b7fd5/src/libraries/CctpV2Message.sol)
+
+## Constants
+
+### MESSAGE_SOURCE_DOMAIN_INDEX
+
+<i>
+
+Indexes in message
+
+</i>
+
+```solidity
+uint256 private constant MESSAGE_SOURCE_DOMAIN_INDEX = 4;
+```
+
+### MESSAGE_RECIPIENT_INDEX
+
+```solidity
+uint256 private constant MESSAGE_RECIPIENT_INDEX = 76;
+```
+
+### MESSAGE_BODY_INDEX
+
+```solidity
+uint256 private constant MESSAGE_BODY_INDEX = 148;
+```
+
+### BODY_BURN_TOKEN_INDEX
+
+<i>
+
+Indexes in message body
+
+</i>
+
+```solidity
+uint256 private constant BODY_BURN_TOKEN_INDEX = 4;
+```
+
+### BODY_MINT_RECIPIENT_INDEX
+
+```solidity
+uint256 private constant BODY_MINT_RECIPIENT_INDEX = 36;
+```
+
+### BODY_HOOK_DATA_INDEX
+
+```solidity
+uint256 private constant BODY_HOOK_DATA_INDEX = 228;
+```
+
+## Functions
+
+<a id="checkmessagelength-bytes"></a>
+
+### checkMessageLength
+
+<i>
+
+Checks that `message` has the minimum length required for parsing.
+Must be called before parsing.
+
+</i>
+
+```solidity
+function checkMessageLength(bytes calldata message) internal pure;
+```
+
+**Parameters**
+
+| Name    | Type    | Description |
+| ------- | ------- | ----------- |
+| message | `bytes` |             |
+
+<a id="getsourcedomain-bytes"></a>
+
+### getSourceDomain
+
+<i>
+
+Returns the source domain.
+
+</i>
+
+```solidity
+function getSourceDomain(bytes calldata message) internal pure returns (uint32);
+```
+
+**Parameters**
+
+| Name    | Type    | Description |
+| ------- | ------- | ----------- |
+| message | `bytes` |             |
+
+**Returns**
+
+| Name         | Type     | Description |
+| ------------ | -------- | ----------- |
+| &lt;none&gt; | `uint32` |             |
+
+<a id="getrecipient-bytes"></a>
+
+### getRecipient
+
+<i>
+
+Returns the recipient.
+
+</i>
+
+```solidity
+function getRecipient(bytes calldata message) internal pure returns (address);
+```
+
+**Parameters**
+
+| Name    | Type    | Description |
+| ------- | ------- | ----------- |
+| message | `bytes` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="getburntoken-bytes"></a>
+
+### getBurnToken
+
+<i>
+
+Returns the burn token from the message body.
+
+</i>
+
+```solidity
+function getBurnToken(bytes calldata message) internal pure returns (bytes32);
+```
+
+**Parameters**
+
+| Name    | Type    | Description |
+| ------- | ------- | ----------- |
+| message | `bytes` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `bytes32` |             |
+
+<a id="getmintrecipient-bytes"></a>
+
+### getMintRecipient
+
+<i>
+
+Returns the mint recipient from the message body.
+
+</i>
+
+```solidity
+function getMintRecipient(bytes calldata message) internal pure returns (address);
+```
+
+**Parameters**
+
+| Name    | Type    | Description |
+| ------- | ------- | ----------- |
+| message | `bytes` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="gethookdata-bytes"></a>
+
+### getHookData
+
+<i>
+
+Returns the hook data from the message body.
+
+</i>
+
+```solidity
+function getHookData(bytes calldata message) internal pure returns (bytes memory);
+```
+
+**Parameters**
+
+| Name    | Type    | Description |
+| ------- | ------- | ----------- |
+| message | `bytes` |             |
+
+**Returns**
+
+| Name         | Type    | Description |
+| ------------ | ------- | ----------- |
+| &lt;none&gt; | `bytes` |             |
+
+<a id="addresstobytes32-address"></a>
+
+### addressToBytes32
+
+<i>
+
+Converts an address to bytes32.
+
+</i>
+
+```solidity
+function addressToBytes32(address addr) internal pure returns (bytes32);
+```
+
+**Parameters**
+
+| Name | Type      | Description |
+| ---- | --------- | ----------- |
+| addr | `address` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `bytes32` |             |
+
+<a id="bytes32toaddress-bytes32"></a>
+
+### bytes32ToAddress
+
+<i>
+
+Converts a bytes32 to address.
+
+</i>
+
+```solidity
+function bytes32ToAddress(bytes32 b) internal pure returns (address);
+```
+
+**Parameters**
+
+| Name | Type      | Description |
+| ---- | --------- | ----------- |
+| b    | `bytes32` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |

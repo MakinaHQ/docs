@@ -1,0 +1,187 @@
+---
+title: "MachineShareOracle"
+---
+
+# MachineShareOracle
+
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/72aab70ea8dcedba4658cd339dd07022e28ca1b2/src/oracles/MachineShareOracle.sol)
+
+**Inherits:** MakinaContext, Initializable, [IMachineShareOracle](/contracts/periphery/interfaces/interface.IMachineShareOracle)
+
+## Constants
+
+### MachineShareOracleStorageLocation
+
+```solidity
+bytes32 private constant MachineShareOracleStorageLocation =
+        0x4f70fa92dc3700b8f04f54ea7fbeb33f50a8cec0cd9f676fee937dccebe28100;
+```
+
+## Functions
+
+<a id="_getmachineshareoraclestorage"></a>
+
+### \_getMachineShareOracleStorage
+
+```solidity
+function _getMachineShareOracleStorage() internal pure returns (MachineShareOracleStorage storage $);
+```
+
+**Returns**
+
+| Name | Type                        | Description |
+| ---- | --------------------------- | ----------- |
+| $    | `MachineShareOracleStorage` |             |
+
+<a id="constructor-address"></a>
+
+### constructor
+
+```solidity
+constructor(address coreRegistry) MakinaContext(coreRegistry);
+```
+
+**Parameters**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| coreRegistry | `address` |             |
+
+<a id="initialize-address-uint8"></a>
+
+### initialize
+
+Initializer of the contract.
+
+```solidity
+function initialize(address _shareOwner, uint8 _decimals) external initializer;
+```
+
+**Parameters**
+
+| Name         | Type      | Description                                                             |
+| ------------ | --------- | ----------------------------------------------------------------------- |
+| \_shareOwner | `address` | The current owner contract of the share (machine or pre-deposit vault). |
+| \_decimals   | `uint8`   | Decimals to use for the oracle price.                                   |
+
+<a id="decimals"></a>
+
+### decimals
+
+Decimals of the oracle.
+
+```solidity
+function decimals() external view override returns (uint8);
+```
+
+**Returns**
+
+| Name         | Type    | Description |
+| ------------ | ------- | ----------- |
+| &lt;none&gt; | `uint8` |             |
+
+<a id="description"></a>
+
+### description
+
+Description of the oracle.
+
+```solidity
+function description() external view override returns (string memory);
+```
+
+**Returns**
+
+| Name         | Type     | Description |
+| ------------ | -------- | ----------- |
+| &lt;none&gt; | `string` |             |
+
+<a id="shareowner"></a>
+
+### shareOwner
+
+Address of the share owner (machine or pre-deposit vault).
+
+```solidity
+function shareOwner() public view override returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="getshareprice"></a>
+
+### getSharePrice
+
+Returns the price of one machine share token expressed in machine accounting tokens.
+
+<i>
+
+The price is expressed with `decimals` precision.
+
+</i>
+
+```solidity
+function getSharePrice() external view override returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description                                                                                                  |
+| ------------ | --------- | ------------------------------------------------------------------------------------------------------------ |
+| &lt;none&gt; | `uint256` | The price of one machine share token expressed in machine accounting tokens, scaled to `decimals` precision. |
+
+<a id="notifypdvmigration"></a>
+
+### notifyPdvMigration
+
+Notifies the migration of the original share owner from a pre-deposit vault to a machine.
+
+<i>
+
+Can only be called once and only if the share owner was initially a pre-deposit vault.
+
+</i>
+
+<i>
+
+This function can be called permissionlessly and allows to optimize gas costs for users of the oracle.
+
+</i>
+
+```solidity
+function notifyPdvMigration() external override;
+```
+
+## Structs
+
+### MachineShareOracleStorage
+
+**Note:**
+
+- **storage-location:** erc7201:makina.storage.MachineShareOracle
+
+```solidity
+struct MachineShareOracleStorage {
+        address _shareOwner;
+        bool _isShareOwnerPdv;
+        uint8 _decimals;
+        uint256 _scalingNumerator;
+        uint256 _shareTokenDecimalsOffset;
+        string _description;
+    }
+```
+
+**Properties**
+
+| Name                       | Type      | Description |
+| -------------------------- | --------- | ----------- |
+| \_shareOwner               | `address` |             |
+| \_isShareOwnerPdv          | `bool`    |             |
+| \_decimals                 | `uint8`   |             |
+| \_scalingNumerator         | `uint256` |             |
+| \_shareTokenDecimalsOffset | `uint256` |             |
+| \_description              | `string`  |             |

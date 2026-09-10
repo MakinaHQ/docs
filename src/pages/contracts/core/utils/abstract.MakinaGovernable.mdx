@@ -1,0 +1,468 @@
+---
+title: "MakinaGovernable"
+---
+
+# MakinaGovernable
+
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/eb9a2fea6cac9f88783f9c769927ed7e5c2b7fd5/src/utils/MakinaGovernable.sol)
+
+**Inherits:** AccessManagedUpgradeable, [IMakinaGovernable](/contracts/core/interfaces/interface.IMakinaGovernable)
+
+## Constants
+
+### MakinaGovernableStorageLocation
+
+```solidity
+bytes32 private constant MakinaGovernableStorageLocation =
+        0x7e702089668346e906996be6de3dfc0cb2b0c125fc09b3c0391871825913e000;
+```
+
+## Functions
+
+<a id="_getmakinagovernablestorage"></a>
+
+### \_getMakinaGovernableStorage
+
+```solidity
+function _getMakinaGovernableStorage() internal pure returns (MakinaGovernableStorage storage $);
+```
+
+**Returns**
+
+| Name | Type                      | Description |
+| ---- | ------------------------- | ----------- |
+| $    | `MakinaGovernableStorage` |             |
+
+<a id="constructor"></a>
+
+### constructor
+
+```solidity
+constructor();
+```
+
+<a id="__makinagovernable_init-makinagovernableinitparams"></a>
+
+### \_\_MakinaGovernable_init
+
+```solidity
+function __MakinaGovernable_init(MakinaGovernableInitParams calldata params) internal onlyInitializing;
+```
+
+**Parameters**
+
+| Name   | Type                         | Description |
+| ------ | ---------------------------- | ----------- |
+| params | `MakinaGovernableInitParams` |             |
+
+<a id="onlyoperator"></a>
+
+### onlyOperator
+
+```solidity
+modifier onlyOperator();
+```
+
+<a id="onlymechanic"></a>
+
+### onlyMechanic
+
+```solidity
+modifier onlyMechanic();
+```
+
+<a id="onlysecuritycouncil"></a>
+
+### onlySecurityCouncil
+
+```solidity
+modifier onlySecurityCouncil();
+```
+
+<a id="onlyriskmanager"></a>
+
+### onlyRiskManager
+
+```solidity
+modifier onlyRiskManager();
+```
+
+<a id="onlyriskmanagertimelock"></a>
+
+### onlyRiskManagerTimelock
+
+```solidity
+modifier onlyRiskManagerTimelock();
+```
+
+<a id="notrecoverymode"></a>
+
+### notRecoveryMode
+
+```solidity
+modifier notRecoveryMode();
+```
+
+<a id="onlyaccountingauthorized"></a>
+
+### onlyAccountingAuthorized
+
+```solidity
+modifier onlyAccountingAuthorized();
+```
+
+<a id="operator"></a>
+
+### operator
+
+Address of the current operator (mechanic or security council).
+
+```solidity
+function operator() public view override returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="mechanic"></a>
+
+### mechanic
+
+Address of the mechanic.
+
+```solidity
+function mechanic() external view override returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="securitycouncil"></a>
+
+### securityCouncil
+
+Address of the security council.
+
+```solidity
+function securityCouncil() public view override returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="riskmanager"></a>
+
+### riskManager
+
+Address of the risk manager.
+
+```solidity
+function riskManager() external view override returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="riskmanagertimelock"></a>
+
+### riskManagerTimelock
+
+Address of the risk manager timelock.
+
+```solidity
+function riskManagerTimelock() external view override returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="recoverymode"></a>
+
+### recoveryMode
+
+True if the contract is in recovery mode, false otherwise.
+
+```solidity
+function recoveryMode() external view override returns (bool);
+```
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="restrictedaccountingmode"></a>
+
+### restrictedAccountingMode
+
+True if the contract is in restricted accounting mode, false otherwise.
+
+```solidity
+function restrictedAccountingMode() external view override returns (bool);
+```
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="isaccountingagent-address"></a>
+
+### isAccountingAgent
+
+User => Whether the user is an accounting agent
+
+```solidity
+function isAccountingAgent(address user) external view override returns (bool);
+```
+
+**Parameters**
+
+| Name | Type      | Description |
+| ---- | --------- | ----------- |
+| user | `address` |             |
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="isaccountingauthorized-address"></a>
+
+### isAccountingAuthorized
+
+User => Whether the user is authorized to perform accounting operations under current settings
+
+```solidity
+function isAccountingAuthorized(address user) public view override returns (bool);
+```
+
+**Parameters**
+
+| Name | Type      | Description |
+| ---- | --------- | ----------- |
+| user | `address` |             |
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="setmechanic-address"></a>
+
+### setMechanic
+
+Sets a new mechanic.
+
+```solidity
+function setMechanic(address newMechanic) external override restricted;
+```
+
+**Parameters**
+
+| Name        | Type      | Description                      |
+| ----------- | --------- | -------------------------------- |
+| newMechanic | `address` | The address of the new mechanic. |
+
+<a id="setsecuritycouncil-address"></a>
+
+### setSecurityCouncil
+
+Sets a new security council.
+
+```solidity
+function setSecurityCouncil(address newSecurityCouncil) external override restricted;
+```
+
+**Parameters**
+
+| Name               | Type      | Description                              |
+| ------------------ | --------- | ---------------------------------------- |
+| newSecurityCouncil | `address` | The address of the new security council. |
+
+<a id="setriskmanager-address"></a>
+
+### setRiskManager
+
+Sets a new risk manager.
+
+```solidity
+function setRiskManager(address newRiskManager) external override restricted;
+```
+
+**Parameters**
+
+| Name           | Type      | Description                          |
+| -------------- | --------- | ------------------------------------ |
+| newRiskManager | `address` | The address of the new risk manager. |
+
+<a id="setriskmanagertimelock-address"></a>
+
+### setRiskManagerTimelock
+
+Sets a new risk manager timelock.
+
+```solidity
+function setRiskManagerTimelock(address newRiskManagerTimelock) external override restricted;
+```
+
+**Parameters**
+
+| Name                   | Type      | Description                                   |
+| ---------------------- | --------- | --------------------------------------------- |
+| newRiskManagerTimelock | `address` | The address of the new risk manager timelock. |
+
+<a id="setrecoverymode-bool"></a>
+
+### setRecoveryMode
+
+Sets the recovery mode.
+
+```solidity
+function setRecoveryMode(bool enabled) external override onlySecurityCouncil;
+```
+
+**Parameters**
+
+| Name    | Type   | Description                                        |
+| ------- | ------ | -------------------------------------------------- |
+| enabled | `bool` | True to enable recovery mode, false to disable it. |
+
+<a id="setrestrictedaccountingmode-bool"></a>
+
+### setRestrictedAccountingMode
+
+Sets the restricted accounting mode.
+
+```solidity
+function setRestrictedAccountingMode(bool enabled) external override restricted;
+```
+
+**Parameters**
+
+| Name    | Type   | Description                                                     |
+| ------- | ------ | --------------------------------------------------------------- |
+| enabled | `bool` | True to enable restricted accounting mode, false to disable it. |
+
+<a id="addaccountingagent-address"></a>
+
+### addAccountingAgent
+
+Adds a new accounting agent.
+
+```solidity
+function addAccountingAgent(address newAgent) external override restricted;
+```
+
+**Parameters**
+
+| Name     | Type      | Description                              |
+| -------- | --------- | ---------------------------------------- |
+| newAgent | `address` | The address of the new accounting agent. |
+
+<a id="removeaccountingagent-address"></a>
+
+### removeAccountingAgent
+
+Removes an accounting agent.
+
+```solidity
+function removeAccountingAgent(address agent) external override restricted;
+```
+
+**Parameters**
+
+| Name  | Type      | Description                                    |
+| ----- | --------- | ---------------------------------------------- |
+| agent | `address` | The address of the accounting agent to remove. |
+
+<a id="_addaccountingagent-address"></a>
+
+### \_addAccountingAgent
+
+<i>
+
+Internal logic for adding an accounting agent.
+
+</i>
+
+```solidity
+function _addAccountingAgent(address newAgent) internal;
+```
+
+**Parameters**
+
+| Name     | Type      | Description |
+| -------- | --------- | ----------- |
+| newAgent | `address` |             |
+
+<a id="_removeaccountingagent-address"></a>
+
+### \_removeAccountingAgent
+
+<i>
+
+Internal logic for removing an accounting agent.
+
+</i>
+
+```solidity
+function _removeAccountingAgent(address agent) internal;
+```
+
+**Parameters**
+
+| Name  | Type      | Description |
+| ----- | --------- | ----------- |
+| agent | `address` |             |
+
+## Structs
+
+### MakinaGovernableStorage
+
+**Note:**
+
+- **storage-location:** erc7201:makina.storage.MakinaGovernable
+
+```solidity
+struct MakinaGovernableStorage {
+        address _mechanic;
+        address _securityCouncil;
+        address _riskManager;
+        address _riskManagerTimelock;
+        bool _recoveryMode;
+        bool _restrictedAccountingMode;
+        mapping(address user => bool isAccountingAgent) _isAccountingAgent;
+    }
+```
+
+**Properties**
+
+| Name                       | Type                                              | Description |
+| -------------------------- | ------------------------------------------------- | ----------- |
+| \_mechanic                 | `address`                                         |             |
+| \_securityCouncil          | `address`                                         |             |
+| \_riskManager              | `address`                                         |             |
+| \_riskManagerTimelock      | `address`                                         |             |
+| \_recoveryMode             | `bool`                                            |             |
+| \_restrictedAccountingMode | `bool`                                            |             |
+| \_isAccountingAgent        | `mapping(address user => bool isAccountingAgent)` |             |

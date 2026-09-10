@@ -42,6 +42,8 @@ Each transfer carries a **minimum output amount**, and bridging is bounded by a 
 
 Between _send_ and _claim_, capital is in transit and belongs to neither side's balance. The protocol tracks these pending transfers and counts them in [AUM](../machine/share-price), so the [share price](../machine/share-price) stays correct even while funds are crossing chains. See [Cross-Chain Accounting](cross-chain-accounting).
 
+For **Spoke → Hub** transfers there is an additional ordering rule: the spoke's [accounting snapshot](cross-chain-accounting) recording the outbound transfer must reach the Machine before the transfer can be claimed on the Hub. The Machine rejects the claim until the reported outbound amount covers it, so the value leaves the spoke side of the accounting view before it is added on the hub side, and is never counted on both at once.
+
 :::warning[Token homology]
 The protocol assumes the input and output tokens of a transfer are **homologous and share the same number of decimals**. This relies on the **Token Registry**, which maps each local token to its equivalent foreign address and must be configured correctly on every chain. Misconfiguration here would break the value equivalence that transfers and accounting both rely on.
 :::
@@ -51,5 +53,5 @@ The protocol assumes the input and output tokens of a transfer are **homologous 
 During [Recovery Mode](../../security/recovery-mode), bridging is restricted to the **Spoke → Hub** direction. The Hub can no longer send transfers out to spokes, and spokes can no longer authorize incoming transfers from the Hub, so an emergency can only pull capital to Hub, never push it out to a spoke.
 
 :::info[Implementation]
-See the [bridge adapters](/contracts/core/summary) and [`BridgeController`](/contracts/core/bridge/controller/BridgeController.sol/abstract.BridgeController.md).
+See the [bridge adapters](/contracts/core/summary) and [`BridgeController`](/contracts/core/bridge/controller/abstract.BridgeController).
 :::

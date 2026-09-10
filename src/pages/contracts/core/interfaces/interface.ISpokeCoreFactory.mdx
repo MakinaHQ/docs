@@ -1,0 +1,81 @@
+---
+title: "ISpokeCoreFactory"
+---
+
+# ISpokeCoreFactory
+
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/eb9a2fea6cac9f88783f9c769927ed7e5c2b7fd5/src/interfaces/ISpokeCoreFactory.sol)
+
+**Inherits:** [IBridgeAdapterFactory](/contracts/core/interfaces/interface.IBridgeAdapterFactory)
+
+## Functions
+
+<a id="iscalibermailbox-address"></a>
+
+### isCaliberMailbox
+
+Address => Whether this is a CaliberMailbox instance deployed by this factory.
+
+```solidity
+function isCaliberMailbox(address caliberMailbox) external view returns (bool);
+```
+
+**Parameters**
+
+| Name           | Type      | Description |
+| -------------- | --------- | ----------- |
+| caliberMailbox | `address` |             |
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="createcaliber-icaliber-caliberinitparams-imakinagovernable-makinagovernableinitparams-bridgeadapterinitparams-address-bytes32-bool"></a>
+
+### createCaliber
+
+Deploys a new Caliber instance with an associated CaliberMailbox.
+
+```solidity
+function createCaliber(
+        ICaliber.CaliberInitParams calldata cParams,
+        IMakinaGovernable.MakinaGovernableInitParams calldata mgParams,
+        BridgeAdapterInitParams[] calldata baParams,
+        address accountingToken,
+        bytes32 salt,
+        bool setupAMFunctionRoles
+    ) external returns (address caliber);
+```
+
+**Parameters**
+
+| Name                 | Type                                           | Description                                                                        |
+| -------------------- | ---------------------------------------------- | ---------------------------------------------------------------------------------- |
+| cParams              | `ICaliber.CaliberInitParams`                   | The caliber initialization parameters.                                             |
+| mgParams             | `IMakinaGovernable.MakinaGovernableInitParams` | The makina governable initialization parameters.                                   |
+| baParams             | `BridgeAdapterInitParams[]`                    | The list of bridge adapter initialization parameters and controller configuration. |
+| accountingToken      | `address`                                      | The address of the accounting token.                                               |
+| salt                 | `bytes32`                                      | The salt used to deploy the Caliber deterministically.                             |
+| setupAMFunctionRoles | `bool`                                         | Whether to set roles for restricted functions on the deployed instance.            |
+
+**Returns**
+
+| Name    | Type      | Description                                   |
+| ------- | --------- | --------------------------------------------- |
+| caliber | `address` | The address of the deployed Caliber instance. |
+
+## Events
+
+### CaliberMailboxCreated
+
+```solidity
+event CaliberMailboxCreated(address indexed mailbox);
+```
+
+**Parameters**
+
+| Name    | Type      | Description |
+| ------- | --------- | ----------- |
+| mailbox | `address` |             |

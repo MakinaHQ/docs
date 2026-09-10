@@ -1,0 +1,1179 @@
+---
+title: "IMachine"
+---
+
+# IMachine
+
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/eb9a2fea6cac9f88783f9c769927ed7e5c2b7fd5/src/interfaces/IMachine.sol)
+
+**Inherits:** [IMachineEndpoint](/contracts/core/interfaces/interface.IMachineEndpoint), [ISpokeSnapshotConsumer](/contracts/core/interfaces/interface.ISpokeSnapshotConsumer)
+
+## Functions
+
+<a id="initialize-machineinitparams-makinagovernableinitparams-spokesnapshotconsumerinitparams-address-address-address-address"></a>
+
+### initialize
+
+Initializer of the contract.
+
+```solidity
+function initialize(
+        MachineInitParams calldata mParams,
+        MakinaGovernableInitParams calldata mgParams,
+        SpokeSnapshotConsumerInitParams calldata sscParams,
+        address _preDepositVault,
+        address _shareToken,
+        address _accountingToken,
+        address _hubCaliber
+    ) external;
+```
+
+**Parameters**
+
+| Name              | Type                              | Description                                            |
+| ----------------- | --------------------------------- | ------------------------------------------------------ |
+| mParams           | `MachineInitParams`               | The machine initialization parameters.                 |
+| mgParams          | `MakinaGovernableInitParams`      | The makina governable initialization parameters.       |
+| sscParams         | `SpokeSnapshotConsumerInitParams` | The spoke snapshot consumer initialization parameters. |
+| \_preDepositVault | `address`                         | The address of the pre-deposit vault.                  |
+| \_shareToken      | `address`                         | The address of the share token.                        |
+| \_accountingToken | `address`                         | The address of the accounting token.                   |
+| \_hubCaliber      | `address`                         | The address of the hub caliber.                        |
+
+<a id="depositor"></a>
+
+### depositor
+
+Address of the depositor.
+
+```solidity
+function depositor() external view returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="redeemer"></a>
+
+### redeemer
+
+Address of the redeemer.
+
+```solidity
+function redeemer() external view returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="sharetoken"></a>
+
+### shareToken
+
+Address of the share token.
+
+```solidity
+function shareToken() external view returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="accountingtoken"></a>
+
+### accountingToken
+
+Address of the accounting token.
+
+```solidity
+function accountingToken() external view returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="hubcaliber"></a>
+
+### hubCaliber
+
+Address of the hub caliber.
+
+```solidity
+function hubCaliber() external view returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="feemanager"></a>
+
+### feeManager
+
+Address of the fee manager.
+
+```solidity
+function feeManager() external view returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="caliberstalethreshold"></a>
+
+### caliberStaleThreshold
+
+Maximum duration a caliber can remain unaccounted for before it is considered stale.
+
+```solidity
+function caliberStaleThreshold() external view returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="maxfixedfeeaccrualrate"></a>
+
+### maxFixedFeeAccrualRate
+
+Maximum fixed fee accrual rate per second used to compute an upper bound on shares to be minted, 1e18 = 100%.
+
+```solidity
+function maxFixedFeeAccrualRate() external view returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="maxperffeeaccrualrate"></a>
+
+### maxPerfFeeAccrualRate
+
+Maximum performance fee accrual rate per second used to compute an upper bound on shares to be minted, 1e18 = 100%.
+
+```solidity
+function maxPerfFeeAccrualRate() external view returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="feemintcooldown"></a>
+
+### feeMintCooldown
+
+Minimum time that must elapse between two fee minting events.
+
+```solidity
+function feeMintCooldown() external view returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="sharelimit"></a>
+
+### shareLimit
+
+Share token supply limit that cannot be exceeded by new deposits.
+
+```solidity
+function shareLimit() external view returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="maxsharepricechangerate"></a>
+
+### maxSharePriceChangeRate
+
+Maximum relative share price change rate per second during total AUM updates, 1e18 = 100%.
+
+```solidity
+function maxSharePriceChangeRate() external view returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="maxmint"></a>
+
+### maxMint
+
+Maximum amount of shares that can currently be minted through asset deposits.
+
+```solidity
+function maxMint() external view returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="maxwithdraw"></a>
+
+### maxWithdraw
+
+Maximum amount of accounting tokens that can currently be withdrawn through share redemptions.
+
+```solidity
+function maxWithdraw() external view returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="lasttotalaum"></a>
+
+### lastTotalAum
+
+Last total machine AUM.
+
+```solidity
+function lastTotalAum() external view returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="lastglobalaccountingtime"></a>
+
+### lastGlobalAccountingTime
+
+Timestamp of the last global machine accounting.
+
+```solidity
+function lastGlobalAccountingTime() external view returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="isidletoken-address"></a>
+
+### isIdleToken
+
+Token => Is the token registered as an idle token in this machine.
+
+```solidity
+function isIdleToken(address token) external view returns (bool);
+```
+
+**Parameters**
+
+| Name  | Type      | Description |
+| ----- | --------- | ----------- |
+| token | `address` |             |
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="getidletokenslength"></a>
+
+### getIdleTokensLength
+
+Length of the idle tokens list.
+
+```solidity
+function getIdleTokensLength() external view returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="getidletoken-uint256"></a>
+
+### getIdleToken
+
+Idle token index => Idle token address.
+
+<i>
+
+There are no guarantees on the ordering of values inside the idle tokens list,
+and it may change when values are added or removed.
+
+</i>
+
+```solidity
+function getIdleToken(uint256 idx) external view returns (address);
+```
+
+**Parameters**
+
+| Name | Type      | Description |
+| ---- | --------- | ----------- |
+| idx  | `uint256` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="getspokecaliberslength"></a>
+
+### getSpokeCalibersLength
+
+Number of calibers associated with the machine.
+
+```solidity
+function getSpokeCalibersLength() external view returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="getspokechainid-uint256"></a>
+
+### getSpokeChainId
+
+Spoke caliber index => Spoke chain ID.
+
+```solidity
+function getSpokeChainId(uint256 idx) external view returns (uint256);
+```
+
+**Parameters**
+
+| Name | Type      | Description |
+| ---- | --------- | ----------- |
+| idx  | `uint256` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="getspokecalibernetaum-uint256"></a>
+
+### getSpokeCaliberNetAum
+
+Spoke chain ID => Spoke caliber's net AUM and accounting timestamp.
+
+```solidity
+function getSpokeCaliberNetAum(uint256 chainId) external view returns (uint256, uint256);
+```
+
+**Parameters**
+
+| Name    | Type      | Description |
+| ------- | --------- | ----------- |
+| chainId | `uint256` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="getspokecalibermailbox-uint256"></a>
+
+### getSpokeCaliberMailbox
+
+Spoke chain ID => Spoke caliber mailbox address.
+
+```solidity
+function getSpokeCaliberMailbox(uint256 chainId) external view returns (address);
+```
+
+**Parameters**
+
+| Name    | Type      | Description |
+| ------- | --------- | ----------- |
+| chainId | `uint256` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="isspokecaliberenabled-uint256"></a>
+
+### isSpokeCaliberEnabled
+
+Spoke chain ID => Whether the spoke caliber is enabled.
+
+```solidity
+function isSpokeCaliberEnabled(uint256 chainId) external view returns (bool);
+```
+
+**Parameters**
+
+| Name    | Type      | Description |
+| ------- | --------- | ----------- |
+| chainId | `uint256` |             |
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="getspokebridgeadapter-uint256-uint16"></a>
+
+### getSpokeBridgeAdapter
+
+Spoke chain ID => Spoke bridge ID => Spoke bridge adapter.
+
+```solidity
+function getSpokeBridgeAdapter(uint256 chainId, uint16 bridgeId) external view returns (address);
+```
+
+**Parameters**
+
+| Name     | Type      | Description |
+| -------- | --------- | ----------- |
+| chainId  | `uint256` |             |
+| bridgeId | `uint16`  |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="converttoshares-uint256"></a>
+
+### convertToShares
+
+Returns the amount of shares that the machine would exchange for the amount of accounting tokens provided.
+
+```solidity
+function convertToShares(uint256 assets) external view returns (uint256);
+```
+
+**Parameters**
+
+| Name   | Type      | Description                      |
+| ------ | --------- | -------------------------------- |
+| assets | `uint256` | The amount of accounting tokens. |
+
+**Returns**
+
+| Name         | Type      | Description                  |
+| ------------ | --------- | ---------------------------- |
+| &lt;none&gt; | `uint256` | shares The amount of shares. |
+
+<a id="converttoassets-uint256"></a>
+
+### convertToAssets
+
+Returns the amount of accounting tokens that the machine would exchange for the amount of shares provided.
+
+```solidity
+function convertToAssets(uint256 shares) external view returns (uint256);
+```
+
+**Parameters**
+
+| Name   | Type      | Description           |
+| ------ | --------- | --------------------- |
+| shares | `uint256` | The amount of shares. |
+
+**Returns**
+
+| Name         | Type      | Description                             |
+| ------------ | --------- | --------------------------------------- |
+| &lt;none&gt; | `uint256` | assets The amount of accounting tokens. |
+
+<a id="transfertohubcaliber-address-uint256"></a>
+
+### transferToHubCaliber
+
+Initiates a token transfer to the hub caliber.
+
+```solidity
+function transferToHubCaliber(address token, uint256 amount) external;
+```
+
+**Parameters**
+
+| Name   | Type      | Description                           |
+| ------ | --------- | ------------------------------------- |
+| token  | `address` | The address of the token to transfer. |
+| amount | `uint256` | The amount of token to transfer.      |
+
+<a id="transfertospokecaliber-uint16-uint256-address-uint256-uint256"></a>
+
+### transferToSpokeCaliber
+
+Initiates a token transfer to the spoke caliber.
+
+```solidity
+function transferToSpokeCaliber(
+        uint16 bridgeId,
+        uint256 chainId,
+        address token,
+        uint256 amount,
+        uint256 minOutputAmount
+    ) external;
+```
+
+**Parameters**
+
+| Name            | Type      | Description                                           |
+| --------------- | --------- | ----------------------------------------------------- |
+| bridgeId        | `uint16`  | The ID of the bridge to use for the transfer.         |
+| chainId         | `uint256` | The chain ID of the spoke caliber.                    |
+| token           | `address` | The address of the token to transfer.                 |
+| amount          | `uint256` | The amount of token to transfer.                      |
+| minOutputAmount | `uint256` | The minimum output amount expected from the transfer. |
+
+<a id="updatetotalaum"></a>
+
+### updateTotalAum
+
+Updates the total AUM of the machine.
+
+```solidity
+function updateTotalAum() external returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description                     |
+| ------------ | --------- | ------------------------------- |
+| &lt;none&gt; | `uint256` | totalAum The updated total AUM. |
+
+<a id="deposit-uint256-address-uint256-bytes32"></a>
+
+### deposit
+
+Deposits accounting tokens into the machine and mints shares to the receiver.
+
+```solidity
+function deposit(uint256 assets, address receiver, uint256 minShares, bytes32 referralKey)
+        external
+        returns (uint256);
+```
+
+**Parameters**
+
+| Name        | Type      | Description                                              |
+| ----------- | --------- | -------------------------------------------------------- |
+| assets      | `uint256` | The amount of accounting tokens to deposit.              |
+| receiver    | `address` | The receiver of minted shares.                           |
+| minShares   | `uint256` | The minimum amount of shares to be minted.               |
+| referralKey | `bytes32` | The optional identifier used to track a referral source. |
+
+**Returns**
+
+| Name         | Type      | Description                         |
+| ------------ | --------- | ----------------------------------- |
+| &lt;none&gt; | `uint256` | shares The amount of shares minted. |
+
+<a id="redeem-uint256-address-uint256"></a>
+
+### redeem
+
+Redeems shares from the machine and transfers accounting tokens to the receiver.
+
+```solidity
+function redeem(uint256 shares, address receiver, uint256 minAssets) external returns (uint256);
+```
+
+**Parameters**
+
+| Name      | Type      | Description                                                |
+| --------- | --------- | ---------------------------------------------------------- |
+| shares    | `uint256` | The amount of shares to redeem.                            |
+| receiver  | `address` | The receiver of the accounting tokens.                     |
+| minAssets | `uint256` | The minimum amount of accounting tokens to be transferred. |
+
+**Returns**
+
+| Name         | Type      | Description                                         |
+| ------------ | --------- | --------------------------------------------------- |
+| &lt;none&gt; | `uint256` | assets The amount of accounting tokens transferred. |
+
+<a id="setspokecaliber-uint256-address-uint16-address"></a>
+
+### setSpokeCaliber
+
+Registers a spoke caliber mailbox and related bridge adapters.
+
+```solidity
+function setSpokeCaliber(
+        uint256 chainId,
+        address spokeCaliberMailbox,
+        uint16[] calldata bridges,
+        address[] calldata adapters
+    ) external;
+```
+
+**Parameters**
+
+| Name                | Type        | Description                                                                                     |
+| ------------------- | ----------- | ----------------------------------------------------------------------------------------------- |
+| chainId             | `uint256`   | The chain ID of the spoke caliber.                                                              |
+| spokeCaliberMailbox | `address`   | The address of the spoke caliber mailbox.                                                       |
+| bridges             | `uint16[]`  | The list of bridges supported with the spoke caliber mailbox.                                   |
+| adapters            | `address[]` | The list of corresponding spoke adapters for each bridge. Must be the same length as `bridges`. |
+
+<a id="disablespokecaliber-uint256"></a>
+
+### disableSpokeCaliber
+
+Disables a spoke caliber.
+
+```solidity
+function disableSpokeCaliber(uint256 chainId) external;
+```
+
+**Parameters**
+
+| Name    | Type      | Description                                   |
+| ------- | --------- | --------------------------------------------- |
+| chainId | `uint256` | The chain ID of the spoke caliber to disable. |
+
+<a id="enablespokecaliber-uint256"></a>
+
+### enableSpokeCaliber
+
+Re-enables a spoke caliber.
+
+```solidity
+function enableSpokeCaliber(uint256 chainId) external;
+```
+
+**Parameters**
+
+| Name    | Type      | Description                                  |
+| ------- | --------- | -------------------------------------------- |
+| chainId | `uint256` | The chain ID of the spoke caliber to enable. |
+
+<a id="setspokebridgeadapter-uint256-uint16-address"></a>
+
+### setSpokeBridgeAdapter
+
+Registers a spoke bridge adapter.
+
+```solidity
+function setSpokeBridgeAdapter(uint256 chainId, uint16 bridgeId, address adapter) external;
+```
+
+**Parameters**
+
+| Name     | Type      | Description                               |
+| -------- | --------- | ----------------------------------------- |
+| chainId  | `uint256` | The chain ID of the spoke bridge adapter. |
+| bridgeId | `uint16`  | The ID of the bridge.                     |
+| adapter  | `address` | The address of the spoke bridge adapter.  |
+
+<a id="setdepositor-address"></a>
+
+### setDepositor
+
+Sets the depositor address.
+
+```solidity
+function setDepositor(address newDepositor) external;
+```
+
+**Parameters**
+
+| Name         | Type      | Description                       |
+| ------------ | --------- | --------------------------------- |
+| newDepositor | `address` | The address of the new depositor. |
+
+<a id="setredeemer-address"></a>
+
+### setRedeemer
+
+Sets the redeemer address.
+
+```solidity
+function setRedeemer(address newRedeemer) external;
+```
+
+**Parameters**
+
+| Name        | Type      | Description                      |
+| ----------- | --------- | -------------------------------- |
+| newRedeemer | `address` | The address of the new redeemer. |
+
+<a id="setfeemanager-address"></a>
+
+### setFeeManager
+
+Sets the fee manager address.
+
+```solidity
+function setFeeManager(address newFeeManager) external;
+```
+
+**Parameters**
+
+| Name          | Type      | Description                         |
+| ------------- | --------- | ----------------------------------- |
+| newFeeManager | `address` | The address of the new fee manager. |
+
+<a id="setcaliberstalethreshold-uint256"></a>
+
+### setCaliberStaleThreshold
+
+Sets the caliber accounting staleness threshold.
+
+```solidity
+function setCaliberStaleThreshold(uint256 newCaliberStaleThreshold) external;
+```
+
+**Parameters**
+
+| Name                     | Type      | Description                   |
+| ------------------------ | --------- | ----------------------------- |
+| newCaliberStaleThreshold | `uint256` | The new threshold in seconds. |
+
+<a id="setmaxfixedfeeaccrualrate-uint256"></a>
+
+### setMaxFixedFeeAccrualRate
+
+Sets the maximum fixed fee accrual rate.
+
+```solidity
+function setMaxFixedFeeAccrualRate(uint256 newMaxAccrualRate) external;
+```
+
+**Parameters**
+
+| Name              | Type      | Description                                                     |
+| ----------------- | --------- | --------------------------------------------------------------- |
+| newMaxAccrualRate | `uint256` | The new maximum fixed fee accrual rate per second, 1e18 = 100%. |
+
+<a id="setmaxperffeeaccrualrate-uint256"></a>
+
+### setMaxPerfFeeAccrualRate
+
+Sets the maximum performance fee accrual rate.
+
+```solidity
+function setMaxPerfFeeAccrualRate(uint256 newMaxAccrualRate) external;
+```
+
+**Parameters**
+
+| Name              | Type      | Description                                                           |
+| ----------------- | --------- | --------------------------------------------------------------------- |
+| newMaxAccrualRate | `uint256` | The new maximum performance fee accrual rate per second, 1e18 = 100%. |
+
+<a id="setfeemintcooldown-uint256"></a>
+
+### setFeeMintCooldown
+
+Sets the minimum time to be elapsed between two fee minting events.
+
+```solidity
+function setFeeMintCooldown(uint256 newFeeMintCooldown) external;
+```
+
+**Parameters**
+
+| Name               | Type      | Description                  |
+| ------------------ | --------- | ---------------------------- |
+| newFeeMintCooldown | `uint256` | The new cooldown in seconds. |
+
+<a id="setsharelimit-uint256"></a>
+
+### setShareLimit
+
+Sets the new share token supply limit that cannot be exceeded by new deposits.
+
+```solidity
+function setShareLimit(uint256 newShareLimit) external;
+```
+
+**Parameters**
+
+| Name          | Type      | Description          |
+| ------------- | --------- | -------------------- |
+| newShareLimit | `uint256` | The new share limit. |
+
+<a id="setmaxsharepricechangerate-uint256"></a>
+
+### setMaxSharePriceChangeRate
+
+Sets the new maximum relative share price change rate per second during total AUM updates, 1e18 = 100%.
+
+```solidity
+function setMaxSharePriceChangeRate(uint256 newMaxSharePriceChangeRate) external;
+```
+
+**Parameters**
+
+| Name                       | Type      | Description                                       |
+| -------------------------- | --------- | ------------------------------------------------- |
+| newMaxSharePriceChangeRate | `uint256` | The new maximum relative share price change rate. |
+
+## Events
+
+### CaliberStaleThresholdChanged
+
+```solidity
+event CaliberStaleThresholdChanged(uint256 indexed oldThreshold, uint256 indexed newThreshold);
+```
+
+**Parameters**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| oldThreshold | `uint256` |             |
+| newThreshold | `uint256` |             |
+
+### Deposit
+
+```solidity
+event Deposit(
+        address indexed sender, address indexed receiver, uint256 assets, uint256 shares, bytes32 indexed referralKey
+    );
+```
+
+**Parameters**
+
+| Name        | Type      | Description |
+| ----------- | --------- | ----------- |
+| sender      | `address` |             |
+| receiver    | `address` |             |
+| assets      | `uint256` |             |
+| shares      | `uint256` |             |
+| referralKey | `bytes32` |             |
+
+### DepositorChanged
+
+```solidity
+event DepositorChanged(address indexed oldDepositor, address indexed newDepositor);
+```
+
+**Parameters**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| oldDepositor | `address` |             |
+| newDepositor | `address` |             |
+
+### FeeManagerChanged
+
+```solidity
+event FeeManagerChanged(address indexed oldFeeManager, address indexed newFeeManager);
+```
+
+**Parameters**
+
+| Name          | Type      | Description |
+| ------------- | --------- | ----------- |
+| oldFeeManager | `address` |             |
+| newFeeManager | `address` |             |
+
+### FeeMintCooldownChanged
+
+```solidity
+event FeeMintCooldownChanged(uint256 indexed oldFeeMintCooldown, uint256 indexed newFeeMintCooldown);
+```
+
+**Parameters**
+
+| Name               | Type      | Description |
+| ------------------ | --------- | ----------- |
+| oldFeeMintCooldown | `uint256` |             |
+| newFeeMintCooldown | `uint256` |             |
+
+### FeesMinted
+
+```solidity
+event FeesMinted(uint256 shares);
+```
+
+**Parameters**
+
+| Name   | Type      | Description |
+| ------ | --------- | ----------- |
+| shares | `uint256` |             |
+
+### MaxFixedFeeAccrualRateChanged
+
+```solidity
+event MaxFixedFeeAccrualRateChanged(uint256 indexed oldMaxAccrualRate, uint256 indexed newMaxAccrualRate);
+```
+
+**Parameters**
+
+| Name              | Type      | Description |
+| ----------------- | --------- | ----------- |
+| oldMaxAccrualRate | `uint256` |             |
+| newMaxAccrualRate | `uint256` |             |
+
+### MaxPerfFeeAccrualRateChanged
+
+```solidity
+event MaxPerfFeeAccrualRateChanged(uint256 indexed oldMaxAccrualRate, uint256 indexed newMaxAccrualRate);
+```
+
+**Parameters**
+
+| Name              | Type      | Description |
+| ----------------- | --------- | ----------- |
+| oldMaxAccrualRate | `uint256` |             |
+| newMaxAccrualRate | `uint256` |             |
+
+### MaxSharePriceChangeRateChanged
+
+```solidity
+event MaxSharePriceChangeRateChanged(uint256 indexed oldMaxChangeRate, uint256 indexed newMaxChangeRate);
+```
+
+**Parameters**
+
+| Name             | Type      | Description |
+| ---------------- | --------- | ----------- |
+| oldMaxChangeRate | `uint256` |             |
+| newMaxChangeRate | `uint256` |             |
+
+### Redeem
+
+```solidity
+event Redeem(address indexed owner, address indexed receiver, uint256 assets, uint256 shares);
+```
+
+**Parameters**
+
+| Name     | Type      | Description |
+| -------- | --------- | ----------- |
+| owner    | `address` |             |
+| receiver | `address` |             |
+| assets   | `uint256` |             |
+| shares   | `uint256` |             |
+
+### RedeemerChanged
+
+```solidity
+event RedeemerChanged(address indexed oldRedeemer, address indexed newRedeemer);
+```
+
+**Parameters**
+
+| Name        | Type      | Description |
+| ----------- | --------- | ----------- |
+| oldRedeemer | `address` |             |
+| newRedeemer | `address` |             |
+
+### ShareLimitChanged
+
+```solidity
+event ShareLimitChanged(uint256 indexed oldShareLimit, uint256 indexed newShareLimit);
+```
+
+**Parameters**
+
+| Name          | Type      | Description |
+| ------------- | --------- | ----------- |
+| oldShareLimit | `uint256` |             |
+| newShareLimit | `uint256` |             |
+
+### SpokeBridgeAdapterSet
+
+```solidity
+event SpokeBridgeAdapterSet(uint256 indexed chainId, uint256 indexed bridgeId, address indexed adapter);
+```
+
+**Parameters**
+
+| Name     | Type      | Description |
+| -------- | --------- | ----------- |
+| chainId  | `uint256` |             |
+| bridgeId | `uint256` |             |
+| adapter  | `address` |             |
+
+### SpokeCaliberDisabled
+
+```solidity
+event SpokeCaliberDisabled(uint256 indexed chainId);
+```
+
+**Parameters**
+
+| Name    | Type      | Description |
+| ------- | --------- | ----------- |
+| chainId | `uint256` |             |
+
+### SpokeCaliberEnabled
+
+```solidity
+event SpokeCaliberEnabled(uint256 indexed chainId);
+```
+
+**Parameters**
+
+| Name    | Type      | Description |
+| ------- | --------- | ----------- |
+| chainId | `uint256` |             |
+
+### SpokeCaliberMailboxSet
+
+```solidity
+event SpokeCaliberMailboxSet(uint256 indexed chainId, address indexed caliberMailbox);
+```
+
+**Parameters**
+
+| Name           | Type      | Description |
+| -------------- | --------- | ----------- |
+| chainId        | `uint256` |             |
+| caliberMailbox | `address` |             |
+
+### TotalAumUpdated
+
+```solidity
+event TotalAumUpdated(uint256 totalAum);
+```
+
+**Parameters**
+
+| Name     | Type      | Description |
+| -------- | --------- | ----------- |
+| totalAum | `uint256` |             |
+
+### TransferToCaliber
+
+```solidity
+event TransferToCaliber(uint256 indexed chainId, address indexed token, uint256 amount);
+```
+
+**Parameters**
+
+| Name    | Type      | Description |
+| ------- | --------- | ----------- |
+| chainId | `uint256` |             |
+| token   | `address` |             |
+| amount  | `uint256` |             |
+
+## Structs
+
+### MachineInitParams
+
+Initialization parameters.
+
+```solidity
+struct MachineInitParams {
+        address initialDepositor;
+        address initialRedeemer;
+        address initialFeeManager;
+        uint256 initialCaliberStaleThreshold;
+        uint256 initialMaxFixedFeeAccrualRate;
+        uint256 initialMaxPerfFeeAccrualRate;
+        uint256 initialFeeMintCooldown;
+        uint256 initialShareLimit;
+        uint256 initialMaxSharePriceChangeRate;
+    }
+```
+
+**Properties**
+
+| Name                           | Type      | Description                                                                                    |
+| ------------------------------ | --------- | ---------------------------------------------------------------------------------------------- |
+| initialDepositor               | `address` | The address of the initial depositor.                                                          |
+| initialRedeemer                | `address` | The address of the initial redeemer.                                                           |
+| initialFeeManager              | `address` | The address of the initial fee manager.                                                        |
+| initialCaliberStaleThreshold   | `uint256` | The caliber accounting staleness threshold in seconds.                                         |
+| initialMaxFixedFeeAccrualRate  | `uint256` | The maximum fixed fee accrual rate per second, 1e18 = 100%.                                    |
+| initialMaxPerfFeeAccrualRate   | `uint256` | The maximum performance fee accrual rate per second, 1e18 = 100%.                              |
+| initialFeeMintCooldown         | `uint256` | The minimum time that must elapse between two fee minting events in seconds.                   |
+| initialShareLimit              | `uint256` | The share cap value.                                                                           |
+| initialMaxSharePriceChangeRate | `uint256` | The maximum relative share price change rate per second during total AUM updates, 1e18 = 100%. |
+
+### SpokeCaliberData
+
+<i>
+
+State data for each spoke caliber.
+
+</i>
+
+```solidity
+struct SpokeCaliberData {
+        address mailbox;
+        mapping(uint16 bridgeId => address adapter) bridgeAdapters;
+        uint256 timestamp;
+        uint256 netAum;
+        bytes[] deprecated_4;
+        bytes[] deprecated_5;
+        EnumerableMap.AddressToUintMap caliberBridgesIn;
+        EnumerableMap.AddressToUintMap caliberBridgesOut;
+        EnumerableMap.AddressToUintMap machineBridgesIn;
+        EnumerableMap.AddressToUintMap machineBridgesOut;
+        bool disabled;
+    }
+```
+
+**Properties**
+
+| Name              | Type                                          | Description                                                                                                                |
+| ----------------- | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| mailbox           | `address`                                     | The address of the spoke caliber mailbox.                                                                                  |
+| bridgeAdapters    | `mapping(uint16 bridgeId => address adapter)` | The mapping of bridge IDs to their corresponding adapters.                                                                 |
+| timestamp         | `uint256`                                     | The timestamp of the last accounting.                                                                                      |
+| netAum            | `uint256`                                     | The net AUM of the spoke caliber.                                                                                          |
+| deprecated_4      | `bytes[]`                                     | Deprecated field.                                                                                                          |
+| deprecated_5      | `bytes[]`                                     | Deprecated field.                                                                                                          |
+| caliberBridgesIn  | `EnumerableMap.AddressToUintMap`              | The mapping of spoke caliber incoming bridge amounts.                                                                      |
+| caliberBridgesOut | `EnumerableMap.AddressToUintMap`              | The mapping of spoke caliber outgoing bridge amounts.                                                                      |
+| machineBridgesIn  | `EnumerableMap.AddressToUintMap`              | The mapping of machine incoming bridge amounts.                                                                            |
+| machineBridgesOut | `EnumerableMap.AddressToUintMap`              | The mapping of machine outgoing bridge amounts.                                                                            |
+| disabled          | `bool`                                        | Whether the spoke caliber is disabled (ignored in AUM calculations and ineligible for machine transfers until re-enabled). |

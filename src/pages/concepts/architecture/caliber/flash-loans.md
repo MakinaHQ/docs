@@ -33,5 +33,5 @@ The Caliber reaches flash-loan providers through an external **Flashloan Module*
 A flash loan doesn't bypass any of the Caliber's safety properties. The inner instruction must still match the approved [Merkle root](makina-vm#merkle-tree-permissioning), and the [loss check](positions#loss-checks) is applied to the operation as a whole, so the temporary liquidity cannot be used to move value outside the configured tolerance.
 
 :::info[Implementation]
-The flash-loan aggregation logic lives in the periphery [`FlashloanAggregator`](/contracts/periphery/flashloans/FlashloanAggregator.sol/contract.FlashloanAggregator.md).
+The flash-loan aggregation logic lives in the periphery [`FlashloanAggregator`](/contracts/periphery/flashloans/contract.FlashloanAggregator).
 :::

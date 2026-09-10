@@ -1,0 +1,111 @@
+---
+title: "LzOptionsBuilder"
+---
+
+# LzOptionsBuilder
+
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/eb9a2fea6cac9f88783f9c769927ed7e5c2b7fd5/src/libraries/LzOptionsBuilder.sol)
+
+**Title:** LzOptionsBuilder
+
+<i>
+
+Library for building and encoding various LayerZero V2 message options.
+Forked and simplified from layerzerolabs/oapp-evm/contracts/oapp/libs/OptionsBuilder.sol
+
+</i>
+
+## Constants
+
+### TYPE_3
+
+```solidity
+uint16 internal constant TYPE_3 = 3;
+```
+
+## Functions
+
+<a id="newoptions"></a>
+
+### newOptions
+
+```solidity
+function newOptions() internal pure returns (bytes memory);
+```
+
+**Returns**
+
+| Name         | Type    | Description |
+| ------------ | ------- | ----------- |
+| &lt;none&gt; | `bytes` |             |
+
+<a id="addexecutorlzreceiveoption-bytes-uint128"></a>
+
+### addExecutorLzReceiveOption
+
+```solidity
+function addExecutorLzReceiveOption(bytes memory _options, uint128 _gas) internal pure returns (bytes memory);
+```
+
+**Parameters**
+
+| Name      | Type      | Description |
+| --------- | --------- | ----------- |
+| \_options | `bytes`   |             |
+| \_gas     | `uint128` |             |
+
+**Returns**
+
+| Name         | Type    | Description |
+| ------------ | ------- | ----------- |
+| &lt;none&gt; | `bytes` |             |
+
+<a id="addexecutorlzcomposeoption-bytes-uint16-uint128"></a>
+
+### addExecutorLzComposeOption
+
+```solidity
+function addExecutorLzComposeOption(bytes memory _options, uint16 _index, uint128 _gas)
+        internal
+        pure
+        returns (bytes memory);
+```
+
+**Parameters**
+
+| Name      | Type      | Description |
+| --------- | --------- | ----------- |
+| \_options | `bytes`   |             |
+| \_index   | `uint16`  |             |
+| \_gas     | `uint128` |             |
+
+**Returns**
+
+| Name         | Type    | Description |
+| ------------ | ------- | ----------- |
+| &lt;none&gt; | `bytes` |             |
+
+<a id="addexecutoroption-bytes-uint8-bytes"></a>
+
+### addExecutorOption
+
+```solidity
+function addExecutorOption(bytes memory _options, uint8 _optionType, bytes memory _option)
+        internal
+        pure
+        returns (bytes memory);
+```
+
+**Parameters**
+
+| Name         | Type    | Description |
+| ------------ | ------- | ----------- |
+| \_options    | `bytes` |             |
+| \_optionType | `uint8` |             |
+| \_option     | `bytes` |             |
+
+**Returns**
+
+| Name         | Type    | Description |
+| ------------ | ------- | ----------- |
+| &lt;none&gt; | `bytes` |             |

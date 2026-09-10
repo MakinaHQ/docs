@@ -1,0 +1,140 @@
+---
+title: "SanctionsList"
+---
+
+# SanctionsList
+
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/72aab70ea8dcedba4658cd339dd07022e28ca1b2/src/utils/SanctionsList.sol)
+
+**Inherits:** Initializable, [ISanctionsList](/contracts/periphery/interfaces/interface.ISanctionsList)
+
+## Constants
+
+### sanctionsOracle
+
+Address of the Chainalysis sanctions oracle used for screening.
+
+```solidity
+address public immutable override sanctionsOracle;
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+### SanctionsListStorageLocation
+
+```solidity
+bytes32 private constant SanctionsListStorageLocation =
+        0xeec6e327f8367f095b35862c656f521647a3faa26edd82f48dcb4d427059e600;
+```
+
+## Functions
+
+<a id="_getsanctionsliststorage"></a>
+
+### \_getSanctionsListStorage
+
+```solidity
+function _getSanctionsListStorage() private pure returns (SanctionsListStorage storage $);
+```
+
+**Returns**
+
+| Name | Type                   | Description |
+| ---- | ---------------------- | ----------- |
+| $    | `SanctionsListStorage` |             |
+
+<a id="constructor-address"></a>
+
+### constructor
+
+```solidity
+constructor(address _sanctionsOracle);
+```
+
+**Parameters**
+
+| Name              | Type      | Description |
+| ----------------- | --------- | ----------- |
+| \_sanctionsOracle | `address` |             |
+
+<a id="__sanctionslist_init-bool"></a>
+
+### \_\_SanctionsList_init
+
+```solidity
+function __SanctionsList_init(bool _initialSanctionsCheckStatus) internal onlyInitializing;
+```
+
+**Parameters**
+
+| Name                          | Type   | Description |
+| ----------------------------- | ------ | ----------- |
+| \_initialSanctionsCheckStatus | `bool` |             |
+
+<a id="sanctionscheck"></a>
+
+### sanctionsCheck
+
+```solidity
+modifier sanctionsCheck();
+```
+
+<a id="issanctionscheckenabled"></a>
+
+### isSanctionsCheckEnabled
+
+True if sanctions screening is enabled, false otherwise.
+
+```solidity
+function isSanctionsCheckEnabled() public view override returns (bool);
+```
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="_setsanctionscheckstatus-bool"></a>
+
+### \_setSanctionsCheckStatus
+
+<i>
+
+Internal function to set the sanctions check status.
+
+</i>
+
+```solidity
+function _setSanctionsCheckStatus(bool enabled) internal;
+```
+
+**Parameters**
+
+| Name    | Type   | Description |
+| ------- | ------ | ----------- |
+| enabled | `bool` |             |
+
+## Structs
+
+### SanctionsListStorage
+
+**Note:**
+
+- **storage-location:** erc7201:makina.storage.SanctionsList
+
+```solidity
+struct SanctionsListStorage {
+        bool _isSanctionsCheckEnabled;
+    }
+```
+
+**Properties**
+
+| Name                      | Type   | Description |
+| ------------------------- | ------ | ----------- |
+| \_isSanctionsCheckEnabled | `bool` |             |

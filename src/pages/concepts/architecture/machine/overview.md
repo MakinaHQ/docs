@@ -75,5 +75,5 @@ Because deposit rules, redemption flows, and fee models are delegated to swappab
 The Machine, like the Caliber, is _governable_: a set of per-strategy roles ([Operator](../../governance/operator), [Risk Manager](../../governance/risk-manager), [Security Council](../../governance/security-council)) can configure parameters and intervene, each within tightly scoped permissions. It can also be placed into [Recovery Mode](../../security/recovery-mode), an emergency state that disables deposits and restricts the strategy to unwinding. See [Roles & Governance](../../governance/overview).
 
 :::info[Implementation]
-Machine contract reference: [`Machine.sol`](/contracts/core/machine/Machine.sol/contract.Machine.md).
+Machine contract reference: [`Machine.sol`](/contracts/core/machine/contract.Machine).
 :::

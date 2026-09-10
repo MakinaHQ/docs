@@ -26,10 +26,9 @@ Infrastructure contracts present on **both hub and spokes**:
 - `SwapModule`
 - `AcrossV3BridgeConfig`, `LayerZeroV2BridgeConfig`, `CctpV2BridgeConfig`
 
-Infrastructure contracts present **only on the hub** (Mainnet):
+Infrastructure contracts present **only on the hub chain**:
 
 - `HubCoreRegistry`, `HubCoreFactory`
-- `ChainRegistry`
 - `HubPeripheryRegistry`, `HubPeripheryFactory`
 - `MachineShareOracleFactory`, `MetaMorphoOracleFactory`
 

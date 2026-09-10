@@ -36,5 +36,5 @@ A Caliber gives the Operator enormous reach (almost any protocol can be integrat
 These guardrails are what make discretionary, cross-protocol management safe. The rest of this section covers each capability in turn.
 
 :::info[Implementation]
-Caliber contract reference: [`Caliber.sol`](/contracts/core/caliber/Caliber.sol/contract.Caliber.md).
+Caliber contract reference: [`Caliber.sol`](/contracts/core/caliber/contract.Caliber).
 :::

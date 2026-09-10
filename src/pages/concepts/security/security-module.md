@@ -45,5 +45,5 @@ Slashing is capped so it can never wipe out the entire reserve unexpectedly. Two
 The **more restrictive** of the two applies. This guarantees a predictable ceiling on how much a single slashing event can burn.
 
 :::info[Implementation]
-Security Module reference: [`SecurityModule.sol`](/contracts/periphery/security-module/SecurityModule.sol/contract.SecurityModule.md). The fee that funds it is configured on the [`WatermarkFeeManager`](../architecture/machine/fees).
+Security Module reference: [`SecurityModule.sol`](/contracts/periphery/security-module/contract.SecurityModule). The fee that funds it is configured on the [`WatermarkFeeManager`](../architecture/machine/fees).
 :::

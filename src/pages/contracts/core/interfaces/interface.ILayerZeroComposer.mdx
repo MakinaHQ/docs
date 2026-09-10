@@ -1,0 +1,35 @@
+---
+title: "ILayerZeroComposer"
+---
+
+# ILayerZeroComposer
+
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/eb9a2fea6cac9f88783f9c769927ed7e5c2b7fd5/src/interfaces/ILayerZeroComposer.sol)
+
+## Functions
+
+<a id="lzcompose-address-bytes32-bytes-address-bytes"></a>
+
+### lzCompose
+
+Composes a LayerZero message from an OApp.
+
+```solidity
+function lzCompose(
+        address _from,
+        bytes32 _guid,
+        bytes calldata _message,
+        address _executor,
+        bytes calldata _extraData
+    ) external payable;
+```
+
+**Parameters**
+
+| Name        | Type      | Description                                                                                   |
+| ----------- | --------- | --------------------------------------------------------------------------------------------- |
+| \_from      | `address` | The address initiating the composition, typically the OApp where the lzReceive was called.    |
+| \_guid      | `bytes32` | The unique identifier for the corresponding LayerZero src/dst tx.                             |
+| \_message   | `bytes`   | The composed message payload in bytes. NOT necessarily the same payload passed via lzReceive. |
+| \_executor  | `address` | The address of the executor for the composed message.                                         |
+| \_extraData | `bytes`   | Additional arbitrary data in bytes passed by the entity who executes the lzCompose.           |

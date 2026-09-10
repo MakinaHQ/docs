@@ -24,7 +24,7 @@ Fees are minted **atomically with each AUM update**, and only once a minimum int
 
 ## Watermark Fee Manager
 
-The standard implementation is the [`WatermarkFeeManager`](/contracts/periphery/fee-managers/WatermarkFeeManager.sol/contract.WatermarkFeeManager.md).
+The standard implementation is the [`WatermarkFeeManager`](/contracts/periphery/fee-managers/contract.WatermarkFeeManager).
 
 ### Fixed fee
 
@@ -51,5 +51,5 @@ _Example: at a 10% performance rate, a 1,000,000-share supply whose price rises 
 Both the management fee and the performance fee are distributed to one or more recipients according to **configurable basis-point splits** (each set summing to 100%). This is how the protocol divides revenue between the Operator and the DAO, and it can be tuned per strategy by the fee-configuration role. The Security Module's cut, when present, is taken from the fixed fee before the management split.
 
 :::info[Implementation]
-Fee manager interface: [`IFeeManager`](/contracts/core/interfaces/IFeeManager.sol/interface.IFeeManager.md). Standard implementation: [`WatermarkFeeManager`](/contracts/periphery/fee-managers/WatermarkFeeManager.sol/contract.WatermarkFeeManager.md).
+Fee manager interface: [`IFeeManager`](/contracts/core/interfaces/interface.IFeeManager). Standard implementation: [`WatermarkFeeManager`](/contracts/periphery/fee-managers/contract.WatermarkFeeManager).
 :::

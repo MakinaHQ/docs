@@ -1,0 +1,343 @@
+---
+title: "IHubPeripheryFactory"
+---
+
+# IHubPeripheryFactory
+
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/72aab70ea8dcedba4658cd339dd07022e28ca1b2/src/interfaces/IHubPeripheryFactory.sol)
+
+## Functions
+
+<a id="isdepositor-address"></a>
+
+### isDepositor
+
+Address => Whether this is a depositor deployed by this factory
+
+```solidity
+function isDepositor(address depositor) external view returns (bool);
+```
+
+**Parameters**
+
+| Name      | Type      | Description |
+| --------- | --------- | ----------- |
+| depositor | `address` |             |
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="isredeemer-address"></a>
+
+### isRedeemer
+
+Address => Whether this is a redeemer deployed by this factory
+
+```solidity
+function isRedeemer(address redeemer) external view returns (bool);
+```
+
+**Parameters**
+
+| Name     | Type      | Description |
+| -------- | --------- | ----------- |
+| redeemer | `address` |             |
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="isfeemanager-address"></a>
+
+### isFeeManager
+
+Address => Whether this is a fee manager deployed by this factory
+
+```solidity
+function isFeeManager(address feeManager) external view returns (bool);
+```
+
+**Parameters**
+
+| Name       | Type      | Description |
+| ---------- | --------- | ----------- |
+| feeManager | `address` |             |
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="issecuritymodule-address"></a>
+
+### isSecurityModule
+
+Address => Whether this is a security module deployed by this factory
+
+```solidity
+function isSecurityModule(address securityModule) external view returns (bool);
+```
+
+**Parameters**
+
+| Name           | Type      | Description |
+| -------------- | --------- | ----------- |
+| securityModule | `address` |             |
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="depositorimplemid-address"></a>
+
+### depositorImplemId
+
+Depositor => Implementation ID
+
+```solidity
+function depositorImplemId(address depositor) external view returns (uint16);
+```
+
+**Parameters**
+
+| Name      | Type      | Description |
+| --------- | --------- | ----------- |
+| depositor | `address` |             |
+
+**Returns**
+
+| Name         | Type     | Description |
+| ------------ | -------- | ----------- |
+| &lt;none&gt; | `uint16` |             |
+
+<a id="redeemerimplemid-address"></a>
+
+### redeemerImplemId
+
+Redeemer => Implementation ID
+
+```solidity
+function redeemerImplemId(address redeemer) external view returns (uint16);
+```
+
+**Parameters**
+
+| Name     | Type      | Description |
+| -------- | --------- | ----------- |
+| redeemer | `address` |             |
+
+**Returns**
+
+| Name         | Type     | Description |
+| ------------ | -------- | ----------- |
+| &lt;none&gt; | `uint16` |             |
+
+<a id="feemanagerimplemid-address"></a>
+
+### feeManagerImplemId
+
+Fee manager => Implementation ID
+
+```solidity
+function feeManagerImplemId(address feeManager) external view returns (uint16);
+```
+
+**Parameters**
+
+| Name       | Type      | Description |
+| ---------- | --------- | ----------- |
+| feeManager | `address` |             |
+
+**Returns**
+
+| Name         | Type     | Description |
+| ------------ | -------- | ----------- |
+| &lt;none&gt; | `uint16` |             |
+
+<a id="setmachine-address-address"></a>
+
+### setMachine
+
+Sets the machine address in the machine periphery contract.
+
+```solidity
+function setMachine(address machinePeriphery, address machine) external;
+```
+
+**Parameters**
+
+| Name             | Type      | Description                                    |
+| ---------------- | --------- | ---------------------------------------------- |
+| machinePeriphery | `address` | The address of the machine periphery contract. |
+| machine          | `address` | The address of the machine to be set.          |
+
+<a id="setsecuritymodule-address-address"></a>
+
+### setSecurityModule
+
+Sets the security module address in the fee manager contract.
+
+```solidity
+function setSecurityModule(address feeManager, address securityModule) external;
+```
+
+**Parameters**
+
+| Name           | Type      | Description                                   |
+| -------------- | --------- | --------------------------------------------- |
+| feeManager     | `address` | The address of the fee manager contract.      |
+| securityModule | `address` | The address of the security module to be set. |
+
+<a id="createdepositor-uint16-bytes"></a>
+
+### createDepositor
+
+Creates a new machine depositor using the specified implementation ID.
+
+```solidity
+function createDepositor(uint16 implemId, bytes calldata initializationData) external returns (address depositor);
+```
+
+**Parameters**
+
+| Name               | Type     | Description                                        |
+| ------------------ | -------- | -------------------------------------------------- |
+| implemId           | `uint16` | The ID of the depositor implementation to be used. |
+| initializationData | `bytes`  | Additional initialization data.                    |
+
+**Returns**
+
+| Name      | Type      | Description                                 |
+| --------- | --------- | ------------------------------------------- |
+| depositor | `address` | The address of the newly created depositor. |
+
+<a id="createredeemer-uint16-bytes"></a>
+
+### createRedeemer
+
+Creates a new machine redeemer using the specified implementation ID.
+
+```solidity
+function createRedeemer(uint16 implemId, bytes calldata initializationData) external returns (address redeemer);
+```
+
+**Parameters**
+
+| Name               | Type     | Description                                       |
+| ------------------ | -------- | ------------------------------------------------- |
+| implemId           | `uint16` | The ID of the redeemer implementation to be used. |
+| initializationData | `bytes`  | Additional initialization data.                   |
+
+**Returns**
+
+| Name     | Type      | Description                                |
+| -------- | --------- | ------------------------------------------ |
+| redeemer | `address` | The address of the newly created redeemer. |
+
+<a id="createfeemanager-uint16-bytes"></a>
+
+### createFeeManager
+
+Creates a new machine fee manager using the specified implementation ID.
+
+```solidity
+function createFeeManager(uint16 implemId, bytes calldata initializationData) external returns (address feeManager);
+```
+
+**Parameters**
+
+| Name               | Type     | Description                                          |
+| ------------------ | -------- | ---------------------------------------------------- |
+| implemId           | `uint16` | The ID of the fee manager implementation to be used. |
+| initializationData | `bytes`  | Additional initialization data.                      |
+
+**Returns**
+
+| Name       | Type      | Description                                   |
+| ---------- | --------- | --------------------------------------------- |
+| feeManager | `address` | The address of the newly created fee manager. |
+
+<a id="createsecuritymodule-isecuritymodule-securitymoduleinitparams"></a>
+
+### createSecurityModule
+
+Creates a new security module.
+
+```solidity
+function createSecurityModule(ISecurityModule.SecurityModuleInitParams calldata smParams)
+        external
+        returns (address securityModule);
+```
+
+**Parameters**
+
+| Name     | Type                                       | Description                                    |
+| -------- | ------------------------------------------ | ---------------------------------------------- |
+| smParams | `ISecurityModule.SecurityModuleInitParams` | The security module initialization parameters. |
+
+**Returns**
+
+| Name           | Type      | Description                                       |
+| -------------- | --------- | ------------------------------------------------- |
+| securityModule | `address` | The address of the newly created security module. |
+
+## Events
+
+### DepositorCreated
+
+```solidity
+event DepositorCreated(address indexed depositor, uint16 indexed implemId);
+```
+
+**Parameters**
+
+| Name      | Type      | Description |
+| --------- | --------- | ----------- |
+| depositor | `address` |             |
+| implemId  | `uint16`  |             |
+
+### RedeemerCreated
+
+```solidity
+event RedeemerCreated(address indexed redeemer, uint16 indexed implemId);
+```
+
+**Parameters**
+
+| Name     | Type      | Description |
+| -------- | --------- | ----------- |
+| redeemer | `address` |             |
+| implemId | `uint16`  |             |
+
+### FeeManagerCreated
+
+```solidity
+event FeeManagerCreated(address indexed feeManager, uint16 indexed implemId);
+```
+
+**Parameters**
+
+| Name       | Type      | Description |
+| ---------- | --------- | ----------- |
+| feeManager | `address` |             |
+| implemId   | `uint16`  |             |
+
+### SecurityModuleCreated
+
+```solidity
+event SecurityModuleCreated(address indexed securityModule);
+```
+
+**Parameters**
+
+| Name           | Type      | Description |
+| -------------- | --------- | ----------- |
+| securityModule | `address` |             |

@@ -1,0 +1,71 @@
+---
+title: "ISanctionsList"
+---
+
+# ISanctionsList
+
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/72aab70ea8dcedba4658cd339dd07022e28ca1b2/src/interfaces/ISanctionsList.sol)
+
+## Functions
+
+<a id="sanctionsoracle"></a>
+
+### sanctionsOracle
+
+Address of the Chainalysis sanctions oracle used for screening.
+
+```solidity
+function sanctionsOracle() external view returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="issanctionscheckenabled"></a>
+
+### isSanctionsCheckEnabled
+
+True if sanctions screening is enabled, false otherwise.
+
+```solidity
+function isSanctionsCheckEnabled() external view returns (bool);
+```
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="setsanctionscheckstatus-bool"></a>
+
+### setSanctionsCheckStatus
+
+Enables or disables sanctions screening.
+
+```solidity
+function setSanctionsCheckStatus(bool enabled) external;
+```
+
+**Parameters**
+
+| Name    | Type   | Description                                 |
+| ------- | ------ | ------------------------------------------- |
+| enabled | `bool` | True to enable screening, false to disable. |
+
+## Events
+
+### SanctionsCheckStatusChanged
+
+```solidity
+event SanctionsCheckStatusChanged(bool indexed enabled);
+```
+
+**Parameters**
+
+| Name    | Type   | Description |
+| ------- | ------ | ----------- |
+| enabled | `bool` |             |

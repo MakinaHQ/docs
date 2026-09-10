@@ -1,0 +1,105 @@
+---
+title: "IHubCoreRegistry"
+---
+
+# IHubCoreRegistry
+
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/eb9a2fea6cac9f88783f9c769927ed7e5c2b7fd5/src/interfaces/IHubCoreRegistry.sol)
+
+**Inherits:** [ICoreRegistry](/contracts/core/interfaces/interface.ICoreRegistry)
+
+## Functions
+
+<a id="machinebeacon"></a>
+
+### machineBeacon
+
+Address of the machine beacon contract.
+
+```solidity
+function machineBeacon() external view returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="predepositvaultbeacon"></a>
+
+### preDepositVaultBeacon
+
+Address of the pre-deposit vault beacon contract.
+
+```solidity
+function preDepositVaultBeacon() external view returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="setmachinebeacon-address"></a>
+
+### setMachineBeacon
+
+Sets the machine beacon address.
+
+```solidity
+function setMachineBeacon(address _machineBeacon) external;
+```
+
+**Parameters**
+
+| Name            | Type      | Description                 |
+| --------------- | --------- | --------------------------- |
+| \_machineBeacon | `address` | The machine beacon address. |
+
+<a id="setpredepositvaultbeacon-address"></a>
+
+### setPreDepositVaultBeacon
+
+Sets the pre-deposit vault beacon address.
+
+```solidity
+function setPreDepositVaultBeacon(address _preDepositVaultBeacon) external;
+```
+
+**Parameters**
+
+| Name                    | Type      | Description                           |
+| ----------------------- | --------- | ------------------------------------- |
+| \_preDepositVaultBeacon | `address` | The pre-deposit vault beacon address. |
+
+## Events
+
+### MachineBeaconChanged
+
+```solidity
+event MachineBeaconChanged(address indexed oldMachineBeacon, address indexed newMachineBeacon);
+```
+
+**Parameters**
+
+| Name             | Type      | Description |
+| ---------------- | --------- | ----------- |
+| oldMachineBeacon | `address` |             |
+| newMachineBeacon | `address` |             |
+
+### PreDepositVaultBeaconChanged
+
+```solidity
+event PreDepositVaultBeaconChanged(
+        address indexed oldPreDepositVaultBeacon, address indexed newPreDepositVaultBeacon
+    );
+```
+
+**Parameters**
+
+| Name                     | Type      | Description |
+| ------------------------ | --------- | ----------- |
+| oldPreDepositVaultBeacon | `address` |             |
+| newPreDepositVaultBeacon | `address` |             |

@@ -36,5 +36,5 @@ Operations like mint/redeem or wrap/unwrap (e.g. converting a token to its yield
 During [Recovery Mode](../../security/recovery-mode), swaps are restricted to producing **only the accounting token**: the strategy can consolidate toward its safest asset but cannot rotate between base tokens.
 
 :::info[Implementation]
-Swap Module reference: [`SwapModule.sol`](/contracts/core/swap/SwapModule.sol/contract.SwapModule.md).
+Swap Module reference: [`SwapModule.sol`](/contracts/core/swap/contract.SwapModule).
 :::

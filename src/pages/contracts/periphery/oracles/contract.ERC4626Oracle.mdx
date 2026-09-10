@@ -1,0 +1,262 @@
+---
+title: "ERC4626Oracle"
+description: "Chainlink-like price oracle wrapping ERC4626 vaults. This oracle exposes the price of one share of the vault it wraps in terms of its underlying asset (the exchange rate)."
+---
+
+# ERC4626Oracle
+
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/72aab70ea8dcedba4658cd339dd07022e28ca1b2/src/oracles/ERC4626Oracle.sol)
+
+**Inherits:** AggregatorV2V3Interface
+
+**Title:** ERC4626Oracle
+
+Chainlink-like price oracle wrapping ERC4626 vaults.
+This oracle exposes the price of one share of the
+vault it wraps in terms of its underlying asset (the exchange rate).
+
+## Constants
+
+### version
+
+The implementation version of this contract.
+
+```solidity
+uint256 public immutable version = 1;
+```
+
+### vault
+
+The ERC4626 vault.
+
+```solidity
+IERC4626 public immutable vault;
+```
+
+### underlying
+
+The underlying asset of the vault.
+
+```solidity
+IERC20Metadata public immutable underlying;
+```
+
+### decimals
+
+The number of decimals of the price returned by this oracle.
+
+```solidity
+uint8 public immutable decimals;
+```
+
+### ONE_SHARE
+
+One unit of the ERC4626 vault.
+
+```solidity
+uint256 public immutable ONE_SHARE;
+```
+
+### SCALING_NUMERATOR
+
+Scaling factor numerator used to adjust price to the desired decimals.
+
+```solidity
+uint256 public immutable SCALING_NUMERATOR;
+```
+
+## State Variables
+
+### description
+
+The description for this oracle.
+
+```solidity
+string public description;
+```
+
+## Functions
+
+<a id="constructor-ierc4626-uint8"></a>
+
+### constructor
+
+Constructor for the ERC4626Oracle.
+
+```solidity
+constructor(IERC4626 _vault, uint8 _decimals);
+```
+
+**Parameters**
+
+| Name       | Type       | Description                        |
+| ---------- | ---------- | ---------------------------------- |
+| \_vault    | `IERC4626` | The ERC4626 vault.                 |
+| \_decimals | `uint8`    | The decimals to use for the price. |
+
+<a id="getprice"></a>
+
+### getPrice
+
+```solidity
+function getPrice() public view returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="latestanswer"></a>
+
+### latestAnswer
+
+```solidity
+function latestAnswer() external view override returns (int256);
+```
+
+**Returns**
+
+| Name         | Type     | Description |
+| ------------ | -------- | ----------- |
+| &lt;none&gt; | `int256` |             |
+
+<a id="latesttimestamp"></a>
+
+### latestTimestamp
+
+```solidity
+function latestTimestamp() external view override returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="latestround"></a>
+
+### latestRound
+
+```solidity
+function latestRound() external pure override returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="getanswer-uint256"></a>
+
+### getAnswer
+
+```solidity
+function getAnswer(uint256) external view override returns (int256);
+```
+
+**Parameters**
+
+| Name | Type      | Description |
+| ---- | --------- | ----------- |
+| \_   | `uint256` |             |
+
+**Returns**
+
+| Name         | Type     | Description |
+| ------------ | -------- | ----------- |
+| &lt;none&gt; | `int256` |             |
+
+<a id="gettimestamp-uint256"></a>
+
+### getTimestamp
+
+```solidity
+function getTimestamp(uint256) external view override returns (uint256);
+```
+
+**Parameters**
+
+| Name | Type      | Description |
+| ---- | --------- | ----------- |
+| \_   | `uint256` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="getrounddata-uint80"></a>
+
+### getRoundData
+
+```solidity
+function getRoundData(uint80)
+        external
+        view
+        override
+        returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound);
+```
+
+**Parameters**
+
+| Name | Type     | Description |
+| ---- | -------- | ----------- |
+| \_   | `uint80` |             |
+
+**Returns**
+
+| Name            | Type      | Description |
+| --------------- | --------- | ----------- |
+| roundId         | `uint80`  |             |
+| answer          | `int256`  |             |
+| startedAt       | `uint256` |             |
+| updatedAt       | `uint256` |             |
+| answeredInRound | `uint80`  |             |
+
+<a id="latestrounddata"></a>
+
+### latestRoundData
+
+```solidity
+function latestRoundData()
+        external
+        view
+        override
+        returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound);
+```
+
+**Returns**
+
+| Name            | Type      | Description |
+| --------------- | --------- | ----------- |
+| roundId         | `uint80`  |             |
+| answer          | `int256`  |             |
+| startedAt       | `uint256` |             |
+| updatedAt       | `uint256` |             |
+| answeredInRound | `uint80`  |             |
+
+<a id="_latestrounddata"></a>
+
+### \_latestRoundData
+
+```solidity
+function _latestRoundData()
+        internal
+        view
+        returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound);
+```
+
+**Returns**
+
+| Name            | Type      | Description |
+| --------------- | --------- | ----------- |
+| roundId         | `uint80`  |             |
+| answer          | `int256`  |             |
+| startedAt       | `uint256` |             |
+| updatedAt       | `uint256` |             |
+| answeredInRound | `uint80`  |             |

@@ -1,0 +1,148 @@
+---
+title: "HubCoreRegistry"
+---
+
+# HubCoreRegistry
+
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/eb9a2fea6cac9f88783f9c769927ed7e5c2b7fd5/src/registries/HubCoreRegistry.sol)
+
+**Inherits:** [CoreRegistry](/contracts/core/registries/abstract.CoreRegistry), [IHubCoreRegistry](/contracts/core/interfaces/interface.IHubCoreRegistry)
+
+## Constants
+
+### HubCoreRegistryStorageLocation
+
+```solidity
+bytes32 private constant HubCoreRegistryStorageLocation =
+        0x662caa641f82b896df85da03edbf3b36c0e08aa64db68d7994394899aadc4700;
+```
+
+## Functions
+
+<a id="_gethubcoreregistrystorage"></a>
+
+### \_getHubCoreRegistryStorage
+
+```solidity
+function _getHubCoreRegistryStorage() private pure returns (HubCoreRegistryStorage storage $);
+```
+
+**Returns**
+
+| Name | Type                     | Description |
+| ---- | ------------------------ | ----------- |
+| $    | `HubCoreRegistryStorage` |             |
+
+<a id="constructor"></a>
+
+### constructor
+
+```solidity
+constructor();
+```
+
+<a id="initialize-address-address-address"></a>
+
+### initialize
+
+```solidity
+function initialize(address _oracleRegistry, address _tokenRegistry, address initialAuthority)
+        external
+        initializer;
+```
+
+**Parameters**
+
+| Name             | Type      | Description |
+| ---------------- | --------- | ----------- |
+| \_oracleRegistry | `address` |             |
+| \_tokenRegistry  | `address` |             |
+| initialAuthority | `address` |             |
+
+<a id="machinebeacon"></a>
+
+### machineBeacon
+
+Address of the machine beacon contract.
+
+```solidity
+function machineBeacon() external view override returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="predepositvaultbeacon"></a>
+
+### preDepositVaultBeacon
+
+Address of the pre-deposit vault beacon contract.
+
+```solidity
+function preDepositVaultBeacon() external view override returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="setmachinebeacon-address"></a>
+
+### setMachineBeacon
+
+Sets the machine beacon address.
+
+```solidity
+function setMachineBeacon(address _machineBeacon) external override restricted;
+```
+
+**Parameters**
+
+| Name            | Type      | Description                 |
+| --------------- | --------- | --------------------------- |
+| \_machineBeacon | `address` | The machine beacon address. |
+
+<a id="setpredepositvaultbeacon-address"></a>
+
+### setPreDepositVaultBeacon
+
+Sets the pre-deposit vault beacon address.
+
+```solidity
+function setPreDepositVaultBeacon(address _preDepositVaultBeacon) external override restricted;
+```
+
+**Parameters**
+
+| Name                    | Type      | Description                           |
+| ----------------------- | --------- | ------------------------------------- |
+| \_preDepositVaultBeacon | `address` | The pre-deposit vault beacon address. |
+
+## Structs
+
+### HubCoreRegistryStorage
+
+**Note:**
+
+- **storage-location:** erc7201:makina.storage.HubCoreRegistry
+
+```solidity
+struct HubCoreRegistryStorage {
+        address _deprecated_0;
+        address _machineBeacon;
+        address _preDepositVaultBeacon;
+    }
+```
+
+**Properties**
+
+| Name                    | Type      | Description |
+| ----------------------- | --------- | ----------- |
+| \_deprecated_0          | `address` |             |
+| \_machineBeacon         | `address` |             |
+| \_preDepositVaultBeacon | `address` |             |

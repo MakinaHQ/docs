@@ -1,0 +1,265 @@
+---
+title: "HubPeripheryRegistry"
+---
+
+# HubPeripheryRegistry
+
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/72aab70ea8dcedba4658cd339dd07022e28ca1b2/src/registries/HubPeripheryRegistry.sol)
+
+**Inherits:** AccessManagedUpgradeable, [IHubPeripheryRegistry](/contracts/periphery/interfaces/interface.IHubPeripheryRegistry)
+
+## Constants
+
+### HubPeripheryRegistryStorageLocation
+
+```solidity
+bytes32 private constant HubPeripheryRegistryStorageLocation =
+        0x60c7a8b9d2c96eeaf12a26c5fbe46f192e4cb2019fd3c31562f5d2011364b000;
+```
+
+## Functions
+
+<a id="_gethubperipheryregistrystorage"></a>
+
+### \_getHubPeripheryRegistryStorage
+
+```solidity
+function _getHubPeripheryRegistryStorage() internal pure returns (HubPeripheryRegistryStorage storage $);
+```
+
+**Returns**
+
+| Name | Type                          | Description |
+| ---- | ----------------------------- | ----------- |
+| $    | `HubPeripheryRegistryStorage` |             |
+
+<a id="constructor"></a>
+
+### constructor
+
+```solidity
+constructor();
+```
+
+<a id="initialize-address"></a>
+
+### initialize
+
+```solidity
+function initialize(address _initialAuthority) external initializer;
+```
+
+**Parameters**
+
+| Name               | Type      | Description |
+| ------------------ | --------- | ----------- |
+| \_initialAuthority | `address` |             |
+
+<a id="peripheryfactory"></a>
+
+### peripheryFactory
+
+Address of the periphery factory.
+
+```solidity
+function peripheryFactory() external view override returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="depositorbeacon-uint16"></a>
+
+### depositorBeacon
+
+Implementation ID => Address of the depositor beacon
+
+```solidity
+function depositorBeacon(uint16 implemId) external view override returns (address);
+```
+
+**Parameters**
+
+| Name     | Type     | Description |
+| -------- | -------- | ----------- |
+| implemId | `uint16` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="redeemerbeacon-uint16"></a>
+
+### redeemerBeacon
+
+Implementation ID => Address of the redeemer beacon
+
+```solidity
+function redeemerBeacon(uint16 implemId) external view override returns (address);
+```
+
+**Parameters**
+
+| Name     | Type     | Description |
+| -------- | -------- | ----------- |
+| implemId | `uint16` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="feemanagerbeacon-uint16"></a>
+
+### feeManagerBeacon
+
+Implementation ID => Address of the fee manager beacon
+
+```solidity
+function feeManagerBeacon(uint16 implemId) external view override returns (address);
+```
+
+**Parameters**
+
+| Name     | Type     | Description |
+| -------- | -------- | ----------- |
+| implemId | `uint16` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="securitymodulebeacon"></a>
+
+### securityModuleBeacon
+
+Address of the security module beacon.
+
+```solidity
+function securityModuleBeacon() external view override returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="setperipheryfactory-address"></a>
+
+### setPeripheryFactory
+
+Sets the address of the periphery factory.
+
+```solidity
+function setPeripheryFactory(address _peripheryFactory) external override restricted;
+```
+
+**Parameters**
+
+| Name               | Type      | Description                    |
+| ------------------ | --------- | ------------------------------ |
+| \_peripheryFactory | `address` | The periphery factory address. |
+
+<a id="setdepositorbeacon-uint16-address"></a>
+
+### setDepositorBeacon
+
+Sets the beacon address for the depositor implementation.
+
+```solidity
+function setDepositorBeacon(uint16 implemId, address _depositorBeacon) external override restricted;
+```
+
+**Parameters**
+
+| Name              | Type      | Description                                     |
+| ----------------- | --------- | ----------------------------------------------- |
+| implemId          | `uint16`  | The ID of the machine depositor implementation. |
+| \_depositorBeacon | `address` | The machine depositor beacon address.           |
+
+<a id="setredeemerbeacon-uint16-address"></a>
+
+### setRedeemerBeacon
+
+Sets the beacon address for the redeemer implementation.
+
+```solidity
+function setRedeemerBeacon(uint16 implemId, address _redeemerBeacon) external override restricted;
+```
+
+**Parameters**
+
+| Name             | Type      | Description                            |
+| ---------------- | --------- | -------------------------------------- |
+| implemId         | `uint16`  | The ID of the redeemer implementation. |
+| \_redeemerBeacon | `address` | The machine redeemer beacon address.   |
+
+<a id="setfeemanagerbeacon-uint16-address"></a>
+
+### setFeeManagerBeacon
+
+Sets the beacon address for the fee manager implementation.
+
+```solidity
+function setFeeManagerBeacon(uint16 implemId, address _feeManagerBeacon) external override restricted;
+```
+
+**Parameters**
+
+| Name               | Type      | Description                               |
+| ------------------ | --------- | ----------------------------------------- |
+| implemId           | `uint16`  | The ID of the fee manager implementation. |
+| \_feeManagerBeacon | `address` | The fee manager beacon address.           |
+
+<a id="setsecuritymodulebeacon-address"></a>
+
+### setSecurityModuleBeacon
+
+Sets the security module beacon address.
+
+```solidity
+function setSecurityModuleBeacon(address _securityModuleBeacon) external override restricted;
+```
+
+**Parameters**
+
+| Name                   | Type      | Description                         |
+| ---------------------- | --------- | ----------------------------------- |
+| \_securityModuleBeacon | `address` | The security module beacon address. |
+
+## Structs
+
+### HubPeripheryRegistryStorage
+
+**Note:**
+
+- **storage-location:** erc7201:makina.storage.HubPeripheryRegistry
+
+```solidity
+struct HubPeripheryRegistryStorage {
+        address _peripheryFactory;
+        mapping(uint16 implemId => address depositor) _depositors;
+        mapping(uint16 implemId => address redeemer) _redeemers;
+        mapping(uint16 implemId => address feeManager) _feeManagers;
+        address _securityModuleBeacon;
+    }
+```
+
+**Properties**
+
+| Name                   | Type                                             | Description |
+| ---------------------- | ------------------------------------------------ | ----------- |
+| \_peripheryFactory     | `address`                                        |             |
+| \_depositors           | `mapping(uint16 implemId => address depositor)`  |             |
+| \_redeemers            | `mapping(uint16 implemId => address redeemer)`   |             |
+| \_feeManagers          | `mapping(uint16 implemId => address feeManager)` |             |
+| \_securityModuleBeacon | `address`                                        |             |

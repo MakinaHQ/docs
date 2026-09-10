@@ -1,0 +1,65 @@
+---
+title: "ISMCooldownReceipt"
+---
+
+# ISMCooldownReceipt
+
+[Git Source](https://github.com/MakinaHQ/makina-periphery/blob/72aab70ea8dcedba4658cd339dd07022e28ca1b2/src/interfaces/ISMCooldownReceipt.sol)
+
+**Inherits:** IERC721
+
+## Functions
+
+<a id="nexttokenid"></a>
+
+### nextTokenId
+
+ID of the next token to be minted.
+
+```solidity
+function nextTokenId() external view returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="mint-address"></a>
+
+### mint
+
+Mints a new cooldown receipt NFT to the specified address.
+
+```solidity
+function mint(address to) external returns (uint256 tokenId);
+```
+
+**Parameters**
+
+| Name | Type      | Description                     |
+| ---- | --------- | ------------------------------- |
+| to   | `address` | The receiver of the minted NFT. |
+
+**Returns**
+
+| Name    | Type      | Description               |
+| ------- | --------- | ------------------------- |
+| tokenId | `uint256` | The ID of the minted NFT. |
+
+<a id="burn-uint256"></a>
+
+### burn
+
+Burns the specified cooldown receipt NFT.
+
+```solidity
+function burn(uint256 tokenId) external;
+```
+
+**Parameters**
+
+| Name    | Type      | Description                |
+| ------- | --------- | -------------------------- |
+| tokenId | `uint256` | The ID of the NFT to burn. |

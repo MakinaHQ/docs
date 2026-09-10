@@ -1,0 +1,1216 @@
+---
+title: "ICaliber"
+---
+
+# ICaliber
+
+[Git Source](https://github.com/MakinaHQ/makina-core/blob/eb9a2fea6cac9f88783f9c769927ed7e5c2b7fd5/src/interfaces/ICaliber.sol)
+
+## Functions
+
+<a id="initialize-caliberinitparams-address-address"></a>
+
+### initialize
+
+Initializer of the contract.
+
+```solidity
+function initialize(CaliberInitParams calldata cParams, address _accountingToken, address _hubMachineEndpoint)
+        external;
+```
+
+**Parameters**
+
+| Name                 | Type                | Description                              |
+| -------------------- | ------------------- | ---------------------------------------- |
+| cParams              | `CaliberInitParams` | The caliber initialization parameters.   |
+| \_accountingToken    | `address`           | The address of the accounting token.     |
+| \_hubMachineEndpoint | `address`           | The address of the hub machine endpoint. |
+
+<a id="weirollvm"></a>
+
+### weirollVm
+
+Address of the Weiroll VM.
+
+```solidity
+function weirollVm() external view returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="hubmachineendpoint"></a>
+
+### hubMachineEndpoint
+
+Address of the hub machine endpoint.
+
+```solidity
+function hubMachineEndpoint() external view returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="accountingtoken"></a>
+
+### accountingToken
+
+Address of the accounting token.
+
+```solidity
+function accountingToken() external view returns (address);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="positionstalethreshold"></a>
+
+### positionStaleThreshold
+
+Maximum duration a position can remain unaccounted for before it is considered stale.
+
+```solidity
+function positionStaleThreshold() external view returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="allowedinstrroot"></a>
+
+### allowedInstrRoot
+
+Root of the Merkle tree containing allowed instructions.
+
+```solidity
+function allowedInstrRoot() external view returns (bytes32);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `bytes32` |             |
+
+<a id="timelockduration"></a>
+
+### timelockDuration
+
+Duration of the allowedInstrRoot update timelock.
+
+```solidity
+function timelockDuration() external view returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="pendingallowedinstrroot"></a>
+
+### pendingAllowedInstrRoot
+
+Value of the pending allowedInstrRoot, if any.
+
+```solidity
+function pendingAllowedInstrRoot() external view returns (bytes32);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `bytes32` |             |
+
+<a id="pendingtimelockexpiry"></a>
+
+### pendingTimelockExpiry
+
+Effective time of the last scheduled allowedInstrRoot update.
+
+```solidity
+function pendingTimelockExpiry() external view returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="maxpositionincreaselossbps"></a>
+
+### maxPositionIncreaseLossBps
+
+Max allowed value loss (in basis points) when increasing a position.
+
+```solidity
+function maxPositionIncreaseLossBps() external view returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="maxpositiondecreaselossbps"></a>
+
+### maxPositionDecreaseLossBps
+
+Max allowed value loss (in basis points) when decreasing a position.
+
+```solidity
+function maxPositionDecreaseLossBps() external view returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="maxswaplossbps"></a>
+
+### maxSwapLossBps
+
+Max allowed value loss (in basis points) for base token swaps.
+
+```solidity
+function maxSwapLossBps() external view returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="cooldownduration"></a>
+
+### cooldownDuration
+
+Duration of the cooldown period for swaps and position management.
+
+```solidity
+function cooldownDuration() external view returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="getpositionslength"></a>
+
+### getPositionsLength
+
+Length of the position IDs list.
+
+```solidity
+function getPositionsLength() external view returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="getpositionid-uint256"></a>
+
+### getPositionId
+
+Position index => Position ID
+
+<i>
+
+There are no guarantees on the ordering of values inside the Position ID list,
+and it may change when values are added or removed.
+
+</i>
+
+```solidity
+function getPositionId(uint256 idx) external view returns (uint256);
+```
+
+**Parameters**
+
+| Name | Type      | Description |
+| ---- | --------- | ----------- |
+| idx  | `uint256` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="getposition-uint256"></a>
+
+### getPosition
+
+Position ID => Position data
+
+```solidity
+function getPosition(uint256 posId) external view returns (Position memory);
+```
+
+**Parameters**
+
+| Name  | Type      | Description |
+| ----- | --------- | ----------- |
+| posId | `uint256` |             |
+
+**Returns**
+
+| Name         | Type       | Description |
+| ------------ | ---------- | ----------- |
+| &lt;none&gt; | `Position` |             |
+
+<a id="isbasetoken-address"></a>
+
+### isBaseToken
+
+Token => Registered as base token in this caliber
+
+```solidity
+function isBaseToken(address token) external view returns (bool);
+```
+
+**Parameters**
+
+| Name  | Type      | Description |
+| ----- | --------- | ----------- |
+| token | `address` |             |
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="getbasetokenslength"></a>
+
+### getBaseTokensLength
+
+Length of the base tokens list.
+
+```solidity
+function getBaseTokensLength() external view returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="getbasetoken-uint256"></a>
+
+### getBaseToken
+
+Base token index => Base token address
+
+<i>
+
+There are no guarantees on the ordering of values inside the base tokens list,
+and it may change when values are added or removed.
+
+</i>
+
+```solidity
+function getBaseToken(uint256 idx) external view returns (address);
+```
+
+**Parameters**
+
+| Name | Type      | Description |
+| ---- | --------- | ----------- |
+| idx  | `uint256` |             |
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `address` |             |
+
+<a id="isinstrrootguardian-address"></a>
+
+### isInstrRootGuardian
+
+User => Whether the user is a root guardian
+Guardians have veto power over updates of the Merkle root.
+
+```solidity
+function isInstrRootGuardian(address user) external view returns (bool);
+```
+
+**Parameters**
+
+| Name | Type      | Description |
+| ---- | --------- | ----------- |
+| user | `address` |             |
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="isaccountingfresh"></a>
+
+### isAccountingFresh
+
+Checks if the accounting age of each position is below the position staleness threshold.
+
+```solidity
+function isAccountingFresh() external view returns (bool);
+```
+
+**Returns**
+
+| Name         | Type   | Description |
+| ------------ | ------ | ----------- |
+| &lt;none&gt; | `bool` |             |
+
+<a id="getnetaum"></a>
+
+### getNetAum
+
+Returns the caliber's net AUM denominated in the accounting token.
+
+<i>
+
+Reverts if any position's accounting is stale.
+
+</i>
+
+```solidity
+function getNetAum() external view returns (uint256);
+```
+
+**Returns**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| &lt;none&gt; | `uint256` |             |
+
+<a id="getdetailedaum"></a>
+
+### getDetailedAum
+
+Returns the caliber's net AUM along with detailed position and base token breakdowns.
+
+<i>
+
+Does not revert on stale positions. Staleness is surfaced per position via the isStale flag instead.
+
+</i>
+
+```solidity
+function getDetailedAum()
+        external
+        view
+        returns (uint256 netAum, bytes[] memory positions, bytes[] memory baseTokens);
+```
+
+**Returns**
+
+| Name       | Type      | Description                                                                           |
+| ---------- | --------- | ------------------------------------------------------------------------------------- |
+| netAum     | `uint256` | The total value of all base token balances and positive positions, minus total debts. |
+| positions  | `bytes[]` | The array of encoded tuples of the form (positionId, value, isDebt, isStale).         |
+| baseTokens | `bytes[]` | The array of encoded tuples of the form (token, value).                               |
+
+<a id="addbasetoken-address"></a>
+
+### addBaseToken
+
+Adds a new base token.
+
+```solidity
+function addBaseToken(address token) external;
+```
+
+**Parameters**
+
+| Name  | Type      | Description                    |
+| ----- | --------- | ------------------------------ |
+| token | `address` | The address of the base token. |
+
+<a id="removebasetoken-address"></a>
+
+### removeBaseToken
+
+Removes a base token.
+
+```solidity
+function removeBaseToken(address token) external;
+```
+
+**Parameters**
+
+| Name  | Type      | Description                    |
+| ----- | --------- | ------------------------------ |
+| token | `address` | The address of the base token. |
+
+<a id="accountforposition-instruction"></a>
+
+### accountForPosition
+
+Accounts for a position.
+
+<i>
+
+If the position value goes to zero, it is closed.
+
+</i>
+
+```solidity
+function accountForPosition(Instruction calldata instruction) external returns (uint256 value, int256 change);
+```
+
+**Parameters**
+
+| Name        | Type          | Description                 |
+| ----------- | ------------- | --------------------------- |
+| instruction | `Instruction` | The accounting instruction. |
+
+**Returns**
+
+| Name   | Type      | Description                       |
+| ------ | --------- | --------------------------------- |
+| value  | `uint256` | The new position value.           |
+| change | `int256`  | The change in the position value. |
+
+<a id="accountforpositionbatch-instruction-uint256"></a>
+
+### accountForPositionBatch
+
+Accounts for a batch of positions.
+
+```solidity
+function accountForPositionBatch(Instruction[] calldata instructions, uint256[] calldata groupIds)
+        external
+        returns (uint256[] memory values, int256[] memory changes);
+```
+
+**Parameters**
+
+| Name         | Type            | Description                                                                                                                                                                                                                                                                        |
+| ------------ | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| instructions | `Instruction[]` | The array of accounting instructions.                                                                                                                                                                                                                                              |
+| groupIds     | `uint256[]`     | The array of position group IDs.<br/>An accounting instruction must be provided for every open position in each specified group.<br/>If an instruction's groupId corresponds to a group of open positions of size greater than 1,<br/>the group ID must be included in this array. |
+
+**Returns**
+
+| Name    | Type        | Description                         |
+| ------- | ----------- | ----------------------------------- |
+| values  | `uint256[]` | The new position values.            |
+| changes | `int256[]`  | The changes in the position values. |
+
+<a id="manageposition-instruction-instruction"></a>
+
+### managePosition
+
+Manages a position's state through paired management and accounting instructions.
+
+<i>
+
+Performs accounting updates and modifies contract storage by:
+
+- Adding new positions to storage when created.
+- Removing positions from storage when value reaches zero.
+
+</i>
+
+<i>
+
+Applies value preservation checks using a validation matrix to prevent
+economic inconsistencies between position changes and token flows.
+
+</i>
+
+The matrix evaluates three factors to determine required validations:
+
+- Base Tokens flow - Whether the contract globally spent or received base tokens during operation
+- Debt Position - Whether position represents protocol liability (true) vs asset (false)
+- Position Δ direction - Direction of position value change (increase/decrease/null)
+
+┌──────────────────┬───────────────┬──────────────────────┬───────────────────────────┐
+│ Base Tokens flow │ Debt Position │ Position Δ direction │ Action │
+├──────────────────┼───────────────┼──────────────────────┼───────────────────────────┤
+│ Outflow │ No │ Decrease │ Revert: Invalid direction │
+│ Outflow │ Yes │ Increase │ Revert: Invalid direction │
+│ Outflow │ No │ Increase / Null │ Minimum Δ Check │
+│ Outflow │ Yes │ Decrease / Null │ Minimum Δ Check │
+│ Inflow / Null │ No │ Decrease │ Maximum Δ Check │
+│ Inflow / Null │ Yes │ Increase │ Maximum Δ Check │
+│ Inflow / Null │ No │ Increase / Null │ No check (favorable move) │
+│ Inflow / Null │ Yes │ Decrease / Null │ No check (favorable move) │
+└──────────────────┴───────────────┴──────────────────────┴───────────────────────────┘
+
+```solidity
+function managePosition(Instruction calldata mgmtInstruction, Instruction calldata acctInstruction)
+        external
+        returns (uint256 value, int256 change);
+```
+
+**Parameters**
+
+| Name            | Type          | Description                 |
+| --------------- | ------------- | --------------------------- |
+| mgmtInstruction | `Instruction` | The management instruction. |
+| acctInstruction | `Instruction` | The accounting instruction. |
+
+**Returns**
+
+| Name   | Type      | Description                      |
+| ------ | --------- | -------------------------------- |
+| value  | `uint256` | The new position value.          |
+| change | `int256`  | The signed position value delta. |
+
+<a id="managepositionbatch-instruction-instruction"></a>
+
+### managePositionBatch
+
+Manages a batch of positions.
+
+<i>
+
+Convenience function to manage multiple positions in a single transaction.
+
+</i>
+
+```solidity
+function managePositionBatch(Instruction[] calldata mgmtInstructions, Instruction[] calldata acctInstructions)
+        external
+        returns (uint256[] memory values, int256[] memory changes);
+```
+
+**Parameters**
+
+| Name             | Type            | Description                           |
+| ---------------- | --------------- | ------------------------------------- |
+| mgmtInstructions | `Instruction[]` | The array of management instructions. |
+| acctInstructions | `Instruction[]` | The array of accounting instructions. |
+
+**Returns**
+
+| Name    | Type        | Description                         |
+| ------- | ----------- | ----------------------------------- |
+| values  | `uint256[]` | The new position values.            |
+| changes | `int256[]`  | The changes in the position values. |
+
+<a id="manageflashloan-instruction-address-uint256"></a>
+
+### manageFlashLoan
+
+Manages flash loan funds.
+
+```solidity
+function manageFlashLoan(Instruction calldata instruction, address token, uint256 amount) external;
+```
+
+**Parameters**
+
+| Name        | Type          | Description                            |
+| ----------- | ------------- | -------------------------------------- |
+| instruction | `Instruction` | The flash loan management instruction. |
+| token       | `address`     | The loan token.                        |
+| amount      | `uint256`     | The loan amount.                       |
+
+<a id="harvest-instruction-iswapmodule-swaporder"></a>
+
+### harvest
+
+Harvests one or multiple positions.
+
+```solidity
+function harvest(Instruction calldata instruction, ISwapModule.SwapOrder[] calldata swapOrders) external;
+```
+
+**Parameters**
+
+| Name        | Type                      | Description                                                |
+| ----------- | ------------------------- | ---------------------------------------------------------- |
+| instruction | `Instruction`             | The harvest instruction.                                   |
+| swapOrders  | `ISwapModule.SwapOrder[]` | The array of swap orders to be executed after the harvest. |
+
+<a id="swap-iswapmodule-swaporder"></a>
+
+### swap
+
+Performs a swap via the swap module.
+
+```solidity
+function swap(ISwapModule.SwapOrder calldata order) external;
+```
+
+**Parameters**
+
+| Name  | Type                    | Description                |
+| ----- | ----------------------- | -------------------------- |
+| order | `ISwapModule.SwapOrder` | The swap order parameters. |
+
+<a id="transfertohubmachine-address-uint256-bytes"></a>
+
+### transferToHubMachine
+
+Initiates a token transfer to the hub machine.
+
+```solidity
+function transferToHubMachine(address token, uint256 amount, bytes calldata data) external;
+```
+
+**Parameters**
+
+| Name   | Type      | Description                                                                                           |
+| ------ | --------- | ----------------------------------------------------------------------------------------------------- |
+| token  | `address` | The address of the token to transfer.                                                                 |
+| amount | `uint256` | The amount of tokens to transfer.                                                                     |
+| data   | `bytes`   | ABI-encoded parameters required for bridge-related transfers. Ignored when called from a hub caliber. |
+
+<a id="notifyincomingtransfer-address-uint256"></a>
+
+### notifyIncomingTransfer
+
+Instructs the Caliber to pull the specified token amount from the calling hub machine endpoint.
+
+```solidity
+function notifyIncomingTransfer(address token, uint256 amount) external;
+```
+
+**Parameters**
+
+| Name   | Type      | Description                                 |
+| ------ | --------- | ------------------------------------------- |
+| token  | `address` | The address of the token being transferred. |
+| amount | `uint256` | The amount of tokens being transferred.     |
+
+<a id="setpositionstalethreshold-uint256"></a>
+
+### setPositionStaleThreshold
+
+Sets the position accounting staleness threshold.
+
+```solidity
+function setPositionStaleThreshold(uint256 newPositionStaleThreshold) external;
+```
+
+**Parameters**
+
+| Name                      | Type      | Description                   |
+| ------------------------- | --------- | ----------------------------- |
+| newPositionStaleThreshold | `uint256` | The new threshold in seconds. |
+
+<a id="settimelockduration-uint256"></a>
+
+### setTimelockDuration
+
+Sets the duration of the allowedInstrRoot update timelock.
+
+```solidity
+function setTimelockDuration(uint256 newTimelockDuration) external;
+```
+
+**Parameters**
+
+| Name                | Type      | Description                  |
+| ------------------- | --------- | ---------------------------- |
+| newTimelockDuration | `uint256` | The new duration in seconds. |
+
+<a id="scheduleallowedinstrrootupdate-bytes32"></a>
+
+### scheduleAllowedInstrRootUpdate
+
+Schedules an update of the root of the Merkle tree containing allowed instructions.
+
+<i>
+
+The update will take effect after the timelock duration stored in the contract
+at the time of the call.
+
+</i>
+
+```solidity
+function scheduleAllowedInstrRootUpdate(bytes32 newAllowedInstrRoot) external;
+```
+
+**Parameters**
+
+| Name                | Type      | Description          |
+| ------------------- | --------- | -------------------- |
+| newAllowedInstrRoot | `bytes32` | The new Merkle root. |
+
+<a id="cancelallowedinstrrootupdate"></a>
+
+### cancelAllowedInstrRootUpdate
+
+Cancels a scheduled update of the root of the Merkle tree containing allowed instructions.
+
+<i>
+
+Reverts if no pending update exists or if the timelock has expired.
+
+</i>
+
+```solidity
+function cancelAllowedInstrRootUpdate() external;
+```
+
+<a id="setmaxpositionincreaselossbps-uint256"></a>
+
+### setMaxPositionIncreaseLossBps
+
+Sets the max allowed value loss for position increases.
+
+```solidity
+function setMaxPositionIncreaseLossBps(uint256 newMaxPositionIncreaseLossBps) external;
+```
+
+**Parameters**
+
+| Name                          | Type      | Description                             |
+| ----------------------------- | --------- | --------------------------------------- |
+| newMaxPositionIncreaseLossBps | `uint256` | The new max value loss in basis points. |
+
+<a id="setmaxpositiondecreaselossbps-uint256"></a>
+
+### setMaxPositionDecreaseLossBps
+
+Sets the max allowed value loss for position decreases.
+
+```solidity
+function setMaxPositionDecreaseLossBps(uint256 newMaxPositionDecreaseLossBps) external;
+```
+
+**Parameters**
+
+| Name                          | Type      | Description                             |
+| ----------------------------- | --------- | --------------------------------------- |
+| newMaxPositionDecreaseLossBps | `uint256` | The new max value loss in basis points. |
+
+<a id="setmaxswaplossbps-uint256"></a>
+
+### setMaxSwapLossBps
+
+Sets the max allowed value loss for base token swaps.
+
+```solidity
+function setMaxSwapLossBps(uint256 newMaxSwapLossBps) external;
+```
+
+**Parameters**
+
+| Name              | Type      | Description                             |
+| ----------------- | --------- | --------------------------------------- |
+| newMaxSwapLossBps | `uint256` | The new max value loss in basis points. |
+
+<a id="setcooldownduration-uint256"></a>
+
+### setCooldownDuration
+
+Sets the duration of the cooldown period for swaps and position management.
+
+```solidity
+function setCooldownDuration(uint256 newCooldownDuration) external;
+```
+
+**Parameters**
+
+| Name                | Type      | Description                  |
+| ------------------- | --------- | ---------------------------- |
+| newCooldownDuration | `uint256` | The new duration in seconds. |
+
+<a id="addinstrrootguardian-address"></a>
+
+### addInstrRootGuardian
+
+Adds a new guardian for the Merkle tree containing allowed instructions.
+
+```solidity
+function addInstrRootGuardian(address newGuardian) external;
+```
+
+**Parameters**
+
+| Name        | Type      | Description                      |
+| ----------- | --------- | -------------------------------- |
+| newGuardian | `address` | The address of the new guardian. |
+
+<a id="removeinstrrootguardian-address"></a>
+
+### removeInstrRootGuardian
+
+Removes a guardian for the Merkle tree containing allowed instructions.
+
+```solidity
+function removeInstrRootGuardian(address guardian) external;
+```
+
+**Parameters**
+
+| Name     | Type      | Description                            |
+| -------- | --------- | -------------------------------------- |
+| guardian | `address` | The address of the guardian to remove. |
+
+## Events
+
+### AllowedInstrRootSet
+
+```solidity
+event AllowedInstrRootSet(bytes32 indexed newAllowedInstrRoot);
+```
+
+**Parameters**
+
+| Name                | Type      | Description |
+| ------------------- | --------- | ----------- |
+| newAllowedInstrRoot | `bytes32` |             |
+
+### BaseTokenAdded
+
+```solidity
+event BaseTokenAdded(address indexed token);
+```
+
+**Parameters**
+
+| Name  | Type      | Description |
+| ----- | --------- | ----------- |
+| token | `address` |             |
+
+### BaseTokenRemoved
+
+```solidity
+event BaseTokenRemoved(address indexed token);
+```
+
+**Parameters**
+
+| Name  | Type      | Description |
+| ----- | --------- | ----------- |
+| token | `address` |             |
+
+### CooldownDurationChanged
+
+```solidity
+event CooldownDurationChanged(uint256 indexed oldDuration, uint256 indexed newDuration);
+```
+
+**Parameters**
+
+| Name        | Type      | Description |
+| ----------- | --------- | ----------- |
+| oldDuration | `uint256` |             |
+| newDuration | `uint256` |             |
+
+### IncomingTransfer
+
+```solidity
+event IncomingTransfer(address indexed token, uint256 amount);
+```
+
+**Parameters**
+
+| Name   | Type      | Description |
+| ------ | --------- | ----------- |
+| token  | `address` |             |
+| amount | `uint256` |             |
+
+### InstrRootGuardianAdded
+
+```solidity
+event InstrRootGuardianAdded(address indexed newGuardian);
+```
+
+**Parameters**
+
+| Name        | Type      | Description |
+| ----------- | --------- | ----------- |
+| newGuardian | `address` |             |
+
+### InstrRootGuardianRemoved
+
+```solidity
+event InstrRootGuardianRemoved(address indexed guardian);
+```
+
+**Parameters**
+
+| Name     | Type      | Description |
+| -------- | --------- | ----------- |
+| guardian | `address` |             |
+
+### MaxPositionDecreaseLossBpsChanged
+
+```solidity
+event MaxPositionDecreaseLossBpsChanged(
+        uint256 indexed oldMaxPositionDecreaseLossBps, uint256 indexed newMaxPositionDecreaseLossBps
+    );
+```
+
+**Parameters**
+
+| Name                          | Type      | Description |
+| ----------------------------- | --------- | ----------- |
+| oldMaxPositionDecreaseLossBps | `uint256` |             |
+| newMaxPositionDecreaseLossBps | `uint256` |             |
+
+### MaxPositionIncreaseLossBpsChanged
+
+```solidity
+event MaxPositionIncreaseLossBpsChanged(
+        uint256 indexed oldMaxPositionIncreaseLossBps, uint256 indexed newMaxPositionIncreaseLossBps
+    );
+```
+
+**Parameters**
+
+| Name                          | Type      | Description |
+| ----------------------------- | --------- | ----------- |
+| oldMaxPositionIncreaseLossBps | `uint256` |             |
+| newMaxPositionIncreaseLossBps | `uint256` |             |
+
+### MaxSwapLossBpsChanged
+
+```solidity
+event MaxSwapLossBpsChanged(uint256 indexed oldMaxSwapLossBps, uint256 indexed newMaxSwapLossBps);
+```
+
+**Parameters**
+
+| Name              | Type      | Description |
+| ----------------- | --------- | ----------- |
+| oldMaxSwapLossBps | `uint256` |             |
+| newMaxSwapLossBps | `uint256` |             |
+
+### NewAllowedInstrRootCancelled
+
+```solidity
+event NewAllowedInstrRootCancelled(bytes32 indexed cancelledMerkleRoot);
+```
+
+**Parameters**
+
+| Name                | Type      | Description |
+| ------------------- | --------- | ----------- |
+| cancelledMerkleRoot | `bytes32` |             |
+
+### NewAllowedInstrRootScheduled
+
+```solidity
+event NewAllowedInstrRootScheduled(bytes32 indexed newMerkleRoot, uint256 indexed effectiveTime);
+```
+
+**Parameters**
+
+| Name          | Type      | Description |
+| ------------- | --------- | ----------- |
+| newMerkleRoot | `bytes32` |             |
+| effectiveTime | `uint256` |             |
+
+### PositionClosed
+
+```solidity
+event PositionClosed(uint256 indexed id);
+```
+
+**Parameters**
+
+| Name | Type      | Description |
+| ---- | --------- | ----------- |
+| id   | `uint256` |             |
+
+### PositionCreated
+
+```solidity
+event PositionCreated(uint256 indexed id, uint256 value);
+```
+
+**Parameters**
+
+| Name  | Type      | Description |
+| ----- | --------- | ----------- |
+| id    | `uint256` |             |
+| value | `uint256` |             |
+
+### PositionUpdated
+
+```solidity
+event PositionUpdated(uint256 indexed id, uint256 value);
+```
+
+**Parameters**
+
+| Name  | Type      | Description |
+| ----- | --------- | ----------- |
+| id    | `uint256` |             |
+| value | `uint256` |             |
+
+### PositionStaleThresholdChanged
+
+```solidity
+event PositionStaleThresholdChanged(uint256 indexed oldThreshold, uint256 indexed newThreshold);
+```
+
+**Parameters**
+
+| Name         | Type      | Description |
+| ------------ | --------- | ----------- |
+| oldThreshold | `uint256` |             |
+| newThreshold | `uint256` |             |
+
+### TimelockDurationChanged
+
+```solidity
+event TimelockDurationChanged(uint256 indexed oldDuration, uint256 indexed newDuration);
+```
+
+**Parameters**
+
+| Name        | Type      | Description |
+| ----------- | --------- | ----------- |
+| oldDuration | `uint256` |             |
+| newDuration | `uint256` |             |
+
+### TransferToHubMachine
+
+```solidity
+event TransferToHubMachine(address indexed token, uint256 amount);
+```
+
+**Parameters**
+
+| Name   | Type      | Description |
+| ------ | --------- | ----------- |
+| token  | `address` |             |
+| amount | `uint256` |             |
+
+## Structs
+
+### CaliberInitParams
+
+Initialization parameters.
+
+```solidity
+struct CaliberInitParams {
+        uint256 initialPositionStaleThreshold;
+        bytes32 initialAllowedInstrRoot;
+        uint256 initialTimelockDuration;
+        uint256 initialMaxPositionIncreaseLossBps;
+        uint256 initialMaxPositionDecreaseLossBps;
+        uint256 initialMaxSwapLossBps;
+        uint256 initialCooldownDuration;
+        address[] initialBaseTokens;
+    }
+```
+
+**Properties**
+
+| Name                              | Type        | Description                                                            |
+| --------------------------------- | ----------- | ---------------------------------------------------------------------- |
+| initialPositionStaleThreshold     | `uint256`   | The position accounting staleness threshold in seconds.                |
+| initialAllowedInstrRoot           | `bytes32`   | The root of the Merkle tree containing allowed instructions.           |
+| initialTimelockDuration           | `uint256`   | The duration of the allowedInstrRoot update timelock.                  |
+| initialMaxPositionIncreaseLossBps | `uint256`   | The max allowed value loss (in basis points) for position increases.   |
+| initialMaxPositionDecreaseLossBps | `uint256`   | The max allowed value loss (in basis points) for position decreases.   |
+| initialMaxSwapLossBps             | `uint256`   | The max allowed value loss (in basis points) for base token swaps.     |
+| initialCooldownDuration           | `uint256`   | The duration of the cooldown period for swaps and position management. |
+| initialBaseTokens                 | `address[]` | The array of initial base tokens.                                      |
+
+### Instruction
+
+Instruction parameters.
+
+```solidity
+struct Instruction {
+        uint256 positionId;
+        bool isDebt;
+        uint256 groupId;
+        InstructionType instructionType;
+        address[] affectedTokens;
+        address[] positionTokens;
+        bytes32[] commands;
+        bytes[] state;
+        uint128 stateBitmap;
+        bytes32[] merkleProof;
+    }
+```
+
+**Properties**
+
+| Name            | Type              | Description                                                                                                                                   |
+| --------------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| positionId      | `uint256`         | The ID of the involved position.                                                                                                              |
+| isDebt          | `bool`            | Whether the position is a debt.                                                                                                               |
+| groupId         | `uint256`         | The ID of the position accounting group.<br/>Set to 0 if the instruction is not of type ACCOUNTING, or if the involved position is ungrouped. |
+| instructionType | `InstructionType` | The type of the instruction.                                                                                                                  |
+| affectedTokens  | `address[]`       | The array of affected tokens.                                                                                                                 |
+| positionTokens  | `address[]`       | The array of position tokens.                                                                                                                 |
+| commands        | `bytes32[]`       | The array of commands.                                                                                                                        |
+| state           | `bytes[]`         | The array of state.                                                                                                                           |
+| stateBitmap     | `uint128`         | The state bitmap.                                                                                                                             |
+| merkleProof     | `bytes32[]`       | The array of Merkle proof elements.                                                                                                           |
+
+### Position
+
+Position data.
+
+```solidity
+struct Position {
+        uint256 lastAccountingTime;
+        uint256 value;
+        bool isDebt;
+    }
+```
+
+**Properties**
+
+| Name               | Type      | Description                                                   |
+| ------------------ | --------- | ------------------------------------------------------------- |
+| lastAccountingTime | `uint256` | The last block timestamp when the position was accounted for. |
+| value              | `uint256` | The value of the position denominated in accounting token.    |
+| isDebt             | `bool`    | Whether the position is a debt.                               |
+
+## Enums
+
+### InstructionType
+
+```solidity
+enum InstructionType {
+        MANAGEMENT,
+        ACCOUNTING,
+        HARVEST,
+        FLASHLOAN_MANAGEMENT
+    }
+```
+
+**Variants**
+
+| Name                 | Description |
+| -------------------- | ----------- |
+| MANAGEMENT           |             |
+| ACCOUNTING           |             |
+| HARVEST              |             |
+| FLASHLOAN_MANAGEMENT |             |

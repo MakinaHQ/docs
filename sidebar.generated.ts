@@ -18,64 +18,24 @@ export const contractsSidebar = [
         collapsed: true,
         items: [
           {
-            text: "ChainRegistry.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "ChainRegistry",
-                link: "/contracts/core/registries/ChainRegistry.sol/contract.ChainRegistry",
-              },
-            ],
+            text: "CoreRegistry",
+            link: "/contracts/core/registries/abstract.CoreRegistry",
           },
           {
-            text: "CoreRegistry.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "CoreRegistry",
-                link: "/contracts/core/registries/CoreRegistry.sol/abstract.CoreRegistry",
-              },
-            ],
+            text: "HubCoreRegistry",
+            link: "/contracts/core/registries/contract.HubCoreRegistry",
           },
           {
-            text: "HubCoreRegistry.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "HubCoreRegistry",
-                link: "/contracts/core/registries/HubCoreRegistry.sol/contract.HubCoreRegistry",
-              },
-            ],
+            text: "OracleRegistry",
+            link: "/contracts/core/registries/contract.OracleRegistry",
           },
           {
-            text: "OracleRegistry.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "OracleRegistry",
-                link: "/contracts/core/registries/OracleRegistry.sol/contract.OracleRegistry",
-              },
-            ],
+            text: "SpokeCoreRegistry",
+            link: "/contracts/core/registries/contract.SpokeCoreRegistry",
           },
           {
-            text: "SpokeCoreRegistry.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "SpokeCoreRegistry",
-                link: "/contracts/core/registries/SpokeCoreRegistry.sol/contract.SpokeCoreRegistry",
-              },
-            ],
-          },
-          {
-            text: "TokenRegistry.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "TokenRegistry",
-                link: "/contracts/core/registries/TokenRegistry.sol/contract.TokenRegistry",
-              },
-            ],
+            text: "TokenRegistry",
+            link: "/contracts/core/registries/contract.TokenRegistry",
           },
         ],
       },
@@ -84,54 +44,24 @@ export const contractsSidebar = [
         collapsed: true,
         items: [
           {
-            text: "BridgeAdapterFactory.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "BridgeAdapterFactory",
-                link: "/contracts/core/factories/BridgeAdapterFactory.sol/abstract.BridgeAdapterFactory",
-              },
-            ],
+            text: "BridgeAdapterFactory",
+            link: "/contracts/core/factories/abstract.BridgeAdapterFactory",
           },
           {
-            text: "CaliberFactory.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "CaliberFactory",
-                link: "/contracts/core/factories/CaliberFactory.sol/abstract.CaliberFactory",
-              },
-            ],
+            text: "CaliberFactory",
+            link: "/contracts/core/factories/abstract.CaliberFactory",
           },
           {
-            text: "Create3Factory.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "Create3Factory",
-                link: "/contracts/core/factories/Create3Factory.sol/abstract.Create3Factory",
-              },
-            ],
+            text: "Create3Factory",
+            link: "/contracts/core/factories/abstract.Create3Factory",
           },
           {
-            text: "HubCoreFactory.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "HubCoreFactory",
-                link: "/contracts/core/factories/HubCoreFactory.sol/contract.HubCoreFactory",
-              },
-            ],
+            text: "HubCoreFactory",
+            link: "/contracts/core/factories/contract.HubCoreFactory",
           },
           {
-            text: "SpokeCoreFactory.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "SpokeCoreFactory",
-                link: "/contracts/core/factories/SpokeCoreFactory.sol/contract.SpokeCoreFactory",
-              },
-            ],
+            text: "SpokeCoreFactory",
+            link: "/contracts/core/factories/contract.SpokeCoreFactory",
           },
         ],
       },
@@ -140,24 +70,12 @@ export const contractsSidebar = [
         collapsed: true,
         items: [
           {
-            text: "Machine.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "Machine",
-                link: "/contracts/core/machine/Machine.sol/contract.Machine",
-              },
-            ],
+            text: "Machine",
+            link: "/contracts/core/machine/contract.Machine",
           },
           {
-            text: "MachineShare.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "MachineShare",
-                link: "/contracts/core/machine/MachineShare.sol/contract.MachineShare",
-              },
-            ],
+            text: "MachineShare",
+            link: "/contracts/core/machine/contract.MachineShare",
           },
         ],
       },
@@ -166,14 +84,8 @@ export const contractsSidebar = [
         collapsed: true,
         items: [
           {
-            text: "PreDepositVault.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "PreDepositVault",
-                link: "/contracts/core/pre-deposit/PreDepositVault.sol/contract.PreDepositVault",
-              },
-            ],
+            text: "PreDepositVault",
+            link: "/contracts/core/pre-deposit/contract.PreDepositVault",
           },
         ],
       },
@@ -182,24 +94,12 @@ export const contractsSidebar = [
         collapsed: true,
         items: [
           {
-            text: "Caliber.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "Caliber",
-                link: "/contracts/core/caliber/Caliber.sol/contract.Caliber",
-              },
-            ],
+            text: "Caliber",
+            link: "/contracts/core/caliber/contract.Caliber",
           },
           {
-            text: "CaliberMailbox.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "CaliberMailbox",
-                link: "/contracts/core/caliber/CaliberMailbox.sol/contract.CaliberMailbox",
-              },
-            ],
+            text: "CaliberMailbox",
+            link: "/contracts/core/caliber/contract.CaliberMailbox",
           },
         ],
       },
@@ -212,44 +112,20 @@ export const contractsSidebar = [
             collapsed: true,
             items: [
               {
-                text: "AcrossV3BridgeAdapter.sol",
-                collapsed: true,
-                items: [
-                  {
-                    text: "AcrossV3BridgeAdapter",
-                    link: "/contracts/core/bridge/adapters/AcrossV3BridgeAdapter.sol/contract.AcrossV3BridgeAdapter",
-                  },
-                ],
+                text: "AcrossV3BridgeAdapter",
+                link: "/contracts/core/bridge/adapters/contract.AcrossV3BridgeAdapter",
               },
               {
-                text: "BridgeAdapter.sol",
-                collapsed: true,
-                items: [
-                  {
-                    text: "BridgeAdapter",
-                    link: "/contracts/core/bridge/adapters/BridgeAdapter.sol/abstract.BridgeAdapter",
-                  },
-                ],
+                text: "BridgeAdapter",
+                link: "/contracts/core/bridge/adapters/abstract.BridgeAdapter",
               },
               {
-                text: "CctpV2BridgeAdapter.sol",
-                collapsed: true,
-                items: [
-                  {
-                    text: "CctpV2BridgeAdapter",
-                    link: "/contracts/core/bridge/adapters/CctpV2BridgeAdapter.sol/contract.CctpV2BridgeAdapter",
-                  },
-                ],
+                text: "CctpV2BridgeAdapter",
+                link: "/contracts/core/bridge/adapters/contract.CctpV2BridgeAdapter",
               },
               {
-                text: "LayerZeroV2BridgeAdapter.sol",
-                collapsed: true,
-                items: [
-                  {
-                    text: "LayerZeroV2BridgeAdapter",
-                    link: "/contracts/core/bridge/adapters/LayerZeroV2BridgeAdapter.sol/contract.LayerZeroV2BridgeAdapter",
-                  },
-                ],
+                text: "LayerZeroV2BridgeAdapter",
+                link: "/contracts/core/bridge/adapters/contract.LayerZeroV2BridgeAdapter",
               },
             ],
           },
@@ -258,34 +134,16 @@ export const contractsSidebar = [
             collapsed: true,
             items: [
               {
-                text: "AcrossV3BridgeConfig.sol",
-                collapsed: true,
-                items: [
-                  {
-                    text: "AcrossV3BridgeConfig",
-                    link: "/contracts/core/bridge/configs/AcrossV3BridgeConfig.sol/contract.AcrossV3BridgeConfig",
-                  },
-                ],
+                text: "AcrossV3BridgeConfig",
+                link: "/contracts/core/bridge/configs/contract.AcrossV3BridgeConfig",
               },
               {
-                text: "CctpV2BridgeConfig.sol",
-                collapsed: true,
-                items: [
-                  {
-                    text: "CctpV2BridgeConfig",
-                    link: "/contracts/core/bridge/configs/CctpV2BridgeConfig.sol/contract.CctpV2BridgeConfig",
-                  },
-                ],
+                text: "CctpV2BridgeConfig",
+                link: "/contracts/core/bridge/configs/contract.CctpV2BridgeConfig",
               },
               {
-                text: "LayerZeroV2BridgeConfig.sol",
-                collapsed: true,
-                items: [
-                  {
-                    text: "LayerZeroV2BridgeConfig",
-                    link: "/contracts/core/bridge/configs/LayerZeroV2BridgeConfig.sol/contract.LayerZeroV2BridgeConfig",
-                  },
-                ],
+                text: "LayerZeroV2BridgeConfig",
+                link: "/contracts/core/bridge/configs/contract.LayerZeroV2BridgeConfig",
               },
             ],
           },
@@ -294,14 +152,8 @@ export const contractsSidebar = [
             collapsed: true,
             items: [
               {
-                text: "BridgeController.sol",
-                collapsed: true,
-                items: [
-                  {
-                    text: "BridgeController",
-                    link: "/contracts/core/bridge/controller/BridgeController.sol/abstract.BridgeController",
-                  },
-                ],
+                text: "BridgeController",
+                link: "/contracts/core/bridge/controller/abstract.BridgeController",
               },
             ],
           },
@@ -312,14 +164,8 @@ export const contractsSidebar = [
         collapsed: true,
         items: [
           {
-            text: "SwapModule.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "SwapModule",
-                link: "/contracts/core/swap/SwapModule.sol/contract.SwapModule",
-              },
-            ],
+            text: "SwapModule",
+            link: "/contracts/core/swap/contract.SwapModule",
           },
         ],
       },
@@ -328,74 +174,28 @@ export const contractsSidebar = [
         collapsed: true,
         items: [
           {
-            text: "CaliberAccountingCCQ.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "CaliberAccountingCCQ",
-                link: "/contracts/core/libraries/CaliberAccountingCCQ.sol/library.CaliberAccountingCCQ",
-              },
-            ],
+            text: "CctpV2Message",
+            link: "/contracts/core/libraries/library.CctpV2Message",
           },
           {
-            text: "CctpV2Message.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "CctpV2Message",
-                link: "/contracts/core/libraries/CctpV2Message.sol/library.CctpV2Message",
-              },
-            ],
+            text: "DecimalsUtils",
+            link: "/contracts/core/libraries/library.DecimalsUtils",
           },
           {
-            text: "DecimalsUtils.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "DecimalsUtils",
-                link: "/contracts/core/libraries/DecimalsUtils.sol/library.DecimalsUtils",
-              },
-            ],
+            text: "Errors",
+            link: "/contracts/core/libraries/library.Errors",
           },
           {
-            text: "Errors.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "Errors",
-                link: "/contracts/core/libraries/Errors.sol/library.Errors",
-              },
-            ],
+            text: "LzOptionsBuilder",
+            link: "/contracts/core/libraries/library.LzOptionsBuilder",
           },
           {
-            text: "LzOptionsBuilder.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "LzOptionsBuilder",
-                link: "/contracts/core/libraries/LzOptionsBuilder.sol/library.LzOptionsBuilder",
-              },
-            ],
+            text: "MachineUtils",
+            link: "/contracts/core/libraries/library.MachineUtils",
           },
           {
-            text: "MachineUtils.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "MachineUtils",
-                link: "/contracts/core/libraries/MachineUtils.sol/library.MachineUtils",
-              },
-            ],
-          },
-          {
-            text: "Roles.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "Roles",
-                link: "/contracts/core/libraries/Roles.sol/library.Roles",
-              },
-            ],
+            text: "Roles",
+            link: "/contracts/core/libraries/library.Roles",
           },
         ],
       },
@@ -404,24 +204,16 @@ export const contractsSidebar = [
         collapsed: true,
         items: [
           {
-            text: "MakinaContext.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "MakinaContext",
-                link: "/contracts/core/utils/MakinaContext.sol/abstract.MakinaContext",
-              },
-            ],
+            text: "MakinaContext",
+            link: "/contracts/core/utils/abstract.MakinaContext",
           },
           {
-            text: "MakinaGovernable.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "MakinaGovernable",
-                link: "/contracts/core/utils/MakinaGovernable.sol/abstract.MakinaGovernable",
-              },
-            ],
+            text: "MakinaGovernable",
+            link: "/contracts/core/utils/abstract.MakinaGovernable",
+          },
+          {
+            text: "SpokeSnapshotConsumer",
+            link: "/contracts/core/utils/abstract.SpokeSnapshotConsumer",
           },
         ],
       },
@@ -430,364 +222,152 @@ export const contractsSidebar = [
         collapsed: true,
         items: [
           {
-            text: "AggregatorV2V3Interface.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "AggregatorV2V3Interface",
-                link: "/contracts/core/interfaces/AggregatorV2V3Interface.sol/interface.AggregatorV2V3Interface",
-              },
-            ],
+            text: "AggregatorV2V3Interface",
+            link: "/contracts/core/interfaces/interface.AggregatorV2V3Interface",
           },
           {
-            text: "IAcrossV3BridgeConfig.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "IAcrossV3BridgeConfig",
-                link: "/contracts/core/interfaces/IAcrossV3BridgeConfig.sol/interface.IAcrossV3BridgeConfig",
-              },
-            ],
+            text: "IAcrossV3BridgeConfig",
+            link: "/contracts/core/interfaces/interface.IAcrossV3BridgeConfig",
           },
           {
-            text: "IAcrossV3MessageHandler.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "IAcrossV3MessageHandler",
-                link: "/contracts/core/interfaces/IAcrossV3MessageHandler.sol/interface.IAcrossV3MessageHandler",
-              },
-            ],
+            text: "IAcrossV3MessageHandler",
+            link: "/contracts/core/interfaces/interface.IAcrossV3MessageHandler",
           },
           {
-            text: "IAcrossV3SpokePool.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "IAcrossV3SpokePool",
-                link: "/contracts/core/interfaces/IAcrossV3SpokePool.sol/interface.IAcrossV3SpokePool",
-              },
-            ],
+            text: "IAcrossV3SpokePool",
+            link: "/contracts/core/interfaces/interface.IAcrossV3SpokePool",
           },
           {
-            text: "IBridgeAdapter.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "IBridgeAdapter",
-                link: "/contracts/core/interfaces/IBridgeAdapter.sol/interface.IBridgeAdapter",
-              },
-            ],
+            text: "IBridgeAdapter",
+            link: "/contracts/core/interfaces/interface.IBridgeAdapter",
           },
           {
-            text: "IBridgeAdapterFactory.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "IBridgeAdapterFactory",
-                link: "/contracts/core/interfaces/IBridgeAdapterFactory.sol/interface.IBridgeAdapterFactory",
-              },
-            ],
+            text: "IBridgeAdapterFactory",
+            link: "/contracts/core/interfaces/interface.IBridgeAdapterFactory",
           },
           {
-            text: "IBridgeConfig.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "IBridgeConfig",
-                link: "/contracts/core/interfaces/IBridgeConfig.sol/interface.IBridgeConfig",
-              },
-            ],
+            text: "IBridgeConfig",
+            link: "/contracts/core/interfaces/interface.IBridgeConfig",
           },
           {
-            text: "IBridgeController.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "IBridgeController",
-                link: "/contracts/core/interfaces/IBridgeController.sol/interface.IBridgeController",
-              },
-            ],
+            text: "IBridgeController",
+            link: "/contracts/core/interfaces/interface.IBridgeController",
           },
           {
-            text: "ICaliber.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "ICaliber",
-                link: "/contracts/core/interfaces/ICaliber.sol/interface.ICaliber",
-              },
-            ],
+            text: "ICaliber",
+            link: "/contracts/core/interfaces/interface.ICaliber",
           },
           {
-            text: "ICaliberFactory.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "ICaliberFactory",
-                link: "/contracts/core/interfaces/ICaliberFactory.sol/interface.ICaliberFactory",
-              },
-            ],
+            text: "ICaliberFactory",
+            link: "/contracts/core/interfaces/interface.ICaliberFactory",
           },
           {
-            text: "ICaliberMailbox.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "ICaliberMailbox",
-                link: "/contracts/core/interfaces/ICaliberMailbox.sol/interface.ICaliberMailbox",
-              },
-            ],
+            text: "ICaliberMailbox",
+            link: "/contracts/core/interfaces/interface.ICaliberMailbox",
           },
           {
-            text: "ICctpV2BridgeConfig.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "ICctpV2BridgeConfig",
-                link: "/contracts/core/interfaces/ICctpV2BridgeConfig.sol/interface.ICctpV2BridgeConfig",
-              },
-            ],
+            text: "ICctpV2BridgeConfig",
+            link: "/contracts/core/interfaces/interface.ICctpV2BridgeConfig",
           },
           {
-            text: "ICctpV2DestinationCaller.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "ICctpV2DestinationCaller",
-                link: "/contracts/core/interfaces/ICctpV2DestinationCaller.sol/interface.ICctpV2DestinationCaller",
-              },
-            ],
+            text: "ICctpV2DestinationCaller",
+            link: "/contracts/core/interfaces/interface.ICctpV2DestinationCaller",
           },
           {
-            text: "ICctpV2MessageTransmitter.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "ICctpV2MessageTransmitter",
-                link: "/contracts/core/interfaces/ICctpV2MessageTransmitter.sol/interface.ICctpV2MessageTransmitter",
-              },
-            ],
+            text: "ICctpV2MessageTransmitter",
+            link: "/contracts/core/interfaces/interface.ICctpV2MessageTransmitter",
           },
           {
-            text: "ICctpV2TokenMessenger.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "ICctpV2TokenMessenger",
-                link: "/contracts/core/interfaces/ICctpV2TokenMessenger.sol/interface.ICctpV2TokenMessenger",
-              },
-            ],
+            text: "ICctpV2TokenMessenger",
+            link: "/contracts/core/interfaces/interface.ICctpV2TokenMessenger",
           },
           {
-            text: "ICctpV2TokenMinter.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "ICctpV2TokenMinter",
-                link: "/contracts/core/interfaces/ICctpV2TokenMinter.sol/interface.ICctpV2TokenMinter",
-              },
-            ],
+            text: "ICctpV2TokenMinter",
+            link: "/contracts/core/interfaces/interface.ICctpV2TokenMinter",
           },
           {
-            text: "IChainRegistry.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "IChainRegistry",
-                link: "/contracts/core/interfaces/IChainRegistry.sol/interface.IChainRegistry",
-              },
-            ],
+            text: "ICoreRegistry",
+            link: "/contracts/core/interfaces/interface.ICoreRegistry",
           },
           {
-            text: "ICoreRegistry.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "ICoreRegistry",
-                link: "/contracts/core/interfaces/ICoreRegistry.sol/interface.ICoreRegistry",
-              },
-            ],
+            text: "ICreReceiver",
+            link: "/contracts/core/interfaces/interface.ICreReceiver",
           },
           {
-            text: "IFeeManager.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "IFeeManager",
-                link: "/contracts/core/interfaces/IFeeManager.sol/interface.IFeeManager",
-              },
-            ],
+            text: "IFeeManager",
+            link: "/contracts/core/interfaces/interface.IFeeManager",
           },
           {
-            text: "IHubCoreFactory.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "IHubCoreFactory",
-                link: "/contracts/core/interfaces/IHubCoreFactory.sol/interface.IHubCoreFactory",
-              },
-            ],
+            text: "IHubCoreFactory",
+            link: "/contracts/core/interfaces/interface.IHubCoreFactory",
           },
           {
-            text: "IHubCoreRegistry.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "IHubCoreRegistry",
-                link: "/contracts/core/interfaces/IHubCoreRegistry.sol/interface.IHubCoreRegistry",
-              },
-            ],
+            text: "IHubCoreRegistry",
+            link: "/contracts/core/interfaces/interface.IHubCoreRegistry",
           },
           {
-            text: "ILayerZeroComposer.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "ILayerZeroComposer",
-                link: "/contracts/core/interfaces/ILayerZeroComposer.sol/interface.ILayerZeroComposer",
-              },
-            ],
+            text: "ILayerZeroComposer",
+            link: "/contracts/core/interfaces/interface.ILayerZeroComposer",
           },
           {
-            text: "ILayerZeroV2BridgeConfig.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "ILayerZeroV2BridgeConfig",
-                link: "/contracts/core/interfaces/ILayerZeroV2BridgeConfig.sol/interface.ILayerZeroV2BridgeConfig",
-              },
-            ],
+            text: "ILayerZeroV2BridgeConfig",
+            link: "/contracts/core/interfaces/interface.ILayerZeroV2BridgeConfig",
           },
           {
-            text: "IMachine.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "IMachine",
-                link: "/contracts/core/interfaces/IMachine.sol/interface.IMachine",
-              },
-            ],
+            text: "IMachine",
+            link: "/contracts/core/interfaces/interface.IMachine",
           },
           {
-            text: "IMachineEndpoint.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "IMachineEndpoint",
-                link: "/contracts/core/interfaces/IMachineEndpoint.sol/interface.IMachineEndpoint",
-              },
-            ],
+            text: "IMachineEndpoint",
+            link: "/contracts/core/interfaces/interface.IMachineEndpoint",
           },
           {
-            text: "IMachineShare.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "IMachineShare",
-                link: "/contracts/core/interfaces/IMachineShare.sol/interface.IMachineShare",
-              },
-            ],
+            text: "IMachineShare",
+            link: "/contracts/core/interfaces/interface.IMachineShare",
           },
           {
-            text: "IMakinaContext.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "IMakinaContext",
-                link: "/contracts/core/interfaces/IMakinaContext.sol/interface.IMakinaContext",
-              },
-            ],
+            text: "IMakinaContext",
+            link: "/contracts/core/interfaces/interface.IMakinaContext",
           },
           {
-            text: "IMakinaGovernable.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "IMakinaGovernable",
-                link: "/contracts/core/interfaces/IMakinaGovernable.sol/interface.IMakinaGovernable",
-              },
-            ],
+            text: "IMakinaGovernable",
+            link: "/contracts/core/interfaces/interface.IMakinaGovernable",
           },
           {
-            text: "IOracleRegistry.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "IOracleRegistry",
-                link: "/contracts/core/interfaces/IOracleRegistry.sol/interface.IOracleRegistry",
-              },
-            ],
+            text: "IOracleRegistry",
+            link: "/contracts/core/interfaces/interface.IOracleRegistry",
           },
           {
-            text: "IOwnable2Step.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "IOwnable2Step",
-                link: "/contracts/core/interfaces/IOwnable2Step.sol/interface.IOwnable2Step",
-              },
-            ],
+            text: "IOwnable2Step",
+            link: "/contracts/core/interfaces/interface.IOwnable2Step",
           },
           {
-            text: "IPreDepositVault.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "IPreDepositVault",
-                link: "/contracts/core/interfaces/IPreDepositVault.sol/interface.IPreDepositVault",
-              },
-            ],
+            text: "IPreDepositVault",
+            link: "/contracts/core/interfaces/interface.IPreDepositVault",
           },
           {
-            text: "ISpokeCoreFactory.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "ISpokeCoreFactory",
-                link: "/contracts/core/interfaces/ISpokeCoreFactory.sol/interface.ISpokeCoreFactory",
-              },
-            ],
+            text: "ISpokeCoreFactory",
+            link: "/contracts/core/interfaces/interface.ISpokeCoreFactory",
           },
           {
-            text: "ISpokeCoreRegistry.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "ISpokeCoreRegistry",
-                link: "/contracts/core/interfaces/ISpokeCoreRegistry.sol/interface.ISpokeCoreRegistry",
-              },
-            ],
+            text: "ISpokeCoreRegistry",
+            link: "/contracts/core/interfaces/interface.ISpokeCoreRegistry",
           },
           {
-            text: "ISwapModule.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "ISwapModule",
-                link: "/contracts/core/interfaces/ISwapModule.sol/interface.ISwapModule",
-              },
-            ],
+            text: "ISpokeSnapshotConsumer",
+            link: "/contracts/core/interfaces/interface.ISpokeSnapshotConsumer",
           },
           {
-            text: "ITokenRegistry.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "ITokenRegistry",
-                link: "/contracts/core/interfaces/ITokenRegistry.sol/interface.ITokenRegistry",
-              },
-            ],
+            text: "ISwapModule",
+            link: "/contracts/core/interfaces/interface.ISwapModule",
           },
           {
-            text: "IWeirollVM.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "IWeirollVM",
-                link: "/contracts/core/interfaces/IWeirollVM.sol/interface.IWeirollVM",
-              },
-            ],
+            text: "ITokenRegistry",
+            link: "/contracts/core/interfaces/interface.ITokenRegistry",
+          },
+          {
+            text: "IWeirollVM",
+            link: "/contracts/core/interfaces/interface.IWeirollVM",
           },
         ],
       },
@@ -814,14 +394,8 @@ export const contractsSidebar = [
         collapsed: true,
         items: [
           {
-            text: "HubPeripheryRegistry.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "HubPeripheryRegistry",
-                link: "/contracts/periphery/registries/HubPeripheryRegistry.sol/contract.HubPeripheryRegistry",
-              },
-            ],
+            text: "HubPeripheryRegistry",
+            link: "/contracts/periphery/registries/contract.HubPeripheryRegistry",
           },
         ],
       },
@@ -830,34 +404,16 @@ export const contractsSidebar = [
         collapsed: true,
         items: [
           {
-            text: "HubPeripheryFactory.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "HubPeripheryFactory",
-                link: "/contracts/periphery/factories/HubPeripheryFactory.sol/contract.HubPeripheryFactory",
-              },
-            ],
+            text: "HubPeripheryFactory",
+            link: "/contracts/periphery/factories/contract.HubPeripheryFactory",
           },
           {
-            text: "MachineShareOracleFactory.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "MachineShareOracleFactory",
-                link: "/contracts/periphery/factories/MachineShareOracleFactory.sol/contract.MachineShareOracleFactory",
-              },
-            ],
+            text: "MachineShareOracleFactory",
+            link: "/contracts/periphery/factories/contract.MachineShareOracleFactory",
           },
           {
-            text: "MetaMorphoOracleFactory.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "MetaMorphoOracleFactory",
-                link: "/contracts/periphery/factories/MetaMorphoOracleFactory.sol/contract.MetaMorphoOracleFactory",
-              },
-            ],
+            text: "MetaMorphoOracleFactory",
+            link: "/contracts/periphery/factories/contract.MetaMorphoOracleFactory",
           },
         ],
       },
@@ -866,14 +422,8 @@ export const contractsSidebar = [
         collapsed: true,
         items: [
           {
-            text: "DirectDepositor.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "DirectDepositor",
-                link: "/contracts/periphery/depositors/DirectDepositor.sol/contract.DirectDepositor",
-              },
-            ],
+            text: "DirectDepositor",
+            link: "/contracts/periphery/depositors/contract.DirectDepositor",
           },
         ],
       },
@@ -882,24 +432,12 @@ export const contractsSidebar = [
         collapsed: true,
         items: [
           {
-            text: "AsyncRedeemer.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "AsyncRedeemer",
-                link: "/contracts/periphery/redeemers/AsyncRedeemer.sol/contract.AsyncRedeemer",
-              },
-            ],
+            text: "AsyncRedeemer",
+            link: "/contracts/periphery/redeemers/contract.AsyncRedeemer",
           },
           {
-            text: "AsyncRedeemerFee.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "AsyncRedeemerFee",
-                link: "/contracts/periphery/redeemers/AsyncRedeemerFee.sol/contract.AsyncRedeemerFee",
-              },
-            ],
+            text: "AsyncRedeemerFee",
+            link: "/contracts/periphery/redeemers/contract.AsyncRedeemerFee",
           },
         ],
       },
@@ -908,14 +446,8 @@ export const contractsSidebar = [
         collapsed: true,
         items: [
           {
-            text: "WatermarkFeeManager.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "WatermarkFeeManager",
-                link: "/contracts/periphery/fee-managers/WatermarkFeeManager.sol/contract.WatermarkFeeManager",
-              },
-            ],
+            text: "WatermarkFeeManager",
+            link: "/contracts/periphery/fee-managers/contract.WatermarkFeeManager",
           },
         ],
       },
@@ -924,24 +456,12 @@ export const contractsSidebar = [
         collapsed: true,
         items: [
           {
-            text: "SecurityModule.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "SecurityModule",
-                link: "/contracts/periphery/security-module/SecurityModule.sol/contract.SecurityModule",
-              },
-            ],
+            text: "SecurityModule",
+            link: "/contracts/periphery/security-module/contract.SecurityModule",
           },
           {
-            text: "SMCooldownReceipt.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "SMCooldownReceipt",
-                link: "/contracts/periphery/security-module/SMCooldownReceipt.sol/contract.SMCooldownReceipt",
-              },
-            ],
+            text: "SMCooldownReceipt",
+            link: "/contracts/periphery/security-module/contract.SMCooldownReceipt",
           },
         ],
       },
@@ -950,14 +470,8 @@ export const contractsSidebar = [
         collapsed: true,
         items: [
           {
-            text: "FlashloanAggregator.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "FlashloanAggregator",
-                link: "/contracts/periphery/flashloans/FlashloanAggregator.sol/contract.FlashloanAggregator",
-              },
-            ],
+            text: "FlashloanAggregator",
+            link: "/contracts/periphery/flashloans/contract.FlashloanAggregator",
           },
         ],
       },
@@ -966,184 +480,84 @@ export const contractsSidebar = [
         collapsed: true,
         items: [
           {
-            text: "IAsyncRedeemer.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "IAsyncRedeemer",
-                link: "/contracts/periphery/interfaces/IAsyncRedeemer.sol/interface.IAsyncRedeemer",
-              },
-            ],
+            text: "IAsyncRedeemer",
+            link: "/contracts/periphery/interfaces/interface.IAsyncRedeemer",
           },
           {
-            text: "IAsyncRedeemerFee.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "IAsyncRedeemerFee",
-                link: "/contracts/periphery/interfaces/IAsyncRedeemerFee.sol/interface.IAsyncRedeemerFee",
-              },
-            ],
+            text: "IAsyncRedeemerFee",
+            link: "/contracts/periphery/interfaces/interface.IAsyncRedeemerFee",
           },
           {
-            text: "IDirectDepositor.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "IDirectDepositor",
-                link: "/contracts/periphery/interfaces/IDirectDepositor.sol/interface.IDirectDepositor",
-              },
-            ],
+            text: "IChainalysisSanctionsList",
+            link: "/contracts/periphery/interfaces/interface.IChainalysisSanctionsList",
           },
           {
-            text: "IFlashloanAggregator.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "IFlashloanAggregator",
-                link: "/contracts/periphery/interfaces/IFlashloanAggregator.sol/interface.IFlashloanAggregator",
-              },
-            ],
+            text: "IDirectDepositor",
+            link: "/contracts/periphery/interfaces/interface.IDirectDepositor",
           },
           {
-            text: "IHubPeripheryFactory.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "IHubPeripheryFactory",
-                link: "/contracts/periphery/interfaces/IHubPeripheryFactory.sol/interface.IHubPeripheryFactory",
-              },
-            ],
+            text: "IFlashloanAggregator",
+            link: "/contracts/periphery/interfaces/interface.IFlashloanAggregator",
           },
           {
-            text: "IHubPeripheryRegistry.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "IHubPeripheryRegistry",
-                link: "/contracts/periphery/interfaces/IHubPeripheryRegistry.sol/interface.IHubPeripheryRegistry",
-              },
-            ],
+            text: "IHubPeripheryFactory",
+            link: "/contracts/periphery/interfaces/interface.IHubPeripheryFactory",
           },
           {
-            text: "IMachinePeriphery.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "IMachinePeriphery",
-                link: "/contracts/periphery/interfaces/IMachinePeriphery.sol/interface.IMachinePeriphery",
-              },
-            ],
+            text: "IHubPeripheryRegistry",
+            link: "/contracts/periphery/interfaces/interface.IHubPeripheryRegistry",
           },
           {
-            text: "IMachineShareOracle.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "IMachineShareOracle",
-                link: "/contracts/periphery/interfaces/IMachineShareOracle.sol/interface.IMachineShareOracle",
-              },
-            ],
+            text: "IMachinePeriphery",
+            link: "/contracts/periphery/interfaces/interface.IMachinePeriphery",
           },
           {
-            text: "IMachineShareOracleFactory.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "IMachineShareOracleFactory",
-                link: "/contracts/periphery/interfaces/IMachineShareOracleFactory.sol/interface.IMachineShareOracleFactory",
-              },
-            ],
+            text: "IMachineShareOracle",
+            link: "/contracts/periphery/interfaces/interface.IMachineShareOracle",
           },
           {
-            text: "IMakinaPeripheryContext.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "IMakinaPeripheryContext",
-                link: "/contracts/periphery/interfaces/IMakinaPeripheryContext.sol/interface.IMakinaPeripheryContext",
-              },
-            ],
+            text: "IMachineShareOracleFactory",
+            link: "/contracts/periphery/interfaces/interface.IMachineShareOracleFactory",
           },
           {
-            text: "IMetaMorphoFactory.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "IMetaMorphoFactory",
-                link: "/contracts/periphery/interfaces/IMetaMorphoFactory.sol/interface.IMetaMorphoFactory",
-              },
-            ],
+            text: "IMakinaPeripheryContext",
+            link: "/contracts/periphery/interfaces/interface.IMakinaPeripheryContext",
           },
           {
-            text: "IMetaMorphoOracleFactory.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "IMetaMorphoOracleFactory",
-                link: "/contracts/periphery/interfaces/IMetaMorphoOracleFactory.sol/interface.IMetaMorphoOracleFactory",
-              },
-            ],
+            text: "IMetaMorphoFactory",
+            link: "/contracts/periphery/interfaces/interface.IMetaMorphoFactory",
           },
           {
-            text: "ISecurityModule.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "ISecurityModule",
-                link: "/contracts/periphery/interfaces/ISecurityModule.sol/interface.ISecurityModule",
-              },
-            ],
+            text: "IMetaMorphoOracleFactory",
+            link: "/contracts/periphery/interfaces/interface.IMetaMorphoOracleFactory",
           },
           {
-            text: "ISecurityModuleReference.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "ISecurityModuleReference",
-                link: "/contracts/periphery/interfaces/ISecurityModuleReference.sol/interface.ISecurityModuleReference",
-              },
-            ],
+            text: "ISanctionsList",
+            link: "/contracts/periphery/interfaces/interface.ISanctionsList",
           },
           {
-            text: "IShareTokenOwner.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "IShareTokenOwner",
-                link: "/contracts/periphery/interfaces/IShareTokenOwner.sol/interface.IShareTokenOwner",
-              },
-            ],
+            text: "ISecurityModule",
+            link: "/contracts/periphery/interfaces/interface.ISecurityModule",
           },
           {
-            text: "ISMCooldownReceipt.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "ISMCooldownReceipt",
-                link: "/contracts/periphery/interfaces/ISMCooldownReceipt.sol/interface.ISMCooldownReceipt",
-              },
-            ],
+            text: "ISecurityModuleReference",
+            link: "/contracts/periphery/interfaces/interface.ISecurityModuleReference",
           },
           {
-            text: "IWatermarkFeeManager.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "IWatermarkFeeManager",
-                link: "/contracts/periphery/interfaces/IWatermarkFeeManager.sol/interface.IWatermarkFeeManager",
-              },
-            ],
+            text: "IShareTokenOwner",
+            link: "/contracts/periphery/interfaces/interface.IShareTokenOwner",
           },
           {
-            text: "IWhitelist.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "IWhitelist",
-                link: "/contracts/periphery/interfaces/IWhitelist.sol/interface.IWhitelist",
-              },
-            ],
+            text: "ISMCooldownReceipt",
+            link: "/contracts/periphery/interfaces/interface.ISMCooldownReceipt",
+          },
+          {
+            text: "IWatermarkFeeManager",
+            link: "/contracts/periphery/interfaces/interface.IWatermarkFeeManager",
+          },
+          {
+            text: "IWhitelist",
+            link: "/contracts/periphery/interfaces/interface.IWhitelist",
           },
         ],
       },
@@ -1152,14 +566,8 @@ export const contractsSidebar = [
         collapsed: true,
         items: [
           {
-            text: "Errors.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "Errors",
-                link: "/contracts/periphery/libraries/Errors.sol/library.Errors",
-              },
-            ],
+            text: "Errors",
+            link: "/contracts/periphery/libraries/library.Errors",
           },
         ],
       },
@@ -1168,34 +576,20 @@ export const contractsSidebar = [
         collapsed: true,
         items: [
           {
-            text: "MachinePeriphery.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "MachinePeriphery",
-                link: "/contracts/periphery/utils/MachinePeriphery.sol/abstract.MachinePeriphery",
-              },
-            ],
+            text: "MachinePeriphery",
+            link: "/contracts/periphery/utils/abstract.MachinePeriphery",
           },
           {
-            text: "MakinaPeripheryContext.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "MakinaPeripheryContext",
-                link: "/contracts/periphery/utils/MakinaPeripheryContext.sol/abstract.MakinaPeripheryContext",
-              },
-            ],
+            text: "MakinaPeripheryContext",
+            link: "/contracts/periphery/utils/abstract.MakinaPeripheryContext",
           },
           {
-            text: "Whitelist.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "Whitelist",
-                link: "/contracts/periphery/utils/Whitelist.sol/abstract.Whitelist",
-              },
-            ],
+            text: "SanctionsList",
+            link: "/contracts/periphery/utils/abstract.SanctionsList",
+          },
+          {
+            text: "Whitelist",
+            link: "/contracts/periphery/utils/abstract.Whitelist",
           },
         ],
       },
@@ -1204,74 +598,32 @@ export const contractsSidebar = [
         collapsed: true,
         items: [
           {
-            text: "BooleanHelper.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "BooleanHelper",
-                link: "/contracts/periphery/weiroll-helpers/BooleanHelper.sol/contract.BooleanHelper",
-              },
-            ],
+            text: "BooleanHelper",
+            link: "/contracts/periphery/weiroll-helpers/contract.BooleanHelper",
           },
           {
-            text: "Bytes32Helper.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "Bytes32Helper",
-                link: "/contracts/periphery/weiroll-helpers/Bytes32Helper.sol/contract.Bytes32Helper",
-              },
-            ],
+            text: "Bytes32Helper",
+            link: "/contracts/periphery/weiroll-helpers/contract.Bytes32Helper",
           },
           {
-            text: "CastHelper.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "CastHelper",
-                link: "/contracts/periphery/weiroll-helpers/CastHelper.sol/contract.CastHelper",
-              },
-            ],
+            text: "CastHelper",
+            link: "/contracts/periphery/weiroll-helpers/contract.CastHelper",
           },
           {
-            text: "ContextHelper.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "ContextHelper",
-                link: "/contracts/periphery/weiroll-helpers/ContextHelper.sol/contract.ContextHelper",
-              },
-            ],
+            text: "ContextHelper",
+            link: "/contracts/periphery/weiroll-helpers/contract.ContextHelper",
           },
           {
-            text: "KeyValueStore.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "KeyValueStore",
-                link: "/contracts/periphery/weiroll-helpers/KeyValueStore.sol/contract.KeyValueStore",
-              },
-            ],
+            text: "KeyValueStore",
+            link: "/contracts/periphery/weiroll-helpers/contract.KeyValueStore",
           },
           {
-            text: "MathHelper.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "MathHelper",
-                link: "/contracts/periphery/weiroll-helpers/MathHelper.sol/contract.MathHelper",
-              },
-            ],
+            text: "MathHelper",
+            link: "/contracts/periphery/weiroll-helpers/contract.MathHelper",
           },
           {
-            text: "SignedMathHelper.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "SignedMathHelper",
-                link: "/contracts/periphery/weiroll-helpers/SignedMathHelper.sol/contract.SignedMathHelper",
-              },
-            ],
+            text: "SignedMathHelper",
+            link: "/contracts/periphery/weiroll-helpers/contract.SignedMathHelper",
           },
         ],
       },
@@ -1280,24 +632,12 @@ export const contractsSidebar = [
         collapsed: true,
         items: [
           {
-            text: "ERC4626Oracle.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "ERC4626Oracle",
-                link: "/contracts/periphery/oracles/ERC4626Oracle.sol/contract.ERC4626Oracle",
-              },
-            ],
+            text: "ERC4626Oracle",
+            link: "/contracts/periphery/oracles/contract.ERC4626Oracle",
           },
           {
-            text: "MachineShareOracle.sol",
-            collapsed: true,
-            items: [
-              {
-                text: "MachineShareOracle",
-                link: "/contracts/periphery/oracles/MachineShareOracle.sol/contract.MachineShareOracle",
-              },
-            ],
+            text: "MachineShareOracle",
+            link: "/contracts/periphery/oracles/contract.MachineShareOracle",
           },
         ],
       },
