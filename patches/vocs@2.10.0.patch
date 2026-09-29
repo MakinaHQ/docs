@@ -1,0 +1,42 @@
+diff --git a/dist/internal/search.js b/dist/internal/search.js
+index f0a55bad1e9a3988f2d602e19fa58ac3e1a15af6..5e521e01f21c0490fe396fe2822d726f7ce44d2f 100644
+--- a/dist/internal/search.js
++++ b/dist/internal/search.js
+@@ -316,7 +316,7 @@ export function extract(source, config) {
+         }
+         // Accumulate text for current section
+         if (currentSection) {
+-            const text = mdastToString(node);
++            const text = nodeToSearchText(node);
+             if (text)
+                 currentSection.text += ` ${text}`;
+         }
+@@ -328,6 +328,28 @@ export function extract(source, config) {
+     }
+     return { searchPriority: frontmatter.searchPriority, sections };
+ }
++/**
++ * Plain text of a block node for indexing. `mdastToString` concatenates the
++ * children of container nodes with no separator, so a table collapses into a
++ * single token (`MethodDescriptionReturnsgetBalance…`) and adjacent list items
++ * fuse together (`First itemSecond item`). Join rows, cells, list items and
++ * nested blocks with a space so each value is tokenized on its own.
++ * Upstream: https://github.com/wevm/vocs/pull/650
++ */
++function nodeToSearchText(node) {
++    switch (node.type) {
++        case 'table':
++            return node.children
++                .map((row) => row.children.map((cell) => mdastToString(cell)).join(' '))
++                .join(' ');
++        case 'blockquote':
++        case 'list':
++        case 'listItem':
++            return node.children.map((child) => nodeToSearchText(child)).join(' ');
++        default:
++            return mdastToString(node);
++    }
++}
+ /**
+  * String-valued JSX attributes worth indexing. Components like `<Card>` carry
+  * their user-visible text in props (e.g. `title`, `description`) rather than
