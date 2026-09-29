@@ -29,5 +29,8 @@
     "@vitejs/plugin-react": "^6.0.2",
     "prettier": "^3.8.4",
     "typescript": "^5.9.3"
+  },
+  "patchedDependencies": {
+    "vocs@2.5.3": "patches/vocs@2.5.3.patch"
   }
 }

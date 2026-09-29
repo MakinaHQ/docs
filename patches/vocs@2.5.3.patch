@@ -1,0 +1,36 @@
+diff --git a/dist/internal/search.js b/dist/internal/search.js
+index 80e29f2e5d7e4963054fbe29d5366ec1b8942ea2..868d16e1e75deb54758a734c76ea249c67f3b42d 100644
+--- a/dist/internal/search.js
++++ b/dist/internal/search.js
+@@ -315,7 +315,7 @@ export function extract(source, config) {
+         }
+         // Accumulate text for current section
+         if (currentSection) {
+-            const text = mdastToString(node);
++            const text = nodeToSearchText(node);
+             if (text)
+                 currentSection.text += ` ${text}`;
+         }
+@@ -327,6 +327,22 @@ export function extract(source, config) {
+     }
+     return { searchPriority: frontmatter.searchPriority, sections };
+ }
++/**
++ * Plain text of a block node for indexing. `mdastToString` concatenates the
++ * children of tables and lists with no separator, so a whole table collapses
++ * into one token (e.g. `contractaddressaccessmanager0x0fce…oracleregistry0xc3…`)
++ * and no cell value is ever indexed on its own. Join rows, cells and list
++ * items with a space so each cell (e.g. a contract address) is its own term.
++ */
++function nodeToSearchText(node) {
++    if (node.type === 'table')
++        return node.children
++            .map((row) => row.children.map((cell) => mdastToString(cell)).join(' '))
++            .join(' ');
++    if (node.type === 'list' || node.type === 'listItem' || node.type === 'blockquote')
++        return node.children.map((child) => nodeToSearchText(child)).join(' ');
++    return mdastToString(node);
++}
+ /**
+  * String-valued JSX attributes worth indexing. Components like `<Card>` carry
+  * their user-visible text in props (e.g. `title`, `description`) rather than

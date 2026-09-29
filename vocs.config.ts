@@ -157,5 +157,41 @@ export default defineConfig({
     rehypePlugins: [rehypeKatex],
   },
 
+  search: {
+    index: {
+      // Same as the Vocs default tokenizer (whitespace / punctuation split plus
+      // camelCase sub-tokens), with one addition: hex identifiers (contract
+      // addresses, tx hashes, or a pasted prefix of one) are indexed lowercase
+      // both with and without `0x`, and are not camelCase-split. Without this a
+      // checksummed address such as `0fCEfa3f10…` is broken into fragments
+      // like `0f`, `c`, `efa3f10…` that never match the indexed term.
+      //
+      // Keep this function self-contained: Vocs serializes it with
+      // `Function.prototype.toString` and rebuilds it in the browser, so it
+      // cannot reference imports or module-level constants.
+      tokenize: (text) => {
+        const tokens: string[] = [];
+        for (const word of text.split(/[\s\-._/:@]+/)) {
+          if (!word) continue;
+          const lower = word.toLowerCase();
+          const hex = lower.match(/^(0x)?([0-9a-f]{6,})$/);
+          if (hex && (hex[1] || /\d/.test(hex[2]))) {
+            tokens.push(hex[2], `0x${hex[2]}`);
+            continue;
+          }
+          tokens.push(lower);
+          const split = word
+            .replace(/([a-z])([A-Z])/g, "$1 $2")
+            .replace(/([A-Z]+)([A-Z][a-z])/g, "$1 $2")
+            .split(/\s+/)
+            .map((w) => w.toLowerCase())
+            .filter((w) => w.length > 0);
+          if (split.length > 1) tokens.push(...split);
+        }
+        return tokens;
+      },
+    },
+  },
+
   checkDeadlinks: true,
 });
