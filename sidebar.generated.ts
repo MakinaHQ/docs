@@ -2,833 +2,833 @@
 // Regenerated on every `vite dev` / `vite build`.
 export const contractsSidebar = [
   {
-    text: "Core",
-    collapsed: true,
-    items: [
+    "text": "Core",
+    "collapsed": true,
+    "items": [
       {
-        text: "Architecture Overview",
-        link: "/contracts/core/architecture-overview",
+        "text": "Architecture Overview",
+        "link": "/contracts/core/architecture-overview"
       },
       {
-        text: "Deployments",
-        link: "/contracts/core/deployments",
+        "text": "Deployments",
+        "link": "/contracts/core/deployments"
       },
       {
-        text: "Registries",
-        collapsed: true,
-        items: [
+        "text": "Registries",
+        "collapsed": true,
+        "items": [
           {
-            text: "CoreRegistry",
-            link: "/contracts/core/registries/abstract.CoreRegistry",
+            "text": "CoreRegistry",
+            "link": "/contracts/core/registries/abstract.CoreRegistry"
           },
           {
-            text: "HubCoreRegistry",
-            link: "/contracts/core/registries/contract.HubCoreRegistry",
+            "text": "HubCoreRegistry",
+            "link": "/contracts/core/registries/contract.HubCoreRegistry"
           },
           {
-            text: "OracleRegistry",
-            link: "/contracts/core/registries/contract.OracleRegistry",
+            "text": "OracleRegistry",
+            "link": "/contracts/core/registries/contract.OracleRegistry"
           },
           {
-            text: "SpokeCoreRegistry",
-            link: "/contracts/core/registries/contract.SpokeCoreRegistry",
+            "text": "SpokeCoreRegistry",
+            "link": "/contracts/core/registries/contract.SpokeCoreRegistry"
           },
           {
-            text: "TokenRegistry",
-            link: "/contracts/core/registries/contract.TokenRegistry",
-          },
-        ],
+            "text": "TokenRegistry",
+            "link": "/contracts/core/registries/contract.TokenRegistry"
+          }
+        ]
       },
       {
-        text: "Factories",
-        collapsed: true,
-        items: [
+        "text": "Factories",
+        "collapsed": true,
+        "items": [
           {
-            text: "BridgeAdapterFactory",
-            link: "/contracts/core/factories/abstract.BridgeAdapterFactory",
+            "text": "BridgeAdapterFactory",
+            "link": "/contracts/core/factories/abstract.BridgeAdapterFactory"
           },
           {
-            text: "CaliberFactory",
-            link: "/contracts/core/factories/abstract.CaliberFactory",
+            "text": "CaliberFactory",
+            "link": "/contracts/core/factories/abstract.CaliberFactory"
           },
           {
-            text: "Create3Factory",
-            link: "/contracts/core/factories/abstract.Create3Factory",
+            "text": "Create3Factory",
+            "link": "/contracts/core/factories/abstract.Create3Factory"
           },
           {
-            text: "HubCoreFactory",
-            link: "/contracts/core/factories/contract.HubCoreFactory",
+            "text": "HubCoreFactory",
+            "link": "/contracts/core/factories/contract.HubCoreFactory"
           },
           {
-            text: "SpokeCoreFactory",
-            link: "/contracts/core/factories/contract.SpokeCoreFactory",
-          },
-        ],
+            "text": "SpokeCoreFactory",
+            "link": "/contracts/core/factories/contract.SpokeCoreFactory"
+          }
+        ]
       },
       {
-        text: "Machine",
-        collapsed: true,
-        items: [
+        "text": "Machine",
+        "collapsed": true,
+        "items": [
           {
-            text: "Machine",
-            link: "/contracts/core/machine/contract.Machine",
+            "text": "Machine",
+            "link": "/contracts/core/machine/contract.Machine"
           },
           {
-            text: "MachineShare",
-            link: "/contracts/core/machine/contract.MachineShare",
-          },
-        ],
+            "text": "MachineShare",
+            "link": "/contracts/core/machine/contract.MachineShare"
+          }
+        ]
       },
       {
-        text: "Pre Deposit",
-        collapsed: true,
-        items: [
+        "text": "Pre Deposit",
+        "collapsed": true,
+        "items": [
           {
-            text: "PreDepositVault",
-            link: "/contracts/core/pre-deposit/contract.PreDepositVault",
-          },
-        ],
+            "text": "PreDepositVault",
+            "link": "/contracts/core/pre-deposit/contract.PreDepositVault"
+          }
+        ]
       },
       {
-        text: "Caliber",
-        collapsed: true,
-        items: [
+        "text": "Caliber",
+        "collapsed": true,
+        "items": [
           {
-            text: "Caliber",
-            link: "/contracts/core/caliber/contract.Caliber",
+            "text": "Caliber",
+            "link": "/contracts/core/caliber/contract.Caliber"
           },
           {
-            text: "CaliberMailbox",
-            link: "/contracts/core/caliber/contract.CaliberMailbox",
-          },
-        ],
+            "text": "CaliberMailbox",
+            "link": "/contracts/core/caliber/contract.CaliberMailbox"
+          }
+        ]
       },
       {
-        text: "Bridge",
-        collapsed: true,
-        items: [
+        "text": "Bridge",
+        "collapsed": true,
+        "items": [
           {
-            text: "Adapters",
-            collapsed: true,
-            items: [
+            "text": "Adapters",
+            "collapsed": true,
+            "items": [
               {
-                text: "AcrossV3BridgeAdapter",
-                link: "/contracts/core/bridge/adapters/contract.AcrossV3BridgeAdapter",
+                "text": "AcrossV3BridgeAdapter",
+                "link": "/contracts/core/bridge/adapters/contract.AcrossV3BridgeAdapter"
               },
               {
-                text: "BridgeAdapter",
-                link: "/contracts/core/bridge/adapters/abstract.BridgeAdapter",
+                "text": "BridgeAdapter",
+                "link": "/contracts/core/bridge/adapters/abstract.BridgeAdapter"
               },
               {
-                text: "CctpV2BridgeAdapter",
-                link: "/contracts/core/bridge/adapters/contract.CctpV2BridgeAdapter",
+                "text": "CctpV2BridgeAdapter",
+                "link": "/contracts/core/bridge/adapters/contract.CctpV2BridgeAdapter"
               },
               {
-                text: "LayerZeroV2BridgeAdapter",
-                link: "/contracts/core/bridge/adapters/contract.LayerZeroV2BridgeAdapter",
-              },
-            ],
+                "text": "LayerZeroV2BridgeAdapter",
+                "link": "/contracts/core/bridge/adapters/contract.LayerZeroV2BridgeAdapter"
+              }
+            ]
           },
           {
-            text: "Configs",
-            collapsed: true,
-            items: [
+            "text": "Configs",
+            "collapsed": true,
+            "items": [
               {
-                text: "AcrossV3BridgeConfig",
-                link: "/contracts/core/bridge/configs/contract.AcrossV3BridgeConfig",
+                "text": "AcrossV3BridgeConfig",
+                "link": "/contracts/core/bridge/configs/contract.AcrossV3BridgeConfig"
               },
               {
-                text: "CctpV2BridgeConfig",
-                link: "/contracts/core/bridge/configs/contract.CctpV2BridgeConfig",
+                "text": "CctpV2BridgeConfig",
+                "link": "/contracts/core/bridge/configs/contract.CctpV2BridgeConfig"
               },
               {
-                text: "LayerZeroV2BridgeConfig",
-                link: "/contracts/core/bridge/configs/contract.LayerZeroV2BridgeConfig",
-              },
-            ],
+                "text": "LayerZeroV2BridgeConfig",
+                "link": "/contracts/core/bridge/configs/contract.LayerZeroV2BridgeConfig"
+              }
+            ]
           },
           {
-            text: "Controller",
-            collapsed: true,
-            items: [
+            "text": "Controller",
+            "collapsed": true,
+            "items": [
               {
-                text: "BridgeController",
-                link: "/contracts/core/bridge/controller/abstract.BridgeController",
-              },
-            ],
-          },
-        ],
+                "text": "BridgeController",
+                "link": "/contracts/core/bridge/controller/abstract.BridgeController"
+              }
+            ]
+          }
+        ]
       },
       {
-        text: "Swap",
-        collapsed: true,
-        items: [
+        "text": "Swap",
+        "collapsed": true,
+        "items": [
           {
-            text: "SwapModule",
-            link: "/contracts/core/swap/contract.SwapModule",
-          },
-        ],
+            "text": "SwapModule",
+            "link": "/contracts/core/swap/contract.SwapModule"
+          }
+        ]
       },
       {
-        text: "Libraries",
-        collapsed: true,
-        items: [
+        "text": "Libraries",
+        "collapsed": true,
+        "items": [
           {
-            text: "CctpV2Message",
-            link: "/contracts/core/libraries/library.CctpV2Message",
+            "text": "CctpV2Message",
+            "link": "/contracts/core/libraries/library.CctpV2Message"
           },
           {
-            text: "DecimalsUtils",
-            link: "/contracts/core/libraries/library.DecimalsUtils",
+            "text": "DecimalsUtils",
+            "link": "/contracts/core/libraries/library.DecimalsUtils"
           },
           {
-            text: "Errors",
-            link: "/contracts/core/libraries/library.Errors",
+            "text": "Errors",
+            "link": "/contracts/core/libraries/library.Errors"
           },
           {
-            text: "LzOptionsBuilder",
-            link: "/contracts/core/libraries/library.LzOptionsBuilder",
+            "text": "LzOptionsBuilder",
+            "link": "/contracts/core/libraries/library.LzOptionsBuilder"
           },
           {
-            text: "MachineUtils",
-            link: "/contracts/core/libraries/library.MachineUtils",
+            "text": "MachineUtils",
+            "link": "/contracts/core/libraries/library.MachineUtils"
           },
           {
-            text: "Roles",
-            link: "/contracts/core/libraries/library.Roles",
-          },
-        ],
+            "text": "Roles",
+            "link": "/contracts/core/libraries/library.Roles"
+          }
+        ]
       },
       {
-        text: "Utils",
-        collapsed: true,
-        items: [
+        "text": "Utils",
+        "collapsed": true,
+        "items": [
           {
-            text: "MakinaContext",
-            link: "/contracts/core/utils/abstract.MakinaContext",
+            "text": "MakinaContext",
+            "link": "/contracts/core/utils/abstract.MakinaContext"
           },
           {
-            text: "MakinaGovernable",
-            link: "/contracts/core/utils/abstract.MakinaGovernable",
+            "text": "MakinaGovernable",
+            "link": "/contracts/core/utils/abstract.MakinaGovernable"
           },
           {
-            text: "SpokeSnapshotConsumer",
-            link: "/contracts/core/utils/abstract.SpokeSnapshotConsumer",
-          },
-        ],
+            "text": "SpokeSnapshotConsumer",
+            "link": "/contracts/core/utils/abstract.SpokeSnapshotConsumer"
+          }
+        ]
       },
       {
-        text: "Interfaces",
-        collapsed: true,
-        items: [
+        "text": "Interfaces",
+        "collapsed": true,
+        "items": [
           {
-            text: "AggregatorV2V3Interface",
-            link: "/contracts/core/interfaces/interface.AggregatorV2V3Interface",
+            "text": "AggregatorV2V3Interface",
+            "link": "/contracts/core/interfaces/interface.AggregatorV2V3Interface"
           },
           {
-            text: "IAcrossV3BridgeConfig",
-            link: "/contracts/core/interfaces/interface.IAcrossV3BridgeConfig",
+            "text": "IAcrossV3BridgeConfig",
+            "link": "/contracts/core/interfaces/interface.IAcrossV3BridgeConfig"
           },
           {
-            text: "IAcrossV3MessageHandler",
-            link: "/contracts/core/interfaces/interface.IAcrossV3MessageHandler",
+            "text": "IAcrossV3MessageHandler",
+            "link": "/contracts/core/interfaces/interface.IAcrossV3MessageHandler"
           },
           {
-            text: "IAcrossV3SpokePool",
-            link: "/contracts/core/interfaces/interface.IAcrossV3SpokePool",
+            "text": "IAcrossV3SpokePool",
+            "link": "/contracts/core/interfaces/interface.IAcrossV3SpokePool"
           },
           {
-            text: "IBridgeAdapter",
-            link: "/contracts/core/interfaces/interface.IBridgeAdapter",
+            "text": "IBridgeAdapter",
+            "link": "/contracts/core/interfaces/interface.IBridgeAdapter"
           },
           {
-            text: "IBridgeAdapterFactory",
-            link: "/contracts/core/interfaces/interface.IBridgeAdapterFactory",
+            "text": "IBridgeAdapterFactory",
+            "link": "/contracts/core/interfaces/interface.IBridgeAdapterFactory"
           },
           {
-            text: "IBridgeConfig",
-            link: "/contracts/core/interfaces/interface.IBridgeConfig",
+            "text": "IBridgeConfig",
+            "link": "/contracts/core/interfaces/interface.IBridgeConfig"
           },
           {
-            text: "IBridgeController",
-            link: "/contracts/core/interfaces/interface.IBridgeController",
+            "text": "IBridgeController",
+            "link": "/contracts/core/interfaces/interface.IBridgeController"
           },
           {
-            text: "ICaliber",
-            link: "/contracts/core/interfaces/interface.ICaliber",
+            "text": "ICaliber",
+            "link": "/contracts/core/interfaces/interface.ICaliber"
           },
           {
-            text: "ICaliberFactory",
-            link: "/contracts/core/interfaces/interface.ICaliberFactory",
+            "text": "ICaliberFactory",
+            "link": "/contracts/core/interfaces/interface.ICaliberFactory"
           },
           {
-            text: "ICaliberMailbox",
-            link: "/contracts/core/interfaces/interface.ICaliberMailbox",
+            "text": "ICaliberMailbox",
+            "link": "/contracts/core/interfaces/interface.ICaliberMailbox"
           },
           {
-            text: "ICctpV2BridgeConfig",
-            link: "/contracts/core/interfaces/interface.ICctpV2BridgeConfig",
+            "text": "ICctpV2BridgeConfig",
+            "link": "/contracts/core/interfaces/interface.ICctpV2BridgeConfig"
           },
           {
-            text: "ICctpV2DestinationCaller",
-            link: "/contracts/core/interfaces/interface.ICctpV2DestinationCaller",
+            "text": "ICctpV2DestinationCaller",
+            "link": "/contracts/core/interfaces/interface.ICctpV2DestinationCaller"
           },
           {
-            text: "ICctpV2MessageTransmitter",
-            link: "/contracts/core/interfaces/interface.ICctpV2MessageTransmitter",
+            "text": "ICctpV2MessageTransmitter",
+            "link": "/contracts/core/interfaces/interface.ICctpV2MessageTransmitter"
           },
           {
-            text: "ICctpV2TokenMessenger",
-            link: "/contracts/core/interfaces/interface.ICctpV2TokenMessenger",
+            "text": "ICctpV2TokenMessenger",
+            "link": "/contracts/core/interfaces/interface.ICctpV2TokenMessenger"
           },
           {
-            text: "ICctpV2TokenMinter",
-            link: "/contracts/core/interfaces/interface.ICctpV2TokenMinter",
+            "text": "ICctpV2TokenMinter",
+            "link": "/contracts/core/interfaces/interface.ICctpV2TokenMinter"
           },
           {
-            text: "ICoreRegistry",
-            link: "/contracts/core/interfaces/interface.ICoreRegistry",
+            "text": "ICoreRegistry",
+            "link": "/contracts/core/interfaces/interface.ICoreRegistry"
           },
           {
-            text: "ICreReceiver",
-            link: "/contracts/core/interfaces/interface.ICreReceiver",
+            "text": "ICreReceiver",
+            "link": "/contracts/core/interfaces/interface.ICreReceiver"
           },
           {
-            text: "IFeeManager",
-            link: "/contracts/core/interfaces/interface.IFeeManager",
+            "text": "IFeeManager",
+            "link": "/contracts/core/interfaces/interface.IFeeManager"
           },
           {
-            text: "IHubCoreFactory",
-            link: "/contracts/core/interfaces/interface.IHubCoreFactory",
+            "text": "IHubCoreFactory",
+            "link": "/contracts/core/interfaces/interface.IHubCoreFactory"
           },
           {
-            text: "IHubCoreRegistry",
-            link: "/contracts/core/interfaces/interface.IHubCoreRegistry",
+            "text": "IHubCoreRegistry",
+            "link": "/contracts/core/interfaces/interface.IHubCoreRegistry"
           },
           {
-            text: "ILayerZeroComposer",
-            link: "/contracts/core/interfaces/interface.ILayerZeroComposer",
+            "text": "ILayerZeroComposer",
+            "link": "/contracts/core/interfaces/interface.ILayerZeroComposer"
           },
           {
-            text: "ILayerZeroV2BridgeConfig",
-            link: "/contracts/core/interfaces/interface.ILayerZeroV2BridgeConfig",
+            "text": "ILayerZeroV2BridgeConfig",
+            "link": "/contracts/core/interfaces/interface.ILayerZeroV2BridgeConfig"
           },
           {
-            text: "IMachine",
-            link: "/contracts/core/interfaces/interface.IMachine",
+            "text": "IMachine",
+            "link": "/contracts/core/interfaces/interface.IMachine"
           },
           {
-            text: "IMachineEndpoint",
-            link: "/contracts/core/interfaces/interface.IMachineEndpoint",
+            "text": "IMachineEndpoint",
+            "link": "/contracts/core/interfaces/interface.IMachineEndpoint"
           },
           {
-            text: "IMachineShare",
-            link: "/contracts/core/interfaces/interface.IMachineShare",
+            "text": "IMachineShare",
+            "link": "/contracts/core/interfaces/interface.IMachineShare"
           },
           {
-            text: "IMakinaContext",
-            link: "/contracts/core/interfaces/interface.IMakinaContext",
+            "text": "IMakinaContext",
+            "link": "/contracts/core/interfaces/interface.IMakinaContext"
           },
           {
-            text: "IMakinaGovernable",
-            link: "/contracts/core/interfaces/interface.IMakinaGovernable",
+            "text": "IMakinaGovernable",
+            "link": "/contracts/core/interfaces/interface.IMakinaGovernable"
           },
           {
-            text: "IOracleRegistry",
-            link: "/contracts/core/interfaces/interface.IOracleRegistry",
+            "text": "IOracleRegistry",
+            "link": "/contracts/core/interfaces/interface.IOracleRegistry"
           },
           {
-            text: "IOwnable2Step",
-            link: "/contracts/core/interfaces/interface.IOwnable2Step",
+            "text": "IOwnable2Step",
+            "link": "/contracts/core/interfaces/interface.IOwnable2Step"
           },
           {
-            text: "IPreDepositVault",
-            link: "/contracts/core/interfaces/interface.IPreDepositVault",
+            "text": "IPreDepositVault",
+            "link": "/contracts/core/interfaces/interface.IPreDepositVault"
           },
           {
-            text: "ISpokeCoreFactory",
-            link: "/contracts/core/interfaces/interface.ISpokeCoreFactory",
+            "text": "ISpokeCoreFactory",
+            "link": "/contracts/core/interfaces/interface.ISpokeCoreFactory"
           },
           {
-            text: "ISpokeCoreRegistry",
-            link: "/contracts/core/interfaces/interface.ISpokeCoreRegistry",
+            "text": "ISpokeCoreRegistry",
+            "link": "/contracts/core/interfaces/interface.ISpokeCoreRegistry"
           },
           {
-            text: "ISpokeSnapshotConsumer",
-            link: "/contracts/core/interfaces/interface.ISpokeSnapshotConsumer",
+            "text": "ISpokeSnapshotConsumer",
+            "link": "/contracts/core/interfaces/interface.ISpokeSnapshotConsumer"
           },
           {
-            text: "ISwapModule",
-            link: "/contracts/core/interfaces/interface.ISwapModule",
+            "text": "ISwapModule",
+            "link": "/contracts/core/interfaces/interface.ISwapModule"
           },
           {
-            text: "ITokenRegistry",
-            link: "/contracts/core/interfaces/interface.ITokenRegistry",
+            "text": "ITokenRegistry",
+            "link": "/contracts/core/interfaces/interface.ITokenRegistry"
           },
           {
-            text: "IWeirollVM",
-            link: "/contracts/core/interfaces/interface.IWeirollVM",
-          },
-        ],
+            "text": "IWeirollVM",
+            "link": "/contracts/core/interfaces/interface.IWeirollVM"
+          }
+        ]
       },
       {
-        text: "Summary",
-        link: "/contracts/core/summary",
-      },
-    ],
+        "text": "Summary",
+        "link": "/contracts/core/summary"
+      }
+    ]
   },
   {
-    text: "Periphery",
-    collapsed: false,
-    items: [
+    "text": "Periphery",
+    "collapsed": false,
+    "items": [
       {
-        text: "Architecture Overview",
-        link: "/contracts/periphery/architecture-overview",
+        "text": "Architecture Overview",
+        "link": "/contracts/periphery/architecture-overview"
       },
       {
-        text: "Deployments",
-        link: "/contracts/periphery/deployments",
+        "text": "Deployments",
+        "link": "/contracts/periphery/deployments"
       },
       {
-        text: "Registries",
-        collapsed: true,
-        items: [
+        "text": "Registries",
+        "collapsed": true,
+        "items": [
           {
-            text: "HubPeripheryRegistry",
-            link: "/contracts/periphery/registries/contract.HubPeripheryRegistry",
-          },
-        ],
+            "text": "HubPeripheryRegistry",
+            "link": "/contracts/periphery/registries/contract.HubPeripheryRegistry"
+          }
+        ]
       },
       {
-        text: "Factories",
-        collapsed: true,
-        items: [
+        "text": "Factories",
+        "collapsed": true,
+        "items": [
           {
-            text: "HubPeripheryFactory",
-            link: "/contracts/periphery/factories/contract.HubPeripheryFactory",
+            "text": "HubPeripheryFactory",
+            "link": "/contracts/periphery/factories/contract.HubPeripheryFactory"
           },
           {
-            text: "MachineShareOracleFactory",
-            link: "/contracts/periphery/factories/contract.MachineShareOracleFactory",
+            "text": "MachineShareOracleFactory",
+            "link": "/contracts/periphery/factories/contract.MachineShareOracleFactory"
           },
           {
-            text: "MetaMorphoOracleFactory",
-            link: "/contracts/periphery/factories/contract.MetaMorphoOracleFactory",
-          },
-        ],
+            "text": "MetaMorphoOracleFactory",
+            "link": "/contracts/periphery/factories/contract.MetaMorphoOracleFactory"
+          }
+        ]
       },
       {
-        text: "Depositors",
-        collapsed: true,
-        items: [
+        "text": "Depositors",
+        "collapsed": true,
+        "items": [
           {
-            text: "DirectDepositor",
-            link: "/contracts/periphery/depositors/contract.DirectDepositor",
-          },
-        ],
+            "text": "DirectDepositor",
+            "link": "/contracts/periphery/depositors/contract.DirectDepositor"
+          }
+        ]
       },
       {
-        text: "Redeemers",
-        collapsed: true,
-        items: [
+        "text": "Redeemers",
+        "collapsed": true,
+        "items": [
           {
-            text: "AsyncRedeemer",
-            link: "/contracts/periphery/redeemers/contract.AsyncRedeemer",
+            "text": "AsyncRedeemer",
+            "link": "/contracts/periphery/redeemers/contract.AsyncRedeemer"
           },
           {
-            text: "AsyncRedeemerFee",
-            link: "/contracts/periphery/redeemers/contract.AsyncRedeemerFee",
-          },
-        ],
+            "text": "AsyncRedeemerFee",
+            "link": "/contracts/periphery/redeemers/contract.AsyncRedeemerFee"
+          }
+        ]
       },
       {
-        text: "Fee Managers",
-        collapsed: true,
-        items: [
+        "text": "Fee Managers",
+        "collapsed": true,
+        "items": [
           {
-            text: "WatermarkFeeManager",
-            link: "/contracts/periphery/fee-managers/contract.WatermarkFeeManager",
-          },
-        ],
+            "text": "WatermarkFeeManager",
+            "link": "/contracts/periphery/fee-managers/contract.WatermarkFeeManager"
+          }
+        ]
       },
       {
-        text: "Security Module",
-        collapsed: true,
-        items: [
+        "text": "Security Module",
+        "collapsed": true,
+        "items": [
           {
-            text: "SecurityModule",
-            link: "/contracts/periphery/security-module/contract.SecurityModule",
+            "text": "SecurityModule",
+            "link": "/contracts/periphery/security-module/contract.SecurityModule"
           },
           {
-            text: "SMCooldownReceipt",
-            link: "/contracts/periphery/security-module/contract.SMCooldownReceipt",
-          },
-        ],
+            "text": "SMCooldownReceipt",
+            "link": "/contracts/periphery/security-module/contract.SMCooldownReceipt"
+          }
+        ]
       },
       {
-        text: "Flashloans",
-        collapsed: true,
-        items: [
+        "text": "Flashloans",
+        "collapsed": true,
+        "items": [
           {
-            text: "FlashloanAggregator",
-            link: "/contracts/periphery/flashloans/contract.FlashloanAggregator",
-          },
-        ],
+            "text": "FlashloanAggregator",
+            "link": "/contracts/periphery/flashloans/contract.FlashloanAggregator"
+          }
+        ]
       },
       {
-        text: "Interfaces",
-        collapsed: true,
-        items: [
+        "text": "Interfaces",
+        "collapsed": true,
+        "items": [
           {
-            text: "IAsyncRedeemer",
-            link: "/contracts/periphery/interfaces/interface.IAsyncRedeemer",
+            "text": "IAsyncRedeemer",
+            "link": "/contracts/periphery/interfaces/interface.IAsyncRedeemer"
           },
           {
-            text: "IAsyncRedeemerFee",
-            link: "/contracts/periphery/interfaces/interface.IAsyncRedeemerFee",
+            "text": "IAsyncRedeemerFee",
+            "link": "/contracts/periphery/interfaces/interface.IAsyncRedeemerFee"
           },
           {
-            text: "IChainalysisSanctionsList",
-            link: "/contracts/periphery/interfaces/interface.IChainalysisSanctionsList",
+            "text": "IChainalysisSanctionsList",
+            "link": "/contracts/periphery/interfaces/interface.IChainalysisSanctionsList"
           },
           {
-            text: "IDirectDepositor",
-            link: "/contracts/periphery/interfaces/interface.IDirectDepositor",
+            "text": "IDirectDepositor",
+            "link": "/contracts/periphery/interfaces/interface.IDirectDepositor"
           },
           {
-            text: "IFlashloanAggregator",
-            link: "/contracts/periphery/interfaces/interface.IFlashloanAggregator",
+            "text": "IFlashloanAggregator",
+            "link": "/contracts/periphery/interfaces/interface.IFlashloanAggregator"
           },
           {
-            text: "IHubPeripheryFactory",
-            link: "/contracts/periphery/interfaces/interface.IHubPeripheryFactory",
+            "text": "IHubPeripheryFactory",
+            "link": "/contracts/periphery/interfaces/interface.IHubPeripheryFactory"
           },
           {
-            text: "IHubPeripheryRegistry",
-            link: "/contracts/periphery/interfaces/interface.IHubPeripheryRegistry",
+            "text": "IHubPeripheryRegistry",
+            "link": "/contracts/periphery/interfaces/interface.IHubPeripheryRegistry"
           },
           {
-            text: "IMachinePeriphery",
-            link: "/contracts/periphery/interfaces/interface.IMachinePeriphery",
+            "text": "IMachinePeriphery",
+            "link": "/contracts/periphery/interfaces/interface.IMachinePeriphery"
           },
           {
-            text: "IMachineShareOracle",
-            link: "/contracts/periphery/interfaces/interface.IMachineShareOracle",
+            "text": "IMachineShareOracle",
+            "link": "/contracts/periphery/interfaces/interface.IMachineShareOracle"
           },
           {
-            text: "IMachineShareOracleFactory",
-            link: "/contracts/periphery/interfaces/interface.IMachineShareOracleFactory",
+            "text": "IMachineShareOracleFactory",
+            "link": "/contracts/periphery/interfaces/interface.IMachineShareOracleFactory"
           },
           {
-            text: "IMakinaPeripheryContext",
-            link: "/contracts/periphery/interfaces/interface.IMakinaPeripheryContext",
+            "text": "IMakinaPeripheryContext",
+            "link": "/contracts/periphery/interfaces/interface.IMakinaPeripheryContext"
           },
           {
-            text: "IMetaMorphoFactory",
-            link: "/contracts/periphery/interfaces/interface.IMetaMorphoFactory",
+            "text": "IMetaMorphoFactory",
+            "link": "/contracts/periphery/interfaces/interface.IMetaMorphoFactory"
           },
           {
-            text: "IMetaMorphoOracleFactory",
-            link: "/contracts/periphery/interfaces/interface.IMetaMorphoOracleFactory",
+            "text": "IMetaMorphoOracleFactory",
+            "link": "/contracts/periphery/interfaces/interface.IMetaMorphoOracleFactory"
           },
           {
-            text: "ISanctionsList",
-            link: "/contracts/periphery/interfaces/interface.ISanctionsList",
+            "text": "ISanctionsList",
+            "link": "/contracts/periphery/interfaces/interface.ISanctionsList"
           },
           {
-            text: "ISecurityModule",
-            link: "/contracts/periphery/interfaces/interface.ISecurityModule",
+            "text": "ISecurityModule",
+            "link": "/contracts/periphery/interfaces/interface.ISecurityModule"
           },
           {
-            text: "ISecurityModuleReference",
-            link: "/contracts/periphery/interfaces/interface.ISecurityModuleReference",
+            "text": "ISecurityModuleReference",
+            "link": "/contracts/periphery/interfaces/interface.ISecurityModuleReference"
           },
           {
-            text: "IShareTokenOwner",
-            link: "/contracts/periphery/interfaces/interface.IShareTokenOwner",
+            "text": "IShareTokenOwner",
+            "link": "/contracts/periphery/interfaces/interface.IShareTokenOwner"
           },
           {
-            text: "ISMCooldownReceipt",
-            link: "/contracts/periphery/interfaces/interface.ISMCooldownReceipt",
+            "text": "ISMCooldownReceipt",
+            "link": "/contracts/periphery/interfaces/interface.ISMCooldownReceipt"
           },
           {
-            text: "IWatermarkFeeManager",
-            link: "/contracts/periphery/interfaces/interface.IWatermarkFeeManager",
+            "text": "IWatermarkFeeManager",
+            "link": "/contracts/periphery/interfaces/interface.IWatermarkFeeManager"
           },
           {
-            text: "IWhitelist",
-            link: "/contracts/periphery/interfaces/interface.IWhitelist",
-          },
-        ],
+            "text": "IWhitelist",
+            "link": "/contracts/periphery/interfaces/interface.IWhitelist"
+          }
+        ]
       },
       {
-        text: "Libraries",
-        collapsed: true,
-        items: [
+        "text": "Libraries",
+        "collapsed": true,
+        "items": [
           {
-            text: "Errors",
-            link: "/contracts/periphery/libraries/library.Errors",
-          },
-        ],
+            "text": "Errors",
+            "link": "/contracts/periphery/libraries/library.Errors"
+          }
+        ]
       },
       {
-        text: "Utils",
-        collapsed: true,
-        items: [
+        "text": "Utils",
+        "collapsed": true,
+        "items": [
           {
-            text: "MachinePeriphery",
-            link: "/contracts/periphery/utils/abstract.MachinePeriphery",
+            "text": "MachinePeriphery",
+            "link": "/contracts/periphery/utils/abstract.MachinePeriphery"
           },
           {
-            text: "MakinaPeripheryContext",
-            link: "/contracts/periphery/utils/abstract.MakinaPeripheryContext",
+            "text": "MakinaPeripheryContext",
+            "link": "/contracts/periphery/utils/abstract.MakinaPeripheryContext"
           },
           {
-            text: "SanctionsList",
-            link: "/contracts/periphery/utils/abstract.SanctionsList",
+            "text": "SanctionsList",
+            "link": "/contracts/periphery/utils/abstract.SanctionsList"
           },
           {
-            text: "Whitelist",
-            link: "/contracts/periphery/utils/abstract.Whitelist",
-          },
-        ],
+            "text": "Whitelist",
+            "link": "/contracts/periphery/utils/abstract.Whitelist"
+          }
+        ]
       },
       {
-        text: "Weiroll Helpers",
-        collapsed: true,
-        items: [
+        "text": "Weiroll Helpers",
+        "collapsed": true,
+        "items": [
           {
-            text: "BooleanHelper",
-            link: "/contracts/periphery/weiroll-helpers/contract.BooleanHelper",
+            "text": "BooleanHelper",
+            "link": "/contracts/periphery/weiroll-helpers/contract.BooleanHelper"
           },
           {
-            text: "Bytes32Helper",
-            link: "/contracts/periphery/weiroll-helpers/contract.Bytes32Helper",
+            "text": "Bytes32Helper",
+            "link": "/contracts/periphery/weiroll-helpers/contract.Bytes32Helper"
           },
           {
-            text: "CastHelper",
-            link: "/contracts/periphery/weiroll-helpers/contract.CastHelper",
+            "text": "CastHelper",
+            "link": "/contracts/periphery/weiroll-helpers/contract.CastHelper"
           },
           {
-            text: "ContextHelper",
-            link: "/contracts/periphery/weiroll-helpers/contract.ContextHelper",
+            "text": "ContextHelper",
+            "link": "/contracts/periphery/weiroll-helpers/contract.ContextHelper"
           },
           {
-            text: "KeyValueStore",
-            link: "/contracts/periphery/weiroll-helpers/contract.KeyValueStore",
+            "text": "KeyValueStore",
+            "link": "/contracts/periphery/weiroll-helpers/contract.KeyValueStore"
           },
           {
-            text: "MathHelper",
-            link: "/contracts/periphery/weiroll-helpers/contract.MathHelper",
+            "text": "MathHelper",
+            "link": "/contracts/periphery/weiroll-helpers/contract.MathHelper"
           },
           {
-            text: "SignedMathHelper",
-            link: "/contracts/periphery/weiroll-helpers/contract.SignedMathHelper",
-          },
-        ],
+            "text": "SignedMathHelper",
+            "link": "/contracts/periphery/weiroll-helpers/contract.SignedMathHelper"
+          }
+        ]
       },
       {
-        text: "Oracles",
-        collapsed: true,
-        items: [
+        "text": "Oracles",
+        "collapsed": true,
+        "items": [
           {
-            text: "ERC4626Oracle",
-            link: "/contracts/periphery/oracles/contract.ERC4626Oracle",
+            "text": "ERC4626Oracle",
+            "link": "/contracts/periphery/oracles/contract.ERC4626Oracle"
           },
           {
-            text: "MachineShareOracle",
-            link: "/contracts/periphery/oracles/contract.MachineShareOracle",
-          },
-        ],
+            "text": "MachineShareOracle",
+            "link": "/contracts/periphery/oracles/contract.MachineShareOracle"
+          }
+        ]
       },
       {
-        text: "Summary",
-        link: "/contracts/periphery/summary",
-      },
-    ],
+        "text": "Summary",
+        "link": "/contracts/periphery/summary"
+      }
+    ]
   },
   {
-    text: "Security",
-    link: "/contracts/security",
+    "text": "Security",
+    "link": "/contracts/security"
   },
   {
-    text: "SEAL Safe Harbor Agreement",
-    link: "/contracts/safe-harbor",
-  },
+    "text": "SEAL Safe Harbor Agreement",
+    "link": "/contracts/safe-harbor"
+  }
 ];
 // AUTO-GENERATED by scripts/generate-sidebar.ts — do not edit by hand.
 // Regenerated on every `vite dev` / `vite build`.
 export const conceptsSidebar = [
   {
-    text: "Introduction",
-    link: "/concepts/introduction",
+    "text": "Introduction",
+    "link": "/concepts/introduction"
   },
   {
-    text: "Architecture",
-    collapsed: false,
-    items: [
+    "text": "Architecture",
+    "collapsed": false,
+    "items": [
       {
-        text: "Overview",
-        link: "/concepts/architecture/overview",
+        "text": "Overview",
+        "link": "/concepts/architecture/overview"
       },
       {
-        text: "Asset Lifecycle",
-        link: "/concepts/architecture/lifecycle",
+        "text": "Asset Lifecycle",
+        "link": "/concepts/architecture/lifecycle"
       },
       {
-        text: "Machine",
-        collapsed: true,
-        items: [
+        "text": "Machine",
+        "collapsed": true,
+        "items": [
           {
-            text: "Overview",
-            link: "/concepts/architecture/machine/overview",
+            "text": "Overview",
+            "link": "/concepts/architecture/machine/overview"
           },
           {
-            text: "Machine Token (Shares)",
-            link: "/concepts/architecture/machine/machine-token",
+            "text": "Machine Token (Shares)",
+            "link": "/concepts/architecture/machine/machine-token"
           },
           {
-            text: "Share Price & AUM",
-            link: "/concepts/architecture/machine/share-price",
+            "text": "Share Price & AUM",
+            "link": "/concepts/architecture/machine/share-price"
           },
           {
-            text: "Deposits",
-            link: "/concepts/architecture/machine/deposits",
+            "text": "Deposits",
+            "link": "/concepts/architecture/machine/deposits"
           },
           {
-            text: "Redemptions",
-            link: "/concepts/architecture/machine/redemptions",
+            "text": "Redemptions",
+            "link": "/concepts/architecture/machine/redemptions"
           },
           {
-            text: "Pre-Deposit",
-            link: "/concepts/architecture/machine/pre-deposit",
+            "text": "Pre-Deposit",
+            "link": "/concepts/architecture/machine/pre-deposit"
           },
           {
-            text: "Fees",
-            link: "/concepts/architecture/machine/fees",
-          },
-        ],
+            "text": "Fees",
+            "link": "/concepts/architecture/machine/fees"
+          }
+        ]
       },
       {
-        text: "Caliber",
-        collapsed: true,
-        items: [
+        "text": "Caliber",
+        "collapsed": true,
+        "items": [
           {
-            text: "Overview",
-            link: "/concepts/architecture/caliber/overview",
+            "text": "Overview",
+            "link": "/concepts/architecture/caliber/overview"
           },
           {
-            text: "MakinaVM & Instructions",
-            link: "/concepts/architecture/caliber/makina-vm",
+            "text": "MakinaVM & Instructions",
+            "link": "/concepts/architecture/caliber/makina-vm"
           },
           {
-            text: "Base Tokens",
-            link: "/concepts/architecture/caliber/base-tokens",
+            "text": "Base Tokens",
+            "link": "/concepts/architecture/caliber/base-tokens"
           },
           {
-            text: "Positions",
-            link: "/concepts/architecture/caliber/positions",
+            "text": "Positions",
+            "link": "/concepts/architecture/caliber/positions"
           },
           {
-            text: "Swaps",
-            link: "/concepts/architecture/caliber/swaps",
+            "text": "Swaps",
+            "link": "/concepts/architecture/caliber/swaps"
           },
           {
-            text: "Harvests",
-            link: "/concepts/architecture/caliber/harvests",
+            "text": "Harvests",
+            "link": "/concepts/architecture/caliber/harvests"
           },
           {
-            text: "Flash Loans",
-            link: "/concepts/architecture/caliber/flash-loans",
+            "text": "Flash Loans",
+            "link": "/concepts/architecture/caliber/flash-loans"
           },
           {
-            text: "Caliber Accounting",
-            link: "/concepts/architecture/caliber/caliber-accounting",
-          },
-        ],
+            "text": "Caliber Accounting",
+            "link": "/concepts/architecture/caliber/caliber-accounting"
+          }
+        ]
       },
       {
-        text: "Cross-Chain",
-        collapsed: true,
-        items: [
+        "text": "Cross-Chain",
+        "collapsed": true,
+        "items": [
           {
-            text: "Hub-and-Spoke Model",
-            link: "/concepts/architecture/cross-chain/hub-and-spoke",
+            "text": "Hub-and-Spoke Model",
+            "link": "/concepts/architecture/cross-chain/hub-and-spoke"
           },
           {
-            text: "Cross-Chain Accounting",
-            link: "/concepts/architecture/cross-chain/cross-chain-accounting",
+            "text": "Cross-Chain Accounting",
+            "link": "/concepts/architecture/cross-chain/cross-chain-accounting"
           },
           {
-            text: "Liquidity Bridging",
-            link: "/concepts/architecture/cross-chain/liquidity-bridging",
+            "text": "Liquidity Bridging",
+            "link": "/concepts/architecture/cross-chain/liquidity-bridging"
           },
           {
-            text: "Caliber Mailbox",
-            link: "/concepts/architecture/cross-chain/caliber-mailbox",
-          },
-        ],
+            "text": "Caliber Mailbox",
+            "link": "/concepts/architecture/cross-chain/caliber-mailbox"
+          }
+        ]
       },
       {
-        text: "Pricing & Oracles",
-        link: "/concepts/architecture/pricing-oracles",
-      },
-    ],
+        "text": "Pricing & Oracles",
+        "link": "/concepts/architecture/pricing-oracles"
+      }
+    ]
   },
   {
-    text: "Roles & Governance",
-    collapsed: false,
-    items: [
+    "text": "Roles & Governance",
+    "collapsed": false,
+    "items": [
       {
-        text: "Overview",
-        link: "/concepts/governance/overview",
+        "text": "Overview",
+        "link": "/concepts/governance/overview"
       },
       {
-        text: "Operator",
-        link: "/concepts/governance/operator",
+        "text": "Operator",
+        "link": "/concepts/governance/operator"
       },
       {
-        text: "Risk Manager",
-        link: "/concepts/governance/risk-manager",
+        "text": "Risk Manager",
+        "link": "/concepts/governance/risk-manager"
       },
       {
-        text: "Security Council",
-        link: "/concepts/governance/security-council",
+        "text": "Security Council",
+        "link": "/concepts/governance/security-council"
       },
       {
-        text: "Root Update Lifecycle",
-        link: "/concepts/governance/root-update-lifecycle",
+        "text": "Root Update Lifecycle",
+        "link": "/concepts/governance/root-update-lifecycle"
       },
       {
-        text: "Permissions & Scopes",
-        link: "/concepts/governance/permissions-and-scopes",
+        "text": "Permissions & Scopes",
+        "link": "/concepts/governance/permissions-and-scopes"
       },
       {
-        text: "Protocol Upgrades",
-        link: "/concepts/governance/protocol-upgrades",
+        "text": "Protocol Upgrades",
+        "link": "/concepts/governance/protocol-upgrades"
       },
       {
-        text: "Multisig Security",
-        link: "/concepts/governance/safe-security-structure",
-      },
-    ],
+        "text": "Multisig Security",
+        "link": "/concepts/governance/safe-security-structure"
+      }
+    ]
   },
   {
-    text: "Security & Risk",
-    collapsed: false,
-    items: [
+    "text": "Security & Risk",
+    "collapsed": false,
+    "items": [
       {
-        text: "Trust Model & Risk",
-        link: "/concepts/security/trust-and-risk",
+        "text": "Trust Model & Risk",
+        "link": "/concepts/security/trust-and-risk"
       },
       {
-        text: "Recovery Mode",
-        link: "/concepts/security/recovery-mode",
+        "text": "Recovery Mode",
+        "link": "/concepts/security/recovery-mode"
       },
       {
-        text: "Security Module",
-        link: "/concepts/security/security-module",
-      },
-    ],
-  },
+        "text": "Security Module",
+        "link": "/concepts/security/security-module"
+      }
+    ]
+  }
 ];
