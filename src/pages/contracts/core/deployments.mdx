@@ -18,7 +18,7 @@ For strategy-specific contracts, see the [Strategies](../../strategies/deploymen
 
 ## Shared infrastructure
 
-Deployed once per chain and used by every instance on that chain. Addresses are identical on all chains.
+Deployed once per chain and used by every instance on that chain. A bridge config is only deployed on chains where that bridge is available.
 
 <Tabs>
   <Tab title="Ethereum">
@@ -81,11 +81,49 @@ Deployed once per chain and used by every instance on that chain. Addresses are 
     | LayerZeroV2BridgeConfig | [`0x1B064336D9C4999C942Ecc36e36d48a411343771`](https://monadscan.com/address/0x1B064336D9C4999C942Ecc36e36d48a411343771) |
     | CctpV2BridgeConfig      | [`0x09baC7B5a8e5CEeEe21A33642Bc817cF41e80E3D`](https://monadscan.com/address/0x09baC7B5a8e5CEeEe21A33642Bc817cF41e80E3D) |
   </Tab>
+  <Tab title="Avalanche">
+    | Contract                | Address |
+    | ----------------------- | ------- |
+    | AccessManager           | [`0x0fCEfa3f1047F35521A49cD8B06faBd588665d7F`](https://snowscan.xyz/address/0x0fCEfa3f1047F35521A49cD8B06faBd588665d7F) |
+    | OracleRegistry          | [`0xC388B72AB90Be82B230D919F9C05c87F9397f485`](https://snowscan.xyz/address/0xC388B72AB90Be82B230D919F9C05c87F9397f485) |
+    | TokenRegistry           | [`0xd9310A41d085c0DC1E40F691e8647080862A5fd4`](https://snowscan.xyz/address/0xd9310A41d085c0DC1E40F691e8647080862A5fd4) |
+    | AcrossV3BridgeConfig    | [`0xDdE7FD6f25c9a58c5ec3E278d31e8584f236da86`](https://snowscan.xyz/address/0xDdE7FD6f25c9a58c5ec3E278d31e8584f236da86) |
+    | LayerZeroV2BridgeConfig | [`0x1B064336D9C4999C942Ecc36e36d48a411343771`](https://snowscan.xyz/address/0x1B064336D9C4999C942Ecc36e36d48a411343771) |
+    | CctpV2BridgeConfig      | [`0x09baC7B5a8e5CEeEe21A33642Bc817cF41e80E3D`](https://snowscan.xyz/address/0x09baC7B5a8e5CEeEe21A33642Bc817cF41e80E3D) |
+  </Tab>
+  <Tab title="Arc">
+    | Contract                | Address |
+    | ----------------------- | ------- |
+    | AccessManager           | [`0x0fCEfa3f1047F35521A49cD8B06faBd588665d7F`](https://arc.etherscan.io/address/0x0fCEfa3f1047F35521A49cD8B06faBd588665d7F) |
+    | OracleRegistry          | [`0xC388B72AB90Be82B230D919F9C05c87F9397f485`](https://arc.etherscan.io/address/0xC388B72AB90Be82B230D919F9C05c87F9397f485) |
+    | TokenRegistry           | [`0xd9310A41d085c0DC1E40F691e8647080862A5fd4`](https://arc.etherscan.io/address/0xd9310A41d085c0DC1E40F691e8647080862A5fd4) |
+    | AcrossV3BridgeConfig    | [`0xDdE7FD6f25c9a58c5ec3E278d31e8584f236da86`](https://arc.etherscan.io/address/0xDdE7FD6f25c9a58c5ec3E278d31e8584f236da86) |
+    | LayerZeroV2BridgeConfig | [`0x1B064336D9C4999C942Ecc36e36d48a411343771`](https://arc.etherscan.io/address/0x1B064336D9C4999C942Ecc36e36d48a411343771) |
+    | CctpV2BridgeConfig      | [`0x09baC7B5a8e5CEeEe21A33642Bc817cF41e80E3D`](https://arc.etherscan.io/address/0x09baC7B5a8e5CEeEe21A33642Bc817cF41e80E3D) |
+  </Tab>
+  <Tab title="Robinhood">
+    | Contract                | Address |
+    | ----------------------- | ------- |
+    | AccessManager           | [`0x0fCEfa3f1047F35521A49cD8B06faBd588665d7F`](https://robin.etherscan.io/address/0x0fCEfa3f1047F35521A49cD8B06faBd588665d7F) |
+    | OracleRegistry          | [`0xC388B72AB90Be82B230D919F9C05c87F9397f485`](https://robin.etherscan.io/address/0xC388B72AB90Be82B230D919F9C05c87F9397f485) |
+    | TokenRegistry           | [`0xd9310A41d085c0DC1E40F691e8647080862A5fd4`](https://robin.etherscan.io/address/0xd9310A41d085c0DC1E40F691e8647080862A5fd4) |
+    | AcrossV3BridgeConfig    | [`0xDdE7FD6f25c9a58c5ec3E278d31e8584f236da86`](https://robin.etherscan.io/address/0xDdE7FD6f25c9a58c5ec3E278d31e8584f236da86) |
+    | LayerZeroV2BridgeConfig | [`0x1B064336D9C4999C942Ecc36e36d48a411343771`](https://robin.etherscan.io/address/0x1B064336D9C4999C942Ecc36e36d48a411343771) |
+  </Tab>
+  <Tab title="X Layer">
+    | Contract                | Address |
+    | ----------------------- | ------- |
+    | AccessManager           | [`0x0fCEfa3f1047F35521A49cD8B06faBd588665d7F`](https://www.oklink.com/x-layer/address/0x0fCEfa3f1047F35521A49cD8B06faBd588665d7F) |
+    | OracleRegistry          | [`0xC388B72AB90Be82B230D919F9C05c87F9397f485`](https://www.oklink.com/x-layer/address/0xC388B72AB90Be82B230D919F9C05c87F9397f485) |
+    | TokenRegistry           | [`0xd9310A41d085c0DC1E40F691e8647080862A5fd4`](https://www.oklink.com/x-layer/address/0xd9310A41d085c0DC1E40F691e8647080862A5fd4) |
+    | LayerZeroV2BridgeConfig | [`0x1B064336D9C4999C942Ecc36e36d48a411343771`](https://www.oklink.com/x-layer/address/0x1B064336D9C4999C942Ecc36e36d48a411343771) |
+    | CctpV2BridgeConfig      | [`0x09baC7B5a8e5CEeEe21A33642Bc817cF41e80E3D`](https://www.oklink.com/x-layer/address/0x09baC7B5a8e5CEeEe21A33642Bc817cF41e80E3D) |
+  </Tab>
 </Tabs>
 
 ## Ethereum hub instance
 
-Hub on Ethereum, spokes on Base, Arbitrum, Optimism, Ink, Monad.
+Hub on Ethereum, spokes on Base, Arbitrum, Optimism, Ink, Monad, Avalanche, Arc, Robinhood, X Layer.
 
 <Tabs>
   <Tab title="Ethereum (hub)">
@@ -160,6 +198,52 @@ Hub on Ethereum, spokes on Base, Arbitrum, Optimism, Ink, Monad.
     | AcrossV3BridgeAdapterBeacon    | [`0x511C3F33417275d060932458DD987bd47c9ca678`](https://monadscan.com/address/0x511C3F33417275d060932458DD987bd47c9ca678) |
     | LayerZeroV2BridgeAdapterBeacon | [`0x1108204c18FCB5e0b2b38Cbd3B783b2A56B42467`](https://monadscan.com/address/0x1108204c18FCB5e0b2b38Cbd3B783b2A56B42467) |
     | CctpV2BridgeAdapterBeacon      | [`0xFD58f8e3569197677CEEB6AaFEb8147b715513CC`](https://monadscan.com/address/0xFD58f8e3569197677CEEB6AaFEb8147b715513CC) |
+  </Tab>
+  <Tab title="Avalanche">
+    | Contract                       | Address |
+    | ------------------------------ | ------- |
+    | SpokeCoreRegistry              | [`0x0FAEeCEab0BCb63bE2Fe984Ea8c77778989d53eA`](https://snowscan.xyz/address/0x0FAEeCEab0BCb63bE2Fe984Ea8c77778989d53eA) |
+    | SpokeCoreFactory               | [`0x8d28A69328561eF9F171c58996fEcB9F494e070c`](https://snowscan.xyz/address/0x8d28A69328561eF9F171c58996fEcB9F494e070c) |
+    | SwapModule                     | [`0x923c98b22F9c367A109E93f7dfBaCa28b20C17C3`](https://snowscan.xyz/address/0x923c98b22F9c367A109E93f7dfBaCa28b20C17C3) |
+    | CaliberBeacon                  | [`0x3f5A881DB86D6f495823028A1e892E7b2CD7e162`](https://snowscan.xyz/address/0x3f5A881DB86D6f495823028A1e892E7b2CD7e162) |
+    | CaliberMailboxBeacon           | [`0x2f7101C2EFfa4a2d48A95958F594e3306717a0A0`](https://snowscan.xyz/address/0x2f7101C2EFfa4a2d48A95958F594e3306717a0A0) |
+    | AcrossV3BridgeAdapterBeacon    | [`0x511C3F33417275d060932458DD987bd47c9ca678`](https://snowscan.xyz/address/0x511C3F33417275d060932458DD987bd47c9ca678) |
+    | LayerZeroV2BridgeAdapterBeacon | [`0x1108204c18FCB5e0b2b38Cbd3B783b2A56B42467`](https://snowscan.xyz/address/0x1108204c18FCB5e0b2b38Cbd3B783b2A56B42467) |
+    | CctpV2BridgeAdapterBeacon      | [`0xDBb0ACfa933EfB07DA7B45fB704c85FE595ed9E4`](https://snowscan.xyz/address/0xDBb0ACfa933EfB07DA7B45fB704c85FE595ed9E4) |
+  </Tab>
+  <Tab title="Arc">
+    | Contract                       | Address |
+    | ------------------------------ | ------- |
+    | SpokeCoreRegistry              | [`0x0FAEeCEab0BCb63bE2Fe984Ea8c77778989d53eA`](https://arc.etherscan.io/address/0x0FAEeCEab0BCb63bE2Fe984Ea8c77778989d53eA) |
+    | SpokeCoreFactory               | [`0x8d28A69328561eF9F171c58996fEcB9F494e070c`](https://arc.etherscan.io/address/0x8d28A69328561eF9F171c58996fEcB9F494e070c) |
+    | SwapModule                     | [`0x923c98b22F9c367A109E93f7dfBaCa28b20C17C3`](https://arc.etherscan.io/address/0x923c98b22F9c367A109E93f7dfBaCa28b20C17C3) |
+    | CaliberBeacon                  | [`0x3f5A881DB86D6f495823028A1e892E7b2CD7e162`](https://arc.etherscan.io/address/0x3f5A881DB86D6f495823028A1e892E7b2CD7e162) |
+    | CaliberMailboxBeacon           | [`0x2f7101C2EFfa4a2d48A95958F594e3306717a0A0`](https://arc.etherscan.io/address/0x2f7101C2EFfa4a2d48A95958F594e3306717a0A0) |
+    | AcrossV3BridgeAdapterBeacon    | [`0x511C3F33417275d060932458DD987bd47c9ca678`](https://arc.etherscan.io/address/0x511C3F33417275d060932458DD987bd47c9ca678) |
+    | LayerZeroV2BridgeAdapterBeacon | [`0x1108204c18FCB5e0b2b38Cbd3B783b2A56B42467`](https://arc.etherscan.io/address/0x1108204c18FCB5e0b2b38Cbd3B783b2A56B42467) |
+    | CctpV2BridgeAdapterBeacon      | [`0xDBb0ACfa933EfB07DA7B45fB704c85FE595ed9E4`](https://arc.etherscan.io/address/0xDBb0ACfa933EfB07DA7B45fB704c85FE595ed9E4) |
+  </Tab>
+  <Tab title="Robinhood">
+    | Contract                       | Address |
+    | ------------------------------ | ------- |
+    | SpokeCoreRegistry              | [`0x0FAEeCEab0BCb63bE2Fe984Ea8c77778989d53eA`](https://robin.etherscan.io/address/0x0FAEeCEab0BCb63bE2Fe984Ea8c77778989d53eA) |
+    | SpokeCoreFactory               | [`0x8d28A69328561eF9F171c58996fEcB9F494e070c`](https://robin.etherscan.io/address/0x8d28A69328561eF9F171c58996fEcB9F494e070c) |
+    | SwapModule                     | [`0x923c98b22F9c367A109E93f7dfBaCa28b20C17C3`](https://robin.etherscan.io/address/0x923c98b22F9c367A109E93f7dfBaCa28b20C17C3) |
+    | CaliberBeacon                  | [`0x3f5A881DB86D6f495823028A1e892E7b2CD7e162`](https://robin.etherscan.io/address/0x3f5A881DB86D6f495823028A1e892E7b2CD7e162) |
+    | CaliberMailboxBeacon           | [`0x2f7101C2EFfa4a2d48A95958F594e3306717a0A0`](https://robin.etherscan.io/address/0x2f7101C2EFfa4a2d48A95958F594e3306717a0A0) |
+    | AcrossV3BridgeAdapterBeacon    | [`0x511C3F33417275d060932458DD987bd47c9ca678`](https://robin.etherscan.io/address/0x511C3F33417275d060932458DD987bd47c9ca678) |
+    | LayerZeroV2BridgeAdapterBeacon | [`0x1108204c18FCB5e0b2b38Cbd3B783b2A56B42467`](https://robin.etherscan.io/address/0x1108204c18FCB5e0b2b38Cbd3B783b2A56B42467) |
+  </Tab>
+  <Tab title="X Layer">
+    | Contract                       | Address |
+    | ------------------------------ | ------- |
+    | SpokeCoreRegistry              | [`0x0FAEeCEab0BCb63bE2Fe984Ea8c77778989d53eA`](https://www.oklink.com/x-layer/address/0x0FAEeCEab0BCb63bE2Fe984Ea8c77778989d53eA) |
+    | SpokeCoreFactory               | [`0x8d28A69328561eF9F171c58996fEcB9F494e070c`](https://www.oklink.com/x-layer/address/0x8d28A69328561eF9F171c58996fEcB9F494e070c) |
+    | SwapModule                     | [`0x923c98b22F9c367A109E93f7dfBaCa28b20C17C3`](https://www.oklink.com/x-layer/address/0x923c98b22F9c367A109E93f7dfBaCa28b20C17C3) |
+    | CaliberBeacon                  | [`0x3f5A881DB86D6f495823028A1e892E7b2CD7e162`](https://www.oklink.com/x-layer/address/0x3f5A881DB86D6f495823028A1e892E7b2CD7e162) |
+    | CaliberMailboxBeacon           | [`0x2f7101C2EFfa4a2d48A95958F594e3306717a0A0`](https://www.oklink.com/x-layer/address/0x2f7101C2EFfa4a2d48A95958F594e3306717a0A0) |
+    | LayerZeroV2BridgeAdapterBeacon | [`0x1108204c18FCB5e0b2b38Cbd3B783b2A56B42467`](https://www.oklink.com/x-layer/address/0x1108204c18FCB5e0b2b38Cbd3B783b2A56B42467) |
+    | CctpV2BridgeAdapterBeacon      | [`0xDBb0ACfa933EfB07DA7B45fB704c85FE595ed9E4`](https://www.oklink.com/x-layer/address/0xDBb0ACfa933EfB07DA7B45fB704c85FE595ed9E4) |
   </Tab>
 </Tabs>
 
